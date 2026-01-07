@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
@@ -64,6 +65,26 @@ public class ObstacleManager : MonoBehaviour {
             res[0] = edgeNodesB[route].transform.position;
             res[1] = edgeNodesA[route].transform.position;
         }
+        return res;
+    }
+
+    // Function to generate an Edge Path starting at the point closest to the player. 
+    public Vector3[] GetClosestEdgePath() {
+        Vector3[] res = new Vector3[2];
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
+        Vector3 nearestPoint = edgeNodesA[0].transform.position;
+        int bestRoute = 0;
+
+        for (int i=0; i<edgeNodesA.Length; i++) {
+            if (Vector3.Distance(playerPosition, edgeNodesA[i].transform.position) < Vector3.Distance(playerPosition, nearestPoint)) {
+                nearestPoint = edgeNodesA[i].transform.position;
+                bestRoute = i;
+            }
+        }
+        
+        res[0] = edgeNodesA[bestRoute].transform.position;
+        res[1] = edgeNodesB[bestRoute].transform.position;
+
         return res;
     }
 

@@ -24051,8 +24051,8 @@ MonoBehaviour:
   switchButtonB: {fileID: 397535868}
   objectSprite:
   - {fileID: 21300000, guid: 7cf2133288297cd46ad0b17786ce1b44, type: 3}
-  - {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}
   - {fileID: 21300000, guid: 79ca2cb292ed03649a0417fd1ebd62fd, type: 3}
+  - {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}
   - {fileID: 21300000, guid: 9777162cb3de44a40bd4ce9aec64b8ef, type: 3}
   - {fileID: 21300000, guid: 5ffa3495449a06848a7a5207cdda3c52, type: 3}
   - {fileID: 21300000, guid: 882a271cdc05b92489296ec9ec5a3e7e, type: 3}
