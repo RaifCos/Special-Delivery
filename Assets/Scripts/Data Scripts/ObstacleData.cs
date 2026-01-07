@@ -28,19 +28,19 @@ public class ObstacleData : MonoBehaviour
 {
     private readonly Obstacle[] obstacles = {
         new("carRed", "car", true, 3,
-        "cars navigate the roads of parcel city, honking at everything in their path.\n\nthe drivers of parcel city specially import cars with two horns just because they love honking so much. especially at delivery drivers.",
+        "cars navigate the roads of parcel city, honking at everything in their path.\n\nthe drivers of parcel city love honking so much they specially imported oversea cars built with two horns. Nothing else in these models really work, but haven't seemed to notice.",
         "efficient delivery driver somehow causes surge in traffic."),
 
         new("carBlue", "slowmobile", true, 3,
-        "slowmobiles are slower, heavier cars that start fierce traffic.\n\ndespite their name, slowmobiles are actually one of the fastest car brands worldwide. Their drivers just like to hold up traffic. Jerks.",
+        "slowmobiles are slower, heavier cars that start fierce traffic.\n\ndespite their name, slowmobiles are actually one of the fastest car brands worldwide. The drivers just like to hold up traffic. Jerks.",
         "traffic backed up on every major route due to gameplay mechanics."),
 
         new("carGreen", "slick speedster", true, 3,
-        "slick speeders are faster, lighter cars that'll push you off the road if you're not careful.\n\nthese drivers have absolutely no respect for the road! well, neither do you (clearly), but at least you have an excuse.",
+        "slick speeders are faster, lighter cars that'll push you off the road if you're not careful.\n\nthese drivers have absolutely no respect for the road! well, neither do you (clearly), but at least you have an excuse. sorta.",
         "\"where do these cars keep coming from??\" - cries frustrated commuter."),
 
         new("carToy", "toy car", true, 2,
-        "toy cars are incredibly light, but cause chaos with their extreme speed.\n\nthese little terrors were originally found in homes and schools across the globe, but took to the streets after they had enough of terrorizing children. now they focus on delivery drivers.",
+        "toy cars are incredibly light, but cause chaos with their extreme speed.\n\nthese little terrors were originally found in homes and schools across the globe, but took to the streets en masse after they had enough of terrorizing children. now they focus on postal workers.",
         "toy car voted \"cutest road hazard\" by drivers."),
 
         new("carBig", "monster car", true, 1,
@@ -48,15 +48,15 @@ public class ObstacleData : MonoBehaviour
         "there have been reports downtown of... \"a really big car\"?.. seriously?"),
 
         new("ufo", "ufo", true, 1,
-        "ufos hover from above, pulling objects (and you!) up with their tractor beam.\n\nyou may think the occupants of this ship are trying to abduct you, thankfully they just go around flinging stuff for the love of the game. don't pretend you wouldn't do the same.",
+        "ufos hover from above, pulling objects (and you!) up with their tractor beam.\n\nyou may think the occupants of this ship are trying to abduct you, thankfully they just go around beaming stuff for the love of the game. be honest, wouldn't you do the same if you had one?",
         "ufo spotted downtown as writer struggles to come up with funny headline."),
 
         new("boomerang", "boomerang", true, 2,
         "boomerangs spin across the stage, whacking anything in their path.\n\n\"full disclosure: boomerangs are absolutely broken, they basically break the physics of anything they touch. However, this is funny, so i'm keeping them in the game.\" - the developer",
-        "\"the dangers of boomerangs\" reaches top of nyt bestsellers list."),
+        "\"the dangers of boomerangs\" reaches top of nyt bestsellers list after initial low reviews."),
 
         new("giantCone", "giant Cone", true, 3,
-        "giant invincible cones that come crashing down from the sky into the middle of the level.\n\nif these cones are invincible then how can i see them?",
+        "giant invincible cones that come crashing down from the sky into the middle of the stage.\n\nif these cones are invincible then how can i see them?",
         "local artist unveils touching \"tribute to cones everywhere\", whatever that means."),
 
         new("boulder", "boulder", false, 1,

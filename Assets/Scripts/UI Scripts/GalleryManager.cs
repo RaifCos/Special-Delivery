@@ -17,7 +17,7 @@ public class GalleryManager : MonoBehaviour {
         {"traffic Cone", "if they didn't want you to run over these small orange cones, then why did they make them so fun to run over?"},
         {"bin", "what do you call it when a delivery van hits a bin? junk mail! get it? be- because bins... trash... junk... heh"},
         {"fire hydrant", "wait, shouldn't there be water coming out of these when you knock them over? guys? are these hydrants empty?? hello?? should we say something???"},
-        {"bench", "sometimes it's nice to take a break from the city life and just have a quiet sit down- until a speeding delivery van knocks you four counties over."},
+        {"bench", "sometimes it's nice to take a break from the city life and just have a quiet sit down- until a speeding delivery van knocks you four cities over."},
         {"fence", "mind you these fences are solid iron, how are you driving full force into these things without so much as a dent? are you cheating or something?"},
         {"barrier", "hey so, when you see these guys it means you're not supposed to drive here, but hey, who am i to stop you? go nuts, smash 'em all."}
     };
