@@ -5,7 +5,6 @@ using UnityEngine;
 // Script to handle the behaviour of the Boulder and Snowball.
 public class BoulderTraversal : MonoBehaviour {
     public float speed;
-
     public bool snowball;
     private bool grounded, beganShrinking;
     private Rigidbody rb;
@@ -15,7 +14,7 @@ public class BoulderTraversal : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
 
         // Create route for the Boulder and set starting position.
-        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
+        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath();
         transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
     }
 
