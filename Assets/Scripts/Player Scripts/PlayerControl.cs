@@ -10,20 +10,19 @@ public class PlayerControl : MonoBehaviour
     public float boostPower = 50f;
     public float steeringRange = 30f;
     public float steeringRangeAtMaxSpeed = 10f;
-    public ParticleSystem boostParticle; 
     private WheelControl[] wheels;
 
     [Header("Audio Handler")]
     public AudioSource engineSound;
-    public AudioSource boosterSound; 
     
+    private PlayerBoosterControl pbc;
     private Rigidbody rb;
     private bool isPlaying = false;
-    private bool isBoosting = false;
 
     // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();
+        pbc = GetComponent<PlayerBoosterControl>();
 
         // Adjust center of mass to improve stability and prevent rolling
         rb.centerOfMass += new Vector3(0f, -2f, -1f);
@@ -49,15 +48,10 @@ public class PlayerControl : MonoBehaviour
             float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
             Debug.Log(forwardSpeed);
 
-            isBoosting = Input.GetKey(KeyCode.Space);
-            if (isBoosting) { 
-                if(forwardSpeed < maxSpeed) {
-                    rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
-                }
-                boostParticle.Play();  
-                if(!boosterSound.isPlaying) boosterSound.Play();
-            } else { boosterSound.Stop(); }
-            
+            if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
+                rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
+            }
+
             // Reduce motor torque and steering at high speeds for better handling
             float currentMotorTorque;
             currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
@@ -100,7 +94,6 @@ public class PlayerControl : MonoBehaviour
         isPlaying = state;
         if (!state) { 
             engineSound.Stop(); 
-            boosterSound.Stop();    
         } else { 
             engineSound.Play();
         }

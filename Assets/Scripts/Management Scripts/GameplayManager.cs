@@ -41,7 +41,7 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameManager.audioManager.StartGameMusic());
 
         // Start News Text UI
-        GameManager.newsTextScroller.StartNews(difficulty);
+        GameManager.newsTextScroller.StartNews();
 
         // Set UI for Score Animation
         scoreAnimator = gameUI.transform.GetChild(1).gameObject.GetComponent<Animator>();

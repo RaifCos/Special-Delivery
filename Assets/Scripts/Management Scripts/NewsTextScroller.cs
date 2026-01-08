@@ -11,7 +11,7 @@ public class NewsTextScroller : MonoBehaviour
     public float scrollSpeed;
     TMP_Text newsText;
     private bool isPlaying;
-    private int lastStory;
+    private int lastStory, difficulty;
     public readonly List<string> newsQueue = new(); 
 
     // Collections of standard news headlines.
@@ -22,6 +22,7 @@ public class NewsTextScroller : MonoBehaviour
     "tip: more obstacles will pop up as you complete more deliveries, so look out!",
     "tip: there are shortcuts hidden around the city to help you get places quicker.",
     "tip: pay attention to these news headlines, some of them tell you what obstacles are coming your way!",
+    "tip: using your boost will make it harder to turn, so save your fuel for long, straight stretches of road.",
     "\"please stop running over the stop signs\" pleads city council.",
     "mass confusion caused after most street signs knocked down by wreckless delivery driver.",
     "local resident creates website to track the number of cones knocked over by delivery drivers - \"leavetheconesalone.org\"",
@@ -43,6 +44,7 @@ public class NewsTextScroller : MonoBehaviour
 
     void Awake() {
         GameManager.newsTextScroller = this;
+        difficulty = GameManager.instance.GetDifficulty();
     }
 
     void Start() {
@@ -51,16 +53,13 @@ public class NewsTextScroller : MonoBehaviour
     }
 
     // Function to begin the scrolling text 
-    public void StartNews(int difficulty) {
+    public void StartNews() {
         // Clear Queue
         newsQueue.Clear();
 
         // Add starting headline and additional text if the player is in the tutorial.
-        if (difficulty == 0) {
-            newsQueue.Add("welcome to special delivery! use WASD or the arrow keys to drive, and hold SPACE to break.");
-            newsQueue.Add("follow the red arrow to start delivering parcels!");
-            newsQueue.Add("once you have the hang of things, press ESCAPE to return to the menu and start playing!");
-        } else { newsQueue.Add("BREAKING NEWS - local delivery service hires new driver, somehow a headlining story."); }
+        if (difficulty == 0) { AddTutorialHeadlines(); }
+        else { newsQueue.Add("BREAKING NEWS - local delivery service hires new driver, somehow a headlining story."); }
 
         // Set position of text component and start scrolling.
         newsText.rectTransform.position = new Vector3(1010f, 5, 0);
@@ -91,12 +90,25 @@ public class NewsTextScroller : MonoBehaviour
         }
     }
 
+    public void AddTutorialHeadlines() {
+        newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. use WASD or the arrow keys to drive.");
+        newsQueue.Add("delivering parcels is the name of the game. follow the tracker arrow at the top of your screen to find a parcel.");
+        newsQueue.Add("once you've collected a parcel, follow the tracker arrow again to its glowing yellow delivery spot.");
+        newsQueue.Add("press SPACE to use your booster and go faster! boosting does take up fuel though, so use it wisely.");
+        newsQueue.Add("as you complete more deliveries, obstacles will begin to fill the stage, making each delivery harder than the last. try to deliver as many parcels as you can before time runs out.");
+        newsQueue.Add("this is just the tutorial, so no need to worry about the timer or obstacles. Just get used to the controls!");
+        newsQueue.Add("once you're ready to play, press ESCAPE to return to the menu. happy delivering!");
+    }
+
     // Coroutine to take text from the queue and move it along the news bar.
     IEnumerator ScrollText() {
         // Only scroll text while a game is in session.
         while (isPlaying) {
             // If there are no headlines in the queue, add a random generic string.
-            if (newsQueue.Count == 0) { AddGenericHeadline(); }
+            if (newsQueue.Count == 0) { 
+                if(difficulty == 0) { AddTutorialHeadlines(); }
+                if(difficulty == 1) { AddGenericHeadline(); }
+            }
             // Take headline at top of the queue.
             newsText.text = newsQueue[0];
             newsQueue.RemoveAt(0);
