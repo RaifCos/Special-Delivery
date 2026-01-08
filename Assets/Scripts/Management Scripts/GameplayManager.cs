@@ -130,9 +130,11 @@ public class GameplayManager : MonoBehaviour
     public void SetScore(int value, bool addingScore) {
         if (addingScore) {
             completeDeliveries += value;
-            if (completeDeliveries == 10) { GameManager.achievementManager.CompleteAchievement(0); }
-            if (completeDeliveries == 50) { GameManager.achievementManager.CompleteAchievement(2); }
-            if (difficulty != 0 && completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
+            if (difficulty != 0) {
+                if (completeDeliveries == 10) { GameManager.achievementManager.CompleteAchievement(0); }
+                if (completeDeliveries == 50) { GameManager.achievementManager.CompleteAchievement(2); }
+                if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
+            }
         }
         else { completeDeliveries = value; }
         gameUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = completeDeliveries.ToString();
