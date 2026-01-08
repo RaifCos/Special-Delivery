@@ -42,12 +42,9 @@ public class NewsTextScroller : MonoBehaviour
     "\"it's a feature\" says game developer in response to what is clearly a bug.",
     };
 
-    void Awake() {
+    void Start() {
         GameManager.newsTextScroller = this;
         difficulty = GameManager.instance.GetDifficulty();
-    }
-
-    void Start() {
         newsText = newsUI.GetComponent<TMP_Text>();
         lastStory = -1;
     }

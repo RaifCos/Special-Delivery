@@ -25,9 +25,10 @@ public class GameManager : MonoBehaviour
     public GameObject unmuteButton;
     private bool isMusicPlaying;
 
+    void Awake() { instance = this; }
+
     // Start is called before the first frame update.
     void Start() {
-        instance = this;
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
     }
 
