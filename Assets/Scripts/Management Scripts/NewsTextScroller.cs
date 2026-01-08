@@ -113,6 +113,9 @@ public class NewsTextScroller : MonoBehaviour
             RectTransform textRect = newsText.rectTransform;
             RectTransform parentRect = textRect.parent as RectTransform;
 
+            Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
+            newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
+
             // Start just outside the right edge
             float startX = parentRect.rect.width / 2f + textRect.rect.width / 2f;
 
@@ -125,15 +128,6 @@ public class NewsTextScroller : MonoBehaviour
                 textRect.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
                 yield return null;
             }
-
-            // Move the text along the top of the screen until it reaches the end. 
-            //Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
-            //newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
-            //newsText.rectTransform.anchoredPosition = new Vector2(1010f, 15);
-            //while (newsText.rectTransform.anchoredPosition.x > -1010f) {
-            //    newsText.rectTransform.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
-            //    yield return null;
-            //}
         }
     }
 }
