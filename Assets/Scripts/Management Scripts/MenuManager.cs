@@ -16,7 +16,6 @@ public class MenuManager : MonoBehaviour {
     void Awake() { GameManager.menuManager = this; }
 
     public void Start() {
-        achievementUI.transform.GetChild(5).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
         GameManager.achievementManager.UpdateData(true);
         StartCoroutine(GameManager.audioManager.StartGameMusic());
     }
@@ -39,7 +38,7 @@ public class MenuManager : MonoBehaviour {
             case 1: { // Achievement Menu
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
-                achievementUI.transform.GetChild(5).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
+                achievementUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
                 DisplayAchievement(0);
                 break; }
             case 2: { // Loading Screen
@@ -99,7 +98,7 @@ public class MenuManager : MonoBehaviour {
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage(int cID) { 
         confirmationUIID = cID;
-        TMP_Text message = confirmUI.transform.GetChild(1).GetComponent<TMP_Text>();
+        TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
 
         // Set confirmation message based on scenario:
         switch (confirmationUIID) {

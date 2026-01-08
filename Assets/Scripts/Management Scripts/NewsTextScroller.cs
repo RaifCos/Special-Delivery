@@ -110,14 +110,30 @@ public class NewsTextScroller : MonoBehaviour
             newsText.text = newsQueue[0];
             newsQueue.RemoveAt(0);
 
-            // Move the text along the top of the screen until it reaches the end. 
-            Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
-            newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
-            newsText.rectTransform.anchoredPosition = new Vector2(1010f, 5);
-            while (newsText.rectTransform.anchoredPosition.x > -1010f) {
-                newsText.rectTransform.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
+            RectTransform textRect = newsText.rectTransform;
+            RectTransform parentRect = textRect.parent as RectTransform;
+
+            // Start just outside the right edge
+            float startX = parentRect.rect.width / 2f + textRect.rect.width / 2f;
+
+            // End just outside the left edge
+            float endX = -parentRect.rect.width / 2f - textRect.rect.width / 2f;
+
+            textRect.anchoredPosition = new Vector2(startX, 0);
+
+            while (textRect.anchoredPosition.x > endX) {
+                textRect.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
                 yield return null;
             }
+
+            // Move the text along the top of the screen until it reaches the end. 
+            //Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
+            //newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
+            //newsText.rectTransform.anchoredPosition = new Vector2(1010f, 15);
+            //while (newsText.rectTransform.anchoredPosition.x > -1010f) {
+            //    newsText.rectTransform.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
+            //    yield return null;
+            //}
         }
     }
 }

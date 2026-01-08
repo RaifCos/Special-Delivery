@@ -215,7 +215,7 @@ public class GameplayManager : MonoBehaviour
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage(int cID) {
         //confirmationUIID = cID;
-        TMP_Text message = confirmUI.transform.GetChild(1).GetComponent<TMP_Text>();
+        TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
 
         pauseUI.SetActive(false);
         if (difficulty == 0) { message.text = "end the tutorial\nand return to the menu?"; }
