@@ -115,6 +115,7 @@ public class ObstacleManager : MonoBehaviour {
         while (Mathf.Min(scale.x, scale.y, scale.z) > 0.1f) {
             // Rapidly Shrink the Object Slightly 
             obj.transform.localScale = obj.transform.localScale - new Vector3(0.05f, 0.05f, 0.05f);
+            scale = obj.transform.localScale;
             yield return _waitForSeconds0_02;
         } // Object has Shrunk to near-invisibility, so now Destroy.
         Destroy(obj);

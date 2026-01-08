@@ -26,9 +26,8 @@ public class DumpsterTraversal : MonoBehaviour
             if (grounded) { 
                 rb.MovePosition(Vector3.MoveTowards(transform.position, routeNodes[1], speed * Time.deltaTime));
                 speed += speed * 0.005f; // Increase Speed every frame.
-                LookRotation();
             }
-
+            LookRotation();
             // Dumpster has arrived at the destination node, so begin shrinking.
             if (Vector3.Distance(rb.position, routeNodes[1]) < 3f) {
                 StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(this.gameObject, false));
