@@ -111,7 +111,8 @@ public class ObstacleManager : MonoBehaviour {
         if (!isObstacle) { yield return _waitForSeconds8; }
         destroyParticles.transform.position = obj.transform.position;
         destroyParticles.GetComponent<ParticleSystem>().Play();
-        while (obj.transform.localScale.x > 0.1f) {
+        Vector3 scale = obj.transform.localScale;
+        while (Mathf.Min(scale.x, scale.y, scale.z) > 0.1f) {
             // Rapidly Shrink the Object Slightly 
             obj.transform.localScale = obj.transform.localScale - new Vector3(0.05f, 0.05f, 0.05f);
             yield return _waitForSeconds0_02;

@@ -30,7 +30,11 @@ public class DeliveryManager : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         // Only React if the Colliding Object is the Player.
         if (other.gameObject.CompareTag("Player")) {
-            if (!isParcel && GameManager.instance.GetDifficulty() != 0) { DeliveryCompleted(); }
+            if (!isParcel) {
+                GameManager.gameplayManager.SetScore(1, true);
+                GameManager.gameplayManager.ScoreAnimation();
+                if (GameManager.instance.GetDifficulty() != 0) { DeliveryCompleted(); }
+            }
             GameManager.audioManager.PlayParcelSound(isParcel);
             GeneratePos();
             ChangeState(!isParcel);
@@ -64,10 +68,8 @@ public class DeliveryManager : MonoBehaviour {
     // Function used when the player completes a delivery.
     public void DeliveryCompleted() {
         // Increment score and lifetime score.
-        GameManager.gameplayManager.SetScore(1, true);
         GameManager.achievementManager.IncreaseProgress(0);
         GameManager.obstacleManager.SpawnObstacle(GameManager.gameplayManager.GetScore() % 2 == 0);
         GameManager.gameplayManager.SetTime(30, true);
-        GameManager.gameplayManager.ScoreAnimation();
     }
 }
