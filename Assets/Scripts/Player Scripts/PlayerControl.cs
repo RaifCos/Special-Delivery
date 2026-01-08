@@ -46,7 +46,6 @@ public class PlayerControl : MonoBehaviour
             // Calculate current speed along the car's forward axis
             float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
             float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
-            Debug.Log(forwardSpeed);
 
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
