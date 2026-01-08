@@ -6,16 +6,20 @@ public class PlayerControl : MonoBehaviour
     [Header("Mail Van Properties")]
     public float motorTorque = 2000f;
     public float brakeTorque = 2000f;
-    public float maxSpeed = 20f;
+    public float maxSpeed = 25f;
+    public float boostPower = 50f;
     public float steeringRange = 30f;
     public float steeringRangeAtMaxSpeed = 10f;
+    public ParticleSystem boostParticle; 
     private WheelControl[] wheels;
 
     [Header("Audio Handler")]
     public AudioSource engineSound;
+    public AudioSource boosterSound; 
     
     private Rigidbody rb;
     private bool isPlaying = false;
+    private bool isBoosting = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -42,13 +46,22 @@ public class PlayerControl : MonoBehaviour
 
             // Calculate current speed along the car's forward axis
             float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
-            float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed)); // Normalized speed factor
+            float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
+            Debug.Log(forwardSpeed);
 
+            isBoosting = Input.GetKey(KeyCode.Space);
+            if (isBoosting) { 
+                if(forwardSpeed < maxSpeed) {
+                    rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
+                }
+                boostParticle.Play();  
+                if(!boosterSound.isPlaying) boosterSound.Play();
+            } else { boosterSound.Stop(); }
+            
             // Reduce motor torque and steering at high speeds for better handling
-            float currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
+            float currentMotorTorque;
+            currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
             float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
-
-            // Determine if the player is accelerating or trying to reverse
             bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
 
             foreach (var wheel in wheels) {
@@ -75,7 +88,6 @@ public class PlayerControl : MonoBehaviour
         // Reset Wheel Collider values and set breaks.
         foreach (var wheel in wheels) {
             wheel.WheelCollider.motorTorque = 0f;
-            wheel.WheelCollider.motorTorque = 100f;
         }
 
         // Reset any velocity on the player.
@@ -86,7 +98,11 @@ public class PlayerControl : MonoBehaviour
     // Function to between game state (used to stop player movement at the pause and game over screens).
     public void SetState(bool state) {
         isPlaying = state;
-        if (!state) { engineSound.Stop(); }
-        else { engineSound.Play(); }
+        if (!state) { 
+            engineSound.Stop(); 
+            boosterSound.Stop();    
+        } else { 
+            engineSound.Play();
+        }
     }
 }
