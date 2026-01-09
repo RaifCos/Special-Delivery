@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
-    public GameObject menuUI, achievementUI, galleryUI, creditsUI;
+    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, confirmUI, navDescription;
+    public Image backdrop;
 
     [Header("Achievement Menu Variables")]
     public GameObject buttonIcons;
@@ -17,11 +18,12 @@ public class MainMenuManager : MonoBehaviour {
     public void Start() {
         GameManager.achievementManager.UpdateData(true);
         StartCoroutine(GameManager.audioManager.StartGameMusic());
+        AlternateMainMenus(0);
     }
 
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
-        AlternateMainMenus(2);
+        AlternateMainMenus(6);
         StartCoroutine(GameManager.instance.LoadAsyncScene("City"));
     }
 
@@ -29,24 +31,38 @@ public class MainMenuManager : MonoBehaviour {
     public void AlternateMainMenus(int menu) {
         switch (menu) {
             case 0: { // Main Menu
+                backdrop.color = new Color32(62, 123, 230, 255);
+                navDescription.GetComponent<TMP_Text>().text = "";
                 menuUI.SetActive(true);
+                levelSelectUI.SetActive(false);
                 galleryUI.SetActive(false);
                 achievementUI.SetActive(false);
                 break; }
-            case 1: { // Achievement Menu
+            case 1: { // Achievements 
+                backdrop.color = new Color32(39, 191, 200, 255);
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
-                achievementUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
+                achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
                 DisplayAchievement(0);
                 break; }
             case 2: { // Gallery
                 menuUI.SetActive(false);
                 galleryUI.SetActive(true);
+                backdrop.color = new Color32(93, 105, 208, 255);
                 GameManager.galleryManager.UpdateGalleryUI();
                 GameManager.galleryManager.AlternateGalleryMenus(true);
                 break; }
-            case 3: { // Loading Screen
+            case 4: { // Level Select
                 menuUI.SetActive(false);
+                levelSelectUI.SetActive(true);
+                    break;
+                }    
+            case 5: { // Shop 
+                    break;
+                }    
+            case 6: { // Loading Screen
+                menuUI.SetActive(false);
+                confirmUI.SetActive(false);
                 Instantiate(Resources.Load<GameObject>("LoadingScreen"));
                 break; }
         }  
@@ -81,4 +97,22 @@ public class MainMenuManager : MonoBehaviour {
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
     }  
+
+    // Function to ask the user to confirm their choice on an important UI choice.
+    public void MenuConfirmationMessage() {
+        backdrop.color = new Color32(20, 58, 123, 255);
+        TMP_Text message = confirmUI.transform.GetChild(2).GetComponent<TMP_Text>();
+        message.text = "return to the menu?";
+        menuUI.SetActive(false);
+        confirmUI.SetActive(true);
+    }
+
+    // Funciton to carry out the appropiate UI response based on the confirmation response.
+    public void MenuConfirmationResponse(bool response) {
+        confirmUI.SetActive(false);
+        if (response) { 
+            AlternateMainMenus(6);
+            StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
+        } else { AlternateMainMenus(0); }
+    }
 }
