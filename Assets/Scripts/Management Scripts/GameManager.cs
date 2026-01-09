@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
     [Header("Other Manager Scripts")]
     public static GameManager instance;
-    public static MenuManager menuManager;
+    public static OpeningMenuManager openingMenuManager;
+    public static MainMenuManager mainMenuManager;
     public static AchievementManager achievementManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
