@@ -16,7 +16,7 @@ public struct Achievement {
 
 // Script to handle achievement tracking and the achievement menu UI.
 public class AchievementManager : MonoBehaviour {
-    private Achievement[] achievements = {
+    private readonly Achievement[] achievements = {
     new("EMPLOYEE OF THE MONTH", "complete 10 deliveries in a single game."),
     new("DUTIFUL DELIVER-ER", "complete 250 deliveries."),
     new("THE COMPLETE PACKAGE", "complete 50 deliveries in a single game."),
@@ -68,7 +68,7 @@ public class AchievementManager : MonoBehaviour {
     public void UpdateData(bool updateUI) {
         for (int i = 0; i < achievements.Length; i++) {
             achievements[i].SetAchieved(PlayerPrefs.GetInt(achievements[i].name, 0) == 1);
-            if (updateUI) { GameManager.menuManager.UpdateAchievementUI(i); }
+            if (updateUI) { GameManager.mainMenuManager.UpdateAchievementUI(i); }
         }
     }
 

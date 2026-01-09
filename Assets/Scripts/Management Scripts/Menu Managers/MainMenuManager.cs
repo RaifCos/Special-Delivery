@@ -1,11 +1,11 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 // Script to handle main game functionality.
-public class MenuManager : MonoBehaviour {
-    public GameObject menuUI, achievementUI, settingsUI, confirmUI, galleryUI, creditsUI;
-    private static int confirmationUIID;
+public class MainMenuManager : MonoBehaviour {
+    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, confirmUI, navDescription;
+    public Image backdrop;
 
     [Header("Achievement Menu Variables")]
     public GameObject buttonIcons;
@@ -13,16 +13,17 @@ public class MenuManager : MonoBehaviour {
     public Sprite lockedSprite;
     public Sprite[] achievementSprite;
 
-    void Awake() { GameManager.menuManager = this; }
+    void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
         GameManager.achievementManager.UpdateData(true);
         StartCoroutine(GameManager.audioManager.StartGameMusic());
+        AlternateMainMenus(0);
     }
 
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
-        AlternateMainMenus(2);
+        AlternateMainMenus(6);
         StartCoroutine(GameManager.instance.LoadAsyncScene("City"));
     }
 
@@ -30,39 +31,41 @@ public class MenuManager : MonoBehaviour {
     public void AlternateMainMenus(int menu) {
         switch (menu) {
             case 0: { // Main Menu
+                backdrop.color = new Color32(62, 123, 230, 255);
+                navDescription.GetComponent<TMP_Text>().text = "";
                 menuUI.SetActive(true);
+                levelSelectUI.SetActive(false);
                 galleryUI.SetActive(false);
                 achievementUI.SetActive(false);
-                settingsUI.SetActive(false);
                 break; }
-            case 1: { // Achievement Menu
+            case 1: { // Achievements 
+                backdrop.color = new Color32(39, 191, 200, 255);
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
-                achievementUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
+                achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
                 DisplayAchievement(0);
                 break; }
-            case 2: { // Loading Screen
-                menuUI.SetActive(false);
-                Instantiate(Resources.Load<GameObject>("LoadingScreen"));
-                break; }
-            case 3: { // Settings
-                menuUI.SetActive(false);
-                settingsUI.SetActive(true);
-                creditsUI.SetActive(false);
-                break; }
-            case 4: { // Gallery
+            case 2: { // Gallery
                 menuUI.SetActive(false);
                 galleryUI.SetActive(true);
+                backdrop.color = new Color32(93, 105, 208, 255);
                 GameManager.galleryManager.UpdateGalleryUI();
                 GameManager.galleryManager.AlternateGalleryMenus(true);
-                break;
-            }  
-            case 5: { // Credits
-                creditsUI.SetActive(true);
-                settingsUI.SetActive(false);
-                break;
-            }     
-        }
+                break; }
+            case 4: { // Level Select
+                menuUI.SetActive(false);
+                levelSelectUI.SetActive(true);
+                    break;
+                }    
+            case 5: { // Shop 
+                    break;
+                }    
+            case 6: { // Loading Screen
+                menuUI.SetActive(false);
+                confirmUI.SetActive(false);
+                Instantiate(Resources.Load<GameObject>("LoadingScreen"));
+                break; }
+        }  
     }
 
     // Function to update the UI in the Achievement Menu based on the Achievement's state.
@@ -93,45 +96,23 @@ public class MenuManager : MonoBehaviour {
                     res += " [" +  GameManager.achievementManager.GetPlayerCrashes() + "]";
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
-    }
+    }  
 
     // Function to ask the user to confirm their choice on an important UI choice.
-    public void MenuConfirmationMessage(int cID) { 
-        confirmationUIID = cID;
-        TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
-
-        // Set confirmation message based on scenario:
-        switch (confirmationUIID) {
-            case 0: { // Quit Application Confirmation.
-                    message.text = "exit application?"; 
-                    break; }
-            case 1: { // Reset Data Confirmation.
-                    message.text = "delete all your saved data?\nthis cannot be undone.";
-                    break; }
-        } confirmUI.SetActive(true);
+    public void MenuConfirmationMessage() {
+        backdrop.color = new Color32(20, 58, 123, 255);
+        TMP_Text message = confirmUI.transform.GetChild(2).GetComponent<TMP_Text>();
+        message.text = "return to the menu?";
+        menuUI.SetActive(false);
+        confirmUI.SetActive(true);
     }
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
         confirmUI.SetActive(false);
-        if(response) { switch (confirmationUIID) { // Player chose "yes", so execute corresponding action.
-            case 0: { // Quit Application.
-                QuitApplication(); break; }
-            case 1: { // Reset High Score.
-                EraseData(); break; }
-        }}
+        if (response) { 
+            AlternateMainMenus(6);
+            StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
+        } else { AlternateMainMenus(0); }
     }
-
-    // Function to delete player's progress on request.
-    public void EraseData() {
-        GameManager.audioManager.PlayParcelSound(false);
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        GameManager.instance.SetBestScore(0);
-        GameManager.obstacleData.ResetEncounters();
-        GameManager.achievementManager.UpdateData(true);
-    }
-
-    // Function to close the game application. 
-    public void QuitApplication() { Application.Quit(); }    
 }
