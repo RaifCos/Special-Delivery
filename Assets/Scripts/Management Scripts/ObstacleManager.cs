@@ -93,7 +93,7 @@ public class ObstacleManager : MonoBehaviour {
 
     public void SpawnObstacle(bool perm) {
         int gen;
-        if (perm && totalPermCount <= totalLimit) {
+        if (perm && totalPermCount < totalLimit) {
             do { gen = Random.Range(0, obstacles.Length); } while (!obstacles[gen].isPermanent || !obstacles[gen].CheckLimit());
             totalPermCount++;
         } else { 
