@@ -201,8 +201,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -1167,8 +1167,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -2117,8 +2117,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -4083,8 +4083,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -4935,8 +4935,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -5884,8 +5884,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -6383,22 +6383,6 @@ MonoBehaviour:
   navDescription: {fileID: 948076923}
   shopButton: {fileID: 1829574761}
   backdrop: {fileID: 1123336445}
-  buttonIcons: {fileID: 1698732017}
-  achievementDisplay: {fileID: 1118922880}
-  lockedSprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
-  achievementSprite:
-  - {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
-  - {fileID: 21300000, guid: 76fd09f9b52bd404baf0bcb0ee5c28ac, type: 3}
-  - {fileID: 21300000, guid: 35249aa4dce82d64d9675811b496c302, type: 3}
-  - {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}
-  - {fileID: 21300000, guid: 804666097f79c104f91d5e8d6a6b7717, type: 3}
-  - {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}
-  - {fileID: 21300000, guid: ff2f7a0f266521d409a821e2e67ed5f4, type: 3}
-  - {fileID: 21300000, guid: a5a684dc53a7a8b40bedf36a63fbb950, type: 3}
-  - {fileID: 21300000, guid: 10aa0f37b99b4c646a2332c7f2281594, type: 3}
-  - {fileID: 21300000, guid: d12c37d5d6964284395728e5bb22ec82, type: 3}
-  - {fileID: 21300000, guid: 378fffb162ca0c04f959512d5b06afeb, type: 3}
-  - {fileID: 21300000, guid: 521ad00a796221d4fb0c44f5fa36258d, type: 3}
 --- !u!82 &908304996
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6680,6 +6664,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1056ca031f4d048b6b9d78a1fce0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonIcons: {fileID: 1698732017}
+  achievementDisplay: {fileID: 1118922880}
+  lockedSprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
+  achievementSprite:
+  - {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
+  - {fileID: 21300000, guid: 76fd09f9b52bd404baf0bcb0ee5c28ac, type: 3}
+  - {fileID: 21300000, guid: 35249aa4dce82d64d9675811b496c302, type: 3}
+  - {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}
+  - {fileID: 21300000, guid: 804666097f79c104f91d5e8d6a6b7717, type: 3}
+  - {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}
+  - {fileID: 21300000, guid: ff2f7a0f266521d409a821e2e67ed5f4, type: 3}
+  - {fileID: 21300000, guid: a5a684dc53a7a8b40bedf36a63fbb950, type: 3}
+  - {fileID: 21300000, guid: 10aa0f37b99b4c646a2332c7f2281594, type: 3}
+  - {fileID: 21300000, guid: d12c37d5d6964284395728e5bb22ec82, type: 3}
+  - {fileID: 21300000, guid: 378fffb162ca0c04f959512d5b06afeb, type: 3}
+  - {fileID: 21300000, guid: 521ad00a796221d4fb0c44f5fa36258d, type: 3}
   lifetimeDeliveries: 0
   playerCrashes: 0
 --- !u!114 &908305002
@@ -7423,8 +7423,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -10552,8 +10552,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -11240,8 +11240,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -11922,8 +11922,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -12122,7 +12122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1825328275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12590,14 +12590,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.95539105, b: 0.6226415, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff2f7a0f266521d409a821e2e67ed5f4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12996,8 +12996,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
@@ -13392,8 +13392,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908304995}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 908305001}
+        m_TargetAssemblyTypeName: AchievementManager, Assembly-CSharp
         m_MethodName: DisplayAchievement
         m_Mode: 3
         m_Arguments:
