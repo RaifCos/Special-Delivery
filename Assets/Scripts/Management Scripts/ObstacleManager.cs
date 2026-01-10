@@ -37,7 +37,7 @@ public class ObstacleManager : MonoBehaviour {
             obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+permObstacles[gen].so.intenalName));
             AddObstacle(obstacleObject);
             permObstacles[gen].IncrementCount();
-            GameManager.obstacleData.AddObstacleEncounter(gen);
+            GameManager.obstacleData.AddPermObstacleEncounter(gen);
         }
     }
 
@@ -100,15 +100,15 @@ public class ObstacleManager : MonoBehaviour {
             totalPermCount++;
             obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+permObstacles[gen].so.intenalName));
             permObstacles[gen].IncrementCount();
+            GameManager.obstacleData.AddPermObstacleEncounter(gen);
             GameManager.newsTextScroller.newsQueue.Add(permObstacles[gen].so.headline);
         } else { 
             gen = Random.Range(0, tempObstacles.Length); 
             obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+tempObstacles[gen].so.intenalName));
             tempObstacles[gen].IncrementCount();
+            GameManager.obstacleData.AddTempObstacleEncounter(gen);
             GameManager.newsTextScroller.newsQueue.Add(tempObstacles[gen].so.headline);
-        }
-        AddObstacle(obstacleObject);
-        GameManager.obstacleData.AddObstacleEncounter(gen);
+        } AddObstacle(obstacleObject);
     }
 
     // Coroutine to handle the removal of an obstacle from the game during gameplay.

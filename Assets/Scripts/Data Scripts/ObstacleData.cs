@@ -1,49 +1,59 @@
 using System.Linq;
 using UnityEngine;
 
-public class ObstacleData : MonoBehaviour
-{
-    ObstaclePerm[] permObstacles;
-    ObstacleTemp[] tempObstacles;
+public class ObstacleData : MonoBehaviour {
 
-    private int[] lifetimeObstacleCount, lifetimePropCount;
+    [SerializeField]
+    private ObstaclePerm[] permObstacles;
+    private ObstacleTemp[] tempObstacles;
+
+    private int[] lifetimePermObs, lifetimeTempObs, lifetimeProps;
 
     void Awake() { GameManager.obstacleData = this; ResetEncounters(); }
 
     void Start() {
-        for (int i = 0; i < lifetimeObstacleCount.Length; i++) {
-            lifetimeObstacleCount[i] = PlayerPrefs.GetInt("EncounterO" + i, 0);
-        }
-        for (int i = 0; i < lifetimePropCount.Length; i++) {
-            lifetimePropCount[i] = PlayerPrefs.GetInt("EncounterP" + i, 0);
-        }   
+        for (int i = 0; i < lifetimePermObs.Length; i++) { lifetimePermObs[i] = PlayerPrefs.GetInt("EncounterPerm" + i, 0); }
+        for (int i = 0; i < lifetimeTempObs.Length; i++) { lifetimeTempObs[i] = PlayerPrefs.GetInt("EncounterTemp" + i, 0); }
+        for (int i = 0; i < lifetimeProps.Length; i++) { lifetimeProps[i] = PlayerPrefs.GetInt("EncounterProp" + i, 0); }   
     }
 
     public ObstaclePerm[] GetPermObstacles() { return permObstacles; }
     public ObstacleTemp[] GetTempObstacles() { return tempObstacles; }
     
     // Function to increment the number of times an obstacle has been "encountered" (for achievement tracking).
-    public  void AddObstacleEncounter(int id) {
-        lifetimeObstacleCount[id]++;
-        PlayerPrefs.SetInt("EncounterO" + id, lifetimeObstacleCount[id]);
+    public void AddPermObstacleEncounter(int id) {
+        lifetimeTempObs[id]++;
+        PlayerPrefs.SetInt("EncounterTemp" + id, lifetimePermObs[id]);
         PlayerPrefs.Save();
-        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
+        AchievementCheck();
+    }
+
+    public  void AddTempObstacleEncounter(int id) {
+        lifetimePermObs[id]++;
+        PlayerPrefs.SetInt("EncounterPerm" + id, lifetimeTempObs[id]);
+        PlayerPrefs.Save();
+        AchievementCheck();
     }
     
     public void AddPropEncounter(int id) {
-        lifetimePropCount[id]++;
-        PlayerPrefs.SetInt("EncounterP" + id, lifetimePropCount[id]);
+        lifetimeProps[id]++;
+        PlayerPrefs.SetInt("EncounterProp" + id, lifetimeProps[id]);
         PlayerPrefs.Save();
-        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
+        AchievementCheck();
         CheckProps();
+    }
+
+    public void AchievementCheck() {
+        if (!lifetimePermObs.Contains(0) && !lifetimeTempObs.Contains(0) && !lifetimeProps.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
     }
     
     public void ResetEncounters() {
-        lifetimeObstacleCount = new int[permObstacles.Length + tempObstacles.Length];
-        lifetimePropCount = new int[8];
+        lifetimePermObs = new int[permObstacles.Length];
+        lifetimeTempObs = new int[tempObstacles.Length];
+        lifetimeProps = new int[8];
     }
     
-    // Corountine to check if all props of a certain type have been destoyed (for achievement tracking).
+    // Function to check if all props of a certain type have been destoyed (for achievement tracking).
     public void CheckProps() {
         if (GameObject.Find("Stop Sign") == null && GameObject.Find("Street Sign") == null) { GameManager.achievementData.CompleteAchievement(7); }
         if (GameObject.Find("Cone") == null) { GameManager.achievementData.CompleteAchievement(8); }
