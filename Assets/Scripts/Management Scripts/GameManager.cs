@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
     public static NewsTextScroller newsTextScroller;
 
     private static int bestScore, difficulty;
+    private bool isShopUnlocked;
 
     [Header("Music Settings")]
     public GameObject muteButton;
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update.
     void Start() {
+        SetShopProgress(PlayerPrefs.GetInt("ShopUnlocked", 0) == 1);
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
     }
 
@@ -47,15 +48,26 @@ public class GameManager : MonoBehaviour
     public int GetDifficulty() { return difficulty; }
 
     // Getter Method for the current difficulty. 
-    public void SetDifficulty(int input) { difficulty = input; }
+    public void SetDifficulty(int input) { difficulty = input;
+     PlayerPrefs.SetInt("MuteOn", 0);
+    }
+
+    public bool GetShopProgress() { return isShopUnlocked; }
+
+    public void SetShopProgress(bool input) { 
+        isShopUnlocked = input;
+        int res = input? 1: 0;
+        PlayerPrefs.SetInt("shopOpened", res);
+        PlayerPrefs.Save();
+    }
 
     public void ToggleMusic(bool isOn) {
         unmuteButton.SetActive(!isOn);
         muteButton.SetActive(isOn);
         isMusicPlaying = isOn;
         audioManager.ToggleMusic(isOn);
-        if (isOn) { PlayerPrefs.SetInt("MuteOn", 0); }
-        else { PlayerPrefs.SetInt("MuteOn", 1); }
+        int res = isOn? 0: 1;
+        PlayerPrefs.SetInt("MuteOn", res);
         PlayerPrefs.Save();
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
     public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, confirmUI, navDescription;
+    public Button shopButton;
     public Image backdrop;
 
     [Header("Achievement Menu Variables")]
@@ -17,6 +18,7 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Start() {
         GameManager.achievementManager.UpdateData(true);
+        ToggleShopLock(GameManager.instance.GetShopProgress());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);
     }
@@ -97,6 +99,17 @@ public class MainMenuManager : MonoBehaviour {
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
     }  
+
+    public void ToggleShopLock(bool isUnlocked) {
+        shopButton.interactable = isUnlocked;
+        if(isUnlocked) {
+            shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";
+            shopButton.GetComponent<ButtonHover>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
+        } else {
+            shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            shopButton.GetComponent<ButtonHover>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
+        }
+    }
 
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage() {

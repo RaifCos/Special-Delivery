@@ -80,7 +80,10 @@ public class AchievementManager : MonoBehaviour {
                         lifetimeDeliveries++;
                         PlayerPrefs.SetInt("LifetimeScore", lifetimeDeliveries);
                         PlayerPrefs.Save();
-                        if (lifetimeDeliveries == 250) { CompleteAchievement(1); }
+                        if (lifetimeDeliveries == 25) { 
+                            GameManager.instance.SetShopProgress(true); 
+                            GameManager.newsTextScroller.AddShopHeadline();
+                        } if (lifetimeDeliveries == 250) { CompleteAchievement(1); }
                         break; }
                 case 1: { // Player Crashes
                         playerCrashes++;

@@ -76,6 +76,7 @@ public class OpeningMenuManager : MonoBehaviour {
         PlayerPrefs.Save();
         GameManager.instance.SetBestScore(0);
         GameManager.obstacleData.ResetEncounters();
+        GameManager.instance.SetShopProgress(false);
     }
 
     // Function to close the game application. 
