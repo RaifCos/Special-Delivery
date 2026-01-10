@@ -25628,7 +25628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newsUI: {fileID: 1837815540}
-  scrollSpeed: 120
+  scrollSpeed: 240
 --- !u!114 &1188058032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38072,7 +38072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2100, y: 0}
+  m_AnchoredPosition: {x: -2100, y: -5}
   m_SizeDelta: {x: 2000, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1837815542
