@@ -5,6 +5,7 @@ public class ObstacleData : MonoBehaviour {
 
     [SerializeField]
     private ObstaclePerm[] permObstacles;
+    [SerializeField]
     private ObstacleTemp[] tempObstacles;
 
     private int[] lifetimePermObs, lifetimeTempObs, lifetimeProps;
