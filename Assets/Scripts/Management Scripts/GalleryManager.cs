@@ -9,7 +9,7 @@ public class GalleryManager : MonoBehaviour {
     public GameObject obstacleIcons, propIcons;
     public GameObject galleryDisplay, switchButtonA, switchButtonB;
     public Sprite[] objectSprite, propSprite;
-    private Obstacle[] obstacles;
+    private ObstaclePerm[] obstacles;
 
     public string[,] propString = {
         {"stop sign", "a common red signage dotted around parcel city, although most drivers use them as more of a \"suggestion\" to slow down then a literal sign to stop."},
@@ -24,7 +24,7 @@ public class GalleryManager : MonoBehaviour {
 
     void Awake() { GameManager.galleryManager = this; }
 
-    void Start() { obstacles = GameManager.obstacleData.GetObstacles(); }
+    void Start() { obstacles = GameManager.obstacleData.GetPermObstacles(); }
 
     public void AlternateGalleryMenus(bool input) {
         obstacleIcons.SetActive(input);
@@ -61,8 +61,8 @@ public class GalleryManager : MonoBehaviour {
             galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
             galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "you haven't encountered this obstacle yet.";
         } else { // Achievement is unlocked, so show achievement information.
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = obstacles[id].externalName;
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = obstacles[id].description;
+            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = obstacles[id].so.externalName;
+            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = obstacles[id].so.description;
         } 
     }
     
