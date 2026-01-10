@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
-        GameManager.achievementManager.UpdateData(true);
+        GameManager.achievementData.UpdateData();
         ToggleShopLock(GameManager.instance.GetShopProgress());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);
@@ -40,7 +40,7 @@ public class MainMenuManager : MonoBehaviour {
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
                 achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
-                GameManager.achievementManager.DisplayAchievement(0);
+                GameManager.achievementMenuManager.DisplayAchievement(0);
                 break; }
             case 2: { // Gallery
                 menuUI.SetActive(false);

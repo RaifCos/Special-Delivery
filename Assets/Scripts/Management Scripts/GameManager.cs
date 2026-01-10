@@ -12,13 +12,14 @@ public class GameManager : MonoBehaviour
     public static OpeningMenuManager openingMenuManager;
     public static MainMenuManager mainMenuManager;
     public static ShopManager shopManager;
-    public static AchievementManager achievementManager;
+    public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
     public static ObstacleData obstacleData;
     public static ShopData shopData;
+    public static AchievementData achievementData;
     public static AudioManager audioManager;
     public static NewsTextScroller newsTextScroller;
 

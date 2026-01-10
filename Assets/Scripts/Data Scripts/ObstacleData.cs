@@ -107,14 +107,14 @@ public class ObstacleData : MonoBehaviour
         lifetimeObstacleCount[id]++;
         PlayerPrefs.SetInt("EncounterO" + id, lifetimeObstacleCount[id]);
         PlayerPrefs.Save();
-        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementManager.CompleteAchievement(6); }
+        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
     }
     
     public void AddPropEncounter(int id) {
         lifetimePropCount[id]++;
         PlayerPrefs.SetInt("EncounterP" + id, lifetimePropCount[id]);
         PlayerPrefs.Save();
-        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementManager.CompleteAchievement(6); }
+        if (!lifetimeObstacleCount.Contains(0) && !lifetimePropCount.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
         CheckProps();
     }
     
@@ -125,10 +125,10 @@ public class ObstacleData : MonoBehaviour
     
     // Corountine to check if all props of a certain type have been destoyed (for achievement tracking).
     public void CheckProps() {
-        if (GameObject.Find("Stop Sign") == null && GameObject.Find("Street Sign") == null) { GameManager.achievementManager.CompleteAchievement(7); }
-        if (GameObject.Find("Cone") == null) { GameManager.achievementManager.CompleteAchievement(8); }
-        if (GameObject.Find("Bin") == null) { GameManager.achievementManager.CompleteAchievement(9); }
-        if (GameObject.Find("Hydrant") == null) { GameManager.achievementManager.CompleteAchievement(10); }
-        if (GameObject.Find("Bench") == null) { GameManager.achievementManager.CompleteAchievement(11); }
+        if (GameObject.Find("Stop Sign") == null && GameObject.Find("Street Sign") == null) { GameManager.achievementData.CompleteAchievement(7); }
+        if (GameObject.Find("Cone") == null) { GameManager.achievementData.CompleteAchievement(8); }
+        if (GameObject.Find("Bin") == null) { GameManager.achievementData.CompleteAchievement(9); }
+        if (GameObject.Find("Hydrant") == null) { GameManager.achievementData.CompleteAchievement(10); }
+        if (GameObject.Find("Bench") == null) { GameManager.achievementData.CompleteAchievement(11); }
     }
 }

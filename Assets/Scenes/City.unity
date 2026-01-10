@@ -25310,10 +25310,10 @@ GameObject:
   - component: {fileID: 1188058035}
   - component: {fileID: 1188058037}
   - component: {fileID: 1188058034}
-  - component: {fileID: 1188058033}
   - component: {fileID: 1188058032}
   - component: {fileID: 1188058031}
   - component: {fileID: 1188058038}
+  - component: {fileID: 1188058039}
   - component: {fileID: 1188058030}
   - component: {fileID: 1188058029}
   - component: {fileID: 1188058028}
@@ -25649,20 +25649,6 @@ MonoBehaviour:
   musicEnd: {fileID: 8300000, guid: 2705cc5fe85e7b14a9f51115199261f7, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
---- !u!114 &1188058033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188058027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1056ca031f4d048b6b9d78a1fce0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifetimeDeliveries: 0
-  playerCrashes: 0
 --- !u!114 &1188058034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25782,6 +25768,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1188058039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188058027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d302d05269585084aad85ae47adb818f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  lifetimeDeliveries: 0
+  playerCrashes: 0
 --- !u!1 &1207241949
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public struct Achievement {
+public struct Achievement{
         public string name, description;
         public bool achieved;
 
@@ -13,16 +11,10 @@ public struct Achievement {
         }
         
         public void SetAchieved(bool input) { achieved = input; }
-    }
+}
 
 // Script to handle achievement tracking and the achievement menu UI.
-public class AchievementManager : MonoBehaviour {
-
-    [Header("Achievement Menu Variables")]
-    public GameObject buttonIcons;
-    public GameObject achievementDisplay;
-    public Sprite lockedSprite;
-    public Sprite[] achievementSprite;
+public class AchievementData : MonoBehaviour {
 
     private readonly Achievement[] achievements = {
     new("EMPLOYEE OF THE MONTH", "complete 10 deliveries in a single game."),
@@ -42,16 +34,16 @@ public class AchievementManager : MonoBehaviour {
     public int lifetimeDeliveries, playerCrashes;
 
     void Awake() {
-        GameManager.achievementManager = this;
+        GameManager.achievementData = this;
     }
 
     void Start() {
         // Load saved stats.
         lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
         playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
-        UpdateData(false);
     }
 
+    public Achievement[] GetAchievements() { return achievements; }
     public Achievement GetAchievement(int id) { return achievements[id]; }
 
     public int GetLifetimeScore() { return lifetimeDeliveries; }
@@ -73,10 +65,9 @@ public class AchievementManager : MonoBehaviour {
     }
 
     // Function to reset all Achievements and progress.
-    public void UpdateData(bool updateUI) {
+    public void UpdateData() {
         for (int i = 0; i < achievements.Length; i++) {
             achievements[i].SetAchieved(PlayerPrefs.GetInt(achievements[i].name, 0) == 1);
-            if (updateUI) { UpdateAchievementUI(i); }
         }
     }
 
@@ -103,35 +94,4 @@ public class AchievementManager : MonoBehaviour {
             }
         }
     }
-
-        // Function to update the UI in the Achievement Menu based on the Achievement's state.
-    public void UpdateAchievementUI(int id) {
-        Image img = buttonIcons.transform.GetChild(id).GetComponent<Image>();
-        if (GameManager.achievementManager.GetAchievement(id).achieved) { img.sprite = achievementSprite[id]; } // Achievement is unlocked.
-        else { img.sprite = lockedSprite; } // Achievement is locked.
-    }
-    
-    public void DisplayAchievement(int id) {
-        Image img = buttonIcons.transform.GetChild(id).GetComponent<Image>();
-        achievementDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        // Achievement is still locked, so show default information.
-        if (img.sprite == lockedSprite) {
-            achievementDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
-        } else { // Achievement is unlocked, so show achievement information.
-            achievementDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = GameManager.achievementManager.GetAchievement(id).name;
-        } 
-        
-        // For certain achievements, display the associated tracking variable for clarity.
-        string res = GameManager.achievementManager.GetAchievement(id).description;
-        switch (id) {
-            case 1: { // Lifetime Deliveries
-                    res += " [" + GameManager.achievementManager.GetLifetimeScore() + "]";
-                    break; }
-            case 3:
-            case 4: { // Player Crashes
-                    res += " [" +  GameManager.achievementManager.GetPlayerCrashes() + "]";
-                    break; }}
-        achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
-    }  
-
 }
