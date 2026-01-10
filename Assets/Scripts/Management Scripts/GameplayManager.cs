@@ -11,6 +11,7 @@ public class GameplayManager : MonoBehaviour
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow;
     public bool isPlaying = false;
+    private bool isGamePaused = false;
 
     private int completeDeliveries, timeLeft, difficulty; //, confirmationUIID;
     private Animator scoreAnimator, timeAnimator;
@@ -53,11 +54,14 @@ public class GameplayManager : MonoBehaviour
     }
 
     // Update is called once per frame.
-    void FixedUpdate() {
+    void Update() {
         // Only run when a game is in session.
         if (isPlaying) {
-            // Pause game if the arrow key is pressed.
-            if (Input.GetKey(KeyCode.Escape)) { PauseGame(); }
+            // Pause game if the Escape key is pressed.
+            if (Input.GetKeyDown(KeyCode.Escape)) { 
+                if (!isGamePaused) { PauseGame(); } 
+                else { ResumeGame(); }
+            }
 
             // Rotate Directional Arrow to point towards the current objective, relative to the player's position.
             Vector3 direction = GameManager.deliveryManager.GetCurrentPosition() - playerVan.transform.position;
@@ -170,6 +174,7 @@ public class GameplayManager : MonoBehaviour
 
     // Function to pause the game and go to the pause menu.
     public void PauseGame() {
+        isGamePaused = true;
         playerVan.GetComponent<PlayerControl>().SetState(false);
         GameManager.audioManager.TogglePause(true);
         Time.timeScale = 0;
@@ -178,6 +183,7 @@ public class GameplayManager : MonoBehaviour
 
     // Function to resume the game from the pause menu.
     public void ResumeGame() {
+        isGamePaused = false;
         playerVan.GetComponent<PlayerControl>().SetState(true);
         GameManager.audioManager.TogglePause(false);
         Time.timeScale = 1;
