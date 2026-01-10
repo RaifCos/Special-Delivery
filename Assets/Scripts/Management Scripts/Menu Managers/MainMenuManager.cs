@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
-    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, confirmUI, navDescription;
+    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, shopUI, confirmUI, navDescription;
     public Button shopButton;
     public Image backdrop;
 
@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour {
                 backdrop.color = new Color32(62, 123, 230, 255);
                 navDescription.GetComponent<TMP_Text>().text = "";
                 menuUI.SetActive(true);
+                shopUI.SetActive(false);
                 levelSelectUI.SetActive(false);
                 galleryUI.SetActive(false);
                 achievementUI.SetActive(false);
@@ -60,6 +61,10 @@ public class MainMenuManager : MonoBehaviour {
                     break;
                 }    
             case 5: { // Shop 
+                    backdrop.color = new Color32(62, 204, 230, 255);
+                    shopUI.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", GameManager.instance.GetMoney());
+                    menuUI.SetActive(false);
+                    shopUI.SetActive(true);
                     break;
                 }    
             case 6: { // Loading Screen
