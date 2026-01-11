@@ -100,13 +100,13 @@ public class ObstacleManager : MonoBehaviour {
         if (perm && permObstacles.Count > 0) {
             bool obstacleFound;
             do { gen = Random.Range(0, permObstacles.Count); 
-                obs = obstacles[gen];
+                obs = permObstacles[gen];
                 obstacleFound = !GameManager.obstacleData.CheckLimit(obs);
                 if(!obstacleFound) { permObstacles.Remove(obs); }
             } while(!obstacleFound);
         } else {
             gen = Random.Range(0, tempObstacles.Count);
-            obs = obstacles[gen];
+            obs = tempObstacles[gen];
         } obsSO = obs.so;
         GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
