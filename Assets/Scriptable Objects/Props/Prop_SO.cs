@@ -4,6 +4,6 @@ using UnityEngine;
 public class Prop_SO : ScriptableObject {
     public string intenalName, externalName;
     [TextArea(3, 6)]
-    public string description, headline;
+    public string description;
     public bool includeGround;
 }

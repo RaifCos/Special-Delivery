@@ -8,7 +8,8 @@ public class ObstacleManager : MonoBehaviour {
     private static WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB;
     private List<Obstacle> obstacles;
-    private readonly List<Obstacle> permObstacles, tempObstacles;
+    private readonly List<Obstacle> permObstacles = new();
+    private readonly List<Obstacle> tempObstacles = new();
     private GameObject obstacleObject, destroyParticles;
     private readonly List<GameObject> currentObstacles = new();
 
@@ -20,6 +21,7 @@ public class ObstacleManager : MonoBehaviour {
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
         obstacles = GameManager.obstacleData.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
+        Debug.Log(obstacles.Count);
         foreach (var obs in obstacles) { 
             if(obs.so.limit > 0) { permObstacles.Add(obs); }
             else { tempObstacles.Add(obs); }
@@ -32,8 +34,9 @@ public class ObstacleManager : MonoBehaviour {
         GameManager.obstacleData.ResetGameEncounters();
         // Spawn three random Cars (Red or Blue).
         for (int i = 0; i < 3; i++) {
-            int gen = Random.Range(0, 2);
-            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+ obstacles[gen].so.intenalName));
+            string[] startingObs = {"carRed", "carBlue", "carGreen"};
+            int random = Random.Range(0, 3);
+            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+ startingObs[random]));
             AddObstacle(obstacleObject);
         }
     }

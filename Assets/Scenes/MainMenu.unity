@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 13999866}
   - component: {fileID: 13999865}
   m_Layer: 5
-  m_Name: Prop Icon (1)
+  m_Name: streetSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,13 +336,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: streetSign
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &13999866
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 203236717}
   - component: {fileID: 203236716}
   m_Layer: 5
-  m_Name: Obstacle Icon (7)
+  m_Name: ufo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1301,14 +1301,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 7
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ufo
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &203236717
@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 240817722}
   - component: {fileID: 240817721}
   m_Layer: 5
-  m_Name: Obstacle Icon (2)
+  m_Name: carGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1433,14 +1433,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: carGreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &240817722
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 258265160}
   - component: {fileID: 258265159}
   m_Layer: 5
-  m_Name: Obstacle Icon (11)
+  m_Name: anvil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1703,14 +1703,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 11
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: anvil
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &258265160
@@ -2180,7 +2180,7 @@ GameObject:
   - component: {fileID: 297461327}
   - component: {fileID: 297461326}
   m_Layer: 5
-  m_Name: Obstacle Icon (6)
+  m_Name: boomerang
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2251,14 +2251,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 6
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: boomerang
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &297461327
@@ -3070,7 +3070,7 @@ GameObject:
   - component: {fileID: 433732316}
   - component: {fileID: 433732315}
   m_Layer: 5
-  m_Name: Obstacle Icon (5)
+  m_Name: giantCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3141,14 +3141,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: giantCone
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &433732316
@@ -3202,7 +3202,7 @@ GameObject:
   - component: {fileID: 437386373}
   - component: {fileID: 437386372}
   m_Layer: 5
-  m_Name: Obstacle Icon (13)
+  m_Name: fakeParcels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3273,14 +3273,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 13
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fakeParcels
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &437386373
@@ -4462,7 +4462,7 @@ GameObject:
   - component: {fileID: 626143104}
   - component: {fileID: 626143103}
   m_Layer: 5
-  m_Name: Obstacle Icon (8)
+  m_Name: boulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4533,14 +4533,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 8
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: boulder
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &626143104
@@ -4998,7 +4998,7 @@ GameObject:
   - component: {fileID: 667152448}
   - component: {fileID: 667152447}
   m_Layer: 5
-  m_Name: Prop Icon (6)
+  m_Name: fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5070,13 +5070,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 6
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fence
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &667152448
@@ -5278,7 +5278,7 @@ GameObject:
   - component: {fileID: 768067419}
   - component: {fileID: 768067418}
   m_Layer: 5
-  m_Name: Obstacle Icon (4)
+  m_Name: carToy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5349,14 +5349,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: carToy
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &768067419
@@ -6218,7 +6218,7 @@ GameObject:
   - component: {fileID: 908065556}
   - component: {fileID: 908065555}
   m_Layer: 5
-  m_Name: Obstacle Icon (12)
+  m_Name: piano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6289,14 +6289,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 12
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: piano
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &908065556
@@ -6607,7 +6607,15 @@ MonoBehaviour:
   - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
   - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
-  props: []
+  props:
+  - {fileID: 4741636504862328621, guid: 546671eda8d0ea24d9951f2b00b3e28c, type: 3}
+  - {fileID: -9019525683207888849, guid: 4630f3e353c06db4296762003491d5a1, type: 3}
+  - {fileID: -7849014766195687166, guid: 6aed478d1b18fd84aa51b7f5814a807a, type: 3}
+  - {fileID: -4083839883206890763, guid: b073c490e7ca9f1499c8e8956eb6d853, type: 3}
+  - {fileID: -1636519629360611569, guid: 1eaef74dda28bad4e9f5f46e22794ce0, type: 3}
+  - {fileID: -1020270408174781601, guid: 39eeff358b150f049a0534ee3b6619b0, type: 3}
+  - {fileID: 5963314625385675019, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
+  - {fileID: 6525851279216416381, guid: 9229633e2b56e09469dab097fe4363b4, type: 3}
 --- !u!114 &908304999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6646,22 +6654,22 @@ MonoBehaviour:
   galleryDisplay: {fileID: 95823877}
   switchButtonA: {fileID: 120115048}
   switchButtonB: {fileID: 1783817384}
-  objectSprite:
-  - {fileID: 21300000, guid: 7cf2133288297cd46ad0b17786ce1b44, type: 3}
-  - {fileID: 21300000, guid: 79ca2cb292ed03649a0417fd1ebd62fd, type: 3}
-  - {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}
-  - {fileID: 21300000, guid: 9777162cb3de44a40bd4ce9aec64b8ef, type: 3}
-  - {fileID: 21300000, guid: 5ffa3495449a06848a7a5207cdda3c52, type: 3}
-  - {fileID: 21300000, guid: 882a271cdc05b92489296ec9ec5a3e7e, type: 3}
+  obstacleSprite:
+  - {fileID: 21300000, guid: 96c0c562449f6194c85953db7e84d1f2, type: 3}
   - {fileID: 21300000, guid: 303be99ef214f384497b4eb024100f7b, type: 3}
-  - {fileID: 21300000, guid: dc513d37165d9ac438ba2c99929e4255, type: 3}
   - {fileID: 21300000, guid: d87b88426ff6aed4a9a8bd7cbc4dce64, type: 3}
   - {fileID: 21300000, guid: 342d18e0f77c55543ba67f6925b6c713, type: 3}
-  - {fileID: 21300000, guid: e5d8e2aeafe6b624499c9085b58665e5, type: 3}
-  - {fileID: 21300000, guid: 96c0c562449f6194c85953db7e84d1f2, type: 3}
-  - {fileID: 21300000, guid: 2f5235eaceafe2c48a8f3d10ead12009, type: 3}
-  - {fileID: 21300000, guid: 0df925525c4ec22428158f14b58fb24a, type: 3}
   - {fileID: 21300000, guid: 980facb81a3db6542980fdb02256a7bb, type: 3}
+  - {fileID: 21300000, guid: 5ffa3495449a06848a7a5207cdda3c52, type: 3}
+  - {fileID: 21300000, guid: 79ca2cb292ed03649a0417fd1ebd62fd, type: 3}
+  - {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}
+  - {fileID: 21300000, guid: 7cf2133288297cd46ad0b17786ce1b44, type: 3}
+  - {fileID: 21300000, guid: 9777162cb3de44a40bd4ce9aec64b8ef, type: 3}
+  - {fileID: 21300000, guid: e5d8e2aeafe6b624499c9085b58665e5, type: 3}
+  - {fileID: 21300000, guid: 0df925525c4ec22428158f14b58fb24a, type: 3}
+  - {fileID: 21300000, guid: dc513d37165d9ac438ba2c99929e4255, type: 3}
+  - {fileID: 21300000, guid: 2f5235eaceafe2c48a8f3d10ead12009, type: 3}
+  - {fileID: 21300000, guid: 882a271cdc05b92489296ec9ec5a3e7e, type: 3}
   propSprite:
   - {fileID: 21300000, guid: 3fbdeaa8ab05c934cab57f1ee8743d2b, type: 3}
   - {fileID: 21300000, guid: 5241eb5717a314641a3f0d4262ad8ead, type: 3}
@@ -7969,7 +7977,7 @@ GameObject:
   - component: {fileID: 1176402394}
   - component: {fileID: 1176402393}
   m_Layer: 5
-  m_Name: Obstacle Icon (1)
+  m_Name: carBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8040,14 +8048,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: carBlue
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1176402394
@@ -8101,7 +8109,7 @@ GameObject:
   - component: {fileID: 1192634126}
   - component: {fileID: 1192634125}
   m_Layer: 5
-  m_Name: Obstacle Icon (14)
+  m_Name: boxingGlove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8172,14 +8180,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 14
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: boxingGlove
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1192634126
@@ -8233,7 +8241,7 @@ GameObject:
   - component: {fileID: 1209307650}
   - component: {fileID: 1209307649}
   m_Layer: 5
-  m_Name: Obstacle Icon (3)
+  m_Name: carBig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8304,14 +8312,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: carBig
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1209307650
@@ -8621,7 +8629,7 @@ GameObject:
   - component: {fileID: 1368492405}
   - component: {fileID: 1368492404}
   m_Layer: 5
-  m_Name: Prop Icon (2)
+  m_Name: cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8693,13 +8701,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: cone
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1368492405
@@ -9270,7 +9278,7 @@ GameObject:
   - component: {fileID: 1433443150}
   - component: {fileID: 1433443149}
   m_Layer: 5
-  m_Name: Obstacle Icon (0)
+  m_Name: carRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9341,14 +9349,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: carRed
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1433443150
@@ -11633,7 +11641,7 @@ GameObject:
   - component: {fileID: 1768672893}
   - component: {fileID: 1768672892}
   m_Layer: 5
-  m_Name: Prop Icon (3)
+  m_Name: bin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11705,13 +11713,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 3
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: bin
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1768672893
@@ -12030,7 +12038,7 @@ GameObject:
   - component: {fileID: 1818007191}
   - component: {fileID: 1818007190}
   m_Layer: 5
-  m_Name: Obstacle Icon (9)
+  m_Name: boulderSnow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12101,14 +12109,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 9
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: boulderSnow
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1818007191
@@ -12704,7 +12712,7 @@ GameObject:
   - component: {fileID: 1891184507}
   - component: {fileID: 1891184506}
   m_Layer: 5
-  m_Name: Prop Icon (0)
+  m_Name: stopSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12775,14 +12783,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayProp
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: stopSign
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1891184507
@@ -13104,7 +13112,7 @@ GameObject:
   - component: {fileID: 1898738827}
   - component: {fileID: 1898738826}
   m_Layer: 5
-  m_Name: Prop Icon (7)
+  m_Name: barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13176,13 +13184,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 7
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: barrier
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1898738827
@@ -13236,7 +13244,7 @@ GameObject:
   - component: {fileID: 1913942082}
   - component: {fileID: 1913942081}
   m_Layer: 5
-  m_Name: Prop Icon (5)
+  m_Name: bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13308,13 +13316,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 5
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: bench
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1913942082
@@ -13994,7 +14002,7 @@ GameObject:
   - component: {fileID: 2034012384}
   - component: {fileID: 2034012383}
   m_Layer: 5
-  m_Name: Obstacle Icon (10)
+  m_Name: dumpster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14065,14 +14073,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstalce
-        m_Mode: 3
+        m_MethodName: DisplayObstacle
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: dumpster
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2034012384
@@ -14126,7 +14134,7 @@ GameObject:
   - component: {fileID: 2071035307}
   - component: {fileID: 2071035306}
   m_Layer: 5
-  m_Name: Prop Icon (4)
+  m_Name: hydrant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14198,13 +14206,13 @@ MonoBehaviour:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
         m_MethodName: DisplayProp
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 4
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: hydrant
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2071035307

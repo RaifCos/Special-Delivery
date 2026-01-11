@@ -6,15 +6,18 @@ public class ObstacleData : MonoBehaviour {
     [SerializeField]
     private List<Obstacle> obstacles;
     [SerializeField]
-    private Prop[] props;
+    private List<Prop> props;
 
     private Dictionary<string, int> gameObs, gameProps, lifetimeObs, lifetimeProps;
 
     void Awake() { GameManager.obstacleData = this; ResetLifetimeEncounters(); }
 
     void Start() {
-        foreach (var pair in lifetimeObs) { lifetimeObs[pair.Key] = PlayerPrefs.GetInt("Encounter_" + pair.Key, 0); }
-        foreach (var pair in lifetimeProps) { lifetimeProps[pair.Key] = PlayerPrefs.GetInt("EncounterProp_" + pair.Key, 0); }  
+        var keys = new List<string>(lifetimeObs.Keys);
+        foreach (var key in keys) { lifetimeObs[key] = PlayerPrefs.GetInt("EncounterObs_" + key, 0); }
+
+        keys = new List<string>(lifetimeObs.Keys);
+        foreach (var key in keys) { lifetimeProps[key] = PlayerPrefs.GetInt("EncounterProp_" + key, 0); }
     }
 
     public List<Obstacle> GetObstacles() { return obstacles; }
@@ -25,7 +28,7 @@ public class ObstacleData : MonoBehaviour {
         } return null;
     }
 
-    public Prop[] GetProps() { return props; }
+    public List<Prop> GetProps() { return props; }
 
     public Prop GetProp(string key) {
         foreach (Prop prop in props) {
@@ -45,14 +48,16 @@ public class ObstacleData : MonoBehaviour {
     }
 
     public void AddEncountersToTotal() {
-        foreach (var pair in lifetimeObs) { 
-            lifetimeObs[pair.Key] += gameObs[pair.Key];
-            PlayerPrefs.SetInt("EncounterPerm_" + pair.Key, lifetimeObs[pair.Key]); 
+        var keys = new List<string>(gameObs.Keys);
+        foreach (var key in keys) { 
+            lifetimeObs[key] += gameObs[key];
+            PlayerPrefs.SetInt("EncounterObs_" + key, lifetimeObs[key]); 
         }
 
-        foreach (var pair in lifetimeProps) { 
-            lifetimeProps[pair.Key] += gameProps[pair.Key];
-            PlayerPrefs.SetInt("EncounterProp_" + pair.Key, lifetimeProps[pair.Key]); 
+        keys = new List<string>(gameProps.Keys);
+        foreach (var key in keys) { 
+            lifetimeProps[key] += gameProps[key];
+            PlayerPrefs.SetInt("EncounterProp_" + key, lifetimeProps[key]); 
         }
 
         PlayerPrefs.Save();
@@ -86,10 +91,10 @@ public class ObstacleData : MonoBehaviour {
     
     // Function to check if all props of a certain type have been destoyed (for achievement tracking).
     public void CheckProps() {
-        if (GameObject.Find("Stop Sign") == null && GameObject.Find("Street Sign") == null) { GameManager.achievementData.CompleteAchievement(7); }
-        if (GameObject.Find("Cone") == null) { GameManager.achievementData.CompleteAchievement(8); }
-        if (GameObject.Find("Bin") == null) { GameManager.achievementData.CompleteAchievement(9); }
-        if (GameObject.Find("Hydrant") == null) { GameManager.achievementData.CompleteAchievement(10); }
-        if (GameObject.Find("Bench") == null) { GameManager.achievementData.CompleteAchievement(11); }
+        if (GameObject.Find("stopSign") == null && GameObject.Find("streetSign") == null) { GameManager.achievementData.CompleteAchievement(7); }
+        if (GameObject.Find("cone") == null) { GameManager.achievementData.CompleteAchievement(8); }
+        if (GameObject.Find("bin") == null) { GameManager.achievementData.CompleteAchievement(9); }
+        if (GameObject.Find("hydrant") == null) { GameManager.achievementData.CompleteAchievement(10); }
+        if (GameObject.Find("bench") == null) { GameManager.achievementData.CompleteAchievement(11); }
     }
 }
