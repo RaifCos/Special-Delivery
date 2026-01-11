@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 5158622713268676820}
   - component: {fileID: -358622329547067869}
   - component: {fileID: 1827898932890426653}
-  - component: {fileID: -2115875876956808435}
+  - component: {fileID: 5159265228132187067}
   m_Layer: 3
   m_Name: dumpster
   m_TagString: Level
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &-2115875876956808435
+--- !u!114 &5159265228132187067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3378493229683235564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70c9c75ce670f44da6b2137392ceb1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstacleTemp
-  so: {fileID: 11400000, guid: 2038817ff8ad6d94ba3ec570b97bec81, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: efe6a3be0e9fee141a5f72aab3bbecbd, type: 2}

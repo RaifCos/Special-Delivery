@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5318106589579877040}
   - component: {fileID: 5851978816512612164}
   - component: {fileID: 6602187984861784103}
-  - component: {fileID: -1254090532661265071}
+  - component: {fileID: 5905357340723977540}
   m_Layer: 3
   m_Name: carToy
   m_TagString: Car
@@ -487,7 +487,7 @@ MonoBehaviour:
   rotationSpeed: 3.5
   height: 1.5
   nodeSet: 0
---- !u!114 &-1254090532661265071
+--- !u!114 &5905357340723977540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,10 +496,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3283020933204162823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5ae8e413bbc6741b18b81335d384c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstaclePerm
-  so: {fileID: 11400000, guid: 1fac3ce6a227cfc4b99a5a0a0325ff3e, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: a4f84264f6796ea4cb42dbcddb9708bc, type: 2}
 --- !u!1 &6275455203033556825
 GameObject:
   m_ObjectHideFlags: 0

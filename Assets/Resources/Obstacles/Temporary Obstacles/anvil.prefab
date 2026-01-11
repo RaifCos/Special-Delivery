@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5051721766880027676}
   - component: {fileID: 5795221879819518151}
   - component: {fileID: 2626929779125816848}
-  - component: {fileID: -6305303479305476780}
+  - component: {fileID: 4774082532997332544}
   m_Layer: 3
   m_Name: anvil
   m_TagString: Untagged
@@ -254,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
   includeGround: 1
 --- !u!114 &5795221879819518151
 MonoBehaviour:
@@ -286,7 +285,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 06741f09a25da2240a429cfc388bd0f4, type: 3}
   usesCollider: 1
   includeGround: 1
---- !u!114 &-6305303479305476780
+--- !u!114 &4774082532997332544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,7 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8494085475022691520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70c9c75ce670f44da6b2137392ceb1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstacleTemp
-  so: {fileID: 11400000, guid: da27499ab9e01b84f959e42c14cd1660, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: c39ff8485f310144c8dd7355edf9b64a, type: 2}

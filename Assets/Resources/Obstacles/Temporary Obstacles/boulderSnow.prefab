@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2539031857489963109}
   - component: {fileID: 3487372016475174689}
   - component: {fileID: -1506856010285376518}
-  - component: {fileID: -8836380274047599193}
+  - component: {fileID: 8795924381500241567}
   m_Layer: 3
   m_Name: boulderSnow
   m_TagString: Untagged
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   snowball: 1
---- !u!114 &-8836380274047599193
+--- !u!114 &8795924381500241567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4921226426627925572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e70c9c75ce670f44da6b2137392ceb1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstacleTemp
-  so: {fileID: 11400000, guid: e3abdcc972155544c9a6ab68955d8d1f, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: fc204baf2b854284a97c26a4bb44bc8e, type: 2}

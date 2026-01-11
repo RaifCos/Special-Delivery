@@ -22,6 +22,26 @@ public class ObstacleData : MonoBehaviour {
 
     public ObstaclePerm[] GetPermObstacles() { return permObstacles; }
     public ObstacleTemp[] GetTempObstacles() { return tempObstacles; }
+
+    public Prop[] GetProps() { return props; }
+
+    public ObstaclePerm GetPermObstacle(string key) {
+        foreach (ObstaclePerm obs in permObstacles) {
+        if (obs.so.intenalName == key) { return obs; }
+        } return null;
+    }
+
+    public ObstacleTemp GetTempObstacle(string key) {
+        foreach (ObstacleTemp obs in tempObstacles) {
+        if (obs.so.intenalName == key) { return obs; }
+        } return null;
+    }
+
+    public Prop GetProp(string key) {
+        foreach (Prop prop in props) {
+        if (prop.so.intenalName == key) { return prop; }
+        } return null;
+    }
     
     public void AddPermObstacleEncounter(string key) {
         gamePermObs[key]++;

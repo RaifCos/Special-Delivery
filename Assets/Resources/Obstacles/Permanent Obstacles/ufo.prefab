@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 1689235588232952933}
   - component: {fileID: 2726234728786934436}
   - component: {fileID: 4195102324455706081}
-  - component: {fileID: -1925705045116336976}
+  - component: {fileID: 2964759547233136770}
   m_Layer: 0
   m_Name: ufo
   m_TagString: Untagged
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   height: 0
---- !u!114 &-1925705045116336976
+--- !u!114 &2964759547233136770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -478,10 +478,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6569604251113940049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5ae8e413bbc6741b18b81335d384c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstaclePerm
-  so: {fileID: 11400000, guid: 7908394045344fc438586bf87a1dcb1e, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: 1bdc4c829f9b2ad49bbc71b04a2fdf0a, type: 2}
 --- !u!1 &7819740441279443758
 GameObject:
   m_ObjectHideFlags: 0

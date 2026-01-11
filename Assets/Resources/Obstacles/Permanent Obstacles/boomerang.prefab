@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6493934869606201839}
   - component: {fileID: 7220425081086043410}
   - component: {fileID: 8202369000648807623}
-  - component: {fileID: -729900969258818565}
+  - component: {fileID: 1957036935311034163}
   m_Layer: 3
   m_Name: boomerang
   m_TagString: Untagged
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomerangTraversal
   speed: 0
---- !u!114 &-729900969258818565
+--- !u!114 &1957036935311034163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3981044717995921051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5ae8e413bbc6741b18b81335d384c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstaclePerm
-  so: {fileID: 11400000, guid: eeeb00372417246408c1f604fa3596e7, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: 6967ac4dd845a4648a6b187cfbdd42fe, type: 2}

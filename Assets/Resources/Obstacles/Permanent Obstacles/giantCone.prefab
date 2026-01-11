@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2023984665887578375}
   - component: {fileID: 8630962516058226002}
   - component: {fileID: 585406344038463225}
-  - component: {fileID: -4441971655249851385}
+  - component: {fileID: 6873733884459152856}
   m_Layer: 0
   m_Name: giantCone
   m_TagString: Mute
@@ -270,7 +270,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}
   usesCollider: 1
   includeGround: 1
---- !u!114 &-4441971655249851385
+--- !u!114 &6873733884459152856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -279,7 +279,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4935346050214575756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5ae8e413bbc6741b18b81335d384c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstaclePerm
-  so: {fileID: 11400000, guid: 330d7feea26f41142b518d3b971c865e, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: ff6204e11bc93d7488e4ae2a1334e828, type: 2}

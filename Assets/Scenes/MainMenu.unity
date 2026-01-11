@@ -6591,6 +6591,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  permObstacles: []
+  tempObstacles: []
+  props: []
 --- !u!114 &908304999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8501,7 +8504,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1346328250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12758,7 +12761,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 908305000}
         m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
+        m_MethodName: DisplayObstalce
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
