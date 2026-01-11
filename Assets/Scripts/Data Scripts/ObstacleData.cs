@@ -1,5 +1,5 @@
-using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ObstacleData : MonoBehaviour {
 
@@ -7,51 +7,88 @@ public class ObstacleData : MonoBehaviour {
     private ObstaclePerm[] permObstacles;
     [SerializeField]
     private ObstacleTemp[] tempObstacles;
+    [SerializeField]
+    private Prop[] props;
 
-    private int[] lifetimePermObs, lifetimeTempObs, lifetimeProps;
+    private Dictionary<string, int> gameTempObs, gamePermObs, gameProps, lifetimeTempObs, lifetimePermObs, lifetimeProps;
 
-    void Awake() { GameManager.obstacleData = this; ResetEncounters(); }
+    void Awake() { GameManager.obstacleData = this; ResetLifetimeEncounters(); }
 
     void Start() {
-        for (int i = 0; i < lifetimePermObs.Length; i++) { lifetimePermObs[i] = PlayerPrefs.GetInt("EncounterPerm" + i, 0); }
-        for (int i = 0; i < lifetimeTempObs.Length; i++) { lifetimeTempObs[i] = PlayerPrefs.GetInt("EncounterTemp" + i, 0); }
-        for (int i = 0; i < lifetimeProps.Length; i++) { lifetimeProps[i] = PlayerPrefs.GetInt("EncounterProp" + i, 0); }   
+        foreach (var pair in lifetimePermObs) { lifetimePermObs[pair.Key] = PlayerPrefs.GetInt("EncounterPerm_" + pair.Key, 0); }
+        foreach (var pair in lifetimeTempObs) { lifetimeTempObs[pair.Key] = PlayerPrefs.GetInt("EncounterTemp_" + pair.Key, 0); }
+        foreach (var pair in lifetimeProps) { lifetimeProps[pair.Key] = PlayerPrefs.GetInt("EncounterProp_" + pair.Key, 0); }  
     }
 
     public ObstaclePerm[] GetPermObstacles() { return permObstacles; }
     public ObstacleTemp[] GetTempObstacles() { return tempObstacles; }
     
-    // Function to increment the number of times an obstacle has been "encountered" (for achievement tracking).
-    public void AddPermObstacleEncounter(int id) {
-        lifetimeTempObs[id]++;
-        PlayerPrefs.SetInt("EncounterTemp" + id, lifetimePermObs[id]);
-        PlayerPrefs.Save();
+    public void AddPermObstacleEncounter(string key) {
+        gamePermObs[key]++;
         AchievementCheck();
     }
 
-    public  void AddTempObstacleEncounter(int id) {
-        lifetimePermObs[id]++;
-        PlayerPrefs.SetInt("EncounterPerm" + id, lifetimeTempObs[id]);
-        PlayerPrefs.Save();
+    public void AddTempObstacleEncounter(string key) {
+        gameTempObs[key]++;
         AchievementCheck();
     }
     
-    public void AddPropEncounter(int id) {
-        lifetimeProps[id]++;
-        PlayerPrefs.SetInt("EncounterProp" + id, lifetimeProps[id]);
-        PlayerPrefs.Save();
+    public void AddPropEncounter(string key) {
+        lifetimeProps[key]++;
         AchievementCheck();
         CheckProps();
     }
 
-    public void AchievementCheck() {
-        if (!lifetimePermObs.Contains(0) && !lifetimeTempObs.Contains(0) && !lifetimeProps.Contains(0)) { GameManager.achievementData.CompleteAchievement(6); }
+    public void AddEncountersToTotal() {
+        foreach (var pair in lifetimePermObs) { 
+            lifetimePermObs[pair.Key] += gamePermObs[pair.Key];
+            PlayerPrefs.SetInt("EncounterPerm_" + pair.Key, lifetimePermObs[pair.Key]); 
+        }
+
+        foreach (var pair in lifetimeTempObs) { 
+            lifetimeTempObs[pair.Key] += gameTempObs[pair.Key];
+            PlayerPrefs.SetInt("EncounterTemp_" + pair.Key, lifetimeTempObs[pair.Key]); 
+        }
+
+        foreach (var pair in lifetimeProps) { 
+            lifetimeProps[pair.Key] += gameProps[pair.Key];
+            PlayerPrefs.SetInt("EncounterProp_" + pair.Key, lifetimeProps[pair.Key]); 
+        }
+
+        PlayerPrefs.Save();
     }
-    
-    public void ResetEncounters() {
-        lifetimePermObs = new int[permObstacles.Length];
-        lifetimeTempObs = new int[tempObstacles.Length];
-        lifetimeProps = new int[8];
+
+    public bool CheckLimit(ObstaclePerm obs) {
+        return gamePermObs[obs.so.intenalName] < obs.so.limit;
+    }
+
+    public void ResetGameEncounters() {
+        gamePermObs = new();
+        foreach(ObstaclePerm obs in permObstacles) { gamePermObs.Add(obs.so.intenalName, 0); }
+
+        gameTempObs = new();
+        foreach(ObstacleTemp obs in tempObstacles) { gameTempObs.Add(obs.so.intenalName, 0); }
+
+        gameProps = new();
+        foreach(ObstacleTemp obs in tempObstacles) { gameTempObs.Add(obs.so.intenalName, 0); }
+    }
+
+    public void ResetLifetimeEncounters() {
+        lifetimePermObs = new();
+        foreach(ObstaclePerm obs in permObstacles) { lifetimePermObs.Add(obs.so.intenalName, 0); }
+
+        lifetimeTempObs = new();
+        foreach(ObstacleTemp obs in tempObstacles) { lifetimeTempObs.Add(obs.so.intenalName, 0); }
+
+        lifetimeProps = new();
+        foreach(Prop prop in props) { lifetimeTempObs.Add(prop.so.intenalName, 0); }
+    }
+
+    private void AchievementCheck() {
+        if (!lifetimePermObs.ContainsValue(0)
+        && !lifetimeTempObs.ContainsValue(0)
+        && !lifetimeProps.ContainsValue(0)) 
+        { GameManager.achievementData.CompleteAchievement(6); }
     }
     
     // Function to check if all props of a certain type have been destoyed (for achievement tracking).

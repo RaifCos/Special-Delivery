@@ -29,15 +29,13 @@ public class ObstacleManager : MonoBehaviour {
     public void SpawnStartingObstacles() {
         // Reset Object Counts (from Previous Games)
         totalPermCount = 3;
-        foreach (var obstacle in permObstacles) { obstacle.SetCount(0); }
-        foreach (var obstacle in tempObstacles) { obstacle.SetCount(0); }
+        GameManager.obstacleData.ResetGameEncounters();
         // Spawn three random Cars (Red or Blue).
         for (int i = 0; i < 3; i++) {
             int gen = Random.Range(0, 2);
             obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+permObstacles[gen].so.intenalName));
             AddObstacle(obstacleObject);
-            permObstacles[gen].IncrementCount();
-            GameManager.obstacleData.AddPermObstacleEncounter(gen);
+            GameManager.obstacleData.AddPermObstacleEncounter(permObstacles[gen].so.intenalName);
         }
     }
 
@@ -96,18 +94,18 @@ public class ObstacleManager : MonoBehaviour {
     public void SpawnObstacle(bool perm) {
         int gen;
         if (perm && totalPermCount < totalLimit) {
-            do { gen = Random.Range(0, permObstacles.Length); } while (!permObstacles[gen].CheckLimit());
+            do { gen = Random.Range(0, permObstacles.Length); } while (!GameManager.obstacleData.CheckLimit(permObstacles[gen]));
             totalPermCount++;
-            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+permObstacles[gen].so.intenalName));
-            permObstacles[gen].IncrementCount();
-            GameManager.obstacleData.AddPermObstacleEncounter(gen);
-            GameManager.newsTextScroller.newsQueue.Add(permObstacles[gen].so.headline);
+            ObstaclePerm_SO obsSO = permObstacles[gen].so;
+            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
+            GameManager.obstacleData.AddPermObstacleEncounter(obsSO.intenalName);
+            GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         } else { 
             gen = Random.Range(0, tempObstacles.Length); 
-            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+tempObstacles[gen].so.intenalName));
-            tempObstacles[gen].IncrementCount();
-            GameManager.obstacleData.AddTempObstacleEncounter(gen);
-            GameManager.newsTextScroller.newsQueue.Add(tempObstacles[gen].so.headline);
+            ObstacleTemp_SO obsSO = tempObstacles[gen].so;
+            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
+            GameManager.obstacleData.AddTempObstacleEncounter(obsSO.intenalName);
+            GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         } AddObstacle(obstacleObject);
     }
 
