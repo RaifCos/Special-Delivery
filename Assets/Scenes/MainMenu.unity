@@ -6591,8 +6591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  permObstacles: []
-  tempObstacles: []
+  obstacles: []
   props: []
 --- !u!114 &908304999
 MonoBehaviour:

@@ -1,7 +1,7 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
+using System.Collections.Generic;
 
 public class GalleryManager : MonoBehaviour {
 
@@ -10,7 +10,7 @@ public class GalleryManager : MonoBehaviour {
     public GameObject obstacleIcons, propIcons;
     public GameObject galleryDisplay, switchButtonA, switchButtonB;
     public Sprite[] objectSprite, propSprite;
-    private ObstaclePerm[] obstacles;
+    private List<Obstacle> obstacles;
 
     public string[,] propString = {
         {"stop sign", "a common red signage dotted around parcel city, although most drivers use them as more of a \"suggestion\" to slow down then a literal sign to stop."},
@@ -25,53 +25,39 @@ public class GalleryManager : MonoBehaviour {
 
     void Awake() { GameManager.galleryManager = this; }
 
-    void Start() { obstacles = GameManager.obstacleData.GetPermObstacles(); }
+    void Start() { obstacles = GameManager.obstacleData.GetObstacles(); }
 
     public void AlternateGalleryMenus(bool input) {
         obstacleIcons.SetActive(input);
         propIcons.SetActive(!input);
         switchButtonA.SetActive(input);
         switchButtonB.SetActive(!input);
-        if (input) { DisplayObstalce(0); }
+        if (input) { DisplayObstacle("carRed"); }
         else { DisplayProp("stopsign"); }
     }
 
     // Update is called once per frame
     public void UpdateGalleryUI() {
-        for (int i = 0; i < obstacles.Length; i++) {
+        for (int i = 0; i < obstacles.Count; i++) {
             Image img = obstacleIcons.transform.GetChild(i).GetComponent<Image>();
-            if (PlayerPrefs.GetInt("EncounterO" + i, 0) > 0) {
+            if (PlayerPrefs.GetInt("EncounterObs_" + i, 0) > 0) {
                 img.sprite = objectSprite[i];
             } else { img.sprite = lockedSprite; }
         }
         
         for (int i = 0; i < propString.GetLength(0); i++) {
             Image img = propIcons.transform.GetChild(i).GetComponent<Image>();
-            if (PlayerPrefs.GetInt("EncounterP" + i, 0) > 0) {
+            if (PlayerPrefs.GetInt("EncounterProp_" + i, 0) > 0) {
                 img.sprite = propSprite[i];
             } else { img.sprite = lockedSprite; }
         }
     }
-    
-    public void DisplayObstalce(int id) {
-        Image img = obstacleIcons.transform.GetChild(id).GetComponent<Image>();
-        galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Encountered: " + PlayerPrefs.GetInt("EncounterPerm_" + id, 0);
-        // Achievement is still locked, so show default information.
-        if (img.sprite == lockedSprite) {
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "you haven't encountered this obstacle yet.";
-        } else { // Achievement is unlocked, so show achievement information.
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = obstacles[id].so.externalName;
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = obstacles[id].so.description;
-        } 
-    }
 
     public void DisplayObstacle(string key) {
         Image img = obstacleIcons.transform.Find(key).GetComponent<Image>();
-        ObstaclePerm obs = GameManager.obstacleData.GetPermObstacle(key);
+        Obstacle obs = GameManager.obstacleData.GetObstacle(key);
         galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterProp_" + key, 0);;
+        galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterObs_" + key, 0);;
         // Achievement is still locked, so show default information.
         if (img.sprite == lockedSprite) {
             galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
