@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1854240282717299833}
   - component: {fileID: 4365599758060680945}
+  - component: {fileID: 9014987189097083226}
   m_Layer: 0
   m_Name: fakeParcels
   m_TagString: Untagged
@@ -44,3 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77318d4e5cd52146a0b05d5845a781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9014987189097083226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5143283712624180077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: ece76578306f8b9409feb214babe0ba1, type: 2}

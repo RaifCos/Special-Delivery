@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 4429733293110859555}
   - component: {fileID: 8028393277006225701}
   - component: {fileID: 13242393421207169}
+  - component: {fileID: 5946079719041434962}
   - component: {fileID: 8683559772481203422}
   - component: {fileID: 3739477864978008606}
   - component: {fileID: -552224212321974609}
-  - component: {fileID: 5946079719041434962}
+  - component: {fileID: 925338111641679283}
   m_Layer: 3
   m_Name: piano
   m_TagString: Untagged
@@ -64,6 +65,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,6 +91,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -96,10 +103,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2772368567146362614}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 9000
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -138,50 +145,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3985615260038707078, guid: 62c151a6896dc2a448eb4a75a7a4ea63, type: 3}
---- !u!114 &8683559772481203422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772368567146362614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  includeGround: 1
---- !u!114 &3739477864978008606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772368567146362614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f907c7be262684c44b6e2d3384efafb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startHeight: 300
---- !u!114 &-552224212321974609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772368567146362614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 5946079719041434962}
-  soundEffects:
-  - {fileID: 8300000, guid: 92473ecb9600c514f8646d6158ea8ca0, type: 3}
-  usesCollider: 1
-  includeGround: 1
 --- !u!82 &5946079719041434962
 AudioSource:
   m_ObjectHideFlags: 0
@@ -192,7 +155,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 92473ecb9600c514f8646d6158ea8ca0, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 92473ecb9600c514f8646d6158ea8ca0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -278,3 +242,59 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8683559772481203422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772368567146362614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  includeGround: 1
+--- !u!114 &3739477864978008606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772368567146362614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f907c7be262684c44b6e2d3384efafb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHeight: 300
+--- !u!114 &-552224212321974609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772368567146362614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 5946079719041434962}
+  soundEffects:
+  - {fileID: 8300000, guid: 92473ecb9600c514f8646d6158ea8ca0, type: 3}
+  usesCollider: 1
+  includeGround: 1
+--- !u!114 &925338111641679283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772368567146362614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: 26132ac93496d7840988548e92b606cf, type: 2}

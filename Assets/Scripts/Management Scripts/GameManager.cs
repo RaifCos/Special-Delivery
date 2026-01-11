@@ -11,16 +11,20 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;
     public static MainMenuManager mainMenuManager;
-    public static AchievementManager achievementManager;
+    public static ShopManager shopManager;
+    public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
     public static ObstacleData obstacleData;
+    public static ShopData shopData;
+    public static AchievementData achievementData;
     public static AudioManager audioManager;
     public static NewsTextScroller newsTextScroller;
 
-    private static int bestScore, difficulty;
+    private static int bestScore, difficulty, money;
+    private bool isShopUnlocked;
 
     [Header("Music Settings")]
     public GameObject muteButton;
@@ -31,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update.
     void Start() {
+        SetShopProgress(PlayerPrefs.GetInt("ShopUnlocked", 0) == 1);
+        SetMoney(PlayerPrefs.GetInt("Money", 1000000));
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
     }
 
@@ -46,16 +52,38 @@ public class GameManager : MonoBehaviour
     // Getter Method for the current difficulty. 
     public int GetDifficulty() { return difficulty; }
 
-    // Getter Method for the current difficulty. 
+    // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
+
+    public int GetMoney() { return money; }
+
+    public void SetMoney(int input) { 
+        money = input;
+        PlayerPrefs.SetInt("Money", input);
+        PlayerPrefs.Save();
+    }
+
+    public bool MoneyTransaction(int amount) {
+        if (amount < 0 && Math.Abs(amount) > money) { return false; }
+        else { SetMoney(money + amount); return true; }
+    }
+
+    public bool GetShopProgress() { return isShopUnlocked; }
+
+    public void SetShopProgress(bool input) { 
+        isShopUnlocked = input;
+        int res = input? 1: 0;
+        PlayerPrefs.SetInt("shopOpened", res);
+        PlayerPrefs.Save();
+    }
 
     public void ToggleMusic(bool isOn) {
         unmuteButton.SetActive(!isOn);
         muteButton.SetActive(isOn);
         isMusicPlaying = isOn;
         audioManager.ToggleMusic(isOn);
-        if (isOn) { PlayerPrefs.SetInt("MuteOn", 0); }
-        else { PlayerPrefs.SetInt("MuteOn", 1); }
+        int res = isOn? 0: 1;
+        PlayerPrefs.SetInt("MuteOn", res);
         PlayerPrefs.Save();
     }
 

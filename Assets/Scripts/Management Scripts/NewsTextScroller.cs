@@ -87,6 +87,13 @@ public class NewsTextScroller : MonoBehaviour
         }
     }
 
+    public void AddShopHeadline() {
+        if (isPlaying) {
+            string res = "BREAKING NEWS - you've delivered enough parcels to unlock the GARAGE! check it out after your shift ends.";
+            newsQueue.Add(res);
+        }
+    }
+
     public void AddTutorialHeadlines() {
         newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. use WASD or the arrow keys to drive.");
         newsQueue.Add("delivering parcels is the name of the game. follow the tracker arrow at the top of your screen to find a parcel.");

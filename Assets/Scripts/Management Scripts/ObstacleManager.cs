@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
 public class ObstacleManager : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds0_02 = new WaitForSeconds(0.02f);
-    private static WaitForSeconds _waitForSeconds8 = new WaitForSeconds(8f);
+    private static WaitForSeconds _waitForSeconds0_02 = new(0.02f);
+    private static WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB;
-    private Obstacle[] obstacles;
+    private List<Obstacle> obstacles;
+    private readonly List<Obstacle> permObstacles = new();
+    private readonly List<Obstacle> tempObstacles = new();
     private GameObject obstacleObject, destroyParticles;
     private readonly List<GameObject> currentObstacles = new();
-    private int totalLimit, totalPermCount;
 
     void Awake() {
         GameManager.obstacleManager = this;
@@ -21,21 +21,23 @@ public class ObstacleManager : MonoBehaviour {
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
         obstacles = GameManager.obstacleData.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
-        foreach (var obstacle in obstacles) { if (obstacle.isPermanent) { totalLimit += obstacle.limit; } }
+        Debug.Log(obstacles.Count);
+        foreach (var obs in obstacles) { 
+            if(obs.so.limit > 0) { permObstacles.Add(obs); }
+            else { tempObstacles.Add(obs); }
+        }
     }
 
     // Function to spawn the starting obstacles at the start of the game.
     public void SpawnStartingObstacles() {
         // Reset Object Counts (from Previous Games)
-        totalPermCount = 3;
-        foreach (var obstacle in obstacles) { obstacle.SetCount(0); }
+        GameManager.obstacleData.ResetGameEncounters();
         // Spawn three random Cars (Red or Blue).
         for (int i = 0; i < 3; i++) {
-            int gen = Random.Range(0, 2);
-            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+obstacles[gen].intenalName));
+            string[] startingObs = {"carRed", "carBlue", "carGreen"};
+            int random = Random.Range(0, 3);
+            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+ startingObs[random]));
             AddObstacle(obstacleObject);
-            obstacles[gen].IncrementCount();
-            GameManager.obstacleData.AddObstacleEncounter(gen);
         }
     }
 
@@ -93,17 +95,22 @@ public class ObstacleManager : MonoBehaviour {
 
     public void SpawnObstacle(bool perm) {
         int gen;
-        if (perm && totalPermCount < totalLimit) {
-            do { gen = Random.Range(0, obstacles.Length); } while (!obstacles[gen].isPermanent || !obstacles[gen].CheckLimit());
-            totalPermCount++;
-        } else { 
-            do { gen = Random.Range(0, obstacles.Length); } while (obstacles[gen].isPermanent);
-        }
-        obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+obstacles[gen].intenalName));
-        AddObstacle(obstacleObject);
-        GameManager.obstacleData.AddObstacleEncounter(gen);
-        GameManager.newsTextScroller.newsQueue.Add(obstacles[gen].headline);
-        obstacles[gen].IncrementCount();
+        Obstacle obs;
+        Obstacle_SO obsSO;
+        if (perm && permObstacles.Count > 0) {
+            bool obstacleFound;
+            do { gen = Random.Range(0, permObstacles.Count); 
+                obs = permObstacles[gen];
+                obstacleFound = !GameManager.obstacleData.CheckLimit(obs);
+                if(!obstacleFound) { permObstacles.Remove(obs); }
+            } while(!obstacleFound);
+        } else {
+            gen = Random.Range(0, tempObstacles.Count);
+            obs = tempObstacles[gen];
+        } obsSO = obs.so;
+        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
+        GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
+        AddObstacle(obsObj);
     }
 
     // Coroutine to handle the removal of an obstacle from the game during gameplay.

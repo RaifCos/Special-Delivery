@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public struct Achievement {
+public struct Achievement{
         public string name, description;
         public bool achieved;
 
@@ -12,10 +11,11 @@ public struct Achievement {
         }
         
         public void SetAchieved(bool input) { achieved = input; }
-    }
+}
 
 // Script to handle achievement tracking and the achievement menu UI.
-public class AchievementManager : MonoBehaviour {
+public class AchievementData : MonoBehaviour {
+
     private readonly Achievement[] achievements = {
     new("EMPLOYEE OF THE MONTH", "complete 10 deliveries in a single game."),
     new("DUTIFUL DELIVER-ER", "complete 250 deliveries."),
@@ -34,16 +34,16 @@ public class AchievementManager : MonoBehaviour {
     public int lifetimeDeliveries, playerCrashes;
 
     void Awake() {
-        GameManager.achievementManager = this;
+        GameManager.achievementData = this;
     }
 
     void Start() {
         // Load saved stats.
         lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
         playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
-        UpdateData(false);
     }
 
+    public Achievement[] GetAchievements() { return achievements; }
     public Achievement GetAchievement(int id) { return achievements[id]; }
 
     public int GetLifetimeScore() { return lifetimeDeliveries; }
@@ -65,10 +65,9 @@ public class AchievementManager : MonoBehaviour {
     }
 
     // Function to reset all Achievements and progress.
-    public void UpdateData(bool updateUI) {
+    public void UpdateData() {
         for (int i = 0; i < achievements.Length; i++) {
             achievements[i].SetAchieved(PlayerPrefs.GetInt(achievements[i].name, 0) == 1);
-            if (updateUI) { GameManager.mainMenuManager.UpdateAchievementUI(i); }
         }
     }
 
@@ -80,7 +79,10 @@ public class AchievementManager : MonoBehaviour {
                         lifetimeDeliveries++;
                         PlayerPrefs.SetInt("LifetimeScore", lifetimeDeliveries);
                         PlayerPrefs.Save();
-                        if (lifetimeDeliveries == 250) { CompleteAchievement(1); }
+                        if (lifetimeDeliveries == 25) { 
+                            GameManager.instance.SetShopProgress(true); 
+                            GameManager.newsTextScroller.AddShopHeadline();
+                        } if (lifetimeDeliveries == 250) { CompleteAchievement(1); }
                         break; }
                 case 1: { // Player Crashes
                         playerCrashes++;

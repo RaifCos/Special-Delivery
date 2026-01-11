@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
+  m_Name: boulderSnow 1
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
+  intenalName: boulderSnow
+  externalName: snowball
+  description: 'snowballs roll across the stage, shrinking but speeding up along
+    the way.
+
+
+    these snowballs don''t leave behind a trail of snow, but rather
+    a path destruction and various debris- which isn''t as fun :('
+  headline: '"world''s largest snowball fight" being held downtown today, despite
+    complete lack of snow.'
+  limit: 0
