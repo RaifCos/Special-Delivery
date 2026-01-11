@@ -4,38 +4,28 @@ using System.Collections.Generic;
 public class ObstacleData : MonoBehaviour {
 
     [SerializeField]
-    private ObstaclePerm[] permObstacles;
-    [SerializeField]
-    private ObstacleTemp[] tempObstacles;
+    private List<Obstacle> obstacles;
     [SerializeField]
     private Prop[] props;
 
-    private Dictionary<string, int> gameTempObs, gamePermObs, gameProps, lifetimeTempObs, lifetimePermObs, lifetimeProps;
+    private Dictionary<string, int> gameObs, gameProps, lifetimeObs, lifetimeProps;
 
     void Awake() { GameManager.obstacleData = this; ResetLifetimeEncounters(); }
 
     void Start() {
-        foreach (var pair in lifetimePermObs) { lifetimePermObs[pair.Key] = PlayerPrefs.GetInt("EncounterPerm_" + pair.Key, 0); }
-        foreach (var pair in lifetimeTempObs) { lifetimeTempObs[pair.Key] = PlayerPrefs.GetInt("EncounterTemp_" + pair.Key, 0); }
+        foreach (var pair in lifetimeObs) { lifetimeObs[pair.Key] = PlayerPrefs.GetInt("Encounter_" + pair.Key, 0); }
         foreach (var pair in lifetimeProps) { lifetimeProps[pair.Key] = PlayerPrefs.GetInt("EncounterProp_" + pair.Key, 0); }  
     }
 
-    public ObstaclePerm[] GetPermObstacles() { return permObstacles; }
-    public ObstacleTemp[] GetTempObstacles() { return tempObstacles; }
+    public List<Obstacle> GetObstacles() { return obstacles; }
+
+    public Obstacle GetObstacle(string key) {
+        foreach (Obstacle obs in obstacles) {
+        if (obs.so.intenalName == key) { return obs; }
+        } return null;
+    }
 
     public Prop[] GetProps() { return props; }
-
-    public ObstaclePerm GetPermObstacle(string key) {
-        foreach (ObstaclePerm obs in permObstacles) {
-        if (obs.so.intenalName == key) { return obs; }
-        } return null;
-    }
-
-    public ObstacleTemp GetTempObstacle(string key) {
-        foreach (ObstacleTemp obs in tempObstacles) {
-        if (obs.so.intenalName == key) { return obs; }
-        } return null;
-    }
 
     public Prop GetProp(string key) {
         foreach (Prop prop in props) {
@@ -43,13 +33,8 @@ public class ObstacleData : MonoBehaviour {
         } return null;
     }
     
-    public void AddPermObstacleEncounter(string key) {
-        gamePermObs[key]++;
-        AchievementCheck();
-    }
-
-    public void AddTempObstacleEncounter(string key) {
-        gameTempObs[key]++;
+    public void AddObstacleEncounter(string key) {
+        gameObs[key]++;
         AchievementCheck();
     }
     
@@ -60,14 +45,9 @@ public class ObstacleData : MonoBehaviour {
     }
 
     public void AddEncountersToTotal() {
-        foreach (var pair in lifetimePermObs) { 
-            lifetimePermObs[pair.Key] += gamePermObs[pair.Key];
-            PlayerPrefs.SetInt("EncounterPerm_" + pair.Key, lifetimePermObs[pair.Key]); 
-        }
-
-        foreach (var pair in lifetimeTempObs) { 
-            lifetimeTempObs[pair.Key] += gameTempObs[pair.Key];
-            PlayerPrefs.SetInt("EncounterTemp_" + pair.Key, lifetimeTempObs[pair.Key]); 
+        foreach (var pair in lifetimeObs) { 
+            lifetimeObs[pair.Key] += gameObs[pair.Key];
+            PlayerPrefs.SetInt("EncounterPerm_" + pair.Key, lifetimeObs[pair.Key]); 
         }
 
         foreach (var pair in lifetimeProps) { 
@@ -78,35 +58,28 @@ public class ObstacleData : MonoBehaviour {
         PlayerPrefs.Save();
     }
 
-    public bool CheckLimit(ObstaclePerm obs) {
-        return gamePermObs[obs.so.intenalName] < obs.so.limit;
+    public bool CheckLimit(Obstacle obs) {
+        return gameObs[obs.so.intenalName] < obs.so.limit;
     }
 
     public void ResetGameEncounters() {
-        gamePermObs = new();
-        foreach(ObstaclePerm obs in permObstacles) { gamePermObs.Add(obs.so.intenalName, 0); }
-
-        gameTempObs = new();
-        foreach(ObstacleTemp obs in tempObstacles) { gameTempObs.Add(obs.so.intenalName, 0); }
+        gameObs = new();
+        foreach(Obstacle obs in obstacles) { gameObs.Add(obs.so.intenalName, 0); }
 
         gameProps = new();
-        foreach(ObstacleTemp obs in tempObstacles) { gameTempObs.Add(obs.so.intenalName, 0); }
+        foreach(Prop prop in props) { gameProps.Add(prop.so.intenalName, 0); }
     }
 
     public void ResetLifetimeEncounters() {
-        lifetimePermObs = new();
-        foreach(ObstaclePerm obs in permObstacles) { lifetimePermObs.Add(obs.so.intenalName, 0); }
-
-        lifetimeTempObs = new();
-        foreach(ObstacleTemp obs in tempObstacles) { lifetimeTempObs.Add(obs.so.intenalName, 0); }
+        lifetimeObs = new();
+        foreach(Obstacle obs in obstacles) { lifetimeObs.Add(obs.so.intenalName, 0); }
 
         lifetimeProps = new();
-        foreach(Prop prop in props) { lifetimeTempObs.Add(prop.so.intenalName, 0); }
+        foreach(Prop prop in props) { lifetimeProps.Add(prop.so.intenalName, 0); }
     }
 
     private void AchievementCheck() {
-        if (!lifetimePermObs.ContainsValue(0)
-        && !lifetimeTempObs.ContainsValue(0)
+        if (!lifetimeObs.ContainsValue(0)
         && !lifetimeProps.ContainsValue(0)) 
         { GameManager.achievementData.CompleteAchievement(6); }
     }

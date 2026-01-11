@@ -5,6 +5,6 @@ public class Obstacle : MonoBehaviour {
     public Obstacle_SO so;
 
     void Start() {
-        GameManager.obstacleData.AddPermObstacleEncounter(so.intenalName);
+        GameManager.obstacleData.AddObstacleEncounter(so.intenalName);
     }
 }
