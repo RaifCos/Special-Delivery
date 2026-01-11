@@ -6591,7 +6591,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles: []
+  obstacles:
+  - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
+  - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
+  - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
+  - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
+  - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
+  - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
+  - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
+  - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
+  - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
+  - {fileID: 8795924381500241567, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
+  - {fileID: 2581911252302640727, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
+  - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
+  - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
+  - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
   props: []
 --- !u!114 &908304999
 MonoBehaviour:
