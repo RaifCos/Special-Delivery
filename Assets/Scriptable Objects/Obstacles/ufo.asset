@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: ufo
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: ufo
+  internalName: ufo
   externalName: ufo
   description: 'ufos hover from above, pulling objects (and you!) up with their tractor
     beam.

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45eba49d3e97eab41b0c2379ce8e24ab, type: 3}
   m_Name: fence
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
-  intenalName: fence
+  internalName: fence
   externalName: fence
   description: mind you these fences are solid iron, how are you driving full force
     into these things without so much as a dent? are you cheating or something?

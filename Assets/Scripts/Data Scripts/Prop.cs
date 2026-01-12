@@ -11,7 +11,7 @@ public class Prop : MonoBehaviour {
             // Shrink and Delete Object Shortly After Collision.
             StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, false));
             beganFading = true;
-            if (GameManager.instance.GetDifficulty() != 0) { GameManager.obstacleData.AddPropEncounter(so.intenalName); }
+            if (GameManager.instance.GetDifficulty() != 0) { GameManager.obstacleData.AddPropEncounter(so.internalName); }
         }
     }
 }

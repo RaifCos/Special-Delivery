@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: boxingGlove 1
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: boxingGlove
+  internalName: boxingGlove
   externalName: boxing glove
   description: 'boxing gloves sprout of the ground to suckerpunch the delivery van.
 

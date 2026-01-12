@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: giantCone
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: giantCone
+  internalName: giantCone
   externalName: giant cone
   description: 'giant invincible cones that come crashing down from the sky into
     the middle of the stage.

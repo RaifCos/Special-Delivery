@@ -101,14 +101,14 @@ public class ObstacleManager : MonoBehaviour {
             bool obstacleFound;
             do { gen = Random.Range(0, permObstacles.Count); 
                 obs = permObstacles[gen];
-                obstacleFound = !GameManager.obstacleData.CheckLimit(obs);
+                obstacleFound = GameManager.obstacleData.CheckLimit(obs);
                 if(!obstacleFound) { permObstacles.Remove(obs); }
             } while(!obstacleFound);
         } else {
             gen = Random.Range(0, tempObstacles.Count);
             obs = tempObstacles[gen];
         } obsSO = obs.so;
-        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
+        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.internalName));
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         AddObstacle(obsObj);
     }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: dumpster
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: dumpster
+  internalName: dumpster
   externalName: dumpster
   description: 'dumpsters come tumbling across the stage, speeding up along the way.
 

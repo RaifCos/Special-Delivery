@@ -29168,6 +29168,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d302d05269585084aad85ae47adb818f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementData
+  achievements:
+  - {fileID: 11400000, guid: 5d358ff7aef1c774499fc6e7129979ca, type: 2}
+  - {fileID: 11400000, guid: d3c1fa8ad5111e343acbf14a0c7a8e16, type: 2}
+  - {fileID: 11400000, guid: bf6aca89fd1be6b41a1e5d25b496ded6, type: 2}
+  - {fileID: 11400000, guid: 5f26ce30db3c2e34497fd16114b408d1, type: 2}
+  - {fileID: 11400000, guid: 1176a5fa60c4de44c9c8262ea7f231c9, type: 2}
+  - {fileID: 11400000, guid: d8b4ffe4ad5c5f840ad189f914f64c4d, type: 2}
+  - {fileID: 11400000, guid: 372fe049578fa16488bc3e7d72971fd3, type: 2}
+  - {fileID: 11400000, guid: 54f93caf06b45494685f832478e2916d, type: 2}
+  - {fileID: 11400000, guid: 97cf3809ba698a34a976235c1fbcf186, type: 2}
+  - {fileID: 11400000, guid: a45cddc56cc8a314191ba18c6e001277, type: 2}
+  - {fileID: 11400000, guid: 9af778ddeeda6ac4cb1cd91e8d43acd6, type: 2}
+  - {fileID: 11400000, guid: 368316b43257222499487d1a703178d2, type: 2}
   lifetimeDeliveries: 0
   playerCrashes: 0
 --- !u!1001 &1190518690

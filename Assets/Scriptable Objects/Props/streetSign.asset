@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45eba49d3e97eab41b0c2379ce8e24ab, type: 3}
   m_Name: streetSign
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
-  intenalName: streetSign
+  internalName: streetSign
   externalName: street sign
   description: iconic green signs used to navigate parcel city. just don't touch
     them though, the city couldn't afford to secure them to the ground, so they're

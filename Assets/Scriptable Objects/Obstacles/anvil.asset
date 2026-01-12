@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: anvil
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: anvil
+  internalName: anvil
   externalName: anvil
   description: 'anvils come crashing down from the sky right onto the delivery van
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45eba49d3e97eab41b0c2379ce8e24ab, type: 3}
   m_Name: bench
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
-  intenalName: bench
+  internalName: bench
   externalName: bench
   description: sometimes it's nice to take a break from the city life and just have
     a quiet sit down- until a speeding delivery van knocks you four cities over.

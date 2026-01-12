@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: carRed
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: carRed
+  internalName: carRed
   externalName: car
   description: 'cars navigate the roads of parcel city, honking at everything in
     their path.
