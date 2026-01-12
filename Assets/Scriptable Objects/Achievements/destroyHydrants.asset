@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: destroyHydrants
   externalName: HYDRANT HUNTER
   description: destroy all hydrants in a single shift.
+  sprite: {fileID: 21300000, guid: 378fffb162ca0c04f959512d5b06afeb, type: 3}

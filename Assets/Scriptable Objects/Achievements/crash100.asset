@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: crash100
   externalName: CRASH!
   description: crash 100 times.
+  sprite: {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}

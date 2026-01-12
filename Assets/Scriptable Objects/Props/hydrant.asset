@@ -17,3 +17,4 @@ MonoBehaviour:
   description: wait, shouldn't there be water coming out of these when you knock
     them over? guys? are these hydrants empty?? hello?? should we say something???
   includeGround: 0
+  sprite: {fileID: 21300000, guid: d612ac0202dd7004f8e73ba9204a8a5f, type: 3}

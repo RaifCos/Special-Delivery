@@ -23,3 +23,4 @@ MonoBehaviour:
     children. now they focus on postal workers.'
   headline: toy car voted "cutest road hazard" by drivers.
   limit: 2
+  sprite: {fileID: 21300000, guid: 9777162cb3de44a40bd4ce9aec64b8ef, type: 3}

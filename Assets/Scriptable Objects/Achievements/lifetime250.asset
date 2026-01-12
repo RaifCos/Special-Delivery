@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: lifetime250
   externalName: DUTIFUL DELIVER-ER
   description: complete 250 deliveries.
+  sprite: {fileID: 21300000, guid: 76fd09f9b52bd404baf0bcb0ee5c28ac, type: 3}

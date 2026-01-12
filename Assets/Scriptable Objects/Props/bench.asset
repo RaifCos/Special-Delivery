@@ -17,3 +17,4 @@ MonoBehaviour:
   description: sometimes it's nice to take a break from the city life and just have
     a quiet sit down- until a speeding delivery van knocks you four cities over.
   includeGround: 0
+  sprite: {fileID: 21300000, guid: b8cbcfed42fc2a048bfbe2aa0cf7aa51, type: 3}

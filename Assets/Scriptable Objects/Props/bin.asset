@@ -17,3 +17,4 @@ MonoBehaviour:
   description: what do you call it when a delivery van hits a bin? junk mail! get
     it? be- because bins... trash... junk... heh
   includeGround: 0
+  sprite: {fileID: 21300000, guid: 6011140efeb91144d9c4605c3e9f84a0, type: 3}

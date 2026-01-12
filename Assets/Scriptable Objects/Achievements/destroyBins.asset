@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: destroyBins
   externalName: TAKING OUT THE TRASH
   description: destroy all bins in a single shift.
+  sprite: {fileID: 21300000, guid: d12c37d5d6964284395728e5bb22ec82, type: 3}

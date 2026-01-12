@@ -22,3 +22,4 @@ MonoBehaviour:
     The drivers just like to hold up traffic. Jerks.'
   headline: traffic backed up on every major route due to gameplay mechanics.
   limit: 3
+  sprite: {fileID: 21300000, guid: 79ca2cb292ed03649a0417fd1ebd62fd, type: 3}

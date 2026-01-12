@@ -17,3 +17,4 @@ MonoBehaviour:
   description: a common red signage dotted around parcel city, although most drivers
     use them as more of a "suggestion" to slow down then a literal sign to stop.
   includeGround: 0
+  sprite: {fileID: 21300000, guid: 3fbdeaa8ab05c934cab57f1ee8743d2b, type: 3}

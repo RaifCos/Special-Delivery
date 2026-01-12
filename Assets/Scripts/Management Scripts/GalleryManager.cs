@@ -9,7 +9,6 @@ public class GalleryManager : MonoBehaviour {
     public Sprite lockedSprite;
     public GameObject obstacleIcons, propIcons;
     public GameObject galleryDisplay, switchButtonA, switchButtonB;
-    public List<Sprite> obstacleSprite, propSprite;
     private List<Obstacle> obstacles;
     private List<Prop> props;
 
@@ -36,7 +35,7 @@ public class GalleryManager : MonoBehaviour {
             Debug.Log(name);
             Image img = obstacleIcons.transform.Find(name).GetComponent<Image>();
             if (PlayerPrefs.GetInt("EncounterObs_" + name, 0) > 0) {
-                img.sprite = obstacleSprite.Find(sprite => sprite.name == name);
+                img.sprite = obs.so.sprite;
             } else { img.sprite = lockedSprite; }
         }
         
@@ -44,7 +43,7 @@ public class GalleryManager : MonoBehaviour {
             string name = prop.so.internalName;
             Image img = propIcons.transform.Find(name).GetComponent<Image>();
             if (PlayerPrefs.GetInt("EncounterProp_" + name, 0) > 0) {
-                img.sprite = propSprite.Find(sprite => sprite.name == name);
+                img.sprite = prop.so.sprite;
             } else { img.sprite = lockedSprite; }
         }
     }

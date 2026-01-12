@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8028393277006225701}
   - component: {fileID: 13242393421207169}
   - component: {fileID: 5946079719041434962}
-  - component: {fileID: 8683559772481203422}
   - component: {fileID: 3739477864978008606}
+  - component: {fileID: -490832667383926368}
   - component: {fileID: -552224212321974609}
   - component: {fileID: 925338111641679283}
   m_Layer: 3
@@ -242,19 +242,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8683559772481203422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772368567146362614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  includeGround: 1
 --- !u!114 &3739477864978008606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +255,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHeight: 300
+--- !u!114 &-490832667383926368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772368567146362614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  includeGround: 1
 --- !u!114 &-552224212321974609
 MonoBehaviour:
   m_ObjectHideFlags: 0

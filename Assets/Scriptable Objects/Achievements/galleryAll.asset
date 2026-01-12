@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: galleryAll
   externalName: WELL NOW I'VE SEEN EVERYTHING
   description: 'complete the gallery (encounter every obstacle and prop). '
+  sprite: {fileID: 21300000, guid: ff2f7a0f266521d409a821e2e67ed5f4, type: 3}

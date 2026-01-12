@@ -10,7 +10,6 @@ public class AchievementMenuManager : MonoBehaviour {
     public GameObject buttonIcons;
     public GameObject achievementDisplay;
     public Sprite lockedSprite;
-    public List<Sprite> achievementSprite;
 
     private List<Achievement_SO> achievements;
 
@@ -35,7 +34,7 @@ public class AchievementMenuManager : MonoBehaviour {
     private void UpdateAchievementUI(string key) {
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
         if (GameManager.achievementData.IsAchieved(key)) { 
-            img.sprite = achievementSprite.Find(sprite => sprite.name == key);
+            img.sprite = achievements.Find(sprite => sprite.internalName == key).sprite;
         } else { img.sprite = lockedSprite; }
     }
     

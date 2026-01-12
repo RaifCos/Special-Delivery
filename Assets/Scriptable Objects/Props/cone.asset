@@ -17,3 +17,4 @@ MonoBehaviour:
   description: if they didn't want you to run over these small orange cones, then
     why did they make them so fun to run over?
   includeGround: 0
+  sprite: {fileID: 21300000, guid: 2fb02918301f90a4b8697ce118bed95b, type: 3}

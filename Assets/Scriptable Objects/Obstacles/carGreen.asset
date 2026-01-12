@@ -22,3 +22,4 @@ MonoBehaviour:
     the road! well, neither do you (clearly), but at least you have an excuse. sorta.'
   headline: '"where do these cars keep coming from??" - cries frustrated commuter."'
   limit: 3
+  sprite: {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}

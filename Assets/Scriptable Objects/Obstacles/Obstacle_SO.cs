@@ -6,4 +6,5 @@ public class Obstacle_SO : ScriptableObject {
     [TextArea(3, 6)]
     public string description, headline;
     public int limit;
+    public Sprite sprite; 
 }

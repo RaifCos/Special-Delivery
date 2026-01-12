@@ -24,3 +24,4 @@ MonoBehaviour:
   headline: experts advise you should "see sharp" or else you might "be flat", regarding
     falling pianos.
   limit: 0
+  sprite: {fileID: 21300000, guid: 2f5235eaceafe2c48a8f3d10ead12009, type: 3}

@@ -21,3 +21,4 @@ MonoBehaviour:
     it''s name, the monster car is still only about half the size of a hummer.'
   headline: there have been reports downtown of... "a really big car"?.. seriously?
   limit: 1
+  sprite: {fileID: 21300000, guid: 5ffa3495449a06848a7a5207cdda3c52, type: 3}

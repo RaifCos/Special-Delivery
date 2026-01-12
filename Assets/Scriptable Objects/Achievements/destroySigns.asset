@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: destroySigns
   externalName: NO SIGN OF LIFE
   description: destroy all stop signs and street signs in a single shift.
+  sprite: {fileID: 21300000, guid: a5a684dc53a7a8b40bedf36a63fbb950, type: 3}

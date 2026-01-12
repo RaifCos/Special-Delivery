@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: time120
   externalName: TIME TO SPARE
   description: accumulate 120 seconds on the game timer.
+  sprite: {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}

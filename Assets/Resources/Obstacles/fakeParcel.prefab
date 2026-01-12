@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3157697626984951473}
   - component: {fileID: 8605256410495317722}
   - component: {fileID: 4079610249520189394}
-  - component: {fileID: 6491707298831198042}
+  - component: {fileID: -8367608588522091340}
   - component: {fileID: 6391013923234303459}
   - component: {fileID: 1166359654068088731}
   m_Layer: 0
@@ -240,7 +240,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6491707298831198042
+--- !u!114 &-8367608588522091340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,9 +251,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  includeGround: 0
+  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  includeGround: 1
 --- !u!114 &6391013923234303459
 MonoBehaviour:
   m_ObjectHideFlags: 0

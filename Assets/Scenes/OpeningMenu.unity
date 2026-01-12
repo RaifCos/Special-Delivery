@@ -11066,7 +11066,7 @@ Transform:
   m_GameObject: {fileID: 849447413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72, y: -1, z: 18}
+  m_LocalPosition: {x: 72, y: -1.2, z: 18}
   m_LocalScale: {x: 0.8, y: 0.8000001, z: 0.8000001}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -15801,7 +15801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1125146771
 Transform:
   m_ObjectHideFlags: 0
@@ -21756,9 +21756,9 @@ GameObject:
   - component: {fileID: 1188058035}
   - component: {fileID: 1188058037}
   - component: {fileID: 1188058032}
+  - component: {fileID: 1188058038}
   - component: {fileID: 1188058030}
   - component: {fileID: 1188058029}
-  - component: {fileID: 1188058038}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -22037,6 +22037,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleData
+  obstacles: []
+  props: []
 --- !u!1 &1194054894
 GameObject:
   m_ObjectHideFlags: 0

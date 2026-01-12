@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 // Script to handle achievement tracking and the achievement menu UI.
 public class AchievementData : MonoBehaviour {

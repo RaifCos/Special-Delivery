@@ -17,3 +17,4 @@ MonoBehaviour:
   description: mind you these fences are solid iron, how are you driving full force
     into these things without so much as a dent? are you cheating or something?
   includeGround: 0
+  sprite: {fileID: 21300000, guid: 7994c9a494a0113488226e4025ff6f92, type: 3}

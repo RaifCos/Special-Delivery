@@ -6,4 +6,5 @@ public class Prop_SO : ScriptableObject {
     [TextArea(3, 6)]
     public string description;
     public bool includeGround;
+    public Sprite sprite; 
 }

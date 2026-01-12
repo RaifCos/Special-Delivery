@@ -15,3 +15,4 @@ MonoBehaviour:
   internalName: score50
   externalName: THE COMPLETE PACKAGE
   description: complete 50 deliveries in a single shift.
+  sprite: {fileID: 21300000, guid: 35249aa4dce82d64d9675811b496c302, type: 3}

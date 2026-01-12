@@ -25,3 +25,4 @@ MonoBehaviour:
   headline: delivery drivers have been warned to look out for faux parcels, because
     they exist. apparently.
   limit: 0
+  sprite: {fileID: 21300000, guid: 0df925525c4ec22428158f14b58fb24a, type: 3}

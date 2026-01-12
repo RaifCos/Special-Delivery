@@ -24,3 +24,4 @@ MonoBehaviour:
   headline: '"the dangers of boomerangs" reaches top of nyt bestsellers list after
     initial low reviews.'
   limit: 2
+  sprite: {fileID: 21300000, guid: 303be99ef214f384497b4eb024100f7b, type: 3}
