@@ -12,8 +12,6 @@ public class GalleryManager : MonoBehaviour {
 
     void Awake() { GameManager.galleryManager = this; }
 
-    void Start() {     }
-
     public void AlternateGalleryMenus(bool input) {
         obstacleIcons.SetActive(input);
         propIcons.SetActive(!input);

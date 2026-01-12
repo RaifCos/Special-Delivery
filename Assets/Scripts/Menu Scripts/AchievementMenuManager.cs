@@ -14,9 +14,7 @@ public class AchievementMenuManager : MonoBehaviour {
     // Variables used for tracking achievements.
     public int lifetimeDeliveries, playerCrashes;
 
-    void Awake() {
-        GameManager.achievementMenuManager = this;
-    }
+    void Awake() { GameManager.achievementMenuManager = this; }
 
     public void UpdateAchievementMenu() {
         foreach(Achievement_SO ach in GameManager.dataManager.GetAchievements()) {

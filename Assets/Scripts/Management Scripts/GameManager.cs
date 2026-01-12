@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;
     public static MainMenuManager mainMenuManager;
-    public static ShopManager shopManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
