@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public static AchievementData achievementData;
     public static AudioManager audioManager;
     public static NewsTextScroller newsTextScroller;
+    public static SO_Database database;
 
     private static int bestScore, difficulty, money;
     private bool isShopUnlocked;

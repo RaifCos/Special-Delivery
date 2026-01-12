@@ -19,7 +19,7 @@ public class ObstacleManager : MonoBehaviour {
     
     private void Start() {
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
-        obstacles = GameManager.obstacleData.GetObstacles();
+        obstacles = GameManager.database.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
         Debug.Log(obstacles.Count);
         foreach (var obs in obstacles) { 
@@ -36,7 +36,7 @@ public class ObstacleManager : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             string[] startingObs = {"carRed", "carBlue", "carGreen"};
             int random = Random.Range(0, 3);
-            obstacleObject = Instantiate(Resources.Load<GameObject>("Obstacles/"+ startingObs[random]));
+            obstacleObject = Instantiate(GameManager.database.GetObstacle(startingObs[random]).so.prefab);
             AddObstacle(obstacleObject);
         }
     }
@@ -108,7 +108,7 @@ public class ObstacleManager : MonoBehaviour {
             gen = Random.Range(0, tempObstacles.Count);
             obs = tempObstacles[gen];
         } obsSO = obs.so;
-        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.internalName));
+        GameObject obsObj = Instantiate(obsSO.prefab);
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         AddObstacle(obsObj);
     }

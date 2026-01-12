@@ -21,7 +21,7 @@ public class AchievementMenuManager : MonoBehaviour {
     }
 
     void Start() {
-        achievements = GameManager.achievementData.GetAchievements();
+        achievements = GameManager.database.GetAchievements();
     }
 
     public void UpdateAchievementMenu() {

@@ -19,22 +19,6 @@ public class ObstacleData : MonoBehaviour {
         keys = new List<string>(lifetimeObs.Keys);
         foreach (var key in keys) { lifetimeProps[key] = PlayerPrefs.GetInt("EncounterProp_" + key, 0); }
     }
-
-    public List<Obstacle> GetObstacles() { return obstacles; }
-
-    public Obstacle GetObstacle(string key) {
-        foreach (Obstacle obs in obstacles) {
-        if (obs.so.internalName == key) { return obs; }
-        } return null;
-    }
-
-    public List<Prop> GetProps() { return props; }
-
-    public Prop GetProp(string key) {
-        foreach (Prop prop in props) {
-        if (prop.so.internalName == key) { return prop; }
-        } return null;
-    }
     
     public void AddObstacleEncounter(string key) {
         gameObs[key]++;

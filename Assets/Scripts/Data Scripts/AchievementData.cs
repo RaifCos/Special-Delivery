@@ -4,7 +4,6 @@ using System.Collections.Generic;
 // Script to handle achievement tracking and the achievement menu UI.
 public class AchievementData : MonoBehaviour {
 
-    [SerializeField]
     private List<Achievement_SO> achievements;
     private Dictionary<string, bool> achievementProgress = new();
 
@@ -16,6 +15,7 @@ public class AchievementData : MonoBehaviour {
     }
 
     void Start() {
+        achievements = GameManager.database.GetAchievements();
         // Load saved stats.
         lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
         playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
@@ -24,7 +24,6 @@ public class AchievementData : MonoBehaviour {
         }
     }
 
-    public List<Achievement_SO> GetAchievements() { return achievements; }
     public bool IsAchieved(string key) { return achievementProgress[key]; }
 
     public int GetLifetimeScore() { return lifetimeDeliveries; }

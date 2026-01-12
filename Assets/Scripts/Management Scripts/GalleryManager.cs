@@ -15,8 +15,8 @@ public class GalleryManager : MonoBehaviour {
     void Awake() { GameManager.galleryManager = this; }
 
     void Start() { 
-        obstacles = GameManager.obstacleData.GetObstacles(); 
-        props = GameManager.obstacleData.GetProps();    
+        obstacles = GameManager.database.GetObstacles(); 
+        props = GameManager.database.GetProps();    
     }
 
     public void AlternateGalleryMenus(bool input) {
@@ -50,7 +50,7 @@ public class GalleryManager : MonoBehaviour {
 
     public void DisplayObstacle(string key) {
         Image img = obstacleIcons.transform.Find(key).GetComponent<Image>();
-        Obstacle obs = GameManager.obstacleData.GetObstacle(key);
+        Obstacle obs = GameManager.database.GetObstacle(key);
         galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
         galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Encountered: " + PlayerPrefs.GetInt("EncounterObs_" + key, 0);;
         // Achievement is still locked, so show default information.
@@ -65,7 +65,7 @@ public class GalleryManager : MonoBehaviour {
     
     public void DisplayProp(string key) {
         Image img = propIcons.transform.Find(key).GetComponent<Image>();
-        Prop prop = GameManager.obstacleData.GetProp(key);
+        Prop prop = GameManager.database.GetProp(key);
         galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
         galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterProp_" + key, 0);;
         // Achievement is still locked, so show default information.
