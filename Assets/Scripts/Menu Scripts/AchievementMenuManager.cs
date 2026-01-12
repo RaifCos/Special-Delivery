@@ -16,6 +16,11 @@ public class AchievementMenuManager : MonoBehaviour {
 
     void Awake() { GameManager.achievementMenuManager = this; }
 
+    void Start() {
+        lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
+        playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
+    }
+
     public void UpdateAchievementMenu() {
         foreach(Achievement_SO ach in GameManager.dataManager.GetAchievements()) {
             UpdateAchievementUI(ach.internalName);
@@ -45,11 +50,11 @@ public class AchievementMenuManager : MonoBehaviour {
         string res = ach.description;
         switch (key) {
             case "lifetime250": { // Lifetime Deliveries
-                    res += " [" + GameManager.dataManager.GetLifetimeScore() + "]";
+                    res += " [" + lifetimeDeliveries + "]";
                     break; }
             case "crash100":
             case "crash250": { // Player Crashes
-                    res += " [" +  GameManager.dataManager.GetPlayerCrashes() + "]";
+                    res += " [" +  playerCrashes + "]";
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
     }  

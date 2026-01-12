@@ -115,10 +115,6 @@ public class DataManager : MonoBehaviour
     }
     public bool IsAchieved(string key) => achievementProgress[key];
 
-    public int GetLifetimeScore() { return lifetimeDeliveries; }
-
-    public int GetPlayerCrashes() { return playerCrashes; }
-
     // Function to denote an Achievement as completed.
     public void CompleteAchievement(string key) {
         // Only change if achievement has not yet been aquired or the player isn't in the tutorial.
