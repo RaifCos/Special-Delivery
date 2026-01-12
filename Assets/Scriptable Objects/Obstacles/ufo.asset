@@ -23,4 +23,5 @@ MonoBehaviour:
     wouldn''t you do the same if you had one?'
   headline: ufo spotted downtown as writer struggles to come up with funny headline.
   limit: 1
+  prefab: {fileID: 6569604251113940049, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
   sprite: {fileID: 21300000, guid: 882a271cdc05b92489296ec9ec5a3e7e, type: 3}

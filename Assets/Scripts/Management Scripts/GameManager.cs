@@ -11,18 +11,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;
     public static MainMenuManager mainMenuManager;
-    public static ShopManager shopManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
-    public static ObstacleData obstacleData;
-    public static ShopData shopData;
-    public static AchievementData achievementData;
     public static AudioManager audioManager;
     public static NewsTextScroller newsTextScroller;
-    public static SO_Database database;
+    public static DataManager dataManager;
 
     private static int bestScore, difficulty, money;
     private bool isShopUnlocked;
@@ -37,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update.
     void Start() {
         SetShopProgress(PlayerPrefs.GetInt("ShopUnlocked", 0) == 1);
-        SetMoney(PlayerPrefs.GetInt("Money", 1000000));
+        SetMoney(PlayerPrefs.GetInt("Money", 1000));
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
     }
 

@@ -6347,14 +6347,11 @@ GameObject:
   m_Component:
   - component: {fileID: 908305003}
   - component: {fileID: 908305002}
-  - component: {fileID: 908304995}
   - component: {fileID: 908305004}
+  - component: {fileID: 908304995}
   - component: {fileID: 908305001}
   - component: {fileID: 908305000}
   - component: {fileID: 908304999}
-  - component: {fileID: 908304998}
-  - component: {fileID: 908305005}
-  - component: {fileID: 908305006}
   - component: {fileID: 908304997}
   - component: {fileID: 908304996}
   m_Layer: 0
@@ -6579,43 +6576,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &908304998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908304994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b25c44f34d935947b46b87c1b5e4e37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  obstacles:
-  - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
-  - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
-  - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
-  - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
-  - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
-  - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
-  - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
-  - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
-  - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
-  - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
-  - {fileID: 8795924381500241567, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
-  - {fileID: 2581911252302640727, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
-  - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
-  - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
-  - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
-  props:
-  - {fileID: 4741636504862328621, guid: 546671eda8d0ea24d9951f2b00b3e28c, type: 3}
-  - {fileID: -9019525683207888849, guid: 4630f3e353c06db4296762003491d5a1, type: 3}
-  - {fileID: -7849014766195687166, guid: 6aed478d1b18fd84aa51b7f5814a807a, type: 3}
-  - {fileID: -4083839883206890763, guid: b073c490e7ca9f1499c8e8956eb6d853, type: 3}
-  - {fileID: -1636519629360611569, guid: 1eaef74dda28bad4e9f5f46e22794ce0, type: 3}
-  - {fileID: -1020270408174781601, guid: 39eeff358b150f049a0534ee3b6619b0, type: 3}
-  - {fileID: 5963314625385675019, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
-  - {fileID: 6525851279216416381, guid: 9229633e2b56e09469dab097fe4363b4, type: 3}
 --- !u!114 &908304999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6631,8 +6591,8 @@ MonoBehaviour:
   music: {fileID: 908304997}
   parcelSound: {fileID: 908304996}
   soundscape: {fileID: 0}
-  musicStart: {fileID: 8300000, guid: ec1ac197291c8914585e091baf3e71d2, type: 3}
-  musicLoop: {fileID: 8300000, guid: ec1ac197291c8914585e091baf3e71d2, type: 3}
+  musicStart: {fileID: 8300000, guid: 8fa0d9640613b1d43b193df91b298b86, type: 3}
+  musicLoop: {fileID: 8300000, guid: c5f75e1b51ea92e4fb05e6479ce6d6a5, type: 3}
   musicEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
@@ -6654,31 +6614,6 @@ MonoBehaviour:
   galleryDisplay: {fileID: 95823877}
   switchButtonA: {fileID: 120115048}
   switchButtonB: {fileID: 1783817384}
-  obstacleSprite:
-  - {fileID: 21300000, guid: 96c0c562449f6194c85953db7e84d1f2, type: 3}
-  - {fileID: 21300000, guid: 303be99ef214f384497b4eb024100f7b, type: 3}
-  - {fileID: 21300000, guid: d87b88426ff6aed4a9a8bd7cbc4dce64, type: 3}
-  - {fileID: 21300000, guid: 342d18e0f77c55543ba67f6925b6c713, type: 3}
-  - {fileID: 21300000, guid: 980facb81a3db6542980fdb02256a7bb, type: 3}
-  - {fileID: 21300000, guid: 5ffa3495449a06848a7a5207cdda3c52, type: 3}
-  - {fileID: 21300000, guid: 79ca2cb292ed03649a0417fd1ebd62fd, type: 3}
-  - {fileID: 21300000, guid: f1001ff8575fd4d48b2ee5236878b010, type: 3}
-  - {fileID: 21300000, guid: 7cf2133288297cd46ad0b17786ce1b44, type: 3}
-  - {fileID: 21300000, guid: 9777162cb3de44a40bd4ce9aec64b8ef, type: 3}
-  - {fileID: 21300000, guid: e5d8e2aeafe6b624499c9085b58665e5, type: 3}
-  - {fileID: 21300000, guid: 0df925525c4ec22428158f14b58fb24a, type: 3}
-  - {fileID: 21300000, guid: dc513d37165d9ac438ba2c99929e4255, type: 3}
-  - {fileID: 21300000, guid: 2f5235eaceafe2c48a8f3d10ead12009, type: 3}
-  - {fileID: 21300000, guid: 882a271cdc05b92489296ec9ec5a3e7e, type: 3}
-  propSprite:
-  - {fileID: 21300000, guid: 3fbdeaa8ab05c934cab57f1ee8743d2b, type: 3}
-  - {fileID: 21300000, guid: 5241eb5717a314641a3f0d4262ad8ead, type: 3}
-  - {fileID: 21300000, guid: 2fb02918301f90a4b8697ce118bed95b, type: 3}
-  - {fileID: 21300000, guid: 6011140efeb91144d9c4605c3e9f84a0, type: 3}
-  - {fileID: 21300000, guid: d612ac0202dd7004f8e73ba9204a8a5f, type: 3}
-  - {fileID: 21300000, guid: b8cbcfed42fc2a048bfbe2aa0cf7aa51, type: 3}
-  - {fileID: 21300000, guid: 7994c9a494a0113488226e4025ff6f92, type: 3}
-  - {fileID: 21300000, guid: ed0803f019d1fa044a8dc278fda561cb, type: 3}
 --- !u!114 &908305001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6694,19 +6629,6 @@ MonoBehaviour:
   buttonIcons: {fileID: 1698732017}
   achievementDisplay: {fileID: 1118922880}
   lockedSprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
-  achievementSprite:
-  - {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
-  - {fileID: 21300000, guid: 76fd09f9b52bd404baf0bcb0ee5c28ac, type: 3}
-  - {fileID: 21300000, guid: 35249aa4dce82d64d9675811b496c302, type: 3}
-  - {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}
-  - {fileID: 21300000, guid: 804666097f79c104f91d5e8d6a6b7717, type: 3}
-  - {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}
-  - {fileID: 21300000, guid: ff2f7a0f266521d409a821e2e67ed5f4, type: 3}
-  - {fileID: 21300000, guid: a5a684dc53a7a8b40bedf36a63fbb950, type: 3}
-  - {fileID: 21300000, guid: 10aa0f37b99b4c646a2332c7f2281594, type: 3}
-  - {fileID: 21300000, guid: d12c37d5d6964284395728e5bb22ec82, type: 3}
-  - {fileID: 21300000, guid: 378fffb162ca0c04f959512d5b06afeb, type: 3}
-  - {fileID: 21300000, guid: 521ad00a796221d4fb0c44f5fa36258d, type: 3}
   lifetimeDeliveries: 0
   playerCrashes: 0
 --- !u!114 &908305002
@@ -6747,48 +6669,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 908304994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86b9212125e31ce4da3cd4b08697ed34, type: 3}
+  m_Script: {fileID: 11500000, guid: 49aa9117a19d49c47911166e13a9d432, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
---- !u!114 &908305005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908304994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfb4a4db37452348a886158910a1345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShopData
---- !u!114 &908305006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908304994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d302d05269585084aad85ae47adb818f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AchievementData
-  achievements:
-  - {fileID: 11400000, guid: 5d358ff7aef1c774499fc6e7129979ca, type: 2}
-  - {fileID: 11400000, guid: d3c1fa8ad5111e343acbf14a0c7a8e16, type: 2}
-  - {fileID: 11400000, guid: bf6aca89fd1be6b41a1e5d25b496ded6, type: 2}
-  - {fileID: 11400000, guid: 5f26ce30db3c2e34497fd16114b408d1, type: 2}
-  - {fileID: 11400000, guid: 1176a5fa60c4de44c9c8262ea7f231c9, type: 2}
-  - {fileID: 11400000, guid: d8b4ffe4ad5c5f840ad189f914f64c4d, type: 2}
-  - {fileID: 11400000, guid: 372fe049578fa16488bc3e7d72971fd3, type: 2}
-  - {fileID: 11400000, guid: 54f93caf06b45494685f832478e2916d, type: 2}
-  - {fileID: 11400000, guid: 97cf3809ba698a34a976235c1fbcf186, type: 2}
-  - {fileID: 11400000, guid: a45cddc56cc8a314191ba18c6e001277, type: 2}
-  - {fileID: 11400000, guid: 9af778ddeeda6ac4cb1cd91e8d43acd6, type: 2}
-  - {fileID: 11400000, guid: 368316b43257222499487d1a703178d2, type: 2}
-  lifetimeDeliveries: 0
-  playerCrashes: 0
+  m_EditorClassIdentifier: Assembly-CSharp::DataManager
+  database: {fileID: 11400000, guid: 7e57689df40426c4ebfdd881246a176b, type: 2}
 --- !u!1 &921742185
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,4 +23,5 @@ MonoBehaviour:
   headline: '"world''s largest snowball fight" being held downtown today, despite
     complete lack of snow.'
   limit: 0
+  prefab: {fileID: 4921226426627925572, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
   sprite: {fileID: 21300000, guid: 342d18e0f77c55543ba67f6925b6c713, type: 3}

@@ -16,7 +16,7 @@ public class PlayerCollisionController : MonoBehaviour {
     // Function to play a collision sound when colliding with another object.
     private void OnCollisionEnter(Collision collision) {
         // Increase crash count (for achievement tracking).
-        GameManager.achievementData.IncreaseProgress(1);
+        GameManager.dataManager.IncreaseProgress(1);
 
         if (!collision.gameObject.CompareTag("Mute")) {
             // To handle multiple collisions in short sucession, use two Crash Sound Sources.

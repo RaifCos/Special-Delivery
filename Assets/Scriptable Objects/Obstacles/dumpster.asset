@@ -22,4 +22,5 @@ MonoBehaviour:
   headline: '"i''ve heard of garbage collection but this is just ridiculous!" - says
     bystander following reports of runaway dumpsters."'
   limit: 0
+  prefab: {fileID: 3378493229683235564, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   sprite: {fileID: 21300000, guid: e5d8e2aeafe6b624499c9085b58665e5, type: 3}

@@ -18,10 +18,10 @@ public class ObstacleManager : MonoBehaviour {
     }
     
     private void Start() {
+        // Reset Object Counts (from Previous Games)
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
-        obstacles = GameManager.database.GetObstacles();
+        obstacles = GameManager.dataManager.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
-        Debug.Log(obstacles.Count);
         foreach (var obs in obstacles) { 
             if(obs.so.limit > 0) { permObstacles.Add(obs); }
             else { tempObstacles.Add(obs); }
@@ -30,13 +30,11 @@ public class ObstacleManager : MonoBehaviour {
 
     // Function to spawn the starting obstacles at the start of the game.
     public void SpawnStartingObstacles() {
-        // Reset Object Counts (from Previous Games)
-        GameManager.obstacleData.ResetGameEncounters();
         // Spawn three random Cars (Red or Blue).
         for (int i = 0; i < 3; i++) {
             string[] startingObs = {"carRed", "carBlue", "carGreen"};
             int random = Random.Range(0, 3);
-            obstacleObject = Instantiate(GameManager.database.GetObstacle(startingObs[random]).so.prefab);
+            obstacleObject = Instantiate(GameManager.dataManager.GetObstacle(startingObs[random]).so.prefab);
             AddObstacle(obstacleObject);
         }
     }
@@ -101,7 +99,7 @@ public class ObstacleManager : MonoBehaviour {
             bool obstacleFound;
             do { gen = Random.Range(0, permObstacles.Count); 
                 obs = permObstacles[gen];
-                obstacleFound = GameManager.obstacleData.CheckLimit(obs);
+                obstacleFound = GameManager.dataManager.CheckLimit(obs);
                 if(!obstacleFound) { permObstacles.Remove(obs); }
             } while(!obstacleFound);
         } else {

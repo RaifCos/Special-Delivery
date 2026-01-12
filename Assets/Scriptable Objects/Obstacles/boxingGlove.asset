@@ -24,4 +24,5 @@ MonoBehaviour:
   headline: underground boxing club canceled after excessive uppercuts resulted in
     ceiling damage.
   limit: 0
+  prefab: {fileID: 7237503154226248506, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
   sprite: {fileID: 21300000, guid: 980facb81a3db6542980fdb02256a7bb, type: 3}
