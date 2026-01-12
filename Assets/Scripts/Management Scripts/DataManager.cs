@@ -57,12 +57,12 @@ public class DataManager : MonoBehaviour
 
     public void AddObstacleEncounter(string key) {
         gameObs[key] = gameObs.GetValueOrDefault(key) + 1;
-        if (lifetimeProps[key] == 1) GalleryCompletionCheck();
+        if (lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
     }
     
     public void AddPropEncounter(string key) {
         gameProps[key] = gameProps.GetValueOrDefault(key) + 1;
-        if (lifetimeProps[key] == 1) GalleryCompletionCheck();
+        if (lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
         CheckProps();
     }
 
@@ -82,7 +82,7 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public bool CheckLimit(Obstacle obs) => gameObs[obs.so.internalName] < obs.so.limit;
+    public bool CheckLimit(Obstacle obs) => gameObs.GetValueOrDefault(obs.so.internalName) < obs.so.limit;
 
     public void ResetGameEncounters() {
         gameObs = new();
