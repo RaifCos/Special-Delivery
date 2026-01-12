@@ -18,6 +18,7 @@ public class ObstacleManager : MonoBehaviour {
     }
     
     private void Start() {
+        // Reset Object Counts (from Previous Games)
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
         obstacles = GameManager.dataManager.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
@@ -29,8 +30,6 @@ public class ObstacleManager : MonoBehaviour {
 
     // Function to spawn the starting obstacles at the start of the game.
     public void SpawnStartingObstacles() {
-        // Reset Object Counts (from Previous Games)
-        GameManager.dataManager.ResetGameEncounters();
         // Spawn three random Cars (Red or Blue).
         for (int i = 0; i < 3; i++) {
             string[] startingObs = {"carRed", "carBlue", "carGreen"};

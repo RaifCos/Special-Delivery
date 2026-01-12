@@ -15,13 +15,16 @@ public class DataManager : MonoBehaviour
     private int lifetimeDeliveries, playerCrashes;
 
     #region Static Data
-    void Awake() { GameManager.dataManager = this; }
-
-    void Start() {
+    void Awake() { 
+        GameManager.dataManager = this;
         obstacles = database.GetObstacles();
         props = database.GetProps();
         achievements = database.GetAchievements();
+    }
+
+    void Start() {
         LoadEncounterData();
+        LoadAchievementData();
     }
 
     public List<Obstacle> GetObstacles() { return obstacles; }
@@ -37,12 +40,14 @@ public class DataManager : MonoBehaviour
     
     #region Obstacle/Prop Data
     private void LoadEncounterData() {
+        gameObs = new();
         lifetimeObs = new();
         foreach (var obs in obstacles) { 
             string name = obs.so.internalName;
             lifetimeObs[name] = PlayerPrefs.GetInt("EncounterObs_" + name, 0);
         }
 
+        gameProps = new();
         lifetimeProps = new();        
         foreach (var prop in props) { 
             string name = prop.so.internalName;
@@ -51,12 +56,12 @@ public class DataManager : MonoBehaviour
     }
 
     public void AddObstacleEncounter(string key) {
-        gameObs[key]++;
+        gameObs[key] = gameObs.GetValueOrDefault(key) + 1;
         if (lifetimeProps[key] == 1) GalleryCompletionCheck();
     }
     
     public void AddPropEncounter(string key) {
-        lifetimeProps[key]++;
+        gameProps[key] = gameProps.GetValueOrDefault(key) + 1;
         if (lifetimeProps[key] == 1) GalleryCompletionCheck();
         CheckProps();
     }
@@ -103,6 +108,11 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Achievement Data
+    public void LoadAchievementData() {
+        foreach(Achievement_SO ach in achievements) {
+            achievementProgress[ach.internalName] = PlayerPrefs.GetInt("Achievement_" + ach.internalName, 0) == 1;
+        }
+    }
     public bool IsAchieved(string key) => achievementProgress[key];
 
     public int GetLifetimeScore() { return lifetimeDeliveries; }
@@ -119,14 +129,6 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.Save();
             string name = achievements.Find(ach => ach.name == key).externalName;
             GameManager.newsTextScroller.AddAchievementHeadline(name); // Create Headline to display in game.
-        }
-    }
-
-    // Function to reset all Achievements and progress.
-    public void UpdateAchievementData() {
-        var keys = new List<string>(achievementProgress.Keys);
-        foreach (var key in keys) {
-            achievementProgress[key] = PlayerPrefs.GetInt("Achievement_" + key, 0) == 1;
         }
     }
 
