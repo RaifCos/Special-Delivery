@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: carBlue
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: carBlue
+  internalName: carBlue
   externalName: slowmobile
   description: 'slowmobiles are slower, heavier cars that start fierce traffic.
 

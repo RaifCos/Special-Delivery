@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: boulderSnow 1
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: boulderSnow
+  internalName: boulderSnow
   externalName: snowball
   description: 'snowballs roll across the stage, shrinking but speeding up along
     the way.

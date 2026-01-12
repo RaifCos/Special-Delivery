@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
   m_Name: fakeParcels
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  intenalName: fakeParcels
+  internalName: fakeParcels
   externalName: fake parcels
   description: 'imposter parcels fall from the sky to trick and confuse.
 

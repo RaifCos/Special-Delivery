@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45eba49d3e97eab41b0c2379ce8e24ab, type: 3}
   m_Name: hydrant
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
-  intenalName: hydrant
+  internalName: hydrant
   externalName: hydrant
   description: wait, shouldn't there be water coming out of these when you knock
     them over? guys? are these hydrants empty?? hello?? should we say something???
