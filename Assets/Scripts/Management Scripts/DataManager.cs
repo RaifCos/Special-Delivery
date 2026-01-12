@@ -10,7 +10,7 @@ public class DataManager : MonoBehaviour
     private List<Achievement_SO> achievements;
     private Dictionary<string, int> gameObs;
     private Dictionary<string, int> gameProps;
-    private readonly Dictionary<string, int> lifetimeObs, lifetimeProps;
+    private Dictionary<string, int> lifetimeObs, lifetimeProps;
     private readonly Dictionary<string, bool> achievementProgress = new();
     private int lifetimeDeliveries, playerCrashes;
 
@@ -37,11 +37,17 @@ public class DataManager : MonoBehaviour
     
     #region Obstacle/Prop Data
     private void LoadEncounterData() {
-        var keys = new List<string>(lifetimeObs.Keys);
-        foreach (var key in keys) { lifetimeObs[key] = PlayerPrefs.GetInt("EncounterObs_" + key, 0); }
+        lifetimeObs = new();
+        foreach (var obs in obstacles) { 
+            string name = obs.so.internalName;
+            lifetimeObs[name] = PlayerPrefs.GetInt("EncounterObs_" + name, 0);
+        }
 
-        keys = new List<string>(lifetimeProps.Keys);
-        foreach (var key in keys) { lifetimeProps[key] = PlayerPrefs.GetInt("EncounterProp_" + key, 0); }
+        lifetimeProps = new();        
+        foreach (var prop in props) { 
+            string name = prop.so.internalName;
+            lifetimeProps[name] = PlayerPrefs.GetInt("EncounterProp_" + name, 0); 
+        }
     }
 
     public void AddObstacleEncounter(string key) {

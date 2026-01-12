@@ -25,7 +25,6 @@ public class GalleryManager : MonoBehaviour {
     public void UpdateGalleryUI() {
         foreach (Obstacle obs in GameManager.dataManager.GetObstacles()) {
             string name = obs.so.internalName;
-            Debug.Log(name);
             Image img = obstacleIcons.transform.Find(name).GetComponent<Image>();
             if (PlayerPrefs.GetInt("EncounterObs_" + name, 0) > 0) {
                 img.sprite = obs.so.sprite;

@@ -21,7 +21,6 @@ public class ObstacleManager : MonoBehaviour {
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
         obstacles = GameManager.dataManager.GetObstacles();
         // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
-        Debug.Log(obstacles.Count);
         foreach (var obs in obstacles) { 
             if(obs.so.limit > 0) { permObstacles.Add(obs); }
             else { tempObstacles.Add(obs); }

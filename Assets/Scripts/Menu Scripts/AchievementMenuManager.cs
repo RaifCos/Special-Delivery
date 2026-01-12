@@ -31,7 +31,6 @@ public class AchievementMenuManager : MonoBehaviour {
     }
     
     public void DisplayAchievement(string key) {
-        Debug.Log(key);
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
         achievementDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
         Achievement_SO ach = GameManager.dataManager.GetAchievement(key);

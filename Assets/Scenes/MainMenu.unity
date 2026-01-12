@@ -6672,7 +6672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49aa9117a19d49c47911166e13a9d432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataManager
-  database: {fileID: 0}
+  database: {fileID: 11400000, guid: 7e57689df40426c4ebfdd881246a176b, type: 2}
 --- !u!1 &921742185
 GameObject:
   m_ObjectHideFlags: 0
