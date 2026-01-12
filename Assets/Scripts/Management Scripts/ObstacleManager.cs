@@ -101,7 +101,7 @@ public class ObstacleManager : MonoBehaviour {
             bool obstacleFound;
             do { gen = Random.Range(0, permObstacles.Count); 
                 obs = permObstacles[gen];
-                obstacleFound = !GameManager.obstacleData.CheckLimit(obs);
+                obstacleFound = GameManager.obstacleData.CheckLimit(obs);
                 if(!obstacleFound) { permObstacles.Remove(obs); }
             } while(!obstacleFound);
         } else {
