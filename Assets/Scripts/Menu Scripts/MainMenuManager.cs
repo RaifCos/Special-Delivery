@@ -57,7 +57,7 @@ public class MainMenuManager : MonoBehaviour {
                 }    
             case 5: { // Shop 
                     backdrop.color = new Color32(62, 204, 230, 255);
-                    shopUI.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", GameManager.instance.GetMoney());
+                    shopUI.transform.GetChild(2).gameObject.GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", GameManager.dataManager.GetCash());
                     menuUI.SetActive(false);
                     shopUI.SetActive(true);
                     break;

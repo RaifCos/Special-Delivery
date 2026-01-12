@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e2d3eae743ba242adf015f03006bf7, type: 3}
   m_Name: timer120
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
-  internalName: time120
+  internalName: timer120
   externalName: TIME TO SPARE
   description: accumulate 120 seconds on the game timer.
   sprite: {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}

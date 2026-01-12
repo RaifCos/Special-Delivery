@@ -2,24 +2,27 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour
 {
-    private static readonly WaitForSeconds _waitForSeconds0_01 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
+    private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
+    private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow;
     public bool isPlaying = false;
     private bool isGamePaused = false;
 
-    private int completeDeliveries, timeLeft, difficulty; //, confirmationUIID;
+    private int completeDeliveries, timeLeft, deliveryTime, difficulty, moneyEarnt;
     private Animator scoreAnimator, timeAnimator;
 
     void Awake() { GameManager.gameplayManager = this; }
 
     // Start is called before the first frame update.
     void Start() {
+        moneyEarnt = 0;
         Time.timeScale = 1;
         difficulty = GameManager.instance.GetDifficulty();
 
@@ -114,6 +117,7 @@ public class GameplayManager : MonoBehaviour
         while (timeLeft > 0 && isPlaying) {
             yield return _waitForSeconds1; // Wait one second before decrementing time.
             SetTime(-1, true);
+            deliveryTime++;
         }
     }
 
@@ -133,8 +137,9 @@ public class GameplayManager : MonoBehaviour
     // Setter Method for the delivery score, also updates the UI.
     public void SetScore(int value, bool addingScore) {
         if (addingScore) {
-            completeDeliveries += value;
+            completeDeliveries++;
             if (difficulty != 0) {
+                CalculateEarnings();
                 if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                 if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                 if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
@@ -145,6 +150,15 @@ public class GameplayManager : MonoBehaviour
     }
 
     public int GetScore() { return completeDeliveries; }
+
+    private void CalculateEarnings() {
+        
+        int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
+        double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
+        moneyEarnt += income - (int) timePenalty;
+        deliveryTime = 0;
+        Debug.Log("income: "+income +" // penalty: "+timePenalty +" // total: "+moneyEarnt);
+    }
 
     /*
     * ======================
@@ -165,11 +179,25 @@ public class GameplayManager : MonoBehaviour
         // Set UI to be fully transparant.
         endUI.GetComponent<CanvasGroup>().alpha = 0;
         // Until fully faded in, decrease transparancy a little bit every 1/100 seconds.
-        while (endUI.GetComponent<CanvasGroup>().alpha < 1)
-        {
-            yield return _waitForSeconds0_01;
+        while (endUI.GetComponent<CanvasGroup>().alpha < 1) {
+            yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
-        }
+        } yield return _waitForSeconds1;
+        StartCoroutine(MoneyCount());
+    }
+
+    private IEnumerator MoneyCount() {
+        GameObject counter = endUI.transform.Find("Counter").gameObject;
+        counter.SetActive(true);
+        TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
+        int display = 0;
+        do { display++; 
+            counterText.text = display.ToString(); 
+            if (display % 10 == 0) { GameManager.audioManager.PlayParcelSound(true); }
+            yield return _waitForSeconds0001;
+        } while (display < moneyEarnt);
+        yield return _waitForSeconds1;
+        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     // Function to pause the game and go to the pause menu.
@@ -192,7 +220,10 @@ public class GameplayManager : MonoBehaviour
 
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
-        if(difficulty > 0) { GameManager.dataManager.AddEncountersToTotal(); }
+        if(difficulty > 0) { 
+            GameManager.dataManager.AddEncountersToTotal();
+            GameManager.dataManager.CashTransaction(moneyEarnt);    
+        }
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);

@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     private Dictionary<string, int> lifetimeObs, lifetimeProps;
     private readonly Dictionary<string, bool> achievementProgress = new();
     private int lifetimeDeliveries, playerCrashes;
+    private int cash; 
 
     #region Static Data
     void Awake() { 
@@ -25,6 +26,7 @@ public class DataManager : MonoBehaviour
     void Start() {
         LoadEncounterData();
         LoadAchievementData();
+        LoadCash();
     }
 
     public List<Obstacle> GetObstacles() { return obstacles; }
@@ -151,5 +153,24 @@ public class DataManager : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region Cash Data
+    public void LoadCash() { cash = PlayerPrefs.GetInt("Money", 0); }
+
+    public void SaveCash() { PlayerPrefs.SetInt("Money", cash); }
+
+    public int GetCash() => cash;
+    
+    public void SetCash(int input) { cash = input; SaveCash(); }
+
+    public void CashTransaction(int amount) { 
+        cash += amount;
+        if (cash > 1000000) { cash = 1000000; }    
+        if (cash < 0) { cash = 0; }
+        SaveCash();
+    }
+    
+    public bool CanAfford(int amount) => amount < cash;
     #endregion
 }
