@@ -23,4 +23,5 @@ MonoBehaviour:
   headline: local artist unveils "a moving tribute to cones everywhere", whatever
     that means.
   limit: 2
+  prefab: {fileID: 4935346050214575756, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
   sprite: {fileID: 21300000, guid: 2fb02918301f90a4b8697ce118bed95b, type: 3}

@@ -23,4 +23,5 @@ MonoBehaviour:
     work, but haven''t seemed to notice.'
   headline: efficient delivery driver somehow causes surge in traffic.
   limit: 3
+  prefab: {fileID: 4310266740416608923, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
   sprite: {fileID: 21300000, guid: 7cf2133288297cd46ad0b17786ce1b44, type: 3}

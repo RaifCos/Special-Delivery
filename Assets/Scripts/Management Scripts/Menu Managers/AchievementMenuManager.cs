@@ -11,8 +11,6 @@ public class AchievementMenuManager : MonoBehaviour {
     public GameObject achievementDisplay;
     public Sprite lockedSprite;
 
-    private List<Achievement_SO> achievements;
-
     // Variables used for tracking achievements.
     public int lifetimeDeliveries, playerCrashes;
 
@@ -20,12 +18,8 @@ public class AchievementMenuManager : MonoBehaviour {
         GameManager.achievementMenuManager = this;
     }
 
-    void Start() {
-        achievements = GameManager.database.GetAchievements();
-    }
-
     public void UpdateAchievementMenu() {
-        foreach(Achievement_SO ach in achievements) {
+        foreach(Achievement_SO ach in GameManager.dataManager.GetAchievements()) {
             UpdateAchievementUI(ach.internalName);
         }
     }
@@ -33,8 +27,8 @@ public class AchievementMenuManager : MonoBehaviour {
     // Function to update the UI in the Achievement Menu based on the Achievement's state.
     private void UpdateAchievementUI(string key) {
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
-        if (GameManager.achievementData.IsAchieved(key)) { 
-            img.sprite = achievements.Find(sprite => sprite.internalName == key).sprite;
+        if (GameManager.dataManager.IsAchieved(key)) { 
+            img.sprite = GameManager.dataManager.GetAchievement(key).sprite;
         } else { img.sprite = lockedSprite; }
     }
     
@@ -42,7 +36,7 @@ public class AchievementMenuManager : MonoBehaviour {
         Debug.Log(key);
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
         achievementDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        Achievement_SO ach = achievements.Find(ach => ach.internalName == key);
+        Achievement_SO ach = GameManager.dataManager.GetAchievement(key);
         // Achievement is still locked, so show default information.
         if (img.sprite == lockedSprite) {
             achievementDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
@@ -54,11 +48,11 @@ public class AchievementMenuManager : MonoBehaviour {
         string res = ach.description;
         switch (key) {
             case "lifetime250": { // Lifetime Deliveries
-                    res += " [" + GameManager.achievementData.GetLifetimeScore() + "]";
+                    res += " [" + GameManager.dataManager.GetLifetimeScore() + "]";
                     break; }
             case "crash100":
             case "crash250": { // Player Crashes
-                    res += " [" +  GameManager.achievementData.GetPlayerCrashes() + "]";
+                    res += " [" +  GameManager.dataManager.GetPlayerCrashes() + "]";
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
     }  

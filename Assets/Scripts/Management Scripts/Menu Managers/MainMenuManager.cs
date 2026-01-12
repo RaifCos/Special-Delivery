@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
-        GameManager.achievementData.UpdateData();
+        GameManager.dataManager.UpdateAchievementData();
         ToggleShopLock(GameManager.instance.GetShopProgress());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);

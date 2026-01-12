@@ -68,7 +68,7 @@ public class DeliveryManager : MonoBehaviour {
     // Function used when the player completes a delivery.
     public void DeliveryCompleted() {
         // Increment score and lifetime score.
-        GameManager.achievementData.IncreaseProgress(0);
+        GameManager.dataManager.IncreaseProgress(0);
         GameManager.obstacleManager.SpawnObstacle(GameManager.gameplayManager.GetScore() % 2 == 0);
         GameManager.gameplayManager.SetTime(30, true);
     }

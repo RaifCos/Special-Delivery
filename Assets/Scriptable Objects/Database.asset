@@ -12,6 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ecdf334a6c1bd44a46aae252fa2973, type: 3}
   m_Name: Database
   m_EditorClassIdentifier: Assembly-CSharp::SO_Database
-  achievements: []
-  obstacles: []
-  props: []
+  achievements:
+  - {fileID: 11400000, guid: 5d358ff7aef1c774499fc6e7129979ca, type: 2}
+  - {fileID: 11400000, guid: d3c1fa8ad5111e343acbf14a0c7a8e16, type: 2}
+  - {fileID: 11400000, guid: bf6aca89fd1be6b41a1e5d25b496ded6, type: 2}
+  - {fileID: 11400000, guid: 5f26ce30db3c2e34497fd16114b408d1, type: 2}
+  - {fileID: 11400000, guid: 1176a5fa60c4de44c9c8262ea7f231c9, type: 2}
+  - {fileID: 11400000, guid: d8b4ffe4ad5c5f840ad189f914f64c4d, type: 2}
+  - {fileID: 11400000, guid: 372fe049578fa16488bc3e7d72971fd3, type: 2}
+  - {fileID: 11400000, guid: 54f93caf06b45494685f832478e2916d, type: 2}
+  - {fileID: 11400000, guid: 97cf3809ba698a34a976235c1fbcf186, type: 2}
+  - {fileID: 11400000, guid: a45cddc56cc8a314191ba18c6e001277, type: 2}
+  - {fileID: 11400000, guid: 9af778ddeeda6ac4cb1cd91e8d43acd6, type: 2}
+  - {fileID: 11400000, guid: 368316b43257222499487d1a703178d2, type: 2}
+  obstacles:
+  - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
+  - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
+  - {fileID: 8795924381500241567, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
+  - {fileID: 2581911252302640727, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
+  - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
+  - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
+  - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
+  - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
+  - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
+  - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
+  - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
+  - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
+  - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
+  - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
+  props:
+  - {fileID: 4741636504862328621, guid: 546671eda8d0ea24d9951f2b00b3e28c, type: 3}
+  - {fileID: -9019525683207888849, guid: 4630f3e353c06db4296762003491d5a1, type: 3}
+  - {fileID: -7849014766195687166, guid: 6aed478d1b18fd84aa51b7f5814a807a, type: 3}
+  - {fileID: -4083839883206890763, guid: b073c490e7ca9f1499c8e8956eb6d853, type: 3}
+  - {fileID: -1636519629360611569, guid: 1eaef74dda28bad4e9f5f46e22794ce0, type: 3}
+  - {fileID: -1020270408174781601, guid: 39eeff358b150f049a0534ee3b6619b0, type: 3}
+  - {fileID: 5963314625385675019, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
+  - {fileID: 6525851279216416381, guid: 9229633e2b56e09469dab097fe4363b4, type: 3}

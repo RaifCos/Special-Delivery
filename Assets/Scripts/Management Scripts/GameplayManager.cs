@@ -121,7 +121,7 @@ public class GameplayManager : MonoBehaviour
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
             timeLeft += value;
-            if (value > 0 && timeLeft >= 120) { GameManager.achievementData.CompleteAchievement("timer120"); }
+            if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
             if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }
             if (value < 0 && timeLeft <= 10) { TimerAnimation("lowTime"); }
             if (timeLeft == 0) { GameOver(); }
@@ -135,8 +135,8 @@ public class GameplayManager : MonoBehaviour
         if (addingScore) {
             completeDeliveries += value;
             if (difficulty != 0) {
-                if (completeDeliveries == 10) { GameManager.achievementData.CompleteAchievement("score10"); }
-                if (completeDeliveries == 50) { GameManager.achievementData.CompleteAchievement("score50"); }
+                if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
+                if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                 if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
             }
         }
@@ -192,7 +192,7 @@ public class GameplayManager : MonoBehaviour
 
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
-        if(difficulty > 0) { GameManager.obstacleData.AddEncountersToTotal(); }
+        if(difficulty > 0) { GameManager.dataManager.AddEncountersToTotal(); }
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);

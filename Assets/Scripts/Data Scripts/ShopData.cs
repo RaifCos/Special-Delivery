@@ -36,7 +36,7 @@ public class ShopData : MonoBehaviour
         "decreases the rate at which fuel depltes from the booster tank."),
     };
 
-    void Awake() { GameManager.shopData = this; }
+    void Awake() { }
 
     void Start() {
         for (int i = 0; i < upgrades.Length; i++) {

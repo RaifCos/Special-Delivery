@@ -75,7 +75,6 @@ public class OpeningMenuManager : MonoBehaviour {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
         GameManager.instance.SetBestScore(0);
-        GameManager.obstacleData.ResetLifetimeEncounters();
         GameManager.instance.SetShopProgress(false);
     }
 

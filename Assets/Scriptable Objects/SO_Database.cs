@@ -12,12 +12,6 @@ public class SO_Database : ScriptableObject {
     private List<Prop> props;
 
     public List<Achievement_SO> GetAchievements() { return achievements; }
-
-    public Achievement_SO GetAchievement(string key) { return achievements.Find(ach => ach.internalName == key); }
     public List<Obstacle> GetObstacles() { return obstacles; }
-
-    public Obstacle GetObstacle(string key) { return obstacles.Find(obs => obs.so.internalName == key); }
     public List<Prop> GetProps() { return props; }
-
-    public Prop GetProp(string key) { return props.Find(prop => prop.so.internalName == key); }
 }
