@@ -36,11 +36,12 @@ public class MainMenuManager : MonoBehaviour {
                 achievementUI.SetActive(false);
                 break; }
             case 1: { // Achievements 
+                GameManager.achievementMenuManager.UpdateAchievementMenu();
                 backdrop.color = new Color32(39, 191, 200, 255);
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
                 achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.instance.GetBestScore().ToString();
-                GameManager.achievementMenuManager.DisplayAchievement(0);
+                GameManager.achievementMenuManager.DisplayAchievement("score10");
                 break; }
             case 2: { // Gallery
                 menuUI.SetActive(false);

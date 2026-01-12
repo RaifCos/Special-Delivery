@@ -32,7 +32,8 @@ public class GalleryManager : MonoBehaviour {
     // Update is called once per frame
     public void UpdateGalleryUI() {
         foreach (Obstacle obs in obstacles) {
-            string name = obs.so.intenalName;
+            string name = obs.so.internalName;
+            Debug.Log(name);
             Image img = obstacleIcons.transform.Find(name).GetComponent<Image>();
             if (PlayerPrefs.GetInt("EncounterObs_" + name, 0) > 0) {
                 img.sprite = obstacleSprite.Find(sprite => sprite.name == name);
@@ -40,7 +41,7 @@ public class GalleryManager : MonoBehaviour {
         }
         
         foreach (Prop prop in props) {
-            string name = prop.so.intenalName;
+            string name = prop.so.internalName;
             Image img = propIcons.transform.Find(name).GetComponent<Image>();
             if (PlayerPrefs.GetInt("EncounterProp_" + name, 0) > 0) {
                 img.sprite = propSprite.Find(sprite => sprite.name == name);

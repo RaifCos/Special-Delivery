@@ -1,7 +1,7 @@
 using UnityEngine;
 
     public struct ShopUpgrade {
-        public string intenalName, externalName, description;
+        public string internalName, externalName, description;
         public int cost, state;
 
         // State = 0 (Locked)
@@ -9,7 +9,7 @@ using UnityEngine;
         // State = 2 (Purchased)
 
         public ShopUpgrade(string iN, string eN, int c, int defaultState, string d ) {
-            intenalName = iN;
+            internalName = iN;
             externalName = eN;
             cost = c;
             description = d;

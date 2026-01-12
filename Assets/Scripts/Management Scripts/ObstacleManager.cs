@@ -108,7 +108,7 @@ public class ObstacleManager : MonoBehaviour {
             gen = Random.Range(0, tempObstacles.Count);
             obs = tempObstacles[gen];
         } obsSO = obs.so;
-        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.intenalName));
+        GameObject obsObj = Instantiate(Resources.Load<GameObject>("Obstacles/"+obsSO.internalName));
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         AddObstacle(obsObj);
     }

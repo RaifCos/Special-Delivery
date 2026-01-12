@@ -24,7 +24,7 @@ public class ObstacleData : MonoBehaviour {
 
     public Obstacle GetObstacle(string key) {
         foreach (Obstacle obs in obstacles) {
-        if (obs.so.intenalName == key) { return obs; }
+        if (obs.so.internalName == key) { return obs; }
         } return null;
     }
 
@@ -32,7 +32,7 @@ public class ObstacleData : MonoBehaviour {
 
     public Prop GetProp(string key) {
         foreach (Prop prop in props) {
-        if (prop.so.intenalName == key) { return prop; }
+        if (prop.so.internalName == key) { return prop; }
         } return null;
     }
     
@@ -64,37 +64,37 @@ public class ObstacleData : MonoBehaviour {
     }
 
     public bool CheckLimit(Obstacle obs) {
-        return gameObs[obs.so.intenalName] < obs.so.limit;
+        return gameObs[obs.so.internalName] < obs.so.limit;
     }
 
     public void ResetGameEncounters() {
         gameObs = new();
-        foreach(Obstacle obs in obstacles) { gameObs.Add(obs.so.intenalName, 0); }
+        foreach(Obstacle obs in obstacles) { gameObs.Add(obs.so.internalName, 0); }
 
         gameProps = new();
-        foreach(Prop prop in props) { gameProps.Add(prop.so.intenalName, 0); }
+        foreach(Prop prop in props) { gameProps.Add(prop.so.internalName, 0); }
     }
 
     public void ResetLifetimeEncounters() {
         lifetimeObs = new();
-        foreach(Obstacle obs in obstacles) { lifetimeObs.Add(obs.so.intenalName, 0); }
+        foreach(Obstacle obs in obstacles) { lifetimeObs.Add(obs.so.internalName, 0); }
 
         lifetimeProps = new();
-        foreach(Prop prop in props) { lifetimeProps.Add(prop.so.intenalName, 0); }
+        foreach(Prop prop in props) { lifetimeProps.Add(prop.so.internalName, 0); }
     }
 
     private void AchievementCheck() {
         if (!lifetimeObs.ContainsValue(0)
         && !lifetimeProps.ContainsValue(0)) 
-        { GameManager.achievementData.CompleteAchievement(6); }
+        { GameManager.achievementData.CompleteAchievement("galleryAll"); }
     }
     
     // Function to check if all props of a certain type have been destoyed (for achievement tracking).
     public void CheckProps() {
-        if (GameObject.Find("stopSign") == null && GameObject.Find("streetSign") == null) { GameManager.achievementData.CompleteAchievement(7); }
-        if (GameObject.Find("cone") == null) { GameManager.achievementData.CompleteAchievement(8); }
-        if (GameObject.Find("bin") == null) { GameManager.achievementData.CompleteAchievement(9); }
-        if (GameObject.Find("hydrant") == null) { GameManager.achievementData.CompleteAchievement(10); }
-        if (GameObject.Find("bench") == null) { GameManager.achievementData.CompleteAchievement(11); }
+        if (GameObject.Find("stopSign") == null && GameObject.Find("streetSign") == null) { GameManager.achievementData.CompleteAchievement("destroySigns"); }
+        if (GameObject.Find("cone") == null) { GameManager.achievementData.CompleteAchievement("destroyCones"); }
+        if (GameObject.Find("bin") == null) { GameManager.achievementData.CompleteAchievement("destroyBins"); }
+        if (GameObject.Find("hydrant") == null) { GameManager.achievementData.CompleteAchievement("destroyHydrants"); }
+        if (GameObject.Find("bench") == null) { GameManager.achievementData.CompleteAchievement("destroyBenches"); }
     }
 }
