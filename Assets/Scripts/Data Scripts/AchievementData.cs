@@ -41,7 +41,7 @@ public class AchievementData : MonoBehaviour {
             PlayerPrefs.SetInt("Achievement_" + key, 1);
             PlayerPrefs.Save();
             string name = achievements.Find(ach => ach.name == key).externalName;
-            GameManager.newsTextScroller.AddAchievementHeadline("TBA"); // Create Headline to display in game.
+            GameManager.newsTextScroller.AddAchievementHeadline(name); // Create Headline to display in game.
         }
     }
 
