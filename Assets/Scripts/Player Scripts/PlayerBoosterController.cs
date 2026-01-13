@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class PlayerBoosterControl : MonoBehaviour {
 
      [Header("Fuel Values")]
-    public float maxFuel, comsumptionRate, replenishRate, cooldownTime;
+    public float defaultMaxFuel, comsumptionRate, replenishRate, cooldownTime;
+    private float maxFuel;
 
     [Header("Boost Effects")]
     public AudioSource boosterSound; 
@@ -19,6 +20,9 @@ public class PlayerBoosterControl : MonoBehaviour {
 
     void Start() {
         isBoostUnlocked = PlayerPrefs.GetInt("Upgrade_booster", 0) == 1;
+        maxFuel = defaultMaxFuel;
+        maxFuel += PlayerPrefs.GetInt("Upgrade_boosterFuel_I", 0) == 1? 50: 0;
+        maxFuel += PlayerPrefs.GetInt("Upgrade_boosterFuel_II", 0) == 1? 50: 0;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
     }
@@ -59,18 +63,11 @@ public class PlayerBoosterControl : MonoBehaviour {
         fuelSliderImage.color = fuelGradient.Evaluate(fuel / maxFuel);
     }
 
-    public IEnumerator FuelAdjustment() {
-        while(true) {
-            if (isBoosting) { 
-                SetFuel(fuel-1); 
-                yield return new WaitForSeconds(comsumptionRate);    
-            } else if (fuel < maxFuel) {
-                yield return new WaitForSeconds(cooldownTime);
-                while(fuel < maxFuel && !isBoosting) {
-                    SetFuel(fuel+1); 
-                    yield return new WaitForSeconds(replenishRate);
-                }
-            } else { yield return null; }
+    IEnumerator FuelAdjustment() {
+        while (true) {
+            if (isBoosting) { SetFuel(fuel - comsumptionRate * Time.deltaTime); }
+            else if (fuel < maxFuel) { SetFuel(fuel + replenishRate * Time.deltaTime); }
+            yield return null;
         }
     }
 }
