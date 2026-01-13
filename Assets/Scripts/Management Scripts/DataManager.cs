@@ -32,9 +32,6 @@ public class DataManager : MonoBehaviour
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
         LoadShopUnlockData();
-    }
-
-    void Start() {
         LoadEncounterData();
         LoadAchievementData();
         LoadUpgradeData();
@@ -181,7 +178,7 @@ public class DataManager : MonoBehaviour
     public void CashTransaction(int amount) { 
         cash += amount;
         if (cash > 1000000) { cash = 1000000; }    
-        if (cash < 0) { cash = 0; }
+        else if (cash < 0) { cash = 0; }
         SaveCash();
     }
     
@@ -220,6 +217,7 @@ public class DataManager : MonoBehaviour
         if (IsUnlocked(key) && !IsUpgraded(key)) {
             Upgrade_SO upgrade = GetUpgrade(key);
             if (CanAfford(upgrade.cost)) {
+                Debug.Log("buy!");
                 CashTransaction(-upgrade.cost);
                 ActivateUpgrade(key);
                 GameManager.garageMenuManager.UpdateMenu();
@@ -229,7 +227,7 @@ public class DataManager : MonoBehaviour
 
     public void ActivateUpgrade(string key) {
         // Only change if upgrade has not yet been aquired.
-        achievementProgress[key] = true;
+        upgradeProgress[key] = true;
         // Update save data to reflect upgrade status.
         PlayerPrefs.SetInt("Upgrade_" + key, 1);
         PlayerPrefs.Save();
