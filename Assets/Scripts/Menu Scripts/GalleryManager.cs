@@ -7,7 +7,7 @@ public class GalleryManager : MonoBehaviour {
     [Header("Achievement Menu Variables")]
     public Sprite lockedSprite;
     public GameObject obstacleIcons, propIcons;
-    public GameObject galleryDisplay, switchButtonA, switchButtonB;
+    public GameObject displayName, displayCount, displayImage, displayDesc, switchButtonA, switchButtonB;
 
 
     void Awake() { GameManager.galleryManager = this; }
@@ -43,30 +43,32 @@ public class GalleryManager : MonoBehaviour {
     public void DisplayObstacle(string key) {
         Image img = obstacleIcons.transform.Find(key).GetComponent<Image>();
         Obstacle obs = GameManager.dataManager.GetObstacle(key);
-        galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Encountered: " + PlayerPrefs.GetInt("EncounterObs_" + key, 0);;
+        displayImage.GetComponent<Image>().sprite = img.sprite;
         // Achievement is still locked, so show default information.
         if (img.sprite == lockedSprite) {
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "you haven't encountered into this obstacle yet.";
+            displayName.GetComponent<TMP_Text>().text = "???";
+            displayDesc.GetComponent<TMP_Text>().text = "you haven't encountered into this obstacle yet.";
+            displayCount.GetComponent<TMP_Text>().text = "Total Encountered: 0";
         } else { // Achievement is unlocked, so show achievement information.
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = obs.so.externalName;
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = obs.so.description;
+            displayName.GetComponent<TMP_Text>().text = obs.so.externalName;
+            displayDesc.GetComponent<TMP_Text>().text = obs.so.description;
+            displayCount.GetComponent<TMP_Text>().text = "Total Encountered: " + PlayerPrefs.GetInt("EncounterObs_" + key, 0);
         }
     }
     
     public void DisplayProp(string key) {
         Image img = propIcons.transform.Find(key).GetComponent<Image>();
         Prop prop = GameManager.dataManager.GetProp(key);
-        galleryDisplay.transform.GetChild(0).GetComponent<Image>().sprite = img.sprite;
-        galleryDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterProp_" + key, 0);;
+        displayImage.GetComponent<Image>().sprite = img.sprite;
         // Achievement is still locked, so show default information.
         if (img.sprite == lockedSprite) {
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "you haven't, um.. crashed into this obstacle yet.";
+            displayName.GetComponent<TMP_Text>().text = "???";
+            displayDesc.GetComponent<TMP_Text>().text = "you haven't, um.. crashed into this obstacle yet.";
+            displayCount.GetComponent<TMP_Text>().text = "Total Destroyed: 0";
         } else { // Achievement is unlocked, so show achievement information.
-            galleryDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = prop.so.externalName;
-            galleryDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = prop.so.description;
+            displayName.GetComponent<TMP_Text>().text = prop.so.externalName;
+            displayDesc.GetComponent<TMP_Text>().text = prop.so.description;
+            displayCount.GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterProp_" + key, 0);
         }
     }
 }
