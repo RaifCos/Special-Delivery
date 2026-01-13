@@ -15,7 +15,7 @@ MonoBehaviour:
   internalName: boosterFuel_II
   externalName: MEGA FUEL TANK
   description: 'your van is basically nothing but fuel tank at this point. '
-  cost: 2000
+  cost: 1250
   sprite: {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
   requirements:
   - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}

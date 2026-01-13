@@ -10,19 +10,19 @@ public class NewsTextScroller : MonoBehaviour
     public GameObject newsUI;
     public float scrollSpeed;
     TMP_Text newsText;
-    private bool isPlaying;
+    private bool isPlaying, hasBoost;
     private int lastStory, difficulty;
     public readonly List<string> newsQueue = new(); 
 
     // Collections of standard news headlines.
     private readonly string[] genericHeadlines = {
-    "tip: the red arrow at the top of the screen points to where you need to go.",
+    "tip: the tracker arrow at the top of the screen points to where you need to go.",
     "tip: reversing is much slower than driving forward. only reverse when you need to.",
     "tip: slow down before taking tight turns!",
-    "tip: more obstacles will pop up as you complete more deliveries, so look out!",
+    "tip: more obstacles will appear as you complete more deliveries, so look out!",
     "tip: there are shortcuts hidden around the city to help you get places quicker.",
     "tip: pay attention to these news headlines, some of them tell you what obstacles are coming your way!",
-    "tip: using your boost will make it harder to turn, so save your fuel for long, straight stretches of road.",
+    "tip: the faster you complete deliveries, the more cash you'll earn!",
     "\"please stop running over the stop signs\" pleads city council.",
     "mass confusion caused after most street signs knocked down by wreckless delivery driver.",
     "local resident creates website to track the number of cones knocked over by delivery drivers - \"leavetheconesalone.org\"",
@@ -34,19 +34,31 @@ public class NewsTextScroller : MonoBehaviour
     "\"kfg ipsiufbgpu989-jnu\", says cat who walked across writer's keyboard.",
     "mail delivery driver breaks record for most road traffic violations.",
     "scientists attempt to explain the high volume of glowing yellow spots around the city.",
-    "top ten numbers from one to ten (number four will surprise you!)",
+    "parcel city news presents the top ten numbers from one to ten (number four will surprise you!)",
     "the average cosumer now expects their package to be delivered in thirty seconds.",
     "study concludes in-universe news mechanic serves \"no real use, honestly.\"",
     "diamond heist at local bank \"sounds like a much better idea for a video game than whatever this nonsense is\".",
-    "psa: if a car magically appears in front of you, don't worry, it (probaly) isn't a bug.",
+    "psa: if a car magically appears in front of you, don't worry, it (probably) isn't a bug.",
     "\"it's a feature\" says game developer in response to what is clearly a bug.",
     };
+
+    private readonly string[] boostHeadlines = {
+        "tip: using your boost will make it harder to turn, so save your fuel for long, straight stretches of road.",
+        "tip: make your boost more powerful by upgrading your van in the garage.",
+        "tip: keep running out of booster fuel? upgrading your van in the garage for greater fuel capacity!.",
+        "local law enforcement investigates broken speedometers after flagging a mail van with a speed \"10E46mph\".",
+    };
+
+    private string[] headlines;
 
     void Start() {
         GameManager.newsTextScroller = this;
         difficulty = GameManager.instance.GetDifficulty();
         newsText = newsUI.GetComponent<TMP_Text>();
         lastStory = -1;
+        hasBoost = GameManager.dataManager.IsUpgraded("booster");
+        headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
+
     }
 
     // Function to begin the scrolling text 
@@ -74,8 +86,8 @@ public class NewsTextScroller : MonoBehaviour
     private void AddGenericHeadline() {
         // Generate random headline that's different from the previous.
         int i;
-        do { i = Random.Range(0, genericHeadlines.Count()); } while (i == lastStory);
-        newsQueue.Add(genericHeadlines[i]);
+        do { i = Random.Range(0, headlines.Count()); } while (i == lastStory);
+        newsQueue.Add(headlines[i]);
         lastStory = i;
     }
 
@@ -98,7 +110,7 @@ public class NewsTextScroller : MonoBehaviour
         newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. use WASD or the arrow keys to drive.");
         newsQueue.Add("delivering parcels is the name of the game. follow the tracker arrow at the top of your screen to find a parcel.");
         newsQueue.Add("once you've collected a parcel, follow the tracker arrow again to its glowing yellow delivery spot.");
-        newsQueue.Add("press SPACE to use your booster and go faster! boosting does take up fuel though, so use it wisely.");
+        if(hasBoost) newsQueue.Add("press SPACE to use your booster and go faster! boosting does take up fuel though, so use it wisely.");
         newsQueue.Add("as you complete more deliveries, obstacles will begin to fill the stage, making each delivery harder than the last. try to deliver as many parcels as you can before time runs out.");
         newsQueue.Add("this is just the tutorial, so no need to worry about the timer or obstacles. Just get used to the controls!");
         newsQueue.Add("once you're ready to play, press ESCAPE to return to the menu. happy delivering!");
