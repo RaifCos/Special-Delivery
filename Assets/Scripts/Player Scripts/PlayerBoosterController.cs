@@ -15,19 +15,40 @@ public class PlayerBoosterControl : MonoBehaviour {
     [SerializeField] private Gradient fuelGradient;
 
     private float fuel;
-    private bool isBoosting;
+    private bool wantsToBoost, canBoost, isBoosting, isBoostUnlocked;
 
     void Start() {
+        isBoostUnlocked = PlayerPrefs.GetInt("Upgrade_booster", 0) == 1;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
     }
 
     void FixedUpdate() {
-        isBoosting = fuel > 0 && Input.GetKey(KeyCode.Space);
-        if (isBoosting) { 
-            boostParticle.Play();  
-            if(!boosterSound.isPlaying) { boosterSound.Play(); }
-        } else { boosterSound.Stop(); }
+        wantsToBoost = Input.GetKey(KeyCode.Space);
+        canBoost = isBoostUnlocked && fuel > 0f;
+
+        if (!canBoost) {
+            StopBoost();
+            return;
+        }
+
+        if (wantsToBoost) { StartBoost(); } 
+        else { StopBoost(); }
+    }
+
+    void StartBoost() {
+        if (isBoosting) return;
+        isBoosting = true;
+        boostParticle.Play();
+        if (!boosterSound.isPlaying)
+            boosterSound.Play();
+    }
+
+    void StopBoost() {
+        if (!isBoosting) return;
+        isBoosting = false;
+        boostParticle.Stop();
+        boosterSound.Stop();
     }
 
     public bool IsBoosting() { return isBoosting; }
