@@ -6376,7 +6376,7 @@ MonoBehaviour:
   levelSelectUI: {fileID: 2091986785}
   achievementUI: {fileID: 1464823719}
   galleryUI: {fileID: 1346328249}
-  garageUI: {fileID: 0}
+  garageUI: {fileID: 1825328274}
   confirmUI: {fileID: 1493118602}
   navDescription: {fileID: 948076923}
   shopButton: {fileID: 1829574761}

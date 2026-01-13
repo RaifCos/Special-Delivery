@@ -57250,7 +57250,7 @@ MonoBehaviour:
   motorTorque: 3000
   brakeTorque: 2000
   maxSpeed: 25
-  boostPower: 500
+  defaultBoostPower: 0
   steeringRange: 35
   steeringRangeAtMaxSpeed: 15
   engineSound: {fileID: 4323139339722498719}
@@ -57677,7 +57677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e8d6580aa9d6c438399ed464330832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  maxFuel: 100
+  defaultMaxFuel: 100
   comsumptionRate: 0.02
   replenishRate: 0.05
   cooldownTime: 2
@@ -57685,6 +57685,7 @@ MonoBehaviour:
   boostParticle: {fileID: 468440786}
   fuelMeterSlider: {fileID: 1363574911}
   fuelSliderImage: {fileID: 522576964}
+  fuelTank: {fileID: 783837071}
   fuelGradient:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}

@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Start() {
         GameManager.dataManager.LoadAchievementData();
+        GameManager.instance.LoadShopProgress();
         ToggleShopLock(GameManager.instance.GetShopProgress());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);
@@ -71,6 +72,7 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void ToggleShopLock(bool isUnlocked) {
+        Debug.Log(isUnlocked);
         shopButton.interactable = isUnlocked;
         if(isUnlocked) {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";

@@ -29,7 +29,7 @@ public class GarageMenuManager : MonoBehaviour {
     private void UpdateUpgradeUI(string key) {
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
         if (GameManager.dataManager.IsUnlocked(key)) { 
-            img.sprite = GameManager.dataManager.GetAchievement(key).sprite;
+            img.sprite = GameManager.dataManager.GetUpgrade(key).sprite;
             if (GameManager.dataManager.IsUpgraded(key)) { img.color = new Color32(255, 223, 43, 255); }
             else { img.color = Color.white; }
         } else { img.sprite = lockedSprite; }

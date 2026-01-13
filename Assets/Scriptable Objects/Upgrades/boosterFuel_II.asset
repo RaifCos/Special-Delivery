@@ -16,7 +16,7 @@ MonoBehaviour:
   externalName: MEGA FUEL TANK
   description: 'your van is basically nothing but fuel tank at this point. '
   cost: 2000
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
   requirements:
   - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}
   - {fileID: 11400000, guid: 750541572a8be534098e23ebc5f56929, type: 2}

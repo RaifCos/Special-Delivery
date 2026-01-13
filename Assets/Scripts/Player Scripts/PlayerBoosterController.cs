@@ -13,6 +13,7 @@ public class PlayerBoosterControl : MonoBehaviour {
     public ParticleSystem boostParticle; 
     public Slider fuelMeterSlider;
     public Image fuelSliderImage;
+    public GameObject fuelTank;
     [SerializeField] private Gradient fuelGradient;
 
     private float fuel;
@@ -25,6 +26,10 @@ public class PlayerBoosterControl : MonoBehaviour {
         maxFuel += PlayerPrefs.GetInt("Upgrade_boosterFuel_II", 0) == 1? 50: 0;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
+        if(!isBoostUnlocked) {
+            fuelMeterSlider.gameObject.SetActive(false);
+            fuelTank.SetActive(false);
+        }
     }
 
     void FixedUpdate() {

@@ -17,6 +17,6 @@ MonoBehaviour:
   description: 'adds another 30 seconds onto your timer when you''re about to lose.
     only applies once per shift. '
   cost: 10000
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
   requirements:
   - {fileID: 11400000, guid: 97cba5a74af6ae345acd4e89d63ab041, type: 2}

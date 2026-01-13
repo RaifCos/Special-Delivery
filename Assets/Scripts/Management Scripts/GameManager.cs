@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update.
     void Start() {
-        SetShopProgress(PlayerPrefs.GetInt("ShopUnlocked", 0) == 1);
+        LoadShopProgress();
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
     }
 
@@ -51,9 +51,11 @@ public class GameManager : MonoBehaviour
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
 
+    public void LoadShopProgress() { isShopUnlocked = PlayerPrefs.GetInt("ShopUnlocked", 0) == 1; }
     public bool GetShopProgress() { return isShopUnlocked; }
 
     public void SetShopProgress(bool input) { 
+        Debug.Log(input + " " + (input? 1: 0));
         isShopUnlocked = input;
         int res = input? 1: 0;
         PlayerPrefs.SetInt("ShopUnlocked", res);

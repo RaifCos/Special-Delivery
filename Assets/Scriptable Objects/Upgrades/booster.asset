@@ -17,5 +17,5 @@ MonoBehaviour:
   description: 'equips your van with a rocket booster! hold SPACE to accelerate to
     incredible speeds, but be sure to conserve your fuel. '
   cost: 500
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b1bdc24a182e3854980239e42ead6edf, type: 3}
   requirements: []
