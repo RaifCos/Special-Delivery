@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public static DataManager dataManager;
 
     private static int bestScore, difficulty;
-    private bool isShopUnlocked;
 
     [Header("Music Settings")]
     public GameObject muteButton;
@@ -31,10 +30,7 @@ public class GameManager : MonoBehaviour
     void Awake() { instance = this; }
 
     // Start is called before the first frame update.
-    void Start() {
-        LoadShopProgress();
-        ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
-    }
+    void Start() { ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0); }
 
     public int GetBestScore() { return bestScore = PlayerPrefs.GetInt("HighScore", 0); }
 
@@ -50,17 +46,6 @@ public class GameManager : MonoBehaviour
 
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
-
-    public void LoadShopProgress() { isShopUnlocked = PlayerPrefs.GetInt("ShopUnlocked", 0) == 1; }
-    public bool GetShopProgress() { return isShopUnlocked; }
-
-    public void SetShopProgress(bool input) { 
-        isShopUnlocked = input;
-        int res = input? 1: 0;
-        PlayerPrefs.SetInt("ShopUnlocked", res);
-        PlayerPrefs.Save();
-    }
-
     public void ToggleMusic(bool isOn) {
         unmuteButton.SetActive(!isOn);
         muteButton.SetActive(isOn);

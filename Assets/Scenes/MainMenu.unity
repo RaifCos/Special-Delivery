@@ -6687,6 +6687,7 @@ MonoBehaviour:
   buttonIcons: {fileID: 618383312}
   cashCounter: {fileID: 792775555}
   upgradeDisplay: {fileID: 43329729}
+  buyButton: {fileID: 1086907221}
   lockedSprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
 --- !u!1 &948076923
 GameObject:

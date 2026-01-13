@@ -12,8 +12,7 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Start() {
         GameManager.dataManager.LoadAchievementData();
-        GameManager.instance.LoadShopProgress();
-        ToggleShopLock(GameManager.instance.GetShopProgress());
+        ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);
     }

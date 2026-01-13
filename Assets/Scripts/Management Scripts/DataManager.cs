@@ -19,6 +19,7 @@ public class DataManager : MonoBehaviour
     private int lifetimeDeliveries, playerCrashes;
 
     // Upgrade Variables
+    private bool shopUnlocked;
     private readonly Dictionary<string, bool> upgradeProgress = new();
     private int cash; 
 
@@ -30,6 +31,7 @@ public class DataManager : MonoBehaviour
         props = database.GetProps();
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
+        LoadShopUnlockData();
     }
 
     void Start() {
@@ -151,7 +153,7 @@ public class DataManager : MonoBehaviour
                         PlayerPrefs.SetInt("LifetimeScore", lifetimeDeliveries);
                         PlayerPrefs.Save();
                         if (lifetimeDeliveries == 25) { 
-                            GameManager.instance.SetShopProgress(true); 
+                            GameManager.dataManager.SetShopProgress(true); 
                             GameManager.newsTextScroller.AddShopHeadline();
                         } if (lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
                         break; }
@@ -191,6 +193,17 @@ public class DataManager : MonoBehaviour
         foreach(Upgrade_SO up in upgrades) {
             upgradeProgress[up.internalName] = PlayerPrefs.GetInt("Upgrade_" + up.internalName, 0) == 1;
         }
+    }
+
+    public void LoadShopUnlockData() { shopUnlocked = PlayerPrefs.GetInt("ShopUnlocked", 0) == 1; }
+
+    public bool IsShopUnlocked() { return shopUnlocked; }
+
+    public void SetShopProgress(bool input) { 
+        shopUnlocked = input;
+        int res = input? 1: 0;
+        PlayerPrefs.SetInt("ShopUnlocked", res);
+        PlayerPrefs.Save();
     }
 
     public bool IsUpgraded(string key) => upgradeProgress[key];
