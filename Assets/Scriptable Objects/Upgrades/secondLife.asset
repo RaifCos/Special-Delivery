@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
+  m_Name: secondLife
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
+  internalName: secondLife
+  externalName: OVERTIME
+  description: 'adds another 30 seconds onto your timer when you''re about to lose.
+    only applies once per shift. '
+  cost: 3000
+  sprite: {fileID: 21300000, guid: e279451ad33767441a02a48dbdad96e8, type: 3}
+  requirements:
+  - {fileID: 11400000, guid: 97cba5a74af6ae345acd4e89d63ab041, type: 2}

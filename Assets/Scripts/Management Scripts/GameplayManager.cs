@@ -2,24 +2,32 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour
 {
-    private static readonly WaitForSeconds _waitForSeconds0_01 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
+    private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
+    private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow;
     public bool isPlaying = false;
     private bool isGamePaused = false;
+    private bool secondLife = false; 
 
-    private int completeDeliveries, timeLeft, difficulty; //, confirmationUIID;
+    private int completeDeliveries, timeLeft, deliveryTime, difficulty, moneyEarnt;
+    private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
 
     void Awake() { GameManager.gameplayManager = this; }
 
     // Start is called before the first frame update.
     void Start() {
+        penaltyMult = PlayerPrefs.GetInt("Upgrade_noPenalty", 0) == 1? 0f: 1f;
+        incomeMult = PlayerPrefs.GetInt("Upgrade_moreMoney", 0) == 1? 1.5f: 1f;
+        secondLife = PlayerPrefs.GetInt("Upgrade_secondLife", 0) == 1;
+        moneyEarnt = 0;
         Time.timeScale = 1;
         difficulty = GameManager.instance.GetDifficulty();
 
@@ -30,7 +38,10 @@ public class GameplayManager : MonoBehaviour
         // Set up game UI and score/timer values.
         AlternateGameMenus(0);
         SetScore(0, false);
-        SetTime(60, false);
+
+        int startingTime = 60;
+        startingTime += PlayerPrefs.GetInt("Upgrade_moreTime", 0) == 1? 20: 0;
+        SetTime(startingTime, false);
 
         // Initialize the player van.
         playerVan.GetComponent<PlayerControl>().SetState(true);
@@ -114,27 +125,29 @@ public class GameplayManager : MonoBehaviour
         while (timeLeft > 0 && isPlaying) {
             yield return _waitForSeconds1; // Wait one second before decrementing time.
             SetTime(-1, true);
+            deliveryTime++;
         }
     }
 
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
+            if (value < 0 && timeLeft == 1 && secondLife) { secondLife = false; value = 30; }
             timeLeft += value;
             if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
             if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }
             if (value < 0 && timeLeft <= 10) { TimerAnimation("lowTime"); }
             if (timeLeft == 0) { GameOver(); }
-        }
-        else { timeLeft = value; }
+        } else { timeLeft = value; }
         gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
     }
 
     // Setter Method for the delivery score, also updates the UI.
     public void SetScore(int value, bool addingScore) {
         if (addingScore) {
-            completeDeliveries += value;
+            completeDeliveries++;
             if (difficulty != 0) {
+                CalculateEarnings();
                 if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                 if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                 if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
@@ -145,6 +158,14 @@ public class GameplayManager : MonoBehaviour
     }
 
     public int GetScore() { return completeDeliveries; }
+
+    private void CalculateEarnings() {
+        
+        int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
+        double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
+        moneyEarnt += (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
+        deliveryTime = 0;
+    }
 
     /*
     * ======================
@@ -165,11 +186,25 @@ public class GameplayManager : MonoBehaviour
         // Set UI to be fully transparant.
         endUI.GetComponent<CanvasGroup>().alpha = 0;
         // Until fully faded in, decrease transparancy a little bit every 1/100 seconds.
-        while (endUI.GetComponent<CanvasGroup>().alpha < 1)
-        {
-            yield return _waitForSeconds0_01;
+        while (endUI.GetComponent<CanvasGroup>().alpha < 1) {
+            yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
-        }
+        } yield return _waitForSeconds1;
+        StartCoroutine(MoneyCount());
+    }
+
+    private IEnumerator MoneyCount() {
+        GameObject counter = endUI.transform.Find("Counter").gameObject;
+        counter.SetActive(true);
+        TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
+        int display = 0;
+        do { display++; 
+            counterText.text = display.ToString(); 
+            if (display % 10 == 0) { GameManager.audioManager.PlayParcelSound(true); }
+            yield return _waitForSeconds0001;
+        } while (display < moneyEarnt);
+        yield return _waitForSeconds1;
+        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     // Function to pause the game and go to the pause menu.
@@ -192,7 +227,10 @@ public class GameplayManager : MonoBehaviour
 
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
-        if(difficulty > 0) { GameManager.dataManager.AddEncountersToTotal(); }
+        if(difficulty > 0) { 
+            GameManager.dataManager.AddEncountersToTotal();
+            GameManager.dataManager.CashTransaction(moneyEarnt);    
+        }
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
+  m_Name: boosterFuel_II
+  m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
+  internalName: boosterFuel_II
+  externalName: MEGA FUEL TANK
+  description: 'your van is basically nothing but fuel tank at this point. '
+  cost: 1250
+  sprite: {fileID: 21300000, guid: ada90ffebde079645a784cf6231af93c, type: 3}
+  requirements:
+  - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}
+  - {fileID: 11400000, guid: 750541572a8be534098e23ebc5f56929, type: 2}

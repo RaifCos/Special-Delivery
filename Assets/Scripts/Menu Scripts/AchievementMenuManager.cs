@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 // Script to handle achievement tracking and the achievement menu UI.
 public class AchievementMenuManager : MonoBehaviour {
