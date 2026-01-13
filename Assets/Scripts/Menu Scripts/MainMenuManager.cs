@@ -73,7 +73,6 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void ToggleShopLock(bool isUnlocked) {
-        Debug.Log(isUnlocked);
         shopButton.interactable = isUnlocked;
         if(isUnlocked) {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";

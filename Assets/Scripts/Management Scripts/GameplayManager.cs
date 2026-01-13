@@ -165,7 +165,6 @@ public class GameplayManager : MonoBehaviour
         double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
         moneyEarnt += (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
         deliveryTime = 0;
-        Debug.Log("income: "+income +" // penalty: "+timePenalty +" // total: "+moneyEarnt);
     }
 
     /*

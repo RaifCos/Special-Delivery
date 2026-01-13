@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     public bool GetShopProgress() { return isShopUnlocked; }
 
     public void SetShopProgress(bool input) { 
-        Debug.Log(input + " " + (input? 1: 0));
         isShopUnlocked = input;
         int res = input? 1: 0;
         PlayerPrefs.SetInt("ShopUnlocked", res);

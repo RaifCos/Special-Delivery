@@ -30,7 +30,6 @@ public class GarageMenuManager : MonoBehaviour {
     }
 
     private void UpdateUpgradeUI(string key) {
-        Debug.Log(key);
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
         if (GameManager.dataManager.IsUnlocked(key)) { 
             img.sprite = GameManager.dataManager.GetUpgrade(key).sprite;
@@ -59,8 +58,6 @@ public class GarageMenuManager : MonoBehaviour {
             upgradeDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "???";
             ToggleBuyButton(false);
         } else { // Upgrade is unlocked, so show information.
-            Debug.Log(up.externalName);
-            Debug.Log(upgradeDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text);
             upgradeDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = up.externalName;
             upgradeDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = up.description;
             upgradeDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", up.cost);
