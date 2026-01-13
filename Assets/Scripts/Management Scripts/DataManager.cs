@@ -35,6 +35,7 @@ public class DataManager : MonoBehaviour
     void Start() {
         LoadEncounterData();
         LoadAchievementData();
+        LoadUpgradeData();
         LoadCash();
     }
 
@@ -204,10 +205,13 @@ public class DataManager : MonoBehaviour
     public void BuyUpgrade() {
         string key = GameManager.garageMenuManager.GetListed();
         if (IsUnlocked(key) && !IsUpgraded(key)) {
+            Debug.Log("pass check");
             Upgrade_SO upgrade = GetUpgrade(key);
             if (CanAfford(upgrade.cost)) {
+                Debug.Log("can afford");
                 CashTransaction(-upgrade.cost);
                 ActivateUpgrade(key);
+                GameManager.garageMenuManager.UpdateMenu();
             }
         }
     }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
   m_Name: noPenalty
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
-  internalName: decreasedPenalty
+  internalName: noPenalty
   externalName: POSTAL WORKERS UNION
   description: 'you no longer incur cash penalities for slower delivery times. '
   cost: 7500

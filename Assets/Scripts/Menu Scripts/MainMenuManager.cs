@@ -58,6 +58,7 @@ public class MainMenuManager : MonoBehaviour {
                 }    
             case 5: { // Shop 
                     backdrop.color = new Color32(62, 204, 230, 255);
+                    GameManager.garageMenuManager.UpdateMenu();
                     GameManager.garageMenuManager.DisplayUpgrade("booster");
                     menuUI.SetActive(false);
                     garageUI.SetActive(true);
