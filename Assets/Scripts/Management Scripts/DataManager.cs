@@ -131,7 +131,7 @@ public class DataManager : MonoBehaviour
         // Only change if achievement has not yet been aquired or the player isn't in the tutorial.
         if (!achievementProgress[key] && GameManager.instance.GetDifficulty() != 0) {
             achievementProgress[key] = true;
-            // Update save data to reflece achievement status.
+            // Update save data to reflect achievement status.
             PlayerPrefs.SetInt("Achievement_" + key, 1);
             PlayerPrefs.Save();
             string name = achievements.Find(ach => ach.name == key).externalName;
@@ -181,5 +181,23 @@ public class DataManager : MonoBehaviour
     }
     
     public bool CanAfford(int amount) => amount < cash;
+    #endregion
+
+    #region  Upgrade Data
+    public void LoadUpgradeData() {
+        foreach(Upgrade_SO up in upgrades) {
+            upgradeProgress[up.internalName] = PlayerPrefs.GetInt("Upgrade_" + up.internalName, 0) == 1;
+        }
+    }
+    public bool IsUpgraded(string key) => upgradeProgress[key];
+
+    // Function to denote an Achievement as completed.
+    public void ActivateUpgrade(string key) {
+        // Only change if upgrade has not yet been aquired.
+        achievementProgress[key] = true;
+        // Update save data to reflect upgrade status.
+        PlayerPrefs.SetInt("Upgrade_" + key, 1);
+        PlayerPrefs.Save();
+    }
     #endregion
 }
