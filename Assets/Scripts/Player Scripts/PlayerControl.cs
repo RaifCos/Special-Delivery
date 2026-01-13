@@ -27,8 +27,8 @@ public class PlayerControl : MonoBehaviour {
         wheels = GetComponentsInChildren<WheelControl>();
 
         boostPower = defaultBoostPower;
-        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_I", 0) == 1? 2.5f: 0f;
-        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_II", 0) == 1? 2.5f: 0f;        
+        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_I", 0) == 1? 250f: 0f;
+        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_II", 0) == 1? 250f: 0f;        
     }
 
     // FixedUpdate is called at a fixed time interval 

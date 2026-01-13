@@ -57250,7 +57250,7 @@ MonoBehaviour:
   motorTorque: 3000
   brakeTorque: 2000
   maxSpeed: 25
-  defaultBoostPower: 0
+  defaultBoostPower: 500
   steeringRange: 35
   steeringRangeAtMaxSpeed: 15
   engineSound: {fileID: 4323139339722498719}

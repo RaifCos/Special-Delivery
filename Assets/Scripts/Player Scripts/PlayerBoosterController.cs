@@ -46,7 +46,6 @@ public class PlayerBoosterControl : MonoBehaviour {
     }
 
     void StartBoost() {
-        if (isBoosting) return;
         isBoosting = true;
         boostParticle.Play();
         if (!boosterSound.isPlaying)
@@ -68,11 +67,18 @@ public class PlayerBoosterControl : MonoBehaviour {
         fuelSliderImage.color = fuelGradient.Evaluate(fuel / maxFuel);
     }
 
-    IEnumerator FuelAdjustment() {
-        while (true) {
-            if (isBoosting) { SetFuel(fuel - comsumptionRate * Time.deltaTime); }
-            else if (fuel < maxFuel) { SetFuel(fuel + replenishRate * Time.deltaTime); }
-            yield return null;
+    public IEnumerator FuelAdjustment() {
+        while(true) {
+            if (isBoosting) { 
+                SetFuel(fuel-1); 
+                yield return new WaitForSeconds(comsumptionRate);    
+            } else if (fuel < maxFuel) {
+                yield return new WaitForSeconds(cooldownTime);
+                while(fuel < maxFuel && !isBoosting) {
+                    SetFuel(fuel+1); 
+                    yield return new WaitForSeconds(replenishRate);
+                }
+            } else { yield return null; }
         }
     }
 }
