@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;
     public static MainMenuManager mainMenuManager;
+    public static GarageMenuManager garageMenuManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
     public static GameplayManager gameplayManager;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void SetShopProgress(bool input) { 
         isShopUnlocked = input;
         int res = input? 1: 0;
-        PlayerPrefs.SetInt("shopOpened", res);
+        PlayerPrefs.SetInt("ShopUnlocked", res);
         PlayerPrefs.Save();
     }
 
