@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
   m_Name: boosterPower_I
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
-  internalName: 
-  externalName: 
-  description: 
-  cost: 0
+  internalName: boosterPower_I
+  externalName: boost booster
+  description: 'increases the power of your rocket booster, making you even faster. '
+  cost: 1500
   sprite: {fileID: 0}
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}

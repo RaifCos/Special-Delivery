@@ -3,17 +3,25 @@ using System.Collections.Generic;
 
 public class DataManager : MonoBehaviour
 {
+    // Static Variables
     [SerializeField]
     private SO_Database database;
-    private List<Obstacle> obstacles;
-    private List<Prop> props;
-    private List<Achievement_SO> achievements;
-    private Dictionary<string, int> gameObs;
-    private Dictionary<string, int> gameProps;
-    private Dictionary<string, int> lifetimeObs, lifetimeProps;
+    private static List<Obstacle> obstacles;
+    private static List<Prop> props;
+    private static List<Achievement_SO> achievements;
+    private static List<Upgrade_SO> upgrades;
+
+    // Obstacle Variables
+    private Dictionary<string, int> gameObs, gameProps, lifetimeObs, lifetimeProps;
+
+    // Achievement Variables 
     private readonly Dictionary<string, bool> achievementProgress = new();
     private int lifetimeDeliveries, playerCrashes;
+
+    // Upgrade Variables
+    private readonly Dictionary<string, bool> upgradeProgress = new();
     private int cash; 
+
 
     #region Static Data
     void Awake() { 
@@ -21,6 +29,7 @@ public class DataManager : MonoBehaviour
         obstacles = database.GetObstacles();
         props = database.GetProps();
         achievements = database.GetAchievements();
+        upgrades = database.GetUpgrades();
     }
 
     void Start() {

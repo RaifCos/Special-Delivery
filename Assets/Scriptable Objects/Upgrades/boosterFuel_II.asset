@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
   m_Name: boosterFuel_II
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
-  internalName: 
-  externalName: 
-  description: 
-  cost: 0
+  internalName: boosterFuel_II
+  externalName: MEGA fuel tank
+  description: 'your van is basically nothing but fuel tank at this point. '
+  cost: 2000
   sprite: {fileID: 0}
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}
+  - {fileID: 11400000, guid: 750541572a8be534098e23ebc5f56929, type: 2}

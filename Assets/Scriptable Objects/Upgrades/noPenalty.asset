@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: decreasedPenalty
   externalName: postal workers union
-  description: 'you no longer receieve cash penalities for slower delivery times. '
+  description: 'you no longer incur cash penalities for slower delivery times. '
   cost: 7500
   sprite: {fileID: 0}
   requirements: []

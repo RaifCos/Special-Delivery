@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dc22ead2dac67e479469ee6fea5289a, type: 3}
   m_Name: booster
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
-  internalName: 
-  externalName: 
-  description: 
-  cost: 0
+  internalName: booster
+  externalName: 'express rocket booster '
+  description: 'equips your van with a rocket booster! hold SPACE to accelerate to
+    incredible speeds, but be sure to conserve your fuel. '
+  cost: 500
+  sprite: {fileID: 0}
   requirements: []

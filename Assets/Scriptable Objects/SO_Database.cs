@@ -5,13 +5,16 @@ using UnityEngine;
 public class SO_Database : ScriptableObject {
 
     [SerializeField]
-    private List<Achievement_SO> achievements;
-    [SerializeField]
     private List<Obstacle> obstacles;
     [SerializeField]
     private List<Prop> props;
+    [SerializeField]
+    private List<Achievement_SO> achievements;
+    [SerializeField]
+    private List<Upgrade_SO> upgrades;
 
-    public List<Achievement_SO> GetAchievements() { return achievements; }
     public List<Obstacle> GetObstacles() { return obstacles; }
     public List<Prop> GetProps() { return props; }
+    public List<Achievement_SO> GetAchievements() { return achievements; }
+    public List<Upgrade_SO> GetUpgrades() { return upgrades; }
 }
