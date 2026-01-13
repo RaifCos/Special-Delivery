@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: booster
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: booster
-  externalName: 'express rocket booster '
+  externalName: EXPRESS ROCKET BOOSTER
   description: 'equips your van with a rocket booster! hold SPACE to accelerate to
     incredible speeds, but be sure to conserve your fuel. '
   cost: 500

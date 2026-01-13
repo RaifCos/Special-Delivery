@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: boosterPower_II
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: boosterPower_II
-  externalName: boost booster booster
+  externalName: BOOST BOOSTER BOOSTER
   description: 'boosts your booster with a booster that boosts your boost booster.
     boost. '
   cost: 3000

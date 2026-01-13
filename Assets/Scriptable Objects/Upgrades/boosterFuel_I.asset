@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: boosterFuel_I
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: boosterFuel_I
-  externalName: bigger fuel tank
+  externalName: BIGGER FUEL TANK
   description: increases the size of your fuel tank, giving you more booster fuel
     to burn through
   cost: 1000

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: boosterPower_I
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: boosterPower_I
-  externalName: boost booster
+  externalName: BOOST BOOSTER
   description: 'increases the power of your rocket booster, making you even faster. '
   cost: 1500
   sprite: {fileID: 0}

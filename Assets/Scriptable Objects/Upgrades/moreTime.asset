@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: moreTime
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: moreTime
-  externalName: daylight savings
+  externalName: DAYLIGHT SAVINGS
   description: 'start each shift with an extra 20 seconds. '
   cost: 7500
   sprite: {fileID: 0}
-  requirements: []
+  requirements:
+  - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}

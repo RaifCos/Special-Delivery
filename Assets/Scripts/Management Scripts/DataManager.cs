@@ -46,6 +46,8 @@ public class DataManager : MonoBehaviour
     public Prop GetProp(string key) { return props.Find(prop => prop.so.internalName == key); }
     public List<Achievement_SO> GetAchievements() { return achievements; }
     public Achievement_SO GetAchievement(string key) { return achievements.Find(ach => ach.internalName == key); }
+    public List<Upgrade_SO> GetUpgrades() { return upgrades; }
+    public Upgrade_SO GetUpgrade(string key) { return upgrades.Find(up => up.internalName == key); }
 
     #endregion 
     
@@ -189,9 +191,27 @@ public class DataManager : MonoBehaviour
             upgradeProgress[up.internalName] = PlayerPrefs.GetInt("Upgrade_" + up.internalName, 0) == 1;
         }
     }
+
     public bool IsUpgraded(string key) => upgradeProgress[key];
 
-    // Function to denote an Achievement as completed.
+    public bool IsUnlocked(string key) {
+        Upgrade_SO upgrade = GetUpgrade(key);
+        foreach (Upgrade_SO up in upgrade.requirements) {
+            if ( !IsUpgraded(up.internalName) ) { return false; }
+        } return true;
+    }
+
+    public void BuyUpgrade() {
+        string key = GameManager.garageMenuManager.GetListed();
+        if (IsUnlocked(key) && !IsUpgraded(key)) {
+            Upgrade_SO upgrade = GetUpgrade(key);
+            if (CanAfford(upgrade.cost)) {
+                CashTransaction(-upgrade.cost);
+                ActivateUpgrade(key);
+            }
+        }
+    }
+
     public void ActivateUpgrade(string key) {
         // Only change if upgrade has not yet been aquired.
         achievementProgress[key] = true;

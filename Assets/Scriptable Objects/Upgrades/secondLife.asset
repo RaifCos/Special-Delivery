@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: secondLife
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: secondLife
-  externalName: overtime
+  externalName: OVERTIME
   description: 'adds another 30 seconds onto your timer when you''re about to lose.
     only applies once per shift. '
   cost: 10000
