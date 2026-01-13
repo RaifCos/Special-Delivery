@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 
 public class GarageMenuManager : MonoBehaviour {
@@ -20,14 +19,16 @@ public class GarageMenuManager : MonoBehaviour {
 
     private void UpdateCash() {
         cash = GameManager.dataManager.GetCash();
+        cashCounter.GetComponent<TMP_Text>().text =string.Format("{0:#,##0.##}", cash);
     }
 
     public void UpdateMenu() {
-        cashCounter.GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", cash);
+        UpdateCash();
         foreach (Upgrade_SO up in GameManager.dataManager.GetUpgrades()) {
             UpdateUpgradeUI(up.internalName);
         }
     }
+
 
     private void UpdateUpgradeUI(string key) {
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
