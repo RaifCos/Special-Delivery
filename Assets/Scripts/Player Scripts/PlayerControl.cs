@@ -1,15 +1,11 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerControl : MonoBehaviour
-{
+[RequireComponent(typeof(PlayerBoosterControl))]
+public class PlayerControl : MonoBehaviour {
     [Header("Mail Van Properties")]
-    public float motorTorque = 2000f;
-    public float brakeTorque = 2000f;
-    public float maxSpeed = 25f;
-    public float boostPower = 50f;
-    public float steeringRange = 30f;
-    public float steeringRangeAtMaxSpeed = 10f;
+    public float motorTorque, brakeTorque, maxSpeed, defaultBoostPower, steeringRange, steeringRangeAtMaxSpeed;
+    private float boostPower;
     private WheelControl[] wheels;
 
     [Header("Audio Handler")]
@@ -29,6 +25,10 @@ public class PlayerControl : MonoBehaviour
 
         // Get all wheel components attached to the car
         wheels = GetComponentsInChildren<WheelControl>();
+
+        boostPower = defaultBoostPower;
+        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_I", 0) == 1? 2.5f: 0f;
+        boostPower += PlayerPrefs.GetInt("Upgrade_boosterPower_II", 0) == 1? 2.5f: 0f;        
     }
 
     // FixedUpdate is called at a fixed time interval 

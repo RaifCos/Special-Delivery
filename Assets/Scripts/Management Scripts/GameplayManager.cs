@@ -14,14 +14,19 @@ public class GameplayManager : MonoBehaviour
     public GameObject playerVan, directionArrow;
     public bool isPlaying = false;
     private bool isGamePaused = false;
+    private bool secondLife = false; 
 
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, moneyEarnt;
+    private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
 
     void Awake() { GameManager.gameplayManager = this; }
 
     // Start is called before the first frame update.
     void Start() {
+        penaltyMult = PlayerPrefs.GetInt("Upgrade_noPenalty", 0) == 1? 0f: 1f;
+        incomeMult = PlayerPrefs.GetInt("Upgrade_moreMoney", 0) == 1? 1.5f: 1f;
+        secondLife = PlayerPrefs.GetInt("Upgrade_secondLife", 0) == 1;
         moneyEarnt = 0;
         Time.timeScale = 1;
         difficulty = GameManager.instance.GetDifficulty();
@@ -33,7 +38,10 @@ public class GameplayManager : MonoBehaviour
         // Set up game UI and score/timer values.
         AlternateGameMenus(0);
         SetScore(0, false);
-        SetTime(60, false);
+
+        int startingTime = 60;
+        startingTime += PlayerPrefs.GetInt("Upgrade_moreTime", 0) == 1? 20: 0;
+        SetTime(startingTime, false);
 
         // Initialize the player van.
         playerVan.GetComponent<PlayerControl>().SetState(true);
@@ -124,13 +132,13 @@ public class GameplayManager : MonoBehaviour
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
+            if (value < 0 && timeLeft == 1 && secondLife) { secondLife = false; value = 30; }
             timeLeft += value;
             if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
             if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }
             if (value < 0 && timeLeft <= 10) { TimerAnimation("lowTime"); }
             if (timeLeft == 0) { GameOver(); }
-        }
-        else { timeLeft = value; }
+        } else { timeLeft = value; }
         gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
     }
 
@@ -155,7 +163,7 @@ public class GameplayManager : MonoBehaviour
         
         int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
         double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
-        moneyEarnt += income - (int) timePenalty;
+        moneyEarnt += (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
         deliveryTime = 0;
         Debug.Log("income: "+income +" // penalty: "+timePenalty +" // total: "+moneyEarnt);
     }
