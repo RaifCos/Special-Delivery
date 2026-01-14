@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  rotationSpeed: 3.5
+  rotationSpeed: 7
   height: 1.5
   nodeSet: 0
 --- !u!114 &5905357340723977540
