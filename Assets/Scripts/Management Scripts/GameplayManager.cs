@@ -11,12 +11,12 @@ public class GameplayManager : MonoBehaviour
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     public GameObject gameUI, endUI, pauseUI, confirmUI;
-    public GameObject playerVan, directionArrow;
+    public GameObject playerVan, directionArrow, moneyText; 
     public bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
 
-    private int completeDeliveries, timeLeft, deliveryTime, difficulty, moneyEarnt;
+    private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
 
@@ -148,6 +148,7 @@ public class GameplayManager : MonoBehaviour
             completeDeliveries++;
             if (difficulty != 0) {
                 CalculateEarnings();
+                StartCoroutine(MoneyDisplay(deliveryPayment));
                 if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                 if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                 if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
@@ -160,10 +161,10 @@ public class GameplayManager : MonoBehaviour
     public int GetScore() { return completeDeliveries; }
 
     private void CalculateEarnings() {
-        
         int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
         double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
-        moneyEarnt += (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
+        deliveryPayment = (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
+        moneyEarnt += deliveryPayment;
         deliveryTime = 0;
     }
 
@@ -205,6 +206,24 @@ public class GameplayManager : MonoBehaviour
         } while (display < moneyEarnt);
         yield return _waitForSeconds1;
         endUI.transform.Find("Menu Button").gameObject.SetActive(true);
+    }
+
+    private IEnumerator MoneyDisplay(int amount) {
+        TextMeshProUGUI moneyTMP = moneyText.GetComponent<TextMeshProUGUI>();
+        RectTransform rect = moneyText.GetComponent<RectTransform>();
+        moneyTMP.text = "+" + amount;
+        rect.anchoredPosition = Vector2.up * 400f;
+        byte alp = 0;
+        while(alp < 255) {
+            alp += 5;
+            moneyTMP.color = new Color32(255, 227, 0, alp);
+            yield return _waitForSeconds0001;
+        } while(alp > 0) {
+            alp -= 3;
+            rect.anchoredPosition += Vector2.up * 2f;
+            moneyTMP.color = new Color32(255, 227, 0, alp);
+            yield return _waitForSeconds0001;
+        }
     }
 
     // Function to pause the game and go to the pause menu.
