@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8630962516058226002}
   - component: {fileID: 585406344038463225}
   - component: {fileID: 6873733884459152856}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: giantCone
   m_TagString: Mute
   m_Icon: {fileID: 0}

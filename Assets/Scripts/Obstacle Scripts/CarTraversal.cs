@@ -26,27 +26,29 @@ public class CarTraversal : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        float actSpeed = speed;
-        rayPoint = transform.position + Vector3.up * 2;
-        // Check if Car is close enough to its target node.
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
-            actSpeed = Mathf.Lerp(-speed / 2f, speed, hit.distance / 25f);
-        }
+        if(rb.position.y < height) {
+            float actSpeed = speed;
+            rayPoint = transform.position + Vector3.up * 2;
+            // Check if Car is close enough to its target node.
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
+                actSpeed = Mathf.Lerp(-speed / 2f, speed, hit.distance / 25f);
+            }
 
-        floorPos = new(rb.position.x, rb.position.z);
-        if (Vector2.Distance(floorPos, floorNodePos) > 3f) {
-            LookRotation();
-            Vector3 direction = rb.rotation * Vector3.forward;
-            Vector3 velocity = actSpeed * direction;
-            velocity.y = rb.linearVelocity.y;
-            rb.linearVelocity = velocity;
-        } else {
-            // Car is close enough to target, so select new target node.
-            GameObject tempNode = currNode;
-            currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
-            prevNode = tempNode;
-            floorNodePos = new(currNode.transform.position.x, currNode.transform.position.z);
+            floorPos = new(rb.position.x, rb.position.z);
+            if (Vector2.Distance(floorPos, floorNodePos) > 3f) {
+                LookRotation();
+                Vector3 direction = rb.rotation * Vector3.forward;
+                Vector3 velocity = actSpeed * direction;
+                velocity.y = rb.linearVelocity.y;
+                rb.linearVelocity = velocity;
+            } else {
+                // Car is close enough to target, so select new target node.
+                GameObject tempNode = currNode;
+                currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+                prevNode = tempNode;
+                floorNodePos = new(currNode.transform.position.x, currNode.transform.position.z);
+            }
         }
     }
 

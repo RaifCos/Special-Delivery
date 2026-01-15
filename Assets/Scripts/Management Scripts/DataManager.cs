@@ -217,7 +217,6 @@ public class DataManager : MonoBehaviour
         if (IsUnlocked(key) && !IsUpgraded(key)) {
             Upgrade_SO upgrade = GetUpgrade(key);
             if (CanAfford(upgrade.cost)) {
-                Debug.Log("buy!");
                 CashTransaction(-upgrade.cost);
                 ActivateUpgrade(key);
                 GameManager.garageMenuManager.UpdateMenu();
