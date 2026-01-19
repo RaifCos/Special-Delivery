@@ -15,7 +15,7 @@ MonoBehaviour:
   internalName: moreTime
   externalName: DAYLIGHT SAVINGS
   description: 'start each shift with an extra 20 seconds. '
-  cost: 0
+  cost: 2000
   sprite: {fileID: 21300000, guid: a80a01402e4e1f346aa49c5308f81cd8, type: 3}
   requirements:
   - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}
