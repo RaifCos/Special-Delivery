@@ -110,19 +110,26 @@ public class ObstacleManager : MonoBehaviour {
 
     public void SpawnObstacle(bool perm) {
         int gen;
-        Obstacle obs;
+        Obstacle obs = null;
         Obstacle_SO obsSO;
-        if (perm && permObstacles.Count > 0) {
-            bool obstacleFound;
-            do { gen = Random.Range(0, permObstacles.Count); 
-                obs = permObstacles[gen];
-                obstacleFound = GameManager.dataManager.CheckLimit(obs);
-                if(!obstacleFound) { permObstacles.Remove(obs); }
-            } while(!obstacleFound);
-        } else {
+
+        if (perm) {
+            while (permObstacles.Count > 0) {
+                gen = Random.Range(0, permObstacles.Count);
+                var candidate = permObstacles[gen];
+                if (GameManager.dataManager.CheckLimit(candidate)) {
+                    obs = candidate;
+                    break;
+                } permObstacles.RemoveAt(gen);
+            }
+        }
+        
+        if(obs == null) {
             gen = Random.Range(0, tempObstacles.Count);
             obs = tempObstacles[gen];
-        } obsSO = obs.so;
+        } 
+        
+        obsSO = obs.so;
         GameObject obsObj = Instantiate(obsSO.prefab);
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
         AddObstacle(obsObj);
