@@ -24,4 +24,4 @@ MonoBehaviour:
     that means.
   limit: 2
   prefab: {fileID: 4935346050214575756, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
-  sprite: {fileID: 21300000, guid: 2fb02918301f90a4b8697ce118bed95b, type: 3}
+  sprite: {fileID: 21300000, guid: dc513d37165d9ac438ba2c99929e4255, type: 3}
