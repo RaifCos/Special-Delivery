@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Script to handle the behaviour of the UFO's tractor beam.
-public class magnetPull : MonoBehaviour
+public class MagnetPull : MonoBehaviour
 {
     private GameObject magnetParent;
     private readonly List<Rigidbody> objectsInBeam = new();
@@ -35,7 +35,11 @@ public class magnetPull : MonoBehaviour
         // Remove the exiting object from the Magnets's beam list.
         Rigidbody rb = other.GetComponent<Rigidbody>();
         if (rb != null && objectsInBeam.Contains(rb)) {
-            objectsInBeam.Remove(rb); // Remove from list of objects in the beam.
+            removeObj(rb);
         }
+    }
+
+    public void removeObj(Rigidbody rb) {
+        objectsInBeam.Remove(rb);
     }
 }

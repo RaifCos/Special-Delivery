@@ -1,9 +1,15 @@
 using UnityEngine;
 
 public class Magnet : MonoBehaviour {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    MagnetPull pull; 
+
     void Start() {
         Transform trans = GameManager.obstacleManager.GetSideNode();
         transform.SetPositionAndRotation(trans.position, trans.rotation);
+        pull = transform.GetChild(0).GetComponent<MagnetPull>();
+    }
+
+    void OnCollisionEnter(Collision collision) {
+        pull.removeObj(collision.gameObject.GetComponent<Rigidbody>());
     }
 }

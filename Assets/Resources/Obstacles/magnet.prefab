@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8794437690483352467}
   - component: {fileID: 7585165629417468248}
-  - component: {fileID: 845746295475995489}
+  - component: {fileID: 7061574183184321805}
   m_Layer: 0
   m_Name: beam
   m_TagString: Untagged
@@ -282,8 +282,8 @@ Transform:
   m_GameObject: {fileID: 7899827450510933279}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28, y: 1, z: 0}
-  m_LocalScale: {x: 35, y: 5, z: 0.75}
+  m_LocalPosition: {x: 23, y: 1, z: 0}
+  m_LocalScale: {x: 40, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2360324173732160458}
@@ -309,7 +309,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &845746295475995489
+--- !u!114 &7061574183184321805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,6 +318,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7899827450510933279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b427d82f1f487294f8f9d5c28495f0b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 78545279eb2cfb546966efc91215b23f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
