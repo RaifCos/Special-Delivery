@@ -6,12 +6,13 @@ using UnityEngine;
 public class ObstacleManager : MonoBehaviour {
     private static WaitForSeconds _waitForSeconds0_02 = new(0.02f);
     private static WaitForSeconds _waitForSeconds8 = new(8f);
-    public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB;
+    public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB, sideNodes;
     private List<Obstacle> obstacles;
     private readonly List<Obstacle> permObstacles = new();
     private readonly List<Obstacle> tempObstacles = new();
     private GameObject obstacleObject, destroyParticles;
     private readonly List<GameObject> currentObstacles = new();
+    private bool[] sideNodeOccupied; 
 
     void Awake() {
         GameManager.obstacleManager = this;
@@ -25,6 +26,11 @@ public class ObstacleManager : MonoBehaviour {
         foreach (var obs in obstacles) { 
             if(obs.so.limit > 0) { permObstacles.Add(obs); }
             else { tempObstacles.Add(obs); }
+        }
+
+        sideNodeOccupied = new bool[sideNodes.Length];
+        for(int i=0; i<sideNodes.Length; i++) {
+            sideNodeOccupied[i] = false;
         }
     }
 
@@ -66,6 +72,17 @@ public class ObstacleManager : MonoBehaviour {
             res[1] = edgeNodesA[route].transform.position;
         }
         return res;
+    }
+
+    // Function to find a node on the side of the road where a Magnet can spawn. 
+    public Transform GetSideNode() {
+        Transform res = null;
+        do {
+            int rand = Mathf.RoundToInt(Random.Range(0, sideNodes.Length));
+            if( !sideNodeOccupied[rand] ) { res = sideNodes[rand].GetComponent<Transform>(); }
+        } while (res == null);
+        return res;
+
     }
 
     // Function to generate an Edge Path starting at the point closest to the player. 
