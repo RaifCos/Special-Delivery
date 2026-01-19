@@ -259,6 +259,7 @@ public class GameplayManager : MonoBehaviour
     public void AlternateGameMenus(int menu) {
         switch (menu) {
             case 0: { // Game UI
+                gameUI.SetActive(true);
                 pauseUI.SetActive(false);
                 break; }
             case 1: { // Game Over Screen
