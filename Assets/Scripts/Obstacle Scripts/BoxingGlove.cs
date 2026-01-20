@@ -11,7 +11,7 @@ public class BoxingGlove : MonoBehaviour {
     private Rigidbody rb;
     private Vector3 targetPosition;
     private int timer = 0;
-
+    private bool playerDodged = true; 
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -50,6 +50,10 @@ public class BoxingGlove : MonoBehaviour {
         }
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        playerDodged = !collision.gameObject.CompareTag("Player");
+    }
+
     IEnumerator PunchTimer() {
         while (stage < 3) {
             timer++;
@@ -62,6 +66,7 @@ public class BoxingGlove : MonoBehaviour {
                     stage++;
                     break; }
             } yield return _waitForSeconds1;
-        } Destroy(gameObject);
+        }   if(playerDodged) { GameManager.dataManager.CompleteAchievement("dodgeBoxing"); } 
+        Destroy(gameObject);
     }
 }
