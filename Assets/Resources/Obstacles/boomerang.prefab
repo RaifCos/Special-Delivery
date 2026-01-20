@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 783f458123728824f80dfd8c6cd0bc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomerangTraversal
-  speed: 0
+  speed: 5
 --- !u!114 &1957036935311034163
 MonoBehaviour:
   m_ObjectHideFlags: 0

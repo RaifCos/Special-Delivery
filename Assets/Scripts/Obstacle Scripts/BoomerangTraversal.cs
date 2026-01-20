@@ -19,7 +19,7 @@ public class BoomerangTraversal : MonoBehaviour
 
         // Create route for the Boomerang and set starting position. 
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
-        transform.position = routeNodes[0];
+        rb.position = routeNodes[0] + Vector3.up;
 
         // Find the mid point of the Boomerang's route, and the distance to reach it. 
         midpoint = Vector3.Lerp(routeNodes[0], routeNodes[1], 0.5f);
@@ -28,7 +28,9 @@ public class BoomerangTraversal : MonoBehaviour
 
     void FixedUpdate() {
         // Update speed so the boomerang is faster as it approaches the midpoint.
-        actSpeed = (speed + (speed - Vector3.Distance(rb.position, midpoint) / midDist * 10f)) * Time.deltaTime;
+        float distToMid = Vector3.Distance(rb.position, midpoint);
+        float t = 1f - Mathf.Clamp01(distToMid / midDist);
+        actSpeed = Mathf.Max(0f, speed + t * 10f) * Time.fixedDeltaTime;
 
         // Move and Rotate Boomerang.
         rb.MovePosition(Vector3.MoveTowards(transform.position, routeNodes[1], actSpeed));
