@@ -158,7 +158,7 @@ public class DataManager : MonoBehaviour
                         playerCrashes++;
                         PlayerPrefs.SetInt("PlayerCrashes", playerCrashes);
                         PlayerPrefs.Save();
-                        if (playerCrashes == 100) { CompleteAchievement("crash100"); }
+                        if (playerCrashes == 500) { CompleteAchievement("crash500"); }
                         else if (playerCrashes == 1000) { CompleteAchievement("crash1000"); }
                         break; }
             }
