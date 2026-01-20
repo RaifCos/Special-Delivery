@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7028734506908259663}
   - component: {fileID: 3494053510879584318}
   - component: {fileID: 6898210043283201449}
+  - component: {fileID: 1006498245198634741}
   - component: {fileID: 3869633404026903372}
   m_Layer: 0
   m_Name: WheelTR
@@ -90,6 +91,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1006498245198634741
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467770922171344363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: -0.0051021874, y: 0, z: 0.00000047683716}
 --- !u!114 &3869633404026903372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +242,7 @@ GameObject:
   - component: {fileID: 7557134094216191300}
   - component: {fileID: 8318536996754356170}
   - component: {fileID: 686978848515859880}
-  - component: {fileID: 7629007598160013986}
+  - component: {fileID: 3734782977137420660}
   - component: {fileID: 5318106589579877040}
   - component: {fileID: 5851978816512612164}
   - component: {fileID: 6602187984861784103}
@@ -315,8 +339,8 @@ Rigidbody:
   m_GameObject: {fileID: 3283020933204162823}
   serializedVersion: 5
   m_Mass: 200
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 0.5
+  m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: -1, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -333,7 +357,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7629007598160013986
+--- !u!65 &3734782977137420660
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,8 +376,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.95, y: 2.48, z: 4.27}
-  m_Center: {x: 0, y: 1.25, z: 0}
+  m_Size: {x: 1.84, y: 1.9312999, z: 4.090363}
+  m_Center: {x: 0.003702283, y: 1.2959591, z: -0.0025947094}
 --- !u!82 &5318106589579877040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -483,9 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8880e028c90a0543b113e3f0330872c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
-  rotationSpeed: 7
-  height: 1.5
+  topSpeed: 25
+  grip: 25
+  distanceThreshold: 3
+  height: 0
   nodeSet: 0
 --- !u!114 &5905357340723977540
 MonoBehaviour:
@@ -511,6 +536,7 @@ GameObject:
   - component: {fileID: 7766525783508824581}
   - component: {fileID: 4659114195211391759}
   - component: {fileID: 5160105810839045769}
+  - component: {fileID: 8896699513016251194}
   - component: {fileID: 4696063046955610420}
   m_Layer: 0
   m_Name: WheelTL
@@ -590,6 +616,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8896699513016251194
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275455203033556825}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: 0.005106002, y: 0, z: 0.00000047683716}
 --- !u!114 &4696063046955610420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +663,7 @@ GameObject:
   - component: {fileID: 1126049506437364886}
   - component: {fileID: 8062638003925433917}
   - component: {fileID: 856016889199404149}
+  - component: {fileID: 342961621407817990}
   - component: {fileID: 299880704001691271}
   m_Layer: 0
   m_Name: WheelBL
@@ -693,6 +743,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &342961621407817990
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6691706259170853953}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: 0.005106002, y: 0, z: 0}
 --- !u!114 &299880704001691271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -717,6 +790,7 @@ GameObject:
   - component: {fileID: 5327634730963680919}
   - component: {fileID: 1426350839385563921}
   - component: {fileID: 3967186646302501964}
+  - component: {fileID: 1540924741138261912}
   - component: {fileID: 1359826227546561374}
   m_Layer: 0
   m_Name: WheelBR
@@ -796,6 +870,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1540924741138261912
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655770107030069577}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: -0.0051021874, y: 0, z: 0}
 --- !u!114 &1359826227546561374
 MonoBehaviour:
   m_ObjectHideFlags: 0

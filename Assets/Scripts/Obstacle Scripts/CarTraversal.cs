@@ -4,12 +4,15 @@ using UnityEngine;
 
 // Script to handle the behaviour of the Red Car, Green Car, Blue Car, and Toy Car.
 public class CarTraversal : MonoBehaviour {
-    public float speed, rotationSpeed, height;
-    public int nodeSet;
+    [SerializeField] private float topSpeed;
+    [SerializeField] private float grip;
+    [SerializeField] private float distanceThreshold;
+    [SerializeField] private float height;
+    [SerializeField] private int nodeSet;
+    private float actTopSpeed;
     private Rigidbody rb;
-    GameObject currNode, prevNode;
-    private Vector3 rayPoint;
-    private Vector2 floorNodePos, floorPos;
+    private GameObject currNode, prevNode;
+    private Vector3 rayPoint, forward;
     LayerMask layerMask;
 
     // Start is called before the first frame update
@@ -21,46 +24,54 @@ public class CarTraversal : MonoBehaviour {
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
         // Set movement factors based on nodeSet (0 for regular Cars, 1 for Big Car).
         rb.position = prevNode.transform.position;
-        floorNodePos = new(currNode.transform.position.x, currNode.transform.position.z);
     }
 
     // Update is called once per frame
     void FixedUpdate() {
         if(rb.position.y < height) {
-            float actSpeed = speed;
+            actTopSpeed = topSpeed;
             rayPoint = transform.position + Vector3.up * 2;
-            // Check if Car is close enough to its target node.
-            // Does the ray intersect any objects excluding the player layer
+
             if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
-                actSpeed = Mathf.Lerp(-speed / 2f, speed, hit.distance / 25f);
+                actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
             }
 
-            floorPos = new(rb.position.x, rb.position.z);
-            if (Vector2.Distance(floorPos, floorNodePos) > 3f) {
+            Vector3 forward = rb.rotation * Vector3.forward;
+            float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
+            if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
                 LookRotation();
-                Vector3 direction = rb.rotation * Vector3.forward;
-                Vector3 velocity = actSpeed * direction;
-                velocity.y = rb.linearVelocity.y;
-                rb.linearVelocity = velocity;
-            } else {
-                // Car is close enough to target, so select new target node.
-                GameObject tempNode = currNode;
-                currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
-                prevNode = tempNode;
-                floorNodePos = new(currNode.transform.position.x, currNode.transform.position.z);
-            }
+                if(forwardSpeed < actTopSpeed) { MoveCar(); }
+            } else { UpdateNode(); }
         }
+    }
+
+    private void MoveCar() {
+        Vector3 velocity = rb.linearVelocity;
+        Vector3 right   = rb.rotation * Vector3.right;
+            
+        // Decompose velocity
+        float forwardVel = Vector3.Dot(velocity, forward);
+        float lateralVel = Vector3.Dot(velocity, right);
+
+        // Kill lateral sliding
+        Vector3 lateralCorrection = grip * lateralVel * -right;
+        rb.AddForce(lateralCorrection, ForceMode.Acceleration);
+        rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
     }
 
     // Function to set the rotation of the Car to face the destination node.
     private void LookRotation() {
-        Vector2 direction2D = (floorNodePos - floorPos).normalized;
-        Vector3 direction = new(direction2D.x, 0f, direction2D.y);
-        
+        Vector3 direction = (currNode.transform.position - rb.position).normalized;
         if (direction.sqrMagnitude > 0.001f) {
-        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-        Quaternion smoothedRotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
-        rb.MoveRotation(smoothedRotation);
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            Quaternion smoothedRotation = Quaternion.Slerp(rb.rotation, targetRotation, 5f * Time.fixedDeltaTime);
+            rb.MoveRotation(smoothedRotation);
         }
+    }
+
+    private void UpdateNode() {
+        GameObject tempNode = currNode;
+        currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+        prevNode = tempNode;
     }
 }

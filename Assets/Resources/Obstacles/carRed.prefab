@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 63164743111207719}
   - component: {fileID: 5778405626420391357}
   - component: {fileID: 5276992263511498578}
+  - component: {fileID: 3318551398431198004}
   m_Layer: 0
   m_Name: WheelTL
   m_TagString: Untagged
@@ -103,6 +104,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftWheel: 1
+--- !u!136 &3318551398431198004
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183249984849119003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: 0.005106002, y: 0, z: 0.00000023841858}
 --- !u!1 &1881378748551150044
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +139,7 @@ GameObject:
   - component: {fileID: 41801712391739768}
   - component: {fileID: 8723912944678923520}
   - component: {fileID: 3722104649580042848}
+  - component: {fileID: 2887312098201596563}
   m_Layer: 0
   m_Name: WheelTR
   m_TagString: Untagged
@@ -206,6 +231,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftWheel: 0
+--- !u!136 &2887312098201596563
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881378748551150044}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: -0.005106002, y: 0, z: 0.00000023841858}
 --- !u!1 &2149661578271309266
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +266,7 @@ GameObject:
   - component: {fileID: 4563647208690068192}
   - component: {fileID: 8531602872372673284}
   - component: {fileID: 4151949980460017403}
+  - component: {fileID: 4018378241474273391}
   m_Layer: 0
   m_Name: WheelBR
   m_TagString: Untagged
@@ -309,6 +358,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftWheel: 0
+--- !u!136 &4018378241474273391
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149661578271309266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: -0.005106002, y: 0, z: 0}
 --- !u!1 &4310266740416608923
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +393,7 @@ GameObject:
   - component: {fileID: 1842258919305136178}
   - component: {fileID: 1021278235377306791}
   - component: {fileID: 8521221940922132676}
-  - component: {fileID: 4075057077792460396}
+  - component: {fileID: 6312136137903442403}
   - component: {fileID: 2616569049432317034}
   - component: {fileID: 2701679963781775601}
   - component: {fileID: 3587500340161053778}
@@ -416,9 +488,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4310266740416608923}
   serializedVersion: 5
-  m_Mass: 500
+  m_Mass: 1500
   m_LinearDamping: 0.5
-  m_AngularDamping: 0.05
+  m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: -1, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -435,7 +507,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4075057077792460396
+--- !u!65 &6312136137903442403
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -454,8 +526,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.95, y: 2.48, z: 4.27}
-  m_Center: {x: 0, y: 1.25, z: 0}
+  m_Size: {x: 1.95, y: 1.9312999, z: 4.090363}
+  m_Center: {x: 0.003702283, y: 1.2959591, z: -0.0025947094}
 --- !u!82 &2616569049432317034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -585,9 +657,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8880e028c90a0543b113e3f0330872c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  rotationSpeed: 7
-  height: 0.5
+  topSpeed: 15
+  grip: 12
+  distanceThreshold: 3
+  height: 0
   nodeSet: 0
 --- !u!114 &9017513005959047918
 MonoBehaviour:
@@ -614,6 +687,7 @@ GameObject:
   - component: {fileID: 340135750076142535}
   - component: {fileID: 2424235278790748456}
   - component: {fileID: 1371426520888991146}
+  - component: {fileID: 2319882257612690332}
   m_Layer: 0
   m_Name: WheelBL
   m_TagString: Untagged
@@ -705,3 +779,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftWheel: 1
+--- !u!136 &2319882257612690332
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8477437245148169500}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 0.6740092
+  m_Direction: 1
+  m_Center: {x: 0.005106002, y: 0, z: 0}
