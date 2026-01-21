@@ -22401,6 +22401,7 @@ MonoBehaviour:
   musicEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  count: {fileID: 0}
 --- !u!114 &1188058035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22770,7 +22771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME VERSION - v0.2.0
+  m_text: GAME VERSION - v0.2.1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
   m_sharedMaterial: {fileID: 4228786842495613621, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
