@@ -29731,6 +29731,7 @@ MonoBehaviour:
   musicEnd: {fileID: 8300000, guid: 2705cc5fe85e7b14a9f51115199261f7, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  count: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
 --- !u!114 &1188058034
 MonoBehaviour:
   m_ObjectHideFlags: 0
