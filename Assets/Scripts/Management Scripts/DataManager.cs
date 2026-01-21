@@ -34,6 +34,7 @@ public class DataManager : MonoBehaviour
         LoadShopUnlockData();
         LoadEncounterData();
         LoadAchievementData();
+        LoadLifetimeStats();
         LoadUpgradeData();
         LoadCash();
     }
@@ -126,6 +127,12 @@ public class DataManager : MonoBehaviour
             achievementProgress[ach.internalName] = PlayerPrefs.GetInt("Achievement_" + ach.internalName, 0) == 1;
         }
     }
+
+    private void LoadLifetimeStats() {
+        lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
+        playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
+    }
+
     public bool IsAchieved(string key) => achievementProgress[key];
 
     // Function to denote an Achievement as completed.
