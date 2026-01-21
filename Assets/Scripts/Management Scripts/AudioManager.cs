@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource music, parcelSound, soundscape;
     public AudioClip musicStart, musicLoop, musicEnd;
-    public AudioClip soundParcel, soundSpot;
+    public AudioClip soundParcel, soundSpot, count;
     private bool isPlaying = false;
 
     void Awake() {
@@ -62,6 +62,12 @@ public class AudioManager : MonoBehaviour
         else { parcelSound.clip = soundSpot; }
         parcelSound.Play();
     }
+
+    public void SetCountSound() {
+        parcelSound.clip = count;
+    }
+
+    public void PlayCountSound() { parcelSound.Play(); }
 
     public void ToggleMusic(bool isPlaying) {
         music.mute = !isPlaying;

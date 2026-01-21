@@ -199,9 +199,10 @@ public class GameplayManager : MonoBehaviour
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
+        GameManager.audioManager.SetCountSound();
         do { display++; 
             counterText.text = display.ToString(); 
-            if (display % 10 == 0) { GameManager.audioManager.PlayParcelSound(true); }
+            if (display % 10 == 0) { GameManager.audioManager.PlayCountSound(); }
             yield return _waitForSeconds0001;
         } while (display < moneyEarnt);
         yield return _waitForSeconds1;
