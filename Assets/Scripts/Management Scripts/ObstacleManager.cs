@@ -55,7 +55,7 @@ public class ObstacleManager : MonoBehaviour {
             } while (Vector3.Distance(startingNode.transform.position, playerPosition) < 10f);
         } else { // This Obstacle uses the UFO Node set.
             do {
-                startingNode = carStartingNodes[Random.Range(0, carStartingNodes.Length)];
+                startingNode = ufoStartingNodes[Random.Range(0, ufoStartingNodes.Length)];
             } while (Vector3.Distance(startingNode.transform.position, playerPosition) < 10f);
          } return startingNode;
     }
