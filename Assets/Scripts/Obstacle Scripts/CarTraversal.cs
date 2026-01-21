@@ -9,6 +9,7 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private float distanceThreshold;
     [SerializeField] private float height;
     [SerializeField] private int nodeSet;
+    [SerializeField] private bool ignoreBlockage;
     private float actTopSpeed;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
@@ -32,9 +33,9 @@ public class CarTraversal : MonoBehaviour {
             actTopSpeed = topSpeed;
             rayPoint = transform.position + Vector3.up * 2;
 
-            if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
+            if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask) && !ignoreBlockage) {
                 actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
-            }
+            } else { actTopSpeed = topSpeed; }
 
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
