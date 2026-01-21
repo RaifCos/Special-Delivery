@@ -51,8 +51,8 @@ public class AchievementMenuManager : MonoBehaviour {
             case "lifetime250": { // Lifetime Deliveries
                     res += " [" + lifetimeDeliveries + "]";
                     break; }
-            case "crash100":
-            case "crash250": { // Player Crashes
+            case "crash500":
+            case "crash1000": { // Player Crashes
                     res += " [" +  playerCrashes + "]";
                     break; }}
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
