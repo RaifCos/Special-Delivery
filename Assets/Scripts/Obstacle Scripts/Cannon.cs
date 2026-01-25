@@ -6,6 +6,7 @@ public class Cannon : MonoBehaviour {
     [SerializeField] private float firePower;
     [SerializeField] private float minTime, maxTime;
     [SerializeField] private GameObject cannonBall, loadingPointObj;
+    [SerializeField] private AudioSource audioSource;
     private Vector3 loadingPoint;
 
     void Start() {
@@ -16,6 +17,7 @@ public class Cannon : MonoBehaviour {
     }
 
     private void FireCannon() {
+        audioSource.Play();
         GameObject obj = Instantiate(cannonBall, loadingPoint, transform.rotation);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         rb.AddForce(firePower * transform.right, ForceMode.Impulse);
