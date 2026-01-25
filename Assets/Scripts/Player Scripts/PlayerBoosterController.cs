@@ -17,31 +17,22 @@ public class PlayerBoosterControl : MonoBehaviour {
     [SerializeField] private Gradient fuelGradient;
 
     private float fuel;
-    private bool wantsToBoost, canBoost, isBoosting, isBoostUnlocked;
+    private bool isBoosting;
 
     void Start() {
-        isBoostUnlocked = GameManager.dataManager.IsUpgraded("booster");
+        if( !GameManager.dataManager.IsUpgraded("booster") ) { enabled = false; return; }
         maxFuel = defaultMaxFuel;
         maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_I")? 50: 0;
         maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_II")? 50: 0;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
-        if(!isBoostUnlocked) {
-            fuelMeterSlider.gameObject.SetActive(false);
-            fuelTank.SetActive(false);
-        }
+        fuelMeterSlider.GetComponent<Slider>().maxValue = maxFuel;
+        fuelMeterSlider.gameObject.SetActive(false);
+        fuelTank.SetActive(false);
     }
 
     void FixedUpdate() {
-        wantsToBoost = Input.GetKey(KeyCode.Space);
-        canBoost = isBoostUnlocked && fuel > 0f;
-
-        if (!canBoost) {
-            StopBoost();
-            return;
-        }
-
-        if (wantsToBoost) { StartBoost(); } 
+        if (Input.GetKey(KeyCode.Space) && fuel > 0f) { StartBoost(); } 
         else { StopBoost(); }
     }
 
