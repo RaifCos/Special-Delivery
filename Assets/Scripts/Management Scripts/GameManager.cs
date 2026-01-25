@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Script to handle main game functionality.
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
     [Header("Other Manager Scripts")]
     public static GameManager instance;
