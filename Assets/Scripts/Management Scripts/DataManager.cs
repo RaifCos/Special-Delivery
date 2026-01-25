@@ -233,6 +233,7 @@ public class DataManager : MonoBehaviour {
                 CashTransaction(-upgrade.cost);
                 ActivateUpgrade(key);
                 GameManager.garageMenuManager.UpdateMenu();
+                SaveData();
             }
         }
     }
