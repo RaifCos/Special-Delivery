@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
     public static NewsTextScroller newsTextScroller;
     public static DataManager dataManager;
 
-    private static int difficulty;
-
     [Header("Music Settings")]
     public GameObject muteButton, unmuteButton;
 
+    [Header("Player Preferences")]
+    private static int difficulty;
     private bool isMusicPlaying, qualityShadows;
 
     void Awake() { instance = this; }
