@@ -70,6 +70,6 @@ public class DeliveryManager : MonoBehaviour {
         // Increment score and lifetime score.
         GameManager.dataManager.IncreaseProgress(0);
         GameManager.obstacleManager.SpawnObstacle(GameManager.gameplayManager.GetScore() % 2 == 0);
-        GameManager.gameplayManager.SetTime(30, true);
+        GameManager.gameplayManager.SetTime(20, true);
     }
 }
