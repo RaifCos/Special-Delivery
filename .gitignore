@@ -3,3 +3,5 @@
 !Assets/**
 !Packages/
 !Packages/**
+Assets/saveData
+Assets/saveData.meta
