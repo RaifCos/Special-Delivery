@@ -24,9 +24,9 @@ public class GameplayManager : MonoBehaviour
 
     // Start is called before the first frame update.
     void Start() {
-        penaltyMult = PlayerPrefs.GetInt("Upgrade_noPenalty", 0) == 1? 0f: 1f;
-        incomeMult = PlayerPrefs.GetInt("Upgrade_moreMoney", 0) == 1? 1.5f: 1f;
-        secondLife = PlayerPrefs.GetInt("Upgrade_secondLife", 0) == 1;
+        penaltyMult = GameManager.dataManager.IsUpgraded("noPenalty")? 0f: 1f;
+        incomeMult = GameManager.dataManager.IsUpgraded("moreMoney")? 1.5f: 1f;
+        secondLife = GameManager.dataManager.IsUpgraded("secondLife");
         moneyEarnt = 0;
         Time.timeScale = 1;
         difficulty = GameManager.instance.GetDifficulty();
@@ -40,7 +40,7 @@ public class GameplayManager : MonoBehaviour
         SetScore(0, false);
 
         int startingTime = 60;
-        startingTime += PlayerPrefs.GetInt("Upgrade_moreTime", 0) == 1? 20: 0;
+        startingTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
         SetTime(startingTime, false);
 
         // Initialize the player van.
@@ -151,7 +151,7 @@ public class GameplayManager : MonoBehaviour
                 StartCoroutine(MoneyDisplay(deliveryPayment));
                 if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                 if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
-                if (completeDeliveries > GameManager.instance.GetBestScore()) { GameManager.instance.SetBestScore(completeDeliveries); }
+                if (completeDeliveries > GameManager.dataManager.GetBestScore()) { GameManager.dataManager.SetBestScore(completeDeliveries); }
             }
         }
         else { completeDeliveries = value; }
@@ -254,6 +254,7 @@ public class GameplayManager : MonoBehaviour
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);
+        GameManager.dataManager.SaveData();
         StartCoroutine(GameManager.instance.LoadAsyncScene("MainMenu"));
     }
     

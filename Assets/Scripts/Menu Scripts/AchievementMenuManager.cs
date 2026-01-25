@@ -16,8 +16,8 @@ public class AchievementMenuManager : MonoBehaviour {
     void Awake() { GameManager.achievementMenuManager = this; }
 
     void Start() {
-        lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
-        playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
+        lifetimeDeliveries = GameManager.dataManager.GetLifetimeDeliveries();
+        playerCrashes = GameManager.dataManager.GetPlayerCrashes();
     }
 
     public void UpdateAchievementMenu() {

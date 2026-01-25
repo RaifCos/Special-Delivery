@@ -12,6 +12,8 @@ public class GalleryManager : MonoBehaviour {
 
     void Awake() { GameManager.galleryManager = this; }
 
+    void Start() { DisplayObstacle("carRed"); }
+
     public void AlternateGalleryMenus(bool input) {
         obstacleIcons.SetActive(input);
         propIcons.SetActive(!input);
@@ -26,7 +28,7 @@ public class GalleryManager : MonoBehaviour {
         foreach (Obstacle obs in GameManager.dataManager.GetObstacles()) {
             string name = obs.so.internalName;
             Image img = obstacleIcons.transform.Find(name).GetComponent<Image>();
-            if (PlayerPrefs.GetInt("EncounterObs_" + name, 0) > 0) {
+            if (GameManager.dataManager.GetObstacleEncounters(name) > 0) {
                 img.sprite = obs.so.sprite;
             } else { img.sprite = lockedSprite; }
         }
@@ -34,7 +36,7 @@ public class GalleryManager : MonoBehaviour {
         foreach (Prop prop in GameManager.dataManager.GetProps()) {
             string name = prop.so.internalName;
             Image img = propIcons.transform.Find(name).GetComponent<Image>();
-            if (PlayerPrefs.GetInt("EncounterProp_" + name, 0) > 0) {
+            if (GameManager.dataManager.GetPropEncounters(name) > 0) {
                 img.sprite = prop.so.sprite;
             } else { img.sprite = lockedSprite; }
         }
@@ -52,7 +54,7 @@ public class GalleryManager : MonoBehaviour {
         } else { // Achievement is unlocked, so show achievement information.
             displayName.GetComponent<TMP_Text>().text = obs.so.externalName;
             displayDesc.GetComponent<TMP_Text>().text = obs.so.description;
-            displayCount.GetComponent<TMP_Text>().text = "Total Encountered: " + PlayerPrefs.GetInt("EncounterObs_" + key, 0);
+            displayCount.GetComponent<TMP_Text>().text = "Total Encountered: " + GameManager.dataManager.GetObstacleEncounters(key);
         }
     }
     
@@ -68,7 +70,7 @@ public class GalleryManager : MonoBehaviour {
         } else { // Achievement is unlocked, so show achievement information.
             displayName.GetComponent<TMP_Text>().text = prop.so.externalName;
             displayDesc.GetComponent<TMP_Text>().text = prop.so.description;
-            displayCount.GetComponent<TMP_Text>().text = "Total Destroyed: " + PlayerPrefs.GetInt("EncounterProp_" + key, 0);
+            displayCount.GetComponent<TMP_Text>().text = "Total Destroyed: " + GameManager.dataManager.GetPropEncounters(key);
         }
     }
 }

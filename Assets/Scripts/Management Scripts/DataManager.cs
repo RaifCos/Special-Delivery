@@ -1,42 +1,49 @@
+using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
-public class DataManager : MonoBehaviour
-{
+[System.Serializable]
+public class Data {
+    public Dictionary<string, int> lifetimeObs = new();
+    public Dictionary<string, int> lifetimeProps = new();
+    public Dictionary<string, bool> achievementProgress = new();
+    public Dictionary<string, bool> upgradeProgress = new();
+    public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
+    public bool shopUnlocked = false;
+}
+
+public class DataManager : MonoBehaviour {
+
+    #region Variables
+    // Save Data 
+    [SerializeField] private string jsonFileName;
+    [SerializeField] private string test;
+    private string saveFilePath; 
+
     // Static Variables
-    [SerializeField]
-    private SO_Database database;
+    [SerializeField] private SO_Database database;
     private static List<Obstacle> obstacles;
     private static List<Prop> props;
     private static List<Achievement_SO> achievements;
     private static List<Upgrade_SO> upgrades;
 
+    Data data = new();
+
     // Obstacle Variables
-    private Dictionary<string, int> gameObs, gameProps, lifetimeObs, lifetimeProps;
+    private Dictionary<string, int> gameObs = new();
+    private Dictionary<string, int> gameProps = new();
+    #endregion
 
-    // Achievement Variables 
-    private readonly Dictionary<string, bool> achievementProgress = new();
-    private int lifetimeDeliveries, playerCrashes;
-
-    // Upgrade Variables
-    private bool shopUnlocked;
-    private readonly Dictionary<string, bool> upgradeProgress = new();
-    private int cash; 
-
-
-    #region Static Data
+    #region Scriptable Object Methods
     void Awake() { 
         GameManager.dataManager = this;
         obstacles = database.GetObstacles();
         props = database.GetProps();
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
-        LoadShopUnlockData();
-        LoadEncounterData();
-        LoadAchievementData();
-        LoadLifetimeStats();
-        LoadUpgradeData();
-        LoadCash();
+        saveFilePath = Path.Combine(test, jsonFileName);
+        LoadData();
     }
 
     public List<Obstacle> GetObstacles() { return obstacles; }
@@ -49,51 +56,80 @@ public class DataManager : MonoBehaviour
     public Achievement_SO GetAchievement(string key) { return achievements.Find(ach => ach.internalName == key); }
     public List<Upgrade_SO> GetUpgrades() { return upgrades; }
     public Upgrade_SO GetUpgrade(string key) { return upgrades.Find(up => up.internalName == key); }
+    #endregion
+
+    #region Save Data
+    public void LoadData() {
+        if (File.Exists(saveFilePath)) {
+            string json = File.ReadAllText(saveFilePath);
+            data = JsonConvert.DeserializeObject<Data>(json);
+        } else {
+            data = GameManager.dataManager.DefaultData();
+            SaveData(); 
+        }
+    }
+
+    public void SaveData() {
+        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+        File.WriteAllText(saveFilePath, json);
+    }
+
+    public Data ResetData() {
+        Data data = GameManager.dataManager.DefaultData();
+        SaveData();
+        return data;
+    }
+
+    public Data DefaultData() {
+        Data defaultData = new();
+        foreach(Obstacle obs in obstacles) {
+            Debug.Log(obs.so.internalName);
+            defaultData.lifetimeObs[obs.so.internalName] = 0;
+        }
+
+        foreach(Prop prop in props) {
+            defaultData.lifetimeProps[prop.so.internalName] = 0;
+        }
+
+        foreach(Achievement_SO ach in achievements) {
+            defaultData.achievementProgress[ach.internalName] = false;
+        }
+
+        foreach(Upgrade_SO up in upgrades) {
+            defaultData.upgradeProgress[up.internalName] = false;
+        }
+
+        return defaultData;
+    }
 
     #endregion 
     
     #region Obstacle/Prop Data
-    private void LoadEncounterData() {
-        gameObs = new();
-        lifetimeObs = new();
-        foreach (var obs in obstacles) { 
-            string name = obs.so.internalName;
-            lifetimeObs[name] = PlayerPrefs.GetInt("EncounterObs_" + name, 0);
-        }
-
-        gameProps = new();
-        lifetimeProps = new();        
-        foreach (var prop in props) { 
-            string name = prop.so.internalName;
-            lifetimeProps[name] = PlayerPrefs.GetInt("EncounterProp_" + name, 0); 
-        }
-    }
-
     public void AddObstacleEncounter(string key) {
         gameObs[key] = gameObs.GetValueOrDefault(key) + 1;
-        if (lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
+        if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
     }
     
     public void AddPropEncounter(string key) {
         gameProps[key] = gameProps.GetValueOrDefault(key) + 1;
-        if (lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
+        if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
         CheckProps();
     }
+
+    public int GetObstacleEncounters(string key) => data.lifetimeObs[key];
+
+    public int GetPropEncounters(string key) => data.lifetimeProps[key];
 
     public void AddEncountersToTotal() {
         var keys = new List<string>(gameObs.Keys);
         foreach (var key in keys) { 
-            lifetimeObs[key] += gameObs[key];
-            PlayerPrefs.SetInt("EncounterObs_" + key, lifetimeObs[key]); 
+            data.lifetimeObs[key] += gameObs[key];
         }
 
         keys = new List<string>(gameProps.Keys);
         foreach (var key in keys) { 
-            lifetimeProps[key] += gameProps[key];
-            PlayerPrefs.SetInt("EncounterProp_" + key, lifetimeProps[key]); 
+            data.lifetimeProps[key] += gameProps[key];
         }
-
-        PlayerPrefs.Save();
     }
 
     public bool CheckLimit(Obstacle obs) => gameObs.GetValueOrDefault(obs.so.internalName) < obs.so.limit;
@@ -107,7 +143,7 @@ public class DataManager : MonoBehaviour
     }
 
     private void GalleryCompletionCheck() {
-        if (!lifetimeObs.ContainsValue(0) && !lifetimeProps.ContainsValue(0)) 
+        if (!data.lifetimeObs.ContainsValue(0) && !data.lifetimeProps.ContainsValue(0)) 
         { CompleteAchievement("galleryAll"); }
     }
     
@@ -122,27 +158,17 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Achievement Data
-    public void LoadAchievementData() {
-        foreach(Achievement_SO ach in achievements) {
-            achievementProgress[ach.internalName] = PlayerPrefs.GetInt("Achievement_" + ach.internalName, 0) == 1;
-        }
-    }
 
-    private void LoadLifetimeStats() {
-        lifetimeDeliveries = PlayerPrefs.GetInt("LifetimeScore", 0);
-        playerCrashes = PlayerPrefs.GetInt("PlayerCrashes", 0);
-    }
+    public int GetLifetimeDeliveries() => data.lifetimeDeliveries; 
+    public int GetPlayerCrashes() => data.playerCrashes;
 
-    public bool IsAchieved(string key) => achievementProgress[key];
+    public bool IsAchieved(string key) => data.achievementProgress[key];
 
     // Function to denote an Achievement as completed.
     public void CompleteAchievement(string key) {
         // Only change if achievement has not yet been aquired or the player isn't in the tutorial.
-        if (!achievementProgress[key] && GameManager.instance.GetDifficulty() != 0) {
-            achievementProgress[key] = true;
-            // Update save data to reflect achievement status.
-            PlayerPrefs.SetInt("Achievement_" + key, 1);
-            PlayerPrefs.Save();
+        if (!data.achievementProgress[key] && GameManager.instance.GetDifficulty() != 0) {
+            data.achievementProgress[key] = true;
             string name = achievements.Find(ach => ach.name == key).externalName;
             GameManager.newsTextScroller.AddAchievementHeadline(name); // Create Headline to display in game.
         }
@@ -153,20 +179,16 @@ public class DataManager : MonoBehaviour
         if (GameManager.instance.GetDifficulty() != 0) {
             switch (id) {
                 case 0: { // Lifetime Deliveries
-                        lifetimeDeliveries++;
-                        PlayerPrefs.SetInt("LifetimeScore", lifetimeDeliveries);
-                        PlayerPrefs.Save();
-                        if (lifetimeDeliveries == 25) { 
+                        data.lifetimeDeliveries++;
+                        if (data.lifetimeDeliveries == 25) { 
                             GameManager.dataManager.SetShopProgress(true); 
                             GameManager.newsTextScroller.AddShopHeadline();
-                        } if (lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
+                        } if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
                         break; }
                 case 1: { // Player Crashes
-                        playerCrashes++;
-                        PlayerPrefs.SetInt("PlayerCrashes", playerCrashes);
-                        PlayerPrefs.Save();
-                        if (playerCrashes == 500) { CompleteAchievement("crash500"); }
-                        else if (playerCrashes == 1000) { CompleteAchievement("crash1000"); }
+                        data.playerCrashes++;
+                        if (data.playerCrashes == 500) { CompleteAchievement("crash500"); }
+                        else if (data.playerCrashes == 1000) { CompleteAchievement("crash1000"); }
                         break; }
             }
         }
@@ -174,43 +196,27 @@ public class DataManager : MonoBehaviour
     #endregion
 
     #region Cash Data
-    public void LoadCash() { cash = PlayerPrefs.GetInt("Money", 0); }
 
-    public void SaveCash() { PlayerPrefs.SetInt("Money", cash); }
-
-    public int GetCash() => cash;
+    public int GetCash() => data.cash;
     
-    public void SetCash(int input) { cash = input; SaveCash(); }
+    public void SetCash(int input) { data.cash = input; }
 
     public void CashTransaction(int amount) { 
-        cash += amount;
-        if (cash > 1000000) { cash = 1000000; }    
-        else if (cash < 0) { cash = 0; }
-        SaveCash();
+        data.cash += amount;
+        if (data.cash > 1000000) { data.cash = 1000000; }    
+        else if (data.cash < 0) { data.cash = 0; }
     }
     
-    public bool CanAfford(int amount) => amount < cash;
+    public bool CanAfford(int amount) => amount < data.cash;
     #endregion
 
     #region  Upgrade Data
-    public void LoadUpgradeData() {
-        foreach(Upgrade_SO up in upgrades) {
-            upgradeProgress[up.internalName] = PlayerPrefs.GetInt("Upgrade_" + up.internalName, 0) == 1;
-        }
-    }
 
-    public void LoadShopUnlockData() { shopUnlocked = PlayerPrefs.GetInt("ShopUnlocked", 0) == 1; }
+    public bool IsShopUnlocked() { return data.shopUnlocked; }
 
-    public bool IsShopUnlocked() { return shopUnlocked; }
+    public void SetShopProgress(bool input) { data.shopUnlocked = input; }
 
-    public void SetShopProgress(bool input) { 
-        shopUnlocked = input;
-        int res = input? 1: 0;
-        PlayerPrefs.SetInt("ShopUnlocked", res);
-        PlayerPrefs.Save();
-    }
-
-    public bool IsUpgraded(string key) => upgradeProgress[key];
+    public bool IsUpgraded(string key) => data.upgradeProgress[key];
 
     public bool IsUnlocked(string key) {
         Upgrade_SO upgrade = GetUpgrade(key);
@@ -231,12 +237,11 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void ActivateUpgrade(string key) {
-        // Only change if upgrade has not yet been aquired.
-        upgradeProgress[key] = true;
-        // Update save data to reflect upgrade status.
-        PlayerPrefs.SetInt("Upgrade_" + key, 1);
-        PlayerPrefs.Save();
-    }
+    public void ActivateUpgrade(string key) { data.upgradeProgress[key] = true; }
+    #endregion
+
+    #region High-Score Data
+    public int GetBestScore() { return data.bestScore; }
+    public void SetBestScore(int val) { data.bestScore = val; }
     #endregion
 }
