@@ -39,7 +39,7 @@ public class GameplayManager : MonoBehaviour
         AlternateGameMenus(0);
         SetScore(0, false);
 
-        int startingTime = 60;
+        int startingTime = 80;
         startingTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
         SetTime(startingTime, false);
 

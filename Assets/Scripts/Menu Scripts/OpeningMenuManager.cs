@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Script to handle main game functionality.
 public class OpeningMenuManager : MonoBehaviour {
-    public GameObject openingUI, settingsUI, creditsUI, confirmUI;
+    public GameObject openingUI, settingsUI, creditsUI, confirmUI, lowerButton, higherButton;
     private static int confirmationUIID;
 
     void Awake() { GameManager.openingMenuManager = this; }
@@ -67,6 +67,12 @@ public class OpeningMenuManager : MonoBehaviour {
             case 1: { // Reset All Data.
                 EraseData(); break; }
         }}
+    }
+
+    public void SetShadows(bool beingSetLower) {
+        lowerButton.SetActive(!beingSetLower);
+        higherButton.SetActive(beingSetLower);
+        GameManager.instance.ToggleShadows(beingSetLower);
     }
 
     // Function to delete player's progress on request.

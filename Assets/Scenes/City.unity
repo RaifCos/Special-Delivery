@@ -2397,6 +2397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 117567215}
   - component: {fileID: 117567214}
+  - component: {fileID: 117567216}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2484,6 +2485,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224572258}
   m_LocalEulerAnglesHint: {x: 55.1, y: -123.7, z: 0}
+--- !u!114 &117567216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117567213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d05b3f42ae03445b70ea50a174ee9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShadowQuality
 --- !u!1 &120226238
 GameObject:
   m_ObjectHideFlags: 0
@@ -22282,6 +22295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797506872}
   - component: {fileID: 797506871}
+  - component: {fileID: 797506873}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -22369,6 +22383,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 224572258}
   m_LocalEulerAnglesHint: {x: 44.4, y: 54.2, z: 0}
+--- !u!114 &797506873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797506870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d05b3f42ae03445b70ea50a174ee9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &800488388
 GameObject:
   m_ObjectHideFlags: 0

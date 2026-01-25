@@ -20,17 +20,20 @@ public class GameManager : MonoBehaviour
     public static NewsTextScroller newsTextScroller;
     public static DataManager dataManager;
 
-    private static int bestScore, difficulty;
+    private static int difficulty;
 
     [Header("Music Settings")]
-    public GameObject muteButton;
-    public GameObject unmuteButton;
-    private bool isMusicPlaying;
+    public GameObject muteButton, unmuteButton;
+
+    private bool isMusicPlaying, qualityShadows;
 
     void Awake() { instance = this; }
 
     // Start is called before the first frame update.
-    void Start() { ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0); }
+    void Start() { 
+        ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
+        ToggleShadows(PlayerPrefs.GetInt("Shadows", 0) == 0);   
+    }
 
     // Getter Method for the current difficulty. 
     public int GetDifficulty() { return difficulty; }
@@ -47,7 +50,16 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void ToggleShadows(bool areLower) {
+        qualityShadows = !areLower;
+        int res = qualityShadows? 0: 1;
+        PlayerPrefs.SetInt("Shadows", res);
+        PlayerPrefs.Save();
+    }
+
     public bool GetMusicPlaying() { return isMusicPlaying; }
+
+    public bool GetShadowQuality() { return qualityShadows; }
     
     public IEnumerator LoadAsyncScene(string scene) {
         audioManager.StopGameMusic();
