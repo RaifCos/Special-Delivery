@@ -20,15 +20,17 @@ public class PlayerBoosterControl : MonoBehaviour {
     private bool isBoosting;
 
     void Start() {
-        if( !GameManager.dataManager.IsUpgraded("booster") ) { enabled = false; return; }
+        if( !GameManager.dataManager.IsUpgraded("booster") ) { 
+            fuelMeterSlider.gameObject.SetActive(false);
+            fuelTank.SetActive(false);
+            enabled = false; return; 
+        }
         maxFuel = defaultMaxFuel;
         maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_I")? 50: 0;
         maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_II")? 50: 0;
+        fuelMeterSlider.GetComponent<Slider>().maxValue = maxFuel;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
-        fuelMeterSlider.GetComponent<Slider>().maxValue = maxFuel;
-        fuelMeterSlider.gameObject.SetActive(false);
-        fuelTank.SetActive(false);
     }
 
     void FixedUpdate() {
