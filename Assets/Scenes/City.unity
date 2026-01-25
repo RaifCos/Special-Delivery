@@ -29726,9 +29726,9 @@ MonoBehaviour:
   music: {fileID: 1188058030}
   parcelSound: {fileID: 1188058029}
   soundscape: {fileID: 1188058028}
-  musicStart: {fileID: 8300000, guid: 64559e764c1eb174dbfa8ef70b248359, type: 3}
-  musicLoop: {fileID: 8300000, guid: 64559e764c1eb174dbfa8ef70b248359, type: 3}
-  musicEnd: {fileID: 8300000, guid: 2705cc5fe85e7b14a9f51115199261f7, type: 3}
+  musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
+  musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
+  musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
   count: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
