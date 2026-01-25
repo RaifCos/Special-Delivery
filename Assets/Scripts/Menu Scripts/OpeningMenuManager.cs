@@ -72,9 +72,7 @@ public class OpeningMenuManager : MonoBehaviour {
     // Function to delete player's progress on request.
     public void EraseData() {
         GameManager.audioManager.PlayParcelSound(false);
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        GameManager.instance.SetBestScore(0);
+        GameManager.dataManager.ResetData();
         GameManager.dataManager.SetShopProgress(false);
     }
 

@@ -20,10 +20,10 @@ public class PlayerBoosterControl : MonoBehaviour {
     private bool wantsToBoost, canBoost, isBoosting, isBoostUnlocked;
 
     void Start() {
-        isBoostUnlocked = PlayerPrefs.GetInt("Upgrade_booster", 0) == 1;
+        isBoostUnlocked = GameManager.dataManager.IsUpgraded("booster");
         maxFuel = defaultMaxFuel;
-        maxFuel += PlayerPrefs.GetInt("Upgrade_boosterFuel_I", 0) == 1? 50: 0;
-        maxFuel += PlayerPrefs.GetInt("Upgrade_boosterFuel_II", 0) == 1? 50: 0;
+        maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_I")? 50: 0;
+        maxFuel += GameManager.dataManager.IsUpgraded("boosterFuel_II")? 50: 0;
         SetFuel(maxFuel);
         StartCoroutine(FuelAdjustment());
         if(!isBoostUnlocked) {

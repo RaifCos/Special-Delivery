@@ -29862,7 +29862,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49aa9117a19d49c47911166e13a9d432, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DataManager
+  m_EditorClassIdentifier: '::'
+  jsonFileName: saveData
+  test: C:\Special Delivery\Assets
   database: {fileID: 11400000, guid: 7e57689df40426c4ebfdd881246a176b, type: 2}
 --- !u!1001 &1190518690
 PrefabInstance:

@@ -32,15 +32,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update.
     void Start() { ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0); }
 
-    public int GetBestScore() { return bestScore = PlayerPrefs.GetInt("HighScore", 0); }
-
-    // Setter Method for the player's high score, also updates the UI and saves the new data.
-    public void SetBestScore(int val) {
-        bestScore = val;
-        PlayerPrefs.SetInt("HighScore", bestScore);
-        PlayerPrefs.Save();
-    }
-
     // Getter Method for the current difficulty. 
     public int GetDifficulty() { return difficulty; }
 
