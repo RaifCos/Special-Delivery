@@ -61,7 +61,8 @@ public class DataManager : MonoBehaviour {
     #region Save Data
     public void LoadData() {
         if (File.Exists(saveFilePath)) {
-            string json = File.ReadAllText(saveFilePath);
+            string encryptedJson = File.ReadAllText(saveFilePath);
+            string json = DataEncryption.Decrypt(encryptedJson);
             data = JsonConvert.DeserializeObject<Data>(json);
         } else {
             data = GameManager.dataManager.DefaultData();
@@ -70,8 +71,9 @@ public class DataManager : MonoBehaviour {
     }
 
     public void SaveData() {
-        string json = JsonConvert.SerializeObject(data, Formatting.Indented);
-        File.WriteAllText(saveFilePath, json);
+        string json = JsonConvert.SerializeObject(data, Formatting.None);
+        string encryptedJson = DataEncryption.Encrypt(json);
+        File.WriteAllText(saveFilePath, encryptedJson);
     }
 
     public Data ResetData() {
