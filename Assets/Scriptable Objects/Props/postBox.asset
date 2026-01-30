@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45eba49d3e97eab41b0c2379ce8e24ab, type: 3}
+  m_Name: postBox
+  m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
+  internalName: postBox
+  externalName: mail box
+  description: the city wanted to streamline the postal service by introducting post
+    boxes, but instead of making them brand new, they just painted some waste bins
+    blue. talk about lazy design!
+  includeGround: 0
+  sprite: {fileID: 21300000, guid: e00d80caa8f6ffc47b943b531a7d5b09, type: 3}
