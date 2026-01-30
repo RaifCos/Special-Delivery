@@ -23,7 +23,7 @@ public class BoulderTraversal : MonoBehaviour {
             // ...and the Boulder is on the ground.
             grounded = Mathf.Round(transform.position.y) <= 10;
             Vector3 forward = rb.rotation * Vector3.forward;
-            float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
+            float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
             if (grounded && forwardSpeed < speed) { // Move Boulder towards the destiation node.
                 Vector3 direction = (routeNodes[1] - transform.position).normalized;
                 rb.AddForce(direction * speed, ForceMode.Acceleration);

@@ -23,9 +23,11 @@ public class DumpsterTraversal : MonoBehaviour
         if (!beganShrinking) { // Only move if the destination node has been reached...
             // ...and the Dumpster is on the ground.
             grounded = transform.position.y <= 8f;
-            if (grounded) { 
+            Vector3 forward = rb.rotation * Vector3.forward;
+            float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
+            if (grounded && forwardSpeed < speed) { 
                 rb.MovePosition(Vector3.MoveTowards(transform.position, routeNodes[1], speed * Time.deltaTime));
-                speed += speed * 0.005f; // Increase Speed every frame.
+                speed += speed * 0.004f; // Increase Speed every frame.
             }
             LookRotation();
             // Dumpster has arrived at the destination node, so begin shrinking.

@@ -22,7 +22,7 @@ public class UFOTraversal : MonoBehaviour {
     void FixedUpdate() {
         if ((transform.position - currPos).sqrMagnitude > 9f) {
             Vector3 direction = (currPos - transform.position).normalized;
-            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction);
+            rb.AddForce(direction * speed, ForceMode.Acceleration);
             SpinRotation();
         }
         else {
