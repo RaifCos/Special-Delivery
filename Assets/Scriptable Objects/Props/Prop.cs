@@ -6,12 +6,13 @@ public class Prop : MonoBehaviour {
     bool beganFading = false;
     
     private void OnCollisionEnter(Collision collision) {
+        GameObject collisionGO = collision.gameObject;
         // Check if Collisions with the Level Enviornment Count
-        if ((!collision.gameObject.CompareTag("Level") || so.includeGround) && !beganFading) {
+        if ((collisionGO.CompareTag("Level") || so.includeGround) && !beganFading) {
             // Shrink and Delete Object Shortly After Collision.
             StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, false));
             beganFading = true;
-            if (GameManager.instance.GetDifficulty() != 0) { GameManager.dataManager.AddPropEncounter(so.internalName); }
+            if (GameManager.instance.GetDifficulty() != 0 && collisionGO.CompareTag("Player")) { GameManager.dataManager.AddPropEncounter(so.internalName); }
         }
     }
 }
