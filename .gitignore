@@ -5,3 +5,4 @@
 !Packages/**
 Assets/saveData
 Assets/saveData.meta
+DataKeys.cs
