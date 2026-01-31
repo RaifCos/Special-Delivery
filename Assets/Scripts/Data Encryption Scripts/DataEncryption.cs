@@ -1,17 +1,16 @@
 using System;
 using System.IO;
-using System.Text;
 using System.Security.Cryptography;
 
 public static class DataEncryption {
-    private static readonly byte[] Key = Encoding.UTF8.GetBytes("12345678901234567890123456789012"); // 32 bytes
-    private static readonly byte[] IV  = Encoding.UTF8.GetBytes("1234567890123456");                 // 16 bytes
 
     // Encrypt Ciphertext into Plaintext
     public static string Encrypt(string plainText) {
         using Aes aes = Aes.Create();
-        aes.Key = Key;
-        aes.IV = IV;
+
+        // NOTE: DataKeys is not included in Repo for Privacy.  
+        aes.Key = DataKeys.GetKey();
+        aes.IV = DataKeys.GetIV();
 
         using MemoryStream ms = new();
         using CryptoStream cs = new(ms, aes.CreateEncryptor(), CryptoStreamMode.Write);
@@ -28,8 +27,8 @@ public static class DataEncryption {
         byte[] buffer = Convert.FromBase64String(cipherText);
 
         using Aes aes = Aes.Create();
-        aes.Key = Key;
-        aes.IV = IV;
+        aes.Key = DataKeys.GetKey();
+        aes.IV = DataKeys.GetIV();
 
         using MemoryStream ms = new(buffer);
         using CryptoStream cs = new(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
