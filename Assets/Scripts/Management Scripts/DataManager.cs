@@ -18,7 +18,6 @@ public class DataManager : MonoBehaviour {
     #region Variables
     // Save Data 
     [SerializeField] private string jsonFileName;
-    [SerializeField] private string test;
     private string saveFilePath; 
 
     // Static Variables
@@ -42,7 +41,7 @@ public class DataManager : MonoBehaviour {
         props = database.GetProps();
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
-        saveFilePath = Path.Combine(test, jsonFileName);
+        saveFilePath = Path.Combine(Application.persistentDataPath, jsonFileName);
         LoadData();
     }
 
