@@ -59,17 +59,17 @@ public class PlayerControl : MonoBehaviour {
 
             foreach (var wheel in wheels) {
                 // Apply steering to wheels that support steering
-                if (wheel.steerable) { wheel.WheelCollider.steerAngle = hInput * currentSteerRange; }
+                if (wheel.steerable) { wheel.SetSteerAngle( hInput * currentSteerRange); }
 
                 if (isAccelerating) {
-                    // Apply torque to motorized wheels
-                    if (wheel.motorized) { wheel.WheelCollider.motorTorque = vInput * currentMotorTorque; }
-                    // Release brakes when accelerating
-                    wheel.WheelCollider.brakeTorque = 0f;
+                    // Apply torque to motorized wheels.
+                    wheel.SetMotorTorque(vInput * currentMotorTorque);
+                    // Release brakes when accelerating.
+                    wheel.SetBrakeTorque(0f);
                 } else {
                     // Apply brakes when reversing direction
-                    wheel.WheelCollider.motorTorque = 0f;
-                    wheel.WheelCollider.brakeTorque = Mathf.Abs(vInput) * brakeTorque;
+                    wheel.SetMotorTorque(0f);
+                    wheel.SetBrakeTorque(Mathf.Abs(vInput) * brakeTorque);
                 }
             }
             engineSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
@@ -80,7 +80,7 @@ public class PlayerControl : MonoBehaviour {
     public void StopVan() {
         // Reset Wheel Collider values and set breaks.
         foreach (var wheel in wheels) {
-            wheel.WheelCollider.motorTorque = 0f;
+            wheel.SetMotorTorque(0f);
         }
 
         // Reset any velocity on the player.
