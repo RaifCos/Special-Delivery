@@ -516,7 +516,7 @@ MonoBehaviour:
   topSpeed: 15
   grip: 12
   distanceThreshold: 3
-  height: 1
+  height: 15
   nodeSet: 0
   ignoreBlockage: 0
 --- !u!114 &2178816037623175082
