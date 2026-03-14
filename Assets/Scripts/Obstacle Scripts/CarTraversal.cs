@@ -24,7 +24,7 @@ public class CarTraversal : MonoBehaviour {
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
         // Set movement factors based on nodeSet (0 for regular Cars, 1 for Big Car).
-        rb.position = prevNode.transform.position;
+        rb.position = prevNode.transform.position + (Vector3.up * 2f);
     }
 
     // Update is called once per frame
