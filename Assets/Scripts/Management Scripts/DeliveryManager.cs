@@ -1,4 +1,4 @@
-using System.Threading;
+using System.Collections.Generic;
 using UnityEngine;
 
 // Script to handle objectives (Parcels and Delivery Spots)
@@ -9,7 +9,7 @@ public class DeliveryManager : MonoBehaviour {
     private bool isParcel;
     private GameObject parcel, psA, psB;
     private Vector3 currPos = Vector3.zero;
-    private readonly Vector3[] nodePositions = new Vector3[16];
+    private readonly List<Vector3> nodePositions = new();
 
     void Awake() {
         GameManager.deliveryManager = this;
@@ -18,7 +18,7 @@ public class DeliveryManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // Retrieve Node Positions (Used for parcels and obstacles)
-        for (int x = 0; x < 16; x++) { nodePositions[x] = parcelNodes.transform.GetChild(x).transform.position; }
+        for (int x = 0; x < parcelNodes.transform.childCount; x++) { nodePositions.Add(parcelNodes.transform.GetChild(x).transform.position); }
         parcel = transform.GetChild(0).gameObject;
         psA = transform.GetChild(1).gameObject;
         psB = transform.GetChild(2).gameObject;
@@ -59,7 +59,7 @@ public class DeliveryManager : MonoBehaviour {
     public void GeneratePos() {
         Vector3 res;
         // Do-While loop ensures the generated position can't be the same as prevPos is canBePrevPos is false. 
-        do { res = nodePositions[Random.Range(0, 16)];
+        do { res = nodePositions[Random.Range(0, nodePositions.Count)];
         } while (res == currPos);
         currPos = res;
         transform.position = currPos;
