@@ -94,6 +94,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &2298217645185405607
 Rigidbody:
@@ -253,6 +254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306ee3c8902cc934cbcd701dee6be26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topCorner: {x: 0, y: 0}
+  bottomCorner: {x: -60, y: -60}
 --- !u!114 &585406344038463225
 MonoBehaviour:
   m_ObjectHideFlags: 0
