@@ -7,6 +7,7 @@ public class DeliveryManager : MonoBehaviour {
     public AudioClip parcelClip, spotClip;
     public GameObject parcelNode;
     public GameObject deliveryNodes;
+    [SerializeField] private int bonusTime; 
     private bool isParcel;
     private GameObject parcel, psA, psB;
     private Vector3 currPos = Vector3.zero;
@@ -64,6 +65,6 @@ public class DeliveryManager : MonoBehaviour {
         // Increment score and lifetime score.
         GameManager.dataManager.IncreaseProgress(0);
         GameManager.obstacleManager.SpawnObstacle(GameManager.gameplayManager.GetScore() % 2 == 0);
-        GameManager.gameplayManager.SetTime(20, true);
+        GameManager.gameplayManager.SetTime(bonusTime, true);
     }
 }

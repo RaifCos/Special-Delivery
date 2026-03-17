@@ -10814,6 +10814,10 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6268045988186184265, guid: 1fe8907ee69521f4d98d9c50cdfea422, type: 3}
+      propertyPath: bonusTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6268045988186184265, guid: 1fe8907ee69521f4d98d9c50cdfea422, type: 3}
       propertyPath: parcelNode
       value: 
       objectReference: {fileID: 296161024}
@@ -12481,7 +12485,7 @@ MonoBehaviour:
   replenishRate: 0.05
   cooldownTime: 2
   boosterSound: {fileID: 713347639}
-  boostParticle: {fileID: 0}
+  boostParticle: {fileID: 852376224}
   fuelMeterSlider: {fileID: 729226355}
   fuelSliderImage: {fileID: 1953139558}
   fuelTank: {fileID: 573325085}
@@ -14008,13 +14012,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852376221}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -3.2, y: -0.9, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -1, y: -1.1, z: -3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 713347633}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!199 &852376223
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -27325,6 +27329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3a10c5d09c3f48b05b5131f0f59ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingTime: 60
   gameUI: {fileID: 76687730}
   endUI: {fileID: 2117694106}
   pauseUI: {fileID: 313967127}
