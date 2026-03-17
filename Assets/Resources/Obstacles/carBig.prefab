@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSpeed: 8
   grip: 1
-  distanceThreshold: 6
+  distanceThreshold: 10
   height: 15
   nodeSet: 1
   ignoreBlockage: 1
