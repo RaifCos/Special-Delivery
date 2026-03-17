@@ -37,7 +37,7 @@ public class ObstacleManager : MonoBehaviour {
     // Function to spawn the starting obstacles at the start of the game.
     public void SpawnStartingObstacles() {
         // Spawn three random Cars (Red or Blue).
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             string[] startingObs = {"carRed", "carBlue", "carGreen"};
             int random = Random.Range(0, 3);
             obstacleObject = Instantiate(GameManager.dataManager.GetObstacle(startingObs[random]).so.prefab);

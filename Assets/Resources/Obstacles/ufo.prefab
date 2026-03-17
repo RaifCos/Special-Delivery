@@ -40,14 +40,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907120406102815535}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.116009235, g: 1, b: 0, a: 1}
   m_Intensity: 7
   m_Range: 26.88
   m_SpotAngle: 28
   m_InnerSpotAngle: 17
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 0
     m_Resolution: -1
@@ -194,6 +194,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &8409331556885346063
 Rigidbody:
@@ -467,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2bde77e409d56a4d8c4e7c4c4349a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  height: 0
+  speed: 35
+  height: 25
 --- !u!114 &2964759547233136770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,6 +573,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &8214640291978763647
 CapsuleCollider:

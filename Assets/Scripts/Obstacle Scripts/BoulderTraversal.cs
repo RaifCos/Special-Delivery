@@ -15,24 +15,25 @@ public class BoulderTraversal : MonoBehaviour {
 
         // Create route for the Boulder and set starting position.
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath();
-        rb.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
+        transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
     }
 
     void FixedUpdate() {
         if (!beganShrinking) { // Only move if the destination node has been reached...
             // ...and the Boulder is on the ground.
-            grounded = Mathf.Round(transform.position.y) <= 10;
+            grounded = Mathf.Round(transform.position.y) <= 15f;
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
             if (grounded && forwardSpeed < speed) { // Move Boulder towards the destiation node.
                 Vector3 direction = (routeNodes[1] - transform.position).normalized;
                 rb.AddForce(direction * speed, ForceMode.Acceleration);
+                rb.linearVelocity *= 0.95f;
                 RollRotation();
                 if (snowball) { SnowballShrink(); }
             }
 
             // Boulder has arrived at the destination node, so begin shrinking.
-            if ((rb.position - routeNodes[1]).sqrMagnitude > 25f) {
+            if ((rb.position - routeNodes[1]).sqrMagnitude < 25f) {
                 StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, snowball));
                 // Set momentum of Boulder after it stops rolling.
                 rb.linearVelocity = (routeNodes[1] - transform.position).normalized * speed; 
