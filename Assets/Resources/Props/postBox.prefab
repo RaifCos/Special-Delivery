@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3480185261175561537}
   - component: {fileID: 1496189469533816128}
   - component: {fileID: 7562304788181675305}
+  - component: {fileID: 9097621304050480854}
   - component: {fileID: 7617118472814226526}
-  - component: {fileID: 6542815828331749543}
   m_Layer: 0
   m_Name: postBox
   m_TagString: Untagged
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9186333374718153460}
-  m_Mesh: {fileID: 8606572066065617862, guid: 778f9a4fbdc55574c9fdcc6d572f1ab9, type: 3}
+  m_Mesh: {fileID: 8606572066065617862, guid: 514e84ba09177314db0e8c95e49ea23e, type: 3}
 --- !u!23 &1496189469533816128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -120,20 +120,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7617118472814226526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9186333374718153460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Prop
-  so: {fileID: 11400000, guid: 776ade0455dbac343adda3ddaf103560, type: 2}
---- !u!65 &6542815828331749543
+--- !u!65 &9097621304050480854
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,5 +139,18 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3801185, y: 2.603536, z: 1.2669928}
-  m_Center: {x: 0, y: 1.647462, z: -0.00000008940697}
+  m_Size: {x: 0.9660829, y: 1.8224752, z: 0.88689494}
+  m_Center: {x: 0, y: 0.9318696, z: -0.0069427937}
+--- !u!114 &7617118472814226526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186333374718153460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Prop
+  so: {fileID: 11400000, guid: 776ade0455dbac343adda3ddaf103560, type: 2}

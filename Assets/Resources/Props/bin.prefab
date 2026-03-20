@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 782146182443724907}
   - component: {fileID: 5530657891065624474}
   - component: {fileID: 4955813322441935406}
-  - component: {fileID: 8898576622734848177}
+  - component: {fileID: 1046240446098869670}
   - component: {fileID: -7849014766195687166}
   m_Layer: 0
   m_Name: bin
@@ -120,7 +120,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8898576622734848177
+--- !u!65 &1046240446098869670
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2669927, y: 2.5611455, z: 1.2669927}
-  m_Center: {x: 0, y: 1.4686571, z: 0}
+  m_Size: {x: 0.8868949, y: 1.7928016, z: 0.88689494}
+  m_Center: {x: 0, y: 0.89359164, z: 0.00000008940697}
 --- !u!114 &-7849014766195687166
 MonoBehaviour:
   m_ObjectHideFlags: 0
