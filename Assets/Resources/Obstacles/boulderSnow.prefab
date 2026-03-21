@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6431164249942611621}
   - component: {fileID: 2658208128957450569}
   - component: {fileID: 3060069838229115784}
-  - component: {fileID: 2539031857489963109}
+  - component: {fileID: 6129336633863391136}
   - component: {fileID: 3487372016475174689}
   - component: {fileID: -1506856010285376518}
   - component: {fileID: 8795924381500241567}
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4921226426627925572}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 150, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71,7 +71,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48c3a0e95f007134faa6e06755e00dae, type: 2}
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,7 +122,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!135 &2539031857489963109
+--- !u!135 &6129336633863391136
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +141,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 7.5173187
-  m_Center: {x: 0.11678672, y: 0.073880434, z: -0.072054625}
+  m_Radius: 8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &3487372016475174689
 AudioSource:
   m_ObjectHideFlags: 0
