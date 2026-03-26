@@ -16848,6 +16848,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: deliveryObjective
       objectReference: {fileID: 0}
+    - target: {fileID: 1441140730925434113, guid: 1fe8907ee69521f4d98d9c50cdfea422, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3476523805715651772, guid: 1fe8907ee69521f4d98d9c50cdfea422, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -43812,7 +43816,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.689
+    m_Strength: 0.8
     m_Bias: 0
     m_NormalBias: 0
     m_NearPlane: 0.1
@@ -54765,7 +54769,7 @@ Transform:
   m_GameObject: {fileID: 2073418483}
   serializedVersion: 2
   m_LocalRotation: {x: 0.030843573, y: 0.7064338, z: -0.030843573, w: 0.7064338}
-  m_LocalPosition: {x: -30, y: 10, z: -35}
+  m_LocalPosition: {x: -20, y: 5, z: -40}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56608,7 +56612,7 @@ GameObject:
   - component: {fileID: 1526533099}
   m_Layer: 0
   m_Name: Grass_Hill
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56798,7 +56802,7 @@ GameObject:
   - component: {fileID: 3572507479993547060}
   m_Layer: 0
   m_Name: Grass_Hill
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56968,7 +56972,7 @@ Transform:
   m_GameObject: {fileID: 2296054213920359553}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.7, y: 0, z: -123.8}
+  m_LocalPosition: {x: 53.8, y: 0, z: -123.8}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58117,7 +58121,7 @@ GameObject:
   - component: {fileID: 2538114967844704671}
   m_Layer: 0
   m_Name: Grass_HillCorner
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58389,7 +58393,7 @@ GameObject:
   - component: {fileID: 3571295104639768418}
   m_Layer: 0
   m_Name: Grass_HillCorner
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59344,7 +59348,7 @@ GameObject:
   - component: {fileID: 4174395913222798070}
   m_Layer: 0
   m_Name: Grass_Hill
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59643,7 +59647,7 @@ GameObject:
   - component: {fileID: 8661089321632530580}
   m_Layer: 0
   m_Name: Grass_HillCorner
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59822,7 +59826,7 @@ GameObject:
   - component: {fileID: 8495107585137453723}
   m_Layer: 0
   m_Name: Grass_Hill
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60137,7 +60141,7 @@ GameObject:
   - component: {fileID: 7706192997137789314}
   m_Layer: 0
   m_Name: Grass_HillCorner
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60711,7 +60715,7 @@ GameObject:
   - component: {fileID: 9153845303268170669}
   m_Layer: 0
   m_Name: Grass_HillCorner
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61136,7 +61140,7 @@ GameObject:
   - component: {fileID: 9134118689127501062}
   m_Layer: 0
   m_Name: Grass_HillCornerOuter
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61319,7 +61323,7 @@ GameObject:
   - component: {fileID: 8747238385800362742}
   m_Layer: 0
   m_Name: Grass_Hill
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
