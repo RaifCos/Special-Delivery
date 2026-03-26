@@ -76,7 +76,7 @@ public class DataManager : MonoBehaviour {
     }
 
     public Data ResetData() {
-        Data data = GameManager.dataManager.DefaultData();
+        data = GameManager.dataManager.DefaultData();
         SaveData();
         return data;
     }
