@@ -19,7 +19,7 @@ public class BoomerangTraversal : MonoBehaviour
 
         // Create route for the Boomerang and set starting position. 
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
-        rb.position = routeNodes[0] + Vector3.up;
+        transform.position = routeNodes[0] + Vector3.up;
 
         // Find the mid point of the Boomerang's route, and the distance to reach it. 
         midpoint = Vector3.Lerp(routeNodes[0], routeNodes[1], 0.5f);
