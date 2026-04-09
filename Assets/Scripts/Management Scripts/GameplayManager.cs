@@ -10,6 +10,7 @@ public class GameplayManager : MonoBehaviour
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
+    [SerializeField] private int startingTime; 
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow, moneyText; 
     public bool isPlaying = false;
@@ -39,9 +40,9 @@ public class GameplayManager : MonoBehaviour
         AlternateGameMenus(0);
         SetScore(0, false);
 
-        int startingTime = 80;
-        startingTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
-        SetTime(startingTime, false);
+        int startTime = startingTime;
+        startTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
+        SetTime(startTime, false);
 
         // Initialize the player van.
         playerVan.GetComponent<PlayerControl>().SetState(true);

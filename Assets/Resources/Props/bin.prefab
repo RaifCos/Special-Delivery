@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 782146182443724907}
   - component: {fileID: 5530657891065624474}
   - component: {fileID: 4955813322441935406}
-  - component: {fileID: 8898576622734848177}
+  - component: {fileID: 1046240446098869670}
   - component: {fileID: -7849014766195687166}
   m_Layer: 0
   m_Name: bin
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5750055118511455753}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.440002, y: -1.284668, z: -39.62}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48c3a0e95f007134faa6e06755e00dae, type: 2}
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,6 +91,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &4955813322441935406
 Rigidbody:
@@ -119,7 +120,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &8898576622734848177
+--- !u!65 &1046240446098869670
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2669927, y: 2.5611455, z: 1.2669927}
-  m_Center: {x: 0, y: 1.4686571, z: 0}
+  m_Size: {x: 0.8868949, y: 1.7928016, z: 0.88689494}
+  m_Center: {x: 0, y: 0.89359164, z: 0.00000008940697}
 --- !u!114 &-7849014766195687166
 MonoBehaviour:
   m_ObjectHideFlags: 0

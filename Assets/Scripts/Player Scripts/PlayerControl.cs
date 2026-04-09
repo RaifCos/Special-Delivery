@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour {
         pbc = GetComponent<PlayerBoosterControl>();
 
         // Adjust center of mass to improve stability and prevent rolling
-        rb.centerOfMass += new Vector3(0f, -2f, -1f);
+        rb.centerOfMass = new Vector3(0f, -1.5f, -0.3f);
 
         // Get all wheel components attached to the car
         wheels = GetComponentsInChildren<WheelControl>();
@@ -56,6 +56,10 @@ public class PlayerControl : MonoBehaviour {
             currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
             float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
             bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
+
+            float turnStrength = Mathf.Lerp(5f, 3f, speedFactor);
+            rb.AddTorque(hInput * rb.mass * turnStrength * transform.up);
+
 
             foreach (var wheel in wheels) {
                 // Apply steering to wheels that support steering

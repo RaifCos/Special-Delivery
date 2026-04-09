@@ -51,10 +51,13 @@ public class NewsTextScroller : MonoBehaviour
 
     private string[] headlines;
 
-    void Start() {
+    void Awake() { 
         GameManager.newsTextScroller = this;
-        difficulty = GameManager.instance.GetDifficulty();
-        newsText = newsUI.GetComponent<TMP_Text>();
+        newsText = newsUI.GetComponent<TMP_Text>(); 
+        difficulty = GameManager.instance.GetDifficulty();   
+    }
+
+    void Start() {
         lastStory = -1;
         hasBoost = GameManager.dataManager.IsUpgraded("booster");
         headlines = genericHeadlines.Concat(boostHeadlines).ToArray();

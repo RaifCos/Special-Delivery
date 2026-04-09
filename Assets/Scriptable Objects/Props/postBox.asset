@@ -18,4 +18,4 @@ MonoBehaviour:
     boxes, but instead of making them brand new, they just painted some waste bins
     blue. talk about lazy design!
   includeGround: 0
-  sprite: {fileID: 21300000, guid: e00d80caa8f6ffc47b943b531a7d5b09, type: 3}
+  sprite: {fileID: 21300000, guid: ba25c440155b6db418f855c713a7e631, type: 3}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8974622520070184106}
   - component: {fileID: 9149188104435068188}
   - component: {fileID: 6528881855281863873}
-  - component: {fileID: 7582050127141352473}
+  - component: {fileID: 6108751639252167022}
   - component: {fileID: -1020270408174781601}
   m_Layer: 0
   m_Name: hydrant
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6796421802595299293}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.9, y: -2.4, z: -16.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6796421802595299293}
-  m_Mesh: {fileID: -7222732216825629967, guid: 048dc9bf3e1ed844da76d9aec4e00cde, type: 3}
+  m_Mesh: {fileID: 7208596612370148468, guid: 048dc9bf3e1ed844da76d9aec4e00cde, type: 3}
 --- !u!23 &9149188104435068188
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48c3a0e95f007134faa6e06755e00dae, type: 2}
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,6 +91,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!54 &6528881855281863873
 Rigidbody:
@@ -119,7 +120,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7582050127141352473
+--- !u!65 &6108751639252167022
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,8 +139,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1632589, y: 2.1403506, z: 1.1632588}
-  m_Center: {x: 0.002732098, y: 2.297007, z: -0.0020413399}
+  m_Size: {x: 1.0429566, y: 1.7378436, z: 1.0429566}
+  m_Center: {x: -0.000019043684, y: -0.26731652, z: 0.0000113248825}
 --- !u!114 &-1020270408174781601
 MonoBehaviour:
   m_ObjectHideFlags: 0
