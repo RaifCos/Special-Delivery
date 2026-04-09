@@ -1,12 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerBoosterControl))]
 public class PlayerControl : MonoBehaviour {
     [Header("Mail Van Properties")]
-    public float motorTorque, brakeTorque, maxSpeed, defaultBoostPower, steeringRange, steeringRangeAtMaxSpeed;
+    public float motorTorque;
+    public float brakeTorque;
+    public float maxSpeed;
+    public float defaultBoostPower;
+    public float steeringRange;
+    public float steeringRangeAtMaxSpeed;
     private float boostPower;
+    private float currentSteerInput = 0f;
     private WheelControl[] wheels;
+
+    [Header("Player Input")]
+    [SerializeField] private InputAction vanDrive;
+    [SerializeField] private InputAction vanSteer;
 
     [Header("Audio Handler")]
     public AudioSource engineSound;
@@ -14,6 +25,16 @@ public class PlayerControl : MonoBehaviour {
     private PlayerBoosterControl pbc;
     private Rigidbody rb;
     private bool isPlaying = false;
+
+    void OnEnable() { 
+        vanDrive.Enable(); 
+        vanSteer.Enable();
+    }
+
+    void OnDisable() { 
+        vanDrive.Disable(); 
+        vanSteer.Disable();
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -34,18 +55,22 @@ public class PlayerControl : MonoBehaviour {
     // FixedUpdate is called at a fixed time interval 
     void FixedUpdate() {
         if (isPlaying) {
+            /*
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift)) {
                 Quaternion newRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
                 rb.MoveRotation(newRotation);
-            }
+            } 
+            */
 
             // Get player input for acceleration and steering
-            float vInput = Input.GetAxis("Vertical"); // Forward/backward input
-            float hInput = Input.GetAxis("Horizontal"); // Steering input
+            float vInput = vanDrive.ReadValue<float>(); // Forward/backward input
+            float hInput = vanSteer.ReadValue<float>(); // Steering input
 
             // Calculate current speed along the car's forward axis
             float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
             float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
+
+            currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * 5f);
 
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
@@ -58,12 +83,12 @@ public class PlayerControl : MonoBehaviour {
             bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
 
             float turnStrength = Mathf.Lerp(5f, 3f, speedFactor);
-            rb.AddTorque(hInput * rb.mass * turnStrength * transform.up);
+            rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
 
 
             foreach (var wheel in wheels) {
                 // Apply steering to wheels that support steering
-                if (wheel.steerable) { wheel.SetSteerAngle( hInput * currentSteerRange); }
+                if (wheel.steerable) { wheel.SetSteerAngle( currentSteerInput * currentSteerRange); }
 
                 if (isAccelerating) {
                     // Apply torque to motorized wheels.

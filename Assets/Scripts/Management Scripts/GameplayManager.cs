@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using TMPro;
 using System;
 
 // Script to handle main game functionality.
@@ -11,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     [SerializeField] private int startingTime; 
+    [SerializeField] private InputAction pauseAction;
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow, moneyText; 
     public bool isPlaying = false;
@@ -20,6 +22,10 @@ public class GameplayManager : MonoBehaviour
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
+
+    void OnEnable() { pauseAction.Enable(); }
+
+    void OnDisable() { pauseAction.Disable(); }
 
     void Awake() { GameManager.gameplayManager = this; }
 
@@ -70,7 +76,7 @@ public class GameplayManager : MonoBehaviour
         // Only run when a game is in session.
         if (isPlaying) {
             // Pause game if the Escape key is pressed.
-            if (Input.GetKeyDown(KeyCode.Escape)) { 
+            if (pauseAction.WasPressedThisFrame()) { 
                 if (!isGamePaused) { PauseGame(); } 
                 else { ResumeGame(); }
             }

@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerBoosterControl : MonoBehaviour {
 
-     [Header("Fuel Values")]
+    [Header("Player Input")]
+    [SerializeField] private InputAction vanBoost;
+
+    [Header("Fuel Values")]
     public float defaultMaxFuel, comsumptionRate, replenishRate, cooldownTime;
     private float maxFuel;
 
@@ -18,6 +22,10 @@ public class PlayerBoosterControl : MonoBehaviour {
 
     private float fuel;
     private bool isBoosting;
+
+    void OnEnable() { vanBoost.Enable(); }
+
+    void OnDisable() { vanBoost.Disable(); }
 
     void Start() {
         if( !GameManager.dataManager.IsUpgraded("booster") ) { 
@@ -34,7 +42,7 @@ public class PlayerBoosterControl : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (Input.GetKey(KeyCode.Space) && fuel > 0f) { StartBoost(); } 
+        if (vanBoost.IsPressed() && fuel > 0f) { StartBoost(); } 
         else { StopBoost(); }
     }
 

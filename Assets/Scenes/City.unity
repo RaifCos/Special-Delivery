@@ -18748,6 +18748,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e8d6580aa9d6c438399ed464330832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  vanBoost:
+    m_Name: Van Boost
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e1699f6f-6fec-4382-95ec-403a80fd446f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ba233e76-6c3b-4bcc-8a3b-838b082f5042
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Boost
+      m_Flags: 0
+    m_Flags: 0
   defaultMaxFuel: 100
   comsumptionRate: 0.02
   replenishRate: 0.05
@@ -18805,6 +18822,120 @@ MonoBehaviour:
   defaultBoostPower: 500
   steeringRange: 40
   steeringRangeAtMaxSpeed: 20
+  vanDrive:
+    m_Name: Van Drive
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f171e9eb-ff62-4325-a224-a8c66263b35b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: WASD
+      m_Id: 0b9e0be6-9956-41db-a54e-c795ea72838f
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 3f32bf8d-3888-4371-a788-b150470e5c3d
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: e14e30ac-26ad-4bc1-8ebb-d92fcefa69d1
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    - m_Name: Arrow Keys
+      m_Id: ae013924-24f1-49d1-8c99-555d3ce73e30
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 49a13d75-aab2-43de-8cf1-f307c3d8d0da
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 8af9473b-84e5-43b1-83c2-390f5e5f1c95
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    m_Flags: 0
+  vanSteer:
+    m_Name: Van Steer
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0dbda63e-a2ac-4d63-8c13-b8e85aae679b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: WASD
+      m_Id: cb8b7c21-2b6c-4a68-9f43-ecab0e543b85
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2b6e1039-c092-4490-940f-722827c222f9
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 36539401-31b3-4034-adbe-1eaf560095c7
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    - m_Name: Arrow Keys
+      m_Id: 41231e93-4248-48e9-bb49-fda5ac36d470
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: e21815d6-c0e4-4368-b522-d1f54973f756
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 7c608dac-45a6-4880-a657-53c70cfa736b
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    m_Flags: 0
   engineSound: {fileID: 713347640}
 --- !u!114 &713347644
 MonoBehaviour:
@@ -39261,6 +39392,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTime: 60
+  pauseAction:
+    m_Name: Pause
+    m_Type: 0
+    m_ExpectedControlType: Button
+    m_Id: 5cf17ad9-debd-47a5-adf1-00a85cb1c4a9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0aabdba9-f71a-4bf8-a114-45cb68db3b4f
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    m_Flags: 0
   gameUI: {fileID: 76687730}
   endUI: {fileID: 2117694106}
   pauseUI: {fileID: 313967127}
