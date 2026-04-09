@@ -63,6 +63,7 @@ public class DataManager : MonoBehaviour {
             string encryptedJson = File.ReadAllText(saveFilePath);
             string json = DataEncryption.Decrypt(encryptedJson);
             data = JsonConvert.DeserializeObject<Data>(json);
+            LoadMissingData(); 
         } else {
             data = GameManager.dataManager.DefaultData();
             SaveData(); 
@@ -75,13 +76,27 @@ public class DataManager : MonoBehaviour {
         File.WriteAllText(saveFilePath, encryptedJson);
     }
 
+    private void LoadMissingData() {
+        foreach (Obstacle obs in obstacles)
+            data.lifetimeObs.TryAdd(obs.so.internalName, 0);
+
+        foreach (Prop prop in props)
+            data.lifetimeProps.TryAdd(prop.so.internalName, 0);
+
+        foreach (Achievement_SO ach in achievements)
+            data.achievementProgress.TryAdd(ach.internalName, false);
+
+        foreach (Upgrade_SO up in upgrades)
+            data.upgradeProgress.TryAdd(up.internalName, false);
+    }
+
     public Data ResetData() {
         data = GameManager.dataManager.DefaultData();
         SaveData();
         return data;
     }
 
-    public Data DefaultData() {
+    private Data DefaultData() {
         Data defaultData = new();
         foreach(Obstacle obs in obstacles) {
             Debug.Log(obs.so.internalName);
