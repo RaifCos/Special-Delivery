@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
-    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, garageUI, confirmUI, navDescription;
+    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, garageUI, confirmUI, settingsUI, navDescription;
     public Button shopButton;
     public Image backdrop;
-
+    private int confirmationUIID;
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
@@ -33,6 +33,7 @@ public class MainMenuManager : MonoBehaviour {
                 levelSelectUI.SetActive(false);
                 galleryUI.SetActive(false);
                 achievementUI.SetActive(false);
+                settingsUI.SetActive(false);
                 break; }
             case 1: { // Achievements 
                 GameManager.achievementMenuManager.UpdateAchievementMenu();
@@ -67,6 +68,11 @@ public class MainMenuManager : MonoBehaviour {
                 confirmUI.SetActive(false);
                 Instantiate(Resources.Load<GameObject>("LoadingScreen"));
                 break; }
+            case 7: { // Settings
+                backdrop.color = new Color32(20, 58, 123, 255);
+                menuUI.SetActive(false);
+                settingsUI.SetActive(true);
+                break; }
         }  
     }
 
@@ -82,20 +88,38 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     // Function to ask the user to confirm their choice on an important UI choice.
-    public void MenuConfirmationMessage() {
-        backdrop.color = new Color32(20, 58, 123, 255);
+    public void MenuConfirmationMessage(int cID) {
+        confirmationUIID = cID;
         TMP_Text message = confirmUI.transform.GetChild(2).GetComponent<TMP_Text>();
-        message.text = "return to the menu?";
-        menuUI.SetActive(false);
+        switch(confirmationUIID) {
+            case 0: {
+                backdrop.color = new Color32(20, 58, 123, 255);
+                message.text = "return to the menu?";
+                menuUI.SetActive(false);
+                break; }
+            case 1: {
+                message.text = "delete all your save data? this cannot be undone!";
+                settingsUI.SetActive(false);
+                break; }
+        }
         confirmUI.SetActive(true);
     }
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
         confirmUI.SetActive(false);
-        if (response) { 
-            AlternateMainMenus(6);
-            StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
-        } else { AlternateMainMenus(0); }
+        switch(confirmationUIID) {
+            case 0: {
+                if(response) {
+                    AlternateMainMenus(6);
+                    StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
+                } else { AlternateMainMenus(0); }
+                break; }
+            case 1: {
+                if(response) {
+                    GameManager.settingsManager.EraseData();
+                } else { AlternateMainMenus(7); }
+                break; }
+        }
     }
 }

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GarageMenuManager garageMenuManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
+    public static SettingsManager settingsManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
