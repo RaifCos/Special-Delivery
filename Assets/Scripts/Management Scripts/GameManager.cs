@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public GameObject muteButton, unmuteButton;
 
     [Header("Player Preferences")]
+    private int saveFile; 
     private static int difficulty;
     private bool isMusicPlaying, qualityShadows;
 
@@ -32,7 +33,8 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update.
     void Start() { 
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
-        ToggleShadows(PlayerPrefs.GetInt("Shadows", 0) == 0);   
+        ToggleShadows(PlayerPrefs.GetInt("Shadows", 0) == 0);
+        saveFile = PlayerPrefs.GetInt("SaveFile", 0);
     }
 
     // Getter Method for the current difficulty. 
@@ -66,5 +68,13 @@ public class GameManager : MonoBehaviour {
         yield return _waitForSeconds1;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone) { yield return null; }
+    }
+
+    public int GetSaveFile() => saveFile;
+
+    public void SetSaveFile(int input) {
+        saveFile = input;
+        PlayerPrefs.SetInt("SaveFile", saveFile);
+        PlayerPrefs.Save();
     }
 }

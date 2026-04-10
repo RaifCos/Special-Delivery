@@ -3,8 +3,7 @@ using UnityEngine;
 
 // Script to handle main game functionality.
 public class OpeningMenuManager : MonoBehaviour {
-    public GameObject openingUI, creditsUI, confirmUI;
-    private static int confirmationUIID;
+    public GameObject openingUI, creditsUI, fileUI, confirmUI;
 
     void Awake() { GameManager.openingMenuManager = this; }
 
@@ -13,7 +12,8 @@ public class OpeningMenuManager : MonoBehaviour {
         StartCoroutine(GameManager.audioManager.StartGameMusic());
     }
 
-    public void OpenGame() {
+    public void OpenGame(int saveFile) {
+        GameManager.instance.SetSaveFile(saveFile);
         AlternateOpeningMenus(2);
         StartCoroutine(GameManager.instance.LoadAsyncScene("MainMenu"));
     }
@@ -24,14 +24,19 @@ public class OpeningMenuManager : MonoBehaviour {
             case 0: { // Opening Menu
                 openingUI.SetActive(true);
                 creditsUI.SetActive(false);
+                fileUI.SetActive(false);
                 break; }
             case 1: { // Credits
                 openingUI.SetActive(false);
                 creditsUI.SetActive(true);
                 break; }
             case 2: { // Loading Screen
-                openingUI.SetActive(false);
+                fileUI.SetActive(false);
                 Instantiate(Resources.Load<GameObject>("LoadingScreen"));
+                break; }
+            case 3: { // File Select
+                openingUI.SetActive(false);
+                fileUI.SetActive(true);
                 break; }
         }  
     }
@@ -46,11 +51,7 @@ public class OpeningMenuManager : MonoBehaviour {
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
         confirmUI.SetActive(false);
-        if(response) { 
-            switch (confirmationUIID) { // Player chose "yes", so execute corresponding action.
-            case 0: { // Quit Application.
-                QuitApplication(); break; }
-        }}
+        if(response) { QuitApplication(); }
     }
 
     // Function to close the game application. 
