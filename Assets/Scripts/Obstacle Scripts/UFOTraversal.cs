@@ -11,7 +11,7 @@ public class UFOTraversal : MonoBehaviour {
     GameObject currNode, prevNode;
     Vector3 currPos;
 
-    void Start() {
+    void OnEnable() {
         rb = GetComponent<Rigidbody>();
 
         prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1);
