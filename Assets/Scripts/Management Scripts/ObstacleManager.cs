@@ -4,12 +4,14 @@ using UnityEngine;
 
 // Script to handle all the obstacles on stage.
 public class ObstacleManager : MonoBehaviour {
+    [SerializeField]
+    private List<Obstacle> permObstacles;
+    [SerializeField]
+    private List<Obstacle> tempObstacles;
+
     private static WaitForSeconds _waitForSeconds0_02 = new(0.02f);
     private static WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB, sideNodes;
-    private List<Obstacle> obstacles;
-    private readonly List<Obstacle> permObstacles = new();
-    private readonly List<Obstacle> tempObstacles = new();
     private GameObject obstacleObject, destroyParticles;
     private readonly List<GameObject> currentObstacles = new();
     private bool[] sideNodeOccupied; 
@@ -21,13 +23,6 @@ public class ObstacleManager : MonoBehaviour {
     private void Start() {
         // Reset Object Counts (from Previous Games)
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
-        obstacles = GameManager.dataManager.GetObstacles();
-        // Dynamically retrieve the total number of possible Permanent obstacles allowed at once. 
-        foreach (var obs in obstacles) { 
-            if(obs.so.limit > 0) { permObstacles.Add(obs); }
-            else { tempObstacles.Add(obs); }
-        }
-
         sideNodeOccupied = new bool[sideNodes.Length];
         for(int i=0; i<sideNodes.Length; i++) {
             sideNodeOccupied[i] = false;
