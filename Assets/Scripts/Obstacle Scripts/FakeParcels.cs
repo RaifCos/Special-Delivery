@@ -18,7 +18,7 @@ public class FakeParcels : MonoBehaviour {
         } gameObject.SetActive(false);
     }
     void SpawnParcel() {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Obstacles/fakeParcel"));
+        GameObject obj = Instantiate(Resources.Load<GameObject>("Obstacles/Temp Obstacles/fakeParcel"));
         float x = Random.Range(1.4f, 2f);
         float y = Random.Range(1.4f, 2f);
         float z = Random.Range(1.4f, 2f);
