@@ -11,8 +11,8 @@ public class ObstacleManager : MonoBehaviour {
     [SerializeField]
     private List<Obstacle> tempObstacles;
 
-    private List<GameObject> permObstaclePool = new(); 
-    private List<GameObject> tempObstaclePool = new(); 
+    private readonly List<GameObject> permObstaclePool = new(); 
+    private readonly List<GameObject> tempObstaclePool = new(); 
     private static readonly WaitForSeconds _waitForSeconds0_02 = new(0.02f);
     private static readonly WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB, sideNodes;
