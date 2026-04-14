@@ -68,10 +68,18 @@ public class OpeningMenuManager : MonoBehaviour {
         for (int i = 0; i < saveFileProgress.Length; i++) {
             Transform panel = saveFileUI[i].transform;
             if (!saveFileProgress[i].isEmpty) {
+                // Activate Progress UI Elements.
                 ActivateSaveFileUIElement(panel.GetChild(0).gameObject, "", saveFileProgress[i].totalProgress);
-                ActivateSaveFileUIElement(panel.GetChild(1).gameObject, "Upgrades\t\t", saveFileProgress[i].upgradeProgress);
                 ActivateSaveFileUIElement(panel.GetChild(2).gameObject, "Gallery\t\t", saveFileProgress[i].galleryProgress);
                 ActivateSaveFileUIElement(panel.GetChild(3).gameObject, "Achievements\t", saveFileProgress[i].achievementProgress);
+                
+                // Show Upgrades only if the Garage is Unlocked. 
+                string upgradeString;
+                if (saveFileProgress[i].shopUnlocked) { upgradeString = "Upgrades\t\t"; }
+                else { upgradeString = "???\t\t\t"; }
+                ActivateSaveFileUIElement(panel.GetChild(1).gameObject, upgradeString, saveFileProgress[i].upgradeProgress);
+            
+                // Disable "No Save Data" Text.
                 panel.GetChild(4).gameObject.SetActive(false);
                 panel.GetChild(5).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "Play";
             } else {

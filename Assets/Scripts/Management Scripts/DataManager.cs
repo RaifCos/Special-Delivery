@@ -19,6 +19,7 @@ public class ProgressData {
     public int achievementProgress = 0;
     public int upgradeProgress = 0;
     public int totalProgress = 0;
+    public bool shopUnlocked = false;
     public bool isEmpty = true;
 }
 #endregion
@@ -171,6 +172,7 @@ public class DataManager : MonoBehaviour {
                 achievementProgress = totalAchievements > 0 ? Mathf.RoundToInt((float)achieved / totalAchievements * 100) : 0,
                 upgradeProgress     = totalUpgrades     > 0 ? Mathf.RoundToInt((float)upgraded  / totalUpgrades    * 100) : 0,
                 totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded) / totalItems * 100) : 0,
+                shopUnlocked        = data.shopUnlocked,
                 isEmpty             = false
             };
         } return saveFileProgress;
