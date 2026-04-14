@@ -625,6 +625,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
   - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
   - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
+  - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
   - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
   usesCollider: 0
   includeGround: 0
