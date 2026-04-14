@@ -13,9 +13,9 @@ public class GameplayManager : MonoBehaviour
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     [SerializeField] private int startingTime; 
     [SerializeField] private InputAction pauseAction;
-    [SerializeField] private AudioClip countSound;
-    public GameObject gameUI, endUI, pauseUI, confirmUI;
-    public GameObject playerVan, directionArrow, moneyText; 
+    [SerializeField] private AudioClip countSound, overtimeSound;
+    [SerializeField] private GameObject gameUI, endUI, pauseUI, confirmUI;
+    [SerializeField] private GameObject playerVan, directionArrow, moneyText; 
     public bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
@@ -140,7 +140,11 @@ public class GameplayManager : MonoBehaviour
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
-            if (value < 0 && timeLeft == 1 && secondLife) { secondLife = false; value = 30; }
+            if (value < 0 && timeLeft == 1 && secondLife) { 
+                GameManager.audioManager.SetEffectSound(overtimeSound);
+                GameManager.audioManager.PlayEffectSound();
+                secondLife = false; value = 30;
+            }
             timeLeft += value;
             if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
             if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }

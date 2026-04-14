@@ -39519,6 +39519,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
+  overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
   gameUI: {fileID: 76687730}
   endUI: {fileID: 2117694106}
   pauseUI: {fileID: 313967127}
