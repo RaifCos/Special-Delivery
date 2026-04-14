@@ -3,13 +3,20 @@ using UnityEngine;
 
 // Script to handle main game functionality.
 public class OpeningMenuManager : MonoBehaviour {
-    public GameObject openingUI, creditsUI, fileUI, confirmUI;
+    [SerializeField]
+    private GameObject openingUI, creditsUI, fileUI, confirmUI;
+    [SerializeField]
+    private GameObject[] saveFileUI;
+    private Color32 completeColor = new(255, 227, 0, 255);
+    private ProgressData[] saveFileProgress = new ProgressData[3]; 
 
     void Awake() { GameManager.openingMenuManager = this; }
 
     public void Start() {
         AlternateOpeningMenus(0);
         StartCoroutine(GameManager.audioManager.StartGameMusic());
+        saveFileProgress = GameManager.dataManager.LoadSaveFiles();
+        UpdateSaveFileUI();
     }
 
     public void OpenGame(int saveFile) {
@@ -55,6 +62,32 @@ public class OpeningMenuManager : MonoBehaviour {
     }
 
     // Function to close the game application. 
-    public void QuitApplication() { Application.Quit(); }  
+    public void QuitApplication() { Application.Quit(); }
 
+    private void UpdateSaveFileUI() {
+        for (int i = 0; i < saveFileProgress.Length; i++) {
+            Transform panel = saveFileUI[i].transform;
+            Debug.Log($"Slot {i}: isEmpty={saveFileProgress[i].isEmpty}, total={saveFileProgress[i].totalProgress}");
+            if (!saveFileProgress[i].isEmpty) {
+                ActivateSaveFileUIElement(panel.GetChild(0).gameObject, "", saveFileProgress[i].totalProgress);
+                ActivateSaveFileUIElement(panel.GetChild(1).gameObject, "Upgrades\t\t", saveFileProgress[i].upgradeProgress);
+                ActivateSaveFileUIElement(panel.GetChild(2).gameObject, "Gallery\t\t", saveFileProgress[i].galleryProgress);
+                ActivateSaveFileUIElement(panel.GetChild(3).gameObject, "Achievements\t", saveFileProgress[i].achievementProgress);
+                panel.GetChild(4).gameObject.SetActive(false);
+            } else {
+                panel.GetChild(0).gameObject.SetActive(false);
+                panel.GetChild(1).gameObject.SetActive(false);
+                panel.GetChild(2).gameObject.SetActive(false);
+                panel.GetChild(3).gameObject.SetActive(false);
+                panel.GetChild(4).gameObject.SetActive(true);
+            }
+        } 
+    }
+
+    private void ActivateSaveFileUIElement(GameObject element, string name, int score) {
+        element.SetActive(true);
+        TMP_Text elementText = element.GetComponent<TMP_Text>();
+        elementText.text = name + score + "%";
+        if(score == 100) { elementText.color =  completeColor; }
+    }
 }
