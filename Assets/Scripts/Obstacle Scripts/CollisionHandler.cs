@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Script to handle collisions for Props (Signs, Cones, Bins, etc.)
-public class PropCollision : MonoBehaviour {
+public class CollisionHandler : MonoBehaviour {
     bool beganFading = false;
     
     private void OnCollisionEnter(Collision collision) {

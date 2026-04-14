@@ -24,6 +24,5 @@ public class FakeParcels : MonoBehaviour {
         float y = Random.Range(1.4f, 2f);
         float z = Random.Range(1.4f, 2f);
         obj.transform.localScale = new Vector3(x, y, z);
-        GameManager.obstacleManager.AddObstacle(obj);
     }
 }

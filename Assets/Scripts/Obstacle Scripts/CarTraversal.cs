@@ -17,7 +17,7 @@ public class CarTraversal : MonoBehaviour {
     LayerMask layerMask;
 
     // Start is called before the first frame update
-    void Start() {
+    void OnEnable() {
         rb = GetComponent<Rigidbody>();
         layerMask = LayerMask.GetMask("Blockage");
         // Set inital route Nodes.

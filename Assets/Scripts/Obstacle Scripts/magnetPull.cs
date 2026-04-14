@@ -7,7 +7,7 @@ public class MagnetPull : MonoBehaviour
     private GameObject magnetParent;
     private readonly List<Rigidbody> objectsInBeam = new();
 
-    void Start() { magnetParent = transform.parent.gameObject; }
+    void OnEnable() { magnetParent = transform.parent.gameObject; }
 
     void FixedUpdate() {
         // "pull" every object currently in the Magnet's beam.

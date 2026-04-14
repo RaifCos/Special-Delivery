@@ -20171,7 +20171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 812279843}
   - component: {fileID: 812279842}
-  - component: {fileID: 812279841}
+  - component: {fileID: 812279844}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -20179,26 +20179,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &812279841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812279840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: None
-  m_VerticalAxis: None
-  m_SubmitButton: None
-  m_CancelButton: None
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &812279842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20229,6 +20209,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &812279844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812279840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.UI.InputSystemUIInputModule
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &814579695
 GameObject:
   m_ObjectHideFlags: 0
@@ -39769,6 +39780,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172218043855e924db837e7262f64112, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingObstacles:
+  - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
+  - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
+  permObstacles:
+  - {fileID: 4593245236174038032, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
+  - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
+  - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
+  - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
+  - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
+  - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
+  - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
+  - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
+  - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
+  - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
+  - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
+  - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
+  - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
+  - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
+  - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
+  tempObstacles:
+  - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
+  - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
+  - {fileID: 8795924381500241567, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
+  - {fileID: 2581911252302640727, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
+  - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
+  - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
+  - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
   carStartingNodes:
   - {fileID: 281776876}
   - {fileID: 1314148704}

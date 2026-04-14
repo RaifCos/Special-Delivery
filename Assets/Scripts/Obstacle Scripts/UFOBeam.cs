@@ -7,7 +7,7 @@ public class UFOBeam : MonoBehaviour
     private GameObject ufoParent;
     private readonly List<Rigidbody> objectsInBeam = new();
 
-    void Start() { ufoParent = transform.parent.gameObject; }
+    void OnEnable() { ufoParent = transform.parent.gameObject; }
 
     void FixedUpdate() {
         // "pull up" every object currently in the UFO's beam.
