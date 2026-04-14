@@ -306,7 +306,7 @@ public class DataManager : MonoBehaviour {
             if (CanAfford(upgrade.cost)) {
                 CashTransaction(-upgrade.cost);
                 ActivateUpgrade(key);
-                GameManager.garageMenuManager.UpdateMenu();
+                GameManager.garageMenuManager.UpdateMenu(true);
                 SaveData();
             }
         }

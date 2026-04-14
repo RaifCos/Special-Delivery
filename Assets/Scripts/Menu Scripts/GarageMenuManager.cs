@@ -5,9 +5,12 @@ using UnityEngine.UI;
 public class GarageMenuManager : MonoBehaviour {
 
     [Header("Garage Menu Variables")]
-    public GameObject buttonIcons, cashCounter, upgradeDisplay;
-    public Button buyButton;
-    public Sprite lockedSprite;
+    [SerializeField] private GameObject buttonIcons;
+    [SerializeField] private GameObject cashCounter;
+    [SerializeField] private GameObject upgradeDisplay;
+    [SerializeField] private Button buyButton;
+    [SerializeField] private Sprite lockedSprite;
+    [SerializeField] private AudioClip buySound;
     private int cash;
     private string listed;
 
@@ -22,8 +25,11 @@ public class GarageMenuManager : MonoBehaviour {
         cashCounter.GetComponent<TMP_Text>().text =string.Format("{0:#,##0.##}", cash);
     }
 
-    public void UpdateMenu() {
-        UpdateCash();
+    public void UpdateMenu(bool purchase) {
+        if (purchase) { 
+            GameManager.audioManager.SetEffectSound(buySound);  
+            GameManager.audioManager.PlayEffectSound();
+        } UpdateCash();
         foreach (Upgrade_SO up in GameManager.dataManager.GetUpgrades()) {
             UpdateUpgradeUI(up.internalName);
         }

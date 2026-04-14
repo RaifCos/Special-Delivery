@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
     [SerializeField] private int startingTime; 
     [SerializeField] private InputAction pauseAction;
+    [SerializeField] private AudioClip countSound;
     public GameObject gameUI, endUI, pauseUI, confirmUI;
     public GameObject playerVan, directionArrow, moneyText; 
     public bool isPlaying = false;
@@ -206,10 +207,10 @@ public class GameplayManager : MonoBehaviour
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
-        GameManager.audioManager.SetCountSound();
+        GameManager.audioManager.SetEffectSound(countSound);
         do { display++; 
             counterText.text = display.ToString(); 
-            if (display % 10 == 0) { GameManager.audioManager.PlayCountSound(); }
+            if (display % 10 == 0) { GameManager.audioManager.PlayEffectSound(); }
             yield return _waitForSeconds0001;
         } while (display < moneyEarnt);
         yield return _waitForSeconds1;

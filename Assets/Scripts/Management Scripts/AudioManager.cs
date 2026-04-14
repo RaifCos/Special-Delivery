@@ -4,9 +4,9 @@ using UnityEngine;
 // Script to handle Audio not in the game world (Music and Fanfare)
 public class AudioManager : MonoBehaviour
 {
-    public AudioSource music, parcelSound, soundscape;
+    public AudioSource music, effectSound, soundscape;
     public AudioClip musicStart, musicLoop, musicEnd;
-    public AudioClip soundParcel, soundSpot, count;
+    public AudioClip soundParcel, soundSpot;
     private bool isPlaying = false;
 
     void Awake() {
@@ -58,16 +58,14 @@ public class AudioManager : MonoBehaviour
 
     // Function to play the fanfare when a Parcel/Delivery Spot is reached.
     public void PlayParcelSound(bool isParcel) {
-        if (isParcel) { parcelSound.clip = soundParcel; }
-        else { parcelSound.clip = soundSpot; }
-        parcelSound.Play();
+        if (isParcel) { effectSound.clip = soundParcel; }
+        else { effectSound.clip = soundSpot; }
+        effectSound.Play();
     }
 
-    public void SetCountSound() {
-        parcelSound.clip = count;
-    }
+    public void SetEffectSound(AudioClip sound) { effectSound.clip = sound; }
 
-    public void PlayCountSound() { parcelSound.Play(); }
+    public void PlayEffectSound() { effectSound.Play(); }
 
     public void ToggleMusic(bool isPlaying) {
         music.mute = !isPlaying;
