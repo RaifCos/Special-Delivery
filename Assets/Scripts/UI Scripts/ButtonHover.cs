@@ -11,6 +11,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     void Start() { tmp = obj.GetComponent<TMP_Text>(); }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        if(message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK.")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
         tmp.text = message;
     }
 
