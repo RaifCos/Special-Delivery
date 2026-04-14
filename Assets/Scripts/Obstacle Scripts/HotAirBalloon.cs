@@ -51,7 +51,6 @@ public class HotAirBalloon : MonoBehaviour {
     }
 
     private void Hover() {
-        Debug.Log(goingUp);
         if (transform.position.y >= highestPoint) { goingUp = false; }
         else if (transform.position.y <= lowestPoint) { goingUp = true; }
         Vector3 force = goingUp ? Vector3.up : Vector3.down;

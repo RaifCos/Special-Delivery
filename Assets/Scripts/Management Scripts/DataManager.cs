@@ -100,13 +100,7 @@ public class DataManager : MonoBehaviour {
     }
 
     public Data ResetData() {
-        Debug.Log($"Deleting file at: {saveFilePath}");
-        if (File.Exists(saveFilePath)) {
-            File.Delete(saveFilePath);
-            Debug.Log("File deleted successfully");
-        } else {
-            Debug.Log("File not found at path");
-        }
+        if (File.Exists(saveFilePath)) { File.Delete(saveFilePath); }
         data = DefaultData();
         return data;
     }
@@ -114,7 +108,6 @@ public class DataManager : MonoBehaviour {
     private Data DefaultData() {
         Data defaultData = new();
         foreach(Obstacle obs in obstacles) {
-            Debug.Log(obs.so.internalName);
             defaultData.lifetimeObs[obs.so.internalName] = 0;
         }
 
@@ -145,7 +138,6 @@ public class DataManager : MonoBehaviour {
 
         for (int i = 0; i < 3; i++) {
             string path = Path.Combine(Application.persistentDataPath, jsonFileName) + i;
-            Debug.Log($"Checking path {i}: {path}, exists={File.Exists(path)}");
 
             if (!File.Exists(path)) {
                 saveFileProgress[i] = new ProgressData();
