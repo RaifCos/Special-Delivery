@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public static GarageMenuManager garageMenuManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
+    public static SettingsManager settingsManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
@@ -23,15 +24,19 @@ public class GameManager : MonoBehaviour {
     public GameObject muteButton, unmuteButton;
 
     [Header("Player Preferences")]
+    private int saveFile; 
     private static int difficulty;
     private bool isMusicPlaying, qualityShadows;
 
-    void Awake() { instance = this; }
+    void Awake() { 
+        instance = this;
+        saveFile = PlayerPrefs.GetInt("SaveFile", 0);
+    }
 
     // Start is called before the first frame update.
     void Start() { 
-        ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
-        ToggleShadows(PlayerPrefs.GetInt("Shadows", 0) == 0);   
+        ToggleMusic(PlayerPrefs.GetInt("MuteOn_" + saveFile, 0) == 0);
+        ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
     }
 
     // Getter Method for the current difficulty. 
@@ -45,14 +50,14 @@ public class GameManager : MonoBehaviour {
         isMusicPlaying = isOn;
         audioManager.ToggleMusic(isOn);
         int res = isOn? 0: 1;
-        PlayerPrefs.SetInt("MuteOn", res);
+        PlayerPrefs.SetInt("MuteOn_" + saveFile, res);
         PlayerPrefs.Save();
     }
 
     public void ToggleShadows(bool areLower) {
         qualityShadows = !areLower;
         int res = qualityShadows? 0: 1;
-        PlayerPrefs.SetInt("Shadows", res);
+        PlayerPrefs.SetInt("Shadows_" + saveFile, res);
         PlayerPrefs.Save();
     }
 
@@ -65,5 +70,13 @@ public class GameManager : MonoBehaviour {
         yield return _waitForSeconds1;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone) { yield return null; }
+    }
+
+    public int GetSaveFile() => saveFile;
+
+    public void SetSaveFile(int input) {
+        saveFile = input;
+        PlayerPrefs.SetInt("SaveFile", saveFile);
+        PlayerPrefs.Save();
     }
 }
