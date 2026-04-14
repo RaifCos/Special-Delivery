@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
@@ -9,11 +10,12 @@ public class ObstacleManager : MonoBehaviour {
     [SerializeField]
     private List<Obstacle> tempObstacles;
 
-    private static WaitForSeconds _waitForSeconds0_02 = new(0.02f);
-    private static WaitForSeconds _waitForSeconds8 = new(8f);
+    private List<GameObject> permObstaclePool = new(); 
+    private List<GameObject> tempObstaclePool = new(); 
+    private static readonly WaitForSeconds _waitForSeconds0_02 = new(0.02f);
+    private static readonly WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB, sideNodes;
     private GameObject obstacleObject, destroyParticles;
-    private readonly List<GameObject> currentObstacles = new();
     private bool[] sideNodeOccupied; 
 
     void Awake() {
@@ -27,17 +29,32 @@ public class ObstacleManager : MonoBehaviour {
         for(int i=0; i<sideNodes.Length; i++) {
             sideNodeOccupied[i] = false;
         }
+
+        // Add Perm Objects to Pool.
+        foreach(Obstacle obs in permObstacles) { 
+            obstacleObject = Instantiate(obs.so.prefab);
+            permObstaclePool.Add(obstacleObject);
+        }
+
+        // Add Temp Objects to Pool.
+        foreach(Obstacle obs in tempObstacles) { 
+            obstacleObject = Instantiate(obs.so.prefab);
+            tempObstaclePool.Add(obstacleObject);
+        }
     }
 
     // Function to spawn the starting obstacles at the start of the game.
     public void SpawnStartingObstacles() {
         // Spawn three random Cars (Red or Blue).
+
+        /*
         for (int i = 0; i < 3; i++) {
             string[] startingObs = {"carRed", "carBlue", "carGreen"};
             int random = Random.Range(0, 3);
             obstacleObject = Instantiate(GameManager.dataManager.GetObstacle(startingObs[random]).so.prefab);
             AddObstacle(obstacleObject);
         }
+        */
     }
 
     // Function to generate set a starting position for an obstacle 
@@ -100,34 +117,24 @@ public class ObstacleManager : MonoBehaviour {
         return res;
     }
 
-    // Function to add an object to the list of current obstacles on stage.
-    public void AddObstacle(GameObject obstacle) { currentObstacles.Add(obstacle); }
-
     public void SpawnObstacle(bool perm) {
         int gen;
-        Obstacle obs = null;
-        Obstacle_SO obsSO;
+        GameObject obstacleObject;
 
-        if (perm) {
-            while (permObstacles.Count > 0) {
-                gen = Random.Range(0, permObstacles.Count);
-                var candidate = permObstacles[gen];
-                if (GameManager.dataManager.CheckLimit(candidate)) {
-                    obs = candidate;
-                    break;
-                } permObstacles.RemoveAt(gen);
-            }
-        }
-        
-        if(obs == null) {
-            gen = Random.Range(0, tempObstacles.Count);
-            obs = tempObstacles[gen];
+        if (perm && permObstaclePool.Count > 0) {
+            gen = Random.Range(0, permObstaclePool.Count);
+            obstacleObject = permObstaclePool[gen];
+            permObstaclePool.Remove(obstacleObject);
+        } else {
+            do {
+                gen = Random.Range(0, tempObstaclePool.Count);
+                obstacleObject = tempObstaclePool[gen];
+            } while (obstacleObject.activeInHierarchy);
         } 
         
-        obsSO = obs.so;
-        GameObject obsObj = Instantiate(obsSO.prefab);
+        obstacleObject.SetActive(true);
+        Obstacle_SO obsSO = obstacleObject.GetComponent<Obstacle>().so;
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
-        AddObstacle(obsObj);
     }
 
     // Coroutine to handle the removal of an obstacle from the game during gameplay.
@@ -142,7 +149,7 @@ public class ObstacleManager : MonoBehaviour {
             scale = obj.transform.localScale;
             yield return _waitForSeconds0_02;
         } // Object has Shrunk to near-invisibility, so now Destroy.
-        Destroy(obj);
-        if (isObstacle) { currentObstacles.Remove(obj); }
+        if (!isObstacle) { obj.SetActive(false); }
+        else { Destroy(obj); }
     }
 }
