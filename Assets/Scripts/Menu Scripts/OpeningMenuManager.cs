@@ -67,19 +67,20 @@ public class OpeningMenuManager : MonoBehaviour {
     private void UpdateSaveFileUI() {
         for (int i = 0; i < saveFileProgress.Length; i++) {
             Transform panel = saveFileUI[i].transform;
-            Debug.Log($"Slot {i}: isEmpty={saveFileProgress[i].isEmpty}, total={saveFileProgress[i].totalProgress}");
             if (!saveFileProgress[i].isEmpty) {
                 ActivateSaveFileUIElement(panel.GetChild(0).gameObject, "", saveFileProgress[i].totalProgress);
                 ActivateSaveFileUIElement(panel.GetChild(1).gameObject, "Upgrades\t\t", saveFileProgress[i].upgradeProgress);
                 ActivateSaveFileUIElement(panel.GetChild(2).gameObject, "Gallery\t\t", saveFileProgress[i].galleryProgress);
                 ActivateSaveFileUIElement(panel.GetChild(3).gameObject, "Achievements\t", saveFileProgress[i].achievementProgress);
                 panel.GetChild(4).gameObject.SetActive(false);
+                panel.GetChild(5).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "Play";
             } else {
                 panel.GetChild(0).gameObject.SetActive(false);
                 panel.GetChild(1).gameObject.SetActive(false);
                 panel.GetChild(2).gameObject.SetActive(false);
                 panel.GetChild(3).gameObject.SetActive(false);
                 panel.GetChild(4).gameObject.SetActive(true);
+                panel.GetChild(5).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "New Game";
             }
         } 
     }
