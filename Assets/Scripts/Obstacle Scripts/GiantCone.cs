@@ -5,7 +5,7 @@ public class GiantCone : MonoBehaviour {
 
     [SerializeField] private Vector2 topCorner;
     [SerializeField] private Vector2 bottomCorner;
-    void Start() {
+    void OnEnable() {
         // set Position somewhere in the middle of the map. 
         transform.position = new Vector3(Random.Range(topCorner.x, bottomCorner.x), 40f, Random.Range(topCorner.y, bottomCorner.y));
     }

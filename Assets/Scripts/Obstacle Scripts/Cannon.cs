@@ -9,7 +9,7 @@ public class Cannon : MonoBehaviour {
     [SerializeField] private AudioSource audioSource;
     private Vector3 loadingPoint;
 
-    void Start() {
+    void OnEnable() {
         Transform trans = GameManager.obstacleManager.GetSideNode();
         transform.SetPositionAndRotation(trans.position, trans.rotation);
         loadingPoint = loadingPointObj.transform.position;

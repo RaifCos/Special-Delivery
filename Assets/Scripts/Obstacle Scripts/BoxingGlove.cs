@@ -13,7 +13,7 @@ public class BoxingGlove : MonoBehaviour {
     private int timer = 0;
     private bool playerDodged = true; 
 
-    void Start() {
+    void OnEnable() {
         rb = GetComponent<Rigidbody>();
         StartCoroutine(PunchTimer());
         player = GameObject.Find("Player");

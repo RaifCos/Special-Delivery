@@ -14,7 +14,7 @@ public class BoomerangTraversal : MonoBehaviour
     private Vector3 midpoint;
     private float midDist;
 
-    void Start() {
+    void OnEnable() {
         rb = GetComponent<Rigidbody>();
 
         // Create route for the Boomerang and set starting position. 

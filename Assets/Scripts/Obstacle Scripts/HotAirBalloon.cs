@@ -13,7 +13,7 @@ public class HotAirBalloon : MonoBehaviour {
     GameObject currNode, prevNode;
     Vector3 currPos;
 
-    void Start() {
+    void OnEnable() {
         rb = GetComponent<Rigidbody>();
         prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1);
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
