@@ -6,7 +6,7 @@ public class FakeParcels : MonoBehaviour {
     private int parcelCount;
 
     // Start is called before the first frame update
-    void Start() {
+    void OnEnable() {
         parcelCount = Random.Range(4, 8);
         StartCoroutine(ParcelGroup());
     }
@@ -15,8 +15,7 @@ public class FakeParcels : MonoBehaviour {
         for (int i = 0; i < parcelCount; i++) {
             SpawnParcel();
             yield return _waitForSeconds0_5;
-        }
-        Destroy(gameObject);
+        } gameObject.SetActive(false);
     }
     void SpawnParcel() {
         GameObject obj = Instantiate(Resources.Load<GameObject>("Obstacles/fakeParcel"));
