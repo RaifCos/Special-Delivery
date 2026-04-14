@@ -28,13 +28,15 @@ public class GameManager : MonoBehaviour {
     private static int difficulty;
     private bool isMusicPlaying, qualityShadows;
 
-    void Awake() { instance = this; }
+    void Awake() { 
+        instance = this;
+        saveFile = PlayerPrefs.GetInt("SaveFile", 0);
+    }
 
     // Start is called before the first frame update.
     void Start() { 
         ToggleMusic(PlayerPrefs.GetInt("MuteOn", 0) == 0);
         ToggleShadows(PlayerPrefs.GetInt("Shadows", 0) == 0);
-        saveFile = PlayerPrefs.GetInt("SaveFile", 0);
     }
 
     // Getter Method for the current difficulty. 

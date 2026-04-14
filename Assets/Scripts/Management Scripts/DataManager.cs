@@ -3,6 +3,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
+#region Data Classes
 [System.Serializable]
 public class Data {
     public Dictionary<string, int> lifetimeObs = new();
@@ -12,6 +13,15 @@ public class Data {
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
     public bool shopUnlocked = false;
 }
+
+public class ProgressData {
+    public int galleryProgress = 0;
+    public int achievementProgress = 0;
+    public int upgradeProgress = 0;
+    public int totalProgress = 0;
+    public bool isEmpty = true;
+}
+#endregion
 
 public class DataManager : MonoBehaviour {
 
@@ -41,7 +51,7 @@ public class DataManager : MonoBehaviour {
         props = database.GetProps();
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
-        saveFilePath = Path.Combine(Application.persistentDataPath, jsonFileName);
+        saveFilePath = Path.Combine(Application.persistentDataPath, jsonFileName) + GameManager.instance.GetSaveFile();
         LoadData();
     }
 
@@ -65,8 +75,7 @@ public class DataManager : MonoBehaviour {
             data = JsonConvert.DeserializeObject<Data>(json);
             LoadMissingData(); 
         } else {
-            data = GameManager.dataManager.DefaultData();
-            SaveData(); 
+            data = DefaultData(); // load defaults into memory only, don't save
         }
     }
 
@@ -91,8 +100,14 @@ public class DataManager : MonoBehaviour {
     }
 
     public Data ResetData() {
-        data = GameManager.dataManager.DefaultData();
-        SaveData();
+        Debug.Log($"Deleting file at: {saveFilePath}");
+        if (File.Exists(saveFilePath)) {
+            File.Delete(saveFilePath);
+            Debug.Log("File deleted successfully");
+        } else {
+            Debug.Log("File not found at path");
+        }
+        data = DefaultData();
         return data;
     }
 
@@ -120,6 +135,57 @@ public class DataManager : MonoBehaviour {
 
     #endregion 
     
+    #region Safe File Data
+    public ProgressData[] LoadSaveFiles() {
+        ProgressData[] saveFileProgress = new ProgressData[3];
+        int totalGallery      = obstacles.Count + props.Count;
+        int totalAchievements = achievements.Count;
+        int totalUpgrades     = upgrades.Count;
+        int totalItems        = totalGallery + totalAchievements + totalUpgrades;
+
+        for (int i = 0; i < 3; i++) {
+            string path = Path.Combine(Application.persistentDataPath, jsonFileName) + i;
+            Debug.Log($"Checking path {i}: {path}, exists={File.Exists(path)}");
+
+            if (!File.Exists(path)) {
+                saveFileProgress[i] = new ProgressData();
+                continue;
+            }
+
+            string encryptedJson = File.ReadAllText(path);
+            string json          = DataEncryption.Decrypt(encryptedJson);
+            Data   data          = JsonConvert.DeserializeObject<Data>(json);
+
+            // Check Gallery Progress
+            int gallery = 0;
+            foreach (Obstacle obs in obstacles)
+                if (data.lifetimeObs.GetValueOrDefault(obs.so.internalName) > 0) gallery++;
+
+            foreach (Prop prop in props)
+                if (data.lifetimeProps.GetValueOrDefault(prop.so.internalName) > 0) gallery++;
+
+            // Check Achievement Progress
+            int achieved = 0;
+            foreach (Achievement_SO ach in achievements)
+                if (data.achievementProgress.GetValueOrDefault(ach.internalName)) achieved++;
+
+            // Check Shop Progress
+            int upgraded = 0;
+            foreach (Upgrade_SO up in upgrades)
+                if (data.upgradeProgress.GetValueOrDefault(up.internalName)) upgraded++;
+
+            saveFileProgress[i] = new ProgressData {
+                galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery     * 100) : 0,
+                achievementProgress = totalAchievements > 0 ? Mathf.RoundToInt((float)achieved / totalAchievements * 100) : 0,
+                upgradeProgress     = totalUpgrades     > 0 ? Mathf.RoundToInt((float)upgraded  / totalUpgrades    * 100) : 0,
+                totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded) / totalItems * 100) : 0,
+                isEmpty             = false
+            };
+        } return saveFileProgress;
+    }
+
+    #endregion
+
     #region Obstacle/Prop Data
     public void AddObstacleEncounter(string key) {
         gameObs[key] = gameObs.GetValueOrDefault(key) + 1;
