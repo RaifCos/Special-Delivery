@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 264452923}
   - component: {fileID: 264452926}
   m_Layer: 5
-  m_Name: Gallery Button
+  m_Name: Achievements Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: LOOK AT ALL THE RANDOM JUNK THAT'S BEEN THROWN AT YOU SO FAR.
+  message: CHECK OUT HOW GOOD YOU ARE AT THIS GAME.
 --- !u!1 &281829021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3358,7 +3358,7 @@ GameObject:
   - component: {fileID: 389242243}
   - component: {fileID: 389242246}
   m_Layer: 5
-  m_Name: Achievement Button
+  m_Name: Gallery Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3491,7 +3491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: CHECK OUT HOW GOOD YOU ARE AT THIS GAME.
+  message: LOOK AT ALL THE RANDOM JUNK THAT'S BEEN THROWN AT YOU SO FAR.
 --- !u!1 &397694549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6009,7 +6009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GALLERY
+  m_text: ACHIEVEMENTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
   m_sharedMaterial: {fileID: 4228786842495613621, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
@@ -6980,7 +6980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ACHIEVEMENTS
+  m_text: GALLERY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
   m_sharedMaterial: {fileID: 4228786842495613621, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
@@ -17983,8 +17983,8 @@ SceneRoots:
   - {fileID: 92225780}
   - {fileID: 2091986789}
   - {fileID: 1825328278}
-  - {fileID: 1464823720}
   - {fileID: 1346328250}
+  - {fileID: 1464823720}
   - {fileID: 1597486545}
   - {fileID: 1493118606}
   - {fileID: 1431201938}

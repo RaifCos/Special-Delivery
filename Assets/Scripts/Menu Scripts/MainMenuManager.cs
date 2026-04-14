@@ -35,7 +35,14 @@ public class MainMenuManager : MonoBehaviour {
                 achievementUI.SetActive(false);
                 settingsUI.SetActive(false);
                 break; }
-            case 1: { // Achievements 
+            case 1: { // Gallery 
+                menuUI.SetActive(false);
+                galleryUI.SetActive(true);
+                backdrop.color = new Color32(93, 105, 208, 255);
+                GameManager.galleryManager.UpdateGalleryUI();
+                GameManager.galleryManager.AlternateGalleryMenus(true);
+                break; }
+            case 2: { // Achievements
                 GameManager.achievementMenuManager.UpdateAchievementMenu();
                 backdrop.color = new Color32(39, 191, 200, 255);
                 menuUI.SetActive(false);
@@ -43,26 +50,17 @@ public class MainMenuManager : MonoBehaviour {
                 achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.dataManager.GetBestScore().ToString();
                 GameManager.achievementMenuManager.DisplayAchievement("score10");
                 break; }
-            case 2: { // Gallery
-                menuUI.SetActive(false);
-                galleryUI.SetActive(true);
-                backdrop.color = new Color32(93, 105, 208, 255);
-                GameManager.galleryManager.UpdateGalleryUI();
-                GameManager.galleryManager.AlternateGalleryMenus(true);
-                break; }
             case 4: { // Level Select
                 menuUI.SetActive(false);
                 levelSelectUI.SetActive(true);
-                    break;
-                }    
+                break; }    
             case 5: { // Shop 
-                    backdrop.color = new Color32(62, 204, 230, 255);
-                    GameManager.garageMenuManager.UpdateMenu();
-                    GameManager.garageMenuManager.DisplayUpgrade("booster");
-                    menuUI.SetActive(false);
-                    garageUI.SetActive(true);
-                    break;
-                }    
+                backdrop.color = new Color32(62, 204, 230, 255);
+                GameManager.garageMenuManager.UpdateMenu();
+                GameManager.garageMenuManager.DisplayUpgrade("booster");
+                menuUI.SetActive(false);
+                garageUI.SetActive(true);
+                break; }    
             case 6: { // Loading Screen
                 menuUI.SetActive(false);
                 confirmUI.SetActive(false);
