@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: moreMoney
   externalName: PAY RISE
-  description: increases the amount of cash earned by completing a delivery by 50%.
+  description: increases the amount of cash earned for completing a delivery by 50%.
   cost: 1750
   sprite: {fileID: 21300000, guid: abe590e898a2f554399b06e9d2dce495, type: 3}
   requirements:

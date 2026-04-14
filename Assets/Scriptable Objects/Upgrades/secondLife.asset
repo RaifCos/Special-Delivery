@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Upgrade_SO
   internalName: secondLife
   externalName: OVERTIME
-  description: 'adds another 30 seconds onto your timer when you''re about to lose.
-    only applies once per shift. '
+  description: 'adds 30 seconds onto your timer when you''re about to lose. only
+    applies once per shift. '
   cost: 3000
   sprite: {fileID: 21300000, guid: e279451ad33767441a02a48dbdad96e8, type: 3}
   requirements:
