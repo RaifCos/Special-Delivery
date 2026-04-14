@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
 public class ObstacleManager : MonoBehaviour {
+    [SerializeField]
+    private List<Obstacle> startingObstacles;
     [SerializeField]
     private List<Obstacle> permObstacles;
     [SerializeField]
@@ -43,19 +44,7 @@ public class ObstacleManager : MonoBehaviour {
         }
     }
 
-    // Function to spawn the starting obstacles at the start of the game.
-    public void SpawnStartingObstacles() {
-        // Spawn three random Cars (Red or Blue).
-
-        /*
-        for (int i = 0; i < 3; i++) {
-            string[] startingObs = {"carRed", "carBlue", "carGreen"};
-            int random = Random.Range(0, 3);
-            obstacleObject = Instantiate(GameManager.dataManager.GetObstacle(startingObs[random]).so.prefab);
-            AddObstacle(obstacleObject);
-        }
-        */
-    }
+    #region Node Functions
 
     // Function to generate set a starting position for an obstacle 
     public GameObject GetStartingNode(int type) {
@@ -117,6 +106,20 @@ public class ObstacleManager : MonoBehaviour {
         return res;
     }
 
+    #endregion
+
+    #region Obstacle Spawning
+
+    // Function to spawn the starting Obstacles at the beginning of the game.
+    public void SpawnStartingObstacles() {
+        foreach(Obstacle obs in startingObstacles) {
+            obstacleObject = Instantiate(obs.so.prefab);
+            permObstaclePool.Add(obstacleObject);
+            obstacleObject.SetActive(true);
+        }
+    }
+
+    // Function to spawn a Temporary or Permanent Obstacle.
     public void SpawnObstacle(bool perm) {
         int gen;
         GameObject obstacleObject;
@@ -136,6 +139,8 @@ public class ObstacleManager : MonoBehaviour {
         Obstacle_SO obsSO = obstacleObject.GetComponent<Obstacle>().so;
         GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
     }
+
+    #endregion
 
     // Coroutine to handle the removal of an obstacle from the game during gameplay.
     public IEnumerator ShrinkAndDestroy(GameObject obj, bool isObstacle) {
