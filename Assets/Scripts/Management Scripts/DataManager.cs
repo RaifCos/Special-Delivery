@@ -206,8 +206,6 @@ public class DataManager : MonoBehaviour {
         }
     }
 
-    public bool CheckLimit(Obstacle obs) => gameObs.GetValueOrDefault(obs.so.internalName) < obs.so.limit;
-
     public void ResetGameEncounters() {
         gameObs = new();
         foreach (Obstacle obs in obstacles) { gameObs.Add(obs.so.internalName, 0); }
