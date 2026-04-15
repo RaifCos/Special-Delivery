@@ -9,16 +9,20 @@ public class PlayerBoosterControl : MonoBehaviour {
     [SerializeField] private InputAction vanBoost;
 
     [Header("Fuel Values")]
-    public float defaultMaxFuel, comsumptionRate, replenishRate, cooldownTime;
+    [SerializeField] private float defaultMaxFuel;
+    [SerializeField] private float comsumptionRate;
+    [SerializeField] private float replenishRate;
+    [SerializeField] private float cooldownTime;
     private float maxFuel;
 
     [Header("Boost Effects")]
-    public AudioSource boosterSound; 
-    public ParticleSystem boostParticle; 
-    public Slider fuelMeterSlider;
-    public Image fuelSliderImage;
-    public GameObject fuelTank;
+    [SerializeField] private AudioSource boosterSound; 
+    [SerializeField] private ParticleSystem boostParticle; 
+    [SerializeField] private Slider fuelMeterSlider;
+    [SerializeField] private Image fuelSliderImage;
+    [SerializeField] private GameObject fuelTank;
     [SerializeField] private Gradient fuelGradient;
+    [SerializeField] private GameObject exhaustPipe;
 
     private float fuel;
     private bool isBoosting;
@@ -31,6 +35,7 @@ public class PlayerBoosterControl : MonoBehaviour {
         if( !GameManager.dataManager.IsUpgraded("booster") ) { 
             fuelMeterSlider.gameObject.SetActive(false);
             fuelTank.SetActive(false);
+            exhaustPipe.SetActive(false);
             enabled = false; return; 
         }
         maxFuel = defaultMaxFuel;
