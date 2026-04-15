@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class FakeParcels : MonoBehaviour {
     private static WaitForSeconds _waitForSeconds0_5 = new WaitForSeconds(0.5f);
+    [SerializeField] private GameObject fakeParcel;
     private int parcelCount;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class FakeParcels : MonoBehaviour {
         } gameObject.SetActive(false);
     }
     void SpawnParcel() {
-        GameObject obj = Instantiate(Resources.Load<GameObject>("Obstacles/Temp Obstacles/fakeParcel"));
+        GameObject obj = Instantiate(fakeParcel);
         float x = Random.Range(1.4f, 2f);
         float y = Random.Range(1.4f, 2f);
         float z = Random.Range(1.4f, 2f);

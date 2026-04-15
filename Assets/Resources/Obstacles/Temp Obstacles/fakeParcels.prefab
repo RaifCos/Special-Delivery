@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77318d4e5cd52146a0b05d5845a781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fakeParcel: {fileID: 8758515622063201031, guid: b019d2775c354104f80d44acad87d2b9, type: 3}
 --- !u!114 &9014987189097083226
 MonoBehaviour:
   m_ObjectHideFlags: 0
