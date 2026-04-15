@@ -15,9 +15,16 @@ public class PlayerControl : MonoBehaviour {
     private float currentSteerInput = 0f;
     private WheelControl[] wheels;
 
+    [Header("Flip Recovery")]
+    private readonly float flipRecoveryTorque = 15f;
+    private readonly float flipRecoveryDelay = 1.5f;
+    private readonly float flipAngleThreshold = 140f;
+
+    private float flippedTimer = 0f;
+
     [Header("Player Input")]
-    [SerializeField] private InputAction vanDrive;
-    [SerializeField] private InputAction vanSteer;
+    [SerializeField] private readonly InputAction vanDrive;
+    [SerializeField] private readonly InputAction vanSteer;
 
     [Header("Audio Handler")]
     public AudioSource engineSound;
@@ -36,7 +43,6 @@ public class PlayerControl : MonoBehaviour {
         vanSteer.Disable();
     }
 
-    // Start is called before the first frame update
     void Start() {
         rb = GetComponent<Rigidbody>();
         pbc = GetComponent<PlayerBoosterControl>();
@@ -52,10 +58,12 @@ public class PlayerControl : MonoBehaviour {
         boostPower += GameManager.dataManager.IsUpgraded("boosterPower_II")? 250f: 0f;    
     }
 
-    // FixedUpdate is called at a fixed time interval 
     void FixedUpdate() {
         if (isPlaying) {
-            // Get player input for acceleration and steering
+            // Make sure the Mail Van isn't stuck upside down.
+            FlipRecovery();
+            
+            // Get player input for acceleration and steering.
             float vInput = vanDrive.ReadValue<float>(); // Forward/backward input
             float hInput = vanSteer.ReadValue<float>(); // Steering input
 
@@ -97,6 +105,17 @@ public class PlayerControl : MonoBehaviour {
             engineSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
         } else { engineSound.Stop(); StopVan(); } // Stop engine sound when game is over. 
     }
+
+    private void FlipRecovery() {
+    float uprightAngle = Vector3.Angle(transform.up, Vector3.up);
+    if (uprightAngle > flipAngleThreshold) {
+        flippedTimer += Time.fixedDeltaTime;
+        if (flippedTimer >= flipRecoveryDelay) {
+            Vector3 rollDirection = Vector3.Cross(transform.up, Vector3.up);
+            rb.AddTorque(flipRecoveryTorque * rb.mass * rollDirection.normalized, ForceMode.Force);
+        }
+    } else { flippedTimer = 0f; }
+}
     
     // Completely stop all van movements.
     public void StopVan() {
