@@ -19,6 +19,8 @@ public class BoxingGlove : MonoBehaviour {
         player = GameObject.Find("Player");
     }
 
+    void OnDisable() { StopCoroutine(PunchTimer()); }
+
     // Update is called once per frame
     void FixedUpdate() {
         switch (stage) {
