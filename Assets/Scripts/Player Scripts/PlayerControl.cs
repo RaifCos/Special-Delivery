@@ -55,13 +55,6 @@ public class PlayerControl : MonoBehaviour {
     // FixedUpdate is called at a fixed time interval 
     void FixedUpdate() {
         if (isPlaying) {
-            /*
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift)) {
-                Quaternion newRotation = Quaternion.Euler(0f, rb.rotation.eulerAngles.y, 0f);
-                rb.MoveRotation(newRotation);
-            } 
-            */
-
             // Get player input for acceleration and steering
             float vInput = vanDrive.ReadValue<float>(); // Forward/backward input
             float hInput = vanSteer.ReadValue<float>(); // Steering input
