@@ -67,6 +67,6 @@ public class BoxingGlove : MonoBehaviour {
                     break; }
             } yield return _waitForSeconds1;
         }   if(playerDodged) { GameManager.dataManager.CompleteAchievement("dodgeBoxing"); } 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
