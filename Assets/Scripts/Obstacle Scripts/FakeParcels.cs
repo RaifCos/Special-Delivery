@@ -12,6 +12,8 @@ public class FakeParcels : MonoBehaviour {
         StartCoroutine(ParcelGroup());
     }
 
+    void OnDisable() { StopAllCoroutines(); }
+
     IEnumerator ParcelGroup() {
         for (int i = 0; i < parcelCount; i++) {
             SpawnParcel();

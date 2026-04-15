@@ -10,14 +10,17 @@ public class BoulderTraversal : MonoBehaviour {
     private Rigidbody rb;
     private Vector3[] routeNodes = new Vector3[2];
 
-    void OnEnable() {
-        rb = GetComponent<Rigidbody>();
+    void Awake() { rb = GetComponent<Rigidbody>(); }
 
+    void OnEnable() {
+        beganShrinking = false;
         // Create route for the Boulder and set starting position.
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath();
         transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
     }
+
+    void OnDisable() { StopAllCoroutines(); }
 
     void FixedUpdate() {
         if (!beganShrinking) { // Only move if the destination node has been reached...

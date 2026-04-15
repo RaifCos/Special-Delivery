@@ -11,17 +11,21 @@ public class BoxingGlove : MonoBehaviour {
     private Rigidbody rb;
     private Vector3 targetPosition;
     private int timer = 0;
-    private bool playerDodged = true; 
+    private bool playerDodged = true;
+
+    void Awake() { rb = GetComponent<Rigidbody>(); }
 
     void OnEnable() {
-        rb = GetComponent<Rigidbody>();
-        StartCoroutine(PunchTimer());
+        stage = 0;
+        timer = 0;
+        playerDodged = true;
+
         player = GameObject.Find("Player");
+        StartCoroutine(PunchTimer());
     }
 
-    void OnDisable() { StopCoroutine(PunchTimer()); }
+    void OnDisable() { StopAllCoroutines(); }
 
-    // Update is called once per frame
     void FixedUpdate() {
         switch (stage) {
             case 0: { // Waiting
@@ -29,15 +33,15 @@ public class BoxingGlove : MonoBehaviour {
                 rb.MovePosition(targetPosition);
                 LookRotation();
                 break; }
-            case 1: { // Punch
-                    if (rb.position.y < targetHeight) {
-                        rb.MovePosition(rb.position + Vector3.up * speed);
-                    }
+            case 1: { // Punching
+                if (rb.position.y < targetHeight) {
+                    rb.MovePosition(rb.position + Vector3.up * speed);
+                }
                 break; }
-            case 2: { // Retreat
-                    if (rb.position.y > startHeight) {
-                        rb.MovePosition(rb.position - Vector3.up * speed/4);
-                    } else { stage++; }
+            case 2: { // Retreating
+                if (rb.position.y > startHeight) {
+                    rb.MovePosition(rb.position - Vector3.up * speed / 4);
+                } else { stage++; }
                 break; }
         }
     }
@@ -45,10 +49,10 @@ public class BoxingGlove : MonoBehaviour {
     private void LookRotation() {
         Vector2 direction2D = (player.transform.position - rb.position).normalized;
         Vector3 direction = new(direction2D.x, 0f, direction2D.y);
-        
+
         if (direction.sqrMagnitude > 0.001f) {
-        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-        rb.MoveRotation(targetRotation);
+            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+            rb.MoveRotation(targetRotation);
         }
     }
 
@@ -63,12 +67,14 @@ public class BoxingGlove : MonoBehaviour {
                 case 2: {
                     audioSource.Play();
                     break; }
-                case 3: 
+                case 3:
                 case 5: {
                     stage++;
                     break; }
-            } yield return _waitForSeconds1;
-        }   if(playerDodged) { GameManager.dataManager.CompleteAchievement("dodgeBoxing"); } 
+            }
+            yield return _waitForSeconds1;
+        }
+        if (playerDodged) { GameManager.dataManager.CompleteAchievement("dodgeBoxing"); }
         gameObject.SetActive(false);
     }
 }
