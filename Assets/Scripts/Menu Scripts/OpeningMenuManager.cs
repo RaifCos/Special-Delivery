@@ -68,6 +68,7 @@ public class OpeningMenuManager : MonoBehaviour {
     public void MenuConfirmationResponse(bool response) {
         confirmUI.SetActive(false);
         if(response) { QuitApplication(); }
+        else { eventSystem.SetSelectedGameObject(openingStartSelected); }
     }
 
     // Function to close the game application. 
