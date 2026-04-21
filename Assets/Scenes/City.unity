@@ -18864,7 +18864,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: b1bae533-b153-4286-b17a-e481a69bf622
-      m_Path: <SwitchProControllerHID>/buttonEast
+      m_Path: <SwitchProControllerHID>/rightTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -18923,8 +18923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f260028f8334564fab1b78d9fb19a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorTorque: 3000
-  brakeTorque: 2000
+  motorTorque: 3250
+  brakeTorque: 8000
   maxSpeed: 25
   defaultBoostPower: 500
   steeringRange: 40
@@ -18995,7 +18995,7 @@ MonoBehaviour:
       m_Flags: 4
     - m_Name: negative
       m_Id: 86f344f5-6818-475a-9bde-f4ff08b4093e
-      m_Path: <SwitchProControllerHID>/leftStick/down
+      m_Path: <SwitchProControllerHID>/buttonSouth
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -19003,7 +19003,7 @@ MonoBehaviour:
       m_Flags: 8
     - m_Name: positive
       m_Id: 166d63fb-0572-459f-a77e-2a5b32c010ff
-      m_Path: <SwitchProControllerHID>/leftStick/up
+      m_Path: <SwitchProControllerHID>/buttonWest
       m_Interactions: 
       m_Processors: 
       m_Groups: 
