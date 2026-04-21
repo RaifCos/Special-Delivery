@@ -15,16 +15,16 @@ public class PlayerControl : MonoBehaviour {
     private float currentSteerInput = 0f;
     private WheelControl[] wheels;
 
+    [Header("Player Input")]
+    public InputAction vanDrive;
+    public InputAction vanSteer;
+
     [Header("Flip Recovery")]
     private readonly float flipRecoveryTorque = 15f;
     private readonly float flipRecoveryDelay = 1.5f;
     private readonly float flipAngleThreshold = 140f;
 
     private float flippedTimer = 0f;
-
-    [Header("Player Input")]
-    [SerializeField] private readonly InputAction vanDrive;
-    [SerializeField] private readonly InputAction vanSteer;
 
     [Header("Audio Handler")]
     public AudioSource engineSound;
