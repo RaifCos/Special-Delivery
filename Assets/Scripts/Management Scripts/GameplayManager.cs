@@ -275,6 +275,7 @@ public class GameplayManager : MonoBehaviour
             case 0: { // Game UI
                 gameUI.SetActive(true);
                 pauseUI.SetActive(false);
+                confirmUI.SetActive(false);
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
