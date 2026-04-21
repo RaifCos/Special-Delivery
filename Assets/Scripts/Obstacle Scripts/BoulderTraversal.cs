@@ -38,7 +38,7 @@ public class BoulderTraversal : MonoBehaviour {
 
             // Boulder has arrived at the destination node, so begin shrinking.
             if ((rb.position - routeNodes[1]).sqrMagnitude < 25f) {
-                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, snowball));
+                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false));
                 // Set momentum of Boulder after it stops rolling.
                 rb.linearVelocity = (routeNodes[1] - transform.position).normalized * speed; 
                 rb.angularVelocity = Vector3.zero;
