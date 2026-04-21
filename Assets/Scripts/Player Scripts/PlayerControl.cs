@@ -86,7 +86,6 @@ public class PlayerControl : MonoBehaviour {
             float turnStrength = Mathf.Lerp(5f, 3f, speedFactor);
             rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
 
-
             foreach (var wheel in wheels) {
                 // Apply steering to wheels that support steering
                 if (wheel.steerable) { wheel.SetSteerAngle( currentSteerInput * currentSteerRange); }
