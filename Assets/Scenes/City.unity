@@ -2476,7 +2476,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
-    m_SelectedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2986,7 +2986,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
-    m_SelectedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -14073,7 +14073,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.36839712, b: 0.30588233, a: 1}
     m_HighlightedColor: {r: 1, g: 0.47208297, b: 0.4431373, a: 1}
     m_PressedColor: {r: 1, g: 0.36862746, b: 0.30588236, a: 1}
-    m_SelectedColor: {r: 1, g: 0.36862746, b: 0.30588236, a: 1}
+    m_SelectedColor: {r: 1, g: 0.47058827, b: 0.4431373, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15799,7 +15799,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
     m_HighlightedColor: {r: 1, g: 0.40392157, b: 0.4, a: 1}
     m_PressedColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
-    m_SelectedColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
+    m_SelectedColor: {r: 1, g: 0.4039216, b: 0.40000004, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -32445,7 +32445,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
     m_HighlightedColor: {r: 0.40392157, g: 0.9098039, b: 0.43529412, a: 1}
     m_PressedColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
-    m_SelectedColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
+    m_SelectedColor: {r: 0.4039216, g: 0.909804, b: 0.43529415, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -39593,6 +39593,9 @@ MonoBehaviour:
   playerVan: {fileID: 713347632}
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
+  pauseStartSelect: {fileID: 1697856833}
+  endStartSelect: {fileID: 608371247}
+  confirmStartSelect: {fileID: 149775537}
   isPlaying: 0
 --- !u!114 &1446925840
 MonoBehaviour:
@@ -44124,8 +44127,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -48269,7 +48272,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.30588233, b: 0.33050334, a: 1}
     m_HighlightedColor: {r: 1, g: 0.4431373, b: 0.53861654, a: 1}
     m_PressedColor: {r: 1, g: 0.30588236, b: 0.32941177, a: 1}
-    m_SelectedColor: {r: 1, g: 0.30588236, b: 0.32941177, a: 1}
+    m_SelectedColor: {r: 1, g: 0.4431373, b: 0.5372549, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -62205,8 +62208,8 @@ SceneRoots:
   - {fileID: 258546890}
   - {fileID: 1194310073}
   - {fileID: 1645511387}
+  - {fileID: 76687731}
   - {fileID: 2117694111}
   - {fileID: 313967131}
   - {fileID: 1885166698}
   - {fileID: 812279843}
-  - {fileID: 76687731}

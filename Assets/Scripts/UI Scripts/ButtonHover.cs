@@ -2,20 +2,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
-    
+public class ButtonHover : MonoBehaviour,
+    IPointerEnterHandler,
+    IPointerExitHandler,
+    ISelectHandler,   
+    IDeselectHandler    
+{
     public GameObject obj;
     public string message;
     TMP_Text tmp;
 
     void Start() { tmp = obj.GetComponent<TMP_Text>(); }
 
-    public void OnPointerEnter(PointerEventData eventData) {
-        if(message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK.")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
+    private void ValueEnter() {
+        if (message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK.")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
         tmp.text = message;
     }
 
-    public void OnPointerExit(PointerEventData eventData) {
-        tmp.text = "";   
-    }
+    private void ValueExit() => tmp.text = "";
+
+    public void OnPointerEnter(PointerEventData eventData) => ValueEnter();
+    public void OnPointerExit(PointerEventData eventData) => ValueExit();
+
+    public void OnSelect(BaseEventData eventData) => ValueEnter();
+    public void OnDeselect(BaseEventData eventData) => ValueExit();
 }

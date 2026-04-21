@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // Script to handle main game functionality.
 public class OpeningMenuManager : MonoBehaviour {
@@ -9,6 +10,10 @@ public class OpeningMenuManager : MonoBehaviour {
     private GameObject[] saveFileUI;
     private Color32 completeColor = new(255, 227, 0, 255);
     private ProgressData[] saveFileProgress = new ProgressData[3]; 
+    [SerializeField] private GameObject openingStartSelected, creditsStartSelected, fileStartSelected, confirmStartSelected;
+    private EventSystem eventSystem;
+
+    void OnEnable() { eventSystem = EventSystem.current; }
 
     void Awake() { GameManager.openingMenuManager = this; }
 
@@ -32,10 +37,12 @@ public class OpeningMenuManager : MonoBehaviour {
                 openingUI.SetActive(true);
                 creditsUI.SetActive(false);
                 fileUI.SetActive(false);
+                eventSystem.SetSelectedGameObject(openingStartSelected);
                 break; }
             case 1: { // Credits
                 openingUI.SetActive(false);
                 creditsUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(creditsStartSelected);
                 break; }
             case 2: { // Loading Screen
                 fileUI.SetActive(false);
@@ -44,6 +51,7 @@ public class OpeningMenuManager : MonoBehaviour {
             case 3: { // File Select
                 openingUI.SetActive(false);
                 fileUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(fileStartSelected);
                 break; }
         }  
     }
@@ -53,6 +61,7 @@ public class OpeningMenuManager : MonoBehaviour {
         TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
         message.text = "exit the game?"; 
         confirmUI.SetActive(true);
+        eventSystem.SetSelectedGameObject(confirmStartSelected);
     }
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.
