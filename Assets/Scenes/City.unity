@@ -2476,7 +2476,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
-    m_SelectedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2986,7 +2986,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
-    m_SelectedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -14073,7 +14073,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.36839712, b: 0.30588233, a: 1}
     m_HighlightedColor: {r: 1, g: 0.47208297, b: 0.4431373, a: 1}
     m_PressedColor: {r: 1, g: 0.36862746, b: 0.30588236, a: 1}
-    m_SelectedColor: {r: 1, g: 0.36862746, b: 0.30588236, a: 1}
+    m_SelectedColor: {r: 1, g: 0.47058827, b: 0.4431373, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -15799,7 +15799,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
     m_HighlightedColor: {r: 1, g: 0.40392157, b: 0.4, a: 1}
     m_PressedColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
-    m_SelectedColor: {r: 1, g: 0.19607843, b: 0.15294118, a: 1}
+    m_SelectedColor: {r: 1, g: 0.4039216, b: 0.40000004, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -18862,6 +18862,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Van Boost
       m_Flags: 0
+    - m_Name: 
+      m_Id: b1bae533-b153-4286-b17a-e481a69bf622
+      m_Path: <SwitchProControllerHID>/rightTrigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Boost
+      m_Flags: 0
     m_Flags: 0
   defaultMaxFuel: 100
   comsumptionRate: 0.02
@@ -18915,8 +18923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f260028f8334564fab1b78d9fb19a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorTorque: 3000
-  brakeTorque: 2000
+  motorTorque: 3250
+  brakeTorque: 8000
   maxSpeed: 25
   defaultBoostPower: 500
   steeringRange: 40
@@ -18925,12 +18933,12 @@ MonoBehaviour:
     m_Name: Van Drive
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: f171e9eb-ff62-4325-a224-a8c66263b35b
+    m_Id: 77633bdd-0cc1-4dc3-858a-3d518791cb92
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
-    - m_Name: WASD
-      m_Id: 0b9e0be6-9956-41db-a54e-c795ea72838f
+    - m_Name: Keyboard WASD
+      m_Id: ebed6b09-8b7f-4779-be37-e9cb9b75a381
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -18938,7 +18946,7 @@ MonoBehaviour:
       m_Action: Van Drive
       m_Flags: 4
     - m_Name: negative
-      m_Id: 3f32bf8d-3888-4371-a788-b150470e5c3d
+      m_Id: 1ff52bea-bfa6-4249-b2a9-1811f56310d1
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
@@ -18946,15 +18954,15 @@ MonoBehaviour:
       m_Action: Van Drive
       m_Flags: 8
     - m_Name: positive
-      m_Id: e14e30ac-26ad-4bc1-8ebb-d92fcefa69d1
+      m_Id: aef3cd7a-0d73-4a70-9ee1-6b341e676eaf
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Van Drive
       m_Flags: 8
-    - m_Name: Arrow Keys
-      m_Id: ae013924-24f1-49d1-8c99-555d3ce73e30
+    - m_Name: Keyboard Arrows
+      m_Id: 96f33cdd-8b72-4d95-a070-773c8b4f4964
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -18962,7 +18970,7 @@ MonoBehaviour:
       m_Action: Van Drive
       m_Flags: 4
     - m_Name: negative
-      m_Id: 49a13d75-aab2-43de-8cf1-f307c3d8d0da
+      m_Id: 98206adb-1ceb-4ea0-9e41-b51c16015247
       m_Path: <Keyboard>/downArrow
       m_Interactions: 
       m_Processors: 
@@ -18970,8 +18978,32 @@ MonoBehaviour:
       m_Action: Van Drive
       m_Flags: 8
     - m_Name: positive
-      m_Id: 8af9473b-84e5-43b1-83c2-390f5e5f1c95
+      m_Id: 8c1b2c10-e9ad-427b-a0fe-ebbf4716bf63
       m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    - m_Name: Switch Pro Controller
+      m_Id: b240816f-a1ca-472a-a9e8-631e24b127ff
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 86f344f5-6818-475a-9bde-f4ff08b4093e
+      m_Path: <SwitchProControllerHID>/buttonSouth
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Drive
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 166d63fb-0572-459f-a77e-2a5b32c010ff
+      m_Path: <SwitchProControllerHID>/buttonWest
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -18982,12 +19014,12 @@ MonoBehaviour:
     m_Name: Van Steer
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 0dbda63e-a2ac-4d63-8c13-b8e85aae679b
+    m_Id: 50e1a178-b4e8-4708-b9a3-bb380ce64fd8
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
-    - m_Name: WASD
-      m_Id: cb8b7c21-2b6c-4a68-9f43-ecab0e543b85
+    - m_Name: Keyboard WASD
+      m_Id: 86c54286-3156-4f8d-a4c0-e52391921d6a
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -18995,7 +19027,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 4
     - m_Name: negative
-      m_Id: 2b6e1039-c092-4490-940f-722827c222f9
+      m_Id: e8e92769-003a-4ec9-a6de-3190606a0917
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -19003,15 +19035,15 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: positive
-      m_Id: 36539401-31b3-4034-adbe-1eaf560095c7
+      m_Id: d3bbd4fb-6e4d-4109-9623-e24af1356979
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Van Steer
       m_Flags: 8
-    - m_Name: Arrow Keys
-      m_Id: 41231e93-4248-48e9-bb49-fda5ac36d470
+    - m_Name: Keyboard Arrows
+      m_Id: 1fb7a5ca-bbd8-41ee-a9d2-31d001dae3df
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -19019,7 +19051,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 4
     - m_Name: negative
-      m_Id: e21815d6-c0e4-4368-b522-d1f54973f756
+      m_Id: b8b0da47-a401-41db-9198-1f0a75c68e30
       m_Path: <Keyboard>/leftArrow
       m_Interactions: 
       m_Processors: 
@@ -19027,8 +19059,32 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: positive
-      m_Id: 7c608dac-45a6-4880-a657-53c70cfa736b
+      m_Id: a8b53825-0881-49ab-b048-0693591ae4a9
       m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    - m_Name: Switch Pro Controller
+      m_Id: 211d33ec-4782-4cb2-b257-0a36880c1c27
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2e208765-af6a-4c9e-a7dc-41a0c6a086e9
+      m_Path: <SwitchProControllerHID>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Steer
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: c6d6d518-5a53-4cff-8e76-b5f85342ea1b
+      m_Path: <SwitchProControllerHID>/leftStick/right
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -32389,7 +32445,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
     m_HighlightedColor: {r: 0.40392157, g: 0.9098039, b: 0.43529412, a: 1}
     m_PressedColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
-    m_SelectedColor: {r: 0.2509804, g: 0.81960785, b: 0.2784314, a: 1}
+    m_SelectedColor: {r: 0.4039216, g: 0.909804, b: 0.43529415, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -39519,6 +39575,14 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Pause
       m_Flags: 0
+    - m_Name: 
+      m_Id: 2c072c8f-c1d7-4850-80b7-f718469ab071
+      m_Path: <SwitchProControllerHID>/start
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
     m_Flags: 0
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
@@ -39529,6 +39593,9 @@ MonoBehaviour:
   playerVan: {fileID: 713347632}
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
+  pauseStartSelect: {fileID: 1697856833}
+  endStartSelect: {fileID: 608371247}
+  confirmStartSelect: {fileID: 149775537}
   isPlaying: 0
 --- !u!114 &1446925840
 MonoBehaviour:
@@ -44060,8 +44127,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
+    m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -48205,7 +48272,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 0.30588233, b: 0.33050334, a: 1}
     m_HighlightedColor: {r: 1, g: 0.4431373, b: 0.53861654, a: 1}
     m_PressedColor: {r: 1, g: 0.30588236, b: 0.32941177, a: 1}
-    m_SelectedColor: {r: 1, g: 0.30588236, b: 0.32941177, a: 1}
+    m_SelectedColor: {r: 1, g: 0.4431373, b: 0.5372549, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -62141,8 +62208,8 @@ SceneRoots:
   - {fileID: 258546890}
   - {fileID: 1194310073}
   - {fileID: 1645511387}
+  - {fileID: 76687731}
   - {fileID: 2117694111}
   - {fileID: 313967131}
   - {fileID: 1885166698}
   - {fileID: 812279843}
-  - {fileID: 76687731}

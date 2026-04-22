@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
@@ -8,18 +10,30 @@ public class MainMenuManager : MonoBehaviour {
     public Button shopButton;
     public Image backdrop;
     private int confirmationUIID;
+    [SerializeField] private GameObject navStartSelected, achievementsStartSelected, levelStartSelected, shopStartSelected, settingsStartSelected, confirmStartSelected;
+    private EventSystem eventSystem;
+
+
+    void OnEnable() { eventSystem = EventSystem.current; }
+
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         StartCoroutine(GameManager.audioManager.StartGameMusic());
         AlternateMainMenus(0);
+        StartCoroutine(SelectInitialButton());
     }
 
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
         StartCoroutine(GameManager.instance.LoadAsyncScene("City"));
+    }
+
+    private IEnumerator SelectInitialButton() {
+        yield return null;
+        eventSystem.SetSelectedGameObject(navStartSelected);
     }
 
     // Function to alterante between the UI Menus.
@@ -34,6 +48,7 @@ public class MainMenuManager : MonoBehaviour {
                 galleryUI.SetActive(false);
                 achievementUI.SetActive(false);
                 settingsUI.SetActive(false);
+                eventSystem.SetSelectedGameObject(navStartSelected);
                 break; }
             case 1: { // Gallery 
                 menuUI.SetActive(false);
@@ -49,10 +64,12 @@ public class MainMenuManager : MonoBehaviour {
                 achievementUI.SetActive(true);
                 achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.dataManager.GetBestScore().ToString();
                 GameManager.achievementMenuManager.DisplayAchievement("score10");
+                eventSystem.SetSelectedGameObject(achievementsStartSelected);
                 break; }
             case 4: { // Level Select
                 menuUI.SetActive(false);
                 levelSelectUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(levelStartSelected);
                 break; }    
             case 5: { // Shop 
                 backdrop.color = new Color32(62, 204, 230, 255);
@@ -60,6 +77,7 @@ public class MainMenuManager : MonoBehaviour {
                 GameManager.garageMenuManager.DisplayUpgrade("booster");
                 menuUI.SetActive(false);
                 garageUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(shopStartSelected);
                 break; }    
             case 6: { // Loading Screen
                 menuUI.SetActive(false);
@@ -70,6 +88,7 @@ public class MainMenuManager : MonoBehaviour {
                 backdrop.color = new Color32(20, 58, 123, 255);
                 menuUI.SetActive(false);
                 settingsUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(settingsStartSelected);
                 break; }
         }  
     }
@@ -78,10 +97,10 @@ public class MainMenuManager : MonoBehaviour {
         shopButton.interactable = isUnlocked;
         if(isUnlocked) {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";
-            shopButton.GetComponent<ButtonHover>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
+            shopButton.GetComponent<MenuText>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
         } else {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            shopButton.GetComponent<ButtonHover>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
+            shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
         }
     }
 
@@ -101,6 +120,7 @@ public class MainMenuManager : MonoBehaviour {
                 break; }
         }
         confirmUI.SetActive(true);
+        eventSystem.SetSelectedGameObject(confirmStartSelected);
     }
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.

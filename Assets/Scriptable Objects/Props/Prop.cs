@@ -10,7 +10,7 @@ public class Prop : MonoBehaviour {
         // Check if Collisions with the Level Enviornment Count
         if ((!collisionGO.CompareTag("Level") || so.includeGround) && !beganFading) {
             // Shrink and Delete Object Shortly After Collision.
-            StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, false));
+            StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, true));
             beganFading = true;
             if (GameManager.instance.GetDifficulty() != 0 && collisionGO.CompareTag("Player")) { GameManager.dataManager.AddPropEncounter(so.internalName); }
         }

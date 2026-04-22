@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using TMPro;
 using System;
 
@@ -16,6 +17,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private AudioClip countSound, overtimeSound;
     [SerializeField] private GameObject gameUI, endUI, pauseUI, confirmUI;
     [SerializeField] private GameObject playerVan, directionArrow, moneyText; 
+    [SerializeField] private GameObject pauseStartSelect, endStartSelect, confirmStartSelect;
     public bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
@@ -23,8 +25,12 @@ public class GameplayManager : MonoBehaviour
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
+    private EventSystem eventSystem;
 
-    void OnEnable() { pauseAction.Enable(); }
+    void OnEnable() { 
+        pauseAction.Enable();
+        eventSystem = EventSystem.current;    
+    }
 
     void OnDisable() { pauseAction.Disable(); }
 
@@ -275,12 +281,15 @@ public class GameplayManager : MonoBehaviour
             case 0: { // Game UI
                 gameUI.SetActive(true);
                 pauseUI.SetActive(false);
+                confirmUI.SetActive(false);
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(endStartSelect);
                 break; }
             case 2: { // Pause Menu
                 pauseUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(pauseStartSelect);
                 break; }
             case 3: { // Loading Screen
                 gameUI.SetActive(false);
@@ -300,11 +309,13 @@ public class GameplayManager : MonoBehaviour
         if (difficulty == 0) { message.text = "end the tutorial\nand return to the menu?"; }
         else { message.text = "end the game\nand return to menu?"; }
         confirmUI.SetActive(true);
+        eventSystem.SetSelectedGameObject(confirmStartSelect);
     }
     
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
-        if (!response) { confirmUI.SetActive(false); }
+        confirmUI.SetActive(false);
+        if (!response) { AlternateGameMenus(2); }
         else { QuitGame(); }
     }
 }

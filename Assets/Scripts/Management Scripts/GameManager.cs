@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 // Script to handle main game functionality.
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public static NewsTextScroller newsTextScroller;
     public static DataManager dataManager;
 
+    private EventSystem eventSystem;
+
     [Header("Music Settings")]
     public GameObject muteButton, unmuteButton;
 
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour {
     private bool isMusicPlaying, qualityShadows;
 
     void Awake() { 
+        eventSystem = EventSystem.current;
         instance = this;
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
     }
@@ -47,6 +51,11 @@ public class GameManager : MonoBehaviour {
     public void ToggleMusic(bool isOn) {
         unmuteButton.SetActive(!isOn);
         muteButton.SetActive(isOn);
+        if(isOn) {
+            eventSystem.SetSelectedGameObject(muteButton);
+        } else {
+            eventSystem.SetSelectedGameObject(unmuteButton);
+        }
         isMusicPlaying = isOn;
         audioManager.ToggleMusic(isOn);
         int res = isOn? 0: 1;

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GalleryManager : MonoBehaviour {
 
@@ -8,7 +9,10 @@ public class GalleryManager : MonoBehaviour {
     public Sprite lockedSprite;
     public GameObject obstacleIcons, propIcons;
     public GameObject displayName, displayCount, displayImage, displayDesc, switchButtonA, switchButtonB;
+    [SerializeField] private GameObject obstacleStartSelected, propStartSelected;
+    private EventSystem eventSystem;
 
+    void OnEnable() { eventSystem = EventSystem.current; }
 
     void Awake() { GameManager.galleryManager = this; }
 
@@ -19,8 +23,14 @@ public class GalleryManager : MonoBehaviour {
         propIcons.SetActive(!input);
         switchButtonA.SetActive(input);
         switchButtonB.SetActive(!input);
-        if (input) { DisplayObstacle("carRed"); }
-        else { DisplayProp("stopSign"); }
+        if (input) { 
+            DisplayObstacle("carRed"); 
+            eventSystem.SetSelectedGameObject(obstacleStartSelected);
+        } else { 
+            DisplayProp("stopSign");
+            eventSystem.SetSelectedGameObject(propStartSelected);
+        }
+        
     }
 
     // Update is called once per frame
