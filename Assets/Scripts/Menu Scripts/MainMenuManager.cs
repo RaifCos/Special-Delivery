@@ -97,10 +97,10 @@ public class MainMenuManager : MonoBehaviour {
         shopButton.interactable = isUnlocked;
         if(isUnlocked) {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";
-            shopButton.GetComponent<ButtonHover>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
+            shopButton.GetComponent<MenuText>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
         } else {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            shopButton.GetComponent<ButtonHover>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
+            shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
         }
     }
 

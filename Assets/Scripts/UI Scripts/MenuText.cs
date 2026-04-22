@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonHover : MonoBehaviour,
+public class MenuText : MonoBehaviour,
     IPointerEnterHandler,
     IPointerExitHandler,
     ISelectHandler,   
@@ -12,7 +12,7 @@ public class ButtonHover : MonoBehaviour,
     public string message;
     TMP_Text tmp;
 
-    void Start() { tmp = obj.GetComponent<TMP_Text>(); }
+    void OnEnable() { tmp = obj.GetComponent<TMP_Text>(); }
 
     private void ValueEnter() {
         if (message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK.")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
