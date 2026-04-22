@@ -5,7 +5,9 @@ using UnityEngine;
 // Script to handle the behaviour of the Dumpster.
 public class DumpsterTraversal : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private float speed;
+
+    private float totalSpeed;
 
     private bool grounded, beganShrinking;
     private Rigidbody rb;
@@ -18,6 +20,8 @@ public class DumpsterTraversal : MonoBehaviour
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
         transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
+        totalSpeed = speed;
+        beganShrinking = false;
     }
 
     void OnDisable() { StopAllCoroutines(); }
@@ -28,16 +32,16 @@ public class DumpsterTraversal : MonoBehaviour
             grounded = transform.position.y <= 8f;
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
-            if (grounded && forwardSpeed < speed) { 
-                rb.MovePosition(Vector3.MoveTowards(transform.position, routeNodes[1], speed * Time.deltaTime));
-                speed += speed * 0.004f; // Increase Speed every frame.
+            if (grounded && forwardSpeed < totalSpeed) { 
+                rb.MovePosition(Vector3.MoveTowards(transform.position, routeNodes[1], totalSpeed * Time.deltaTime));
+                totalSpeed += totalSpeed * 0.004f; // Increase Speed every frame.
             }
             LookRotation();
             // Dumpster has arrived at the destination node, so begin shrinking.
             if (Vector3.Distance(rb.position, routeNodes[1]) < 3f) {
                 StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false));
                 // Set momentum of Dumpster after it stops moving.
-                rb.linearVelocity = (routeNodes[1] - transform.position).normalized * speed; 
+                rb.linearVelocity = (routeNodes[1] - transform.position).normalized * totalSpeed; 
                 rb.angularVelocity = Vector3.zero;
                 beganShrinking = true;
             }
