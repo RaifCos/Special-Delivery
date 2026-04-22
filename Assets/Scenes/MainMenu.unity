@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 4086807}
   - component: {fileID: 4086806}
   - component: {fileID: 4086805}
+  - component: {fileID: 4086808}
   m_Layer: 5
   m_Name: destroyCones
   m_TagString: Untagged
@@ -200,19 +201,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4086806}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
-          m_FloatArgument: 0
-          m_StringArgument: destroyCones
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4086806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +240,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4086803}
   m_CullTransparentMesh: 1
+--- !u!114 &4086808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4086803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &13999863
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +265,7 @@ GameObject:
   - component: {fileID: 13999867}
   - component: {fileID: 13999866}
   - component: {fileID: 13999865}
+  - component: {fileID: 13999868}
   m_Layer: 5
   m_Name: streetSign
   m_TagString: Untagged
@@ -332,19 +335,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 13999866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: streetSign
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &13999866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +374,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13999863}
   m_CullTransparentMesh: 1
+--- !u!114 &13999868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13999863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &24158057
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,143 +523,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24158057}
-  m_CullTransparentMesh: 1
---- !u!1 &36698158
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 36698159}
-  - component: {fileID: 36698161}
-  - component: {fileID: 36698160}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &36698159
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36698158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1086907219}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 0, y: -1.9999998}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &36698160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36698158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: BUY
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
-  m_sharedMaterial: {fileID: 4228786842495613621, guid: ccc8e84c810a8ee4cab1fd3959a66959, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_characterHorizontalScale: 1
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &36698161
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36698158}
   m_CullTransparentMesh: 1
 --- !u!1 &39079239
 GameObject:
@@ -1456,6 +1323,7 @@ GameObject:
   - component: {fileID: 179528752}
   - component: {fileID: 179528751}
   - component: {fileID: 179528750}
+  - component: {fileID: 179528753}
   m_Layer: 5
   m_Name: postBox
   m_TagString: Untagged
@@ -1525,19 +1393,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 179528751}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: postBox
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &179528751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,6 +1432,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179528748}
   m_CullTransparentMesh: 1
+--- !u!114 &179528753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179528748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &184108548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1457,7 @@ GameObject:
   - component: {fileID: 184108552}
   - component: {fileID: 184108551}
   - component: {fileID: 184108550}
+  - component: {fileID: 184108553}
   m_Layer: 5
   m_Name: destroySigns
   m_TagString: Untagged
@@ -1657,19 +1527,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 184108551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: destroySigns
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &184108551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1708,6 +1566,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184108548}
   m_CullTransparentMesh: 1
+--- !u!114 &184108553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184108548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &203236714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1591,7 @@ GameObject:
   - component: {fileID: 203236718}
   - component: {fileID: 203236717}
   - component: {fileID: 203236716}
+  - component: {fileID: 203236719}
   m_Layer: 5
   m_Name: ufo
   m_TagString: Untagged
@@ -1789,19 +1661,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 203236717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: ufo
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &203236717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,6 +1700,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203236714}
   m_CullTransparentMesh: 1
+--- !u!114 &203236719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203236714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &240817719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1725,7 @@ GameObject:
   - component: {fileID: 240817723}
   - component: {fileID: 240817722}
   - component: {fileID: 240817721}
+  - component: {fileID: 240817724}
   m_Layer: 5
   m_Name: carGreen
   m_TagString: Untagged
@@ -1921,19 +1795,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 240817722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: carGreen
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &240817722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,6 +1834,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 240817719}
   m_CullTransparentMesh: 1
+--- !u!114 &240817724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240817719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &248072359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,6 +1859,7 @@ GameObject:
   - component: {fileID: 248072363}
   - component: {fileID: 248072362}
   - component: {fileID: 248072361}
+  - component: {fileID: 248072364}
   m_Layer: 5
   m_Name: cannon
   m_TagString: Untagged
@@ -2053,19 +1929,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 248072362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: cannon
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &248072362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,6 +1968,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248072359}
   m_CullTransparentMesh: 1
+--- !u!114 &248072364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248072359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &251977484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2132,7 @@ GameObject:
   - component: {fileID: 258265161}
   - component: {fileID: 258265160}
   - component: {fileID: 258265159}
+  - component: {fileID: 258265162}
   m_Layer: 5
   m_Name: anvil
   m_TagString: Untagged
@@ -2324,19 +2202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 258265160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 11
-          m_FloatArgument: 0
-          m_StringArgument: anvil
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &258265160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2375,6 +2241,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258265157}
   m_CullTransparentMesh: 1
+--- !u!114 &258265162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258265157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &264452921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,6 +2551,7 @@ GameObject:
   - component: {fileID: 288587739}
   - component: {fileID: 288587738}
   - component: {fileID: 288587737}
+  - component: {fileID: 288587740}
   m_Layer: 5
   m_Name: destroyBenches
   m_TagString: Untagged
@@ -2741,19 +2621,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 288587738}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 11
-          m_FloatArgument: 0
-          m_StringArgument: destroyBenches
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &288587738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,6 +2660,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288587735}
   m_CullTransparentMesh: 1
+--- !u!114 &288587740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288587735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &297461324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2804,6 +2685,7 @@ GameObject:
   - component: {fileID: 297461328}
   - component: {fileID: 297461327}
   - component: {fileID: 297461326}
+  - component: {fileID: 297461329}
   m_Layer: 5
   m_Name: boomerang
   m_TagString: Untagged
@@ -2873,19 +2755,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 297461327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
-          m_FloatArgument: 0
-          m_StringArgument: boomerang
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &297461327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2924,6 +2794,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297461324}
   m_CullTransparentMesh: 1
+--- !u!114 &297461329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297461324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &297733762
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3031,7 @@ GameObject:
   - component: {fileID: 327605550}
   - component: {fileID: 327605549}
   - component: {fileID: 327605548}
+  - component: {fileID: 327605551}
   m_Layer: 5
   m_Name: magnet
   m_TagString: Untagged
@@ -3217,19 +3101,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 327605549}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: magnet
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &327605549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3268,6 +3140,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327605546}
   m_CullTransparentMesh: 1
+--- !u!114 &327605551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327605546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &329951855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +3758,7 @@ GameObject:
   - component: {fileID: 426198493}
   - component: {fileID: 426198492}
   - component: {fileID: 426198491}
+  - component: {fileID: 426198494}
   m_Layer: 5
   m_Name: boosterFuel_I
   m_TagString: Untagged
@@ -3943,10 +3829,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3993,6 +3879,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426198488}
   m_CullTransparentMesh: 1
+--- !u!114 &426198494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426198488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &430615249
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,6 +4043,7 @@ GameObject:
   - component: {fileID: 433732317}
   - component: {fileID: 433732316}
   - component: {fileID: 433732315}
+  - component: {fileID: 433732318}
   m_Layer: 5
   m_Name: giantCone
   m_TagString: Untagged
@@ -4213,19 +4113,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 433732316}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: giantCone
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &433732316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4264,6 +4152,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433732313}
   m_CullTransparentMesh: 1
+--- !u!114 &433732318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433732313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &436276258
 GameObject:
   m_ObjectHideFlags: 0
@@ -4414,6 +4315,7 @@ GameObject:
   - component: {fileID: 437386374}
   - component: {fileID: 437386373}
   - component: {fileID: 437386372}
+  - component: {fileID: 437386375}
   m_Layer: 5
   m_Name: fakeParcels
   m_TagString: Untagged
@@ -4483,19 +4385,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 437386373}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 13
-          m_FloatArgument: 0
-          m_StringArgument: fakeParcels
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &437386373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4534,6 +4424,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437386370}
   m_CullTransparentMesh: 1
+--- !u!114 &437386375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437386370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &479952374
 GameObject:
   m_ObjectHideFlags: 0
@@ -4546,6 +4449,7 @@ GameObject:
   - component: {fileID: 479952379}
   - component: {fileID: 479952378}
   - component: {fileID: 479952377}
+  - component: {fileID: 479952380}
   m_Layer: 5
   m_Name: secondLife
   m_TagString: Untagged
@@ -4616,10 +4520,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4666,6 +4570,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479952374}
   m_CullTransparentMesh: 1
+--- !u!114 &479952380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479952374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &481782607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5361,6 +5278,7 @@ GameObject:
   - component: {fileID: 530699994}
   - component: {fileID: 530699993}
   - component: {fileID: 530699992}
+  - component: {fileID: 530699995}
   m_Layer: 5
   m_Name: galleryAll
   m_TagString: Untagged
@@ -5430,19 +5348,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 530699993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
-          m_FloatArgument: 0
-          m_StringArgument: galleryAll
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &530699993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5481,6 +5387,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530699990}
   m_CullTransparentMesh: 1
+--- !u!114 &530699995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530699990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &606035004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5832,6 +5751,7 @@ GameObject:
   - component: {fileID: 626143105}
   - component: {fileID: 626143104}
   - component: {fileID: 626143103}
+  - component: {fileID: 626143106}
   m_Layer: 5
   m_Name: boulder
   m_TagString: Untagged
@@ -5901,19 +5821,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 626143104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
-          m_FloatArgument: 0
-          m_StringArgument: boulder
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &626143104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5952,6 +5860,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626143101}
   m_CullTransparentMesh: 1
+--- !u!114 &626143106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626143101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &646053525
 GameObject:
   m_ObjectHideFlags: 0
@@ -6238,6 +6159,7 @@ GameObject:
   - component: {fileID: 660543459}
   - component: {fileID: 660543458}
   - component: {fileID: 660543457}
+  - component: {fileID: 660543460}
   m_Layer: 5
   m_Name: destroyBins
   m_TagString: Untagged
@@ -6307,19 +6229,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 660543458}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 9
-          m_FloatArgument: 0
-          m_StringArgument: destroyBins
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &660543458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6358,6 +6268,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660543455}
   m_CullTransparentMesh: 1
+--- !u!114 &660543460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660543455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &685998771
 GameObject:
   m_ObjectHideFlags: 0
@@ -6666,6 +6589,7 @@ GameObject:
   - component: {fileID: 768067420}
   - component: {fileID: 768067419}
   - component: {fileID: 768067418}
+  - component: {fileID: 768067421}
   m_Layer: 5
   m_Name: carToy
   m_TagString: Untagged
@@ -6735,19 +6659,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 768067419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: carToy
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &768067419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6786,6 +6698,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768067416}
   m_CullTransparentMesh: 1
+--- !u!114 &768067421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768067416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &792775555
 GameObject:
   m_ObjectHideFlags: 0
@@ -7477,6 +7402,7 @@ GameObject:
   - component: {fileID: 850643402}
   - component: {fileID: 850643401}
   - component: {fileID: 850643400}
+  - component: {fileID: 850643403}
   m_Layer: 5
   m_Name: crash1000
   m_TagString: Untagged
@@ -7546,19 +7472,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 850643401}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: crash1000
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &850643401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7597,6 +7511,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850643398}
   m_CullTransparentMesh: 1
+--- !u!114 &850643403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850643398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &860631169
 GameObject:
   m_ObjectHideFlags: 0
@@ -7746,6 +7673,7 @@ GameObject:
   - component: {fileID: 908065557}
   - component: {fileID: 908065556}
   - component: {fileID: 908065555}
+  - component: {fileID: 908065558}
   m_Layer: 5
   m_Name: piano
   m_TagString: Untagged
@@ -7815,19 +7743,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 908065556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 12
-          m_FloatArgument: 0
-          m_StringArgument: piano
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &908065556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7866,6 +7782,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908065553}
   m_CullTransparentMesh: 1
+--- !u!114 &908065558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908065553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &908304994
 GameObject:
   m_ObjectHideFlags: 0
@@ -8232,7 +8161,6 @@ MonoBehaviour:
   buttonIcons: {fileID: 618383312}
   cashCounter: {fileID: 792775555}
   upgradeDisplay: {fileID: 43329729}
-  buyButton: {fileID: 1086907221}
   lockedSprite: {fileID: 21300000, guid: 659198c1ec1ba184bacc03a8be94ab06, type: 3}
   buySound: {fileID: 8300000, guid: 77f2aed14d908d542b825bdd8723ab44, type: 3}
 --- !u!114 &908305006
@@ -8686,6 +8614,7 @@ GameObject:
   - component: {fileID: 1075825430}
   - component: {fileID: 1075825429}
   - component: {fileID: 1075825428}
+  - component: {fileID: 1075825431}
   m_Layer: 5
   m_Name: timer120
   m_TagString: Untagged
@@ -8755,19 +8684,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1075825429}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: timer120
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1075825429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8806,139 +8723,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075825426}
   m_CullTransparentMesh: 1
---- !u!1 &1086907218
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1086907219}
-  - component: {fileID: 1086907223}
-  - component: {fileID: 1086907222}
-  - component: {fileID: 1086907221}
-  m_Layer: 5
-  m_Name: Buy Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1086907219
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086907218}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.84, y: 3.84, z: 3.84}
-  m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 36698159}
-  m_Father: {fileID: 1825328278}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 400}
-  m_SizeDelta: {x: 60, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1086907221
+--- !u!114 &1075825431
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086907218}
+  m_GameObject: {fileID: 1075825426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 4
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 1883288007}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 2119231668}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 0, g: 0.6277766, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.25, g: 0.7205882, b: 1, a: 1}
-    m_PressedColor: {r: 0, g: 0.627451, b: 1, a: 1}
-    m_SelectedColor: {r: 0, g: 0.627451, b: 1, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1086907222}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305004}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: BuyUpgrade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1086907222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086907218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1086907223
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086907218}
-  m_CullTransparentMesh: 1
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1118922880
 GameObject:
   m_ObjectHideFlags: 0
@@ -9184,6 +8981,7 @@ GameObject:
   - component: {fileID: 1135800240}
   - component: {fileID: 1135800239}
   - component: {fileID: 1135800238}
+  - component: {fileID: 1135800241}
   m_Layer: 5
   m_Name: boosterPower_I
   m_TagString: Untagged
@@ -9254,10 +9052,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9304,6 +9102,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135800235}
   m_CullTransparentMesh: 1
+--- !u!114 &1135800241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135800235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1135803342
 GameObject:
   m_ObjectHideFlags: 0
@@ -9316,6 +9127,7 @@ GameObject:
   - component: {fileID: 1135803346}
   - component: {fileID: 1135803345}
   - component: {fileID: 1135803344}
+  - component: {fileID: 1135803347}
   m_Layer: 5
   m_Name: dodgeBoxing
   m_TagString: Untagged
@@ -9385,19 +9197,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1135803345}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
-          m_FloatArgument: 0
-          m_StringArgument: dodgeBoxing
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1135803345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9436,6 +9236,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135803342}
   m_CullTransparentMesh: 1
+--- !u!114 &1135803347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135803342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1176402391
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,6 +9261,7 @@ GameObject:
   - component: {fileID: 1176402395}
   - component: {fileID: 1176402394}
   - component: {fileID: 1176402393}
+  - component: {fileID: 1176402396}
   m_Layer: 5
   m_Name: carBlue
   m_TagString: Untagged
@@ -9517,19 +9331,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1176402394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: carBlue
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1176402394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9568,6 +9370,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176402391}
   m_CullTransparentMesh: 1
+--- !u!114 &1176402396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176402391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1192634123
 GameObject:
   m_ObjectHideFlags: 0
@@ -9580,6 +9395,7 @@ GameObject:
   - component: {fileID: 1192634127}
   - component: {fileID: 1192634126}
   - component: {fileID: 1192634125}
+  - component: {fileID: 1192634128}
   m_Layer: 5
   m_Name: boxingGlove
   m_TagString: Untagged
@@ -9649,19 +9465,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1192634126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 14
-          m_FloatArgument: 0
-          m_StringArgument: boxingGlove
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1192634126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9700,6 +9504,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192634123}
   m_CullTransparentMesh: 1
+--- !u!114 &1192634128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192634123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1209307647
 GameObject:
   m_ObjectHideFlags: 0
@@ -9712,6 +9529,7 @@ GameObject:
   - component: {fileID: 1209307651}
   - component: {fileID: 1209307650}
   - component: {fileID: 1209307649}
+  - component: {fileID: 1209307652}
   m_Layer: 5
   m_Name: carBig
   m_TagString: Untagged
@@ -9781,19 +9599,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1209307650}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: carBig
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1209307650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9832,6 +9638,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209307647}
   m_CullTransparentMesh: 1
+--- !u!114 &1209307652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209307647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1337754703
 GameObject:
   m_ObjectHideFlags: 0
@@ -9844,6 +9663,7 @@ GameObject:
   - component: {fileID: 1337754707}
   - component: {fileID: 1337754706}
   - component: {fileID: 1337754705}
+  - component: {fileID: 1337754708}
   m_Layer: 5
   m_Name: bikeRack
   m_TagString: Untagged
@@ -9913,19 +9733,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337754706}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: bikeRack
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1337754706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9964,6 +9772,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337754703}
   m_CullTransparentMesh: 1
+--- !u!114 &1337754708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337754703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1344189681
 GameObject:
   m_ObjectHideFlags: 0
@@ -10232,6 +10053,7 @@ GameObject:
   - component: {fileID: 1368492406}
   - component: {fileID: 1368492405}
   - component: {fileID: 1368492404}
+  - component: {fileID: 1368492407}
   m_Layer: 5
   m_Name: cone
   m_TagString: Untagged
@@ -10301,19 +10123,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1368492405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: cone
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1368492405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10352,6 +10162,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368492402}
   m_CullTransparentMesh: 1
+--- !u!114 &1368492407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368492402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1393150998
 GameObject:
   m_ObjectHideFlags: 0
@@ -10364,6 +10187,7 @@ GameObject:
   - component: {fileID: 1393151003}
   - component: {fileID: 1393151002}
   - component: {fileID: 1393151001}
+  - component: {fileID: 1393151004}
   m_Layer: 5
   m_Name: noPenalty
   m_TagString: Untagged
@@ -10434,10 +10258,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10484,6 +10308,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393150998}
   m_CullTransparentMesh: 1
+--- !u!114 &1393151004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393150998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1397697199
 GameObject:
   m_ObjectHideFlags: 0
@@ -10702,6 +10539,7 @@ GameObject:
   - component: {fileID: 1426434823}
   - component: {fileID: 1426434822}
   - component: {fileID: 1426434821}
+  - component: {fileID: 1426434824}
   m_Layer: 5
   m_Name: boosterFuel_II
   m_TagString: Untagged
@@ -10772,10 +10610,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10822,6 +10660,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426434818}
   m_CullTransparentMesh: 1
+--- !u!114 &1426434824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426434818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1431201935
 GameObject:
   m_ObjectHideFlags: 0
@@ -10913,6 +10764,7 @@ GameObject:
   - component: {fileID: 1433443151}
   - component: {fileID: 1433443150}
   - component: {fileID: 1433443149}
+  - component: {fileID: 1433443152}
   m_Layer: 5
   m_Name: carRed
   m_TagString: Untagged
@@ -10982,19 +10834,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1433443150}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: carRed
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1433443150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11033,6 +10873,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433443147}
   m_CullTransparentMesh: 1
+--- !u!114 &1433443152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433443147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1448328234
 GameObject:
   m_ObjectHideFlags: 0
@@ -12469,6 +12322,7 @@ GameObject:
   - component: {fileID: 1573195583}
   - component: {fileID: 1573195582}
   - component: {fileID: 1573195581}
+  - component: {fileID: 1573195584}
   m_Layer: 5
   m_Name: lifetime250
   m_TagString: Untagged
@@ -12538,19 +12392,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1573195582}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: lifetime250
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1573195582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12589,6 +12431,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573195579}
   m_CullTransparentMesh: 1
+--- !u!114 &1573195584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573195579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1590092057
 GameObject:
   m_ObjectHideFlags: 0
@@ -12601,6 +12456,7 @@ GameObject:
   - component: {fileID: 1590092062}
   - component: {fileID: 1590092061}
   - component: {fileID: 1590092060}
+  - component: {fileID: 1590092063}
   m_Layer: 5
   m_Name: boosterPower_II
   m_TagString: Untagged
@@ -12671,10 +12527,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12721,6 +12577,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590092057}
   m_CullTransparentMesh: 1
+--- !u!114 &1590092063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590092057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1597486541
 GameObject:
   m_ObjectHideFlags: 0
@@ -12978,6 +12847,7 @@ GameObject:
   - component: {fileID: 1620150419}
   - component: {fileID: 1620150418}
   - component: {fileID: 1620150417}
+  - component: {fileID: 1620150420}
   m_Layer: 5
   m_Name: moreTime
   m_TagString: Untagged
@@ -13048,10 +12918,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13098,6 +12968,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620150414}
   m_CullTransparentMesh: 1
+--- !u!114 &1620150420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620150414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1626339743
 GameObject:
   m_ObjectHideFlags: 0
@@ -13534,6 +13417,7 @@ GameObject:
   - component: {fileID: 1673273097}
   - component: {fileID: 1673273096}
   - component: {fileID: 1673273095}
+  - component: {fileID: 1673273098}
   m_Layer: 5
   m_Name: score50
   m_TagString: Untagged
@@ -13603,19 +13487,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1673273096}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: score50
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1673273096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13654,6 +13526,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673273093}
   m_CullTransparentMesh: 1
+--- !u!114 &1673273098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673273093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1698732017
 GameObject:
   m_ObjectHideFlags: 0
@@ -14111,6 +13996,7 @@ GameObject:
   - component: {fileID: 1768672894}
   - component: {fileID: 1768672893}
   - component: {fileID: 1768672892}
+  - component: {fileID: 1768672895}
   m_Layer: 5
   m_Name: bin
   m_TagString: Untagged
@@ -14180,19 +14066,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1768672893}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: bin
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1768672893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14231,6 +14105,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768672890}
   m_CullTransparentMesh: 1
+--- !u!114 &1768672895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768672890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1783817384
 GameObject:
   m_ObjectHideFlags: 0
@@ -14376,6 +14263,7 @@ GameObject:
   - component: {fileID: 1802486853}
   - component: {fileID: 1802486852}
   - component: {fileID: 1802486851}
+  - component: {fileID: 1802486854}
   m_Layer: 5
   m_Name: destroyHydrants
   m_TagString: Untagged
@@ -14445,19 +14333,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1802486852}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: destroyHydrants
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1802486852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14496,6 +14372,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802486849}
   m_CullTransparentMesh: 1
+--- !u!114 &1802486854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802486849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1818007188
 GameObject:
   m_ObjectHideFlags: 0
@@ -14508,6 +14397,7 @@ GameObject:
   - component: {fileID: 1818007192}
   - component: {fileID: 1818007191}
   - component: {fileID: 1818007190}
+  - component: {fileID: 1818007193}
   m_Layer: 5
   m_Name: boulderSnow
   m_TagString: Untagged
@@ -14577,19 +14467,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1818007191}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 9
-          m_FloatArgument: 0
-          m_StringArgument: boulderSnow
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1818007191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14628,6 +14506,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818007188}
   m_CullTransparentMesh: 1
+--- !u!114 &1818007193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818007188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1825328274
 GameObject:
   m_ObjectHideFlags: 0
@@ -14725,7 +14616,6 @@ RectTransform:
   - {fileID: 2128327245}
   - {fileID: 1657437685}
   - {fileID: 792775556}
-  - {fileID: 1086907219}
   - {fileID: 2119231666}
   - {fileID: 43329730}
   - {fileID: 618383313}
@@ -15091,6 +14981,7 @@ GameObject:
   - component: {fileID: 1883288009}
   - component: {fileID: 1883288008}
   - component: {fileID: 1883288007}
+  - component: {fileID: 1883288010}
   m_Layer: 5
   m_Name: booster
   m_TagString: Untagged
@@ -15161,10 +15052,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15211,6 +15102,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883288004}
   m_CullTransparentMesh: 1
+--- !u!114 &1883288010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883288004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1890791851
 GameObject:
   m_ObjectHideFlags: 0
@@ -15254,6 +15158,7 @@ GameObject:
   - component: {fileID: 1891184508}
   - component: {fileID: 1891184507}
   - component: {fileID: 1891184506}
+  - component: {fileID: 1891184509}
   m_Layer: 5
   m_Name: stopSign
   m_TagString: Untagged
@@ -15323,19 +15228,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1891184507}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: stopSign
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1891184507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15374,6 +15267,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891184504}
   m_CullTransparentMesh: 1
+--- !u!114 &1891184509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891184504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1895196441
 GameObject:
   m_ObjectHideFlags: 0
@@ -15386,6 +15292,7 @@ GameObject:
   - component: {fileID: 1895196445}
   - component: {fileID: 1895196444}
   - component: {fileID: 1895196443}
+  - component: {fileID: 1895196446}
   m_Layer: 5
   m_Name: balloon
   m_TagString: Untagged
@@ -15455,19 +15362,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895196444}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: balloon
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1895196444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15506,6 +15401,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895196441}
   m_CullTransparentMesh: 1
+--- !u!114 &1895196446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895196441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &1895207649
 GameObject:
   m_ObjectHideFlags: 0
@@ -15719,6 +15627,7 @@ GameObject:
   - component: {fileID: 1897136320}
   - component: {fileID: 1897136319}
   - component: {fileID: 1897136318}
+  - component: {fileID: 1897136321}
   m_Layer: 5
   m_Name: score10
   m_TagString: Untagged
@@ -15788,19 +15697,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1897136319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: score10
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1897136319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15839,6 +15736,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897136316}
   m_CullTransparentMesh: 1
+--- !u!114 &1897136321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897136316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  type: 3
 --- !u!1 &1898738824
 GameObject:
   m_ObjectHideFlags: 0
@@ -15851,6 +15761,7 @@ GameObject:
   - component: {fileID: 1898738828}
   - component: {fileID: 1898738827}
   - component: {fileID: 1898738826}
+  - component: {fileID: 1898738829}
   m_Layer: 5
   m_Name: barrier
   m_TagString: Untagged
@@ -15920,19 +15831,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1898738827}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 7
-          m_FloatArgument: 0
-          m_StringArgument: barrier
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1898738827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15971,6 +15870,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898738824}
   m_CullTransparentMesh: 1
+--- !u!114 &1898738829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898738824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1913942079
 GameObject:
   m_ObjectHideFlags: 0
@@ -15983,6 +15895,7 @@ GameObject:
   - component: {fileID: 1913942083}
   - component: {fileID: 1913942082}
   - component: {fileID: 1913942081}
+  - component: {fileID: 1913942084}
   m_Layer: 5
   m_Name: bench
   m_TagString: Untagged
@@ -16052,19 +15965,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1913942082}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: bench
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1913942082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16103,6 +16004,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913942079}
   m_CullTransparentMesh: 1
+--- !u!114 &1913942084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913942079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &1916432626
 GameObject:
   m_ObjectHideFlags: 0
@@ -16115,6 +16029,7 @@ GameObject:
   - component: {fileID: 1916432630}
   - component: {fileID: 1916432629}
   - component: {fileID: 1916432628}
+  - component: {fileID: 1916432631}
   m_Layer: 5
   m_Name: crash500
   m_TagString: Untagged
@@ -16184,19 +16099,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1916432629}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305001}
-        m_TargetAssemblyTypeName: AchievementMenuManager, Assembly-CSharp
-        m_MethodName: DisplayAchievement
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: crash500
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1916432629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16235,6 +16138,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916432626}
   m_CullTransparentMesh: 1
+--- !u!114 &1916432631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916432626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 3
 --- !u!1 &1935981491
 GameObject:
   m_ObjectHideFlags: 0
@@ -16384,6 +16300,7 @@ GameObject:
   - component: {fileID: 1967943079}
   - component: {fileID: 1967943078}
   - component: {fileID: 1967943077}
+  - component: {fileID: 1967943080}
   m_Layer: 5
   m_Name: moreMoney
   m_TagString: Untagged
@@ -16454,10 +16371,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 908305005}
-        m_TargetAssemblyTypeName: GarageMenuManager, Assembly-CSharp
-        m_MethodName: DisplayUpgrade
-        m_Mode: 5
+      - m_Target: {fileID: 908305004}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: BuyUpgrade
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16504,6 +16421,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967943074}
   m_CullTransparentMesh: 1
+--- !u!114 &1967943080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967943074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 0
 --- !u!1 &1977926392
 GameObject:
   m_ObjectHideFlags: 0
@@ -16872,6 +16802,7 @@ GameObject:
   - component: {fileID: 2034012385}
   - component: {fileID: 2034012384}
   - component: {fileID: 2034012383}
+  - component: {fileID: 2034012386}
   m_Layer: 5
   m_Name: dumpster
   m_TagString: Untagged
@@ -16941,19 +16872,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2034012384}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayObstacle
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: dumpster
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2034012384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16992,6 +16911,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034012381}
   m_CullTransparentMesh: 1
+--- !u!114 &2034012386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034012381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 1
 --- !u!1 &2041931306
 GameObject:
   m_ObjectHideFlags: 0
@@ -17141,6 +17073,7 @@ GameObject:
   - component: {fileID: 2071035308}
   - component: {fileID: 2071035307}
   - component: {fileID: 2071035306}
+  - component: {fileID: 2071035309}
   m_Layer: 5
   m_Name: hydrant
   m_TagString: Untagged
@@ -17210,19 +17143,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2071035307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 908305000}
-        m_TargetAssemblyTypeName: GalleryManager, Assembly-CSharp
-        m_MethodName: DisplayProp
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: hydrant
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2071035307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17261,6 +17182,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071035304}
   m_CullTransparentMesh: 1
+--- !u!114 &2071035309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071035304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf61a75c98b93244ab193619b744d261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisplayIcon
+  type: 2
 --- !u!1 &2083407626
 GameObject:
   m_ObjectHideFlags: 0
@@ -17537,9 +17471,9 @@ RectTransform:
   - {fileID: 1895207650}
   m_Father: {fileID: 1825328278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 160, y: 400}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 60, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119231668
