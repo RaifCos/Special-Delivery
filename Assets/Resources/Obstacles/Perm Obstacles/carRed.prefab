@@ -642,6 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSpeed: 15
+  turnSpeed: 100
   grip: 15
   distanceThreshold: 5
   height: 15
