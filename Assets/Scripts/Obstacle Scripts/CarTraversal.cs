@@ -5,6 +5,7 @@ using UnityEngine;
 // Script to handle the behaviour of the Red Car, Green Car, Blue Car, and Toy Car.
 public class CarTraversal : MonoBehaviour {
     [SerializeField] private float topSpeed;
+    [SerializeField] private float turnSpeed;
     [SerializeField] private float grip;
     [SerializeField] private float distanceThreshold;
     [SerializeField] private float height;
@@ -62,13 +63,14 @@ public class CarTraversal : MonoBehaviour {
 
     // Function to set the rotation of the Car to face the destination node.
     private void LookRotation() {
-        Vector3 direction = (currNode.transform.position - rb.position).normalized;
-        if (direction.sqrMagnitude > 0.001f) {
-            Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-            Quaternion smoothedRotation = Quaternion.Slerp(rb.rotation, targetRotation, 5f * Time.fixedDeltaTime);
-            rb.MoveRotation(smoothedRotation);
-        }
+    Vector3 direction = (currNode.transform.position - rb.position).normalized;
+    direction.y = 0f;
+    if (direction.sqrMagnitude > 0.001f) {
+        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
+        Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+        rb.MoveRotation(smoothedRotation);
     }
+}
 
     private void UpdateNode() {
         GameObject tempNode = currNode;
