@@ -40,9 +40,6 @@ public class DataManager : MonoBehaviour {
 
     Data data = new();
 
-    // Obstacle Variables
-    private Dictionary<string, int> gameObs = new();
-    private Dictionary<string, int> gameProps = new();
     #endregion
 
     #region Scriptable Object Methods
@@ -182,12 +179,12 @@ public class DataManager : MonoBehaviour {
 
     #region Obstacle/Prop Data
     public void AddObstacleEncounter(string key) {
-        gameObs[key] = gameObs.GetValueOrDefault(key) + 1;
+        data.lifetimeObs[key]++;
         if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
     }
     
     public void AddPropEncounter(string key) {
-        gameProps[key] = gameProps.GetValueOrDefault(key) + 1;
+        data.lifetimeProps[key]++;
         if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
         CheckProps();
     }
@@ -195,26 +192,6 @@ public class DataManager : MonoBehaviour {
     public int GetObstacleEncounters(string key) => data.lifetimeObs[key];
 
     public int GetPropEncounters(string key) => data.lifetimeProps[key];
-
-    public void AddEncountersToTotal() {
-        var keys = new List<string>(gameObs.Keys);
-        foreach (var key in keys) { 
-            data.lifetimeObs[key] += gameObs[key];
-        }
-
-        keys = new List<string>(gameProps.Keys);
-        foreach (var key in keys) { 
-            data.lifetimeProps[key] += gameProps[key];
-        }
-    }
-
-    public void ResetGameEncounters() {
-        gameObs = new();
-        foreach (Obstacle obs in obstacles) { gameObs.Add(obs.so.internalName, 0); }
-
-        gameProps = new();
-        foreach (Prop prop in props) { gameProps.Add(prop.so.internalName, 0); }
-    }
 
     private void GalleryCompletionCheck() {
         if (!data.lifetimeObs.ContainsValue(0) && !data.lifetimeProps.ContainsValue(0)) 
