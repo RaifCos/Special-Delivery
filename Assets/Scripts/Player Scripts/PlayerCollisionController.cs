@@ -37,6 +37,7 @@ public class PlayerCollisionController : MonoBehaviour {
                 // Play appropiate sound based on colliding object. 0
                 if (collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("Level")) { crashSound.clip = soundEffects[1]; }
                 else if (collision.gameObject.CompareTag("Cone")) { crashSound.clip = soundEffects[2]; }
+                else if (collision.gameObject.CompareTag("Tire")) { crashSound.clip = soundEffects[3]; }
                 else { crashSound.clip = soundEffects[0]; } // No sound set for this object, play a default sound.
 
                 // Randomize pitch of sound for variety and play.
