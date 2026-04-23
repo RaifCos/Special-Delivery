@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: postBox
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: postBox
-  externalName: mail box
+  externalName: post box
   description: the city wanted to streamline the postal service by introducting post
     boxes, but instead of making them brand new, they just painted some waste bins
     blue. talk about lazy design!
-  includeGround: 0
+  stackable: 0
   sprite: {fileID: 21300000, guid: ba25c440155b6db418f855c713a7e631, type: 3}

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: bikeRack
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: bikeRack
-  externalName: Bike Rack
+  externalName: bike rack
   description: 'You can find a lot of bike racks in parcel city, but not a whole
     lot of bikes. Let''s just spare you the details and say  the drivers are very...
     territorial here, ahem. '
-  includeGround: 0
+  stackable: 0
   sprite: {fileID: 21300000, guid: e4931bbda429329428b9ee89991554ce, type: 3}

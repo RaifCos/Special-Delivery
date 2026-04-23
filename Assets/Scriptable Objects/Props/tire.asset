@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: tire
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: tire
-  externalName: Tire
+  externalName: tire
   description: 'you must get pretty tired of all the silly puns this game throws
     at you, so this description went through several rounds to we wheely be sure
     any didn''t roll on in... ah dammit.   '

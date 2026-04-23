@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: phonebooth
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: phonebooth
-  externalName: Phonebooth
+  externalName: phonebooth
   description: while most cities opted to remove these relics from a simpler time,
     parcel city decided to keep them fully operational. Not for any cultural significance,
-    they just can't afford proper telecommunication infrastructure. After all, a
-    significant amount of the budget is dired up by the mail service....
+    they just can't afford proper communications infrastructure. After all, a significant
+    amount of the budget is dired up by the mail service...
   stackable: 0
   sprite: {fileID: 21300000, guid: bb2ed89066f76ae43a7f8e64c22ca43b, type: 3}
