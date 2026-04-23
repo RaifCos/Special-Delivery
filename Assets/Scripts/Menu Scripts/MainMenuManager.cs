@@ -80,6 +80,7 @@ public class MainMenuManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(shopStartSelected);
                 break; }    
             case 6: { // Loading Screen
+                eventSystem.SetSelectedGameObject(null);
                 menuUI.SetActive(false);
                 confirmUI.SetActive(false);
                 Instantiate(Resources.Load<GameObject>("LoadingScreen"));
