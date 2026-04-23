@@ -43,6 +43,7 @@ MonoBehaviour:
   - {fileID: 6525851279216416381, guid: 9229633e2b56e09469dab097fe4363b4, type: 3}
   - {fileID: 3799899100615124849, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
   - {fileID: 2328820451373190987, guid: 3901fcc779a30a94b93218a2d7334fce, type: 3}
+  - {fileID: 5647145335165707210, guid: dbf1d4bbf9c70a342a8ef52cc2c81bcf, type: 3}
   achievements:
   - {fileID: 11400000, guid: 5d358ff7aef1c774499fc6e7129979ca, type: 2}
   - {fileID: 11400000, guid: d3c1fa8ad5111e343acbf14a0c7a8e16, type: 2}
