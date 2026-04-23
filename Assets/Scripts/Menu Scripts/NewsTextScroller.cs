@@ -110,13 +110,12 @@ public class NewsTextScroller : MonoBehaviour
     }
 
     public void AddTutorialHeadlines() {
-        newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. use WASD or the arrow keys to drive.");
-        newsQueue.Add("delivering parcels is the name of the game. follow the tracker arrow at the top of your screen to find a parcel.");
+        newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. follow the tracker arrow at the top of your screen to find your first parcel.");
         newsQueue.Add("once you've collected a parcel, follow the tracker arrow again to its glowing yellow delivery spot.");
-        if(hasBoost) newsQueue.Add("press SPACE to use your booster and go faster! boosting does take up fuel though, so use it wisely.");
+        if(hasBoost) newsQueue.Add("Use your booster and go faster! boosting does take up fuel though, so use it wisely.");
         newsQueue.Add("as you complete more deliveries, obstacles will begin to fill the stage, making each delivery harder than the last. try to deliver as many parcels as you can before time runs out.");
         newsQueue.Add("this is just the tutorial, so no need to worry about the timer or obstacles. Just get used to the controls!");
-        newsQueue.Add("once you're ready to play, press ESCAPE to return to the menu. happy delivering!");
+        newsQueue.Add("once you're ready to play, open the pause menu to end the tutorial. happy delivering!");
     }
 
     // Coroutine to take text from the queue and move it along the news bar.
