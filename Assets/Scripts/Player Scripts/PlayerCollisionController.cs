@@ -9,13 +9,11 @@ public class PlayerCollisionController : MonoBehaviour {
 
     Rigidbody rb;
     
-    private void Start() {
-        rb = gameObject.GetComponent<Rigidbody>(); // Get Rigidbody component.
-    }
+    private void Start() => rb = gameObject.GetComponent<Rigidbody>();
     
     // Function to play a collision sound when colliding with another object.
     private void OnCollisionEnter(Collision collision) {
-        // Increase crash count (for achievement tracking).
+        // Increase Crash Count for achievement tracking.
         GameManager.dataManager.IncreaseProgress(1);
 
         if (!collision.gameObject.CompareTag("Mute")) {

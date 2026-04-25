@@ -64,7 +64,7 @@ public class GameplayManager : MonoBehaviour
         if (difficulty != 0) { GameManager.obstacleManager.SpawnStartingObstacles(); }
 
         // Start Music
-        StartCoroutine(GameManager.audioManager.StartGameMusic());
+        GameManager.audioManager.StartGameMusic();
 
         // Start News Text UI
         GameManager.newsTextScroller.StartNews();
@@ -111,7 +111,6 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameOverFade());
 
         // Stop game music and play game over music.
-        StopCoroutine(GameManager.audioManager.StartGameMusic());
         StartCoroutine(GameManager.audioManager.EndGameMusic());
     }
 

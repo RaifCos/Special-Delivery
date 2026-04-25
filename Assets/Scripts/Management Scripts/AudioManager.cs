@@ -2,11 +2,11 @@ using System.Collections;
 using UnityEngine;
 
 // Script to handle Audio not in the game world (Music and Fanfare)
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
     public AudioSource music, effectSound, soundscape;
     public AudioClip musicStart, musicLoop, musicEnd;
     public AudioClip soundParcel, soundSpot;
+    private Coroutine gameMusicCoroutine;
     private bool isPlaying = false;
 
     void Awake() {
@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Coroutine to play music during gameplay.
-    public IEnumerator StartGameMusic() {
+    public IEnumerator GameMusicLoop() {
         music.volume = 0.85f;
         // Play the "start" clip once.
         isPlaying = true;
@@ -39,9 +39,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StartGameMusic() => gameMusicCoroutine = StartCoroutine(GameMusicLoop());
+
     // Function to stop the main game music loop.
     public void StopGameMusic() {
-        StopCoroutine(StartGameMusic());
+        if (gameMusicCoroutine != null) StopCoroutine(gameMusicCoroutine);
         isPlaying = false;
         music.loop = false;
         music.Stop(); 
@@ -67,9 +69,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayEffectSound() { effectSound.Play(); }
 
-    public void ToggleMusic(bool isPlaying) {
-        music.mute = !isPlaying;
-    }
+    public void ToggleMusic(bool mute) => music.mute = mute;
 
     // Function to adjust music volume when moving between gameplay and the pause menu. 
     public void TogglePause(bool isPaused) {

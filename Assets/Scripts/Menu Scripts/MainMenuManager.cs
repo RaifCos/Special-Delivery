@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour {
 
     public void Start() {
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
-        StartCoroutine(GameManager.audioManager.StartGameMusic());
+        GameManager.audioManager.StartGameMusic();
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
