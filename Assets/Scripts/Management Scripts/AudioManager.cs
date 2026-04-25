@@ -9,9 +9,7 @@ public class AudioManager : MonoBehaviour {
     private Coroutine gameMusicCoroutine;
     private bool isPlaying = false;
 
-    void Awake() {
-        GameManager.audioManager = this;
-    }
+    void Awake() => GameManager.audioManager = this;
 
     public void Start() {
         // Preload all Audio Sounds to prevent gaps or delays when they're needed.
@@ -69,7 +67,7 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayEffectSound() { effectSound.Play(); }
 
-    public void ToggleMusic(bool mute) => music.mute = mute;
+    public void ToggleMusic(bool playMusic) => music.mute = !playMusic;
 
     // Function to adjust music volume when moving between gameplay and the pause menu. 
     public void TogglePause(bool isPaused) {
