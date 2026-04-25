@@ -3,44 +3,39 @@ using UnityEngine;
 // Script to handle control of the Mail Van.
 public class PlayerCollisionController : MonoBehaviour {
 
-    public AudioSource[] crashSoundSources;
-    public AudioClip[] soundEffects;
-    public GameObject particleManager;
-
-    Rigidbody rb;
+    [SerializeField] private AudioSource[] crashSoundSources;
+    [SerializeField] private AudioClip[] defaultSounds;
+    [SerializeField] private GameObject particleManager;
+    private AudioClip[] soundArray;
     
-    private void Start() => rb = gameObject.GetComponent<Rigidbody>();
-    
-    // Function to play a collision sound when colliding with another object.
     private void OnCollisionEnter(Collision collision) {
         // Increase Crash Count for achievement tracking.
         GameManager.dataManager.IncreaseProgress(1);
+        
+        if (collision.relativeVelocity.magnitude > 5f) {
+            // Produce Collision Particles.
+            particleManager.transform.position = collision.contacts[0].point;
+            particleManager.GetComponent<ParticleSystem>().Play();
 
-        if (!collision.gameObject.CompareTag("Mute")) {
-            // To handle multiple collisions in short sucession, use two Crash Sound Sources.
-            AudioSource crashSound = null;
+            // Retrieve an Audio Source currently not in use. 
+            AudioSource css = null;
             foreach (var soundSource in crashSoundSources) {
                 if (!soundSource.isPlaying) {
-                    crashSound = soundSource;
+                    css = soundSource;
                     break;
                 }
             }
 
-            // Only play sound if a Sound Source is available and the van is going fast enough.
-            if (crashSound != null && collision.relativeVelocity.magnitude > 5f) {
+            if (css != null) {
+                // Retrieve sound array from colliding object. 
+                CollisionSounds cs = collision.gameObject.GetComponent<CollisionSounds>();
+                if (cs == null) { soundArray = defaultSounds; }
+                else { soundArray = cs.GetSoundArray(); }
 
-                particleManager.transform.position = collision.contacts[0].point;
-                particleManager.GetComponent<ParticleSystem>().Play();
-
-                // Play appropiate sound based on colliding object. 0
-                if (collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("Level")) { crashSound.clip = soundEffects[1]; }
-                else if (collision.gameObject.CompareTag("Cone")) { crashSound.clip = soundEffects[2]; }
-                else if (collision.gameObject.CompareTag("Tire")) { crashSound.clip = soundEffects[3]; }
-                else { crashSound.clip = soundEffects[0]; } // No sound set for this object, play a default sound.
-
-                // Randomize pitch of sound for variety and play.
-                crashSound.pitch = Random.Range(0.8f, 1.1f);
-                crashSound.Play();
+                // Select random clip from sound array, randomize pitch and play. 
+                css.clip = soundArray[Random.Range(0, soundArray.Length)];
+                css.pitch = Random.Range(0.8f, 1.1f);
+                css.Play();
             }
         }
     }
