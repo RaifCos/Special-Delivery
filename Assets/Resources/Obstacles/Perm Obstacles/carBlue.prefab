@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2408751706694477564}
   - component: {fileID: 8964360990431046014}
   - component: {fileID: 7892332847078948258}
-  - component: {fileID: 8908115304667694806}
   - component: {fileID: 3679285297778742333}
+  - component: {fileID: 8908115304667694806}
   - component: {fileID: 286854141868716584}
   m_Layer: 3
   m_Name: carBlue
@@ -245,27 +245,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8908115304667694806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399430524687977081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 7892332847078948258}
-  soundEffects:
-  - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
-  - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
-  - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
-  - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
-  - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
-  usesCollider: 0
-  includeGround: 0
 --- !u!114 &3679285297778742333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +264,24 @@ MonoBehaviour:
   height: 15
   nodeSet: 0
   ignoreBlockage: 0
+--- !u!114 &8908115304667694806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399430524687977081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
+  - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
+  - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
+  - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
+  - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
 --- !u!114 &286854141868716584
 MonoBehaviour:
   m_ObjectHideFlags: 0

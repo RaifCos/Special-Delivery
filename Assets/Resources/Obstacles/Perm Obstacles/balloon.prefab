@@ -4850,8 +4850,8 @@ GameObject:
   - component: {fileID: 3979873268860252233}
   - component: {fileID: 5551182101954638539}
   - component: {fileID: 1036608229272822665}
-  - component: {fileID: 4593245236174038032}
   - component: {fileID: 4099842034298536103}
+  - component: {fileID: 4593245236174038032}
   m_Layer: 0
   m_Name: balloon
   m_TagString: Untagged
@@ -5078,19 +5078,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4593245236174038032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3602907678664826403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
-  so: {fileID: 11400000, guid: c12e5d75f57df464f878c318502f86cc, type: 2}
 --- !u!114 &4099842034298536103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5107,3 +5094,16 @@ MonoBehaviour:
   hoverSpeed: 10
   highestPoint: 21
   lowestPoint: 17
+--- !u!114 &4593245236174038032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3602907678664826403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: c12e5d75f57df464f878c318502f86cc, type: 2}

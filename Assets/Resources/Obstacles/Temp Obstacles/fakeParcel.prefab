@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 3157697626984951473}
   - component: {fileID: 8605256410495317722}
   - component: {fileID: 4079610249520189394}
+  - component: {fileID: 1166359654068088731}
   - component: {fileID: -8367608588522091340}
   - component: {fileID: 6391013923234303459}
-  - component: {fileID: 1166359654068088731}
   m_Layer: 0
   m_Name: fakeParcel
-  m_TagString: Mute
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,35 +241,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-8367608588522091340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758515622063201031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
---- !u!114 &6391013923234303459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8758515622063201031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 4079610249520189394}
-  soundEffects:
-  - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}
-  usesCollider: 1
-  includeGround: 1
 --- !u!114 &1166359654068088731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,3 +254,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHeight: 50
+--- !u!114 &-8367608588522091340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758515622063201031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  destroy: 0
+--- !u!114 &6391013923234303459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758515622063201031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}

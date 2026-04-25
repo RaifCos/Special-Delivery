@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  destroy: 0
 --- !u!114 &2626929779125816848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,11 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: -4370364028607527100}
   soundEffects:
   - {fileID: 8300000, guid: 06741f09a25da2240a429cfc388bd0f4, type: 3}
-  usesCollider: 1
-  includeGround: 1
 --- !u!114 &4774082532997332544
 MonoBehaviour:
   m_ObjectHideFlags: 0

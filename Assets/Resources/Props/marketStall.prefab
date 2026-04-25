@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8570973272229141379}
   - component: {fileID: 5355361938277663194}
   - component: {fileID: 8183966060094082487}
-  - component: {fileID: 5647145335165707210}
   - component: {fileID: 4761750442231455664}
+  - component: {fileID: 5647145335165707210}
   m_Layer: 0
   m_Name: marketStall
-  m_TagString: Level
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,19 +120,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5647145335165707210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4944030821549188174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Prop
-  so: {fileID: 11400000, guid: 55bee8876bdbfab4b956b1594cf8e591, type: 2}
 --- !u!65 &4761750442231455664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,3 +141,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.223341, y: 1.6950215, z: 1.8420756}
   m_Center: {x: 0, y: 0.8549488, z: -0.0000014007092}
+--- !u!114 &5647145335165707210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944030821549188174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Prop
+  so: {fileID: 11400000, guid: 55bee8876bdbfab4b956b1594cf8e591, type: 2}

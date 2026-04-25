@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4542235129101713940}
   - component: {fileID: 698098789280411174}
   - component: {fileID: 6525851279216416381}
+  - component: {fileID: 1260366755357679423}
   m_Layer: 0
   m_Name: streetSign
   m_TagString: Untagged
@@ -155,3 +156,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Prop
   so: {fileID: 11400000, guid: 6ea88f28809ad36409f8c74a4071d255, type: 2}
+--- !u!114 &1260366755357679423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3074492874939017517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  soundEffects:
+  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}

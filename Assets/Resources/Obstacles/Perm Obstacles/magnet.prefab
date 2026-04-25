@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 690177880386767428}
   - component: {fileID: 925088637968018836}
   - component: {fileID: 7781454577657454481}
-  - component: {fileID: -8961285537046241812}
   - component: {fileID: 3090016693977798141}
+  - component: {fileID: -8961285537046241812}
   - component: {fileID: -921860386296298593}
   m_Layer: 0
   m_Name: magnet
@@ -116,6 +116,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.0405483, y: 6.2959166, z: 1.8029954}
   m_Center: {x: -0.47825992, y: 0.9511509, z: 0}
+--- !u!114 &3090016693977798141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4410646966502014632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a15022d10894e342978f09dc8503de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!114 &-8961285537046241812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,18 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: 60e6c12f9dcf42d4996b1de5919c7b8b, type: 2}
---- !u!114 &3090016693977798141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4410646966502014632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a15022d10894e342978f09dc8503de9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!82 &-921860386296298593
 AudioSource:
   m_ObjectHideFlags: 0

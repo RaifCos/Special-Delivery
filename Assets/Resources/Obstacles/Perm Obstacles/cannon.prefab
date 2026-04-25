@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7942813929078989308}
   - component: {fileID: 7961881097943053273}
   - component: {fileID: 6356207924598259266}
-  - component: {fileID: 2390652869503462475}
   - component: {fileID: 4401093398675718625}
+  - component: {fileID: 2390652869503462475}
   m_Layer: 0
   m_Name: cannon
   m_TagString: Untagged
@@ -257,19 +257,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2390652869503462475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1627182197343185564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
-  so: {fileID: 11400000, guid: 076cdc82fed91c74ba6f4db98f904a7c, type: 2}
 --- !u!114 &4401093398675718625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +275,19 @@ MonoBehaviour:
   cannonBall: {fileID: 1052563638202487868, guid: f084553bfb068e14c9784ee5d6c3c9de, type: 3}
   loadingPointObj: {fileID: 5004398622025195469}
   audioSource: {fileID: 6356207924598259266}
+--- !u!114 &2390652869503462475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627182197343185564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  so: {fileID: 11400000, guid: 076cdc82fed91c74ba6f4db98f904a7c, type: 2}
 --- !u!1 &5004398622025195469
 GameObject:
   m_ObjectHideFlags: 0

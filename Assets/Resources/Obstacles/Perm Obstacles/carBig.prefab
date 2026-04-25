@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6769117669502056892}
   - component: {fileID: 1412166138115784517}
   - component: {fileID: 1815588219075279797}
-  - component: {fileID: 1241316532894538574}
-  - component: {fileID: 6308753238193442554}
-  - component: {fileID: 7692579642881716625}
-  - component: {fileID: 471105181180015299}
   - component: {fileID: 3528443109164848713}
+  - component: {fileID: 1241316532894538574}
+  - component: {fileID: 7692579642881716625}
+  - component: {fileID: 6308753238193442554}
+  - component: {fileID: 471105181180015299}
   m_Layer: 3
   m_Name: carBig
   m_TagString: Car
@@ -127,6 +127,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3528443109164848713
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203118103292374523}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.3, y: 5.036672, z: 13.72622}
+  m_Center: {x: 0, y: -0.04799533, z: 0}
 --- !u!82 &1241316532894538574
 AudioSource:
   m_ObjectHideFlags: 0
@@ -224,27 +245,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6308753238193442554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203118103292374523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 1241316532894538574}
-  soundEffects:
-  - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
-  - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
-  - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
-  - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
-  - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
-  usesCollider: 0
-  includeGround: 0
 --- !u!114 &7692579642881716625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +264,24 @@ MonoBehaviour:
   height: 15
   nodeSet: 1
   ignoreBlockage: 1
+--- !u!114 &6308753238193442554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203118103292374523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
+  - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
+  - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
+  - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
+  - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
 --- !u!114 &471105181180015299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,27 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: 1fe784918eef45b4a83f5ca4841492d7, type: 2}
---- !u!65 &3528443109164848713
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203118103292374523}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.3, y: 5.036672, z: 13.72622}
-  m_Center: {x: 0, y: -0.04799533, z: 0}
 --- !u!1 &1227034972110196165
 GameObject:
   m_ObjectHideFlags: 0
