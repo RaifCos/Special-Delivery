@@ -2,14 +2,17 @@ using UnityEngine;
 
 // Script to handle the sounds emitted by Obstacles when they collide with another object.
 public class CollisionSounds : MonoBehaviour {
-    public AudioClip[] soundEffects;
-    public AudioClip[] GetSoundArray() => soundEffects;
+    [SerializeField] private AudioClip[] collisionSoundEffects;
+    [SerializeField] private AudioClip[] triggerSoundEffects;
+    [SerializeField] private bool randomisePitch; 
 
     private void OnCollisionEnter(Collision collision) {
-        
+        AudioClip clip = collisionSoundEffects[Random.Range(0, collisionSoundEffects.Length)];
+        GameManager.audioManager.PlaySoundEffect(clip, randomisePitch);
     }
 
     private void OnTriggerEnter(Collider other) {
-        
+        AudioClip clip = triggerSoundEffects[Random.Range(0, triggerSoundEffects.Length)];
+        GameManager.audioManager.PlaySoundEffect(clip, randomisePitch);
     }
 }

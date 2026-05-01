@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour {
     [Header("Main Audio Sources")] 
     [SerializeField] private AudioSource music;
-    [SerializeField] private AudioSource effectSound;
     [SerializeField] private AudioSource soundscape;
 
     [Header("Sound Effects Audio Sources")] 
@@ -36,6 +35,8 @@ public class AudioManager : MonoBehaviour {
         soundSpot.LoadAudioData();
     }
 
+    #region Music
+
     // Coroutine to play music during gameplay.
     public IEnumerator GameMusicLoop() {
         volume = GameManager.instance.GetMusicVolume();
@@ -57,7 +58,6 @@ public class AudioManager : MonoBehaviour {
 
     public void StartGameMusic() => gameMusicCoroutine = StartCoroutine(GameMusicLoop());
 
-    // Function to stop the main game music loop.
     public void StopGameMusic() {
         if (gameMusicCoroutine != null) StopCoroutine(gameMusicCoroutine);
         isPlaying = false;
@@ -65,7 +65,6 @@ public class AudioManager : MonoBehaviour {
         music.Stop(); 
     }
 
-    // Coroutine to play the music on the game over screen.
     public IEnumerator EndGameMusic() {
         StopGameMusic();
         soundscape.Stop();
@@ -74,12 +73,11 @@ public class AudioManager : MonoBehaviour {
         yield return new WaitUntil(() => !music.isPlaying);
     }
 
-    // Function to play the fanfare when a Parcel/Delivery Spot is reached.
-    public void PlayParcelSound(bool isParcel) {
-        if (isParcel) { effectSound.clip = soundParcel; }
-        else { effectSound.clip = soundSpot; }
-        effectSound.Play();
-    }
+    #endregion
+
+    #region Sound Effects
+
+    public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot, false); 
 
     public void PlaySoundEffect(AudioClip sound, bool randomisePitch) {
         AudioSource chosenSoundSource = null;
@@ -100,10 +98,9 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void SetEffectSound(AudioClip sound) { effectSound.clip = sound; }
+    #endregion
 
-    public void PlayEffectSound() { effectSound.Play(); }
-
+    #region Volume Settings
     public void AdjustVolume() { 
         volume = volumeSlider.value; 
         if (isPaused) { music.volume = volume/2; }
@@ -117,5 +114,6 @@ public class AudioManager : MonoBehaviour {
         if (isPaused) { music.volume = volume/2; }
         else { music.volume = volume; }
     }
-
+    
+    #endregion
 }

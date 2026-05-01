@@ -146,8 +146,7 @@ public class GameplayManager : MonoBehaviour
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
             if (value < 0 && timeLeft == 1 && secondLife) { 
-                GameManager.audioManager.SetEffectSound(overtimeSound);
-                GameManager.audioManager.PlayEffectSound();
+                GameManager.audioManager.PlaySoundEffect(overtimeSound, false);
                 secondLife = false; value = 30;
             }
             timeLeft += value;
@@ -216,10 +215,9 @@ public class GameplayManager : MonoBehaviour
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
-        GameManager.audioManager.SetEffectSound(countSound);
         do { display++; 
             counterText.text = display.ToString(); 
-            if (display % 10 == 0) { GameManager.audioManager.PlayEffectSound(); }
+            if (display % 10 == 0) { GameManager.audioManager.PlaySoundEffect(countSound, false); }
             yield return _waitForSeconds0001;
         } while (display < moneyEarnt);
         yield return _waitForSeconds1;
