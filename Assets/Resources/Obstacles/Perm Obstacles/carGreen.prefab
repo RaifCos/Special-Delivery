@@ -541,6 +541,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
   - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
   randomisePitch: 1
+  includeGround: 0
 --- !u!114 &7300224660295688363
 MonoBehaviour:
   m_ObjectHideFlags: 0

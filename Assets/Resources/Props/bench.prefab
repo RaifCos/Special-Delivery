@@ -137,6 +137,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}
   triggerSoundEffects: []
   randomisePitch: 1
+  includeGround: 0
 --- !u!64 &7944965504144472720
 MeshCollider:
   m_ObjectHideFlags: 0

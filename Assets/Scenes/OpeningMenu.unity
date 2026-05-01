@@ -25095,8 +25095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 1188058030}
   soundscape: {fileID: 0}
-  soundEffectSources:
-  - {fileID: 1188058029}
+  soundEffectSource: {fileID: 1188058029}
+  spatialAudioSources: []
   musicStart: {fileID: 8300000, guid: 6f1fadd91ea48f545be64675318f543a, type: 3}
   musicLoop: {fileID: 8300000, guid: 3d8d776f2e433674884c48fa87846b20, type: 3}
   musicEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
