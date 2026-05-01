@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour {
 
     // Coroutine to play music during gameplay.
     public IEnumerator GameMusicLoop() {
-        music.volume = 0.85f;
+        music.volume = 1f;
         // Play the "start" clip once.
         isPlaying = true;
         music.loop = false;
@@ -71,8 +71,8 @@ public class AudioManager : MonoBehaviour {
 
     // Function to adjust music volume when moving between gameplay and the pause menu. 
     public void TogglePause(bool isPaused) {
-        if (isPaused) { music.volume = 0.3f; } // Decrease volume when paused.
-        else { music.volume = 0.85f; } // Increase volume when exiting the pause menu.
+        if (isPaused) { music.volume = 0.45f; } // Decrease volume when paused.
+        else { music.volume = 1f; } // Increase volume when exiting the pause menu.
     }
 
 }
