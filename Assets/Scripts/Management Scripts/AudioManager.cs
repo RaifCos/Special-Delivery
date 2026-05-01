@@ -9,7 +9,8 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioSource soundscape;
 
     [Header("Sound Effect Audio Sources")] 
-    [SerializeField] private AudioSource[] soundEffectSources;
+    [SerializeField] private AudioSource soundEffectSource;
+    [SerializeField] private GameObject[] spatialAudioSources;
 
     [Header("Music Audio Clips")] 
     [SerializeField] private AudioClip musicStart;
@@ -78,25 +79,34 @@ public class AudioManager : MonoBehaviour {
 
     #region Sound Effects
 
-    public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot, false); 
+    public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot); 
 
-    public void DefaultCrashSound() => PlaySoundEffect(defaultCrashSound, true);
+    public void DefaultCrashSound(Vector3 position) => PlaySpatialSoundEffect(defaultCrashSound, position, 0f, true);
 
-    public void PlaySoundEffect(AudioClip sound, bool randomisePitch) {
+    public void PlaySoundEffect(AudioClip sound) {
+        soundEffectSource.clip = sound;
+        soundEffectSource.Play();
+    }
+
+    public void PlaySpatialSoundEffect(AudioClip sound, Vector3 position, float pitchOffset, bool randomisePitch) {
+        GameObject chosenSoundObject = null;
         AudioSource chosenSoundSource = null;
-
-        // Find SoundEffct Source not Playing.
-        foreach (var soundSource in soundEffectSources) {
-            if (!soundSource.isPlaying) {
-                chosenSoundSource = soundSource;
+        
+        // Check for Object in the Soundbank that isn't playing.
+        foreach(var spatialObj in spatialAudioSources) {
+            AudioSource spatialSource = spatialObj.GetComponent<AudioSource>();
+            if (!spatialSource.isPlaying) {
+                chosenSoundObject = spatialObj;
+                chosenSoundSource = spatialSource;
                 break;
             }
         }
 
         // Play Sound Effect.
-        if (chosenSoundSource != null) {
+        if (chosenSoundObject != null) {
+            chosenSoundObject.transform.position = position;
             chosenSoundSource.clip = sound;
-            chosenSoundSource.pitch = randomisePitch? Random.Range(0.8f, 1.1f): 1f;
+            chosenSoundSource.pitch = randomisePitch? Random.Range(0.8f, 1.1f) + pitchOffset: 1f + pitchOffset;
             chosenSoundSource.Play();
         }
     }

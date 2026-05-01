@@ -10,11 +10,14 @@ public class PlayerCollisionController : MonoBehaviour {
         GameManager.dataManager.IncreaseProgress(1);
         
         if (collision.relativeVelocity.magnitude > 5f) {
+            Vector3 collisionPos = collision.contacts[0].point;
+            
             // Produce Collision Particles.
-            particleManager.transform.position = collision.contacts[0].point;
+            particleManager.transform.position = collisionPos;
             particleManager.GetComponent<ParticleSystem>().Play(); 
+
             // Play the Default Crash sound if the colliding object doesn't have any crash sounds specified.
-            if (collision.gameObject.GetComponent<CollisionSounds>() == null) { GameManager.audioManager.DefaultCrashSound(); }
+            if (collision.gameObject.GetComponent<CollisionSounds>() == null) { GameManager.audioManager.DefaultCrashSound(collisionPos); }
         }
     }
 }

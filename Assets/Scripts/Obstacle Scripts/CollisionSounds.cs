@@ -4,7 +4,9 @@ using UnityEngine;
 public class CollisionSounds : MonoBehaviour {
     [SerializeField] private AudioClip[] collisionSoundEffects;
     [SerializeField] private AudioClip[] triggerSoundEffects;
-    [SerializeField] private bool randomisePitch; 
+    [SerializeField] private bool includeGround; 
+    [SerializeField] private int pitchOffset; 
+    [SerializeField] private bool randomisePitch;
     private readonly bool[] hasSoundEffects = new bool[2];
 
     private void Start() {
@@ -13,16 +15,16 @@ public class CollisionSounds : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (hasSoundEffects[0]) {
+        if (hasSoundEffects[0] && (includeGround || !collision.gameObject.CompareTag("Level"))) {
             AudioClip clip = collisionSoundEffects[Random.Range(0, collisionSoundEffects.Length)];
-            GameManager.audioManager.PlaySoundEffect(clip, randomisePitch);
+            GameManager.audioManager.PlaySpatialSoundEffect(clip, collision.contacts[0].point, pitchOffset, randomisePitch);
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (hasSoundEffects[1]) {
+        if (hasSoundEffects[1] && (includeGround || !other.gameObject.CompareTag("Level"))) {
             AudioClip clip = triggerSoundEffects[Random.Range(0, triggerSoundEffects.Length)];
-            GameManager.audioManager.PlaySoundEffect(clip, randomisePitch);
+            GameManager.audioManager.PlaySpatialSoundEffect(clip, transform.position, pitchOffset, randomisePitch);
         }
     }
 }

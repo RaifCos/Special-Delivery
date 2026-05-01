@@ -32,7 +32,7 @@ public class GarageMenuManager : MonoBehaviour {
         } 
         
         if (purchase) { 
-            GameManager.audioManager.PlaySoundEffect(buySound, false);
+            GameManager.audioManager.PlaySoundEffect(buySound);
             DisplayUpgrade(listed);
         } 
     }
