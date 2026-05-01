@@ -136,7 +136,11 @@ MonoBehaviour:
   collisionSoundEffects:
   - {fileID: 8300000, guid: afec6b5ddadfe1c4b95574cad99837f6, type: 3}
   triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
   randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!65 &-1382601538939300126
 BoxCollider:
   m_ObjectHideFlags: 0

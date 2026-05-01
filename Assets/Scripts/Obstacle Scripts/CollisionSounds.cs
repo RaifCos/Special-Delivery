@@ -8,7 +8,7 @@ public class CollisionSounds : MonoBehaviour {
     [SerializeField] private float colliderPitchOffset; 
     [SerializeField] private float triggerPitchOffset; 
     [SerializeField] private bool randomisePitch;
-    [SerializeField] private float soundCooldown;
+    [SerializeField] private float soundCooldown = 0.1f;
     private readonly bool[] hasSoundEffects = new bool[2];
     private float lastCollisionTime = -Mathf.Infinity;
     private float lastTriggerTime = -Mathf.Infinity;

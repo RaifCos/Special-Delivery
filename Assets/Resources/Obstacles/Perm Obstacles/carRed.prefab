@@ -668,8 +668,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
   - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
   - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
-  randomisePitch: 1
   includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 3
 --- !u!114 &9017513005959047918
 MonoBehaviour:
   m_ObjectHideFlags: 0
