@@ -25094,13 +25094,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: {fileID: 1188058030}
-  effectSound: {fileID: 0}
   soundscape: {fileID: 0}
+  soundEffectSources:
+  - {fileID: 1188058029}
   musicStart: {fileID: 8300000, guid: 6f1fadd91ea48f545be64675318f543a, type: 3}
   musicLoop: {fileID: 8300000, guid: 3d8d776f2e433674884c48fa87846b20, type: 3}
   musicEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  volumeSlider: {fileID: 0}
 --- !u!114 &1188058035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25113,8 +25115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6269c6aab462f046bb8b24612b4c7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muteButton: {fileID: 103673168}
-  unmuteButton: {fileID: 103673168}
 --- !u!4 &1188058036
 Transform:
   m_ObjectHideFlags: 0
