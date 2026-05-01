@@ -4,9 +4,22 @@ using UnityEngine.UI;
 
 // Script to handle Audio not in the game world (Music and Fanfare)
 public class AudioManager : MonoBehaviour {
-    public AudioSource music, effectSound, soundscape;
-    public AudioClip musicStart, musicLoop, musicEnd;
-    public AudioClip soundParcel, soundSpot;
+    [Header("Main Audio Sources")] 
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource effectSound;
+    [SerializeField] private AudioSource soundscape;
+
+    [Header("Sound Effects Audio Sources")] 
+    [SerializeField] private AudioSource[] soundEffectSources;
+
+    [Header("Music Audio Clips")] 
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+    [SerializeField] private AudioClip musicEnd;
+
+    [Header("Other Variables")]
+    [SerializeField] private AudioClip soundParcel;
+    [SerializeField] private AudioClip soundSpot;
     [SerializeField] private Slider volumeSlider;
     private Coroutine gameMusicCoroutine;
     private float volume;
@@ -66,6 +79,25 @@ public class AudioManager : MonoBehaviour {
         if (isParcel) { effectSound.clip = soundParcel; }
         else { effectSound.clip = soundSpot; }
         effectSound.Play();
+    }
+
+    public void PlaySoundEffect(AudioClip sound, bool randomisePitch) {
+        AudioSource chosenSoundSource = null;
+
+        // Find SoundEffct Source not Playing.
+        foreach (var soundSource in soundEffectSources) {
+            if (!soundSource.isPlaying) {
+                chosenSoundSource = soundSource;
+                break;
+            }
+        }
+
+        // Play Sound Effect.
+        if (chosenSoundSource != null) {
+            chosenSoundSource.clip = sound;
+            chosenSoundSource.pitch = randomisePitch? Random.Range(0.8f, 1.1f): 1f;
+            chosenSoundSource.Play();
+        }
     }
 
     public void SetEffectSound(AudioClip sound) { effectSound.clip = sound; }

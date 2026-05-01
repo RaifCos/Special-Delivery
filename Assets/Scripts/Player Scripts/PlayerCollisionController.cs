@@ -8,6 +8,8 @@ public class PlayerCollisionController : MonoBehaviour {
     [SerializeField] private GameObject particleManager;
     private AudioClip[] soundArray;
     
+    
+
     private void OnCollisionEnter(Collision collision) {
         // Increase Crash Count for achievement tracking.
         GameManager.dataManager.IncreaseProgress(1);

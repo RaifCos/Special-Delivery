@@ -4,4 +4,12 @@ using UnityEngine;
 public class CollisionSounds : MonoBehaviour {
     public AudioClip[] soundEffects;
     public AudioClip[] GetSoundArray() => soundEffects;
+
+    private void OnCollisionEnter(Collision collision) {
+        
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        
+    }
 }
