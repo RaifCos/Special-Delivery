@@ -268,8 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
+  collisionSoundEffects:
   - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}
+  triggerSoundEffects: []
+  randomisePitch: 0
 --- !u!114 &6873733884459152856
 MonoBehaviour:
   m_ObjectHideFlags: 0

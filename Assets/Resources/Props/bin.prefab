@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 782146182443724907}
   - component: {fileID: 5530657891065624474}
   - component: {fileID: 4955813322441935406}
+  - component: {fileID: 2920545345150272727}
   - component: {fileID: 1046240446098869670}
   - component: {fileID: -7849014766195687166}
-  - component: {fileID: -8512398026365060473}
   m_Layer: 0
   m_Name: bin
   m_TagString: Untagged
@@ -121,6 +121,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2920545345150272727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750055118511455753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}
+  triggerSoundEffects: []
+  randomisePitch: 1
 --- !u!65 &1046240446098869670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,17 +171,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Prop
   so: {fileID: 11400000, guid: 1c863f8d53f0b0b469e5168c1905535f, type: 2}
---- !u!114 &-8512398026365060473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750055118511455753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
-  soundEffects:
-  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}

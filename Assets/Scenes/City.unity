@@ -42269,6 +42269,7 @@ MonoBehaviour:
   musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
   volumeSlider: {fileID: 1123858760}
 --- !u!114 &1446925846
 MonoBehaviour:

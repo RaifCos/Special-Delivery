@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8974622520070184106}
   - component: {fileID: 9149188104435068188}
   - component: {fileID: 6528881855281863873}
+  - component: {fileID: 8250637004026365987}
   - component: {fileID: 6108751639252167022}
   - component: {fileID: -1020270408174781601}
-  - component: {fileID: -3361482446287312828}
   m_Layer: 0
   m_Name: hydrant
   m_TagString: Untagged
@@ -121,6 +121,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8250637004026365987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796421802595299293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}
+  triggerSoundEffects: []
+  randomisePitch: 1
 --- !u!65 &6108751639252167022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,17 +171,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Prop
   so: {fileID: 11400000, guid: 18d91553cb0c20f44ac2fa5580301e59, type: 2}
---- !u!114 &-3361482446287312828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6796421802595299293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
-  soundEffects:
-  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}

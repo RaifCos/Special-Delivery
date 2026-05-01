@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8914068134099338799}
   - component: {fileID: 8202688464760480262}
   - component: {fileID: 3951522090376006313}
+  - component: {fileID: -2409692973291030555}
   - component: {fileID: 2581773515630921918}
   - component: {fileID: 3983372050064514344}
-  - component: {fileID: 4781860882551741066}
   m_Layer: 0
   m_Name: bikeRack
   m_TagString: Untagged
@@ -121,6 +121,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2409692973291030555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687229077007340784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}
+  triggerSoundEffects: []
+  randomisePitch: 1
 --- !u!65 &2581773515630921918
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,17 +171,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Prop
   so: {fileID: 11400000, guid: 338d580552971b649b6471c35ed42392, type: 2}
---- !u!114 &4781860882551741066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687229077007340784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
-  soundEffects:
-  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}

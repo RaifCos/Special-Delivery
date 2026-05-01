@@ -276,12 +276,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
+  triggerSoundEffects:
   - {fileID: 8300000, guid: 14d6ed20846789e4a96721f06e66a026, type: 3}
   - {fileID: 8300000, guid: baac422145e62454a84e8ac1174c50f6, type: 3}
   - {fileID: 8300000, guid: 439c276360ae6cb40806f426618da7b1, type: 3}
   - {fileID: 8300000, guid: 6b802a6e29f2e7b408bececfc82f83a4, type: 3}
   - {fileID: 8300000, guid: dae26fcdc8db17a468cf5927b8545a42, type: 3}
+  randomisePitch: 1
 --- !u!114 &471105181180015299
 MonoBehaviour:
   m_ObjectHideFlags: 0
