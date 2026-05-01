@@ -281,5 +281,7 @@ MonoBehaviour:
   collisionSoundEffects:
   - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}
   triggerSoundEffects: []
-  randomisePitch: 1
   includeGround: 1
+  colliderPitchOffset: -0.5
+  triggerPitchOffset: 0
+  randomisePitch: 1
