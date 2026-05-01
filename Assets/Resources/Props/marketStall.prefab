@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5355361938277663194}
   - component: {fileID: 8183966060094082487}
   - component: {fileID: 4761750442231455664}
+  - component: {fileID: 7089951997082112403}
   - component: {fileID: 5647145335165707210}
   m_Layer: 0
   m_Name: marketStall
@@ -141,6 +142,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.223341, y: 1.6950215, z: 1.8420756}
   m_Center: {x: 0, y: 0.8549488, z: -0.0000014007092}
+--- !u!114 &7089951997082112403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944030821549188174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 5e788fce9b91a7346afaeac2c0355c17, type: 3}
+  - {fileID: 8300000, guid: 23d485a7fdfa0bb46a9a244072f618aa, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 0
+  soundCooldown: 0.1
 --- !u!114 &5647145335165707210
 MonoBehaviour:
   m_ObjectHideFlags: 0
