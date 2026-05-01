@@ -42188,7 +42188,7 @@ MonoBehaviour:
   music: {fileID: 1446925843}
   soundscape: {fileID: 1446925841}
   soundEffectSource: {fileID: 1446925849}
-  spatialAudioSources:
+  spatialAudioSourceObjects:
   - {fileID: 684527861}
   - {fileID: 535578474}
   - {fileID: 1361120763}
