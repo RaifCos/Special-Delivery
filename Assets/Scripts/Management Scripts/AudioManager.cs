@@ -78,10 +78,13 @@ public class AudioManager : MonoBehaviour {
     public IEnumerator EndGameMusic() {
         StopGameMusic();
         soundscape.Stop();
+        SetMusicPitch(1f);
         music.clip = musicEnd;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }
+
+    public void SetMusicPitch(float input) => music.pitch = input;
 
     #endregion
 

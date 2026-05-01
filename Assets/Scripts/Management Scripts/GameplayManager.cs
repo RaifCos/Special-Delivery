@@ -9,6 +9,8 @@ using System;
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour
 {
+    private static readonly int HighTimeHash = Animator.StringToHash("highTime");
+    private static readonly int LowTimeHash = Animator.StringToHash("lowTime");
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
@@ -151,8 +153,17 @@ public class GameplayManager : MonoBehaviour
             }
             timeLeft += value;
             if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
-            if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }
-            if (value < 0 && timeLeft <= 10) { TimerAnimation("lowTime"); }
+
+            if (value > 0 && timeLeft >= 10) { 
+                GameManager.audioManager.SetMusicPitch(1f);
+                TimerAnimation("highTime"); 
+            }
+
+            if (value < 0 && timeLeft <= 10) { 
+                GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
+                TimerAnimation("lowTime"); 
+            }
+
             if (timeLeft == 0) { GameOver(); }
         } else { timeLeft = value; }
         gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
@@ -193,8 +204,8 @@ public class GameplayManager : MonoBehaviour
     public void ScoreAnimation() { scoreAnimator.SetTrigger("scoreAnim"); }
 
     public void TimerAnimation(string trigger) {
-        timeAnimator.ResetTrigger("lowTime");
-        timeAnimator.ResetTrigger("highTime");
+        timeAnimator.ResetTrigger(LowTimeHash);
+        timeAnimator.ResetTrigger(HighTimeHash);
         timeAnimator.SetTrigger(trigger);
     }
 
