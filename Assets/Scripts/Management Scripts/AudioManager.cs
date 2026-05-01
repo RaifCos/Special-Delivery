@@ -19,6 +19,7 @@ public class AudioManager : MonoBehaviour {
     [Header("Other Variables")]
     [SerializeField] private AudioClip soundParcel;
     [SerializeField] private AudioClip soundSpot;
+    [SerializeField] private AudioClip defaultCrashSound;
     [SerializeField] private Slider volumeSlider;
     private Coroutine gameMusicCoroutine;
     private float volume;
@@ -78,6 +79,8 @@ public class AudioManager : MonoBehaviour {
     #region Sound Effects
 
     public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot, false); 
+
+    public void DefaultCrashSound() => PlaySoundEffect(defaultCrashSound, true);
 
     public void PlaySoundEffect(AudioClip sound, bool randomisePitch) {
         AudioSource chosenSoundSource = null;

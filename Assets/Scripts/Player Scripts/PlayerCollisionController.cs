@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle control of the Mail Van.
@@ -12,7 +13,9 @@ public class PlayerCollisionController : MonoBehaviour {
         if (collision.relativeVelocity.magnitude > 5f) {
             // Produce Collision Particles.
             particleManager.transform.position = collision.contacts[0].point;
-            particleManager.GetComponent<ParticleSystem>().Play();
+            particleManager.GetComponent<ParticleSystem>().Play(); 
+            // Play the Default Crash sound if the colliding object doesn't have any crash sounds specified.
+            if (collision.gameObject.GetComponent<CollisionSounds>() == null) { GameManager.audioManager.DefaultCrashSound(); }
         }
     }
 }
