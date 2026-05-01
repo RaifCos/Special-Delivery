@@ -27,4 +27,9 @@ public class SettingsManager : MonoBehaviour {
         GameManager.audioManager.PlayParcelSound(false);
         StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
     }
+
+    public void BackToMenu() {
+        GameManager.audioManager.ConfirmVolumeChange();
+        GameManager.mainMenuManager.AlternateMainMenus(0);
+    }
 }

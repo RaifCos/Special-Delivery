@@ -1,13 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Script to handle Audio not in the game world (Music and Fanfare)
 public class AudioManager : MonoBehaviour {
     public AudioSource music, effectSound, soundscape;
     public AudioClip musicStart, musicLoop, musicEnd;
     public AudioClip soundParcel, soundSpot;
+    [SerializeField] private Slider volumeSlider;
     private Coroutine gameMusicCoroutine;
-    private bool isPlaying = false;
+    private float volume;
+    private bool isPlaying, isPaused;
 
     void Awake() => GameManager.audioManager = this;
 
@@ -22,7 +25,9 @@ public class AudioManager : MonoBehaviour {
 
     // Coroutine to play music during gameplay.
     public IEnumerator GameMusicLoop() {
-        music.volume = 1f;
+        volume = GameManager.instance.GetMusicVolume();
+        music.volume = volume;
+        if(volumeSlider != null) { volumeSlider.value = volume;}
         // Play the "start" clip once.
         isPlaying = true;
         music.loop = false;
@@ -67,12 +72,18 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayEffectSound() { effectSound.Play(); }
 
-    public void ToggleMusic(bool playMusic) => music.mute = !playMusic;
+    public void AdjustVolume() { 
+        volume = volumeSlider.value; 
+        if (isPaused) { music.volume = volume/2; }
+        else { music.volume = volume; }
+    }
 
-    // Function to adjust music volume when moving between gameplay and the pause menu. 
-    public void TogglePause(bool isPaused) {
-        if (isPaused) { music.volume = 0.45f; } // Decrease volume when paused.
-        else { music.volume = 1f; } // Increase volume when exiting the pause menu.
+    public void ConfirmVolumeChange() => GameManager.instance.SetMusicVolume(volume);
+
+    public void TogglePause(bool paused) { 
+        isPaused = paused;
+        if (isPaused) { music.volume = volume/2; }
+        else { music.volume = volume; }
     }
 
 }
