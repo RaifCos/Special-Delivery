@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -11,6 +12,7 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private float height;
     [SerializeField] private int nodeSet;
     [SerializeField] private bool ignoreBlockage;
+    [SerializeField] private bool followPlayer;
     private float actTopSpeed;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
@@ -74,7 +76,10 @@ public class CarTraversal : MonoBehaviour {
 
     private void UpdateNode() {
         GameObject tempNode = currNode;
-        currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+        if (followPlayer) { 
+            Vector3 playerPosition = GameObject.Find("Player").transform.position;
+            currNode = tempNode.GetComponent<TrafficNode>().GetNextClosestNode(prevNode, playerPosition);
+        } else { currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode); }
         prevNode = tempNode;
     }
 }
