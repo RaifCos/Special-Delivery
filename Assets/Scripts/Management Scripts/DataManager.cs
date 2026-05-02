@@ -126,7 +126,7 @@ public class DataManager : MonoBehaviour {
 
     #endregion 
     
-    #region Safe File Data
+    #region Save File Data
     public ProgressData[] LoadSaveFiles() {
         ProgressData[] saveFileProgress = new ProgressData[3];
         int totalGallery      = obstacles.Count + props.Count;
@@ -180,7 +180,7 @@ public class DataManager : MonoBehaviour {
     #region Obstacle/Prop Data
     public void AddObstacleEncounter(string key) {
         data.lifetimeObs[key]++;
-        if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
+        if (data.lifetimeObs.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
     }
     
     public void AddPropEncounter(string key) {
