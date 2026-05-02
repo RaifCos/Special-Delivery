@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioClip soundParcel;
     [SerializeField] private AudioClip soundSpot;
     [SerializeField] private AudioClip defaultCrashSound;
+    [SerializeField] private float soundscapeVolume; 
     [SerializeField] private Slider volumeSlider;
     private Coroutine gameMusicCoroutine;
     private float volume;
@@ -126,7 +127,7 @@ public class AudioManager : MonoBehaviour {
     #endregion
 
     #region Volume Settings
-    public void AdjustVolume() { 
+    public void AdjustMusicVolume() { 
         volume = volumeSlider.value; 
         if (isPaused) { music.volume = volume/2; }
         else { music.volume = volume; }

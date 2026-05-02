@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour {
 
     public float GetMusicVolume() => musicVolume; 
 
-    public void ToggleShadows(bool areLower) {
-        qualityShadows = !areLower;
+    public void ToggleShadows(bool input) {
+        qualityShadows = input;
         int res = qualityShadows? 0: 1;
         PlayerPrefs.SetInt("Shadows_" + saveFile, res);
         PlayerPrefs.Save();
