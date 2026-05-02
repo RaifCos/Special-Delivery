@@ -3,7 +3,7 @@ using UnityEngine;
 // Script to handle collisions for Props (Signs, Cones, Bins, etc.)
 public class CollisionHandler : MonoBehaviour {
 
-    [SerializeField] readonly bool destroy;
+    [SerializeField] private bool destroy;
     bool beganFading = false;
     
     private void OnCollisionEnter(Collision collision) {
