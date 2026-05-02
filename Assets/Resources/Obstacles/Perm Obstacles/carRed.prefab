@@ -550,6 +550,7 @@ MonoBehaviour:
   height: 15
   nodeSet: 0
   ignoreBlockage: 0
+  followPlayer: 0
 --- !u!114 &2701679963781775601
 MonoBehaviour:
   m_ObjectHideFlags: 0
