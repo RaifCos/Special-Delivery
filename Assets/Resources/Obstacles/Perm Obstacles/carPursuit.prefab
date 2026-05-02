@@ -1517,7 +1517,7 @@ MonoBehaviour:
   topSpeed: 20
   turnSpeed: 90
   grip: 10
-  distanceThreshold: 6
+  distanceThreshold: 4
   height: 4
   nodeSet: 0
   ignoreBlockage: 1
