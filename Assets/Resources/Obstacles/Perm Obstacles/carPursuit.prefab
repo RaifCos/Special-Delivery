@@ -388,7 +388,7 @@ MonoBehaviour:
   turnSpeed: 100
   grip: 15
   distanceThreshold: 5
-  height: 15
+  height: 4
   nodeSet: 0
   ignoreBlockage: 0
   target: {fileID: 8662905365283430191}
@@ -1517,8 +1517,8 @@ MonoBehaviour:
   topSpeed: 20
   turnSpeed: 90
   grip: 10
-  distanceThreshold: 4
-  height: 15
+  distanceThreshold: 6
+  height: 4
   nodeSet: 0
   ignoreBlockage: 1
   target: {fileID: 0}

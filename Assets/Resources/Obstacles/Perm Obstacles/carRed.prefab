@@ -547,9 +547,10 @@ MonoBehaviour:
   turnSpeed: 100
   grip: 15
   distanceThreshold: 5
-  height: 15
+  height: 4
   nodeSet: 0
   ignoreBlockage: 0
+  target: {fileID: 0}
   followPlayer: 0
 --- !u!114 &2701679963781775601
 MonoBehaviour:

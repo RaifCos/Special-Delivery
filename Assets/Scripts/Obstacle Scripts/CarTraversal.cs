@@ -17,65 +17,68 @@ public class CarTraversal : MonoBehaviour {
     private bool followingTarget;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
-    private Vector3 rayPoint, forward;
-    LayerMask layerMask;
+    LayerMask layerMask, roadMask;
 
-    // Start is called before the first frame update
     void OnEnable() {
         rb = GetComponent<Rigidbody>();
         layerMask = LayerMask.GetMask("Blockage");
+        roadMask = LayerMask.GetMask("Road");
+    }
+
+    void Start() {
+        // Set if Car should follow a Target Object.
+        if (followPlayer) { target = GameObject.FindWithTag("Player"); }
+        followingTarget = target != null;
+
         // Set inital route Nodes.
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
-        // Set movement factors based on nodeSet (0 for regular Cars, 1 for Big Car).
         rb.position = prevNode.transform.position + (Vector3.up * 2f);
-        if(followPlayer) { target =  GameObject.Find("Player"); }
-        followingTarget = target != null;
     }
 
-    // Update is called once per frame
     void FixedUpdate() {
-        if(rb.position.y < height) {
-            actTopSpeed = topSpeed;
-            rayPoint = transform.position + Vector3.up * 2;
+        // Check Car is Grounded.
+        Vector3 rayPoint = transform.position + Vector3.up;
+        if (Physics.Raycast(rayPoint, Vector3.down, out RaycastHit roadHit, height, roadMask)) {
 
-            if (Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask) && !ignoreBlockage) {
+            // Stop/Reverse if there is traffic in front of the Car.
+            if (!ignoreBlockage && Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
                 actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
             } else { actTopSpeed = topSpeed; }
 
+            // Set Forward Direction and Speed.
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
+
+            // If the Car is at the target node, move onto the next node. Otherwise, turn and drive towards it.
             if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
-                LookRotation();
-                if(forwardSpeed < actTopSpeed) { MoveCar(); }
+                LookRotation(roadHit.normal);
+                if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
+                { MoveCar(); }
             } else { UpdateNode(); }
         }
     }
 
     private void MoveCar() {
         Vector3 velocity = rb.linearVelocity;
-        Vector3 right   = rb.rotation * Vector3.right;
-            
-        // Decompose velocity
-        float forwardVel = Vector3.Dot(velocity, forward);
+        Vector3 right = rb.rotation * Vector3.right;
         float lateralVel = Vector3.Dot(velocity, right);
-
-        // Kill lateral sliding
         Vector3 lateralCorrection = grip * lateralVel * -right;
         rb.AddForce(lateralCorrection, ForceMode.Acceleration);
         rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
     }
 
-    // Function to set the rotation of the Car to face the destination node.
-    private void LookRotation() {
-    Vector3 direction = (currNode.transform.position - rb.position).normalized;
-    direction.y = 0f;
-    if (direction.sqrMagnitude > 0.001f) {
-        Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
-        Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-        rb.MoveRotation(smoothedRotation);
+    private void LookRotation(Vector3 surfaceNormal) {
+        Vector3 direction = (currNode.transform.position - rb.position).normalized;
+        if (direction.sqrMagnitude > 0.001f) {
+            Vector3 surfaceForward = Vector3.ProjectOnPlane(direction, surfaceNormal).normalized;
+            if (surfaceForward.sqrMagnitude > 0.001f) {
+                Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, surfaceNormal);
+                Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+                rb.MoveRotation(smoothedRotation);
+            }
+        }
     }
-}
 
     private void UpdateNode() {
         GameObject tempNode = currNode;
