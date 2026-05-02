@@ -19,9 +19,7 @@ public class ObstacleManager : MonoBehaviour {
     private GameObject obstacleObject, destroyParticles;
     private bool[] sideNodeOccupied; 
 
-    void Awake() {
-        GameManager.obstacleManager = this;
-    }
+    void Awake() => GameManager.obstacleManager = this;
     
     private void Start() {
         // Reset Object Counts (from Previous Games)

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
+  m_Name: carPursuit
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
+  internalName: carPursuit
+  externalName: ongoing pursuit
+  description: 'intense pursuit between a shady suspect and a trailing police car.
+
+
+    with
+    all the wreckless happenings that occur in parcel city, you must be wondering
+    what this driver has done to have this police so hot on their tail- let''s just
+    say you should verify your location before opening a blaa shop.  '
+  headline: 'authorities promise "no more coffee breaks" as pursuit continues into
+    fifty-seventh hour. '
+  prefab: {fileID: 4310266740416608923, guid: 6228665bd1a6aeb4eb59d21e7d0c4dfb, type: 3}
+  sprite: {fileID: 21300000, guid: 487b5ce9cb09efe4fa4292ee33c7efba, type: 3}

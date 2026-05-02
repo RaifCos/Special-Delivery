@@ -11,8 +11,10 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private float height;
     [SerializeField] private int nodeSet;
     [SerializeField] private bool ignoreBlockage;
+    [SerializeField] private GameObject target;
     [SerializeField] private bool followPlayer;
     private float actTopSpeed;
+    private bool followingTarget;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
     private Vector3 rayPoint, forward;
@@ -27,6 +29,8 @@ public class CarTraversal : MonoBehaviour {
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
         // Set movement factors based on nodeSet (0 for regular Cars, 1 for Big Car).
         rb.position = prevNode.transform.position + (Vector3.up * 2f);
+        if(followPlayer) { target =  GameObject.Find("Player"); }
+        followingTarget = target != null;
     }
 
     // Update is called once per frame
@@ -75,9 +79,9 @@ public class CarTraversal : MonoBehaviour {
 
     private void UpdateNode() {
         GameObject tempNode = currNode;
-        if (followPlayer) { 
-            Vector3 playerPosition = GameObject.Find("Player").transform.position;
-            currNode = tempNode.GetComponent<TrafficNode>().GetNextClosestNode(prevNode, playerPosition);
+        if (followingTarget) { 
+            Vector3 targetPosition = target.transform.position;
+            currNode = tempNode.GetComponent<TrafficNode>().GetNextClosestNode(prevNode, targetPosition);
         } else { currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode); }
         prevNode = tempNode;
     }

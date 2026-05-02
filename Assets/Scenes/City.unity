@@ -45960,6 +45960,7 @@ MonoBehaviour:
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
   - {fileID: 9017513005959047918, guid: f065eb529d2b1b84c9b809dc7b4a6acb, type: 3}
+  - {fileID: 9017513005959047918, guid: 6228665bd1a6aeb4eb59d21e7d0c4dfb, type: 3}
   tempObstacles:
   - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
   - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
