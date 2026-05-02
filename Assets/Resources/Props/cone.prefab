@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 277908738074351641}
   - component: {fileID: 1371193421663433937}
   - component: {fileID: 2972359399994360526}
-  - component: {fileID: -4083839883206890763}
   - component: {fileID: 1131961375057718316}
+  - component: {fileID: 6013418109527565474}
+  - component: {fileID: -4083839883206890763}
   m_Layer: 0
   m_Name: cone
-  m_TagString: Cone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,19 +121,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-4083839883206890763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019889904782704330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Prop
-  so: {fileID: 11400000, guid: a59399f4b44a3f54294342fec1d7184a, type: 2}
 --- !u!65 &1131961375057718316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,3 +142,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0357519, y: 1.1806748, z: 1.0357519}
   m_Center: {x: -0.00000023841858, y: 0.16601357, z: 0.00000047683716}
+--- !u!114 &6013418109527565474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019889904782704330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: e56e788167b5c634bb21df292e123644, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
+--- !u!114 &-4083839883206890763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019889904782704330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Prop
+  so: {fileID: 11400000, guid: a59399f4b44a3f54294342fec1d7184a, type: 2}

@@ -112,7 +112,6 @@ GameObject:
   - component: {fileID: 3470206154465504916}
   - component: {fileID: 7314220901767843032}
   - component: {fileID: 1689235588232952933}
-  - component: {fileID: 2726234728786934436}
   - component: {fileID: 4195102324455706081}
   - component: {fileID: 2964759547233136770}
   m_Layer: 0
@@ -439,23 +438,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2726234728786934436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6569604251113940049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 1689235588232952933}
-  soundEffects:
-  - {fileID: 8300000, guid: 8acdc7e6c49db394ebd4adfef76eabf7, type: 3}
-  usesCollider: 0
-  includeGround: 0
 --- !u!114 &4195102324455706081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +478,7 @@ GameObject:
   - component: {fileID: 665668209292331370}
   - component: {fileID: 8214640291978763647}
   - component: {fileID: 9204895498797426091}
+  - component: {fileID: 4534738668036385557}
   m_Layer: 0
   m_Name: shipbeam
   m_TagString: Untagged
@@ -610,3 +593,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a84c62412e573438ff918c13957475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4534738668036385557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819740441279443758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects: []
+  triggerSoundEffects:
+  - {fileID: 8300000, guid: 8acdc7e6c49db394ebd4adfef76eabf7, type: 3}
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 5

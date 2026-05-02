@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4799029482216656562}
   - component: {fileID: 7793743193011236877}
   - component: {fileID: 7252180097359029538}
+  - component: {fileID: 4549613534272920875}
   - component: {fileID: 5963314625385675019}
   m_Layer: 0
   m_Name: stopSign
@@ -142,6 +143,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1020477059044179253, guid: 63a613e5ae26c854a9fe363cc893fed0, type: 3}
+--- !u!114 &4549613534272920875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476532656920035260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 0f9e19790e6fbef4eae4636265ea03c1, type: 3}
+  - {fileID: 8300000, guid: e2661bfb4eddb6b49906a9e02736412d, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &5963314625385675019
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5530657891065624474}
   - component: {fileID: 4955813322441935406}
   - component: {fileID: 1046240446098869670}
+  - component: {fileID: 2920545345150272727}
   - component: {fileID: -7849014766195687166}
   m_Layer: 0
   m_Name: bin
@@ -141,6 +142,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8868949, y: 1.7928016, z: 0.88689494}
   m_Center: {x: 0, y: 0.89359164, z: 0.00000008940697}
+--- !u!114 &2920545345150272727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5750055118511455753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 42d7a635d014e85459346c61b814e075, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &-7849014766195687166
 MonoBehaviour:
   m_ObjectHideFlags: 0

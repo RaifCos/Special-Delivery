@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8959394706932607492}
   - component: {fileID: 8914068134099338799}
   - component: {fileID: 8202688464760480262}
-  - component: {fileID: 2581773515630921918}
   - component: {fileID: 3951522090376006313}
+  - component: {fileID: 2581773515630921918}
+  - component: {fileID: -2409692973291030555}
   - component: {fileID: 3983372050064514344}
   m_Layer: 0
   m_Name: bikeRack
@@ -93,27 +94,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2581773515630921918
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5687229077007340784}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.10000004, y: 1.9742639, z: 2.0000005}
-  m_Center: {x: 0, y: -0.012868077, z: 0}
 --- !u!54 &3951522090376006313
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,6 +121,48 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2581773515630921918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687229077007340784}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10000004, y: 1.9742639, z: 2.0000005}
+  m_Center: {x: 0, y: -0.012868077, z: 0}
+--- !u!114 &-2409692973291030555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687229077007340784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 0f9e19790e6fbef4eae4636265ea03c1, type: 3}
+  - {fileID: 8300000, guid: e2661bfb4eddb6b49906a9e02736412d, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &3983372050064514344
 MonoBehaviour:
   m_ObjectHideFlags: 0

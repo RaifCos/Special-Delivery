@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9012164529027299934}
   - component: {fileID: 839993103301821607}
   - component: {fileID: 7944965504144472720}
+  - component: {fileID: -602905109639209650}
   - component: {fileID: -9019525683207888849}
   m_Layer: 0
   m_Name: bench
@@ -142,6 +143,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1926403951900781465, guid: 8e08a8ae82d84a64bafb393d7553c56f, type: 3}
+--- !u!114 &-602905109639209650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816695298830974939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 5e788fce9b91a7346afaeac2c0355c17, type: 3}
+  - {fileID: 8300000, guid: 23d485a7fdfa0bb46a9a244072f618aa, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &-9019525683207888849
 MonoBehaviour:
   m_ObjectHideFlags: 0

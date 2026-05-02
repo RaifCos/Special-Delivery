@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 7068440383653706718}
   - component: {fileID: 25706656247272679}
   - component: {fileID: 3181579061204879427}
-  - component: {fileID: 4741636504862328621}
   - component: {fileID: 153815901675787902}
+  - component: {fileID: -3965128768443963933}
+  - component: {fileID: 4741636504862328621}
   m_Layer: 0
   m_Name: barrier
-  m_TagString: Level
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,19 +121,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4741636504862328621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7239371194085944114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Prop
-  so: {fileID: 11400000, guid: 66386048ce99823418ef08c17cd8eae8, type: 2}
 --- !u!65 &153815901675787902
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,3 +142,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.42714494, y: 2.0034466, z: 5.692046}
   m_Center: {x: 0.000000067055225, y: 1.0172448, z: -0.003910184}
+--- !u!114 &-3965128768443963933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239371194085944114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 5e788fce9b91a7346afaeac2c0355c17, type: 3}
+  - {fileID: 8300000, guid: 23d485a7fdfa0bb46a9a244072f618aa, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
+--- !u!114 &4741636504862328621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239371194085944114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744e6030f0efc2f44b6d0a2dff2328c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Prop
+  so: {fileID: 11400000, guid: 66386048ce99823418ef08c17cd8eae8, type: 2}

@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 9209170240491903181}
   - component: {fileID: 5133926555784138146}
   - component: {fileID: -1382601538939300126}
+  - component: {fileID: 4509803668849875813}
   - component: {fileID: 3799899100615124849}
   m_Layer: 0
   m_Name: tire
-  m_TagString: Tire
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +142,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9876387, y: 0.6570077, z: 1.9876386}
   m_Center: {x: 0.000000029802322, y: 0.017891794, z: -0.000000059604645}
+--- !u!114 &4509803668849875813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7198720251419546596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: afec6b5ddadfe1c4b95574cad99837f6, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &3799899100615124849
 MonoBehaviour:
   m_ObjectHideFlags: 0

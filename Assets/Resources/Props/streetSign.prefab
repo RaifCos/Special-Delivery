@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5519759523831372941}
   - component: {fileID: 4542235129101713940}
   - component: {fileID: 698098789280411174}
+  - component: {fileID: 1849899382121243688}
   - component: {fileID: 6525851279216416381}
   m_Layer: 0
   m_Name: streetSign
@@ -142,6 +143,27 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1355901306445252050, guid: f3aa36688f49a09488d1e3aba0cddbba, type: 3}
+--- !u!114 &1849899382121243688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3074492874939017517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bf987e5c8457447b422b2d87c84028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionSounds
+  collisionSoundEffects:
+  - {fileID: 8300000, guid: 0f9e19790e6fbef4eae4636265ea03c1, type: 3}
+  - {fileID: 8300000, guid: e2661bfb4eddb6b49906a9e02736412d, type: 3}
+  triggerSoundEffects: []
+  includeGround: 0
+  colliderPitchOffset: 0
+  triggerPitchOffset: 0
+  randomisePitch: 1
+  soundCooldown: 0.1
 --- !u!114 &6525851279216416381
 MonoBehaviour:
   m_ObjectHideFlags: 0

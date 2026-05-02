@@ -21,56 +21,39 @@ public class GameManager : MonoBehaviour {
     public static NewsTextScroller newsTextScroller;
     public static DataManager dataManager;
 
-    private EventSystem eventSystem;
-
-    [Header("Music Settings")]
-    public GameObject muteButton, unmuteButton;
-
     [Header("Player Preferences")]
     private int saveFile; 
     private static int difficulty;
-    private bool isMusicPlaying, qualityShadows;
+    private float musicVolume;
+    private bool qualityShadows;
 
     void Awake() { 
-        eventSystem = EventSystem.current;
         instance = this;
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
-    }
-
-    // Start is called before the first frame update.
-    void Start() { 
-        ToggleMusic(PlayerPrefs.GetInt("MuteOn_" + saveFile, 0) == 0);
+        musicVolume = PlayerPrefs.GetFloat("VolumeMusic_" + saveFile, 0.85f);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
     }
-
+    
     // Getter Method for the current difficulty. 
     public int GetDifficulty() { return difficulty; }
 
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
-    public void ToggleMusic(bool isOn) {
-        unmuteButton.SetActive(!isOn);
-        muteButton.SetActive(isOn);
-        if(isOn) {
-            eventSystem.SetSelectedGameObject(muteButton);
-        } else {
-            eventSystem.SetSelectedGameObject(unmuteButton);
-        }
-        isMusicPlaying = isOn;
-        audioManager.ToggleMusic(isOn);
-        int res = isOn? 0: 1;
-        PlayerPrefs.SetInt("MuteOn_" + saveFile, res);
+
+    public void SetMusicVolume(float input) {
+        musicVolume = input;
+        PlayerPrefs.SetFloat("VolumeMusic_" + saveFile, musicVolume);
         PlayerPrefs.Save();
     }
 
-    public void ToggleShadows(bool areLower) {
-        qualityShadows = !areLower;
+    public float GetMusicVolume() => musicVolume; 
+
+    public void ToggleShadows(bool input) {
+        qualityShadows = input;
         int res = qualityShadows? 0: 1;
         PlayerPrefs.SetInt("Shadows_" + saveFile, res);
         PlayerPrefs.Save();
     }
-
-    public bool GetMusicPlaying() { return isMusicPlaying; }
 
     public bool GetShadowQuality() { return qualityShadows; }
     

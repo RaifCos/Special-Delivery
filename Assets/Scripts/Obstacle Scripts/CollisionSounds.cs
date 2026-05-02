@@ -1,29 +1,40 @@
 using UnityEngine;
 
 // Script to handle the sounds emitted by Obstacles when they collide with another object.
-public class CollisionSounds : MonoBehaviour
-{
-    public AudioSource sound;
-    public AudioClip[] soundEffects;
-    public bool usesCollider, includeGround;
+public class CollisionSounds : MonoBehaviour {
+    [SerializeField] private AudioClip[] collisionSoundEffects;
+    [SerializeField] private AudioClip[] triggerSoundEffects;
+    [SerializeField] private bool includeGround; 
+    [SerializeField] private float colliderPitchOffset; 
+    [SerializeField] private float triggerPitchOffset; 
+    [SerializeField] private bool randomisePitch;
+    [SerializeField] private float soundCooldown = 0.1f;
+    private readonly bool[] hasSoundEffects = new bool[2];
+    private float lastCollisionTime = -Mathf.Infinity;
+    private float lastTriggerTime = -Mathf.Infinity;
 
-    // usesCollider indicates if collisions with the Obstacle's collider should be included.
-    // includeGround indicates if collisions with the Ground should count.
+    private void Start() {
+        hasSoundEffects[0] = collisionSoundEffects.Length > 0;
+        hasSoundEffects[1] = triggerSoundEffects.Length > 0;
+    }
 
     private void OnCollisionEnter(Collision collision) {
-        if ((!collision.gameObject.CompareTag("Level") || includeGround) && usesCollider && !sound.isPlaying) {
-            PlayRandomSound(); }
+        if (!hasSoundEffects[0]) return;
+        if (!includeGround && collision.gameObject.CompareTag("Level")) return;
+        if (Time.time - lastCollisionTime < soundCooldown) return;
+
+        lastCollisionTime = Time.time;
+        AudioClip clip = collisionSoundEffects[Random.Range(0, collisionSoundEffects.Length)];
+        GameManager.audioManager.PlaySpatialSoundEffect(clip, collision.contacts[0].point, colliderPitchOffset, randomisePitch);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if ((!other.gameObject.CompareTag("Level") || includeGround) && !other.gameObject.CompareTag("Parcel") && !sound.isPlaying) {
-            PlayRandomSound(); }
-    }
+        if (!hasSoundEffects[1]) return;
+        if (!includeGround && other.gameObject.CompareTag("Level")) return;
+        if (Time.time - lastTriggerTime < soundCooldown) return;
 
-    // Function to play a random sound from the array of choices.
-    private void PlayRandomSound() {
-        sound.clip = soundEffects[Random.Range(0, soundEffects.Length)];
-        sound.Play();
+        lastTriggerTime = Time.time;
+        AudioClip clip = triggerSoundEffects[Random.Range(0, triggerSoundEffects.Length)];
+        GameManager.audioManager.PlaySpatialSoundEffect(clip, transform.position, triggerPitchOffset, randomisePitch);
     }
-
 }

@@ -1,23 +1,16 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 // Script to handle main game functionality.
 public class SettingsManager : MonoBehaviour {
-    public GameObject settingsUI, lowerButton, higherButton;
-    private EventSystem eventSystem;
+    [SerializeField] private GameObject settingsUI;
+    [SerializeField] private Toggle shadowToggle;
 
-    void Awake() { 
-        GameManager.settingsManager = this;
-        eventSystem = EventSystem.current;    
-    }
+    private bool qualityShadows; 
 
-    public void SetShadows(bool beingSetLower) {
-        lowerButton.SetActive(!beingSetLower);
-        higherButton.SetActive(beingSetLower);
-        if (beingSetLower) { eventSystem.SetSelectedGameObject(higherButton); }
-        else { eventSystem.SetSelectedGameObject(lowerButton); }
-        GameManager.instance.ToggleShadows(beingSetLower);
-    }
+    void Awake() => GameManager.settingsManager = this;  
+
+    public void SetShadows() => qualityShadows = shadowToggle.isOn;
 
     // Function to delete player's progress on request.
     public void EraseData() {
@@ -26,5 +19,11 @@ public class SettingsManager : MonoBehaviour {
         GameManager.dataManager.SetShopProgress(false);
         GameManager.audioManager.PlayParcelSound(false);
         StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
+    }
+
+    public void BackToMenu() {
+        GameManager.audioManager.ConfirmVolumeChange();
+        GameManager.mainMenuManager.AlternateMainMenus(0);
+        GameManager.instance.ToggleShadows(qualityShadows);
     }
 }

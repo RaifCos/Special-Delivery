@@ -9,6 +9,8 @@ using System;
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour
 {
+    private static readonly int HighTimeHash = Animator.StringToHash("highTime");
+    private static readonly int LowTimeHash = Animator.StringToHash("lowTime");
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
@@ -64,7 +66,7 @@ public class GameplayManager : MonoBehaviour
         if (difficulty != 0) { GameManager.obstacleManager.SpawnStartingObstacles(); }
 
         // Start Music
-        StartCoroutine(GameManager.audioManager.StartGameMusic());
+        GameManager.audioManager.StartGameMusic();
 
         // Start News Text UI
         GameManager.newsTextScroller.StartNews();
@@ -111,7 +113,6 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameOverFade());
 
         // Stop game music and play game over music.
-        StopCoroutine(GameManager.audioManager.StartGameMusic());
         StartCoroutine(GameManager.audioManager.EndGameMusic());
     }
 
@@ -147,14 +148,22 @@ public class GameplayManager : MonoBehaviour
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
             if (value < 0 && timeLeft == 1 && secondLife) { 
-                GameManager.audioManager.SetEffectSound(overtimeSound);
-                GameManager.audioManager.PlayEffectSound();
+                GameManager.audioManager.PlaySoundEffect(overtimeSound);
                 secondLife = false; value = 30;
             }
             timeLeft += value;
             if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
-            if (value > 0 && timeLeft >= 10) { TimerAnimation("highTime"); }
-            if (value < 0 && timeLeft <= 10) { TimerAnimation("lowTime"); }
+
+            if (value > 0 && timeLeft >= 10) { 
+                GameManager.audioManager.SetMusicPitch(1f);
+                TimerAnimation("highTime"); 
+            }
+
+            if (value < 0 && timeLeft <= 10) { 
+                GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
+                TimerAnimation("lowTime"); 
+            }
+
             if (timeLeft == 0) { GameOver(); }
         } else { timeLeft = value; }
         gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
@@ -195,8 +204,8 @@ public class GameplayManager : MonoBehaviour
     public void ScoreAnimation() { scoreAnimator.SetTrigger("scoreAnim"); }
 
     public void TimerAnimation(string trigger) {
-        timeAnimator.ResetTrigger("lowTime");
-        timeAnimator.ResetTrigger("highTime");
+        timeAnimator.ResetTrigger(LowTimeHash);
+        timeAnimator.ResetTrigger(HighTimeHash);
         timeAnimator.SetTrigger(trigger);
     }
 
@@ -217,10 +226,9 @@ public class GameplayManager : MonoBehaviour
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
-        GameManager.audioManager.SetEffectSound(countSound);
         do { display++; 
             counterText.text = display.ToString(); 
-            if (display % 10 == 0) { GameManager.audioManager.PlayEffectSound(); }
+            if (display % 10 == 0) { GameManager.audioManager.PlaySoundEffect(countSound); }
             yield return _waitForSeconds0001;
         } while (display < moneyEarnt);
         yield return _waitForSeconds1;
@@ -259,6 +267,7 @@ public class GameplayManager : MonoBehaviour
         isGamePaused = false;
         playerVan.GetComponent<PlayerControl>().SetState(true);
         GameManager.audioManager.TogglePause(false);
+        GameManager.audioManager.ConfirmVolumeChange();
         Time.timeScale = 1;
         AlternateGameMenus(0);
     }
@@ -266,6 +275,7 @@ public class GameplayManager : MonoBehaviour
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
         if(difficulty > 0) { GameManager.dataManager.CashTransaction(moneyEarnt); }
+        GameManager.audioManager.ConfirmVolumeChange();
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 419016879546109574}
   - component: {fileID: 3638765787926364451}
   - component: {fileID: 1556989267897677289}
-  - component: {fileID: 760843220326484997}
   - component: {fileID: 554151583621318276}
   - component: {fileID: 8699893366471721894}
+  - component: {fileID: 760843220326484997}
   m_Layer: 0
   m_Name: cannonBall
   m_TagString: Untagged
@@ -93,19 +93,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &760843220326484997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052563638202487868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
-  destroy: 1
 --- !u!54 &554151583621318276
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,3 +141,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.525
   m_Center: {x: -0.000000029802322, y: 0, z: -0.000000029802322}
+--- !u!114 &760843220326484997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052563638202487868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  destroy: 1

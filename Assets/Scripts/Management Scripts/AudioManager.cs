@@ -1,16 +1,40 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Script to handle Audio not in the game world (Music and Fanfare)
-public class AudioManager : MonoBehaviour
-{
-    public AudioSource music, effectSound, soundscape;
-    public AudioClip musicStart, musicLoop, musicEnd;
-    public AudioClip soundParcel, soundSpot;
-    private bool isPlaying = false;
+public class AudioManager : MonoBehaviour {
+    [Header("Main Audio Sources")] 
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource soundscape;
+
+    [Header("Sound Effect Audio Sources")] 
+    [SerializeField] private AudioSource soundEffectSource;
+    [SerializeField] private GameObject[] spatialAudioSourceObjects;
+    private AudioSource[] spatialAudioSources;
+
+    [Header("Music Audio Clips")] 
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+    [SerializeField] private AudioClip musicEnd;
+
+    [Header("Other Variables")]
+    [SerializeField] private AudioClip soundParcel;
+    [SerializeField] private AudioClip soundSpot;
+    [SerializeField] private AudioClip defaultCrashSound;
+    [SerializeField] private float soundscapeVolume; 
+    [SerializeField] private Slider volumeSlider;
+    private Coroutine gameMusicCoroutine;
+    private float volume;
+    private bool isPlaying, isPaused;
 
     void Awake() {
         GameManager.audioManager = this;
+        int len = spatialAudioSourceObjects.Length;
+        spatialAudioSources = new AudioSource[len];
+        for (int i = 0; i < len; i++) {
+            spatialAudioSources[i] = spatialAudioSourceObjects[i].GetComponent<AudioSource>();
+        }
     }
 
     public void Start() {
@@ -22,9 +46,13 @@ public class AudioManager : MonoBehaviour
         soundSpot.LoadAudioData();
     }
 
+    #region Music
+
     // Coroutine to play music during gameplay.
-    public IEnumerator StartGameMusic() {
-        music.volume = 0.85f;
+    public IEnumerator GameMusicLoop() {
+        volume = GameManager.instance.GetMusicVolume();
+        music.volume = volume;
+        if(volumeSlider != null) { volumeSlider.value = volume;}
         // Play the "start" clip once.
         isPlaying = true;
         music.loop = false;
@@ -39,42 +67,79 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // Function to stop the main game music loop.
+    public void StartGameMusic() => gameMusicCoroutine = StartCoroutine(GameMusicLoop());
+
     public void StopGameMusic() {
-        StopCoroutine(StartGameMusic());
+        if (gameMusicCoroutine != null) StopCoroutine(gameMusicCoroutine);
         isPlaying = false;
         music.loop = false;
         music.Stop(); 
     }
 
-    // Coroutine to play the music on the game over screen.
     public IEnumerator EndGameMusic() {
         StopGameMusic();
         soundscape.Stop();
+        SetMusicPitch(1f);
         music.clip = musicEnd;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }
 
-    // Function to play the fanfare when a Parcel/Delivery Spot is reached.
-    public void PlayParcelSound(bool isParcel) {
-        if (isParcel) { effectSound.clip = soundParcel; }
-        else { effectSound.clip = soundSpot; }
-        effectSound.Play();
+    public void SetMusicPitch(float input) => music.pitch = input;
+
+    #endregion
+
+    #region Sound Effects
+
+    public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot); 
+
+    public void DefaultCrashSound(Vector3 position) => PlaySpatialSoundEffect(defaultCrashSound, position, 0f, true);
+
+    public void PlaySoundEffect(AudioClip sound) {
+        soundEffectSource.clip = sound;
+        soundEffectSource.Play();
     }
 
-    public void SetEffectSound(AudioClip sound) { effectSound.clip = sound; }
+    public void PlaySpatialSoundEffect(AudioClip sound, Vector3 position, float pitchOffset, bool randomisePitch) {
+        int chosen = -1;
 
-    public void PlayEffectSound() { effectSound.Play(); }
+        // Check for Object in the Soundbank that isn't playing.
+        for (int i = 0; i < spatialAudioSourceObjects.Length; i++) {
+            if (!spatialAudioSources[i].isPlaying) {
+                chosen = i;
+                break;
+            } 
+        }
 
-    public void ToggleMusic(bool isPlaying) {
-        music.mute = !isPlaying;
+        if (chosen == -1) return;
+
+        // Set Position to play Sound Effect.
+        spatialAudioSourceObjects[chosen].transform.position = position;
+        
+        // Play Sound Effect.
+        AudioSource chosenSoundSource = spatialAudioSources[chosen];
+        chosenSoundSource.clip = sound;
+        chosenSoundSource.pitch = randomisePitch? Random.Range(0.8f, 1.1f) + pitchOffset: 1f + pitchOffset;
+        chosenSoundSource.Play();
+        
     }
 
-    // Function to adjust music volume when moving between gameplay and the pause menu. 
-    public void TogglePause(bool isPaused) {
-        if (isPaused) { music.volume = 0.3f; } // Decrease volume when paused.
-        else { music.volume = 0.85f; } // Increase volume when exiting the pause menu.
+    #endregion
+
+    #region Volume Settings
+    public void AdjustMusicVolume() { 
+        volume = volumeSlider.value; 
+        if (isPaused) { music.volume = volume/2; }
+        else { music.volume = volume; }
     }
 
+    public void ConfirmVolumeChange() => GameManager.instance.SetMusicVolume(volume);
+
+    public void TogglePause(bool paused) { 
+        isPaused = paused;
+        if (isPaused) { music.volume = volume/2; }
+        else { music.volume = volume; }
+    }
+    
+    #endregion
 }
