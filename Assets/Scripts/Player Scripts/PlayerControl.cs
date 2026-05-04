@@ -41,6 +41,7 @@ public class PlayerControl : MonoBehaviour {
     void OnDisable() { 
         vanDrive.Disable(); 
         vanSteer.Disable();
+        pbc.Disable();
     }
 
     void Start() {

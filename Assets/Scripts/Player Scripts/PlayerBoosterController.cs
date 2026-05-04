@@ -29,7 +29,7 @@ public class PlayerBoosterControl : MonoBehaviour {
 
     void OnEnable() { vanBoost.Enable(); }
 
-    void OnDisable() { vanBoost.Disable(); }
+    public void Disable() { vanBoost.Disable(); }
 
     void Start() {
         if( !GameManager.dataManager.IsUpgraded("booster") ) { 
