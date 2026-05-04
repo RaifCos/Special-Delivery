@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour {
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
     public static ObstacleManager obstacleManager;
-    public static BossManager bossManager;
     public static AudioManager audioManager;
     public static NewsTextScroller newsTextScroller;
     public static DataManager dataManager;

@@ -16,7 +16,6 @@ public class GameplayManager : MonoBehaviour {
 
     [Header ("Game Variables")]
     [SerializeField] private int startingTime; 
-    [SerializeField] private int bossDeliveryTime; 
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
 
@@ -173,7 +172,7 @@ public class GameplayManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator BossGameTimer() {
+    private IEnumerator BossGameTimer(int bossDeliveryTime) {
         SetTime(bossDeliveryTime, false);
         while (timeLeft > 0) {
             yield return _waitForSeconds1; // Wait one second before decrementing time.
@@ -181,7 +180,7 @@ public class GameplayManager : MonoBehaviour {
         }
     }
 
-    public void StartBossTimer() => bossTimerCoroutine = StartCoroutine(BossGameTimer());
+    public void StartBossTimer(int bossDeliveryTime) => bossTimerCoroutine = StartCoroutine(BossGameTimer(bossDeliveryTime));
 
     public void ResetBossTimer() { 
         StopCoroutine(bossTimerCoroutine);
@@ -217,7 +216,7 @@ public class GameplayManager : MonoBehaviour {
             }
 
             else if (difficulty == 2 && timeLeft == 0) { 
-                GameManager.bossManager.ChangeState(true); 
+                GameManager.deliveryManager.ChangeState(true); 
                 gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "";
             }
         } else { timeLeft = value; }
