@@ -28,7 +28,7 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private AudioClip countSound;
     [SerializeField] private AudioClip overtimeSound;
 
-    [Header ("UI Elements")]
+    [Header ("UI Canvases")]
     [SerializeField] private GameObject gameUI;
     [SerializeField] private GameObject endUI;
     [SerializeField] private GameObject pauseUI;
@@ -38,10 +38,17 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private GameObject endStartSelect;
     [SerializeField] private GameObject confirmStartSelect;
 
+    [Header ("UI Elements")]
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private Animator scoreAnimator;
+    [SerializeField] private Animator timeAnimator;
+    [SerializeField] private TMP_Text confirmText;
+
     private bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
-    private Animator scoreAnimator, timeAnimator;
     private EventSystem eventSystem;
 
     private static readonly int HighTimeHash = Animator.StringToHash("highTime");
@@ -76,8 +83,8 @@ public class GameplayManager : MonoBehaviour {
 
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
         difficulty = GameManager.instance.GetDifficulty();
-        gameUI.transform.GetChild(2).GetComponent<Image>().enabled = difficulty != 0;
-        gameUI.transform.GetChild(4).GetComponent<TMP_Text>().enabled = difficulty != 0;
+        timerImage.enabled = difficulty != 0;
+        timerText.enabled = difficulty != 0;
 
         // Set up game UI and score values.
         moneyEarnt = 0;
@@ -93,10 +100,6 @@ public class GameplayManager : MonoBehaviour {
         // Start Music and News Text
         GameManager.audioManager.StartGameMusic();
         GameManager.newsTextScroller.StartNews();
-
-        // Set UI for Score Animation
-        scoreAnimator = gameUI.transform.GetChild(1).gameObject.GetComponent<Animator>();
-        timeAnimator = gameUI.transform.GetChild(2).gameObject.GetComponent<Animator>();
 
         // Start timer and begin game. 
         Time.timeScale = 1;
@@ -217,11 +220,11 @@ public class GameplayManager : MonoBehaviour {
 
             else if (difficulty == 2 && timeLeft == 0) { 
                 GameManager.deliveryManager.ChangeState(true); 
-                gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "";
+                timerText.text = "";
             }
         } else { timeLeft = value; }
-        gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
-        if (difficulty == 2 && timeLeft == 0) { gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = ""; }
+        timerText.text = timeLeft.ToString();
+        if (difficulty == 2 && timeLeft == 0) { timerText.text = ""; }
     }
 
     // Setter Method for the delivery score, also updates the UI.
@@ -237,7 +240,7 @@ public class GameplayManager : MonoBehaviour {
             }
         }
         else { completeDeliveries = value; }
-        gameUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = completeDeliveries.ToString();
+        scoreText.text = completeDeliveries.ToString();
     }
 
     public int GetScore() { return completeDeliveries; }
@@ -366,12 +369,10 @@ public class GameplayManager : MonoBehaviour {
 
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage(int cID) {
-        //confirmationUIID = cID;
-        TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
-
+        //confirmationUIID = cID
         pauseUI.SetActive(false);
-        if (difficulty == 0) { message.text = "end the tutorial\nand return to the menu?"; }
-        else { message.text = "end the game\nand return to menu?"; }
+        if (difficulty == 0) { confirmText.text = "end the tutorial\nand return to the menu?"; }
+        else { confirmText.text = "end the game\nand return to menu?"; }
         confirmUI.SetActive(true);
         eventSystem.SetSelectedGameObject(confirmStartSelect);
     }
