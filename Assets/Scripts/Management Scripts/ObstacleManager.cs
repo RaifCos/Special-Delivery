@@ -15,7 +15,7 @@ public class ObstacleManager : MonoBehaviour {
     private readonly List<GameObject> tempObstaclePool = new(); 
     private static readonly WaitForSeconds _waitForSeconds0_02 = new(0.02f);
     private static readonly WaitForSeconds _waitForSeconds8 = new(8f);
-    public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodesA, edgeNodesB, sideNodes;
+    public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodes, sideNodes;
     private GameObject obstacleObject, destroyParticles;
     private bool[] sideNodeOccupied; 
 
@@ -61,16 +61,8 @@ public class ObstacleManager : MonoBehaviour {
 
     // Function to generate a Path that goes from one edge of the Stage to the Other.
     public Vector3[] GetEdgePath() {
-        Vector3[] res = new Vector3[2];
-        int route = Mathf.RoundToInt(Random.Range(0, edgeNodesA.Length));
-        if (Random.Range(0, 2) == 0) {
-            res[0] = edgeNodesA[route].transform.position;
-            res[1] = edgeNodesB[route].transform.position;
-        } else {
-            res[0] = edgeNodesB[route].transform.position;
-            res[1] = edgeNodesA[route].transform.position;
-        }
-        return res;
+        GameObject edgeNode = edgeNodes[Mathf.RoundToInt(Random.Range(0, edgeNodes.Length))];
+        return edgeNode.GetComponent<EdgeNode>().GetPath();
     }
 
     // Function to find a node on the side of the road where a Magnet can spawn. 
@@ -82,26 +74,6 @@ public class ObstacleManager : MonoBehaviour {
         } while (res == null);
         return res;
 
-    }
-
-    // Function to generate an Edge Path starting at the point closest to the player. 
-    public Vector3[] GetClosestEdgePath() {
-        Vector3[] res = new Vector3[2];
-        Vector3 playerPosition = GameObject.Find("Player").transform.position;
-        Vector3 nearestPoint = edgeNodesA[0].transform.position;
-        int bestRoute = 0;
-
-        for (int i=0; i<edgeNodesA.Length; i++) {
-            if (Vector3.Distance(playerPosition, edgeNodesA[i].transform.position) < Vector3.Distance(playerPosition, nearestPoint)) {
-                nearestPoint = edgeNodesA[i].transform.position;
-                bestRoute = i;
-            }
-        }
-        
-        res[0] = edgeNodesA[bestRoute].transform.position;
-        res[1] = edgeNodesB[bestRoute].transform.position;
-
-        return res;
     }
 
     #endregion

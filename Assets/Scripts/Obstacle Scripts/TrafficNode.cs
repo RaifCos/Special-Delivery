@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class TrafficNode : MonoBehaviour {
-    public GameObject[] nextNodes;
+    [SerializeField] private GameObject[] nextNodes;
 
     public GameObject GetNextNode(GameObject prevNode) {
         GameObject resNode;

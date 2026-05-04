@@ -15,7 +15,7 @@ public class BoulderTraversal : MonoBehaviour {
     void OnEnable() {
         beganShrinking = false;
         // Create route for the Boulder and set starting position.
-        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath();
+        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
         transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
     }
