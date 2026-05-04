@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
+using System.Diagnostics;
 
 // Script to control the scrolling text news bar during gameplay
 public class NewsTextScroller : MonoBehaviour
@@ -70,8 +71,17 @@ public class NewsTextScroller : MonoBehaviour
         newsQueue.Clear();
 
         // Add starting headline and additional text if the player is in the tutorial.
-        if (difficulty == 0) { AddTutorialHeadlines(); }
-        else { newsQueue.Add("BREAKING NEWS - local delivery service hires new driver, somehow a headlining story."); }
+        switch(difficulty) {
+            case 0: { // Lifetime Deliveries
+                AddTutorialHeadlines();
+                break; }
+            case 1:
+                newsQueue.Add("BREAKING NEWS - local delivery service hires new driver, somehow a headlining story.");
+                break;
+            case 2: { // Player Crashes
+                newsQueue.Add("BREAKING NEWS - Rival Postal Company challenges delivery driver in intense showdown.");
+                break; }
+        }
 
         // Set position of text component and start scrolling.
         newsText.rectTransform.position = new Vector3(1010f, 5, 0);
@@ -109,6 +119,11 @@ public class NewsTextScroller : MonoBehaviour
         }
     }
 
+    public void AddBossHeadline(bool playerHasParcel) {
+        if(playerHasParcel) { newsQueue.Add("You got the parcel! Deliver it quickly!"); }   
+        else { newsQueue.Add("Your opponent has the parcel, stop them from reaching the delivery point at all costs!"); }
+    }
+
     public void AddTutorialHeadlines() {
         newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. follow the tracker arrow at the top of your screen to find your first parcel.");
         newsQueue.Add("once you've collected a parcel, follow the tracker arrow again to its glowing yellow delivery spot.");
@@ -125,7 +140,7 @@ public class NewsTextScroller : MonoBehaviour
             // If there are no headlines in the queue, add a random generic string.
             if (newsQueue.Count == 0) { 
                 if(difficulty == 0) { AddTutorialHeadlines(); }
-                if(difficulty == 1) { AddGenericHeadline(); }
+                else { AddGenericHeadline(); }
             }
             // Take headline at top of the queue.
             newsText.text = newsQueue[0];
@@ -146,7 +161,7 @@ public class NewsTextScroller : MonoBehaviour
             textRect.anchoredPosition = new Vector2(startX, 0);
 
             while (textRect.anchoredPosition.x > endX) {
-                textRect.anchoredPosition += Vector2.left * scrollSpeed * Time.deltaTime;
+                textRect.anchoredPosition += scrollSpeed * Time.deltaTime * Vector2.left;
                 yield return null;
             }
         }

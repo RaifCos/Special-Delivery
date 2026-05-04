@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using System.Data;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour
@@ -24,11 +25,14 @@ public class GameplayManager : MonoBehaviour
     private bool isGamePaused = false;
     private bool secondLife = false; 
     private GameObject player;
+    private Coroutine bossTimerCoroutine;
 
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
     private Animator scoreAnimator, timeAnimator;
     private EventSystem eventSystem;
+
+    #region Handler Functions
 
     void OnEnable() { 
         pauseAction.Enable();
@@ -55,13 +59,9 @@ public class GameplayManager : MonoBehaviour
         gameUI.transform.GetChild(2).GetComponent<Image>().enabled = difficulty != 0;
         gameUI.transform.GetChild(4).GetComponent<TMP_Text>().enabled = difficulty != 0;
 
-        // Set up game UI and score/timer values.
+        // Set up game UI and score values.
         AlternateGameMenus(0);
         SetScore(0, false);
-
-        int startTime = startingTime;
-        startTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
-        SetTime(startTime, false);
 
         // Initialize the player van.
         playerVan.GetComponent<PlayerControl>().SetState(true);
@@ -81,7 +81,12 @@ public class GameplayManager : MonoBehaviour
 
         // Start timer and begin game. 
         isPlaying = true;
-        if (difficulty != 0) { StartCoroutine(GameTimer()); }
+        if (difficulty == 1) { 
+            int startTime = startingTime;
+            startTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
+            SetTime(startTime, false);
+            StartCoroutine(GameTimer());
+        }
     }
 
     // Update is called once per frame.
@@ -94,18 +99,19 @@ public class GameplayManager : MonoBehaviour
                 else { ResumeGame(); }
             }
 
+            Vector3 direction;
             // Rotate Directional Arrow to point towards the current objective, relative to the player's position.
-            Vector3 direction = GameManager.bossManager.GetCurrentPosition() - playerVan.transform.position;
+            if(difficulty != 2) direction = GameManager.deliveryManager.GetCurrentPosition() - playerVan.transform.position; 
+            else direction = GameManager.bossManager.GetCurrentPosition() - playerVan.transform.position;
+            
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             directionArrow.transform.rotation = Quaternion.Slerp(directionArrow.transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
     }
 
-    /*
-     * ======================
-     *  GAME-STATE FUNCTIONS
-     * ======================
-     */
+    #endregion
+
+    #region Game State Functions
 
     // Function for when the player runs out of time.
     public void GameOver() {
@@ -132,11 +138,9 @@ public class GameplayManager : MonoBehaviour
         GameManager.newsTextScroller.StopNews();
     }
 
-    /*
-    * ======================
-    *  GAMEPLAY FUNCTIONS
-    * ======================
-    */
+    #endregion
+
+    #region Game Loop Functions
 
     // Coroutine to decrement the game timer every second.
     private IEnumerator GameTimer() {
@@ -148,33 +152,59 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    private IEnumerator BossGameTimer() {
+        SetTime(20, false);
+        while (timeLeft > 0) {
+            yield return _waitForSeconds1; // Wait one second before decrementing time.
+            SetTime(-1, true);
+        }
+    }
+
+    public void StartBossTimer() => bossTimerCoroutine = StartCoroutine(BossGameTimer());
+    public void ResetBossTimer() { 
+        StopCoroutine(bossTimerCoroutine);
+        SetTime(0, false);
+    }
+
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
             if (value < 0 && timeLeft == 1 && secondLife) { 
                 GameManager.audioManager.PlaySoundEffect(overtimeSound);
-                secondLife = false; value = 30;
+                secondLife = false;
+                value = 30;
             }
+            
             timeLeft += value;
-            if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
 
-            if (value > 0 && timeLeft >= 10) { 
-                GameManager.audioManager.SetMusicPitch(1f);
-                TimerAnimation("highTime"); 
+            if (difficulty == 1) {
+                if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
+
+                if (value > 0 && timeLeft >= 10) { 
+                    GameManager.audioManager.SetMusicPitch(1f);
+                    TimerAnimation("highTime"); 
+                }
+
+                if (value < 0 && timeLeft <= 10) { 
+                    GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
+                    TimerAnimation("lowTime"); 
+                }
+
+                if (timeLeft == 0) { GameOver(); }
+
             }
 
-            if (value < 0 && timeLeft <= 10) { 
-                GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
-                TimerAnimation("lowTime"); 
+            else if (difficulty == 2 && timeLeft == 0) { 
+                GameManager.bossManager.ChangeState(true); 
+                gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = "";
             }
-
-            if (timeLeft == 0) { GameOver(); }
         } else { timeLeft = value; }
         gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
+        if (difficulty == 2 && timeLeft == 0) { gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = ""; }
     }
 
     // Setter Method for the delivery score, also updates the UI.
-    public void SetScore(int value, bool addingScore) {
+    public void SetScore (int value, bool addingScore) {
         if (addingScore) {
             completeDeliveries++;
             if (difficulty != 0) {
@@ -203,11 +233,9 @@ public class GameplayManager : MonoBehaviour
 
     public Vector3 FindPlayer() => player.transform.position;
 
-    /*
-    * ======================
-    *     UI FUNCTIONS
-    * ======================
-    */
+    #endregion
+
+    #region UI Functions
 
     public void ScoreAnimation() { scoreAnimator.SetTrigger("scoreAnim"); }
 
@@ -333,4 +361,6 @@ public class GameplayManager : MonoBehaviour
         if (!response) { AlternateGameMenus(2); }
         else { QuitGame(); }
     }
+
+    #endregion
 }

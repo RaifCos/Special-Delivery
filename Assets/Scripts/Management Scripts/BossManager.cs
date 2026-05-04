@@ -11,6 +11,7 @@ public class BossManager : MonoBehaviour {
     private Vector3 parcelPos;
     private readonly List<Vector3> nodePositions = new();
     private int phase; // 0 (Parcel not Collected), 1 (Player Delivering), 2 (Boss Delivering) 
+    private int playerScore, bossScore;
 
     void Awake() { GameManager.bossManager = this; }
 
@@ -25,6 +26,8 @@ public class BossManager : MonoBehaviour {
         bossPSA = transform.GetChild(3).gameObject;
         bossPSB =transform.GetChild(4).gameObject;
         phase = 0;
+        playerScore = 0;
+        bossScore = 0;
         ChangeState(true);
         parcel.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
     }
@@ -34,13 +37,19 @@ public class BossManager : MonoBehaviour {
         bool bossHit = other.gameObject.CompareTag("Boss");
 
         if (playerHit) {
-            if (isParcel) { phase = 1; ChangeState(false); }
-            else if (phase == 1) { DeliveryCompleted(); ChangeState(true); }
+            if (isParcel) { 
+                phase = 1;
+                GameManager.newsTextScroller.AddBossHeadline(true);
+                ChangeState(false);
+            } else if (phase == 1) { DeliveryCompleted(); }
         }
 
         if (bossHit) { 
-            if (isParcel) { phase = 2; ChangeState(false); }
-            else if (phase == 2) { DeliveryCompleted(); ChangeState(true); }
+            if (isParcel) { 
+                phase = 2; 
+                GameManager.newsTextScroller.AddBossHeadline(false);
+                ChangeState(false);
+            } else if (phase == 2) { DeliveryCompleted(); }
         }
     }
 
@@ -50,6 +59,7 @@ public class BossManager : MonoBehaviour {
     public void ChangeState(bool input) {
         isParcel = input;
         if(isParcel) { phase = 0; }
+        else { GameManager.gameplayManager.StartBossTimer(); }
         parcel.SetActive(isParcel);
 
         parcelPSA.SetActive(phase == 1);
@@ -70,8 +80,22 @@ public class BossManager : MonoBehaviour {
     public Vector3 GetCurrentPosition() { return currPos; }
 
     public void DeliveryCompleted() {
+        GameManager.obstacleManager.SpawnObstacle(true);
+
+        if (phase == 1) {
+            playerScore++;
+            if (playerScore == 5) { GameManager.gameplayManager.GameOver(); } // Replace with Win Function.
+        }
+
+        if (phase == 2) {
+            bossScore++;
+            if (bossScore == 5) { GameManager.gameplayManager.GameOver(); } // Replace with Lose Function.
+        }
+
+        Debug.Log(playerScore + " - " + bossScore);
+
+        GameManager.gameplayManager.ResetBossTimer();
+        ChangeState(true);
         // TODO: UpdateUI 
-        // If Boss completes X Deliveries, Game Over.
-        // If Player completed X Deliveries, Win.
     }
 }
