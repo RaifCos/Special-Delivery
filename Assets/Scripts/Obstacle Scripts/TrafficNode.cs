@@ -17,4 +17,27 @@ public class TrafficNode : MonoBehaviour {
             { resNode = possibleNode; }
         } return resNode;
     }
+
+    public GameObject GetNextClosestNode(GameObject prevNode, Vector3 target, int depth) {
+        GameObject bestNext = null;
+        float bestDist = float.MaxValue;
+
+        foreach (var candidate in nextNodes) {
+            if (candidate == prevNode) continue;
+
+            Vector3 lookaheadPos = depth > 0
+                ? candidate.GetComponent<TrafficNode>()
+                    .GetNextClosestNode(gameObject, target, depth - 1)
+                    .transform.position
+                : candidate.transform.position;
+
+            float dist = Vector3.Distance(lookaheadPos, target);
+            if (dist < bestDist) {
+                bestDist = dist;
+                bestNext = candidate;
+            }
+        }
+
+        return bestNext;
+    }
 }
