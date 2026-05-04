@@ -1516,8 +1516,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSpeed: 20
   turnSpeed: 90
-  grip: 10
-  distanceThreshold: 4
+  grip: 15
+  distanceThreshold: 6
   height: 4
   nodeSet: 0
   ignoreBlockage: 1

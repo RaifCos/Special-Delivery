@@ -3363,7 +3363,7 @@ GameObject:
   - component: {fileID: 143871601}
   - component: {fileID: 143871600}
   - component: {fileID: 143871599}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3783,9 +3783,9 @@ GameObject:
   - component: {fileID: 155397679}
   - component: {fileID: 155397678}
   - component: {fileID: 155397677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3901,9 +3901,9 @@ GameObject:
   - component: {fileID: 157919613}
   - component: {fileID: 157919612}
   - component: {fileID: 157919611}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5521,7 +5521,7 @@ GameObject:
   - component: {fileID: 243887830}
   - component: {fileID: 243887829}
   - component: {fileID: 243887828}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -8036,7 +8036,7 @@ GameObject:
   - component: {fileID: 329046714}
   - component: {fileID: 329046713}
   - component: {fileID: 329046712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -13907,7 +13907,7 @@ GameObject:
   - component: {fileID: 387473801}
   - component: {fileID: 387473800}
   - component: {fileID: 387473802}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store D
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -18373,7 +18373,7 @@ GameObject:
   - component: {fileID: 619328683}
   - component: {fileID: 619328682}
   - component: {fileID: 619328681}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -19173,7 +19173,7 @@ GameObject:
   - component: {fileID: 654507762}
   - component: {fileID: 654507761}
   - component: {fileID: 654507760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -21011,7 +21011,7 @@ GameObject:
   - component: {fileID: 708976181}
   - component: {fileID: 708976180}
   - component: {fileID: 708976179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Flat A '
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -21243,7 +21243,7 @@ GameObject:
   - component: {fileID: 713347641}
   - component: {fileID: 713347640}
   - component: {fileID: 713347639}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -23717,7 +23717,7 @@ GameObject:
   - component: {fileID: 833169247}
   - component: {fileID: 833169246}
   - component: {fileID: 833169245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -29797,7 +29797,7 @@ GameObject:
   - component: {fileID: 896195619}
   - component: {fileID: 896195618}
   - component: {fileID: 896195617}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33185,9 +33185,9 @@ GameObject:
   - component: {fileID: 1061967163}
   - component: {fileID: 1061967162}
   - component: {fileID: 1061967161}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34261,7 +34261,7 @@ GameObject:
   - component: {fileID: 1124116687}
   - component: {fileID: 1124116686}
   - component: {fileID: 1124116685}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -34495,9 +34495,9 @@ GameObject:
   - component: {fileID: 1136951001}
   - component: {fileID: 1136951000}
   - component: {fileID: 1136950999}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36997,9 +36997,9 @@ GameObject:
   - component: {fileID: 1241124020}
   - component: {fileID: 1241124019}
   - component: {fileID: 1241124018}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37697,7 +37697,7 @@ GameObject:
   - component: {fileID: 1297904067}
   - component: {fileID: 1297904066}
   - component: {fileID: 1297904068}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -46827,9 +46827,9 @@ GameObject:
   - component: {fileID: 1493629003}
   - component: {fileID: 1493629002}
   - component: {fileID: 1493629001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46945,9 +46945,9 @@ GameObject:
   - component: {fileID: 1500785407}
   - component: {fileID: 1500785406}
   - component: {fileID: 1500785405}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47286,7 +47286,7 @@ GameObject:
   - component: {fileID: 1520747467}
   - component: {fileID: 1520747466}
   - component: {fileID: 1520747465}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -48518,7 +48518,7 @@ GameObject:
   - component: {fileID: 1540454552}
   - component: {fileID: 1540454551}
   - component: {fileID: 1540454550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -52524,7 +52524,7 @@ GameObject:
   - component: {fileID: 1743075840}
   - component: {fileID: 1743075839}
   - component: {fileID: 1743075841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -53164,7 +53164,7 @@ GameObject:
   - component: {fileID: 1771983195}
   - component: {fileID: 1771983194}
   - component: {fileID: 1771983196}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -53338,9 +53338,9 @@ GameObject:
   - component: {fileID: 1781174588}
   - component: {fileID: 1781174587}
   - component: {fileID: 1781174586}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56140,7 +56140,7 @@ GameObject:
   - component: {fileID: 1895280849}
   - component: {fileID: 1895280848}
   - component: {fileID: 1895280847}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -62947,7 +62947,7 @@ GameObject:
   - component: {fileID: 2015771387}
   - component: {fileID: 2015771386}
   - component: {fileID: 2015771388}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -64292,7 +64292,7 @@ GameObject:
   - component: {fileID: 2068549607}
   - component: {fileID: 2068549606}
   - component: {fileID: 2068549609}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -66851,7 +66851,7 @@ GameObject:
   - component: {fileID: 3469287837957557303}
   - component: {fileID: 1711813855306053885}
   - component: {fileID: 3469287837957557304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -66870,7 +66870,7 @@ GameObject:
   - component: {fileID: 3469287837998375531}
   - component: {fileID: 1711813855277553313}
   - component: {fileID: 1294552742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -67022,9 +67022,9 @@ GameObject:
   - component: {fileID: 3469287836840324101}
   - component: {fileID: 1711813856267049167}
   - component: {fileID: 717292621}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67041,7 +67041,7 @@ GameObject:
   - component: {fileID: 3469287836690214827}
   - component: {fileID: 1711813855917644641}
   - component: {fileID: 3469287836690214828}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store D
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -67136,7 +67136,7 @@ GameObject:
   - component: {fileID: 3469287837389319296}
   - component: {fileID: 1711813855744399434}
   - component: {fileID: 3469287837389319297}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -68747,9 +68747,9 @@ GameObject:
   - component: {fileID: 2761578240357291343}
   - component: {fileID: 123830911595782533}
   - component: {fileID: 2761578240357291344}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69368,7 +69368,7 @@ GameObject:
   - component: {fileID: 1220090304234802765}
   - component: {fileID: 3966077955678976647}
   - component: {fileID: 3966077955678976648}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Post Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -71031,7 +71031,7 @@ GameObject:
   - component: {fileID: 8792765133057862299}
   - component: {fileID: 6765209303248428625}
   - component: {fileID: 8792765133057862300}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Grass
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -71420,9 +71420,9 @@ GameObject:
   - component: {fileID: 8087402474687096886}
   - component: {fileID: 6330036850501491964}
   - component: {fileID: 8087402474687096887}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71583,9 +71583,9 @@ GameObject:
   - component: {fileID: 7853465921226173560}
   - component: {fileID: 5411614729552697522}
   - component: {fileID: 7853465921226173561}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Supermarket
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73139,7 +73139,7 @@ GameObject:
   - component: {fileID: 5771750225969326220}
   - component: {fileID: 8646232928646224966}
   - component: {fileID: 8646232928646224967}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -73426,9 +73426,9 @@ GameObject:
   - component: {fileID: 5571011853116550872}
   - component: {fileID: 7688984363845835282}
   - component: {fileID: 8863064648422760830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74085,7 +74085,7 @@ GameObject:
   - component: {fileID: 4745115305606350502}
   - component: {fileID: 7367605811289223788}
   - component: {fileID: 9024652915411833786}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PoliceStation
   m_TagString: Level
   m_Icon: {fileID: 0}

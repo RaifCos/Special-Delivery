@@ -34,6 +34,7 @@ public class CarTraversal : MonoBehaviour {
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
         rb.position = prevNode.transform.position + (Vector3.up * 2f);
+        transform.rotation = Quaternion.Euler((currNode.transform.position - rb.position).normalized);
     }
 
     void FixedUpdate() {
@@ -42,7 +43,7 @@ public class CarTraversal : MonoBehaviour {
         if (Physics.Raycast(rayPoint, Vector3.down, out RaycastHit roadHit, height, roadMask)) {
 
             // Stop/Reverse if there is traffic in front of the Car.
-            if (!ignoreBlockage && Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 25f, layerMask)) {
+            if (!ignoreBlockage && Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 10f, layerMask)) {
                 actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
             } else { actTopSpeed = topSpeed; }
 

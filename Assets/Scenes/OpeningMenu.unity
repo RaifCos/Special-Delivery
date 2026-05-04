@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 63234592}
   - component: {fileID: 63234595}
   - component: {fileID: 63234594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 121911051}
   - component: {fileID: 121911054}
   - component: {fileID: 121911053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1504,7 +1504,7 @@ GameObject:
   - component: {fileID: 125970443}
   - component: {fileID: 125970446}
   - component: {fileID: 125970445}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2699,7 +2699,7 @@ GameObject:
   - component: {fileID: 211466135}
   - component: {fileID: 211466138}
   - component: {fileID: 211466137}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 243084200}
   - component: {fileID: 243084203}
   - component: {fileID: 243084202}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2969,7 +2969,7 @@ GameObject:
   - component: {fileID: 258609863}
   - component: {fileID: 258609866}
   - component: {fileID: 258609865}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3352,7 +3352,7 @@ GameObject:
   - component: {fileID: 276919720}
   - component: {fileID: 276919723}
   - component: {fileID: 276919722}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3579,7 +3579,7 @@ GameObject:
   - component: {fileID: 293194447}
   - component: {fileID: 293194450}
   - component: {fileID: 293194449}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3914,7 +3914,7 @@ GameObject:
   - component: {fileID: 312276921}
   - component: {fileID: 312276924}
   - component: {fileID: 312276923}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Post Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -4457,7 +4457,7 @@ GameObject:
   - component: {fileID: 361155203}
   - component: {fileID: 361155206}
   - component: {fileID: 361155205}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -4637,7 +4637,7 @@ GameObject:
   - component: {fileID: 392880317}
   - component: {fileID: 392880320}
   - component: {fileID: 392880319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,7 @@ GameObject:
   - component: {fileID: 410227598}
   - component: {fileID: 410227601}
   - component: {fileID: 410227600}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -5225,7 +5225,7 @@ GameObject:
   - component: {fileID: 425391220}
   - component: {fileID: 425391223}
   - component: {fileID: 425391222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -5443,7 +5443,7 @@ GameObject:
   - component: {fileID: 471350388}
   - component: {fileID: 471350391}
   - component: {fileID: 471350390}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -5533,7 +5533,7 @@ GameObject:
   - component: {fileID: 473232733}
   - component: {fileID: 473232736}
   - component: {fileID: 473232735}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -5714,7 +5714,7 @@ GameObject:
   - component: {fileID: 512971506}
   - component: {fileID: 512971509}
   - component: {fileID: 512971508}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -6434,7 +6434,7 @@ GameObject:
   - component: {fileID: 545662425}
   - component: {fileID: 545662428}
   - component: {fileID: 545662427}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store D
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -6661,7 +6661,7 @@ GameObject:
   - component: {fileID: 566931125}
   - component: {fileID: 566931128}
   - component: {fileID: 566931127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -7648,7 +7648,7 @@ GameObject:
   - component: {fileID: 624742195}
   - component: {fileID: 624742198}
   - component: {fileID: 624742197}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -7738,7 +7738,7 @@ GameObject:
   - component: {fileID: 624876938}
   - component: {fileID: 624876941}
   - component: {fileID: 624876940}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -9357,7 +9357,7 @@ GameObject:
   - component: {fileID: 788270425}
   - component: {fileID: 788270428}
   - component: {fileID: 788270427}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -9447,7 +9447,7 @@ GameObject:
   - component: {fileID: 806548091}
   - component: {fileID: 806548094}
   - component: {fileID: 806548093}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -9537,7 +9537,7 @@ GameObject:
   - component: {fileID: 806951898}
   - component: {fileID: 806951901}
   - component: {fileID: 806951900}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -9799,7 +9799,7 @@ GameObject:
   - component: {fileID: 827767030}
   - component: {fileID: 827767033}
   - component: {fileID: 827767032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10424,7 +10424,7 @@ GameObject:
   - component: {fileID: 858865740}
   - component: {fileID: 858865743}
   - component: {fileID: 858865742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -10878,7 +10878,7 @@ GameObject:
   - component: {fileID: 892270080}
   - component: {fileID: 892270083}
   - component: {fileID: 892270082}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -11155,7 +11155,7 @@ GameObject:
   - component: {fileID: 898313475}
   - component: {fileID: 898313478}
   - component: {fileID: 898313477}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -11917,7 +11917,7 @@ GameObject:
   - component: {fileID: 935279949}
   - component: {fileID: 935279952}
   - component: {fileID: 935279951}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -12120,7 +12120,7 @@ GameObject:
   - component: {fileID: 948130615}
   - component: {fileID: 948130618}
   - component: {fileID: 948130617}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -12210,7 +12210,7 @@ GameObject:
   - component: {fileID: 957890536}
   - component: {fileID: 957890539}
   - component: {fileID: 957890538}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -12406,7 +12406,7 @@ GameObject:
   - component: {fileID: 967874421}
   - component: {fileID: 967874424}
   - component: {fileID: 967874423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -12782,7 +12782,7 @@ GameObject:
   - component: {fileID: 994100621}
   - component: {fileID: 994100624}
   - component: {fileID: 994100623}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -17708,7 +17708,7 @@ GameObject:
   - component: {fileID: 1026469145}
   - component: {fileID: 1026469148}
   - component: {fileID: 1026469147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -18089,7 +18089,7 @@ GameObject:
   - component: {fileID: 1061546733}
   - component: {fileID: 1061546736}
   - component: {fileID: 1061546735}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -18489,7 +18489,7 @@ GameObject:
   - component: {fileID: 1075330094}
   - component: {fileID: 1075330097}
   - component: {fileID: 1075330096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -18961,7 +18961,7 @@ GameObject:
   - component: {fileID: 1099182427}
   - component: {fileID: 1099182430}
   - component: {fileID: 1099182429}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -19051,7 +19051,7 @@ GameObject:
   - component: {fileID: 1102016675}
   - component: {fileID: 1102016678}
   - component: {fileID: 1102016677}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -19394,7 +19394,7 @@ GameObject:
   - component: {fileID: 1141125784}
   - component: {fileID: 1141125787}
   - component: {fileID: 1141125786}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20772,7 +20772,7 @@ GameObject:
   - component: {fileID: 1191380472}
   - component: {fileID: 1191380475}
   - component: {fileID: 1191380474}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -21887,7 +21887,7 @@ GameObject:
   - component: {fileID: 1263190020}
   - component: {fileID: 1263190023}
   - component: {fileID: 1263190022}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -22174,7 +22174,7 @@ GameObject:
   - component: {fileID: 1267614248}
   - component: {fileID: 1267614251}
   - component: {fileID: 1267614250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -23436,7 +23436,7 @@ GameObject:
   - component: {fileID: 1350309839}
   - component: {fileID: 1350309842}
   - component: {fileID: 1350309841}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -23526,7 +23526,7 @@ GameObject:
   - component: {fileID: 1352977915}
   - component: {fileID: 1352977918}
   - component: {fileID: 1352977917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PoliceStation
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -23819,7 +23819,7 @@ GameObject:
   - component: {fileID: 1369532692}
   - component: {fileID: 1369532695}
   - component: {fileID: 1369532694}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -29567,7 +29567,7 @@ GameObject:
   - component: {fileID: 1442586776}
   - component: {fileID: 1442586779}
   - component: {fileID: 1442586778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -29657,7 +29657,7 @@ GameObject:
   - component: {fileID: 1443987844}
   - component: {fileID: 1443987847}
   - component: {fileID: 1443987846}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29747,7 +29747,7 @@ GameObject:
   - component: {fileID: 1458350254}
   - component: {fileID: 1458350257}
   - component: {fileID: 1458350256}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -30290,7 +30290,7 @@ GameObject:
   - component: {fileID: 1505842561}
   - component: {fileID: 1505842564}
   - component: {fileID: 1505842563}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -30517,7 +30517,7 @@ GameObject:
   - component: {fileID: 1515495373}
   - component: {fileID: 1515495376}
   - component: {fileID: 1515495375}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -30809,7 +30809,7 @@ GameObject:
   - component: {fileID: 1527126304}
   - component: {fileID: 1527126307}
   - component: {fileID: 1527126306}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31004,7 +31004,7 @@ GameObject:
   - component: {fileID: 1533583015}
   - component: {fileID: 1533583018}
   - component: {fileID: 1533583017}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31094,7 +31094,7 @@ GameObject:
   - component: {fileID: 1547002155}
   - component: {fileID: 1547002158}
   - component: {fileID: 1547002157}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Office
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -32208,7 +32208,7 @@ GameObject:
   - component: {fileID: 1612837284}
   - component: {fileID: 1612837287}
   - component: {fileID: 1612837286}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel B
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -32298,7 +32298,7 @@ GameObject:
   - component: {fileID: 1613321826}
   - component: {fileID: 1613321829}
   - component: {fileID: 1613321828}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store D
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -32536,7 +32536,7 @@ GameObject:
   - component: {fileID: 1625758038}
   - component: {fileID: 1625758041}
   - component: {fileID: 1625758040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33125,7 +33125,7 @@ GameObject:
   - component: {fileID: 1648288991}
   - component: {fileID: 1648288994}
   - component: {fileID: 1648288993}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hotel A
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33321,7 +33321,7 @@ GameObject:
   - component: {fileID: 1664925888}
   - component: {fileID: 1664925891}
   - component: {fileID: 1664925890}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33579,7 +33579,7 @@ GameObject:
   - component: {fileID: 1667654352}
   - component: {fileID: 1667654355}
   - component: {fileID: 1667654354}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33759,7 +33759,7 @@ GameObject:
   - component: {fileID: 1679897357}
   - component: {fileID: 1679897360}
   - component: {fileID: 1679897359}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -33849,7 +33849,7 @@ GameObject:
   - component: {fileID: 1690201256}
   - component: {fileID: 1690201259}
   - component: {fileID: 1690201258}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -34029,7 +34029,7 @@ GameObject:
   - component: {fileID: 1703844240}
   - component: {fileID: 1703844243}
   - component: {fileID: 1703844242}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -34119,7 +34119,7 @@ GameObject:
   - component: {fileID: 1708660119}
   - component: {fileID: 1708660122}
   - component: {fileID: 1708660121}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34896,7 +34896,7 @@ GameObject:
   - component: {fileID: 1780553805}
   - component: {fileID: 1780553808}
   - component: {fileID: 1780553807}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -35123,7 +35123,7 @@ GameObject:
   - component: {fileID: 1781069144}
   - component: {fileID: 1781069147}
   - component: {fileID: 1781069146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Store C
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -35213,9 +35213,9 @@ GameObject:
   - component: {fileID: 1781832319}
   - component: {fileID: 1781832322}
   - component: {fileID: 1781832321}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Supermarket
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35552,7 +35552,7 @@ GameObject:
   - component: {fileID: 1795701980}
   - component: {fileID: 1795701983}
   - component: {fileID: 1795701982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35717,7 +35717,7 @@ GameObject:
   - component: {fileID: 1807580404}
   - component: {fileID: 1807580407}
   - component: {fileID: 1807580406}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -37195,7 +37195,7 @@ GameObject:
   - component: {fileID: 1926924657}
   - component: {fileID: 1926924660}
   - component: {fileID: 1926924659}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -37947,7 +37947,7 @@ GameObject:
   - component: {fileID: 1993771300}
   - component: {fileID: 1993771303}
   - component: {fileID: 1993771302}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -38445,7 +38445,7 @@ GameObject:
   - component: {fileID: 2040384599}
   - component: {fileID: 2040384602}
   - component: {fileID: 2040384601}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -38672,7 +38672,7 @@ GameObject:
   - component: {fileID: 2052018482}
   - component: {fileID: 2052018485}
   - component: {fileID: 2052018484}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Flat A '
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -38989,7 +38989,7 @@ GameObject:
   - component: {fileID: 2091364125}
   - component: {fileID: 2091364128}
   - component: {fileID: 2091364127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wallPost
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -39079,7 +39079,7 @@ GameObject:
   - component: {fileID: 2094367783}
   - component: {fileID: 2094367786}
   - component: {fileID: 2094367785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39396,7 +39396,7 @@ GameObject:
   - component: {fileID: 2111605011}
   - component: {fileID: 2111605014}
   - component: {fileID: 2111605013}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Skyscraper C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39486,7 +39486,7 @@ GameObject:
   - component: {fileID: 2116311684}
   - component: {fileID: 2116311687}
   - component: {fileID: 2116311686}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Flat A
   m_TagString: Level
   m_Icon: {fileID: 0}
