@@ -1056,67 +1056,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3885328424806575170, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
   m_PrefabInstance: {fileID: 174505072}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &29302122
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2726374139776800555, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_Name
-      value: mailVanRed
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 30.29722
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 19.979
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 12.34613
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1441140730333596551}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
 --- !u!4 &38993455 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1238701347221469752, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
@@ -106448,6 +106387,7 @@ MonoBehaviour:
   deliveryObjPlayer: {fileID: 556271892}
   deliveryObjBoss: {fileID: 999433732}
   bossDeliveryTime: 20
+  boss: {fileID: 2726374139776800555, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
 --- !u!82 &6890382730135941250
 AudioSource:
   m_ObjectHideFlags: 0
@@ -108934,7 +108874,6 @@ SceneRoots:
   - {fileID: 713347633}
   - {fileID: 3476523806119787180}
   - {fileID: 3476523806038102586}
-  - {fileID: 29302122}
   - {fileID: 1198807676}
   - {fileID: 1768748753}
   - {fileID: 296161025}

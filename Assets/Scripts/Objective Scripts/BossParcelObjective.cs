@@ -6,6 +6,7 @@ public class BossParcelObjective : MonoBehaviour {
     [SerializeField] private GameObject deliveryObjPlayer; 
     [SerializeField] private GameObject deliveryObjBoss; 
     [SerializeField] private int bossDeliveryTime; 
+    [SerializeField] private GameObject boss; 
     private int phase, playerScore, bossScore;
     private bool isParcel;
     private DeliveryManager dm;
@@ -19,6 +20,7 @@ public class BossParcelObjective : MonoBehaviour {
         isParcel = false;
         parcelObj.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
         ChangeState(true);
+        Instantiate(boss);
     }
 
     private void OnTriggerEnter(Collider other) {
