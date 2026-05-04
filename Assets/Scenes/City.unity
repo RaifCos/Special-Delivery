@@ -22767,6 +22767,10 @@ MonoBehaviour:
   distance: 20
   height: 2.5
   smoothTime: 0.4
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 8
+  collisionRadius: 0.3
 --- !u!65 &713347645
 BoxCollider:
   m_ObjectHideFlags: 0
