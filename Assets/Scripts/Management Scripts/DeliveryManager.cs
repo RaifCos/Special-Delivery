@@ -34,7 +34,10 @@ public class DeliveryManager : MonoBehaviour {
         else { objectiveObj.GetComponent<BossParcelObjective>().ChangeState(input); }
     }
 
-    public Vector3 GetParcelPos() => parcelPos;
+    public Vector3 GetParcelPos() {
+        currPosition = parcelPos;
+        return currPosition;
+    }
 
     public Vector3 GetDeliverySpot() {
         int currIndex = nodePositions.IndexOf(currPosition);

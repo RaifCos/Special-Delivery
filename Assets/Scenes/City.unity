@@ -48574,8 +48574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6185dc04ea65b3348b749dc5ed847918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeliveryManager
-  standardObjective: {fileID: 0}
-  bossObjective: {fileID: 0}
+  standardObjective: {fileID: 1441140730251961105}
+  bossObjective: {fileID: 1441140730333596551}
   parcelNode: {fileID: 296161024}
   deliveryNodes: {fileID: 1011424856}
 --- !u!1 &1450135904
@@ -81588,7 +81588,7 @@ GameObject:
   - component: {fileID: 6890382730135941250}
   - component: {fileID: 6890382730135941251}
   m_Layer: 0
-  m_Name: parcelObjective
+  m_Name: Standard Objective
   m_TagString: Parcel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81607,7 +81607,7 @@ GameObject:
   - component: {fileID: 6890382730079459348}
   - component: {fileID: 6890382730079459350}
   m_Layer: 0
-  m_Name: bossObjective
+  m_Name: Boss Objective
   m_TagString: Parcel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
