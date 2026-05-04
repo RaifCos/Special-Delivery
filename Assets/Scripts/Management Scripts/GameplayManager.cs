@@ -121,11 +121,8 @@ public class GameplayManager : MonoBehaviour {
                 else { ResumeGame(); }
             }
 
-            Vector3 direction;
             // Rotate Directional Arrow to point towards the current objective, relative to the player's position.
-            if (difficulty != 2) direction = GameManager.deliveryManager.GetCurrentPosition() - player.transform.position; 
-            else direction = GameManager.bossManager.GetCurrentPosition() - player.transform.position;
-            
+            Vector3 direction = GameManager.deliveryManager.GetCurrentPosition() - player.transform.position; 
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             directionArrow.transform.rotation = Quaternion.Slerp(directionArrow.transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
@@ -185,7 +182,7 @@ public class GameplayManager : MonoBehaviour {
     }
 
     public void StartBossTimer() => bossTimerCoroutine = StartCoroutine(BossGameTimer());
-    
+
     public void ResetBossTimer() { 
         StopCoroutine(bossTimerCoroutine);
         SetTime(0, false);

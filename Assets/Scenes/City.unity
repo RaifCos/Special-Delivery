@@ -48071,7 +48071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3a10c5d09c3f48b05b5131f0f59ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTime: 60
   pauseAction:
     m_Name: Pause
     m_Type: 0
@@ -48097,19 +48096,20 @@ MonoBehaviour:
       m_Action: Pause
       m_Flags: 0
     m_Flags: 0
+  startingTime: 60
+  bossDeliveryTime: 15
+  directionArrow: {fileID: 1042860437}
+  moneyText: {fileID: 662033638}
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
   gameUI: {fileID: 76687730}
   endUI: {fileID: 2117694106}
   pauseUI: {fileID: 313967127}
   confirmUI: {fileID: 1885166694}
-  playerVan: {fileID: 713347632}
-  directionArrow: {fileID: 1042860437}
-  moneyText: {fileID: 662033638}
+  bossUI: {fileID: 0}
   pauseStartSelect: {fileID: 1697856833}
   endStartSelect: {fileID: 608371247}
   confirmStartSelect: {fileID: 149775537}
-  isPlaying: 0
 --- !u!114 &1446925840
 MonoBehaviour:
   m_ObjectHideFlags: 0
