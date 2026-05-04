@@ -39,7 +39,7 @@ public class DumpsterTraversal : MonoBehaviour
             LookRotation();
             // Dumpster has arrived at the destination node, so begin shrinking.
             if (Vector3.Distance(rb.position, routeNodes[1]) < 3f) {
-                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false));
+                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false, true));
                 // Set momentum of Dumpster after it stops moving.
                 rb.linearVelocity = (routeNodes[1] - transform.position).normalized * totalSpeed; 
                 rb.angularVelocity = Vector3.zero;

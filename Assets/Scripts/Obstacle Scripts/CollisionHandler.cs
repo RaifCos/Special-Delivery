@@ -9,7 +9,7 @@ public class CollisionHandler : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (!beganFading) {
             // Shrink and Delete Object Shortly After Collision.
-            StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, destroy));
+            StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, destroy, true));
             beganFading = true;
         }
     }

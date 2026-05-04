@@ -113,8 +113,8 @@ public class ObstacleManager : MonoBehaviour {
     #endregion
 
     // Coroutine to handle the removal of an obstacle from the game during gameplay.
-    public IEnumerator ShrinkAndDestroy(GameObject obj, bool destroyObject) {
-        yield return _waitForSeconds8;
+    public IEnumerator ShrinkAndDestroy(GameObject obj, bool destroyObject, bool wait) {
+        if(wait) yield return _waitForSeconds8;
         destroyParticles.transform.position = obj.transform.position;
         destroyParticles.GetComponent<ParticleSystem>().Play();
         Vector3 scale = obj.transform.localScale;

@@ -9,6 +9,7 @@ public class BoulderTraversal : MonoBehaviour {
     private bool grounded, beganShrinking;
     private Rigidbody rb;
     private Vector3[] routeNodes = new Vector3[2];
+    private float scale = 1f;
 
     void Awake() { rb = GetComponent<Rigidbody>(); }
 
@@ -33,12 +34,12 @@ public class BoulderTraversal : MonoBehaviour {
                 rb.AddForce(direction * speed, ForceMode.Acceleration);
                 rb.linearVelocity *= 0.95f;
                 RollRotation();
-                if (snowball) { SnowballShrink(); }
+                if (snowball && scale > 0.005f) { SnowballShrink(); }
             }
 
             // Boulder has arrived at the destination node, so begin shrinking.
             if ((rb.position - routeNodes[1]).sqrMagnitude < 25f) {
-                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false));
+                StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false, !snowball));
                 // Set momentum of Boulder after it stops rolling.
                 rb.linearVelocity = (routeNodes[1] - transform.position).normalized * speed; 
                 rb.angularVelocity = Vector3.zero;
@@ -56,8 +57,9 @@ public class BoulderTraversal : MonoBehaviour {
 
     // Function to shrink the Snowball a small amoung every frame.
     private void SnowballShrink() {
-        transform.localScale = transform.localScale - new Vector3(0.0025f, 0.0025f, 0.0025f);
-        speed += 0.1f;
-        rb.mass -= 0.01f;
+        scale -= 0.0025f;
+        transform.localScale = new Vector3(scale, scale, scale);
+        speed += 0.15f;
+        rb.mass -= 0.015f;
     }
 }
