@@ -23,6 +23,7 @@ public class GameplayManager : MonoBehaviour
     public bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
+    private GameObject player;
 
     private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
@@ -46,6 +47,9 @@ public class GameplayManager : MonoBehaviour
         moneyEarnt = 0;
         Time.timeScale = 1;
         difficulty = GameManager.instance.GetDifficulty();
+
+        // Get Player Game Object.
+        player = GameObject.FindWithTag("Player");
 
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
         gameUI.transform.GetChild(2).GetComponent<Image>().enabled = difficulty != 0;
@@ -194,6 +198,10 @@ public class GameplayManager : MonoBehaviour
         moneyEarnt += deliveryPayment;
         deliveryTime = 0;
     }
+
+    public GameObject GetPlayer() => player;
+
+    public Vector3 FindPlayer() => player.transform.position;
 
     /*
     * ======================

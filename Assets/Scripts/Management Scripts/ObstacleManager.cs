@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
@@ -46,7 +47,7 @@ public class ObstacleManager : MonoBehaviour {
 
     // Function to generate set a starting position for an obstacle 
     public GameObject GetStartingNode(int type) {
-        Vector3 playerPosition = GameObject.Find("Player").transform.position;
+        Vector3 playerPosition = GameManager.gameplayManager.FindPlayer();
         GameObject startingNode;
         if (type == 0) { // This Obstacle uses the Traffic Node set.
             do { // While Loops make sure the obstacle doesn't spawn in on top of the player.
@@ -63,6 +64,16 @@ public class ObstacleManager : MonoBehaviour {
     public Vector3[] GetEdgePath() {
         GameObject edgeNode = edgeNodes[Mathf.RoundToInt(Random.Range(0, edgeNodes.Length))];
         return edgeNode.GetComponent<EdgeNode>().GetPath();
+    }
+
+    public Vector3[] GetClosestEdgePath(Vector3 target) {
+        GameObject closestEdgeNode = edgeNodes[0];
+        for (int i = 1; i < edgeNodes.Length; i++) {
+            if (Vector3.Distance(target, edgeNodes[i].transform.position) < Vector3.Distance(target, closestEdgeNode.transform.position)) {
+                closestEdgeNode = edgeNodes[i];
+            }
+        }
+        return closestEdgeNode.GetComponent<EdgeNode>().GetPath();
     }
 
     // Function to find a node on the side of the road where a Magnet can spawn. 

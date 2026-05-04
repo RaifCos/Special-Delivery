@@ -10,15 +10,17 @@ public class BoulderTraversal : MonoBehaviour {
     private Rigidbody rb;
     private Vector3[] routeNodes = new Vector3[2];
     private float scale = 1f;
+    private float height;
 
     void Awake() { rb = GetComponent<Rigidbody>(); }
 
     void OnEnable() {
         beganShrinking = false;
         // Create route for the Boulder and set starting position.
-        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetEdgePath();
-        transform.position = new Vector3(routeNodes[0].x, 150, routeNodes[0].z);
+        routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath(GameManager.gameplayManager.FindPlayer());
+        transform.position = new Vector3(routeNodes[0].x, 25, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
+        height = snowball ? 9f: 5f;
     }
 
     void OnDisable() { StopAllCoroutines(); }
@@ -26,7 +28,7 @@ public class BoulderTraversal : MonoBehaviour {
     void FixedUpdate() {
         if (!beganShrinking) { // Only move if the destination node has been reached...
             // ...and the Boulder is on the ground.
-            grounded = Mathf.Round(transform.position.y) <= 15f;
+            grounded = Mathf.Round(transform.position.y) <= height;
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
             if (grounded && forwardSpeed < speed) { // Move Boulder towards the destiation node.

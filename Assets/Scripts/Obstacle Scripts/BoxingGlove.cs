@@ -20,7 +20,7 @@ public class BoxingGlove : MonoBehaviour {
         timer = 0;
         playerDodged = true;
 
-        player = GameObject.Find("Player");
+        player = GameManager.gameplayManager.GetPlayer();
         StartCoroutine(PunchTimer());
     }
 

@@ -24,10 +24,9 @@ public class CarTraversal : MonoBehaviour {
         layerMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
     }
-
     void Start() {
         // Set if Car should follow a Target Object.
-        if (followPlayer) { target = GameObject.FindWithTag("Player"); }
+        if (followPlayer) { target = GameManager.gameplayManager.GetPlayer(); }
         followingTarget = target != null;
 
         // Set inital route Nodes.
