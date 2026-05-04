@@ -52,7 +52,7 @@ public class BossParcelObjective : MonoBehaviour {
         parcelObj.SetActive(isParcel);
 
         deliveryObjPlayer.SetActive(phase == 1);
-        deliveryObjBoss.SetActive(phase == 1);
+        deliveryObjBoss.SetActive(phase == 2);
 
         if (isParcel) {
             float x = Random.Range(1.4f, 2f);
