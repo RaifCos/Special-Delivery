@@ -95,7 +95,7 @@ public class GameplayManager : MonoBehaviour
             }
 
             // Rotate Directional Arrow to point towards the current objective, relative to the player's position.
-            Vector3 direction = GameManager.deliveryManager.GetCurrentPosition() - playerVan.transform.position;
+            Vector3 direction = GameManager.bossManager.GetCurrentPosition() - playerVan.transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             directionArrow.transform.rotation = Quaternion.Slerp(directionArrow.transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
