@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 [RequireComponent(typeof(Rigidbody))]
 
@@ -79,7 +80,6 @@ public class CarTraversal : MonoBehaviour {
             }
         }
     }
-
     private void UpdateNode() {
         GameObject tempNode = currNode;
         if (followingTarget) { 
@@ -88,4 +88,11 @@ public class CarTraversal : MonoBehaviour {
         } else { currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode); }
         prevNode = tempNode;
     }
+
+    public void ChangeTarget(GameObject input) { 
+        target = input;
+        followingTarget = true;
+    }
+
+    public void ChangeTopSpeed(int input) => topSpeed = input;
 }

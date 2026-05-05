@@ -15,18 +15,19 @@ public class DeliveryManager : MonoBehaviour {
     private Vector3 parcelPos, currPosition;
     private int difficulty;
 
-    void Awake() => GameManager.deliveryManager = this;
+    void Awake() {
+        GameManager.deliveryManager = this;
+        difficulty = GameManager.instance.GetDifficulty();
+        objectiveObj = (difficulty != 2) ? standardObjective : bossObjective;
+        objectiveObj.SetActive(true);
+    }
 
     void Start() {
-        difficulty = GameManager.instance.GetDifficulty();
-
-        if(difficulty != 2) { objectiveObj = standardObjective; }
-        else { objectiveObj = bossObjective; }
-        objectiveObj.SetActive(true);
-
         currPosition = parcelPos;
         parcelPos = parcelNode.transform.position;
-        for (int x = 0; x < deliveryNodes.transform.childCount; x++) { nodePositions.Add(deliveryNodes.transform.GetChild(x).transform.position); }
+        for (int x = 0; x < deliveryNodes.transform.childCount; x++) {
+            nodePositions.Add(deliveryNodes.transform.GetChild(x).transform.position);
+        }
     }
 
     public void ChangeState(bool input) {
@@ -51,5 +52,7 @@ public class DeliveryManager : MonoBehaviour {
     }
 
     public Vector3 GetCurrentPosition() => currPosition;
+
+    public GameObject GetDeliveryObjective() => objectiveObj;
 
 }

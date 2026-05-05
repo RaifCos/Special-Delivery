@@ -9,6 +9,7 @@ public class BossParcelObjective : MonoBehaviour {
     [SerializeField] private GameObject deliveryObjBoss; 
     [SerializeField] private int bossDeliveryTime; 
     [SerializeField] private GameObject boss; 
+    private BossVan bossVan;
 
     [Header ("UI Elements")]
     [SerializeField] private TMP_Text playerScoreText;
@@ -24,12 +25,14 @@ public class BossParcelObjective : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         dm = GameManager.deliveryManager;
+        boss.SetActive(true);
+        bossVan = boss.GetComponent<BossVan>();
+        bossVan.Initialise();
         SetScore(0, 0, null);
         phase = 0;
         isParcel = false;
         parcelObj.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
         ChangeState(true);
-        boss.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -46,7 +49,7 @@ public class BossParcelObjective : MonoBehaviour {
 
         if (bossHit) { 
             if (isParcel) { 
-                phase = 2; 
+                phase = 2;
                 GameManager.newsTextScroller.AddBossHeadline(false);
                 ChangeState(false);
             } else if (phase == 2) { DeliveryCompleted(); }
@@ -60,6 +63,7 @@ public class BossParcelObjective : MonoBehaviour {
         isParcel = input;
         if(isParcel) { phase = 0; }
         else { GameManager.gameplayManager.StartBossTimer(bossDeliveryTime); }
+        bossVan.ChangeState(phase);
         parcelObj.SetActive(isParcel);
 
         deliveryObjPlayer.SetActive(phase == 1);

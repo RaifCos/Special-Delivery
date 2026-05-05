@@ -5345,10 +5345,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: mailVanRed
       objectReference: {fileID: 0}
-    - target: {fileID: 2726374139776800555, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
