@@ -9,9 +9,7 @@ public class BossVan : MonoBehaviour {
     private GameObject player, deliveryObjective;
     private int phase;
 
-    void Awake() { 
-        vanTraversal = GetComponent<CarTraversal>();
-    }
+    void Awake() { vanTraversal = GetComponent<CarTraversal>(); }
 
     void Start() => ChangeState(0); 
 

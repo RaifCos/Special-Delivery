@@ -5494,6 +5494,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1441140730333596551}
+    - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
+      propertyPath: directChaseRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
+      propertyPath: returnToNodeRange
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118548689462897912, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
+      propertyPath: chasingSpeed
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

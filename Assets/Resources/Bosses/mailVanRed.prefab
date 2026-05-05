@@ -186,12 +186,12 @@ MonoBehaviour:
   distanceThreshold: 6
   height: 6
   nodeSet: 1
-  ignoreBlockage: 0
+  ignoreBlockage: 1
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 1
-  directChaseRange: 30
-  returnToNodeRange: 40
+  directChaseRange: 40
+  returnToNodeRange: 50
 --- !u!114 &6118548689462897912
 MonoBehaviour:
   m_ObjectHideFlags: 0
