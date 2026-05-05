@@ -1,36 +1,43 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 [RequireComponent(typeof(Rigidbody))]
 
-// Script to handle the behaviour of the Red Car, Green Car, Blue Car, and Toy Car.
 public class CarTraversal : MonoBehaviour {
+    [Header ("Car Variables")]
     [SerializeField] private float topSpeed;
     [SerializeField] private float turnSpeed;
     [SerializeField] private float grip;
     [SerializeField] private float distanceThreshold;
     [SerializeField] private float height;
+    private float actTopSpeed;
+
+    [Header ("Traversal Information")]
     [SerializeField] private int nodeSet;
     [SerializeField] private bool ignoreBlockage;
+
+    [Header ("Target Following")]
     [SerializeField] private GameObject target;
     [SerializeField] private bool followPlayer;
-    private float actTopSpeed;
-    private bool followingTarget;
+    [SerializeField] private bool chaseTarget;
+    [SerializeField] private float directChaseRange; 
+    [SerializeField] private float returnToNodeRange; 
+    private bool followingTarget, chasingTarget;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
-    LayerMask layerMask, roadMask;
+    private LayerMask layerMask, roadMask;
 
     void OnEnable() {
         rb = GetComponent<Rigidbody>();
         layerMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
     }
+
     void Start() {
-        // Set if Car should follow a Target Object.
         if (followPlayer) { target = GameManager.gameplayManager.GetPlayer(); }
         followingTarget = target != null;
+        chasingTarget = false;
 
-        // Set inital route Nodes.
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
         currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
         rb.position = prevNode.transform.position + (Vector3.up * 2f);
@@ -38,27 +45,43 @@ public class CarTraversal : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        // Check Car is Grounded.
         Vector3 rayPoint = transform.position + Vector3.up;
         if (Physics.Raycast(rayPoint, Vector3.down, out RaycastHit roadHit, height, roadMask)) {
 
-            // Stop/Reverse if there is traffic in front of the Car.
             if (!ignoreBlockage && Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 10f, layerMask)) {
                 actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
             } else { actTopSpeed = topSpeed; }
 
-            // Set Forward Direction and Speed.
             Vector3 forward = rb.rotation * Vector3.forward;
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
 
-            // If the Car is at the target node, move onto the next node. Otherwise, turn and drive towards it.
-            if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
-                LookRotation(roadHit.normal);
+            ChaseUpdate();
+            if (chasingTarget) {
+                LookRotation(roadHit.normal, target.transform.position);
                 if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
                 { MoveCar(); }
-            } else { UpdateNode(); }
+            } else { 
+                if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
+                    LookRotation(roadHit.normal, currNode.transform.position);
+                    if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
+                    { MoveCar(); }
+                } else { UpdateNode(); }
+            }
         }
     }
+
+    private void ChaseUpdate() {
+        if(chaseTarget) {
+            float distToTarget = Vector3.Distance(rb.position, target.transform.position);
+            if (!chasingTarget && distToTarget <= directChaseRange) {
+                chasingTarget = true;
+            } else if (chasingTarget && distToTarget > returnToNodeRange) {
+                chasingTarget = false;
+                ReattachToNodeSystem();
+            }
+        }
+    }
+
 
     private void MoveCar() {
         Vector3 velocity = rb.linearVelocity;
@@ -69,8 +92,9 @@ public class CarTraversal : MonoBehaviour {
         rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
     }
 
-    private void LookRotation(Vector3 surfaceNormal) {
-        Vector3 direction = (currNode.transform.position - rb.position).normalized;
+    // LookRotation now accepts a worldspace point to face toward
+    private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
+        Vector3 direction = (targetPosition - rb.position).normalized;
         if (direction.sqrMagnitude > 0.001f) {
             Vector3 surfaceForward = Vector3.ProjectOnPlane(direction, surfaceNormal).normalized;
             if (surfaceForward.sqrMagnitude > 0.001f) {
@@ -80,16 +104,49 @@ public class CarTraversal : MonoBehaviour {
             }
         }
     }
+
     private void UpdateNode() {
         GameObject tempNode = currNode;
-        if (followingTarget) { 
+        if (followingTarget) {
             Vector3 targetPosition = target.transform.position;
             currNode = tempNode.GetComponent<TrafficNode>().GetNextClosestNode(prevNode, targetPosition);
         } else { currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode); }
         prevNode = tempNode;
     }
 
-    public void ChangeTarget(GameObject input) { 
+    // Finds the closest node that isn't behind a wall and snaps the car back to the node system.
+    private void ReattachToNodeSystem() {
+        GameObject[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+        GameObject bestNode = null;
+        float bestScore = Mathf.Infinity;
+
+        foreach (GameObject node in allNodes) {
+            float dist = Vector3.Distance(rb.position, node.transform.position);
+
+            Vector3 dirToNode = (node.transform.position - rb.position).normalized;
+            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, layerMask);
+            if (wallBlocked) continue;
+
+            // Dot is 1 if dead ahead, 0 if side, -1 if behind.
+            // Multiplying dist by a penalty factor when the node is behind
+            // makes behind-nodes score worse without ruling them out entirely.
+            float dot = Vector3.Dot(transform.forward, dirToNode);
+            float directionalPenalty = dot >= 0f ? 1f : 2.5f;
+            float score = dist * directionalPenalty;
+
+            if (score < bestScore) {
+                bestScore = score;
+                bestNode = node;
+            }
+        }
+
+        if (bestNode != null) {
+            currNode = bestNode;
+            prevNode = bestNode.GetComponent<TrafficNode>().GetNextNode(null);
+        }
+    }
+
+    public void ChangeTarget(GameObject input) {
         target = input;
         followingTarget = true;
     }

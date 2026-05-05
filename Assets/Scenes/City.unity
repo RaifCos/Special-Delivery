@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 5625007}
   m_Layer: 0
   m_Name: RN-Turn (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -607,7 +607,7 @@ GameObject:
   - component: {fileID: 16424624}
   m_Layer: 0
   m_Name: RN-Turn (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 21077298}
   m_Layer: 0
   m_Name: RN-Intersection (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 23813228}
   m_Layer: 0
   m_Name: RN-Intersection (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 23999422}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1193,6 +1193,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3885328424806575170, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
   m_PrefabInstance: {fileID: 42511128}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &51671197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51671198}
+  - component: {fileID: 51671201}
+  - component: {fileID: 51671200}
+  - component: {fileID: 51671199}
+  m_Layer: 0
+  m_Name: RN-Recovery B (3)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &51671198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51671197}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -30, y: 0, z: -85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 751280240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &51671199
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51671197}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &51671200
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51671197}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &51671201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51671197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 1052532935}
 --- !u!1 &51711533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,7 +2052,7 @@ GameObject:
   - component: {fileID: 75909154}
   m_Layer: 0
   m_Name: RN-Intersection A (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2397,8 +2502,8 @@ Transform:
   m_Children:
   - {fileID: 2023042580}
   - {fileID: 962866363}
-  - {fileID: 611469068}
   - {fileID: 160239414}
+  - {fileID: 611469068}
   m_Father: {fileID: 258546890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &87221520
@@ -2856,7 +2961,7 @@ GameObject:
   - component: {fileID: 106495241}
   m_Layer: 0
   m_Name: RN-Turn F (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3098,7 +3203,7 @@ GameObject:
   - component: {fileID: 118750275}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3633,7 +3738,7 @@ GameObject:
   - component: {fileID: 140780303}
   m_Layer: 0
   m_Name: RN-Intersection H (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4473,8 +4578,8 @@ GameObject:
   - component: {fileID: 160239412}
   - component: {fileID: 160239411}
   m_Layer: 0
-  m_Name: RN-Turn (3)
-  m_TagString: Untagged
+  m_Name: RN-Turn D (3)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4852,7 +4957,7 @@ GameObject:
   - component: {fileID: 179716145}
   m_Layer: 0
   m_Name: RN-Intersection (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5142,7 +5247,7 @@ GameObject:
   - component: {fileID: 192676666}
   m_Layer: 0
   m_Name: RN-Turn (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5355,7 +5460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2927710586043525264, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5475,7 +5580,7 @@ GameObject:
   - component: {fileID: 200285056}
   m_Layer: 0
   m_Name: RN-Intersection (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6532,6 +6637,8 @@ Transform:
   - {fileID: 587953393}
   - {fileID: 1279034893}
   - {fileID: 829768423}
+  - {fileID: 1641125694}
+  - {fileID: 751280240}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &262917353
@@ -6647,6 +6754,111 @@ Transform:
   m_Children: []
   m_Father: {fileID: 464699973}
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!1 &264635628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264635629}
+  - component: {fileID: 264635632}
+  - component: {fileID: 264635631}
+  - component: {fileID: 264635630}
+  m_Layer: 0
+  m_Name: RN-Recovery A (2)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264635629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264635628}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -65, y: 0, z: 45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1641125694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &264635630
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264635628}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &264635631
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264635628}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &264635632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264635628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 2097810176}
 --- !u!1001 &273086686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7064,7 +7276,7 @@ GameObject:
   - component: {fileID: 281776877}
   m_Layer: 0
   m_Name: RN-Intersection (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7236,7 +7448,7 @@ GameObject:
   - component: {fileID: 289552704}
   m_Layer: 0
   m_Name: RN-Turn F (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7341,7 +7553,7 @@ GameObject:
   - component: {fileID: 293393913}
   m_Layer: 0
   m_Name: RN-Turn I (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7763,7 +7975,7 @@ GameObject:
   - component: {fileID: 297507055}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8154,7 +8366,7 @@ GameObject:
   - component: {fileID: 305120756}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8460,7 +8672,7 @@ GameObject:
   - component: {fileID: 307591316}
   m_Layer: 0
   m_Name: RN-Turn H (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14885,7 +15097,7 @@ GameObject:
   - component: {fileID: 419582441}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15528,7 +15740,7 @@ GameObject:
   - component: {fileID: 437209375}
   m_Layer: 0
   m_Name: RN-Intersection H (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15869,7 +16081,7 @@ GameObject:
   - component: {fileID: 450912810}
   m_Layer: 0
   m_Name: RN-Intersection (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17336,7 +17548,7 @@ GameObject:
   - component: {fileID: 534077260}
   m_Layer: 0
   m_Name: RN-Intersection (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17531,7 +17743,7 @@ GameObject:
   - component: {fileID: 535417754}
   m_Layer: 0
   m_Name: RN-Intersection (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18133,7 +18345,7 @@ GameObject:
   - component: {fileID: 561972018}
   m_Layer: 0
   m_Name: RN-Intersection (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18239,7 +18451,7 @@ GameObject:
   - component: {fileID: 565327890}
   m_Layer: 0
   m_Name: RN-Intersection (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18839,7 +19051,7 @@ GameObject:
   - component: {fileID: 591472243}
   m_Layer: 0
   m_Name: RN-Turn G (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19464,6 +19676,111 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608371247}
   m_CullTransparentMesh: 1
+--- !u!1 &611248344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 611248345}
+  - component: {fileID: 611248348}
+  - component: {fileID: 611248347}
+  - component: {fileID: 611248346}
+  m_Layer: 0
+  m_Name: RN-Recovery A (3)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &611248345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611248344}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -105, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1641125694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &611248346
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611248344}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &611248347
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611248344}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &611248348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611248344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 611469064}
 --- !u!1 &611469064
 GameObject:
   m_ObjectHideFlags: 0
@@ -19477,8 +19794,8 @@ GameObject:
   - component: {fileID: 611469066}
   - component: {fileID: 611469065}
   m_Layer: 0
-  m_Name: RN-Turn (4)
-  m_TagString: Untagged
+  m_Name: RN-Turn D (4)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19762,7 +20079,7 @@ GameObject:
   - component: {fileID: 634407020}
   m_Layer: 0
   m_Name: RN-Intersection A (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20241,7 +20558,7 @@ GameObject:
   - component: {fileID: 648892221}
   m_Layer: 0
   m_Name: RN-Turn I (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20685,6 +21002,111 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 400, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &663025051
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 663025052}
+  - component: {fileID: 663025055}
+  - component: {fileID: 663025054}
+  - component: {fileID: 663025053}
+  m_Layer: 0
+  m_Name: RN-Recovery B (1)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &663025052
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663025051}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 40, y: 0, z: -85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 751280240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &663025053
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663025051}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &663025054
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663025051}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &663025055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663025051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 1681845653}
 --- !u!1 &666793496
 GameObject:
   m_ObjectHideFlags: 0
@@ -20699,7 +21121,7 @@ GameObject:
   - component: {fileID: 666793497}
   m_Layer: 0
   m_Name: RN-Intersection (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23766,6 +24188,40 @@ Transform:
   - {fileID: 6195150094891732720}
   m_Father: {fileID: 3476523806119787180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &751280239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751280240}
+  m_Layer: 0
+  m_Name: Recovery B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &751280240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751280239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 663025052}
+  - {fileID: 1052532939}
+  - {fileID: 51671198}
+  m_Father: {fileID: 258546890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753791641
 GameObject:
   m_ObjectHideFlags: 0
@@ -23888,7 +24344,7 @@ GameObject:
   - component: {fileID: 754627266}
   m_Layer: 0
   m_Name: RN-Turn (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24461,7 +24917,7 @@ GameObject:
   - component: {fileID: 802278380}
   m_Layer: 0
   m_Name: RN-Turn H (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30682,7 +31138,7 @@ GameObject:
   - component: {fileID: 870408730}
   m_Layer: 0
   m_Name: RN-Intersection (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31037,8 +31493,8 @@ Transform:
   m_Children:
   - {fileID: 1211505018}
   - {fileID: 1345295703}
-  - {fileID: 2097810180}
   - {fileID: 1438514558}
+  - {fileID: 2097810180}
   m_Father: {fileID: 258546890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &892370447
@@ -31849,7 +32305,7 @@ GameObject:
   - component: {fileID: 919447978}
   m_Layer: 0
   m_Name: RN-Turn I (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32078,7 +32534,7 @@ GameObject:
   - component: {fileID: 933196970}
   m_Layer: 0
   m_Name: RN-Intersection H (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33129,8 +33585,8 @@ GameObject:
   - component: {fileID: 962866361}
   - component: {fileID: 962866360}
   m_Layer: 0
-  m_Name: RN-Turn (2)
-  m_TagString: Untagged
+  m_Name: RN-Turn D (2)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33555,7 +34011,7 @@ GameObject:
   - component: {fileID: 971245517}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34105,7 +34561,7 @@ GameObject:
   - component: {fileID: 1015186367}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35148,6 +35604,111 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051797733}
   m_Mesh: {fileID: -4293739439953417627, guid: 8a2eb87bd7019b84ca4a86782ba92a48, type: 3}
+--- !u!1 &1052532935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1052532939}
+  - component: {fileID: 1052532938}
+  - component: {fileID: 1052532937}
+  - component: {fileID: 1052532936}
+  m_Layer: 0
+  m_Name: RN-Recovery B (2)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &1052532936
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052532935}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1052532937
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052532935}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1052532938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052532935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 663025051}
+--- !u!4 &1052532939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052532935}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 751280240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1054799342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3662186647165698460, guid: 546671eda8d0ea24d9951f2b00b3e28c, type: 3}
@@ -35280,7 +35841,7 @@ GameObject:
   - component: {fileID: 1063436071}
   m_Layer: 0
   m_Name: RN-Turn H (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35390,7 +35951,7 @@ GameObject:
   - component: {fileID: 1071184199}
   m_Layer: 0
   m_Name: RN-Intersection (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35533,7 +36094,7 @@ GameObject:
   - component: {fileID: 1075177974}
   m_Layer: 0
   m_Name: RN-Intersection (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37098,6 +37659,127 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139421521}
   m_Mesh: {fileID: 8733429697405204941, guid: 14d78b82d2592dd429c8f5be9982ca90, type: 3}
+--- !u!1 &1141001757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1141001758}
+  - component: {fileID: 1141001762}
+  - component: {fileID: 1141001761}
+  - component: {fileID: 1141001760}
+  - component: {fileID: 1141001759}
+  m_Layer: 0
+  m_Name: GN (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1141001758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141001757}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -105, y: 0, z: 45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1645511387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1141001759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141001757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a768196ee00d448976d947cd1d861b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EdgeNode
+  oppositeNodes:
+  - {fileID: 1297569524}
+--- !u!114 &1141001760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141001757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 1325230192}
+  - {fileID: 1297569524}
+--- !u!23 &1141001761
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141001757}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1141001762
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141001757}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1142155194
 GameObject:
   m_ObjectHideFlags: 0
@@ -37326,7 +38008,7 @@ GameObject:
   - component: {fileID: 1150434572}
   m_Layer: 0
   m_Name: RN-Intersection H (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37968,7 +38650,7 @@ GameObject:
   - component: {fileID: 1179776184}
   m_Layer: 0
   m_Name: RN-Turn I (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38475,7 +39157,7 @@ GameObject:
   - component: {fileID: 1206045748}
   m_Layer: 0
   m_Name: RN-Turn (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38580,7 +39262,7 @@ GameObject:
   - component: {fileID: 1209933353}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38685,8 +39367,8 @@ GameObject:
   - component: {fileID: 1211505016}
   - component: {fileID: 1211505015}
   m_Layer: 0
-  m_Name: RN-Turn (1)
-  m_TagString: Untagged
+  m_Name: RN-Turn A (1)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39590,6 +40272,112 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3885328424806575170, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
   m_PrefabInstance: {fileID: 1258570301}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1262617630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262617631}
+  - component: {fileID: 1262617634}
+  - component: {fileID: 1262617633}
+  - component: {fileID: 1262617632}
+  m_Layer: 0
+  m_Name: RN-Recovery A (1)
+  m_TagString: Traffic Node
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262617631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262617630}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -105, y: 0, z: 45}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1641125694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1262617632
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262617630}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1262617633
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262617630}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1262617634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262617630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextNodes:
+  - {fileID: 264635628}
+  - {fileID: 611248344}
 --- !u!1 &1277341661
 GameObject:
   m_ObjectHideFlags: 0
@@ -40336,7 +41124,7 @@ GameObject:
   - component: {fileID: 1307157607}
   m_Layer: 0
   m_Name: RN-Turn G (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40503,7 +41291,7 @@ GameObject:
   - component: {fileID: 1312273224}
   m_Layer: 0
   m_Name: RN-Turn H (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40647,7 +41435,7 @@ GameObject:
   - component: {fileID: 1314148705}
   m_Layer: 0
   m_Name: RN-Intersection (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41047,7 +41835,7 @@ GameObject:
   - component: {fileID: 1334287260}
   m_Layer: 0
   m_Name: RN-Intersection A (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41272,8 +42060,8 @@ GameObject:
   - component: {fileID: 1345295701}
   - component: {fileID: 1345295700}
   m_Layer: 0
-  m_Name: RN-Turn (2)
-  m_TagString: Untagged
+  m_Name: RN-Turn A (2)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41378,7 +42166,7 @@ GameObject:
   - component: {fileID: 1348858780}
   m_Layer: 0
   m_Name: RN-Turn F (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42500,7 +43288,7 @@ GameObject:
   - component: {fileID: 1414942015}
   m_Layer: 0
   m_Name: RN-Intersection (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42778,7 +43566,7 @@ GameObject:
   - component: {fileID: 1427844925}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47975,7 +48763,7 @@ GameObject:
   - component: {fileID: 1435529073}
   m_Layer: 0
   m_Name: RN-Intersection (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48137,7 +48925,7 @@ GameObject:
   - component: {fileID: 1437950172}
   m_Layer: 0
   m_Name: RN-Turn G (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48353,8 +49141,8 @@ GameObject:
   - component: {fileID: 1438514556}
   - component: {fileID: 1438514555}
   m_Layer: 0
-  m_Name: RN-Turn (3)
-  m_TagString: Untagged
+  m_Name: RN-Turn A (3)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49006,7 +49794,7 @@ GameObject:
   - component: {fileID: 1450135906}
   m_Layer: 0
   m_Name: RN-Intersection A (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49403,7 +50191,7 @@ GameObject:
   - component: {fileID: 1478271012}
   m_Layer: 0
   m_Name: RN-Intersection (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50191,7 +50979,7 @@ GameObject:
   - component: {fileID: 1503548222}
   m_Layer: 0
   m_Name: RN-Turn (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51320,7 +52108,7 @@ GameObject:
   - component: {fileID: 1533623006}
   m_Layer: 0
   m_Name: RN-Intersection (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52911,7 +53699,7 @@ GameObject:
   - component: {fileID: 1578442176}
   m_Layer: 0
   m_Name: RN-Intersection H (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54066,7 +54854,7 @@ GameObject:
   - component: {fileID: 1623763093}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54412,6 +55200,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 374541286453822808, guid: e34847957157e474dbb964487c5eed18, type: 3}
   m_PrefabInstance: {fileID: 1636924344}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641125693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1641125694}
+  m_Layer: 0
+  m_Name: Recovery A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641125694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1641125693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1262617631}
+  - {fileID: 264635629}
+  - {fileID: 611248345}
+  m_Father: {fileID: 258546890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1642767928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54485,7 +55307,7 @@ GameObject:
   - component: {fileID: 1645511387}
   m_Layer: 0
   m_Name: Giant Nodes
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54519,6 +55341,7 @@ Transform:
   - {fileID: 683263689}
   - {fileID: 100904386}
   - {fileID: 1574568758}
+  - {fileID: 1141001758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1652246005
@@ -54648,7 +55471,7 @@ GameObject:
   - component: {fileID: 1668490295}
   m_Layer: 0
   m_Name: RN-Intersection A (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54815,7 +55638,7 @@ GameObject:
   - component: {fileID: 1681845654}
   m_Layer: 0
   m_Name: RN-Intersection (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55312,7 +56135,7 @@ GameObject:
   - component: {fileID: 1707811085}
   m_Layer: 0
   m_Name: RN-Intersection (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55898,7 +56721,7 @@ GameObject:
   - component: {fileID: 1723893225}
   m_Layer: 0
   m_Name: RN-Intersection (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56003,7 +56826,7 @@ GameObject:
   - component: {fileID: 1725549634}
   m_Layer: 0
   m_Name: RN-Intersection H (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57469,7 +58292,7 @@ GameObject:
   - component: {fileID: 1781414526}
   m_Layer: 0
   m_Name: RN-Intersection A (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57636,7 +58459,7 @@ GameObject:
   - component: {fileID: 1795364853}
   m_Layer: 0
   m_Name: RN-Intersection (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57951,7 +58774,7 @@ GameObject:
   - component: {fileID: 1801574776}
   m_Layer: 0
   m_Name: RN-Turn G (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58354,7 +59177,7 @@ GameObject:
   - component: {fileID: 1812029201}
   m_Layer: 0
   m_Name: RN-Intersection H (5)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58523,7 +59346,7 @@ GameObject:
   - component: {fileID: 1821265289}
   m_Layer: 0
   m_Name: RN-Turn F (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59032,7 +59855,7 @@ GameObject:
   - component: {fileID: 1839830090}
   m_Layer: 0
   m_Name: RN-Intersection (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64535,7 +65358,7 @@ GameObject:
   - component: {fileID: 1884769433}
   m_Layer: 0
   m_Name: RN-Intersection (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64747,7 +65570,7 @@ GameObject:
   - component: {fileID: 1885357830}
   m_Layer: 0
   m_Name: RN-Intersection (2)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64873,7 +65696,7 @@ GameObject:
   - component: {fileID: 1893147479}
   m_Layer: 0
   m_Name: RN-Intersection (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65328,7 +66151,7 @@ GameObject:
   - component: {fileID: 1906300924}
   m_Layer: 0
   m_Name: RN-Intersection A (1)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65435,7 +66258,7 @@ GameObject:
   - component: {fileID: 1909165763}
   m_Layer: 0
   m_Name: RN-Intersection H (8)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65657,7 +66480,7 @@ GameObject:
   - component: {fileID: 1931133327}
   m_Layer: 0
   m_Name: RN-Turn (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66503,7 +67326,7 @@ GameObject:
   - component: {fileID: 1985336875}
   m_Layer: 0
   m_Name: RN-Intersection (6)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71524,7 +72347,7 @@ GameObject:
   - component: {fileID: 1999439655}
   m_Layer: 0
   m_Name: RN-Intersection (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71986,7 +72809,7 @@ GameObject:
   - component: {fileID: 2014171550}
   m_Layer: 0
   m_Name: RN-Turn (3)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72387,7 +73210,7 @@ GameObject:
   - component: {fileID: 2021640816}
   m_Layer: 0
   m_Name: RN-Intersection (7)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72493,8 +73316,8 @@ GameObject:
   - component: {fileID: 2023042578}
   - component: {fileID: 2023042577}
   m_Layer: 0
-  m_Name: RN-Turn (1)
-  m_TagString: Untagged
+  m_Name: RN-Turn D (1)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73969,7 +74792,7 @@ GameObject:
   - component: {fileID: 2088239955}
   m_Layer: 0
   m_Name: RN-Intersection A (4)
-  m_TagString: Untagged
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74139,8 +74962,8 @@ GameObject:
   - component: {fileID: 2097810178}
   - component: {fileID: 2097810177}
   m_Layer: 0
-  m_Name: RN-Turn (4)
-  m_TagString: Untagged
+  m_Name: RN-Turn A (4)
+  m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105417,7 +106240,7 @@ GameObject:
   - component: {fileID: 8792765133057862299}
   - component: {fileID: 6765209303248428625}
   - component: {fileID: 8792765133057862300}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Grass
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -109596,8 +110419,8 @@ SceneRoots:
   - {fileID: 296161025}
   - {fileID: 1011424857}
   - {fileID: 258546890}
-  - {fileID: 1194310073}
   - {fileID: 1645511387}
+  - {fileID: 1194310073}
   - {fileID: 25334171}
   - {fileID: 753791645}
   - {fileID: 76687731}

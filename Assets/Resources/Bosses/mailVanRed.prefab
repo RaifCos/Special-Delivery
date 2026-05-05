@@ -106,7 +106,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726374139776800555}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c92288f74cf578f45808d1532f0e4376, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -181,14 +181,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topSpeed: 15
-  turnSpeed: 160
-  grip: 15
-  distanceThreshold: 5
+  turnSpeed: 180
+  grip: 20
+  distanceThreshold: 6
   height: 6
   nodeSet: 1
-  ignoreBlockage: 1
+  ignoreBlockage: 0
   target: {fileID: 0}
   followPlayer: 0
+  chaseTarget: 1
+  directChaseRange: 30
+  returnToNodeRange: 40
 --- !u!114 &6118548689462897912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   regularSpeed: 15
-  chasingSpeed: 22
+  chasingSpeed: 20
 --- !u!1 &2812169847627699793
 GameObject:
   m_ObjectHideFlags: 0

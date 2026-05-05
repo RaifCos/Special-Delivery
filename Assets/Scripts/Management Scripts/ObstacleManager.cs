@@ -18,6 +18,7 @@ public class ObstacleManager : MonoBehaviour {
     private static readonly WaitForSeconds _waitForSeconds8 = new(8f);
     public GameObject[] carStartingNodes, ufoStartingNodes, edgeNodes, sideNodes;
     private GameObject obstacleObject, destroyParticles;
+    private GameObject[] trafficNodes, giantNodes;
     private bool[] sideNodeOccupied; 
 
     void Awake() => GameManager.obstacleManager = this;
@@ -41,6 +42,9 @@ public class ObstacleManager : MonoBehaviour {
             obstacleObject = Instantiate(obs.so.prefab);
             tempObstaclePool.Add(obstacleObject);
         }
+
+        trafficNodes = GameObject.FindGameObjectsWithTag("Traffic Node");
+        giantNodes = GameObject.FindGameObjectsWithTag("Giant Node");
     }
 
     #region Node Functions
@@ -85,6 +89,11 @@ public class ObstacleManager : MonoBehaviour {
         } while (res == null);
         return res;
 
+    }
+
+    public GameObject[] GetNodeSet(int set) {
+        if (set == 1) { return trafficNodes; }
+        else return giantNodes; 
     }
 
     #endregion
