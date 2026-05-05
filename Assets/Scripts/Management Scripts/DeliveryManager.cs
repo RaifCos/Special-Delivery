@@ -51,4 +51,5 @@ public class DeliveryManager : MonoBehaviour {
     }
 
     public Vector3 GetCurrentPosition() => currPosition;
+
 }

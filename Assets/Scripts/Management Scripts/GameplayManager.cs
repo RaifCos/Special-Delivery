@@ -8,7 +8,6 @@ using System;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour {
-
     #region Variables
 
     [Header ("Player Input")]
@@ -16,7 +15,7 @@ public class GameplayManager : MonoBehaviour {
 
     [Header ("Game Variables")]
     [SerializeField] private int startingTime; 
-    private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
+    private int timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
     private float penaltyMult, incomeMult;
 
     [Header ("Game Objects")] 
@@ -29,20 +28,19 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private AudioClip overtimeSound;
 
     [Header ("UI Canvases")]
-    [SerializeField] private GameObject gameUI;
+    [SerializeField] private GameObject regularUI;
     [SerializeField] private GameObject endUI;
+    [SerializeField] private GameObject bossUI;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject confirmUI;
-    [SerializeField] private GameObject bossUI;
     [SerializeField] private GameObject pauseStartSelect;
     [SerializeField] private GameObject endStartSelect;
     [SerializeField] private GameObject confirmStartSelect;
+    private GameObject gameUI;
 
     [Header ("UI Elements")]
-    [SerializeField] private TMP_Text scoreText;
     [SerializeField] private Image timerImage;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private Animator scoreAnimator;
     [SerializeField] private Animator timeAnimator;
     [SerializeField] private TMP_Text confirmText;
 
@@ -81,21 +79,35 @@ public class GameplayManager : MonoBehaviour {
         // Get Player Game Object.
         player = GameObject.FindWithTag("Player");
 
+        moneyEarnt = 0;
+
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
         difficulty = GameManager.instance.GetDifficulty();
         timerImage.enabled = difficulty != 0;
         timerText.enabled = difficulty != 0;
 
-        // Set up game UI and score values.
-        moneyEarnt = 0;
+        switch (difficulty) {
+            case 0:
+                gameUI = regularUI;
+                timerImage.enabled = false;
+                timerText.enabled = false;
+                break;
+            case 1:
+                gameUI = regularUI;
+                timerImage.enabled = true;
+                timerText.enabled = true;
+                GameManager.obstacleManager.SpawnStartingObstacles();
+                break;
+            case 2:
+                gameUI = bossUI;
+                GameManager.obstacleManager.SpawnStartingObstacles();
+                break;
+        }
+
         AlternateGameMenus(0);
-        SetScore(0, false);
 
         // Initialize the player van.
         player.GetComponent<PlayerControl>().SetState(true);
-
-        // Spawn starting obstacles into the city (if not in the tutorial).
-        if (difficulty != 0) { GameManager.obstacleManager.SpawnStartingObstacles(); }
 
         // Start Music and News Text
         GameManager.audioManager.StartGameMusic();
@@ -116,7 +128,6 @@ public class GameplayManager : MonoBehaviour {
     void Update() {
         // Only run when a game is in session.
         if (isPlaying) {
-
             // Pause game if the Escape key is pressed.
             if (pauseAction.WasPressedThisFrame()) { 
                 if (!isGamePaused) { PauseGame(); } 
@@ -201,23 +212,27 @@ public class GameplayManager : MonoBehaviour {
             
             timeLeft += value;
 
+            // Only in Regular Game Mode.
             if (difficulty == 1) {
+                // "Time to Spare" Achievement
                 if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
 
+                // Exit "Almost out of Time" Phase.
                 if (value > 0 && timeLeft >= 10) { 
                     GameManager.audioManager.SetMusicPitch(1f);
                     TimerAnimation("highTime"); 
                 }
 
+                // "Almost out of Time" Phase.
                 if (value < 0 && timeLeft <= 10) { 
                     GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
                     TimerAnimation("lowTime"); 
                 }
 
                 if (timeLeft == 0) { GameOver(); }
-
             }
 
+            // Player/Boss didn't deliver Parcel in Time. 
             else if (difficulty == 2 && timeLeft == 0) { 
                 GameManager.deliveryManager.ChangeState(true); 
                 timerText.text = "";
@@ -227,25 +242,12 @@ public class GameplayManager : MonoBehaviour {
         if (difficulty == 2 && timeLeft == 0) { timerText.text = ""; }
     }
 
-    // Setter Method for the delivery score, also updates the UI.
-    public void SetScore (int value, bool addingScore) {
-        if (addingScore) {
-            completeDeliveries++;
-            if (difficulty != 0) {
-                CalculateEarnings();
-                StartCoroutine(MoneyDisplay(deliveryPayment));
-                if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
-                if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
-                if (completeDeliveries > GameManager.dataManager.GetBestScore()) { GameManager.dataManager.SetBestScore(completeDeliveries); }
-            }
-        }
-        else { completeDeliveries = value; }
-        scoreText.text = completeDeliveries.ToString();
+    public void MoneyScore(int completeDeliveries) {
+        CalculateEarnings(completeDeliveries);
+        StartCoroutine(MoneyDisplay(deliveryPayment));
     }
 
-    public int GetScore() { return completeDeliveries; }
-
-    private void CalculateEarnings() {
+    private void CalculateEarnings(int completeDeliveries) {
         int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
         double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
         deliveryPayment = (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
@@ -261,7 +263,6 @@ public class GameplayManager : MonoBehaviour {
 
     #region UI Functions
 
-    public void ScoreAnimation() { scoreAnimator.SetTrigger("scoreAnim"); }
 
     public void TimerAnimation(string trigger) {
         timeAnimator.ResetTrigger(LowTimeHash);
