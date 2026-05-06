@@ -163,7 +163,7 @@ public class NewsTextScroller : MonoBehaviour
                 textRect.anchoredPosition = new Vector2(startX, 0);
 
                 while (textRect.anchoredPosition.x > endX) {
-                    float actualScrollSpeed = newsQueue.Count == 0 ? scrollSpeed: scrollSpeed + (scrollSpeed * 0.5f * newsQueue.Count);
+                    float actualScrollSpeed = newsQueue.Count == 0 || difficulty == 0 ? scrollSpeed: scrollSpeed + (scrollSpeed * 0.5f * newsQueue.Count);
                     textRect.anchoredPosition += actualScrollSpeed * Time.deltaTime * Vector2.left;
                     yield return null;
                 }
