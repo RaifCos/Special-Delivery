@@ -138,31 +138,35 @@ public class NewsTextScroller : MonoBehaviour
         while (isPlaying) {
             // If there are no headlines in the queue, add a random generic string.
             if (newsQueue.Count == 0) { 
-                if(difficulty == 0) { AddTutorialHeadlines(); }
-                else { AddGenericHeadline(); }
-            }
-            // Take headline at top of the queue.
-            newsText.text = newsQueue[0];
-            newsQueue.RemoveAt(0);
+                if (difficulty == 2) yield return null;
+                switch (difficulty) {
+                    case 0: AddTutorialHeadlines(); break;
+                    case 1: AddGenericHeadline(); break;
+                }
+            } else {
+                // Take headline at top of the queue.
+                newsText.text = newsQueue[0];
+                newsQueue.RemoveAt(0);
 
-            RectTransform textRect = newsText.rectTransform;
-            RectTransform parentRect = textRect.parent as RectTransform;
+                RectTransform textRect = newsText.rectTransform;
+                RectTransform parentRect = textRect.parent as RectTransform;
 
-            Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
-            newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
+                Vector2 preferredValues = newsText.GetPreferredValues(newsText.text);
+                newsText.rectTransform.sizeDelta = new Vector2(preferredValues.x, newsText.rectTransform.sizeDelta.y);
 
-            // Start just outside the right edge
-            float startX = parentRect.rect.width / 2f + textRect.rect.width / 2f;
+                // Start just outside the right edge
+                float startX = parentRect.rect.width / 2f + textRect.rect.width / 2f;
 
-            // End just outside the left edge
-            float endX = -parentRect.rect.width / 2f - textRect.rect.width / 2f;
+                // End just outside the left edge
+                float endX = -parentRect.rect.width / 2f - textRect.rect.width / 2f;
 
-            textRect.anchoredPosition = new Vector2(startX, 0);
+                textRect.anchoredPosition = new Vector2(startX, 0);
 
-            while (textRect.anchoredPosition.x > endX) {
-                float actualScrollSpeed = newsQueue.Count == 1 ? scrollSpeed: scrollSpeed + (scrollSpeed * 0.5f * (newsQueue.Count - 1));
-                textRect.anchoredPosition += actualScrollSpeed * Time.deltaTime * Vector2.left;
-                yield return null;
+                while (textRect.anchoredPosition.x > endX) {
+                    float actualScrollSpeed = newsQueue.Count == 0 ? scrollSpeed: scrollSpeed + (scrollSpeed * 0.5f * newsQueue.Count);
+                    textRect.anchoredPosition += actualScrollSpeed * Time.deltaTime * Vector2.left;
+                    yield return null;
+                }
             }
         }
     }

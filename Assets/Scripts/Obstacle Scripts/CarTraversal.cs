@@ -138,9 +138,6 @@ public class CarTraversal : MonoBehaviour {
             bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, layerMask);
             if (wallBlocked) continue;
 
-            // Dot is 1 if dead ahead, 0 if side, -1 if behind.
-            // Multiplying dist by a penalty factor when the node is behind
-            // makes behind-nodes score worse without ruling them out entirely.
             float dot = Vector3.Dot(transform.forward, dirToNode);
             float directionalPenalty = dot >= 0f ? 1f : 2.5f;
             float score = dist * directionalPenalty;
