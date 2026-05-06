@@ -39,9 +39,12 @@ public class CarTraversal : MonoBehaviour {
         chasingTarget = false;
 
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
-        currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
-        rb.position = prevNode.transform.position + (Vector3.up * 2f);
-        transform.rotation = Quaternion.Euler((currNode.transform.position - rb.position).normalized);
+        if (prevNode != null) {
+            currNode = prevNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
+            if (currNode == null) { currNode = prevNode; }
+            rb.position = prevNode.transform.position + (Vector3.up * 2f);
+            transform.rotation = Quaternion.Euler((currNode.transform.position - rb.position).normalized);
+        }
     }
 
     void FixedUpdate() {
@@ -57,10 +60,12 @@ public class CarTraversal : MonoBehaviour {
 
             ChaseUpdate();
             if (chasingTarget) {
+                if (target == null) { return; }
                 LookRotation(roadHit.normal, target.transform.position);
                 if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
                 { MoveCar(); }
-            } else { 
+            } else {
+                if (currNode == null) { return; }
                 if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
                     LookRotation(roadHit.normal, currNode.transform.position);
                     if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
@@ -107,10 +112,16 @@ public class CarTraversal : MonoBehaviour {
 
     private void UpdateNode() {
         GameObject tempNode = currNode;
+        if (tempNode == null) { return; }
+
         if (followingTarget) {
-            Vector3 targetPosition = target.transform.position;
-            currNode = tempNode.GetComponent<TrafficNode>().GetNextClosestNode(prevNode, targetPosition);
-        } else { currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode); }
+            Vector3 targetPosition = target != null ? target.transform.position : tempNode.transform.position;
+            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition);
+        } else {
+            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
+        }
+
+        if (currNode == null) { currNode = tempNode; }
         prevNode = tempNode;
     }
 

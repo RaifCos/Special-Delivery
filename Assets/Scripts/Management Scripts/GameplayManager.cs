@@ -194,11 +194,16 @@ public class GameplayManager : MonoBehaviour {
         }
     }
 
-    public void StartBossTimer(int bossDeliveryTime) => bossTimerCoroutine = StartCoroutine(BossGameTimer(bossDeliveryTime));
+    public void StartBossTimer(int bossDeliveryTime) {
+        if (bossTimerCoroutine != null) { StopCoroutine(bossTimerCoroutine); }
+        bossTimerCoroutine = StartCoroutine(BossGameTimer(bossDeliveryTime));
+    }
 
-    public void ResetBossTimer() { 
-        StopCoroutine(bossTimerCoroutine);
-        SetTime(0, false);
+    public void ResetBossTimer() {
+        if (bossTimerCoroutine != null) {
+            StopCoroutine(bossTimerCoroutine);
+            bossTimerCoroutine = null;
+        } SetTime(0, false);
     }
 
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
@@ -234,7 +239,7 @@ public class GameplayManager : MonoBehaviour {
 
             // Player/Boss didn't deliver Parcel in Time. 
             else if (difficulty == 2 && timeLeft == 0) { 
-                GameManager.deliveryManager.ChangeState(true); 
+                GameManager.deliveryManager.ChangeState(0); 
                 timerText.text = "";
             }
         } else { timeLeft = value; }

@@ -120,7 +120,7 @@ public class NewsTextScroller : MonoBehaviour
     }
 
     public void AddBossHeadline(bool playerHasParcel) {
-        if(playerHasParcel) { newsQueue.Add("You got the parcel! Deliver it quickly!"); }   
+        if (playerHasParcel) { newsQueue.Add("You got the parcel! Deliver it quickly!"); }   
         else { newsQueue.Add("Your opponent has the parcel, stop them from reaching the delivery point at all costs!"); }
     }
 

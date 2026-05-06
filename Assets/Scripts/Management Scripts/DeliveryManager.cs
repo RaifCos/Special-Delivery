@@ -23,16 +23,16 @@ public class DeliveryManager : MonoBehaviour {
     }
 
     void Start() {
-        currPosition = parcelPos;
         parcelPos = parcelNode.transform.position;
+        currPosition = parcelPos;
         for (int x = 0; x < deliveryNodes.transform.childCount; x++) {
             nodePositions.Add(deliveryNodes.transform.GetChild(x).transform.position);
         }
     }
 
-    public void ChangeState(bool input) {
-        if (difficulty != 2) { objectiveObj.GetComponent<ParcelObjective>().ChangeState(input); }
-        else { objectiveObj.GetComponent<BossParcelObjective>().ChangeState(input); }
+    public void ChangeState(int phase) {
+        if (difficulty != 2) { objectiveObj.GetComponent<ParcelObjective>().ChangeState(phase == 0); }
+        else { objectiveObj.GetComponent<BossParcelObjective>().ChangeState(phase); }
     }
 
     public Vector3 GetParcelPos() {
@@ -41,12 +41,17 @@ public class DeliveryManager : MonoBehaviour {
     }
 
     public Vector3 GetDeliverySpot() {
-        int currIndex = nodePositions.IndexOf(currPosition);
+        currPosition = nodePositions[0];
         int newIndex;
-
-        do { newIndex = Random.Range(0, nodePositions.Count);
-        } while (newIndex == currIndex);
-
+        if (nodePositions.Count <= 1) {
+            newIndex = 0;
+        } else {
+            int currIndex = nodePositions.IndexOf(currPosition);
+            newIndex = Random.Range(0, nodePositions.Count);
+            if (newIndex == currIndex) {
+                newIndex = (newIndex + 1) % nodePositions.Count;
+            }
+        }
         currPosition = nodePositions[newIndex];
         return currPosition;
     }

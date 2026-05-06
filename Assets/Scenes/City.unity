@@ -5496,11 +5496,15 @@ PrefabInstance:
       objectReference: {fileID: 1441140730333596551}
     - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: directChaseRange
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: returnToNodeRange
-      value: 60
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118548689462897912, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6118548689462897912, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: chasingSpeed

@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class BossParcelObjective : MonoBehaviour {
     private static readonly int ScoreAnimHash = Animator.StringToHash("scoreAnim");
 
     private int phase, playerScore, bossScore;
-    private bool isParcel;
+    private bool isChangingState = false;
     private DeliveryManager dm;
 
     // Start is called before the first frame update
@@ -28,11 +29,11 @@ public class BossParcelObjective : MonoBehaviour {
         boss.SetActive(true);
         bossVan = boss.GetComponent<BossVan>();
         bossVan.Initialise();
+
+        ChangeState(0);
         SetScore(0, 0, null);
-        phase = 0;
-        isParcel = false;
+
         parcelObj.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
-        ChangeState(true);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -40,52 +41,55 @@ public class BossParcelObjective : MonoBehaviour {
         bool bossHit = other.gameObject.CompareTag("Boss");
 
         if (playerHit) {
-            if (isParcel) { 
-                phase = 1;
+            if (phase == 1) { DeliveryCompleted(); }
+            else if (phase == 0) { 
                 GameManager.newsTextScroller.AddBossHeadline(true);
-                ChangeState(false);
-            } else if (phase == 1) { DeliveryCompleted(); }
+                ChangeState(1);
+            }
         }
 
-        if (bossHit) { 
-            if (isParcel) { 
-                phase = 2;
+        if (bossHit) {
+            if (phase == 2) { DeliveryCompleted(); }
+            else if (phase == 0) { 
                 GameManager.newsTextScroller.AddBossHeadline(false);
-                ChangeState(false);
-            } else if (phase == 2) { DeliveryCompleted(); }
+                ChangeState(2);
+            }
         }
     }
 
-    // TODO: Start Timer when Parcel Collected
-    // TODO: News Text to indicate whether player should rush to Deliver Parcel or stop Boss. 
+    public void ChangeState(int input) {
+        if (isChangingState) return;
+        isChangingState = true;
+        Debug.Log("Changing State to " + input);
 
-    public void ChangeState(bool input) {
-        isParcel = input;
-        if(isParcel) { phase = 0; }
-        else { GameManager.gameplayManager.StartBossTimer(bossDeliveryTime); }
-        bossVan.ChangeState(phase);
-        parcelObj.SetActive(isParcel);
-
-        deliveryObjPlayer.SetActive(phase == 1);
-        deliveryObjBoss.SetActive(phase == 2);
-
-        if (isParcel) {
+        phase = input;
+        if (phase == 0) {
+            Debug.Log("Resetting Boss Timer");
+            GameManager.gameplayManager.ResetBossTimer();
+            Debug.Log("Size and Scale Parcel");
+            parcelObj.SetActive(true);
             float x = Random.Range(1.4f, 2f);
             float y = Random.Range(1.4f, 2f);
             float z = Random.Range(1.4f, 2f);
             parcelObj.transform.localScale = new Vector3(x, y, z);
+            Debug.Log("Positioning Parcel");
             transform.position = dm.GetParcelPos();
-        } else { transform.position = dm.GetDeliverySpot(); }
+        } else { 
+            parcelObj.SetActive(false);
+            GameManager.gameplayManager.StartBossTimer(bossDeliveryTime);
+            transform.position = dm.GetDeliverySpot();   
+        } bossVan.ChangePhase(phase);
+
+        deliveryObjPlayer.SetActive(phase == 1);
+        deliveryObjBoss.SetActive(phase == 2); 
+        isChangingState = false;
     }
 
     public void DeliveryCompleted() {
         GameManager.obstacleManager.SpawnObstacle(true);
         if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator); 
         if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator); 
-        Debug.Log(playerScore + " - " + bossScore);
-
-        GameManager.gameplayManager.ResetBossTimer();
-        ChangeState(true);
+        ChangeState(0);
     }
 
     private void SetScore(int pS, int bS, Animator animator) {
@@ -101,5 +105,4 @@ public class BossParcelObjective : MonoBehaviour {
     }
 
     private void TriggerScoreAnimation(Animator animator) => animator.SetTrigger(ScoreAnimHash);
-
 }
