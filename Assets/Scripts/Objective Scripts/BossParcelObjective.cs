@@ -20,7 +20,7 @@ public class BossParcelObjective : MonoBehaviour {
     private static readonly int ScoreAnimHash = Animator.StringToHash("scoreAnim");
 
     private int phase, playerScore, bossScore;
-    private bool isChangingState = false;
+    private bool isChangingState, gameOver = false;
     private DeliveryManager dm;
 
     // Start is called before the first frame update
@@ -37,6 +37,8 @@ public class BossParcelObjective : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if(isChangingState) return;
+
         bool playerHit = other.gameObject.CompareTag("Player");
         bool bossHit = other.gameObject.CompareTag("Boss");
 
@@ -83,7 +85,7 @@ public class BossParcelObjective : MonoBehaviour {
         GameManager.obstacleManager.SpawnObstacle(true);
         if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator); 
         if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator); 
-        ChangeState(0);
+        if (!gameOver) ChangeState(0);
     }
 
     private void SetScore(int pS, int bS, Animator animator) {
@@ -94,8 +96,8 @@ public class BossParcelObjective : MonoBehaviour {
         bossScoreText.text = bossScore.ToString();
 
         if (animator != null) { TriggerScoreAnimation(animator); } 
-        if (playerScore == 5) { GameManager.gameplayManager.GameOver(); } // Replace with Win Function.
-        else if (bossScore == 5) { GameManager.gameplayManager.GameOver(); } // Replace with Lose Function.
+        if (playerScore == 5) { GameManager.gameplayManager.BossGameOver(0); gameOver = true; }
+        else if (bossScore == 5) { GameManager.gameplayManager.BossGameOver(1); gameOver = true; }
     }
 
     private void TriggerScoreAnimation(Animator animator) => animator.SetTrigger(ScoreAnimHash);

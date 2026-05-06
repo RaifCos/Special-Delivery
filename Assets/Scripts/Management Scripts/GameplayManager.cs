@@ -28,15 +28,16 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private AudioClip overtimeSound;
 
     [Header ("UI Canvases")]
+    [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject regularUI;
-    [SerializeField] private GameObject endUI;
+    [SerializeField] private GameObject regularEndUI;
     [SerializeField] private GameObject bossUI;
+    [SerializeField] private GameObject bossEndUI;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject confirmUI;
     [SerializeField] private GameObject pauseStartSelect;
-    [SerializeField] private GameObject endStartSelect;
     [SerializeField] private GameObject confirmStartSelect;
-    private GameObject gameUI;
+    private GameObject gameUI, endUI;
 
     [Header ("UI Elements")]
     [SerializeField] private Image timerImage;
@@ -89,17 +90,20 @@ public class GameplayManager : MonoBehaviour {
         switch (difficulty) {
             case 0:
                 gameUI = regularUI;
+                endUI = regularEndUI;
                 timerImage.enabled = false;
                 timerText.enabled = false;
                 break;
             case 1:
                 gameUI = regularUI;
+                endUI = regularEndUI;
                 timerImage.enabled = true;
                 timerText.enabled = true;
                 GameManager.obstacleManager.SpawnStartingObstacles();
                 break;
             case 2:
                 gameUI = bossUI;
+                endUI = bossEndUI;
                 GameManager.obstacleManager.SpawnStartingObstacles();
                 break;
         }
@@ -152,6 +156,20 @@ public class GameplayManager : MonoBehaviour {
 
         // Display game over screen.
         AlternateGameMenus(1);
+        StartCoroutine(GameOverFade());
+
+        // Stop game music and play game over music.
+        StartCoroutine(GameManager.audioManager.EndGameMusic());
+    }
+
+    public void BossGameOver(int winner) {
+        // Stop the game.
+        StopGameloop();
+
+        // Display game over screen.
+        AlternateGameMenus(1);
+        endUI.transform.Find("Win (TMP)").gameObject.SetActive(winner == 0);
+        endUI.transform.Find("Lose (TMP)").gameObject.SetActive(winner == 1);
         StartCoroutine(GameOverFade());
 
         // Stop game music and play game over music.
@@ -284,7 +302,8 @@ public class GameplayManager : MonoBehaviour {
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } yield return _waitForSeconds1;
-        StartCoroutine(MoneyCount());
+        if (difficulty == 2) endUI.transform.Find("Menu Button").gameObject.SetActive(true);
+        else StartCoroutine(MoneyCount());
     }
 
     private IEnumerator MoneyCount() {
@@ -352,19 +371,21 @@ public class GameplayManager : MonoBehaviour {
     public void AlternateGameMenus(int menu) {
         switch (menu) {
             case 0: { // Game UI
+                mainUI.SetActive(true);
                 gameUI.SetActive(true);
                 pauseUI.SetActive(false);
                 confirmUI.SetActive(false);
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
-                eventSystem.SetSelectedGameObject(endStartSelect);
+                eventSystem.SetSelectedGameObject(endUI.transform.Find("Menu Button").gameObject);
                 break; }
             case 2: { // Pause Menu
                 pauseUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(pauseStartSelect);
                 break; }
             case 3: { // Loading Screen
+                mainUI.SetActive(false);
                 gameUI.SetActive(false);
                 endUI.SetActive(false);
                 pauseUI.SetActive(false);
