@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // Script to handle all the obstacles on stage.
@@ -20,6 +19,7 @@ public class ObstacleManager : MonoBehaviour {
     private GameObject obstacleObject, destroyParticles;
     private GameObject[] trafficNodes, giantNodes;
     private bool[] sideNodeOccupied; 
+    private int difficulty;
 
     void Awake() => GameManager.obstacleManager = this;
     
@@ -45,6 +45,7 @@ public class ObstacleManager : MonoBehaviour {
 
         trafficNodes = GameObject.FindGameObjectsWithTag("Traffic Node");
         giantNodes = GameObject.FindGameObjectsWithTag("Giant Node");
+        difficulty = GameManager.instance.GetDifficulty();
     }
 
     #region Node Functions
@@ -126,8 +127,11 @@ public class ObstacleManager : MonoBehaviour {
         } 
         
         obstacleObject.SetActive(true);
-        Obstacle_SO obsSO = obstacleObject.GetComponent<Obstacle>().so;
-        GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
+
+        if (difficulty != 2) {
+            Obstacle_SO obsSO = obstacleObject.GetComponent<Obstacle>().so;
+            GameManager.newsTextScroller.newsQueue.Add(obsSO.headline);
+        }
     }
 
     #endregion

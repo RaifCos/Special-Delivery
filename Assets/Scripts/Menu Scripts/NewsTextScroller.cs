@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Linq;
-using System.Diagnostics;
 
 // Script to control the scrolling text news bar during gameplay
 public class NewsTextScroller : MonoBehaviour
@@ -161,7 +160,8 @@ public class NewsTextScroller : MonoBehaviour
             textRect.anchoredPosition = new Vector2(startX, 0);
 
             while (textRect.anchoredPosition.x > endX) {
-                textRect.anchoredPosition += scrollSpeed * Time.deltaTime * Vector2.left;
+                float actualScrollSpeed = newsQueue.Count == 1 ? scrollSpeed: scrollSpeed + (scrollSpeed * 0.5f * (newsQueue.Count - 1));
+                textRect.anchoredPosition += actualScrollSpeed * Time.deltaTime * Vector2.left;
                 yield return null;
             }
         }

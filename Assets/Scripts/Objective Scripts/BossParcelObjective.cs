@@ -43,7 +43,6 @@ public class BossParcelObjective : MonoBehaviour {
         if (playerHit) {
             if (phase == 1) { DeliveryCompleted(); }
             else if (phase == 0) { 
-                GameManager.newsTextScroller.AddBossHeadline(true);
                 ChangeState(1);
             }
         }
@@ -51,7 +50,6 @@ public class BossParcelObjective : MonoBehaviour {
         if (bossHit) {
             if (phase == 2) { DeliveryCompleted(); }
             else if (phase == 0) { 
-                GameManager.newsTextScroller.AddBossHeadline(false);
                 ChangeState(2);
             }
         }
@@ -60,21 +58,17 @@ public class BossParcelObjective : MonoBehaviour {
     public void ChangeState(int input) {
         if (isChangingState) return;
         isChangingState = true;
-        Debug.Log("Changing State to " + input);
-
         phase = input;
         if (phase == 0) {
-            Debug.Log("Resetting Boss Timer");
             GameManager.gameplayManager.ResetBossTimer();
-            Debug.Log("Size and Scale Parcel");
             parcelObj.SetActive(true);
             float x = Random.Range(1.4f, 2f);
             float y = Random.Range(1.4f, 2f);
             float z = Random.Range(1.4f, 2f);
             parcelObj.transform.localScale = new Vector3(x, y, z);
-            Debug.Log("Positioning Parcel");
             transform.position = dm.GetParcelPos();
         } else { 
+            GameManager.newsTextScroller.AddBossHeadline(phase == 1);
             parcelObj.SetActive(false);
             GameManager.gameplayManager.StartBossTimer(bossDeliveryTime);
             transform.position = dm.GetDeliverySpot();   
