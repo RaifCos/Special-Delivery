@@ -23,6 +23,15 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private GameObject moneyText;
     private GameObject player;
 
+    [Header ("Music")]
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+    [SerializeField] private AudioClip musicEnd;
+    [SerializeField] private AudioClip musicBossStart;
+    [SerializeField] private AudioClip musicBossLoop;
+    [SerializeField] private AudioClip musicBossEndWin;
+    [SerializeField] private AudioClip musicBossEndLose;
+
     [Header ("Sound Effects")]
     [SerializeField] private AudioClip countSound;
     [SerializeField] private AudioClip overtimeSound;
@@ -93,6 +102,7 @@ public class GameplayManager : MonoBehaviour {
                 endUI = regularEndUI;
                 timerImage.enabled = false;
                 timerText.enabled = false;
+                GameManager.audioManager.Initalize(musicStart, musicLoop);
                 break;
             case 1:
                 gameUI = regularUI;
@@ -100,11 +110,13 @@ public class GameplayManager : MonoBehaviour {
                 timerImage.enabled = true;
                 timerText.enabled = true;
                 GameManager.obstacleManager.SpawnStartingObstacles();
+                GameManager.audioManager.Initalize(musicStart, musicLoop, musicEnd);
                 break;
             case 2:
                 gameUI = bossUI;
                 endUI = bossEndUI;
                 GameManager.obstacleManager.SpawnStartingObstacles();
+                GameManager.audioManager.Initalize(musicStart, musicLoop, musicBossEndWin, musicBossEndLose);
                 break;
         }
 

@@ -13,7 +13,7 @@ public class Data {
     public Dictionary<string, int> levelProgress = new();
     public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
-    public bool shopUnlocked, bossUnlocked = false;
+    public bool shopUnlocked = false;
 }
 
 public class ProgressData {

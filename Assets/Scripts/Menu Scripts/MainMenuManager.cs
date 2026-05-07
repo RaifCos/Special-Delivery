@@ -21,6 +21,10 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
 
+    [Header ("Music")]
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+
     private int confirmationUIID;
     [SerializeField] private GameObject navStartSelected, achievementsStartSelected, levelStartSelected, shopStartSelected, settingsStartSelected, confirmStartSelected;
     private EventSystem eventSystem;
@@ -31,6 +35,7 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
+        GameManager.audioManager.Initalize(musicStart, musicLoop); 
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
