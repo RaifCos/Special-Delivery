@@ -17,6 +17,7 @@ MonoBehaviour:
   musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
   musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
   musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  soundscape: {fileID: 8300000, guid: 4608eb68e4c29604abf2d807ca167714, type: 3}
   startingObstacles: []
   permObstacles: []
   tempObstacles: []

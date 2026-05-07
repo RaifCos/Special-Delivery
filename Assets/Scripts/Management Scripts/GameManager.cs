@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     [Header("Player Preferences")]
     private int saveFile; 
     private static int difficulty;
+    private static Level_SO currentLevel;
     private float musicVolume;
     private bool qualityShadows;
 
@@ -38,6 +39,10 @@ public class GameManager : MonoBehaviour {
 
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
+
+    public Level_SO GetCurrentLevel() => currentLevel;
+    
+    public void SetCurrentLevel(Level_SO level) => currentLevel = level;
 
     public void SetMusicVolume(float input) {
         musicVolume = input;

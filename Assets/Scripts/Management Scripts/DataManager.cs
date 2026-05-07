@@ -11,6 +11,7 @@ public class Data {
     public Dictionary<string, bool> achievementProgress = new();
     public Dictionary<string, bool> upgradeProgress = new();
     public Dictionary<string, int> levelProgress = new();
+    public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
     public bool shopUnlocked, bossUnlocked = false;
 }
@@ -100,8 +101,10 @@ public class DataManager : MonoBehaviour {
         foreach (Upgrade_SO up in upgrades)
             data.upgradeProgress.TryAdd(up.internalName, false);
 
-        foreach (Level_SO level in levels)
+        foreach (Level_SO level in levels) {
             data.levelProgress.TryAdd(level.internalName, 0);
+            data.levelScores.TryAdd(level.internalName, 0);
+        }
     }
 
     public Data ResetData() {
@@ -198,6 +201,9 @@ public class DataManager : MonoBehaviour {
 
     public int GetLevelProgress(string key) => data.levelProgress[key];
     public void SetLevelProgress(string key, int value) => data.levelProgress[key] = value; 
+
+    public int GetLevelScore(string key) => data.levelScores[key];
+    public void SetLevelScore(string key, int value) => data.levelScores[key] = value;
 
     #endregion
 

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 public class Level_SO : ScriptableObject {
     public string internalName, externalName;
 
-    [Header("Music Audio Clips")] 
+    [Header("Audio Clips")] 
     public AudioClip musicStart;
     public AudioClip musicLoop;
     public AudioClip musicEnd;
+    public AudioClip soundscape;
 
     [Header("Object Pools")] 
     public List<Obstacle> startingObstacles;
