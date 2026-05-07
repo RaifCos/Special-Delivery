@@ -31,7 +31,7 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
-        ToggleBossLock(GameManager.dataManager.IsBossUnlocked());
+        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());

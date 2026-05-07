@@ -1,15 +1,12 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 // Script to handle all the obstacles on stage.
 public class ObstacleManager : MonoBehaviour {
-    [SerializeField]
-    private List<Obstacle> startingObstacles;
-    [SerializeField]
-    private List<Obstacle> permObstacles;
-    [SerializeField]
-    private List<Obstacle> tempObstacles;
+    [SerializeField] private List<Obstacle> startingObstacles;
+    [SerializeField] private List<Obstacle> permObstacles;
+    [SerializeField] private List<Obstacle> tempObstacles;
 
     private readonly List<GameObject> permObstaclePool = new(); 
     private readonly List<GameObject> tempObstaclePool = new(); 

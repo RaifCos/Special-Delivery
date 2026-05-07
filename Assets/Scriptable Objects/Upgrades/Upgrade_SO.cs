@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Upgrade_SO", menuName = "Scriptable Objects/Upgrade")]
 public class Upgrade_SO : ScriptableObject {
