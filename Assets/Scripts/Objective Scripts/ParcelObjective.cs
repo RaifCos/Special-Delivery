@@ -62,6 +62,7 @@ public class ParcelObjective : MonoBehaviour {
         if (addingScore) {
             completeDeliveries++;
             if (difficulty != 0) {
+                GameManager.gameplayManager.MoneyScore(completeDeliveries);
                 if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                 if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                 if (completeDeliveries > GameManager.dataManager.GetBestScore()) { GameManager.dataManager.SetBestScore(completeDeliveries); }

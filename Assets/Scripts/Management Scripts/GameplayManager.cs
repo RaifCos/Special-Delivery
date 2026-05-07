@@ -302,8 +302,8 @@ public class GameplayManager : MonoBehaviour {
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } yield return _waitForSeconds1;
-        if (difficulty == 2) endUI.transform.Find("Menu Button").gameObject.SetActive(true);
-        else StartCoroutine(MoneyCount());
+        if (difficulty == 1) StartCoroutine(MoneyCount());
+        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     private IEnumerator MoneyCount() {
@@ -311,13 +311,12 @@ public class GameplayManager : MonoBehaviour {
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
-        do { display++; 
+        while (display < moneyEarnt) {
+            display++; 
             counterText.text = display.ToString(); 
             if (display % 10 == 0) { GameManager.audioManager.PlaySoundEffect(countSound); }
             yield return _waitForSeconds0001;
-        } while (display < moneyEarnt);
-        yield return _waitForSeconds1;
-        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
+        } yield return _waitForSeconds1;
     }
 
     private IEnumerator MoneyDisplay(int amount) {
