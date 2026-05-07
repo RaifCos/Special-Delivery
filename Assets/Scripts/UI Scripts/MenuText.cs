@@ -15,7 +15,8 @@ public class MenuText : MonoBehaviour,
     void OnEnable() { tmp = obj.GetComponent<TMP_Text>(); }
 
     private void ValueEnter() {
-        if (message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK.")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
+        if (message.Equals("COMPLETE 25 DELIVERIES TO UNLOCK")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/25]"; }
+        else if (message.Equals("COMPLETE 50 DELIVERIES TO UNLOCK")) { message += " [" + GameManager.dataManager.GetLifetimeDeliveries() + "/50]"; }
         tmp.text = message;
     }
 

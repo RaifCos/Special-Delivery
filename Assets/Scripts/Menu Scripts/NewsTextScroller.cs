@@ -111,16 +111,23 @@ public class NewsTextScroller : MonoBehaviour
         }
     }
 
-    public void AddShopHeadline() {
+    public void AddBossHeadline(bool playerHasParcel) {
+        if (playerHasParcel) { newsQueue.Add("You got the parcel! Deliver it quickly!"); }   
+        else { newsQueue.Add("Your opponent has the parcel, stop them from reaching the delivery point at all costs!"); }
+    }
+
+    public void AddShopUnlockHeadline() {
         if (isPlaying) {
             string res = "BREAKING NEWS - you've delivered enough parcels to unlock the GARAGE! check it out after your shift ends.";
             newsQueue.Add(res);
         }
     }
 
-    public void AddBossHeadline(bool playerHasParcel) {
-        if (playerHasParcel) { newsQueue.Add("You got the parcel! Deliver it quickly!"); }   
-        else { newsQueue.Add("Your opponent has the parcel, stop them from reaching the delivery point at all costs!"); }
+    public void AddBossUnlockHeadline() {
+        if (isPlaying) {
+            string res = "BREAKING NEWS - you've delivered enough parcels to unlock the next boss battle!";
+            newsQueue.Add(res);
+        }
     }
 
     public void AddTutorialHeadlines() {

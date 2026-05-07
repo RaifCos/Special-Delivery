@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 // Script to handle main game functionality.
 public class GameManager : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
     [Header("Other Manager Scripts")]
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;

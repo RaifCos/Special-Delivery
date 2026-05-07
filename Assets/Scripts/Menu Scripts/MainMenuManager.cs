@@ -6,9 +6,21 @@ using System.Collections;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
-    public GameObject menuUI, levelSelectUI, achievementUI, galleryUI, garageUI, confirmUI, settingsUI, navDescription;
-    public Button shopButton;
-    public Image backdrop;
+    [Header ("Menu Canvases")]
+    [SerializeField] private GameObject menuUI;
+    [SerializeField] private GameObject levelSelectUI;
+    [SerializeField] private GameObject achievementUI;
+    [SerializeField] private GameObject galleryUI;
+    [SerializeField] private GameObject garageUI;
+    [SerializeField] private GameObject confirmUI;
+    [SerializeField] private GameObject settingsUI;
+
+    [Header ("UI Elements")]
+    [SerializeField] private GameObject navDescription;
+    [SerializeField] private Button shopButton;
+    [SerializeField] private Button bossButton;
+    [SerializeField] private Image backdrop;
+
     private int confirmationUIID;
     [SerializeField] private GameObject navStartSelected, achievementsStartSelected, levelStartSelected, shopStartSelected, settingsStartSelected, confirmStartSelected;
     private EventSystem eventSystem;
@@ -19,6 +31,7 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
+        ToggleBossLock(GameManager.dataManager.IsBossUnlocked());
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         GameManager.audioManager.StartGameMusic();
         AlternateMainMenus(0);
@@ -101,7 +114,18 @@ public class MainMenuManager : MonoBehaviour {
             shopButton.GetComponent<MenuText>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
         } else {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK.";
+            shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK";
+        }
+    }
+
+    public void ToggleBossLock(bool isUnlocked) {
+        bossButton.interactable = isUnlocked;
+        if(isUnlocked) {
+            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Boss Battle";
+            bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
+        } else {
+            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            bossButton.GetComponent<MenuText>().message = "COMPLETE 50 DELIVERIES TO UNLOCK";
         }
     }
 

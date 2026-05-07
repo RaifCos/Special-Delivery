@@ -8,13 +8,7 @@ public class BackgroundMover : MonoBehaviour {
     Vector2 direction = new(-1, -1);
     Image img;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start() {
-        img = GetComponent<Image>();
-    }
+    void Start() => img = GetComponent<Image>();
 
-    // Update is called once per frame
-    void Update() {
-        img.material.mainTextureOffset += -direction.normalized * Time.deltaTime * speed;
-    }
+    void Update() => img.material.mainTextureOffset += speed * Time.deltaTime * -direction.normalized;
 }

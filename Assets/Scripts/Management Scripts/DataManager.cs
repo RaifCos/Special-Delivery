@@ -11,7 +11,7 @@ public class Data {
     public Dictionary<string, bool> achievementProgress = new();
     public Dictionary<string, bool> upgradeProgress = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
-    public bool shopUnlocked = false;
+    public bool shopUnlocked, bossUnlocked = false;
 }
 
 public class ProgressData {
@@ -177,6 +177,13 @@ public class DataManager : MonoBehaviour {
 
     #endregion
 
+    #region Level Data
+
+    public bool IsBossUnlocked() => data.bossUnlocked; 
+    public void SetBossProgress(bool input) { data.bossUnlocked = input; }
+
+    #endregion
+
     #region Obstacle/Prop Data
     public void AddObstacleEncounter(string key) {
         data.lifetimeObs[key]++;
@@ -233,7 +240,11 @@ public class DataManager : MonoBehaviour {
                         data.lifetimeDeliveries++;
                         if (data.lifetimeDeliveries == 25) { 
                             GameManager.dataManager.SetShopProgress(true); 
-                            GameManager.newsTextScroller.AddShopHeadline();
+                            GameManager.newsTextScroller.AddShopUnlockHeadline();
+                        if (data.lifetimeDeliveries == 50) {
+                            GameManager.dataManager.SetBossProgress(true); 
+                            GameManager.newsTextScroller.AddBossUnlockHeadline();
+                        }
                         } if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
                         break; }
                 case 1: { // Player Crashes

@@ -2651,7 +2651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: CHECK OUT HOW GOOD YOU ARE AT THIS GAME.
+  message: CHECK OUT HOW GOOD YOU ARE AT THIS GAME
 --- !u!1 &281829021
 GameObject:
   m_ObjectHideFlags: 0
@@ -3626,7 +3626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: LOOK AT ALL THE RANDOM JUNK THAT'S BEEN THROWN AT YOU SO FAR.
+  message: LOOK AT ALL THE RANDOM JUNK THAT'S BEEN THROWN AT YOU SO FAR
 --- !u!1 &396799000
 GameObject:
   m_ObjectHideFlags: 0
@@ -6453,7 +6453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 1731540093}
-  message: FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!
+  message: COMPLETE 50 DELIVERIES TO UNLOCK
 --- !u!114 &638345466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6479,7 +6479,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 1, g: 0.43867922, b: 0.5261969, a: 1}
     m_PressedColor: {r: 0.8980393, g: 0.19607845, b: 0.18431373, a: 1}
     m_SelectedColor: {r: 1, g: 0.43921572, b: 0.5254902, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -7232,7 +7232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: VIEW AND CHANGE GAME OPTIONS.
+  message: VIEW AND CHANGE GAME OPTIONS
 --- !u!114 &737540960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8593,6 +8593,7 @@ MonoBehaviour:
   settingsUI: {fileID: 1597486541}
   navDescription: {fileID: 948076923}
   shopButton: {fileID: 1829574761}
+  bossButton: {fileID: 638345466}
   backdrop: {fileID: 1123336445}
   navStartSelected: {fileID: 685998771}
   achievementsStartSelected: {fileID: 1897136316}
@@ -10665,7 +10666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 1731540093}
-  message: GO BACK TO THE MAIN MENU.
+  message: GO BACK TO THE MAIN MENU
 --- !u!114 &1344189684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12600,7 +12601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 1731540093}
-  message: RACE AGAINST THE CLOCK TO DELIVER AS MANY PARCELS AS YOU CAN.
+  message: RACE AGAINST THE CLOCK TO DELIVER AS MANY PARCELS AS YOU CAN
 --- !u!114 &1504894277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13116,7 +13117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 1731540093}
-  message: LEARN THE BASICS- NO OBSTACLES, NO TIMER, NO WORRIES.
+  message: LEARN THE BASICS- NO OBSTACLES, NO TIMER, NO WORRIES
 --- !u!114 &1533325885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15837,7 +15838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: COMPLETE 25 DELIVERIES TO UNLOCK.
+  message: COMPLETE 25 DELIVERIES TO UNLOCK
 --- !u!114 &1829574761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17752,7 +17753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonHover
   obj: {fileID: 948076923}
-  message: RETURN TO THE TITLE SCREEN.
+  message: RETURN TO THE TITLE SCREEN
 --- !u!1 &2001125030
 GameObject:
   m_ObjectHideFlags: 0
