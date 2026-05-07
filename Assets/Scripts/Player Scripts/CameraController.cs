@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     Vector3 lookTarget, lookTargetVelocity, currentVelocity;
 
     private void LateUpdate() {
-        if (GameManager.gameplayManager.isPlaying) {
+        if (GameManager.gameplayManager.IsPlaying()) {
 
             Vector3 flatForward = transform.forward;
             flatForward.y = 0;

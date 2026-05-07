@@ -7,28 +7,59 @@ using TMPro;
 using System;
 
 // Script to handle main game functionality.
-public class GameplayManager : MonoBehaviour
-{
+public class GameplayManager : MonoBehaviour {
+    #region Variables
+
+    [Header ("Player Input")]
+    [SerializeField] private InputAction pauseAction;
+
+    [Header ("Game Variables")]
+    [SerializeField] private int startingTime; 
+    private int timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
+    private float penaltyMult, incomeMult;
+
+    [Header ("Game Objects")] 
+    [SerializeField] private GameObject directionArrow;
+    [SerializeField] private GameObject moneyText;
+    private GameObject player;
+
+    [Header ("Sound Effects")]
+    [SerializeField] private AudioClip countSound;
+    [SerializeField] private AudioClip overtimeSound;
+
+    [Header ("UI Canvases")]
+    [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject regularUI;
+    [SerializeField] private GameObject regularEndUI;
+    [SerializeField] private GameObject bossUI;
+    [SerializeField] private GameObject bossEndUI;
+    [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject confirmUI;
+    [SerializeField] private GameObject pauseStartSelect;
+    [SerializeField] private GameObject confirmStartSelect;
+    private GameObject gameUI, endUI;
+
+    [Header ("UI Elements")]
+    [SerializeField] private Image timerImage;
+    [SerializeField] private TMP_Text timerText;
+    [SerializeField] private Animator timeAnimator;
+    [SerializeField] private TMP_Text confirmText;
+
+    private bool isPlaying = false;
+    private bool isGamePaused = false;
+    private bool secondLife = false; 
+    private EventSystem eventSystem;
+
     private static readonly int HighTimeHash = Animator.StringToHash("highTime");
     private static readonly int LowTimeHash = Animator.StringToHash("lowTime");
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
-    [SerializeField] private int startingTime; 
-    [SerializeField] private InputAction pauseAction;
-    [SerializeField] private AudioClip countSound, overtimeSound;
-    [SerializeField] private GameObject gameUI, endUI, pauseUI, confirmUI;
-    [SerializeField] private GameObject playerVan, directionArrow, moneyText; 
-    [SerializeField] private GameObject pauseStartSelect, endStartSelect, confirmStartSelect;
-    public bool isPlaying = false;
-    private bool isGamePaused = false;
-    private bool secondLife = false; 
-    private GameObject player;
+    private Coroutine bossTimerCoroutine;
 
-    private int completeDeliveries, timeLeft, deliveryTime, difficulty, deliveryPayment, moneyEarnt;
-    private float penaltyMult, incomeMult;
-    private Animator scoreAnimator, timeAnimator;
-    private EventSystem eventSystem;
+    #endregion
+
+    #region Handler Functions
 
     void OnEnable() { 
         pauseAction.Enable();
@@ -41,47 +72,59 @@ public class GameplayManager : MonoBehaviour
 
     // Start is called before the first frame update.
     void Start() {
+        // Check for Upgrades.
         penaltyMult = GameManager.dataManager.IsUpgraded("noPenalty")? 0f: 1f;
         incomeMult = GameManager.dataManager.IsUpgraded("moreMoney")? 1.5f: 1f;
         secondLife = GameManager.dataManager.IsUpgraded("secondLife");
-        moneyEarnt = 0;
-        Time.timeScale = 1;
-        difficulty = GameManager.instance.GetDifficulty();
 
         // Get Player Game Object.
         player = GameObject.FindWithTag("Player");
 
+        moneyEarnt = 0;
+
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
-        gameUI.transform.GetChild(2).GetComponent<Image>().enabled = difficulty != 0;
-        gameUI.transform.GetChild(4).GetComponent<TMP_Text>().enabled = difficulty != 0;
+        difficulty = GameManager.instance.GetDifficulty();
+        timerImage.enabled = difficulty != 0;
+        timerText.enabled = difficulty != 0;
 
-        // Set up game UI and score/timer values.
+        switch (difficulty) {
+            case 0:
+                gameUI = regularUI;
+                endUI = regularEndUI;
+                timerImage.enabled = false;
+                timerText.enabled = false;
+                break;
+            case 1:
+                gameUI = regularUI;
+                endUI = regularEndUI;
+                timerImage.enabled = true;
+                timerText.enabled = true;
+                GameManager.obstacleManager.SpawnStartingObstacles();
+                break;
+            case 2:
+                gameUI = bossUI;
+                endUI = bossEndUI;
+                GameManager.obstacleManager.SpawnStartingObstacles();
+                break;
+        }
+
         AlternateGameMenus(0);
-        SetScore(0, false);
-
-        int startTime = startingTime;
-        startTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
-        SetTime(startTime, false);
 
         // Initialize the player van.
-        playerVan.GetComponent<PlayerControl>().SetState(true);
+        player.GetComponent<PlayerControl>().SetState(true);
 
-        // Spawn starting obstacles into the city (if not in the tutorial).
-        if (difficulty != 0) { GameManager.obstacleManager.SpawnStartingObstacles(); }
-
-        // Start Music
-        GameManager.audioManager.StartGameMusic();
-
-        // Start News Text UI
+        // Start News Text
         GameManager.newsTextScroller.StartNews();
 
-        // Set UI for Score Animation
-        scoreAnimator = gameUI.transform.GetChild(1).gameObject.GetComponent<Animator>();
-        timeAnimator = gameUI.transform.GetChild(2).gameObject.GetComponent<Animator>();
-
         // Start timer and begin game. 
+        Time.timeScale = 1;
         isPlaying = true;
-        if (difficulty != 0) { StartCoroutine(GameTimer()); }
+        if (difficulty == 1) { 
+            int startTime = startingTime;
+            startTime += GameManager.dataManager.IsUpgraded("moreTime")? 20: 0;
+            SetTime(startTime, false);
+            StartCoroutine(GameTimer());
+        }
     }
 
     // Update is called once per frame.
@@ -95,17 +138,15 @@ public class GameplayManager : MonoBehaviour
             }
 
             // Rotate Directional Arrow to point towards the current objective, relative to the player's position.
-            Vector3 direction = GameManager.deliveryManager.GetCurrentPosition() - playerVan.transform.position;
+            Vector3 direction = GameManager.deliveryManager.GetCurrentPosition() - player.transform.position; 
             Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
             directionArrow.transform.rotation = Quaternion.Slerp(directionArrow.transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
     }
 
-    /*
-     * ======================
-     *  GAME-STATE FUNCTIONS
-     * ======================
-     */
+    #endregion
+
+    #region Game State Functions
 
     // Function for when the player runs out of time.
     public void GameOver() {
@@ -120,23 +161,38 @@ public class GameplayManager : MonoBehaviour
         StartCoroutine(GameManager.audioManager.EndGameMusic());
     }
 
+    public void BossGameOver(int winner) {
+        // Stop the game.
+        StopGameloop();
+        ResetBossTimer();
+
+        // Display game over screen.
+        AlternateGameMenus(1);
+        endUI.transform.Find("Win (TMP)").gameObject.SetActive(winner == 0);
+        endUI.transform.Find("Lose (TMP)").gameObject.SetActive(winner == 1);
+        StartCoroutine(GameOverFade());
+
+        // Stop game music and play game over music.
+        StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
+    }
+
     // Function to stop gameplay when the game ends.
     public void StopGameloop() {
         // Stop gameplay loop and timer.
         isPlaying = false;
 
         // Stop van controls.
-        playerVan.GetComponent<PlayerControl>().SetState(false);
+        player.GetComponent<PlayerControl>().SetState(false);
 
         // Stop News Text UI
         GameManager.newsTextScroller.StopNews();
     }
 
-    /*
-    * ======================
-    *  GAMEPLAY FUNCTIONS
-    * ======================
-    */
+    public bool IsPlaying() => isPlaying;
+
+    #endregion
+
+    #region Game Loop Functions
 
     // Coroutine to decrement the game timer every second.
     private IEnumerator GameTimer() {
@@ -148,50 +204,73 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    private IEnumerator BossGameTimer(int bossDeliveryTime) {
+        SetTime(bossDeliveryTime, false);
+        while (timeLeft > 0) {
+            yield return _waitForSeconds1; // Wait one second before decrementing time.
+            SetTime(-1, true);
+        }
+    }
+
+    public void StartBossTimer(int bossDeliveryTime) {
+        if (bossTimerCoroutine != null) { StopCoroutine(bossTimerCoroutine); }
+        bossTimerCoroutine = StartCoroutine(BossGameTimer(bossDeliveryTime));
+    }
+
+    public void ResetBossTimer() {
+        if (bossTimerCoroutine != null) {
+            StopCoroutine(bossTimerCoroutine);
+            bossTimerCoroutine = null;
+        } SetTime(0, false);
+    }
+
     // Setter Method for the timer, also updates the UI and checks if time has ran out.
     public void SetTime(int value, bool addingTime) {
         if (addingTime) {
             if (value < 0 && timeLeft == 1 && secondLife) { 
                 GameManager.audioManager.PlaySoundEffect(overtimeSound);
-                secondLife = false; value = 30;
+                secondLife = false;
+                value = 30;
             }
+            
             timeLeft += value;
-            if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
 
-            if (value > 0 && timeLeft >= 10) { 
-                GameManager.audioManager.SetMusicPitch(1f);
-                TimerAnimation("highTime"); 
+            // Only in Regular Game Mode.
+            if (difficulty == 1) {
+                // "Time to Spare" Achievement
+                if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
+
+                // Exit "Almost out of Time" Phase.
+                if (value > 0 && timeLeft >= 10) { 
+                    GameManager.audioManager.SetMusicPitch(1f);
+                    TimerAnimation("highTime"); 
+                }
+
+                // "Almost out of Time" Phase.
+                if (value < 0 && timeLeft <= 10) { 
+                    GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
+                    TimerAnimation("lowTime"); 
+                }
+
+                if (timeLeft == 0) { GameOver(); }
             }
 
-            if (value < 0 && timeLeft <= 10) { 
-                GameManager.audioManager.SetMusicPitch(1f + (11f - timeLeft)/10f);
-                TimerAnimation("lowTime"); 
+            // Player/Boss didn't deliver Parcel in Time. 
+            else if (difficulty == 2 && timeLeft == 0) { 
+                GameManager.deliveryManager.ChangeState(0); 
+                timerText.text = "";
             }
-
-            if (timeLeft == 0) { GameOver(); }
         } else { timeLeft = value; }
-        gameUI.transform.GetChild(4).gameObject.GetComponent<TMP_Text>().text = timeLeft.ToString();
+        timerText.text = timeLeft.ToString();
+        if (difficulty == 2 && timeLeft == 0) { timerText.text = ""; }
     }
 
-    // Setter Method for the delivery score, also updates the UI.
-    public void SetScore(int value, bool addingScore) {
-        if (addingScore) {
-            completeDeliveries++;
-            if (difficulty != 0) {
-                CalculateEarnings();
-                StartCoroutine(MoneyDisplay(deliveryPayment));
-                if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
-                if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
-                if (completeDeliveries > GameManager.dataManager.GetBestScore()) { GameManager.dataManager.SetBestScore(completeDeliveries); }
-            }
-        }
-        else { completeDeliveries = value; }
-        gameUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = completeDeliveries.ToString();
+    public void MoneyScore(int completeDeliveries) {
+        CalculateEarnings(completeDeliveries);
+        StartCoroutine(MoneyDisplay(deliveryPayment));
     }
 
-    public int GetScore() { return completeDeliveries; }
-
-    private void CalculateEarnings() {
+    private void CalculateEarnings(int completeDeliveries) {
         int income = 29 + (int) Math.Pow(1.2, completeDeliveries);
         double timePenalty = Math.Min(0.25, deliveryTime/100.0) * income;
         deliveryPayment = (int) (income * incomeMult) - (int) (timePenalty * penaltyMult);
@@ -203,13 +282,10 @@ public class GameplayManager : MonoBehaviour
 
     public Vector3 FindPlayer() => player.transform.position;
 
-    /*
-    * ======================
-    *     UI FUNCTIONS
-    * ======================
-    */
+    #endregion
 
-    public void ScoreAnimation() { scoreAnimator.SetTrigger("scoreAnim"); }
+    #region UI Functions
+
 
     public void TimerAnimation(string trigger) {
         timeAnimator.ResetTrigger(LowTimeHash);
@@ -226,7 +302,10 @@ public class GameplayManager : MonoBehaviour
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } yield return _waitForSeconds1;
-        StartCoroutine(MoneyCount());
+        if (difficulty == 1) StartCoroutine(MoneyCount());
+        GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
+        menuButton.SetActive(true);
+        eventSystem.SetSelectedGameObject(menuButton);
     }
 
     private IEnumerator MoneyCount() {
@@ -234,13 +313,12 @@ public class GameplayManager : MonoBehaviour
         counter.SetActive(true);
         TMP_Text counterText = counter.transform.Find("Amount").GetComponent<TMP_Text>();
         int display = 0;
-        do { display++; 
+        while (display < moneyEarnt) {
+            display++; 
             counterText.text = display.ToString(); 
             if (display % 10 == 0) { GameManager.audioManager.PlaySoundEffect(countSound); }
             yield return _waitForSeconds0001;
-        } while (display < moneyEarnt);
-        yield return _waitForSeconds1;
-        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
+        } yield return _waitForSeconds1;
     }
 
     private IEnumerator MoneyDisplay(int amount) {
@@ -264,7 +342,7 @@ public class GameplayManager : MonoBehaviour
     // Function to pause the game and go to the pause menu.
     public void PauseGame() {
         isGamePaused = true;
-        playerVan.GetComponent<PlayerControl>().SetState(false);
+        player.GetComponent<PlayerControl>().SetState(false);
         GameManager.audioManager.TogglePause(true);
         Time.timeScale = 0;
         AlternateGameMenus(2);
@@ -273,7 +351,7 @@ public class GameplayManager : MonoBehaviour
     // Function to resume the game from the pause menu.
     public void ResumeGame() {
         isGamePaused = false;
-        playerVan.GetComponent<PlayerControl>().SetState(true);
+        player.GetComponent<PlayerControl>().SetState(true);
         GameManager.audioManager.TogglePause(false);
         GameManager.audioManager.ConfirmVolumeChange();
         Time.timeScale = 1;
@@ -294,19 +372,20 @@ public class GameplayManager : MonoBehaviour
     public void AlternateGameMenus(int menu) {
         switch (menu) {
             case 0: { // Game UI
+                mainUI.SetActive(true);
                 gameUI.SetActive(true);
                 pauseUI.SetActive(false);
                 confirmUI.SetActive(false);
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
-                eventSystem.SetSelectedGameObject(endStartSelect);
                 break; }
             case 2: { // Pause Menu
                 pauseUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(pauseStartSelect);
                 break; }
             case 3: { // Loading Screen
+                mainUI.SetActive(false);
                 gameUI.SetActive(false);
                 endUI.SetActive(false);
                 pauseUI.SetActive(false);
@@ -317,12 +396,10 @@ public class GameplayManager : MonoBehaviour
 
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage(int cID) {
-        //confirmationUIID = cID;
-        TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
-
+        //confirmationUIID = cID
         pauseUI.SetActive(false);
-        if (difficulty == 0) { message.text = "end the tutorial\nand return to the menu?"; }
-        else { message.text = "end the game\nand return to menu?"; }
+        if (difficulty == 0) { confirmText.text = "end the tutorial\nand return to the menu?"; }
+        else { confirmText.text = "end the game\nand return to menu?"; }
         confirmUI.SetActive(true);
         eventSystem.SetSelectedGameObject(confirmStartSelect);
     }
@@ -333,4 +410,6 @@ public class GameplayManager : MonoBehaviour
         if (!response) { AlternateGameMenus(2); }
         else { QuitGame(); }
     }
+
+    #endregion
 }

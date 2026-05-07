@@ -424,6 +424,9 @@ MonoBehaviour:
   ignoreBlockage: 0
   target: {fileID: 0}
   followPlayer: 0
+  chaseTarget: 0
+  directChaseRange: 0
+  returnToNodeRange: 0
 --- !u!114 &2178816037623175082
 MonoBehaviour:
   m_ObjectHideFlags: 0

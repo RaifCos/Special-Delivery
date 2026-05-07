@@ -19,7 +19,6 @@ public class OpeningMenuManager : MonoBehaviour {
 
     public void Start() {
         AlternateOpeningMenus(0);
-        GameManager.audioManager.StartGameMusic();
         saveFileProgress = GameManager.dataManager.LoadSaveFiles();
         UpdateSaveFileUI();
     }

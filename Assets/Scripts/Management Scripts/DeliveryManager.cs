@@ -3,68 +3,61 @@ using UnityEngine;
 
 // Script to handle objectives (Parcels and Delivery Spots)
 public class DeliveryManager : MonoBehaviour {
-    public AudioSource sound;
-    public AudioClip parcelClip, spotClip;
-    public GameObject parcelNode;
-    public GameObject deliveryNodes;
-    [SerializeField] private int bonusTime; 
-    private bool isParcel;
-    private GameObject parcel, psA, psB;
-    private Vector3 currPos = Vector3.zero;
-    private Vector3 parcelPos;
+    [Header ("Objective Objects")]
+    [SerializeField] private GameObject standardObjective;
+    [SerializeField] private GameObject bossObjective;
+    private GameObject objectiveObj;
+
+    [Header ("Node Data")]
+    [SerializeField] private GameObject parcelNode;
+    [SerializeField] private GameObject deliveryNodes;
     private readonly List<Vector3> nodePositions = new();
+    private Vector3 parcelPos, currPosition;
+    private int difficulty;
 
     void Awake() {
         GameManager.deliveryManager = this;
+        difficulty = GameManager.instance.GetDifficulty();
+        objectiveObj = (difficulty != 2) ? standardObjective : bossObjective;
+        objectiveObj.SetActive(true);
     }
 
-    // Start is called before the first frame update
     void Start() {
-        // Retrieve Node Positions (Used for parcels and obstacles)
         parcelPos = parcelNode.transform.position;
-        for (int x = 0; x < deliveryNodes.transform.childCount; x++) { nodePositions.Add(deliveryNodes.transform.GetChild(x).transform.position); }
-        parcel = transform.GetChild(0).gameObject;
-        psA = transform.GetChild(1).gameObject;
-        psB = transform.GetChild(2).gameObject;
-        ChangeState(true);
-        parcel.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
+        currPosition = parcelPos;
+        for (int x = 0; x < deliveryNodes.transform.childCount; x++) {
+            nodePositions.Add(deliveryNodes.transform.GetChild(x).transform.position);
+        }
     }
 
-    private void OnTriggerEnter(Collider other) {
-        // Only React if the Colliding Object is the Player.
-        if (other.gameObject.CompareTag("Player")) {
-            if (!isParcel) {
-                GameManager.gameplayManager.SetScore(1, true);
-                GameManager.gameplayManager.ScoreAnimation();
-                if (GameManager.instance.GetDifficulty() != 0) { DeliveryCompleted(); }
+    public void ChangeState(int phase) {
+        if (difficulty != 2) { objectiveObj.GetComponent<ParcelObjective>().ChangeState(phase == 0); }
+        else { objectiveObj.GetComponent<BossParcelObjective>().ChangeState(phase); }
+    }
+
+    public Vector3 GetParcelPos() {
+        currPosition = parcelPos;
+        return currPosition;
+    }
+
+    public Vector3 GetDeliverySpot() {
+        currPosition = nodePositions[0];
+        int newIndex;
+        if (nodePositions.Count <= 1) {
+            newIndex = 0;
+        } else {
+            int currIndex = nodePositions.IndexOf(currPosition);
+            newIndex = Random.Range(0, nodePositions.Count);
+            if (newIndex == currIndex) {
+                newIndex = (newIndex + 1) % nodePositions.Count;
             }
-            GameManager.audioManager.PlayParcelSound(isParcel);
-            ChangeState(!isParcel);
-        }   
+        }
+        currPosition = nodePositions[newIndex];
+        return currPosition;
     }
 
-    public void ChangeState(bool input) {
-        isParcel = input;
-        parcel.SetActive(isParcel);
-        psA.SetActive(!isParcel);
-        psB.SetActive(!isParcel);
-        if (isParcel) {
-            float x = Random.Range(1.4f, 2f);
-            float y = Random.Range(1.4f, 2f);
-            float z = Random.Range(1.4f, 2f);
-            parcel.transform.localScale = new Vector3(x, y, z);
-            transform.position = parcelPos;
-        } else { transform.position = nodePositions[Random.Range(0, nodePositions.Count)]; }
-        currPos = transform.position;
-    }
+    public Vector3 GetCurrentPosition() => currPosition;
 
-    public Vector3 GetCurrentPosition() { return currPos; }
+    public GameObject GetDeliveryObjective() => objectiveObj;
 
-    // Function used when the player completes a delivery.
-    public void DeliveryCompleted() {
-        // Increment score and lifetime score.
-        GameManager.dataManager.IncreaseProgress(0);
-        GameManager.obstacleManager.SpawnObstacle(GameManager.gameplayManager.GetScore() % 2 == 0);
-        GameManager.gameplayManager.SetTime(bonusTime, true);
-    }
 }
