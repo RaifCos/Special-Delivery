@@ -14,9 +14,6 @@ public class AudioManager : MonoBehaviour {
     private AudioSource[] spatialAudioSources;
 
     [Header("Music Audio Clips")] 
-    [SerializeField] private AudioClip standardStart;
-    [SerializeField] private AudioClip stnadardLoop;
-    [SerializeField] private AudioClip standardEnd;
     [SerializeField] private AudioClip bossStart;
     [SerializeField] private AudioClip bossLoop;
     [SerializeField] private AudioClip bossWin;
@@ -50,8 +47,8 @@ public class AudioManager : MonoBehaviour {
             musicStart = bossStart;
             musicLoop = bossLoop;
         } else {
-            musicStart = standardStart;
-            musicLoop = stnadardLoop;
+            musicStart = GameManager.instance.GetCurrentLevel().musicStart;
+            musicLoop = GameManager.instance.GetCurrentLevel().musicLoop;
         }
 
         // Preload all Audio Sounds to prevent gaps or delays when they're needed.
@@ -94,7 +91,7 @@ public class AudioManager : MonoBehaviour {
         StopGameMusic();
         soundscape.Stop();
         SetMusicPitch(1f);
-        music.clip = standardEnd;
+        music.clip = GameManager.instance.GetCurrentLevel().musicEnd;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }

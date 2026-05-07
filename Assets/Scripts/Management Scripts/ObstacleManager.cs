@@ -4,10 +4,6 @@ using System.Collections.Generic;
 
 // Script to handle all the obstacles on stage.
 public class ObstacleManager : MonoBehaviour {
-    [SerializeField] private List<Obstacle> startingObstacles;
-    [SerializeField] private List<Obstacle> permObstacles;
-    [SerializeField] private List<Obstacle> tempObstacles;
-
     private readonly List<GameObject> permObstaclePool = new(); 
     private readonly List<GameObject> tempObstaclePool = new(); 
     private static readonly WaitForSeconds _waitForSeconds0_02 = new(0.02f);
@@ -29,13 +25,13 @@ public class ObstacleManager : MonoBehaviour {
         }
 
         // Add Perm Objects to Pool.
-        foreach(Obstacle obs in permObstacles) { 
+        foreach(Obstacle obs in GameManager.instance.GetCurrentLevel().permObstacles) { 
             obstacleObject = Instantiate(obs.so.prefab);
             permObstaclePool.Add(obstacleObject);
         }
 
         // Add Temp Objects to Pool.
-        foreach(Obstacle obs in tempObstacles) { 
+        foreach(Obstacle obs in GameManager.instance.GetCurrentLevel().tempObstacles) { 
             obstacleObject = Instantiate(obs.so.prefab);
             tempObstaclePool.Add(obstacleObject);
         }
@@ -100,7 +96,7 @@ public class ObstacleManager : MonoBehaviour {
 
     // Function to spawn the starting Obstacles at the beginning of the game.
     public void SpawnStartingObstacles() {
-        foreach(Obstacle obs in startingObstacles) {
+        foreach(Obstacle obs in GameManager.instance.GetCurrentLevel().startingObstacles) {
             obstacleObject = Instantiate(obs.so.prefab);
             permObstaclePool.Add(obstacleObject);
             obstacleObject.SetActive(true);
