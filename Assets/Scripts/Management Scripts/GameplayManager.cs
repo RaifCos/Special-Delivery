@@ -159,6 +159,8 @@ public class GameplayManager : MonoBehaviour {
 
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndGameMusic());
+
+        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     public void BossGameOver(int winner) {
@@ -174,6 +176,8 @@ public class GameplayManager : MonoBehaviour {
 
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
+
+        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     // Function to stop gameplay when the game ends.
@@ -303,7 +307,6 @@ public class GameplayManager : MonoBehaviour {
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } yield return _waitForSeconds1;
         if (difficulty == 1) StartCoroutine(MoneyCount());
-        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     private IEnumerator MoneyCount() {

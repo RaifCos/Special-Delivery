@@ -1,17 +1,17 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
-// Script to handle objectives (Parcels and Delivery Spots)
 public class BossParcelObjective : MonoBehaviour {
-    [Header ("Gameplay Elements")]
-    [SerializeField] private GameObject parcelObj; 
-    [SerializeField] private GameObject deliveryObjPlayer; 
-    [SerializeField] private GameObject deliveryObjBoss; 
-    [SerializeField] private int bossDeliveryTime; 
-    [SerializeField] private GameObject boss; 
+    [Header("Gameplay Elements")]
+    [SerializeField] private GameObject parcelObj;
+    [SerializeField] private GameObject deliveryObjPlayer;
+    [SerializeField] private GameObject deliveryObjBoss;
+    [SerializeField] private int bossDeliveryTime;
+    [SerializeField] private GameObject boss;
     private BossVan bossVan;
 
-    [Header ("UI Elements")]
+    [Header("UI Elements")]
     [SerializeField] private TMP_Text playerScoreText;
     [SerializeField] private TMP_Text bossScoreText;
     [SerializeField] private Animator playerScoreAnimator;
@@ -22,7 +22,6 @@ public class BossParcelObjective : MonoBehaviour {
     private bool isChangingState = false;
     private DeliveryManager dm;
 
-    // Start is called before the first frame update
     void Start() {
         dm = GameManager.deliveryManager;
         boss.SetActive(true);
@@ -36,28 +35,30 @@ public class BossParcelObjective : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(isChangingState) return;
+        if (isChangingState) return;
 
         bool playerHit = other.gameObject.CompareTag("Player");
         bool bossHit = other.gameObject.CompareTag("Boss");
 
         if (playerHit) {
-            if (phase == 1) { DeliveryCompleted(); }
-            else if (phase == 0) { 
-                ChangeState(1);
-            }
+            if (phase == 1) DeliveryCompleted();
+            else if (phase == 0) ChangeState(1);
         }
 
         if (bossHit) {
-            if (phase == 2) { DeliveryCompleted(); }
-            else if (phase == 0) { 
-                ChangeState(2);
-            }
+            if (phase == 2) DeliveryCompleted();
+            else if (phase == 0) ChangeState(2);
         }
     }
 
     public void ChangeState(int input) {
         if (isChangingState) return;
+        StartCoroutine(ChangeStateRoutine(input));
+    }
+
+    // Wrapping state changes in a coroutine lets Unity's physics pipeline
+    // fully process the teleport before new trigger events are accepted.
+    private IEnumerator ChangeStateRoutine(int input) {
         isChangingState = true;
 
         phase = input;
@@ -69,22 +70,29 @@ public class BossParcelObjective : MonoBehaviour {
             float z = Random.Range(1.4f, 2f);
             parcelObj.transform.localScale = new Vector3(x, y, z);
             transform.position = dm.GetParcelPos();
-        } else { 
+        } else {
             GameManager.newsTextScroller.AddBossHeadline(phase == 1);
             parcelObj.SetActive(false);
             GameManager.gameplayManager.StartBossTimer(bossDeliveryTime);
-            transform.position = dm.GetDeliverySpot();   
-        } bossVan.ChangePhase(phase);
+            transform.position = dm.GetDeliverySpot();
+        }
 
+        bossVan.ChangePhase(phase);
         deliveryObjPlayer.SetActive(phase == 1);
-        deliveryObjBoss.SetActive(phase == 2); 
+        deliveryObjBoss.SetActive(phase == 2);
+
+        // Wait for physics to process the new position before accepting
+        // new trigger events — prevents immediate re-entry at the new spot.
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
         isChangingState = false;
     }
 
     public void DeliveryCompleted() {
         GameManager.obstacleManager.SpawnObstacle(true);
-        if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator); 
-        if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator); 
+        if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator);
+        if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator);
         ChangeState(0);
     }
 
@@ -95,9 +103,9 @@ public class BossParcelObjective : MonoBehaviour {
         playerScoreText.text = playerScore.ToString();
         bossScoreText.text = bossScore.ToString();
 
-        if (animator != null) { TriggerScoreAnimation(animator); } 
-        if (playerScore == 5) { GameManager.gameplayManager.BossGameOver(0); }
-        else if (bossScore == 5) { GameManager.gameplayManager.BossGameOver(1); }
+        if (animator != null) TriggerScoreAnimation(animator);
+        if (playerScore == 5) GameManager.gameplayManager.BossGameOver(0);
+        else if (bossScore == 5) GameManager.gameplayManager.BossGameOver(1);
     }
 
     private void TriggerScoreAnimation(Animator animator) => animator.SetTrigger(ScoreAnimHash);
