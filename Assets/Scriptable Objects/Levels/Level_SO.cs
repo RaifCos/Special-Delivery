@@ -16,5 +16,5 @@ public class Level_SO : ScriptableObject {
     public List<Obstacle> tempObstacles;
 
     [Header("Other Variables")]
-    public Level_SO requirements; 
+    public List<Level_SO> requirements; 
 }
