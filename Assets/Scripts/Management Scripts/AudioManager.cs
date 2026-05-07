@@ -14,9 +14,14 @@ public class AudioManager : MonoBehaviour {
     private AudioSource[] spatialAudioSources;
 
     [Header("Music Audio Clips")] 
-    [SerializeField] private AudioClip musicStart;
-    [SerializeField] private AudioClip musicLoop;
-    [SerializeField] private AudioClip musicEnd;
+    [SerializeField] private AudioClip standardStart;
+    [SerializeField] private AudioClip stnadardLoop;
+    [SerializeField] private AudioClip standardEnd;
+    [SerializeField] private AudioClip bossStart;
+    [SerializeField] private AudioClip bossLoop;
+    [SerializeField] private AudioClip bossWin;
+    [SerializeField] private AudioClip bossLose;
+    private AudioClip musicStart, musicLoop;
 
     [Header("Other Variables")]
     [SerializeField] private AudioClip soundParcel;
@@ -38,12 +43,20 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void Start() {
+        if (GameManager.instance.GetDifficulty() == 2) {
+            musicStart = bossStart;
+            musicLoop = bossLoop;
+        } else {
+            musicStart = standardStart;
+            musicLoop = stnadardLoop;
+        }
+
         // Preload all Audio Sounds to prevent gaps or delays when they're needed.
         musicStart.LoadAudioData();
         musicLoop.LoadAudioData();
-        musicEnd.LoadAudioData();
         soundParcel.LoadAudioData();
         soundSpot.LoadAudioData();
+        gameMusicCoroutine = StartCoroutine(GameMusicLoop());
     }
 
     #region Music
@@ -67,8 +80,6 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void StartGameMusic() => gameMusicCoroutine = StartCoroutine(GameMusicLoop());
-
     public void StopGameMusic() {
         if (gameMusicCoroutine != null) StopCoroutine(gameMusicCoroutine);
         isPlaying = false;
@@ -80,7 +91,16 @@ public class AudioManager : MonoBehaviour {
         StopGameMusic();
         soundscape.Stop();
         SetMusicPitch(1f);
-        music.clip = musicEnd;
+        music.clip = standardEnd;
+        music.Play();
+        yield return new WaitUntil(() => !music.isPlaying);
+    }
+
+    public IEnumerator EndBossMusic(int winner) {
+        StopGameMusic();
+        soundscape.Stop();
+        SetMusicPitch(1f);
+        music.clip = winner == 0 ? bossWin : bossLose;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }

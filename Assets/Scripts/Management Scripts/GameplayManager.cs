@@ -113,8 +113,7 @@ public class GameplayManager : MonoBehaviour {
         // Initialize the player van.
         player.GetComponent<PlayerControl>().SetState(true);
 
-        // Start Music and News Text
-        GameManager.audioManager.StartGameMusic();
+        // Start News Text
         GameManager.newsTextScroller.StartNews();
 
         // Start timer and begin game. 
@@ -165,6 +164,7 @@ public class GameplayManager : MonoBehaviour {
     public void BossGameOver(int winner) {
         // Stop the game.
         StopGameloop();
+        ResetBossTimer();
 
         // Display game over screen.
         AlternateGameMenus(1);
@@ -173,7 +173,7 @@ public class GameplayManager : MonoBehaviour {
         StartCoroutine(GameOverFade());
 
         // Stop game music and play game over music.
-        StartCoroutine(GameManager.audioManager.EndGameMusic());
+        StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
     }
 
     // Function to stop gameplay when the game ends.

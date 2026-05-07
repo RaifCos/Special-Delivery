@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ public class BossParcelObjective : MonoBehaviour {
     private static readonly int ScoreAnimHash = Animator.StringToHash("scoreAnim");
 
     private int phase, playerScore, bossScore;
-    private bool isChangingState, gameOver = false;
+    private bool isChangingState = false;
     private DeliveryManager dm;
 
     // Start is called before the first frame update
@@ -60,6 +59,7 @@ public class BossParcelObjective : MonoBehaviour {
     public void ChangeState(int input) {
         if (isChangingState) return;
         isChangingState = true;
+
         phase = input;
         if (phase == 0) {
             GameManager.gameplayManager.ResetBossTimer();
@@ -85,7 +85,7 @@ public class BossParcelObjective : MonoBehaviour {
         GameManager.obstacleManager.SpawnObstacle(true);
         if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator); 
         if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator); 
-        if (!gameOver) ChangeState(0);
+        ChangeState(0);
     }
 
     private void SetScore(int pS, int bS, Animator animator) {
@@ -96,8 +96,8 @@ public class BossParcelObjective : MonoBehaviour {
         bossScoreText.text = bossScore.ToString();
 
         if (animator != null) { TriggerScoreAnimation(animator); } 
-        if (playerScore == 5) { GameManager.gameplayManager.BossGameOver(0); gameOver = true; }
-        else if (bossScore == 5) { GameManager.gameplayManager.BossGameOver(1); gameOver = true; }
+        if (playerScore == 5) { GameManager.gameplayManager.BossGameOver(0); }
+        else if (bossScore == 5) { GameManager.gameplayManager.BossGameOver(1); }
     }
 
     private void TriggerScoreAnimation(Animator animator) => animator.SetTrigger(ScoreAnimHash);

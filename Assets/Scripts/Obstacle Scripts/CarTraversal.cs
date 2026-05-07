@@ -149,7 +149,7 @@ public class CarTraversal : MonoBehaviour {
 
         if (bestNode != null) {
             currNode = bestNode;
-            prevNode = bestNode.GetComponent<TrafficNode>().GetNextNode(null);
+            prevNode = bestNode.GetComponent<TrafficNode>()?.GetNextNode(null);
         }
     }
 

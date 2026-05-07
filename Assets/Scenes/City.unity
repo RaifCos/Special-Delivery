@@ -1427,7 +1427,7 @@ GameObject:
   - component: {fileID: 51711538}
   m_Layer: 0
   m_Name: GN (12)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2907,7 +2907,7 @@ GameObject:
   - component: {fileID: 100904385}
   m_Layer: 0
   m_Name: GN (15)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4860,7 +4860,7 @@ GameObject:
   - component: {fileID: 171084619}
   m_Layer: 0
   m_Name: GN (8)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5240,7 +5240,7 @@ GameObject:
   - component: {fileID: 181767781}
   m_Layer: 0
   m_Name: GN (10)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21748,7 +21748,7 @@ GameObject:
   - component: {fileID: 683263688}
   m_Layer: 0
   m_Name: GN (14)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23995,7 +23995,7 @@ GameObject:
   - component: {fileID: 741516835}
   m_Layer: 0
   m_Name: GN (5)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34091,7 +34091,7 @@ GameObject:
   - component: {fileID: 968962444}
   m_Layer: 0
   m_Name: GN (1)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34542,7 +34542,7 @@ GameObject:
   - component: {fileID: 1003088580}
   m_Layer: 0
   m_Name: GN (4)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38074,7 +38074,7 @@ GameObject:
   - component: {fileID: 1141001759}
   m_Layer: 0
   m_Name: GN (17)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41632,7 +41632,7 @@ GameObject:
   - component: {fileID: 1297569529}
   m_Layer: 0
   m_Name: GN (9)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42365,7 +42365,7 @@ GameObject:
   - component: {fileID: 1325230197}
   m_Layer: 0
   m_Name: GN (3)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50379,9 +50379,13 @@ MonoBehaviour:
   - {fileID: 1361120763}
   - {fileID: 2123516335}
   - {fileID: 1729975881}
-  musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
-  musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
-  musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  standardStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
+  stnadardLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
+  standardEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  bossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
+  bossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
+  bossWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
+  bossLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
@@ -52588,7 +52592,7 @@ GameObject:
   - component: {fileID: 1529195339}
   m_Layer: 0
   m_Name: GN (2)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54252,7 +54256,7 @@ GameObject:
   - component: {fileID: 1574568762}
   m_Layer: 0
   m_Name: GN (16)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57341,7 +57345,7 @@ GameObject:
   - component: {fileID: 1709458479}
   m_Layer: 0
   m_Name: GN (6)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74307,7 +74311,7 @@ GameObject:
   - component: {fileID: 2019664913}
   m_Layer: 0
   m_Name: GN (13)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76493,7 +76497,7 @@ GameObject:
   - component: {fileID: 2116007626}
   m_Layer: 0
   m_Name: GN (7)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76733,7 +76737,7 @@ GameObject:
   - component: {fileID: 2118054430}
   m_Layer: 0
   m_Name: GN (11)
-  m_TagString: Untagged
+  m_TagString: Giant Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

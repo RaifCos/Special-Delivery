@@ -33,7 +33,6 @@ public class MainMenuManager : MonoBehaviour {
     public void Start() {
         ToggleBossLock(GameManager.dataManager.IsBossUnlocked());
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
-        GameManager.audioManager.StartGameMusic();
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
