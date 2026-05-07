@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSpeed: 15
   turnSpeed: 100
-  grip: 15
+  grip: 20
   distanceThreshold: 5
   height: 4
   nodeSet: 0
@@ -396,6 +396,7 @@ MonoBehaviour:
   chaseTarget: 1
   directChaseRange: 20
   returnToNodeRange: 30
+  depth: 1
 --- !u!114 &7151341223227668820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,7 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topSpeed: 20
   turnSpeed: 90
-  grip: 15
+  grip: 20
   distanceThreshold: 6
   height: 4
   nodeSet: 0
@@ -1529,6 +1530,7 @@ MonoBehaviour:
   chaseTarget: 0
   directChaseRange: 0
   returnToNodeRange: 0
+  depth: 1
 --- !u!114 &4673018690858706131
 MonoBehaviour:
   m_ObjectHideFlags: 0
