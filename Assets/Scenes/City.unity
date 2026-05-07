@@ -5605,6 +5605,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
+      propertyPath: depth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314138635049599287, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1441140730333596551}
@@ -50388,6 +50392,9 @@ MonoBehaviour:
   bossLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  soundBossParcel: {fileID: 8300000, guid: 3fc110eb37b6dd54bbeb0b8fde2b631b, type: 3}
+  soundBossSpotPlayer: {fileID: 8300000, guid: 6b3c22b5745cc5749923c33f3412f71a, type: 3}
+  soundBossSpotBoss: {fileID: 8300000, guid: 06fc5daf1e83d6b46b7fd09e24a749b0, type: 3}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
   soundscapeVolume: 0
   volumeSlider: {fileID: 1123858760}

@@ -159,8 +159,6 @@ public class GameplayManager : MonoBehaviour {
 
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndGameMusic());
-
-        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     public void BossGameOver(int winner) {
@@ -176,8 +174,6 @@ public class GameplayManager : MonoBehaviour {
 
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
-
-        endUI.transform.Find("Menu Button").gameObject.SetActive(true);
     }
 
     // Function to stop gameplay when the game ends.
@@ -307,6 +303,9 @@ public class GameplayManager : MonoBehaviour {
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } yield return _waitForSeconds1;
         if (difficulty == 1) StartCoroutine(MoneyCount());
+        GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
+        menuButton.SetActive(true);
+        eventSystem.SetSelectedGameObject(menuButton);
     }
 
     private IEnumerator MoneyCount() {
@@ -380,7 +379,6 @@ public class GameplayManager : MonoBehaviour {
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
-                eventSystem.SetSelectedGameObject(endUI.transform.Find("Menu Button").gameObject);
                 break; }
             case 2: { // Pause Menu
                 pauseUI.SetActive(true);

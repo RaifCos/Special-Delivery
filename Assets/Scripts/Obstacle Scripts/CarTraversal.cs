@@ -21,6 +21,7 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private bool chaseTarget;
     [SerializeField] private float directChaseRange; 
     [SerializeField] private float returnToNodeRange; 
+    [SerializeField] private int depth = 1;
     private bool followingTarget, chasingTarget;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
@@ -96,7 +97,6 @@ public class CarTraversal : MonoBehaviour {
         rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
     }
 
-    // LookRotation now accepts a worldspace point to face toward
     private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
         Vector3 direction = (targetPosition - rb.position).normalized;
         if (direction.sqrMagnitude > 0.001f) {
@@ -115,7 +115,7 @@ public class CarTraversal : MonoBehaviour {
 
         if (followingTarget) {
             Vector3 targetPosition = target != null ? target.transform.position : tempNode.transform.position;
-            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition);
+            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition, depth);
         } else {
             currNode = tempNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
         }

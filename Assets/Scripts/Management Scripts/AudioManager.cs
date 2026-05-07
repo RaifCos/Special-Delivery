@@ -26,6 +26,9 @@ public class AudioManager : MonoBehaviour {
     [Header("Other Variables")]
     [SerializeField] private AudioClip soundParcel;
     [SerializeField] private AudioClip soundSpot;
+    [SerializeField] private AudioClip soundBossParcel;
+    [SerializeField] private AudioClip soundBossSpotPlayer;
+    [SerializeField] private AudioClip soundBossSpotBoss;
     [SerializeField] private AudioClip defaultCrashSound;
     [SerializeField] private float soundscapeVolume; 
     [SerializeField] private Slider volumeSlider;
@@ -112,6 +115,11 @@ public class AudioManager : MonoBehaviour {
     #region Sound Effects
 
     public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot); 
+
+    public void PlayBossParcelSound(bool isParcel, bool isPlayer) {
+        if (isParcel) { PlaySoundEffect(soundBossParcel); }
+        else { PlaySoundEffect(isPlayer ? soundBossSpotPlayer : soundBossSpotBoss); }
+    }
 
     public void DefaultCrashSound(Vector3 position) => PlaySpatialSoundEffect(defaultCrashSound, position, 0f, true);
 

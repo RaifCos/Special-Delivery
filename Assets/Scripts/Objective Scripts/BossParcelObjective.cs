@@ -19,7 +19,7 @@ public class BossParcelObjective : MonoBehaviour {
     private static readonly int ScoreAnimHash = Animator.StringToHash("scoreAnim");
 
     private int phase, playerScore, bossScore;
-    private bool isChangingState = false;
+    private bool isChangingState, isPlaying = false;
     private DeliveryManager dm;
 
     void Start() {
@@ -32,10 +32,11 @@ public class BossParcelObjective : MonoBehaviour {
         SetScore(0, 0, null);
 
         parcelObj.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 50, 0));
+        isPlaying = true;
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (isChangingState) return;
+        if (isChangingState || !isPlaying) return;
 
         bool playerHit = other.gameObject.CompareTag("Player");
         bool bossHit = other.gameObject.CompareTag("Boss");
@@ -56,12 +57,10 @@ public class BossParcelObjective : MonoBehaviour {
         StartCoroutine(ChangeStateRoutine(input));
     }
 
-    // Wrapping state changes in a coroutine lets Unity's physics pipeline
-    // fully process the teleport before new trigger events are accepted.
     private IEnumerator ChangeStateRoutine(int input) {
-        isChangingState = true;
-
+        isChangingState = true;        
         phase = input;
+        
         if (phase == 0) {
             GameManager.gameplayManager.ResetBossTimer();
             parcelObj.SetActive(true);
@@ -71,6 +70,7 @@ public class BossParcelObjective : MonoBehaviour {
             parcelObj.transform.localScale = new Vector3(x, y, z);
             transform.position = dm.GetParcelPos();
         } else {
+            if (isPlaying) { GameManager.audioManager.PlayBossParcelSound(true, true); } 
             GameManager.newsTextScroller.AddBossHeadline(phase == 1);
             parcelObj.SetActive(false);
             GameManager.gameplayManager.StartBossTimer(bossDeliveryTime);
@@ -81,8 +81,6 @@ public class BossParcelObjective : MonoBehaviour {
         deliveryObjPlayer.SetActive(phase == 1);
         deliveryObjBoss.SetActive(phase == 2);
 
-        // Wait for physics to process the new position before accepting
-        // new trigger events — prevents immediate re-entry at the new spot.
         yield return new WaitForFixedUpdate();
         yield return new WaitForFixedUpdate();
 
@@ -93,6 +91,7 @@ public class BossParcelObjective : MonoBehaviour {
         GameManager.obstacleManager.SpawnObstacle(true);
         if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator);
         if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator);
+        if (isPlaying) { GameManager.audioManager.PlayBossParcelSound(false, phase == 1); } 
         ChangeState(0);
     }
 
@@ -104,8 +103,8 @@ public class BossParcelObjective : MonoBehaviour {
         bossScoreText.text = bossScore.ToString();
 
         if (animator != null) TriggerScoreAnimation(animator);
-        if (playerScore == 5) GameManager.gameplayManager.BossGameOver(0);
-        else if (bossScore == 5) GameManager.gameplayManager.BossGameOver(1);
+        if (playerScore == 5) { GameManager.gameplayManager.BossGameOver(0); isPlaying = false; }
+        else if (bossScore == 5) { GameManager.gameplayManager.BossGameOver(1); isPlaying = false; }
     }
 
     private void TriggerScoreAnimation(Animator animator) => animator.SetTrigger(ScoreAnimHash);
