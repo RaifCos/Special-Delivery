@@ -149,7 +149,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726374139776800555}
   serializedVersion: 5
-  m_Mass: 1500
+  m_Mass: 1000
   m_LinearDamping: 0.5
   m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: -1, z: 0}
@@ -192,6 +192,7 @@ MonoBehaviour:
   chaseTarget: 1
   directChaseRange: 40
   returnToNodeRange: 50
+  depth: 0
 --- !u!114 &6118548689462897912
 MonoBehaviour:
   m_ObjectHideFlags: 0

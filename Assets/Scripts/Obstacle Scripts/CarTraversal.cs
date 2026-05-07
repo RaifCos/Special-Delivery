@@ -1,9 +1,8 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-
 public class CarTraversal : MonoBehaviour {
-    [Header ("Car Variables")]
+    [Header("Car Variables")]
     [SerializeField] private float topSpeed;
     [SerializeField] private float turnSpeed;
     [SerializeField] private float grip;
@@ -11,17 +10,22 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private float height;
     private float actTopSpeed;
 
-    [Header ("Traversal Information")]
+    [Header("Traversal Information")]
     [SerializeField] private int nodeSet;
     [SerializeField] private bool ignoreBlockage;
 
-    [Header ("Target Following")]
+    [Header("Target Following")]
     [SerializeField] private GameObject target;
     [SerializeField] private bool followPlayer;
     [SerializeField] private bool chaseTarget;
-    [SerializeField] private float directChaseRange; 
-    [SerializeField] private float returnToNodeRange; 
+    [SerializeField] private float directChaseRange;
+    [SerializeField] private float returnToNodeRange;
     [SerializeField] private int depth = 1;
+
+    [SerializeField] private float goalRecalcThreshold = 5f;
+    private Vector3 lastGoalCalcPosition;
+    private bool goalPositionDirty = true;
+
     private bool followingTarget, chasingTarget;
     private Rigidbody rb;
     private GameObject currNode, prevNode;
@@ -43,7 +47,10 @@ public class CarTraversal : MonoBehaviour {
             currNode = prevNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
             if (currNode == null) { currNode = prevNode; }
             rb.position = prevNode.transform.position + (Vector3.up * 2f);
-            transform.rotation = Quaternion.Euler((currNode.transform.position - rb.position).normalized);
+
+            Vector3 dir = (currNode.transform.position - rb.position).normalized;
+            if (dir.sqrMagnitude > 0.001f)
+                transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 
@@ -59,34 +66,34 @@ public class CarTraversal : MonoBehaviour {
             float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
 
             ChaseUpdate();
+
             if (chasingTarget) {
                 if (target == null) { return; }
                 LookRotation(roadHit.normal, target.transform.position);
                 if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
-                { MoveCar(); }
+                    MoveCar();
             } else {
                 if (currNode == null) { return; }
                 if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
                     LookRotation(roadHit.normal, currNode.transform.position);
                     if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
-                    { MoveCar(); }
+                        MoveCar();
                 } else { UpdateNode(); }
             }
         }
     }
 
     private void ChaseUpdate() {
-        if(chaseTarget) {
-            float distToTarget = Vector3.Distance(rb.position, target.transform.position);
-            if (!chasingTarget && distToTarget <= directChaseRange) {
-                chasingTarget = true;
-            } else if (chasingTarget && distToTarget > returnToNodeRange) {
-                chasingTarget = false;
-                ReattachToNodeSystem();
-            }
+        if (!chaseTarget || target == null) return;
+
+        float distToTarget = Vector3.Distance(rb.position, target.transform.position);
+        if (!chasingTarget && distToTarget <= directChaseRange) {
+            chasingTarget = true;
+        } else if (chasingTarget && distToTarget > returnToNodeRange) {
+            chasingTarget = false;
+            ReattachToNodeSystem();
         }
     }
-
 
     private void MoveCar() {
         Vector3 velocity = rb.linearVelocity;
@@ -113,6 +120,14 @@ public class CarTraversal : MonoBehaviour {
         GameObject tempNode = currNode;
         if (tempNode == null) { return; }
 
+        if (followingTarget && target != null) {
+            if (goalPositionDirty ||
+                Vector3.Distance(target.transform.position, lastGoalCalcPosition) > goalRecalcThreshold) {
+                lastGoalCalcPosition = target.transform.position;
+                goalPositionDirty = false;
+            }
+        }
+
         if (followingTarget) {
             Vector3 targetPosition = target != null ? target.transform.position : tempNode.transform.position;
             currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition, depth);
@@ -124,13 +139,15 @@ public class CarTraversal : MonoBehaviour {
         prevNode = tempNode;
     }
 
-    // Finds the closest node that isn't behind a wall and snaps the car back to the node system.
     private void ReattachToNodeSystem() {
         GameObject[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+        if (allNodes == null || allNodes.Length == 0) return;
+
         GameObject bestNode = null;
         float bestScore = Mathf.Infinity;
 
         foreach (GameObject node in allNodes) {
+            if (node == null) continue;
             float dist = Vector3.Distance(rb.position, node.transform.position);
 
             Vector3 dirToNode = (node.transform.position - rb.position).normalized;
@@ -148,14 +165,18 @@ public class CarTraversal : MonoBehaviour {
         }
 
         if (bestNode != null) {
-            currNode = bestNode;
-            prevNode = bestNode.GetComponent<TrafficNode>()?.GetNextNode(null);
+            prevNode = bestNode;
+            currNode = bestNode.GetComponent<TrafficNode>()?.GetNextNode(bestNode);
+            if (currNode == null) currNode = bestNode;
+
+            goalPositionDirty = true;
         }
     }
 
     public void ChangeTarget(GameObject input) {
         target = input;
         followingTarget = true;
+        goalPositionDirty = true;
     }
 
     public void ChangeTopSpeed(int input) => topSpeed = input;
