@@ -21,14 +21,19 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
 
+    [Header ("UI Navigation")]
+    [SerializeField] private GameObject navStartSelected;
+    [SerializeField] private GameObject achievementsStartSelected;
+    [SerializeField] private GameObject levelStartSelected;
+    [SerializeField] private GameObject shopStartSelected;
+    [SerializeField] private GameObject settingsStartSelected;
+    [SerializeField] private GameObject confirmStartSelected;
+    private EventSystem eventSystem;
+
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
     [SerializeField] private AudioClip musicLoop;
-
     private int confirmationUIID;
-    [SerializeField] private GameObject navStartSelected, achievementsStartSelected, levelStartSelected, shopStartSelected, settingsStartSelected, confirmStartSelected;
-    private EventSystem eventSystem;
-
 
     void OnEnable() { eventSystem = EventSystem.current; }
 

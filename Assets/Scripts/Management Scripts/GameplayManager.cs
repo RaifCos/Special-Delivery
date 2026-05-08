@@ -31,6 +31,7 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private AudioClip musicBossLoop;
     [SerializeField] private AudioClip musicBossEndWin;
     [SerializeField] private AudioClip musicBossEndLose;
+    [SerializeField] private AudioClip soundscape;
 
     [Header ("Sound Effects")]
     [SerializeField] private AudioClip countSound;

@@ -20264,7 +20264,6 @@ GameObject:
   - component: {fileID: 1188058037}
   - component: {fileID: 1188058032}
   - component: {fileID: 1188058030}
-  - component: {fileID: 1188058029}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20272,103 +20271,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1188058029
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188058027}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &1188058030
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20380,11 +20282,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 89dbedbb35117ff449145fae80e8de80, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6f1fadd91ea48f545be64675318f543a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -20480,13 +20382,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 1188058030}
   soundscape: {fileID: 0}
-  soundEffectSource: {fileID: 1188058029}
+  soundEffectSource: {fileID: 0}
   spatialAudioSourceObjects: []
-  musicStart: {fileID: 8300000, guid: 6f1fadd91ea48f545be64675318f543a, type: 3}
-  musicLoop: {fileID: 8300000, guid: 3d8d776f2e433674884c48fa87846b20, type: 3}
-  musicEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  soundBossParcel: {fileID: 0}
+  soundBossSpotPlayer: {fileID: 0}
+  soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
   soundscapeVolume: 0
   volumeSlider: {fileID: 0}
@@ -20533,14 +20435,12 @@ MonoBehaviour:
   creditsUI: {fileID: 1913584076}
   fileUI: {fileID: 1266031301}
   confirmUI: {fileID: 7409113696085377199}
-  saveFileUI:
-  - {fileID: 139704761}
-  - {fileID: 1409924434}
-  - {fileID: 589749688}
   openingStartSelected: {fileID: 634698436}
   creditsStartSelected: {fileID: 1578927640}
   fileStartSelected: {fileID: 296424924}
   confirmStartSelected: {fileID: 2536905057818279827}
+  musicStart: {fileID: 8300000, guid: 6f1fadd91ea48f545be64675318f543a, type: 3}
+  musicLoop: {fileID: 8300000, guid: 3d8d776f2e433674884c48fa87846b20, type: 3}
 --- !u!114 &1188058039
 MonoBehaviour:
   m_ObjectHideFlags: 0

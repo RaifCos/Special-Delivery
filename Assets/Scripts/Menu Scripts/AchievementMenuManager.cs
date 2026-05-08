@@ -11,7 +11,7 @@ public class AchievementMenuManager : MonoBehaviour {
     public Sprite lockedSprite;
 
     // Variables used for tracking achievements.
-    public int lifetimeDeliveries, playerCrashes;
+    private int lifetimeDeliveries, playerCrashes;
 
     void Awake() { GameManager.achievementMenuManager = this; }
 

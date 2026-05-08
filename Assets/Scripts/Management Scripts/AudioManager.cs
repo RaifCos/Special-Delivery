@@ -13,20 +13,20 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private GameObject[] spatialAudioSourceObjects;
     private AudioSource[] spatialAudioSources;
 
-    [Header("Music Audio Clips")] 
-    private AudioClip musicStart, musicLoop, musicEnd, musicEndAlternate;
-
-    [Header("Other Variables")]
+    [Header("Sound Effects")]
     [SerializeField] private AudioClip soundParcel;
     [SerializeField] private AudioClip soundSpot;
     [SerializeField] private AudioClip soundBossParcel;
     [SerializeField] private AudioClip soundBossSpotPlayer;
     [SerializeField] private AudioClip soundBossSpotBoss;
     [SerializeField] private AudioClip defaultCrashSound;
-    [SerializeField] private float soundscapeVolume; 
+
+    [Header("Volume Settings")]
     [SerializeField] private Slider volumeSlider;
-    private Coroutine gameMusicCoroutine;
     private float volume;
+
+    private AudioClip musicStart, musicLoop, musicEnd, musicEndAlternate;
+    private Coroutine gameMusicCoroutine;
     private bool isPlaying, isPaused;
 
     void Awake() {

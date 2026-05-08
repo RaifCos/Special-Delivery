@@ -8595,6 +8595,8 @@ MonoBehaviour:
   shopButton: {fileID: 1829574761}
   bossButton: {fileID: 638345466}
   backdrop: {fileID: 1123336445}
+  musicStart: {fileID: 8300000, guid: 8fa0d9640613b1d43b193df91b298b86, type: 3}
+  musicLoop: {fileID: 8300000, guid: c5f75e1b51ea92e4fb05e6479ce6d6a5, type: 3}
   navStartSelected: {fileID: 685998771}
   achievementsStartSelected: {fileID: 1897136316}
   levelStartSelected: {fileID: 1504894274}
@@ -8811,14 +8813,11 @@ MonoBehaviour:
   soundscape: {fileID: 0}
   soundEffectSource: {fileID: 908304996}
   spatialAudioSourceObjects: []
-  standardStart: {fileID: 8300000, guid: 8fa0d9640613b1d43b193df91b298b86, type: 3}
-  stnadardLoop: {fileID: 8300000, guid: c5f75e1b51ea92e4fb05e6479ce6d6a5, type: 3}
-  standardEnd: {fileID: 8300000, guid: aae8155323347b8499a538ec8bd70200, type: 3}
-  bossStart: {fileID: 0}
-  bossLoop: {fileID: 0}
-  bossEnd: {fileID: 0}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
+  soundBossParcel: {fileID: 0}
+  soundBossSpotPlayer: {fileID: 0}
+  soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
   soundscapeVolume: 0
   volumeSlider: {fileID: 1753095610}

@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 57078165}
   - component: {fileID: 57078164}
   - component: {fileID: 57078163}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 57519188}
   - component: {fileID: 57519187}
   - component: {fileID: 57519186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -17371,7 +17371,7 @@ GameObject:
   - component: {fileID: 501989787}
   - component: {fileID: 501989786}
   - component: {fileID: 501989785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -25493,7 +25493,7 @@ GameObject:
   - component: {fileID: 825010181}
   - component: {fileID: 825010180}
   - component: {fileID: 825010179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -32815,7 +32815,7 @@ GameObject:
   - component: {fileID: 934492498}
   - component: {fileID: 934492497}
   - component: {fileID: 934492496}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -50131,6 +50131,14 @@ MonoBehaviour:
   startingTime: 60
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
+  musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
+  musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
+  musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  musicBossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
+  musicBossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
+  musicBossEndWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
+  musicBossEndLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
+  soundscape: {fileID: 8300000, guid: 4608eb68e4c29604abf2d807ca167714, type: 3}
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
   mainUI: {fileID: 753791641}
@@ -50387,13 +50395,6 @@ MonoBehaviour:
   - {fileID: 1361120763}
   - {fileID: 2123516335}
   - {fileID: 1729975881}
-  standardStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
-  stnadardLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
-  standardEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
-  bossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
-  bossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
-  bossWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
-  bossLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
   soundBossParcel: {fileID: 8300000, guid: 3fc110eb37b6dd54bbeb0b8fde2b631b, type: 3}
@@ -50427,7 +50428,9 @@ MonoBehaviour:
   - {fileID: 286854141868716584, guid: 49d09f0abfdc3e642b0f9ca5ad3852bb, type: 3}
   - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
   - {fileID: 7300224660295688363, guid: 1f3cd53c63b71794883da66bc102df37, type: 3}
+  - {fileID: 9017513005959047918, guid: 6228665bd1a6aeb4eb59d21e7d0c4dfb, type: 3}
   - {fileID: 9017513005959047918, guid: 1055752651301ad41bb359804a5dc75c, type: 3}
+  - {fileID: 9017513005959047918, guid: f065eb529d2b1b84c9b809dc7b4a6acb, type: 3}
   - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
   - {fileID: 5905357340723977540, guid: 383f6a73bd8cd224891b71143791c52a, type: 3}
   - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
@@ -50435,8 +50438,6 @@ MonoBehaviour:
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
-  - {fileID: 9017513005959047918, guid: f065eb529d2b1b84c9b809dc7b4a6acb, type: 3}
-  - {fileID: 9017513005959047918, guid: 6228665bd1a6aeb4eb59d21e7d0c4dfb, type: 3}
   tempObstacles:
   - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
   - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
@@ -50445,39 +50446,7 @@ MonoBehaviour:
   - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
   - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
-  carStartingNodes:
-  - {fileID: 281776876}
-  - {fileID: 1314148704}
-  - {fileID: 870408729}
-  - {fileID: 419582440}
-  - {fileID: 1071184198}
-  - {fileID: 1075177973}
-  - {fileID: 200285055}
-  - {fileID: 1839830089}
-  ufoStartingNodes:
-  - {fileID: 968962441}
-  edgeNodes:
-  - {fileID: 1529195334}
-  - {fileID: 1325230192}
-  - {fileID: 1709458474}
-  - {fileID: 2116007621}
-  - {fileID: 1297569524}
-  - {fileID: 181767776}
-  - {fileID: 2118054425}
-  - {fileID: 51711533}
-  - {fileID: 2019664908}
-  - {fileID: 1574568757}
-  sideNodes:
-  - {fileID: 299005359}
-  - {fileID: 372558609}
-  - {fileID: 129705051}
-  - {fileID: 1187779702}
-  - {fileID: 1086907701}
-  - {fileID: 361791964}
-  - {fileID: 1799708282}
-  - {fileID: 2040525729}
-  - {fileID: 1973217938}
-  - {fileID: 1277579687}
+  spawningDistanceThreshold: 40
 --- !u!114 &1446925847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55281,7 +55250,7 @@ GameObject:
   - component: {fileID: 1603121103}
   - component: {fileID: 1603121102}
   - component: {fileID: 1603121101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -83531,7 +83500,7 @@ GameObject:
   - component: {fileID: 3469287837009830743}
   - component: {fileID: 1711813856237262749}
   - component: {fileID: 1526533099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -83740,7 +83709,7 @@ GameObject:
   - component: {fileID: 3572507479993547059}
   - component: {fileID: 1617056054198144505}
   - component: {fileID: 3572507479993547060}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -95286,7 +95255,7 @@ GameObject:
   - component: {fileID: 350653311838102868}
   - component: {fileID: 2538114967844704672}
   - component: {fileID: 2538114967844704671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -95757,7 +95726,7 @@ GameObject:
   - component: {fileID: 3571295104639768417}
   - component: {fileID: 3571295104639768419}
   - component: {fileID: 3571295104639768418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -106475,7 +106444,7 @@ GameObject:
   - component: {fileID: 363214657739288554}
   - component: {fileID: 2517110351906151200}
   - component: {fileID: 4174395913222798070}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -107180,7 +107149,7 @@ GameObject:
   - component: {fileID: 6905893517072462937}
   - component: {fileID: 8661089321632530581}
   - component: {fileID: 8661089321632530580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -107817,7 +107786,7 @@ GameObject:
   - component: {fileID: 8495107585137453722}
   - component: {fileID: 5908819601793801808}
   - component: {fileID: 8495107585137453723}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -108515,7 +108484,7 @@ GameObject:
   - component: {fileID: 5554366581708997963}
   - component: {fileID: 7706192997137789315}
   - component: {fileID: 7706192997137789314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -109850,7 +109819,7 @@ GameObject:
   - component: {fileID: 9153845303268170668}
   - component: {fileID: 9153845303268170670}
   - component: {fileID: 9153845303268170669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -110919,7 +110888,7 @@ GameObject:
   - component: {fileID: 5290941319156105888}
   - component: {fileID: 7965113269053322858}
   - component: {fileID: 9134118689127501062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -111148,7 +111117,7 @@ GameObject:
   - component: {fileID: 5008114722482286570}
   - component: {fileID: 7089952825025043232}
   - component: {fileID: 8747238385800362742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}

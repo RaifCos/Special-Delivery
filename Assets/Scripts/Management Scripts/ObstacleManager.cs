@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,9 +15,7 @@ public class ObstacleManager : MonoBehaviour {
 
     [Header ("Obstacle Node Data")]
     [SerializeField] private float spawningDistanceThreshold;
-    [SerializeField] private GameObject[] edgeNodes;
-    [SerializeField] private GameObject[] sideNodes;
-    private GameObject[] trafficNodes, giantNodes;
+    private GameObject[] trafficNodes, giantNodes, sideNodes, edgeNodes;
     private bool[] sideNodeOccupied;
 
     private GameObject obstacleObject, destroyParticles;
@@ -27,10 +26,15 @@ public class ObstacleManager : MonoBehaviour {
     void Awake() => GameManager.obstacleManager = this;
     
     private void Start() {
-        // Reset Object Counts (from Previous Games)
-        destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
+        // Load Node Data
+        trafficNodes = GameObject.FindGameObjectsWithTag("Traffic Node");
+        giantNodes = GameObject.FindGameObjectsWithTag("Giant Node");
+        sideNodes = GameObject.FindGameObjectsWithTag("Side Node");
+        edgeNodes = giantNodes.Where(go => go.GetComponent<EdgeNode>() != null).ToArray();
         sideNodeOccupied = new bool[sideNodes.Length];
-        for(int i = 0; i < sideNodes.Length; i++) { sideNodeOccupied[i] = false; }
+        for (int i = 0; i < sideNodes.Length; i++) { sideNodeOccupied[i] = false; }
+
+        destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
 
         // Add Perm Objects to Pool.
         foreach(Obstacle obs in permObstacles) { 
@@ -44,8 +48,6 @@ public class ObstacleManager : MonoBehaviour {
             tempObstaclePool.Add(obstacleObject);
         }
 
-        trafficNodes = GameObject.FindGameObjectsWithTag("Traffic Node");
-        giantNodes = GameObject.FindGameObjectsWithTag("Giant Node");
         difficulty = GameManager.instance.GetDifficulty();
     }
 
