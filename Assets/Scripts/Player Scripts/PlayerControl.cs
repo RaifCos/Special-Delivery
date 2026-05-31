@@ -107,15 +107,15 @@ public class PlayerControl : MonoBehaviour {
     }
 
     private void FlipRecovery() {
-    float uprightAngle = Vector3.Angle(transform.up, Vector3.up);
-    if (uprightAngle > flipAngleThreshold) {
-        flippedTimer += Time.fixedDeltaTime;
-        if (flippedTimer >= flipRecoveryDelay) {
-            Vector3 rollDirection = Vector3.Cross(transform.up, Vector3.up);
-            rb.AddTorque(flipRecoveryTorque * rb.mass * rollDirection.normalized, ForceMode.Force);
-        }
-    } else { flippedTimer = 0f; }
-}
+        float uprightAngle = Vector3.Angle(transform.up, Vector3.up);
+        if (uprightAngle > flipAngleThreshold) {
+            flippedTimer += Time.fixedDeltaTime;
+            if (flippedTimer >= flipRecoveryDelay) {
+                Vector3 rollDirection = Vector3.Cross(transform.up, Vector3.up);
+                rb.AddTorque(flipRecoveryTorque * rb.mass * rollDirection.normalized, ForceMode.Force);
+            }
+        } else { flippedTimer = 0f; }
+    }
     
     // Completely stop all van movements.
     public void StopVan() {
