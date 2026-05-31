@@ -117,7 +117,7 @@ public class GameplayManager : MonoBehaviour {
                 gameUI = bossUI;
                 endUI = bossEndUI;
                 GameManager.obstacleManager.SpawnStartingObstacles();
-                GameManager.audioManager.Initalize(musicStart, musicLoop, musicBossEndWin, musicBossEndLose);
+                GameManager.audioManager.Initalize(musicBossStart, musicBossLoop, musicBossEndWin, musicBossEndLose);
                 break;
         }
 

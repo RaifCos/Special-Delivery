@@ -50401,7 +50401,6 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 8300000, guid: 6b3c22b5745cc5749923c33f3412f71a, type: 3}
   soundBossSpotBoss: {fileID: 8300000, guid: 06fc5daf1e83d6b46b7fd09e24a749b0, type: 3}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
-  soundscapeVolume: 0
   volumeSlider: {fileID: 1123858760}
 --- !u!114 &1446925846
 MonoBehaviour:
