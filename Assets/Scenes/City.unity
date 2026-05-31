@@ -3590,7 +3590,7 @@ GameObject:
   - component: {fileID: 129705053}
   m_Layer: 0
   m_Name: SN (3)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8356,7 +8356,7 @@ GameObject:
   - component: {fileID: 299005361}
   m_Layer: 0
   m_Name: SN (1)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14422,7 +14422,7 @@ GameObject:
   - component: {fileID: 361791966}
   m_Layer: 0
   m_Name: SN (6)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14699,7 +14699,7 @@ GameObject:
   - component: {fileID: 372558611}
   m_Layer: 0
   m_Name: SN (2)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36606,7 +36606,7 @@ GameObject:
   - component: {fileID: 1086907703}
   m_Layer: 0
   m_Name: SN (5)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39630,7 +39630,7 @@ GameObject:
   - component: {fileID: 1187779704}
   m_Layer: 0
   m_Name: SN (4)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41335,7 +41335,7 @@ GameObject:
   - component: {fileID: 1277579689}
   m_Layer: 0
   m_Name: SN (10)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59783,7 +59783,7 @@ GameObject:
   - component: {fileID: 1799708284}
   m_Layer: 0
   m_Name: SN (7)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68262,7 +68262,7 @@ GameObject:
   - component: {fileID: 1973217940}
   m_Layer: 0
   m_Name: SN (9)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74967,7 +74967,7 @@ GameObject:
   - component: {fileID: 2040525731}
   m_Layer: 0
   m_Name: SN (8)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
