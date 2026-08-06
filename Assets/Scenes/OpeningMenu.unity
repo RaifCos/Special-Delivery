@@ -20390,7 +20390,6 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 0}
   soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
-  soundscapeVolume: 0
   volumeSlider: {fileID: 0}
 --- !u!114 &1188058035
 MonoBehaviour:
@@ -35160,7 +35159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3747882967632430278, guid: e04c3c3c478efe0469678af7bea502ef, type: 3}
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
