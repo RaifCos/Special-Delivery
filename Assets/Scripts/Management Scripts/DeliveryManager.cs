@@ -41,7 +41,6 @@ public class DeliveryManager : MonoBehaviour {
     }
 
     public Vector3 GetDeliverySpot() {
-        currPosition = nodePositions[0];
         int newIndex;
         if (nodePositions.Count <= 1) {
             newIndex = 0;
