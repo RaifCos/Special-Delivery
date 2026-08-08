@@ -50166,6 +50166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6269c6aab462f046bb8b24612b4c7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteMaterial: {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
 --- !u!82 &1446925841
 AudioSource:
   m_ObjectHideFlags: 0

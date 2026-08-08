@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour {
     private float musicVolume;
     private bool qualityShadows;
 
+    [Header("Universal Variables")]
+    [SerializeField] private Material paletteMaterial;
+
     void Awake() { 
         instance = this;
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
@@ -76,4 +79,6 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("SaveFile", saveFile);
         PlayerPrefs.Save();
     }
+
+    public Material GetPalette() => paletteMaterial;
 }
