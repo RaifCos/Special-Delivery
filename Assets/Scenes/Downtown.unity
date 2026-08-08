@@ -59184,6 +59184,7 @@ MonoBehaviour:
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}
   confirmText: {fileID: 15772673}
+  gameOverPauseTime: 2
 --- !u!114 &1446925840
 MonoBehaviour:
   m_ObjectHideFlags: 0

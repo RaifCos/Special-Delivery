@@ -54,6 +54,7 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Animator timeAnimator;
     [SerializeField] private TMP_Text confirmText;
+    [SerializeField] private float gameOverPauseTime = 1f;
 
     private bool isPlaying = false;
     private bool isGamePaused = false;
@@ -314,7 +315,7 @@ public class GameplayManager : MonoBehaviour {
         while (endUI.GetComponent<CanvasGroup>().alpha < 1) {
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
-        } yield return _waitForSeconds1;
+        } yield return new WaitForSeconds(gameOverPauseTime);
         if (difficulty == 1) StartCoroutine(MoneyCount());
         GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
         menuButton.SetActive(true);
