@@ -23242,8 +23242,8 @@ MonoBehaviour:
   brakeTorque: 8000
   maxSpeed: 25
   defaultBoostPower: 500
-  steeringRange: 40
-  steeringRangeAtMaxSpeed: 20
+  steeringRange: 60
+  steeringRangeAtMaxSpeed: 40
   vanDrive:
     m_Name: Van Drive
     m_Type: 0
@@ -23478,7 +23478,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1500
   m_LinearDamping: 0.2
-  m_AngularDamping: 1
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: -1.5, z: -0.3}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
