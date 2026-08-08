@@ -58856,9 +58856,9 @@ MonoBehaviour:
   startingTime: 60
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
-  musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
-  musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
-  musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  musicStart: {fileID: 8300000, guid: 3489d2de9c2424543a8d11b15acc96aa, type: 3}
+  musicLoop: {fileID: 8300000, guid: 845992829bc554b47820219a597dc2d0, type: 3}
+  musicEnd: {fileID: 8300000, guid: 09e615cd8b87c2042a4b793d7cfa8b43, type: 3}
   musicBossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
   musicBossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
   musicBossEndWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
