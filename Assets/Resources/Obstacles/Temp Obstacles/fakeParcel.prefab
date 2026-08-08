@@ -156,6 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHeight: 50
+  fallSound: {fileID: 8300000, guid: 7d2b246306ae09a4688c02be20d5e4af, type: 3}
+  fallingSoundPlayed: 1
 --- !u!114 &-8367608588522091340
 MonoBehaviour:
   m_ObjectHideFlags: 0
