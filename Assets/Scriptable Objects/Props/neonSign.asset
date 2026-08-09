@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: neonSign
   externalName: Neon Sign
-  description: 
+  description: neonSign Description
   stackable: 0
   suspended: 1
   isLit: 1

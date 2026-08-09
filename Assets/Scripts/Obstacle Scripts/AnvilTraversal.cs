@@ -4,10 +4,12 @@ using UnityEngine;
 public class AnvilTraversal : MonoBehaviour {
     public float startHeight;
     [SerializeField] private AudioClip fallSound;
-    [SerializeField] private bool fallingSoundPlayed;
+    [SerializeField] private bool playsFallingSound;
+    private bool fallingSoundPlayed;
 
     // Set initial height based on public variable.
     void OnEnable() { 
+        fallingSoundPlayed = !playsFallingSound;
         transform.position = new Vector3(0f, startHeight, 0f);  
         transform.localScale = new Vector3(1f, 1f, 1f);    
     }
@@ -21,7 +23,7 @@ public class AnvilTraversal : MonoBehaviour {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.x, transform.position.y, target.z), 20f);
         }
         
-        if (y < 120 && !fallingSoundPlayed) {
+        if (y < 160 && !fallingSoundPlayed) {
             fallingSoundPlayed = true;
             GameManager.audioManager.PlaySpatialSoundEffect(fallSound, target, 0f, true);
         }
