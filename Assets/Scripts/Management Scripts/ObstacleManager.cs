@@ -66,6 +66,26 @@ public class ObstacleManager : MonoBehaviour {
          } return startingNode;
     }
 
+    public GameObject GetNearestNode(int type) {
+        Vector3 playerPosition = GameManager.gameplayManager.FindPlayer();
+        GameObject nearestNode = type == 0? trafficNodes[0]: giantNodes[0];
+        if (type == 0) {
+            for (int i = 1; i < trafficNodes.Length; i++) {
+                if (Vector3.Distance(nearestNode.transform.position, playerPosition) >
+                Vector3.Distance(trafficNodes[i].transform.position, playerPosition)) {
+                    nearestNode = trafficNodes[i];
+                }
+            }
+        } else {
+            for (int i = 1; i < giantNodes.Length; i++) {
+                if (Vector3.Distance(nearestNode.transform.position, playerPosition) > 
+                Vector3.Distance(giantNodes[i].transform.position, playerPosition)) {
+                    nearestNode = giantNodes[i];
+                }
+            }
+        } return nearestNode;
+    }
+
     // Function to generate a Path that goes from one edge of the Stage to the Other.
     public Vector3[] GetEdgePath() {
         GameObject edgeNode = edgeNodes[Mathf.RoundToInt(Random.Range(0, edgeNodes.Length))];

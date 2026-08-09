@@ -50423,6 +50423,7 @@ MonoBehaviour:
   - {fileID: 4593245236174038032, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 4023329275542928404, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
   - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
@@ -50443,6 +50444,7 @@ MonoBehaviour:
   - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
   - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
+  - {fileID: 8490043015159253133, guid: 84bcdac69620488479cf1187b0cafe77, type: 3}
   spawningDistanceThreshold: 40
 --- !u!114 &1446925847
 MonoBehaviour:
@@ -56250,7 +56252,7 @@ GameObject:
   - component: {fileID: 1645511387}
   m_Layer: 0
   m_Name: Giant Nodes
-  m_TagString: Giant Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
