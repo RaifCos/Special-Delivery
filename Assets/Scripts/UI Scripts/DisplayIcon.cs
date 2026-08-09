@@ -33,6 +33,9 @@ public class DisplayIcon : MonoBehaviour,
             case 3: { // Achievement Icon
                 GameManager.achievementMenuManager.DisplayAchievement(obj.name);
                 break; }
+            case 4: { // Level Icon
+                GameManager.mainMenuManager.DisplayLevel(obj.name);
+                break; }
         }
     }
 

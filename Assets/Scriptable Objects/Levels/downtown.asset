@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07212e0913b0ec4c8ed371185c13e10, type: 3}
   m_Name: downtown
   m_EditorClassIdentifier: Assembly-CSharp::Level_SO
+  levelNumber: 1
   internalName: downtown
   externalName: PARCEL CITY DOWNTOWN
-  musicStart: {fileID: 0}
-  musicLoop: {fileID: 0}
-  musicEnd: {fileID: 0}
-  startingObstacles: []
-  permObstacles: []
-  tempObstacles: []
-  requirements:
-  - {fileID: 11400000, guid: 247bbadb5294a5748a11ebd62054f356, type: 2}
+  description: THE LIVELY NIGHTLIFE DISTRICT OF PARCEL CITY, SET ALONG ITS DEEP CANALS.
+    DON'T FALL IN!
+  unlocks: []
+  sprite: {fileID: 21300000, guid: a11f933dbe421fa44bc04cdaada0e056, type: 3}
