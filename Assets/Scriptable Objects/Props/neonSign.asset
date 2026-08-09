@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: neonSign
   externalName: Neon Sign
-  description: neonSign Description
+  description: 'all the cool cities have neon signs everywhere, so naturally parcel
+    city followed suit. however, the locals didn''t realize the signs were meant
+    to be... signs, so they just adorned these neon boards with pretty patterns.  '
   stackable: 0
   suspended: 1
   isLit: 1

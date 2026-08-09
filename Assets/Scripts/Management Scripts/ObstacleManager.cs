@@ -66,20 +66,22 @@ public class ObstacleManager : MonoBehaviour {
          } return startingNode;
     }
 
-    public GameObject GetNearestNode(int type) {
+    public GameObject GetNearestNode(int type, float distanceThreshold) {
         Vector3 playerPosition = GameManager.gameplayManager.FindPlayer();
         GameObject nearestNode = type == 0? trafficNodes[0]: giantNodes[0];
         if (type == 0) {
             for (int i = 1; i < trafficNodes.Length; i++) {
+                float distToTarget = Vector3.Distance(trafficNodes[i].transform.position, playerPosition);
                 if (Vector3.Distance(nearestNode.transform.position, playerPosition) >
-                Vector3.Distance(trafficNodes[i].transform.position, playerPosition)) {
+                distToTarget && distToTarget > distanceThreshold) {
                     nearestNode = trafficNodes[i];
                 }
             }
         } else {
             for (int i = 1; i < giantNodes.Length; i++) {
+                float distToTarget = Vector3.Distance(giantNodes[i].transform.position, playerPosition);
                 if (Vector3.Distance(nearestNode.transform.position, playerPosition) > 
-                Vector3.Distance(giantNodes[i].transform.position, playerPosition)) {
+                distToTarget && distToTarget > distanceThreshold) {
                     nearestNode = giantNodes[i];
                 }
             }

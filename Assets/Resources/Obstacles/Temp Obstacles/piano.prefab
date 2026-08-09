@@ -192,7 +192,7 @@ MonoBehaviour:
   colliderPitchOffset: 0
   triggerPitchOffset: 0
   randomisePitch: 0
-  soundCooldown: 0.1
+  soundCooldown: 0.5
 --- !u!114 &925338111641679283
 MonoBehaviour:
   m_ObjectHideFlags: 0

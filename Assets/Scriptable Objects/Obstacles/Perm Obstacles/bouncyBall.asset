@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: bouncyBall
   externalName: Bouncy Ball
-  description: bouncyBall Description
-  headline: bouncyBall Headline
+  description: 'a giant rubber ball that bounces unpredictably.
+
+
+    if you think
+    this is big, imagine the size of the air pump that blew it up. wow. chills.'
+  headline: rumours spread of a local "dodgeball-based super-villian or similar ne'rr-do-well"
+    following sightings a large rubber ball, i guess.
   prefab: {fileID: 106689621728126085, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
   sprite: {fileID: 21300000, guid: a867c657dab66ca48817a1e74e218f11, type: 3}
