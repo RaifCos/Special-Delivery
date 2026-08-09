@@ -50,7 +50,7 @@ public class MainMenuManager : MonoBehaviour {
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
-        StartCoroutine(GameManager.instance.LoadAsyncScene("Downtown"));
+        StartCoroutine(GameManager.instance.LoadAsyncScene("city"));
     }
 
     private IEnumerator SelectInitialButton() {

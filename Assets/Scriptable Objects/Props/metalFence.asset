@@ -17,4 +17,6 @@ MonoBehaviour:
   description: 'a chain of metal fence. not to be confused with the chain fence,
     which is not a chain of metal fence, but rather a fence of metal chain. '
   stackable: 0
-  sprite: {fileID: 21300000, guid: 723bf7af00ccb1e42985da2a9c93945b, type: 3}
+  suspended: 0
+  isLit: 0
+  sprite: {fileID: 21300000, guid: a8d8675a6d329f04f8ecc9a9e33bcea8, type: 3}

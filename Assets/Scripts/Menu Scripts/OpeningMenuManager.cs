@@ -9,6 +9,7 @@ public class OpeningMenuManager : MonoBehaviour {
     [SerializeField] private GameObject openingUI;
     [SerializeField] private GameObject creditsUI;
     [SerializeField] private GameObject fileUI;
+    [SerializeField] private GameObject[] saveFileUI;
     [SerializeField] private GameObject confirmUI;
 
     [Header ("UI Navigation")]
@@ -22,7 +23,6 @@ public class OpeningMenuManager : MonoBehaviour {
     [SerializeField] private AudioClip musicStart;
     [SerializeField] private AudioClip musicLoop;
 
-    private GameObject[] saveFileUI;
     private ProgressData[] saveFileProgress = new ProgressData[3]; 
     private Color32 completeColor = new(255, 227, 0, 255);
 

@@ -17,4 +17,4 @@ MonoBehaviour:
   description: 
   headline: 
   prefab: {fileID: 106689621728126085, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
-  sprite: {fileID: 21300000, guid: 96c0c562449f6194c85953db7e84d1f2, type: 3}
+  sprite: {fileID: 21300000, guid: a867c657dab66ca48817a1e74e218f11, type: 3}

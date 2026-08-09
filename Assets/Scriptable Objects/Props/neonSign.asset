@@ -18,4 +18,4 @@ MonoBehaviour:
   stackable: 0
   suspended: 1
   isLit: 1
-  sprite: {fileID: 21300000, guid: 21416ba4c1fc5da49b57b175b80395f1, type: 3}
+  sprite: {fileID: 21300000, guid: d3ee5a37c30302345b8fe46da3589d19, type: 3}

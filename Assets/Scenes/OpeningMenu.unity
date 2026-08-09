@@ -20434,6 +20434,10 @@ MonoBehaviour:
   openingUI: {fileID: 987919549}
   creditsUI: {fileID: 1913584076}
   fileUI: {fileID: 1266031301}
+  saveFileUI:
+  - {fileID: 139704761}
+  - {fileID: 1409924434}
+  - {fileID: 589749688}
   confirmUI: {fileID: 7409113696085377199}
   openingStartSelected: {fileID: 634698436}
   creditsStartSelected: {fileID: 1578927640}
