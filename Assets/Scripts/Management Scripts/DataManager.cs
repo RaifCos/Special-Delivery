@@ -182,12 +182,12 @@ public class DataManager : MonoBehaviour {
             // Check Level Progress (Point for Each Boss Unlocked/Beaten)
             int beatenLevels = 0;
             foreach (Level_SO level in levels) {
-                if (data.levelProgress.GetValueOrDefault(level.internalName) == 2) beatenLevels++;
-                if (data.levelProgress.GetValueOrDefault(level.internalName) == 3) beatenLevels++;
+                if (data.levelProgress.GetValueOrDefault(level.internalName) > 1) beatenLevels++;
+                if (data.levelProgress.GetValueOrDefault(level.internalName) > 2) beatenLevels++;
             }
 
             saveFileProgress[i] = new ProgressData {
-                levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / levels.Count * 100) : 0,
+                levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / (levels.Count * 2) * 100) : 0,
                 galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery     * 100) : 0,
                 achievementProgress = totalAchievements > 0 ? Mathf.RoundToInt((float)achieved / totalAchievements * 100) : 0,
                 upgradeProgress     = totalUpgrades     > 0 ? Mathf.RoundToInt((float)upgraded  / totalUpgrades    * 100) : 0,

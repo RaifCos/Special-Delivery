@@ -50151,6 +50151,7 @@ MonoBehaviour:
   confirmUI: {fileID: 1885166694}
   pauseStartSelect: {fileID: 1697856833}
   confirmStartSelect: {fileID: 149775537}
+  overStartSelect: {fileID: 857535412}
   timerImage: {fileID: 706020644}
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}

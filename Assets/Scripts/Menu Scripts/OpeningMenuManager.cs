@@ -92,26 +92,28 @@ public class OpeningMenuManager : MonoBehaviour {
             Transform panel = saveFileUI[i].transform;
             if (!saveFileProgress[i].isEmpty) {
                 // Activate Progress UI Elements.
-                ActivateSaveFileUIElement(panel.GetChild(0).gameObject, "", saveFileProgress[i].totalProgress);
-                ActivateSaveFileUIElement(panel.GetChild(2).gameObject, "Gallery\t\t", saveFileProgress[i].galleryProgress);
-                ActivateSaveFileUIElement(panel.GetChild(3).gameObject, "Achievements\t", saveFileProgress[i].achievementProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Overall").gameObject, "", saveFileProgress[i].totalProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Story").gameObject, "STORY\t\t", saveFileProgress[i].levelProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Gallery").gameObject, "GALLERY\t\t", saveFileProgress[i].galleryProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Achievements").gameObject, "ACHIEVEMENTS\t", saveFileProgress[i].achievementProgress);
                 
                 // Show Upgrades only if the Garage is Unlocked. 
                 string upgradeString;
-                if (saveFileProgress[i].shopUnlocked) { upgradeString = "Upgrades\t\t"; }
+                if (saveFileProgress[i].shopUnlocked) { upgradeString = "UPGRADES\t\t"; }
                 else { upgradeString = "???\t\t\t"; }
-                ActivateSaveFileUIElement(panel.GetChild(1).gameObject, upgradeString, saveFileProgress[i].upgradeProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Upgrades").gameObject, upgradeString, saveFileProgress[i].upgradeProgress);
             
                 // Disable "No Save Data" Text.
-                panel.GetChild(4).gameObject.SetActive(false);
-                panel.GetChild(5).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "Play";
+                panel.transform.Find("No Save").gameObject.SetActive(false);
+                panel.transform.Find("Play Button").transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "PLAY";
             } else {
-                panel.GetChild(0).gameObject.SetActive(false);
-                panel.GetChild(1).gameObject.SetActive(false);
-                panel.GetChild(2).gameObject.SetActive(false);
-                panel.GetChild(3).gameObject.SetActive(false);
-                panel.GetChild(4).gameObject.SetActive(true);
-                panel.GetChild(5).gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "New Game";
+                panel.transform.Find("Overall").gameObject.SetActive(false);
+                panel.transform.Find("Story").gameObject.SetActive(false);
+                panel.transform.Find("Upgrades").gameObject.SetActive(false);
+                panel.transform.Find("Gallery").gameObject.SetActive(false);
+                panel.transform.Find("Achievements").gameObject.SetActive(false);
+                panel.transform.Find("No Save").gameObject.SetActive(true);
+                panel.transform.Find("Play Button").gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = "NEW GAME";
             }
         } 
     }

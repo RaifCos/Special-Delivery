@@ -49,6 +49,7 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private GameObject confirmUI;
     [SerializeField] private GameObject pauseStartSelect;
     [SerializeField] private GameObject confirmStartSelect;
+    [SerializeField] private GameObject overStartSelect;
     private GameObject gameUI, endUI;
 
     [Header ("UI Elements")]
@@ -397,6 +398,7 @@ public class GameplayManager : MonoBehaviour {
                 break; }
             case 1: { // Game Over Screen
                 endUI.SetActive(true);
+                eventSystem.SetSelectedGameObject(overStartSelect);
                 break; }
             case 2: { // Pause Menu
                 pauseUI.SetActive(true);
