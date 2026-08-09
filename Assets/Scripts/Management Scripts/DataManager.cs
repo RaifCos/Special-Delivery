@@ -68,6 +68,7 @@ public class DataManager : MonoBehaviour {
     public Achievement_SO GetAchievement(string key) { return achievements.Find(ach => ach.internalName == key); }
     public List<Upgrade_SO> GetUpgrades() { return upgrades; }
     public Upgrade_SO GetUpgrade(string key) { return upgrades.Find(up => up.internalName == key); }
+    public Level_SO GetLevel(string key)  { return levels.Find(lvl => lvl.internalName == key); }
     #endregion
 
     #region Save Data
@@ -178,10 +179,12 @@ public class DataManager : MonoBehaviour {
             foreach (Upgrade_SO up in upgrades)
                 if (data.upgradeProgress.GetValueOrDefault(up.internalName)) upgraded++;
 
-            // Check Level Progress
+            // Check Level Progress (Point for Each Boss Unlocked/Beaten)
             int beatenLevels = 0;
-            foreach (Level_SO level in levels)
+            foreach (Level_SO level in levels) {
+                if (data.levelProgress.GetValueOrDefault(level.internalName) == 2) beatenLevels++;
                 if (data.levelProgress.GetValueOrDefault(level.internalName) == 3) beatenLevels++;
+            }
 
             saveFileProgress[i] = new ProgressData {
                 levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / levels.Count * 100) : 0,

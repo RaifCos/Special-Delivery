@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using System;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
@@ -18,8 +19,12 @@ public class MainMenuManager : MonoBehaviour {
     [Header ("UI Elements")]
     [SerializeField] private GameObject navDescription;
     [SerializeField] private Button shopButton;
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button tutorialButton;
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
+    [SerializeField] private TMP_Text levelName;
+    [SerializeField] private RectTransform levelSelection;
 
     [Header ("UI Navigation")]
     [SerializeField] private GameObject navStartSelected;
@@ -29,6 +34,9 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private GameObject settingsStartSelected;
     [SerializeField] private GameObject confirmStartSelected;
     private EventSystem eventSystem;
+    private Level_SO selectedLevel;
+    private int selectedLevelNumber = 0;
+    private float targetScrollerPos;
 
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
@@ -39,7 +47,7 @@ public class MainMenuManager : MonoBehaviour {
 
     void Awake() { GameManager.mainMenuManager = this; }
 
-    public void Start() {
+    private void Start() {
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
@@ -47,10 +55,18 @@ public class MainMenuManager : MonoBehaviour {
         StartCoroutine(SelectInitialButton());
     }
 
+    private void LateUpdate() {
+        float pos = levelSelection.anchoredPosition.x;
+        if (Mathf.Approximately(pos, targetScrollerPos)) { return; }
+
+        float newX = Mathf.MoveTowards(pos, targetScrollerPos, 1000f * Time.deltaTime);
+        levelSelection.anchoredPosition = new Vector2(newX, levelSelection.anchoredPosition.y);
+    }
+
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
-        StartCoroutine(GameManager.instance.LoadAsyncScene("city"));
+        StartCoroutine(GameManager.instance.LoadAsyncScene(selectedLevel.internalName));
     }
 
     private IEnumerator SelectInitialButton() {
@@ -92,6 +108,7 @@ public class MainMenuManager : MonoBehaviour {
                 menuUI.SetActive(false);
                 levelSelectUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(levelStartSelected);
+                DisplayLevel("city");
                 break; }    
             case 5: { // Shop 
                 backdrop.color = new Color32(62, 204, 230, 255);
@@ -127,15 +144,43 @@ public class MainMenuManager : MonoBehaviour {
         }
     }
 
+    public void ToggelPlayLock(bool isUnlocked) {
+        playButton.interactable = isUnlocked;
+        tutorialButton.interactable = isUnlocked;
+        if(isUnlocked) {
+            playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "NORMAL SHIFT";
+            playButton.GetComponent<MenuText>().message = "RACE AGAINST THE CLOCK TO DELIVER AS MANY PARCELS AS YOU CAN";
+            tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "PRACTICE MODE";
+            tutorialButton.GetComponent<MenuText>().message = "LEARN THE BASICS- NO OBSTACLES, NO TIMER, NO WORRIES";
+        } else {
+            playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            playButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
+            tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            tutorialButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
+        }
+    }
+
     public void ToggleBossLock(bool isUnlocked) {
         bossButton.interactable = isUnlocked;
         if(isUnlocked) {
-            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "Boss Battle";
+            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS BATTLE";
             bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
         } else {
             bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
             bossButton.GetComponent<MenuText>().message = "COMPLETE 50 DELIVERIES TO UNLOCK";
         }
+    }
+
+    public void DisplayLevel(string lvl) {
+        selectedLevel = GameManager.dataManager.GetLevel(lvl);
+        selectedLevelNumber = selectedLevel.levelNumber;
+        int selectedLevelProgress = GameManager.dataManager.GetLevelProgress(lvl);
+
+        targetScrollerPos = -335 + selectedLevelNumber * -720;
+        ToggelPlayLock(selectedLevelProgress > 0);
+        ToggleBossLock(selectedLevelProgress > 1);
+
+        levelName.text = selectedLevel.externalName;
     }
 
     // Function to ask the user to confirm their choice on an important UI choice.
