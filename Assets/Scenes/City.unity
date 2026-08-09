@@ -5622,7 +5622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669623738017931430, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: m_Mass
-      value: 1000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6118548689462897912, guid: 312ec9a700ba24e418f011a2d7a675b2, type: 3}
       propertyPath: m_Enabled
@@ -50103,6 +50103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3a10c5d09c3f48b05b5131f0f59ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: {fileID: 11400000, guid: 247bbadb5294a5748a11ebd62054f356, type: 2}
   pauseAction:
     m_Name: Pause
     m_Type: 0

@@ -10,6 +10,8 @@ using System;
 public class GameplayManager : MonoBehaviour {
     #region Variables
 
+    [SerializeField] private Level_SO currentLevel;
+
     [Header ("Player Input")]
     [SerializeField] private InputAction pauseAction;
 
@@ -188,6 +190,8 @@ public class GameplayManager : MonoBehaviour {
 
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
+
+        if (winner == 0) { GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3); }
     }
 
     // Function to stop gameplay when the game ends.

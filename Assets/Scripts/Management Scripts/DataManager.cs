@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using UnityEditor.TestTools.CodeCoverage;
 
 #region Data Classes
 [System.Serializable]
@@ -58,16 +59,15 @@ public class DataManager : MonoBehaviour {
         LoadData();
     }
 
-    public List<Obstacle> GetObstacles() { return obstacles; }
-
+    public List<Obstacle> GetObstacles() => obstacles; 
     public Obstacle GetObstacle(string key) { return obstacles.Find(obs => obs.so.internalName == key); }
-    public List<Prop> GetProps() { return props; }
-
+    public List<Prop> GetProps() => props; 
     public Prop GetProp(string key) { return props.Find(prop => prop.so.internalName == key); }
-    public List<Achievement_SO> GetAchievements() { return achievements; }
+    public List<Achievement_SO> GetAchievements() => achievements; 
     public Achievement_SO GetAchievement(string key) { return achievements.Find(ach => ach.internalName == key); }
-    public List<Upgrade_SO> GetUpgrades() { return upgrades; }
+    public List<Upgrade_SO> GetUpgrades() => upgrades; 
     public Upgrade_SO GetUpgrade(string key) { return upgrades.Find(up => up.internalName == key); }
+    public List<Level_SO> GetLevels() => levels;
     public Level_SO GetLevel(string key)  { return levels.Find(lvl => lvl.internalName == key); }
     #endregion
 
@@ -207,7 +207,15 @@ public class DataManager : MonoBehaviour {
     // 3 - Boss Beaten 
 
     public int GetLevelProgress(string key) => data.levelProgress[key];
-    public void SetLevelProgress(string key, int value) => data.levelProgress[key] = value; 
+    public void SetLevelProgress(string key, int value) { 
+        data.levelProgress[key] = value; 
+        if (value == 3) { // If Level is Completed, Unlock the Next.
+            Level_SO lvl = GetLevel(key);
+            foreach (Level_SO unlockedLvl in lvl.unlocks) {
+                SetLevelProgress(unlockedLvl.internalName, 1);
+            }
+        }
+    }
 
     public int GetLevelScore(string key) => data.levelScores[key];
     public void SetLevelScore(string key, int value) => data.levelScores[key] = value;

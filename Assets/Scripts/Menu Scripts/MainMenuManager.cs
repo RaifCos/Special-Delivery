@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
-using System;
+using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
@@ -24,7 +25,10 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
     [SerializeField] private TMP_Text levelName;
-    [SerializeField] private RectTransform levelSelection;
+    [SerializeField] private GameObject levelSelection;
+    [SerializeField] private Sprite lockedSprite;
+    private RectTransform levelSelectionRect;
+    private Navigation playNav, tutorialNav;
 
     [Header ("UI Navigation")]
     [SerializeField] private GameObject navStartSelected;
@@ -48,6 +52,9 @@ public class MainMenuManager : MonoBehaviour {
     void Awake() { GameManager.mainMenuManager = this; }
 
     private void Start() {
+        levelSelectionRect = levelSelection.GetComponent<RectTransform>();
+        playNav = playButton.navigation;
+        tutorialNav = tutorialButton.navigation;
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
@@ -56,11 +63,11 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        float pos = levelSelection.anchoredPosition.x;
+        float pos = levelSelectionRect.anchoredPosition.x;
         if (Mathf.Approximately(pos, targetScrollerPos)) { return; }
 
         float newX = Mathf.MoveTowards(pos, targetScrollerPos, 1000f * Time.deltaTime);
-        levelSelection.anchoredPosition = new Vector2(newX, levelSelection.anchoredPosition.y);
+        levelSelectionRect.anchoredPosition = new(newX, levelSelectionRect.anchoredPosition.y);
     }
 
     public void StartGame(int difficulty) {
@@ -105,8 +112,10 @@ public class MainMenuManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(achievementsStartSelected);
                 break; }
             case 4: { // Level Select
+                UpdateLevelSelectMenu();
                 menuUI.SetActive(false);
                 levelSelectUI.SetActive(true);
+                levelSelectionRect.anchoredPosition = new(-335f, levelSelectionRect.anchoredPosition.y);
                 eventSystem.SetSelectedGameObject(levelStartSelected);
                 DisplayLevel("city");
                 break; }    
@@ -171,16 +180,73 @@ public class MainMenuManager : MonoBehaviour {
         }
     }
 
+    // Lock UI with special "Coming Soon" setup for future Levels.
+    public void ComingSoonSetup() {
+        playButton.interactable = false;
+        tutorialButton.interactable = false;
+        bossButton.interactable = false;
+        playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+        playButton.GetComponent<MenuText>().message = "COMING SOON...";
+        tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+        tutorialButton.GetComponent<MenuText>().message = "COMING SOON...";
+        bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+        bossButton.GetComponent<MenuText>().message = "COMING SOON...";
+
+        levelName.text = "Coming Soon";
+    }
+
     public void DisplayLevel(string lvl) {
+        // If Level Name contains (%d) then it is a Coming Soon placeholder.
+        Match match = Regex.Match(lvl, @"\((\d+)\)");
+        if (match.Success) {
+            ComingSoonSetup();
+            int res = int.Parse(match.Groups[1].Value);
+            SetLevelSelectNav(res);
+            targetScrollerPos = -335 + res * -695;
+            return;
+        }
+
+        // Otherwise Display as Normal.
         selectedLevel = GameManager.dataManager.GetLevel(lvl);
         selectedLevelNumber = selectedLevel.levelNumber;
         int selectedLevelProgress = GameManager.dataManager.GetLevelProgress(lvl);
 
-        targetScrollerPos = -335 + selectedLevelNumber * -720;
+        targetScrollerPos = -335 + selectedLevelNumber * -695;
         ToggelPlayLock(selectedLevelProgress > 0);
         ToggleBossLock(selectedLevelProgress > 1);
+        SetLevelSelectNav(selectedLevelNumber);
 
-        levelName.text = selectedLevel.externalName;
+        levelName.text = selectedLevelProgress > 0? selectedLevel.externalName: "???";
+    }
+
+    private void SetLevelSelectNav(int input) {
+        Button currentIcon = levelSelection.transform.GetChild(input).GetComponent<Button>();
+
+        playNav.selectOnUp = currentIcon;
+        playButton.navigation = playNav;
+
+        tutorialNav.selectOnUp = currentIcon;
+        tutorialButton.navigation = tutorialNav;
+    }
+
+    public void UpdateLevelSelectMenu() {
+        foreach(Level_SO lvl in GameManager.dataManager.GetLevels()) {
+            UpdateLevelUI(lvl);
+        }
+    }
+
+    // Function to update the UI in the Level Menu based on the Level's state.
+    private void UpdateLevelUI(Level_SO lvl) {
+        string key = lvl.internalName;
+        GameObject obj = levelSelection.transform.Find(key).gameObject;
+        Image img = obj.GetComponent<Image>();
+        if (GameManager.dataManager.GetLevelProgress(key) != 0) { 
+            img.sprite = lvl.sprite;
+            obj.GetComponent<MenuText>().message = lvl.description;
+        } else { 
+            img.sprite = lockedSprite;
+            obj.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
+        }
     }
 
     // Function to ask the user to confirm their choice on an important UI choice.

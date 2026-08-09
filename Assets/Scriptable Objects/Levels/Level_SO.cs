@@ -5,5 +5,8 @@ using System.Collections.Generic;
 public class Level_SO : ScriptableObject {
     public int levelNumber;
     public string internalName, externalName;
+    [TextArea(3, 6)]
+    public string description;
     public List<Level_SO> unlocks; 
+    public Sprite sprite; 
 }

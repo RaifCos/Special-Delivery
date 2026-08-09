@@ -150,7 +150,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2726374139776800555}
   serializedVersion: 5
-  m_Mass: 1000
+  m_Mass: 500
   m_LinearDamping: 0.5
   m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: -1, z: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   topSpeed: 15
   turnSpeed: 180
   grip: 20
-  distanceThreshold: 6
+  distanceThreshold: 4
   height: 6
   nodeSet: 1
   ignoreBlockage: 1
