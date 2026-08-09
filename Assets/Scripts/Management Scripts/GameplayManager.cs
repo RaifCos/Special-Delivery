@@ -23,6 +23,16 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private GameObject moneyText;
     private GameObject player;
 
+    [Header ("Music")]
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+    [SerializeField] private AudioClip musicEnd;
+    [SerializeField] private AudioClip musicBossStart;
+    [SerializeField] private AudioClip musicBossLoop;
+    [SerializeField] private AudioClip musicBossEndWin;
+    [SerializeField] private AudioClip musicBossEndLose;
+    [SerializeField] private AudioClip soundscape;
+
     [Header ("Sound Effects")]
     [SerializeField] private AudioClip countSound;
     [SerializeField] private AudioClip overtimeSound;
@@ -44,6 +54,7 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Animator timeAnimator;
     [SerializeField] private TMP_Text confirmText;
+    [SerializeField] private float gameOverPauseTime = 1f;
 
     private bool isPlaying = false;
     private bool isGamePaused = false;
@@ -93,6 +104,7 @@ public class GameplayManager : MonoBehaviour {
                 endUI = regularEndUI;
                 timerImage.enabled = false;
                 timerText.enabled = false;
+                GameManager.audioManager.Initalize(musicStart, musicLoop);
                 break;
             case 1:
                 gameUI = regularUI;
@@ -100,11 +112,13 @@ public class GameplayManager : MonoBehaviour {
                 timerImage.enabled = true;
                 timerText.enabled = true;
                 GameManager.obstacleManager.SpawnStartingObstacles();
+                GameManager.audioManager.Initalize(musicStart, musicLoop, musicEnd);
                 break;
             case 2:
                 gameUI = bossUI;
                 endUI = bossEndUI;
                 GameManager.obstacleManager.SpawnStartingObstacles();
+                GameManager.audioManager.Initalize(musicBossStart, musicBossLoop, musicBossEndWin, musicBossEndLose);
                 break;
         }
 
@@ -301,7 +315,7 @@ public class GameplayManager : MonoBehaviour {
         while (endUI.GetComponent<CanvasGroup>().alpha < 1) {
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
-        } yield return _waitForSeconds1;
+        } yield return new WaitForSeconds(gameOverPauseTime);
         if (difficulty == 1) StartCoroutine(MoneyCount());
         GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
         menuButton.SetActive(true);

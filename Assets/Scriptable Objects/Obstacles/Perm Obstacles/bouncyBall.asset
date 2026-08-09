@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
+  m_Name: bouncyBall
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
+  internalName: bouncyBall
+  externalName: Bouncy Ball
+  description: 'a giant rubber ball that bounces unpredictably.
+
+
+    if you think
+    this is big, imagine the size of the air pump that blew it up. wow. chills.'
+  headline: rumours spread of a local "dodgeball-based super-villian or similar ne'rr-do-well"
+    following sightings a large rubber ball, i guess.
+  prefab: {fileID: 106689621728126085, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
+  sprite: {fileID: 21300000, guid: a867c657dab66ca48817a1e74e218f11, type: 3}

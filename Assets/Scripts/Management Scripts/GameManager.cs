@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 // Script to handle main game functionality.
 public class GameManager : MonoBehaviour {
     private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
+    
     [Header("Other Manager Scripts")]
     public static GameManager instance;
     public static OpeningMenuManager openingMenuManager;
@@ -23,8 +24,12 @@ public class GameManager : MonoBehaviour {
     [Header("Player Preferences")]
     private int saveFile; 
     private static int difficulty;
+    private static Level_SO currentLevel;
     private float musicVolume;
     private bool qualityShadows;
+
+    [Header("Universal Variables")]
+    [SerializeField] private Material paletteMaterial;
 
     void Awake() { 
         instance = this;
@@ -38,6 +43,10 @@ public class GameManager : MonoBehaviour {
 
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
+
+    public Level_SO GetCurrentLevel() => currentLevel;
+    
+    public void SetCurrentLevel(Level_SO level) => currentLevel = level;
 
     public void SetMusicVolume(float input) {
         musicVolume = input;
@@ -70,4 +79,6 @@ public class GameManager : MonoBehaviour {
         PlayerPrefs.SetInt("SaveFile", saveFile);
         PlayerPrefs.Save();
     }
+
+    public Material GetPalette() => paletteMaterial;
 }

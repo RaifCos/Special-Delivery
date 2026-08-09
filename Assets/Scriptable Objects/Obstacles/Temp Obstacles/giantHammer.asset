@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
+  m_Name: giantHammer
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
+  internalName: giantHammer
+  externalName: Giant Hammer
+  description: 'this massive mallet rises from the ground before striking the ground.
+
+
+    just
+    in case you were still suspending any belief this game would take itself seriously,
+    here is a giant floating hammer. yeah, that''ll teach you. '
+  headline: 'local government issue warning regarding giant floating hammers: "hide
+    any giant nails."'
+  prefab: {fileID: 8593534102975912575, guid: 84bcdac69620488479cf1187b0cafe77, type: 3}
+  sprite: {fileID: 21300000, guid: 39072aed9be6d7644808f64e6d1a9b00, type: 3}

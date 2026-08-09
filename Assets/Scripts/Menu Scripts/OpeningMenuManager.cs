@@ -4,14 +4,27 @@ using UnityEngine.EventSystems;
 
 // Script to handle main game functionality.
 public class OpeningMenuManager : MonoBehaviour {
-    [SerializeField]
-    private GameObject openingUI, creditsUI, fileUI, confirmUI;
-    [SerializeField]
-    private GameObject[] saveFileUI;
-    private Color32 completeColor = new(255, 227, 0, 255);
-    private ProgressData[] saveFileProgress = new ProgressData[3]; 
-    [SerializeField] private GameObject openingStartSelected, creditsStartSelected, fileStartSelected, confirmStartSelected;
+
+    [Header ("UI Canvases")]
+    [SerializeField] private GameObject openingUI;
+    [SerializeField] private GameObject creditsUI;
+    [SerializeField] private GameObject fileUI;
+    [SerializeField] private GameObject[] saveFileUI;
+    [SerializeField] private GameObject confirmUI;
+
+    [Header ("UI Navigation")]
+    [SerializeField] private GameObject openingStartSelected;
+    [SerializeField] private GameObject creditsStartSelected;
+    [SerializeField] private GameObject fileStartSelected;
+    [SerializeField] private GameObject confirmStartSelected;
     private EventSystem eventSystem;
+
+    [Header ("Music")]
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+
+    private ProgressData[] saveFileProgress = new ProgressData[3]; 
+    private Color32 completeColor = new(255, 227, 0, 255);
 
     void OnEnable() { eventSystem = EventSystem.current; }
 
@@ -21,6 +34,7 @@ public class OpeningMenuManager : MonoBehaviour {
         AlternateOpeningMenus(0);
         saveFileProgress = GameManager.dataManager.LoadSaveFiles();
         UpdateSaveFileUI();
+        GameManager.audioManager.Initalize(musicStart, musicLoop); 
     }
 
     public void OpenGame(int saveFile) {

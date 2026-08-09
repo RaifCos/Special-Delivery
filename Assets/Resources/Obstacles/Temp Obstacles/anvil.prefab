@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHeight: 300
+  fallSound: {fileID: 8300000, guid: 7d2b246306ae09a4688c02be20d5e4af, type: 3}
+  playsFallingSound: 1
 --- !u!114 &-620877991194351844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PropCollision
+  destroy: 0
 --- !u!114 &2626929779125816848
 MonoBehaviour:
   m_ObjectHideFlags: 0

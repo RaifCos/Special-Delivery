@@ -10,14 +10,17 @@ public class Data {
     public Dictionary<string, int> lifetimeProps = new();
     public Dictionary<string, bool> achievementProgress = new();
     public Dictionary<string, bool> upgradeProgress = new();
+    public Dictionary<string, int> levelProgress = new();
+    public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
-    public bool shopUnlocked, bossUnlocked = false;
+    public bool shopUnlocked = false;
 }
 
 public class ProgressData {
     public int galleryProgress = 0;
     public int achievementProgress = 0;
     public int upgradeProgress = 0;
+    public int levelProgress = 0;
     public int totalProgress = 0;
     public bool shopUnlocked = false;
     public bool isEmpty = true;
@@ -37,6 +40,7 @@ public class DataManager : MonoBehaviour {
     private static List<Prop> props;
     private static List<Achievement_SO> achievements;
     private static List<Upgrade_SO> upgrades;
+    private static List<Level_SO> levels;
 
     Data data = new();
 
@@ -49,6 +53,7 @@ public class DataManager : MonoBehaviour {
         props = database.GetProps();
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
+        levels = database.GetLevels();
         saveFilePath = Path.Combine(Application.persistentDataPath, jsonFileName) + GameManager.instance.GetSaveFile();
         LoadData();
     }
@@ -95,6 +100,11 @@ public class DataManager : MonoBehaviour {
 
         foreach (Upgrade_SO up in upgrades)
             data.upgradeProgress.TryAdd(up.internalName, false);
+
+        foreach (Level_SO level in levels) {
+            data.levelProgress.TryAdd(level.internalName, 0);
+            data.levelScores.TryAdd(level.internalName, 0);
+        }
     }
 
     public Data ResetData() {
@@ -120,6 +130,10 @@ public class DataManager : MonoBehaviour {
         foreach(Upgrade_SO up in upgrades) {
             defaultData.upgradeProgress[up.internalName] = false;
         }
+
+        foreach(Level_SO level in levels) {
+            defaultData.levelProgress[level.internalName] = 0;
+        } defaultData.levelProgress["city"] = 1;
 
         return defaultData;
     }
@@ -164,11 +178,17 @@ public class DataManager : MonoBehaviour {
             foreach (Upgrade_SO up in upgrades)
                 if (data.upgradeProgress.GetValueOrDefault(up.internalName)) upgraded++;
 
+            // Check Level Progress
+            int beatenLevels = 0;
+            foreach (Level_SO level in levels)
+                if (data.levelProgress.GetValueOrDefault(level.internalName) == 3) beatenLevels++;
+
             saveFileProgress[i] = new ProgressData {
+                levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / levels.Count * 100) : 0,
                 galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery     * 100) : 0,
                 achievementProgress = totalAchievements > 0 ? Mathf.RoundToInt((float)achieved / totalAchievements * 100) : 0,
                 upgradeProgress     = totalUpgrades     > 0 ? Mathf.RoundToInt((float)upgraded  / totalUpgrades    * 100) : 0,
-                totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded) / totalItems * 100) : 0,
+                totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded + beatenLevels) / totalItems * 100) : 0,
                 shopUnlocked        = data.shopUnlocked,
                 isEmpty             = false
             };
@@ -178,9 +198,16 @@ public class DataManager : MonoBehaviour {
     #endregion
 
     #region Level Data
+    // 0 - Level Locked
+    // 1 - Level Unlocked
+    // 2 - Boss Unlocked 
+    // 3 - Boss Beaten 
 
-    public bool IsBossUnlocked() => data.bossUnlocked; 
-    public void SetBossProgress(bool input) { data.bossUnlocked = input; }
+    public int GetLevelProgress(string key) => data.levelProgress[key];
+    public void SetLevelProgress(string key, int value) => data.levelProgress[key] = value; 
+
+    public int GetLevelScore(string key) => data.levelScores[key];
+    public void SetLevelScore(string key, int value) => data.levelScores[key] = value;
 
     #endregion
 
@@ -242,7 +269,7 @@ public class DataManager : MonoBehaviour {
                             GameManager.dataManager.SetShopProgress(true); 
                             GameManager.newsTextScroller.AddShopUnlockHeadline();
                         if (data.lifetimeDeliveries == 50) {
-                            GameManager.dataManager.SetBossProgress(true); 
+                            GameManager.dataManager.SetLevelProgress("city", 2); 
                             GameManager.newsTextScroller.AddBossUnlockHeadline();
                         }
                         } if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }

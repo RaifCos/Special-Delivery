@@ -72,7 +72,8 @@ public class PlayerControl : MonoBehaviour {
             float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
             float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
 
-            currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * 5f);
+            float steerResponseRate = Mathf.Lerp(10f, 4f, speedFactor);
+            currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * steerResponseRate);
 
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
@@ -81,10 +82,11 @@ public class PlayerControl : MonoBehaviour {
             // Reduce motor torque and steering at high speeds for better handling
             float currentMotorTorque;
             currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
-            float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
+            float steerCurve = speedFactor * speedFactor; // ease-in, keeps sharper steering longer at mid speed
+            float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, steerCurve);
             bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
 
-            float turnStrength = Mathf.Lerp(5f, 3f, speedFactor);
+            float turnStrength = Mathf.Lerp(3f, 1.5f, speedFactor);
             rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
 
             foreach (var wheel in wheels) {
@@ -107,15 +109,15 @@ public class PlayerControl : MonoBehaviour {
     }
 
     private void FlipRecovery() {
-    float uprightAngle = Vector3.Angle(transform.up, Vector3.up);
-    if (uprightAngle > flipAngleThreshold) {
-        flippedTimer += Time.fixedDeltaTime;
-        if (flippedTimer >= flipRecoveryDelay) {
-            Vector3 rollDirection = Vector3.Cross(transform.up, Vector3.up);
-            rb.AddTorque(flipRecoveryTorque * rb.mass * rollDirection.normalized, ForceMode.Force);
-        }
-    } else { flippedTimer = 0f; }
-}
+        float uprightAngle = Vector3.Angle(transform.up, Vector3.up);
+        if (uprightAngle > flipAngleThreshold) {
+            flippedTimer += Time.fixedDeltaTime;
+            if (flippedTimer >= flipRecoveryDelay) {
+                Vector3 rollDirection = Vector3.Cross(transform.up, Vector3.up);
+                rb.AddTorque(flipRecoveryTorque * rb.mass * rollDirection.normalized, ForceMode.Force);
+            }
+        } else { flippedTimer = 0f; }
+    }
     
     // Completely stop all van movements.
     public void StopVan() {

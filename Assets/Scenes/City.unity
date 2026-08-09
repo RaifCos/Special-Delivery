@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1.61
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 7b9514060fff81a4f93bc0c5c6aed650, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2bd0847418e643c4ea51147c43055ecf, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1756,7 +1756,7 @@ GameObject:
   - component: {fileID: 57078165}
   - component: {fileID: 57078164}
   - component: {fileID: 57078163}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -1868,7 +1868,7 @@ GameObject:
   - component: {fileID: 57519188}
   - component: {fileID: 57519187}
   - component: {fileID: 57519186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -3590,7 +3590,7 @@ GameObject:
   - component: {fileID: 129705053}
   m_Layer: 0
   m_Name: SN (3)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8356,7 +8356,7 @@ GameObject:
   - component: {fileID: 299005361}
   m_Layer: 0
   m_Name: SN (1)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14422,7 +14422,7 @@ GameObject:
   - component: {fileID: 361791966}
   m_Layer: 0
   m_Name: SN (6)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14699,7 +14699,7 @@ GameObject:
   - component: {fileID: 372558611}
   m_Layer: 0
   m_Name: SN (2)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17371,7 +17371,7 @@ GameObject:
   - component: {fileID: 501989787}
   - component: {fileID: 501989786}
   - component: {fileID: 501989785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -22692,7 +22692,7 @@ Transform:
   m_GameObject: {fileID: 708976177}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -112.4, y: 0, z: -14.9}
+  m_LocalPosition: {x: -113.37, y: 0, z: -14.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22924,7 +22924,7 @@ Transform:
   m_GameObject: {fileID: 713347632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.1, z: -40}
+  m_LocalPosition: {x: 0, y: 2.1, z: -30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -23242,8 +23242,8 @@ MonoBehaviour:
   brakeTorque: 8000
   maxSpeed: 25
   defaultBoostPower: 500
-  steeringRange: 40
-  steeringRangeAtMaxSpeed: 20
+  steeringRange: 60
+  steeringRangeAtMaxSpeed: 40
   vanDrive:
     m_Name: Van Drive
     m_Type: 0
@@ -23478,7 +23478,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1500
   m_LinearDamping: 0.2
-  m_AngularDamping: 1
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: -1.5, z: -0.3}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -25493,7 +25493,7 @@ GameObject:
   - component: {fileID: 825010181}
   - component: {fileID: 825010180}
   - component: {fileID: 825010179}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -32815,7 +32815,7 @@ GameObject:
   - component: {fileID: 934492498}
   - component: {fileID: 934492497}
   - component: {fileID: 934492496}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -36606,7 +36606,7 @@ GameObject:
   - component: {fileID: 1086907703}
   m_Layer: 0
   m_Name: SN (5)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39630,7 +39630,7 @@ GameObject:
   - component: {fileID: 1187779704}
   m_Layer: 0
   m_Name: SN (4)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41335,7 +41335,7 @@ GameObject:
   - component: {fileID: 1277579689}
   m_Layer: 0
   m_Name: SN (10)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50131,6 +50131,14 @@ MonoBehaviour:
   startingTime: 60
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
+  musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
+  musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
+  musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
+  musicBossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
+  musicBossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
+  musicBossEndWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
+  musicBossEndLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
+  soundscape: {fileID: 8300000, guid: 4608eb68e4c29604abf2d807ca167714, type: 3}
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
   mainUI: {fileID: 753791641}
@@ -50146,6 +50154,7 @@ MonoBehaviour:
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}
   confirmText: {fileID: 15772673}
+  gameOverPauseTime: 1
 --- !u!114 &1446925840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50158,6 +50167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6269c6aab462f046bb8b24612b4c7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paletteMaterial: {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
 --- !u!82 &1446925841
 AudioSource:
   m_ObjectHideFlags: 0
@@ -50387,20 +50397,12 @@ MonoBehaviour:
   - {fileID: 1361120763}
   - {fileID: 2123516335}
   - {fileID: 1729975881}
-  standardStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
-  stnadardLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
-  standardEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
-  bossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
-  bossLoop: {fileID: 8300000, guid: 8b4bcd9b14567a047b1aa3b16cc50872, type: 3}
-  bossWin: {fileID: 8300000, guid: 8bfed4a35729b5e45917d9e5eec1b9f6, type: 3}
-  bossLose: {fileID: 8300000, guid: 4e13b47426388154bae62881a2f83a0d, type: 3}
   soundParcel: {fileID: 8300000, guid: a4d9b520e8dbeee4fb7278c0b4adf30f, type: 3}
   soundSpot: {fileID: 8300000, guid: 761c2b0f7b78b844aa29f7a8f6489822, type: 3}
   soundBossParcel: {fileID: 8300000, guid: 3fc110eb37b6dd54bbeb0b8fde2b631b, type: 3}
   soundBossSpotPlayer: {fileID: 8300000, guid: 6b3c22b5745cc5749923c33f3412f71a, type: 3}
   soundBossSpotBoss: {fileID: 8300000, guid: 06fc5daf1e83d6b46b7fd09e24a749b0, type: 3}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
-  soundscapeVolume: 0
   volumeSlider: {fileID: 1123858760}
 --- !u!114 &1446925846
 MonoBehaviour:
@@ -50421,6 +50423,7 @@ MonoBehaviour:
   - {fileID: 4593245236174038032, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
+  - {fileID: 4023329275542928404, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
   - {fileID: 471105181180015299, guid: 536a3ece0333a064a8f0adfe480f4783, type: 3}
@@ -50434,50 +50437,15 @@ MonoBehaviour:
   - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
-  - {fileID: 2964759547233136770, guid: 0ea6433434f19944593f96eed01c1ae7, type: 3}
-  - {fileID: 9017513005959047918, guid: f065eb529d2b1b84c9b809dc7b4a6acb, type: 3}
-  - {fileID: 9017513005959047918, guid: 6228665bd1a6aeb4eb59d21e7d0c4dfb, type: 3}
   tempObstacles:
   - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
   - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
-  - {fileID: 8795924381500241567, guid: 4e909b428a044d74bb0bad987de3c08d, type: 3}
   - {fileID: 2581911252302640727, guid: 91a3cff3931bd4a4c9ec3e1301d7f49f, type: 3}
   - {fileID: 5159265228132187067, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   - {fileID: 9014987189097083226, guid: b0d6d3f0d1202e7448e125f3766f8090, type: 3}
   - {fileID: 925338111641679283, guid: 3718ea104a4cc284997c8c628bac8308, type: 3}
-  carStartingNodes:
-  - {fileID: 281776876}
-  - {fileID: 1314148704}
-  - {fileID: 870408729}
-  - {fileID: 419582440}
-  - {fileID: 1071184198}
-  - {fileID: 1075177973}
-  - {fileID: 200285055}
-  - {fileID: 1839830089}
-  ufoStartingNodes:
-  - {fileID: 968962441}
-  edgeNodes:
-  - {fileID: 1529195334}
-  - {fileID: 1325230192}
-  - {fileID: 1709458474}
-  - {fileID: 2116007621}
-  - {fileID: 1297569524}
-  - {fileID: 181767776}
-  - {fileID: 2118054425}
-  - {fileID: 51711533}
-  - {fileID: 2019664908}
-  - {fileID: 1574568757}
-  sideNodes:
-  - {fileID: 299005359}
-  - {fileID: 372558609}
-  - {fileID: 129705051}
-  - {fileID: 1187779702}
-  - {fileID: 1086907701}
-  - {fileID: 361791964}
-  - {fileID: 1799708282}
-  - {fileID: 2040525729}
-  - {fileID: 1973217938}
-  - {fileID: 1277579687}
+  - {fileID: 8490043015159253133, guid: 84bcdac69620488479cf1187b0cafe77, type: 3}
+  spawningDistanceThreshold: 40
 --- !u!114 &1446925847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55281,7 +55249,7 @@ GameObject:
   - component: {fileID: 1603121103}
   - component: {fileID: 1603121102}
   - component: {fileID: 1603121101}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -56284,7 +56252,7 @@ GameObject:
   - component: {fileID: 1645511387}
   m_Layer: 0
   m_Name: Giant Nodes
-  m_TagString: Giant Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59815,7 +59783,7 @@ GameObject:
   - component: {fileID: 1799708284}
   m_Layer: 0
   m_Name: SN (7)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68294,7 +68262,7 @@ GameObject:
   - component: {fileID: 1973217940}
   m_Layer: 0
   m_Name: SN (9)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74999,7 +74967,7 @@ GameObject:
   - component: {fileID: 2040525731}
   m_Layer: 0
   m_Name: SN (8)
-  m_TagString: Untagged
+  m_TagString: Side Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83531,7 +83499,7 @@ GameObject:
   - component: {fileID: 3469287837009830743}
   - component: {fileID: 1711813856237262749}
   - component: {fileID: 1526533099}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -83740,7 +83708,7 @@ GameObject:
   - component: {fileID: 3572507479993547059}
   - component: {fileID: 1617056054198144505}
   - component: {fileID: 3572507479993547060}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -95286,7 +95254,7 @@ GameObject:
   - component: {fileID: 350653311838102868}
   - component: {fileID: 2538114967844704672}
   - component: {fileID: 2538114967844704671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -95757,7 +95725,7 @@ GameObject:
   - component: {fileID: 3571295104639768417}
   - component: {fileID: 3571295104639768419}
   - component: {fileID: 3571295104639768418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -106475,7 +106443,7 @@ GameObject:
   - component: {fileID: 363214657739288554}
   - component: {fileID: 2517110351906151200}
   - component: {fileID: 4174395913222798070}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -107180,7 +107148,7 @@ GameObject:
   - component: {fileID: 6905893517072462937}
   - component: {fileID: 8661089321632530581}
   - component: {fileID: 8661089321632530580}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -107817,7 +107785,7 @@ GameObject:
   - component: {fileID: 8495107585137453722}
   - component: {fileID: 5908819601793801808}
   - component: {fileID: 8495107585137453723}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -107857,7 +107825,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3747882967632430278, guid: e04c3c3c478efe0469678af7bea502ef, type: 3}
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108515,7 +108483,7 @@ GameObject:
   - component: {fileID: 5554366581708997963}
   - component: {fileID: 7706192997137789315}
   - component: {fileID: 7706192997137789314}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -109850,7 +109818,7 @@ GameObject:
   - component: {fileID: 9153845303268170668}
   - component: {fileID: 9153845303268170670}
   - component: {fileID: 9153845303268170669}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCorner
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -110919,7 +110887,7 @@ GameObject:
   - component: {fileID: 5290941319156105888}
   - component: {fileID: 7965113269053322858}
   - component: {fileID: 9134118689127501062}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_HillCornerOuter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -111148,7 +111116,7 @@ GameObject:
   - component: {fileID: 5008114722482286570}
   - component: {fileID: 7089952825025043232}
   - component: {fileID: 8747238385800362742}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass_Hill
   m_TagString: Level
   m_Icon: {fileID: 0}

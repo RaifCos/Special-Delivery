@@ -13,27 +13,20 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private GameObject[] spatialAudioSourceObjects;
     private AudioSource[] spatialAudioSources;
 
-    [Header("Music Audio Clips")] 
-    [SerializeField] private AudioClip standardStart;
-    [SerializeField] private AudioClip stnadardLoop;
-    [SerializeField] private AudioClip standardEnd;
-    [SerializeField] private AudioClip bossStart;
-    [SerializeField] private AudioClip bossLoop;
-    [SerializeField] private AudioClip bossWin;
-    [SerializeField] private AudioClip bossLose;
-    private AudioClip musicStart, musicLoop;
-
-    [Header("Other Variables")]
+    [Header("Sound Effects")]
     [SerializeField] private AudioClip soundParcel;
     [SerializeField] private AudioClip soundSpot;
     [SerializeField] private AudioClip soundBossParcel;
     [SerializeField] private AudioClip soundBossSpotPlayer;
     [SerializeField] private AudioClip soundBossSpotBoss;
     [SerializeField] private AudioClip defaultCrashSound;
-    [SerializeField] private float soundscapeVolume; 
+
+    [Header("Volume Settings")]
     [SerializeField] private Slider volumeSlider;
-    private Coroutine gameMusicCoroutine;
     private float volume;
+
+    private AudioClip musicStart, musicLoop, musicEnd, musicEndAlternate;
+    private Coroutine gameMusicCoroutine;
     private bool isPlaying, isPaused;
 
     void Awake() {
@@ -45,18 +38,42 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void Start() {
-        if (GameManager.instance.GetDifficulty() == 2) {
-            musicStart = bossStart;
-            musicLoop = bossLoop;
-        } else {
-            musicStart = standardStart;
-            musicLoop = stnadardLoop;
-        }
+    public void Initalize(AudioClip startClip, AudioClip loopClip) {
+        musicStart = startClip;
+        musicLoop = loopClip;
 
         // Preload all Audio Sounds to prevent gaps or delays when they're needed.
         musicStart.LoadAudioData();
         musicLoop.LoadAudioData();
+        soundParcel.LoadAudioData();
+        soundSpot.LoadAudioData();
+        gameMusicCoroutine = StartCoroutine(GameMusicLoop());
+    }
+
+    public void Initalize(AudioClip startClip, AudioClip loopClip, AudioClip endClip) {
+        musicStart = startClip;
+        musicLoop = loopClip;
+        musicEnd = endClip;
+
+        // Preload all Audio Sounds to prevent gaps or delays when they're needed.
+        musicStart.LoadAudioData();
+        musicLoop.LoadAudioData();
+        musicEnd.LoadAudioData();
+        soundParcel.LoadAudioData();
+        soundSpot.LoadAudioData();
+        gameMusicCoroutine = StartCoroutine(GameMusicLoop());
+    }
+
+    public void Initalize(AudioClip startClip, AudioClip loopClip, AudioClip endClipA, AudioClip endClipB) {
+        musicStart = startClip;
+        musicLoop = loopClip;
+        musicEnd = endClipA;
+        musicEndAlternate = endClipB;
+
+        // Preload all Audio Sounds to prevent gaps or delays when they're needed.
+        musicStart.LoadAudioData();
+        musicLoop.LoadAudioData();
+        musicEnd.LoadAudioData();
         soundParcel.LoadAudioData();
         soundSpot.LoadAudioData();
         gameMusicCoroutine = StartCoroutine(GameMusicLoop());
@@ -94,7 +111,7 @@ public class AudioManager : MonoBehaviour {
         StopGameMusic();
         soundscape.Stop();
         SetMusicPitch(1f);
-        music.clip = standardEnd;
+        music.clip = musicEnd;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }
@@ -103,7 +120,7 @@ public class AudioManager : MonoBehaviour {
         StopGameMusic();
         soundscape.Stop();
         SetMusicPitch(1f);
-        music.clip = winner == 0 ? bossWin : bossLose;
+        music.clip = winner == 0 ? musicEnd : musicEndAlternate;
         music.Play();
         yield return new WaitUntil(() => !music.isPlaying);
     }

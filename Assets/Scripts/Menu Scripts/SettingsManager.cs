@@ -16,7 +16,6 @@ public class SettingsManager : MonoBehaviour {
         GameManager.mainMenuManager.AlternateMainMenus(6);
         GameManager.dataManager.ResetData();
         GameManager.dataManager.SetShopProgress(false);
-        GameManager.dataManager.SetBossProgress(false);
         GameManager.audioManager.PlayParcelSound(false);
         StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
     }

@@ -21,17 +21,27 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
 
-    private int confirmationUIID;
-    [SerializeField] private GameObject navStartSelected, achievementsStartSelected, levelStartSelected, shopStartSelected, settingsStartSelected, confirmStartSelected;
+    [Header ("UI Navigation")]
+    [SerializeField] private GameObject navStartSelected;
+    [SerializeField] private GameObject achievementsStartSelected;
+    [SerializeField] private GameObject levelStartSelected;
+    [SerializeField] private GameObject shopStartSelected;
+    [SerializeField] private GameObject settingsStartSelected;
+    [SerializeField] private GameObject confirmStartSelected;
     private EventSystem eventSystem;
 
+    [Header ("Music")]
+    [SerializeField] private AudioClip musicStart;
+    [SerializeField] private AudioClip musicLoop;
+    private int confirmationUIID;
 
     void OnEnable() { eventSystem = EventSystem.current; }
 
     void Awake() { GameManager.mainMenuManager = this; }
 
     public void Start() {
-        ToggleBossLock(GameManager.dataManager.IsBossUnlocked());
+        GameManager.audioManager.Initalize(musicStart, musicLoop); 
+        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
@@ -40,7 +50,7 @@ public class MainMenuManager : MonoBehaviour {
     public void StartGame(int difficulty) {
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
-        StartCoroutine(GameManager.instance.LoadAsyncScene("City"));
+        StartCoroutine(GameManager.instance.LoadAsyncScene("city"));
     }
 
     private IEnumerator SelectInitialButton() {
