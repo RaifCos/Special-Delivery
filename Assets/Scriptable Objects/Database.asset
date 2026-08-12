@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Database
   obstacles:
   - {fileID: 4593245236174038032, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
+  - {fileID: -711005825700486965, guid: 526368d065e2721418563113a72ac332, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
   - {fileID: 4023329275542928404, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}

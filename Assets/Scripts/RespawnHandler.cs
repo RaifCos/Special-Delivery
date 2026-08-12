@@ -14,9 +14,11 @@ public class RespawnHandler : MonoBehaviour {
         if (collisionGO.CompareTag("Player")) StartCoroutine(RespawnFade(collisionGO));
         else if (collisionGO.CompareTag("Prop")) Destroy(collisionGO);
         else { 
-            ResetObject(collisionGO); 
-            collisionGO.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-            collisionGO.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            if (collisionGO.TryGetComponent<Rigidbody>(out Rigidbody rb)){
+                ResetObject(collisionGO); 
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
         }
     }
 
