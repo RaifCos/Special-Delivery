@@ -278,7 +278,7 @@ public class DataManager : MonoBehaviour {
                         if (data.lifetimeDeliveries == 25) { 
                             GameManager.dataManager.SetShopProgress(true); 
                             GameManager.newsTextScroller.AddShopUnlockHeadline();
-                        if (data.lifetimeDeliveries == 50) {
+                        if (data.lifetimeDeliveries == 40) {
                             GameManager.dataManager.SetLevelProgress("city", 2); 
                             GameManager.newsTextScroller.AddBossUnlockHeadline();
                         }

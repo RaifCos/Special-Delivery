@@ -4,8 +4,10 @@ using UnityEngine;
 public class CollisionHandler : MonoBehaviour {
 
     [SerializeField] private bool destroy;
-    bool beganFading = false;
-    
+    bool beganFading;
+
+    private void OnEnable() { beganFading = false; }
+
     private void OnCollisionEnter(Collision collision) {
         if (!beganFading) {
             // Shrink and Delete Object Shortly After Collision.
