@@ -41,7 +41,8 @@ public class RespawnHandler : MonoBehaviour {
             alpha -= 5;
             respawnPanel.color = new Color(0, 0, 0, alpha / 255f);
             yield return null;
-        } pc.SetState(true);
+        } // Check game didn't end/pause during Player Respawn before re-enabling control.
+        if (GameManager.gameplayManager.IsPlaying()) pc.SetState(true);
     }
 
     private void ResetObject(GameObject obj) {
