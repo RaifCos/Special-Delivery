@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 3661692606019775303}
   m_Layer: 3
   m_Name: neonSignB
-  m_TagString: Level
+  m_TagString: Prop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
