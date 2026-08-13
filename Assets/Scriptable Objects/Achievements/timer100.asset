@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65e2d3eae743ba242adf015f03006bf7, type: 3}
-  m_Name: crash1000
+  m_Name: timer100
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
-  internalName: crash1000
-  externalName: CRASH!
-  description: crash 1,000 times.
-  sprite: {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}
+  internalName: timer100
+  externalName: TIME TO SPARE
+  description: accumulate 100 seconds on the game timer.
+  sprite: {fileID: 21300000, guid: 8499d25295400af4b8a26f0ecf53f7a4, type: 3}
