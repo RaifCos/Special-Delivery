@@ -1,6 +1,5 @@
 using UnityEngine;
 [RequireComponent(typeof(ParticleSystem))]
-
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
 public class Bomb : MonoBehaviour {
