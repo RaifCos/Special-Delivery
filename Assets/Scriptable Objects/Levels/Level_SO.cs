@@ -7,6 +7,10 @@ public class Level_SO : ScriptableObject {
     public string internalName, externalName;
     [TextArea(3, 6)]
     public string description;
+    [TextArea(3, 6)]
+    public string openingHeadline;
+    [TextArea(2, 6)]
+    public string[] headlines;
     public List<Level_SO> unlocks; 
     public Sprite sprite; 
 }
