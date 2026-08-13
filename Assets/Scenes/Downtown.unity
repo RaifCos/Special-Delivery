@@ -37870,7 +37870,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 41d7fe2eb9ba6174ca60befbc43ed993, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52f1a38d9545cf84388cf2a0d2d78d78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38474,7 +38474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3a10c5d09c3f48b05b5131f0f59ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 0}
+  currentLevel: {fileID: 11400000, guid: da516b872636cf54f80070a3f48d17ba, type: 2}
   pauseAction:
     m_Name: Pause
     m_Type: 0
@@ -54657,8 +54657,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278255615
+  m_fontColor: {r: 1, g: 0.99837756, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -43,11 +43,11 @@ public class NewsTextScroller : MonoBehaviour {
     void Start() {
         lastStory = -1;
         hasBoost = GameManager.dataManager.IsUpgraded("booster");
-        currentLevel = GameManager.instance.GetCurrentLevel();
+        currentLevel = GameManager.gameplayManager.GetCurrentLevel();
         string[] genericHeadlines = currentLevel.headlines;
         headlines = genericHeadlines.Concat(tipHeadlines).ToArray();
         if (hasBoost) headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
-
+        StartNews();
     }
 
     // Function to begin the scrolling text 
@@ -57,13 +57,13 @@ public class NewsTextScroller : MonoBehaviour {
 
         // Add starting headline and additional text if the player is in the tutorial.
         switch(difficulty) {
-            case 0: { // Lifetime Deliveries
+            case 0: {
                 AddTutorialHeadlines();
                 break; }
             case 1:
                 newsQueue.Add(currentLevel.openingHeadline);
                 break;
-            case 2: { // Player Crashes
+            case 2: {
                 newsQueue.Add("BREAKING NEWS - Rival Postal Company challenges delivery driver in intense showdown.");
                 break; }
         }

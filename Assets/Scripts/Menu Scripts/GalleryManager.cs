@@ -46,7 +46,6 @@ public class GalleryManager : MonoBehaviour {
         foreach (Prop prop in GameManager.dataManager.GetProps()) {
             string name = prop.so.internalName;
             Image img = propIcons.transform.Find(name).GetComponent<Image>();
-            Debug.Log("Found " + name);
             if (GameManager.dataManager.GetPropEncounters(name) > 0) {
                 img.sprite = prop.so.sprite;
             } else { img.sprite = lockedSprite; }

@@ -44,10 +44,6 @@ public class GameManager : MonoBehaviour {
     // Setter Method for the current difficulty. 
     public void SetDifficulty(int input) { difficulty = input; }
 
-    public Level_SO GetCurrentLevel() => currentLevel;
-    
-    public void SetCurrentLevel(Level_SO level) => currentLevel = level;
-
     public void SetMusicVolume(float input) {
         musicVolume = input;
         PlayerPrefs.SetFloat("VolumeMusic_" + saveFile, musicVolume);

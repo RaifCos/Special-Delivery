@@ -131,9 +131,6 @@ public class GameplayManager : MonoBehaviour {
         // Initialize the player van.
         player.GetComponent<PlayerControl>().SetState(true);
 
-        // Start News Text
-        GameManager.newsTextScroller.StartNews();
-
         // Start timer and begin game. 
         Time.timeScale = 1;
         isPlaying = true;
@@ -161,6 +158,12 @@ public class GameplayManager : MonoBehaviour {
             directionArrow.transform.rotation = Quaternion.Slerp(directionArrow.transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
     }
+
+    #endregion
+
+    #region Level Functions
+
+    public Level_SO GetCurrentLevel() => currentLevel;
 
     #endregion
 
