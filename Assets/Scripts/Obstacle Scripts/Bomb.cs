@@ -7,20 +7,22 @@ public class Bomb : MonoBehaviour {
 
     [SerializeField] private float radius = 40.0f;
     [SerializeField] private float power = 20000.0f;
-    private bool hasExploded;
 
+    private bool hasExploded;
     private MeshRenderer meshRenderer;
-    private AudioSource boomSound;
-    private ParticleSystem boomPS;
-    [SerializeField] private ParticleSystem fusePS;
+    private GameObject boom;
+    private AudioSource boomAS;
+    private ParticleSystem fusePS;
 
     void Awake() {
         meshRenderer = GetComponent<MeshRenderer>();
-        boomSound = GetComponent<AudioSource>();
-        boomPS = GetComponent<ParticleSystem>();
+        fusePS = GetComponent<ParticleSystem>();
+        boomAS = GetComponent<AudioSource>();
+        boom = transform.GetChild(0).gameObject;
     }
 
     void OnEnable() {
+        boom.SetActive(false);
         fusePS.Play();
         hasExploded = false;
         meshRenderer.enabled = true;  
@@ -29,11 +31,10 @@ public class Bomb : MonoBehaviour {
 
     void LateUpdate() {
         if (!fusePS.isPlaying && !hasExploded) {
-            boomPS.Play();
-            boomSound.Play();
+            boom.SetActive(true);
             Explode();
             hasExploded = true;
-        } else if(hasExploded && !boomPS.isPlaying) { gameObject.SetActive(false); }
+        } else if(hasExploded && !boomAS.isPlaying) { gameObject.SetActive(false); }
     }
 
     private void Explode() {
