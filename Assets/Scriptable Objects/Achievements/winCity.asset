@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65e2d3eae743ba242adf015f03006bf7, type: 3}
-  m_Name: crash500
+  m_Name: wincity
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
-  internalName: crash500
-  externalName: CRASH!
-  description: crash 500 times.
-  sprite: {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}
+  internalName: wincity
+  externalName: THE BEST IN TOWN
+  description: complete parcel city.
+  sprite: {fileID: 21300000, guid: 86bba6d2b7febe54f978dcf30d791f82, type: 3}

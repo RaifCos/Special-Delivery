@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: crash1000
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
   internalName: crash1000
-  externalName: KABOOM!
+  externalName: CRASH!
   description: crash 1,000 times.
-  sprite: {fileID: 21300000, guid: 804666097f79c104f91d5e8d6a6b7717, type: 3}
+  sprite: {fileID: 21300000, guid: 13abb445ccc2c5a4fab248f9ed1b6f1d, type: 3}

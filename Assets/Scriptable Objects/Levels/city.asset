@@ -17,6 +17,23 @@ MonoBehaviour:
   externalName: PARCEL CITY
   description: THE BUSTLING UPTOWN CENTER OF THE ISLAND'S CAPITAL (AND ONLY) CITY.
     A MUST-SEE FOR MAIL-LOVERS
+  openingHeadline: BREAKING NEWS - local delivery service hires new driver, somehow
+    a headlining story.
+  headlines:
+  - local resident creates website to track the number of cones knocked over by delivery
+    drivers - "leavetheconesalone.org"
+  - local rodent community celebrates destruction of bins.
+  - "council spends \u20AC9.8 million on new benches across the city, hopefully nobody
+    knocks them over or anything."
+  - fire department switches to water balloons after shortage of hydrants - "it makes
+    fires way more exciting".
+  - '"there''s no knocking down my trees", boasts park gardener.'
+  - '"kfg ipsiufbgpu989-jnu", says cat who walked across writer''s keyboard.'
+  - the average cosumer now expects their package to be delivered in thirty seconds.
+  - scientists attempt to explain the high volume of glowing yellow spots around
+    the city.
+  - '"it''s a feature" says game developer in response to what is clearly a bug.'
+  - study concludes in-universe news mechanic serves "no real use, honestly."
   unlocks:
   - {fileID: 11400000, guid: da516b872636cf54f80070a3f48d17ba, type: 2}
   sprite: {fileID: 21300000, guid: f52ace4b3149f624c9f93c3b636e2957, type: 3}

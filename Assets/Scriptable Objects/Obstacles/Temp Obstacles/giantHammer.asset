@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: giantHammer
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: giantHammer
-  externalName: Giant Hammer
+  externalName: giant hammer
   description: 'this massive mallet rises from the ground before striking the ground.
 
 

@@ -17,5 +17,24 @@ MonoBehaviour:
   externalName: PARCEL CITY DOWNTOWN
   description: THE LIVELY NIGHTLIFE DISTRICT OF PARCEL CITY, SET ALONG ITS DEEP CANALS.
     DON'T FALL IN!
+  openingHeadline: 'PRIMETIME EXCLUSIVE - parcel city mail service sees surge in
+    efficiency thanks to its latest driver, somehow a primetime story. '
+  headlines:
+  - scientists attempt to explain the high volume of glowing yellow spots around
+    the city.
+  - parcel city primetine presents the top ten numbers from one to ten (number four
+    will surprise you!)
+  - mail delivery driver breaks record for most road traffic violations.
+  - diamond heist at local bank "sounds like a much better idea for a video game
+    than whatever this nonsense is".
+  - mass confusion caused after most street signs knocked down by wreckless delivery
+    driver.
+  - 'EXCLUSIVE: local nightclub submits noise complaint against rampant mail vans.'
+  - parcel city overhead rail system delayed yet again as officials "don't really
+    feel like doing it right now."
+  - city council urge locals not to participate in annual "throw junk in the river
+    day."
+  - sightings of a red delivery van "plotting revenge" spotted in uptown parcel city.
+  - it's 10'o'clock. do you know where your parcels are?
   unlocks: []
   sprite: {fileID: 21300000, guid: a11f933dbe421fa44bc04cdaada0e056, type: 3}

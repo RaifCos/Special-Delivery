@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour {
         playNav = playButton.navigation;
         tutorialNav = tutorialButton.navigation;
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
-        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
+        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") >= 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
@@ -176,7 +176,7 @@ public class MainMenuManager : MonoBehaviour {
             bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
         } else {
             bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            bossButton.GetComponent<MenuText>().message = "COMPLETE 50 DELIVERIES TO UNLOCK";
+            bossButton.GetComponent<MenuText>().message = "COMPLETE 40 DELIVERIES TO UNLOCK";
         }
     }
 

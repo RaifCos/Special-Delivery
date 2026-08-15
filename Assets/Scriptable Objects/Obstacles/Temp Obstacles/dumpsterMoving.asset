@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
-  m_Name: dumpster
+  m_Name: dumpsterMoving
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
-  internalName: dumpster
-  externalName: dumpster
+  internalName: dumpsterMoving
+  externalName: runaway dumpster
   description: 'dumpsters come tumbling across the stage, speeding up along the way.
 
 
@@ -21,6 +21,5 @@ MonoBehaviour:
     diving? no this is dumpster driving- dumpster driving you crazy!'
   headline: '"i''ve heard of garbage collection but this is just ridiculous!" - says
     bystander following reports of runaway dumpsters."'
-  limit: 0
   prefab: {fileID: 3378493229683235564, guid: 674f092e19b2d614b8b3a100bf2e94db, type: 3}
   sprite: {fileID: 21300000, guid: e5d8e2aeafe6b624499c9085b58665e5, type: 3}

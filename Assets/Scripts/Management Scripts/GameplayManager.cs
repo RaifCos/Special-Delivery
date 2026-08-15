@@ -66,6 +66,7 @@ public class GameplayManager : MonoBehaviour {
 
     private static readonly int HighTimeHash = Animator.StringToHash("highTime");
     private static readonly int LowTimeHash = Animator.StringToHash("lowTime");
+    private static readonly WaitForSeconds _waitForSeconds3 = new(3f);
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
@@ -130,9 +131,6 @@ public class GameplayManager : MonoBehaviour {
         // Initialize the player van.
         player.GetComponent<PlayerControl>().SetState(true);
 
-        // Start News Text
-        GameManager.newsTextScroller.StartNews();
-
         // Start timer and begin game. 
         Time.timeScale = 1;
         isPlaying = true;
@@ -163,6 +161,12 @@ public class GameplayManager : MonoBehaviour {
 
     #endregion
 
+    #region Level Functions
+
+    public Level_SO GetCurrentLevel() => currentLevel;
+
+    #endregion
+
     #region Game State Functions
 
     // Function for when the player runs out of time.
@@ -189,10 +193,14 @@ public class GameplayManager : MonoBehaviour {
         endUI.transform.Find("Lose (TMP)").gameObject.SetActive(winner == 1);
         StartCoroutine(GameOverFade());
 
+        if (winner == 0) { 
+            GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3);
+            GameManager.dataManager.CompleteAchievement("win" + currentLevel.internalName);    
+        }
+
+
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
-
-        if (winner == 0) { GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3); }
     }
 
     // Function to stop gameplay when the game ends.
@@ -320,8 +328,10 @@ public class GameplayManager : MonoBehaviour {
         while (endUI.GetComponent<CanvasGroup>().alpha < 1) {
             yield return _waitForSeconds001;
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
-        } yield return new WaitForSeconds(gameOverPauseTime);
-        if (difficulty == 1) StartCoroutine(MoneyCount());
+        } if (difficulty == 1) { 
+            yield return new WaitForSeconds(gameOverPauseTime);
+            if (difficulty == 1) StartCoroutine(MoneyCount());    
+        } else yield return _waitForSeconds3;
         GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
         menuButton.SetActive(true);
         eventSystem.SetSelectedGameObject(menuButton);

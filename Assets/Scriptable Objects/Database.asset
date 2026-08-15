@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Database
   obstacles:
   - {fileID: 4593245236174038032, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
+  - {fileID: -711005825700486965, guid: 526368d065e2721418563113a72ac332, type: 3}
   - {fileID: 1957036935311034163, guid: 61fd2a5690c6126408b1900e35c1324f, type: 3}
   - {fileID: 4023329275542928404, guid: 98199d0fada2f7b45882b5af426b3044, type: 3}
   - {fileID: 2390652869503462475, guid: 3f8d51792a340694da6c0506d50a9418, type: 3}
@@ -42,6 +43,7 @@ MonoBehaviour:
   - {fileID: -7849014766195687166, guid: 6aed478d1b18fd84aa51b7f5814a807a, type: 3}
   - {fileID: -8964788420673410421, guid: e34847957157e474dbb964487c5eed18, type: 3}
   - {fileID: -4083839883206890763, guid: b073c490e7ca9f1499c8e8956eb6d853, type: 3}
+  - {fileID: 839640839129863760, guid: 58a70bff5d2bae347a5a6cd333a8f3b0, type: 3}
   - {fileID: -1020270408174781601, guid: 39eeff358b150f049a0534ee3b6619b0, type: 3}
   - {fileID: 5647145335165707210, guid: dbf1d4bbf9c70a342a8ef52cc2c81bcf, type: 3}
   - {fileID: 3437792969398705229, guid: 97dba8d7932450d43bbfaf6259b67998, type: 3}
@@ -67,6 +69,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a45cddc56cc8a314191ba18c6e001277, type: 2}
   - {fileID: 11400000, guid: 9af778ddeeda6ac4cb1cd91e8d43acd6, type: 2}
   - {fileID: 11400000, guid: 368316b43257222499487d1a703178d2, type: 2}
+  - {fileID: 11400000, guid: 2811b36732587d44d918e1faa5935330, type: 2}
   upgrades:
   - {fileID: 11400000, guid: 97b3108d209789144b0d79073af386e4, type: 2}
   - {fileID: 11400000, guid: 750541572a8be534098e23ebc5f56929, type: 2}

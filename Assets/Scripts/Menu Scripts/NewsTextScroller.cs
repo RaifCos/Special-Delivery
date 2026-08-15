@@ -5,17 +5,17 @@ using TMPro;
 using System.Linq;
 
 // Script to control the scrolling text news bar during gameplay
-public class NewsTextScroller : MonoBehaviour
-{
+public class NewsTextScroller : MonoBehaviour {
     public GameObject newsUI;
     public float scrollSpeed;
     TMP_Text newsText;
     private bool isPlaying, hasBoost;
     private int lastStory, difficulty;
+    private Level_SO currentLevel;
     public readonly List<string> newsQueue = new(); 
 
     // Collections of standard news headlines.
-    private readonly string[] genericHeadlines = {
+    private readonly string[] tipHeadlines = {
     "tip: the tracker arrow at the top of the screen points to where you need to go.",
     "tip: reversing is much slower than driving forward. only reverse when you need to.",
     "tip: slow down before taking tight turns!",
@@ -23,23 +23,6 @@ public class NewsTextScroller : MonoBehaviour
     "tip: there are shortcuts hidden around the city to help you get places quicker.",
     "tip: pay attention to these news headlines, some of them tell you what obstacles are coming your way!",
     "tip: the faster you complete deliveries, the more cash you'll earn!",
-    "\"please stop running over the stop signs\" pleads city council.",
-    "mass confusion caused after most street signs knocked down by wreckless delivery driver.",
-    "local resident creates website to track the number of cones knocked over by delivery drivers - \"leavetheconesalone.org\"",
-    "local rodent community celebrates destruction of bins.",
-    "council spends \u20AC9.8 million on new benches across the city, hopefully nobody knocks them over or anything.",
-    "fire department switches to water balloons after shortage of hydrants - \"it makes fires way more exciting\".",
-    "\"there's no knocking down my trees\", boasts park gardener.",
-    "fountain in city centre turned off so developer doesn't have to program flowing water.",
-    "\"kfg ipsiufbgpu989-jnu\", says cat who walked across writer's keyboard.",
-    "mail delivery driver breaks record for most road traffic violations.",
-    "scientists attempt to explain the high volume of glowing yellow spots around the city.",
-    "parcel city news presents the top ten numbers from one to ten (number four will surprise you!)",
-    "the average cosumer now expects their package to be delivered in thirty seconds.",
-    "study concludes in-universe news mechanic serves \"no real use, honestly.\"",
-    "diamond heist at local bank \"sounds like a much better idea for a video game than whatever this nonsense is\".",
-    "psa: if a car magically appears in front of you, don't worry, it (probably) isn't a bug.",
-    "\"it's a feature\" says game developer in response to what is clearly a bug.",
     };
 
     private readonly string[] boostHeadlines = {
@@ -60,8 +43,11 @@ public class NewsTextScroller : MonoBehaviour
     void Start() {
         lastStory = -1;
         hasBoost = GameManager.dataManager.IsUpgraded("booster");
-        headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
-
+        currentLevel = GameManager.gameplayManager.GetCurrentLevel();
+        string[] genericHeadlines = currentLevel.headlines;
+        headlines = genericHeadlines.Concat(tipHeadlines).ToArray();
+        if (hasBoost) headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
+        StartNews();
     }
 
     // Function to begin the scrolling text 
@@ -71,13 +57,13 @@ public class NewsTextScroller : MonoBehaviour
 
         // Add starting headline and additional text if the player is in the tutorial.
         switch(difficulty) {
-            case 0: { // Lifetime Deliveries
+            case 0: {
                 AddTutorialHeadlines();
                 break; }
             case 1:
-                newsQueue.Add("BREAKING NEWS - local delivery service hires new driver, somehow a headlining story.");
+                newsQueue.Add(currentLevel.openingHeadline);
                 break;
-            case 2: { // Player Crashes
+            case 2: {
                 newsQueue.Add("BREAKING NEWS - Rival Postal Company challenges delivery driver in intense showdown.");
                 break; }
         }

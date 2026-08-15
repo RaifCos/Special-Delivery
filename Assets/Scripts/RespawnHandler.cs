@@ -14,9 +14,11 @@ public class RespawnHandler : MonoBehaviour {
         if (collisionGO.CompareTag("Player")) StartCoroutine(RespawnFade(collisionGO));
         else if (collisionGO.CompareTag("Prop")) Destroy(collisionGO);
         else { 
-            ResetObject(collisionGO); 
-            collisionGO.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-            collisionGO.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            if (collisionGO.TryGetComponent<Rigidbody>(out Rigidbody rb)){
+                ResetObject(collisionGO); 
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
         }
     }
 
@@ -39,7 +41,8 @@ public class RespawnHandler : MonoBehaviour {
             alpha -= 5;
             respawnPanel.color = new Color(0, 0, 0, alpha / 255f);
             yield return null;
-        } pc.SetState(true);
+        } // Check game didn't end/pause during Player Respawn before re-enabling control.
+        if (GameManager.gameplayManager.IsPlaying()) pc.SetState(true);
     }
 
     private void ResetObject(GameObject obj) {
