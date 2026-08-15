@@ -25,17 +25,16 @@ MonoBehaviour:
   - parcel city primetine presents the top ten numbers from one to ten (number four
     will surprise you!)
   - mail delivery driver breaks record for most road traffic violations.
-  - study concludes in-universe news mechanic serves \"no real use, honestly.\"
-  - diamond heist at local bank \"sounds like a much better idea for a video game
-    than whatever this nonsense is\".
+  - diamond heist at local bank "sounds like a much better idea for a video game
+    than whatever this nonsense is".
   - mass confusion caused after most street signs knocked down by wreckless delivery
     driver.
   - 'EXCLUSIVE: local nightclub submits noise complaint against rampant mail vans.'
-  - parcel city overhead rail system delayed yet again as officials \"don't really
-    feel like doing it right now.\"
-  - city council urge locals not to participate in annual \"throw junk in the river
-    day.\"
-  - sightings of a red delivery van \"plotting revenge\" spotted in uptown parcel
-    city.
+  - parcel city overhead rail system delayed yet again as officials "don't really
+    feel like doing it right now."
+  - city council urge locals not to participate in annual "throw junk in the river
+    day."
+  - sightings of a red delivery van "plotting revenge" spotted in uptown parcel city.
+  - it's 10'o'clock. do you know where your parcels are?
   unlocks: []
   sprite: {fileID: 21300000, guid: a11f933dbe421fa44bc04cdaada0e056, type: 3}

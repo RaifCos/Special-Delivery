@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour {
         playNav = playButton.navigation;
         tutorialNav = tutorialButton.navigation;
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
-        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") > 2);
+        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") >= 2);
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());

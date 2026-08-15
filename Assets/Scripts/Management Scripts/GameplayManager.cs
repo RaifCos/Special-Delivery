@@ -193,7 +193,10 @@ public class GameplayManager : MonoBehaviour {
         endUI.transform.Find("Lose (TMP)").gameObject.SetActive(winner == 1);
         StartCoroutine(GameOverFade());
 
-        if (winner == 0) { GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3); }
+        if (winner == 0) { 
+            GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3);
+            GameManager.dataManager.CompleteAchievement("win" + currentLevel.internalName);    
+        }
 
 
         // Stop game music and play game over music.

@@ -278,12 +278,13 @@ public class DataManager : MonoBehaviour {
                         if (data.lifetimeDeliveries == 25) { 
                             GameManager.dataManager.SetShopProgress(true); 
                             GameManager.newsTextScroller.AddShopUnlockHeadline();
+                        }
                         if (data.lifetimeDeliveries == 40) {
                             GameManager.dataManager.SetLevelProgress("city", 2); 
                             GameManager.newsTextScroller.AddBossUnlockHeadline();
                         }
                         } if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
-                        break; }
+                        break; 
                 case 1: { // Player Crashes
                         data.playerCrashes++;
                         if (data.playerCrashes == 500) { CompleteAchievement("crash500"); }
