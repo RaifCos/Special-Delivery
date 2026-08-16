@@ -32,7 +32,7 @@ public class ObstacleManager : MonoBehaviour {
         trafficNodes = tnObj.Select(o => o.GetComponent<TrafficNode>()).ToArray();
 
         GameObject[] gnObj = GameObject.FindGameObjectsWithTag("Giant Node");
-        trafficNodes = tnObj.Select(o => o.GetComponent<TrafficNode>()).ToArray();
+        giantNodes = gnObj.Select(o => o.GetComponent<TrafficNode>()).ToArray();
         edgeNodes = gnObj.Where(go => go.GetComponent<EdgeNode>() != null).ToArray();
 
         sideNodes = GameObject.FindGameObjectsWithTag("Side Node");

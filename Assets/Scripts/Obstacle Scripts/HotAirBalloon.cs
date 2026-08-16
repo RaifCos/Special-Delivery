@@ -16,7 +16,7 @@ public class HotAirBalloon : MonoBehaviour {
     void OnEnable() {
         rb = GetComponent<Rigidbody>();
         prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1);
-        currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+        currNode = prevNode.GetNextNode(prevNode);
         currPos = currNode.GetPos();
         transform.position = prevNode.transform.position + (Vector3.up * 19f);
     }
@@ -31,7 +31,7 @@ public class HotAirBalloon : MonoBehaviour {
         }
         else {
             TrafficNode tempNode = currNode;
-            currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+            currNode = tempNode.GetNextNode(prevNode);
             prevNode = tempNode;
             currPos = currNode.GetPos();
         }

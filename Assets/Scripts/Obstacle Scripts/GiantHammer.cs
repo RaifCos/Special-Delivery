@@ -20,7 +20,7 @@ public class GiantHammer : MonoBehaviour {
     void OnEnable() {
         stage = -1;
         TrafficNode startNode = GameManager.obstacleManager.GetNearestNode(1, 20f);
-        TrafficNode facingNode = startNode.GetComponent<TrafficNode>().GetNextNode(startNode);
+        TrafficNode facingNode = startNode.GetNextNode(startNode);
 
         Vector3 startPos = startNode.GetPos() + (Vector3.up * startHeight);
         rb.position = startPos;
