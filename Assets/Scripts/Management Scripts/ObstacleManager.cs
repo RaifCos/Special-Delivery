@@ -76,7 +76,7 @@ public class ObstacleManager : MonoBehaviour {
         TrafficNode nearestNode = type == 0? trafficNodes[0]: giantNodes[0];
         if (type == 0) {
             for (int i = 1; i < trafficNodes.Length; i++) {
-                float distToTarget = Vector3.Distance(trafficNodes[i].transform.position, playerPosition);
+                float distToTarget = Vector3.Distance(trafficNodes[i].GetPos(), playerPosition);
                 if (Vector3.Distance(nearestNode.GetPos(), playerPosition) >
                 distToTarget && distToTarget > distanceThreshold) {
                     nearestNode = trafficNodes[i];
