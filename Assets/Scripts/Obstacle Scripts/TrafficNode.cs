@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class Pathway {
-
     readonly TrafficNode nextNode;
     readonly float distance;
 
@@ -45,11 +44,10 @@ public class TrafficNode : MonoBehaviour {
         TrafficNode result;
         do { result = pathways[Random.Range(0, pathwayCount)].GetNextNode();
         } while (result == previousNode);
-        return previousNode;
+        return result;
     }
 
     private TrafficNode GetOnlyNextNode() => pathways[0].GetNextNode();
 
     public List<Pathway> GetPathways => pathways;
-
 }

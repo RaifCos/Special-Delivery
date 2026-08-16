@@ -28,7 +28,7 @@ public class CarTraversal : MonoBehaviour {
 
     private bool followingTarget, chasingTarget;
     private Rigidbody rb;
-    private GameObject currNode, prevNode;
+    private TrafficNode currNode, prevNode;
     private LayerMask layerMask, roadMask;
 
     void OnEnable() {
@@ -44,11 +44,11 @@ public class CarTraversal : MonoBehaviour {
 
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
         if (prevNode != null) {
-            currNode = prevNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
+            currNode = prevNode.GetNextNode();
             if (currNode == null) { currNode = prevNode; }
-            rb.position = prevNode.transform.position + (Vector3.up * 2f);
+            rb.position = prevNode.GetPos() + (Vector3.up * 2f);
 
-            Vector3 dir = (currNode.transform.position - rb.position).normalized;
+            Vector3 dir = (currNode.GetPos() - rb.position).normalized;
             if (dir.sqrMagnitude > 0.001f)
                 transform.rotation = Quaternion.LookRotation(dir);
         }
@@ -117,7 +117,7 @@ public class CarTraversal : MonoBehaviour {
     }
 
     private void UpdateNode() {
-        GameObject tempNode = currNode;
+        TrafficNode tempNode = currNode;
         if (tempNode == null) { return; }
 
         if (followingTarget && target != null) {
@@ -130,9 +130,9 @@ public class CarTraversal : MonoBehaviour {
 
         if (followingTarget) {
             Vector3 targetPosition = target != null ? target.transform.position : tempNode.transform.position;
-            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition, depth);
+            // currNode == tempNode.GetNextClosestNode();
         } else {
-            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
+            currNode = tempNode.GetNextNode();
         }
 
         if (currNode == null) { currNode = tempNode; }
@@ -140,17 +140,17 @@ public class CarTraversal : MonoBehaviour {
     }
 
     private void ReattachToNodeSystem() {
-        GameObject[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+        TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
 
-        GameObject bestNode = null;
+        TrafficNode bestNode = null;
         float bestScore = Mathf.Infinity;
 
-        foreach (GameObject node in allNodes) {
+        foreach (TrafficNode node in allNodes) {
             if (node == null) continue;
             float dist = Vector3.Distance(rb.position, node.transform.position);
 
-            Vector3 dirToNode = (node.transform.position - rb.position).normalized;
+            Vector3 dirToNode = (node.GetPos() - rb.position).normalized;
             bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, layerMask);
             if (wallBlocked) continue;
 
@@ -166,7 +166,7 @@ public class CarTraversal : MonoBehaviour {
 
         if (bestNode != null) {
             prevNode = bestNode;
-            currNode = bestNode.GetComponent<TrafficNode>()?.GetNextNode(bestNode);
+            currNode = bestNode.GetNextNode();
             if (currNode == null) currNode = bestNode;
 
             goalPositionDirty = true;

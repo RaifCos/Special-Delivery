@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour {
     [Header("Player Preferences")]
     private int saveFile; 
     private static int difficulty;
-    private static Level_SO currentLevel;
     private float musicVolume;
     private bool qualityShadows;
 

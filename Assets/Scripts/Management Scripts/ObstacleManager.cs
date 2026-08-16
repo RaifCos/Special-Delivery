@@ -15,7 +15,8 @@ public class ObstacleManager : MonoBehaviour {
 
     [Header ("Obstacle Node Data")]
     [SerializeField] private float spawningDistanceThreshold;
-    private GameObject[] trafficNodes, giantNodes, sideNodes, edgeNodes;
+    private TrafficNode[] trafficNodes, giantNodes;
+    private GameObject[] sideNodes, edgeNodes;
     private bool[] sideNodeOccupied;
 
     private GameObject obstacleObject, destroyParticles;
@@ -27,10 +28,14 @@ public class ObstacleManager : MonoBehaviour {
     
     private void Start() {
         // Load Node Data
-        trafficNodes = GameObject.FindGameObjectsWithTag("Traffic Node");
-        giantNodes = GameObject.FindGameObjectsWithTag("Giant Node");
+        GameObject[] tnObj = GameObject.FindGameObjectsWithTag("Traffic Node");
+        trafficNodes = tnObj.Select(o => o.GetComponent<TrafficNode>()).ToArray();
+
+        GameObject[] gnObj = GameObject.FindGameObjectsWithTag("Giant Node");
+        trafficNodes = tnObj.Select(o => o.GetComponent<TrafficNode>()).ToArray();
+        edgeNodes = gnObj.Where(go => go.GetComponent<EdgeNode>() != null).ToArray();
+
         sideNodes = GameObject.FindGameObjectsWithTag("Side Node");
-        edgeNodes = giantNodes.Where(go => go.GetComponent<EdgeNode>() != null).ToArray();
         sideNodeOccupied = new bool[sideNodes.Length];
         for (int i = 0; i < sideNodes.Length; i++) { sideNodeOccupied[i] = false; }
 
@@ -54,33 +59,33 @@ public class ObstacleManager : MonoBehaviour {
     #region Node Functions
 
     // Function to generate set a starting position for an obstacle 
-    public GameObject GetStartingNode(int type) {
+    public TrafficNode GetStartingNode(int type) {
         Vector3 playerPosition = GameManager.gameplayManager.FindPlayer();
-        GameObject startingNode;
+        TrafficNode startingNode;
         if (type == 0) {
             do { startingNode = trafficNodes[Random.Range(0, trafficNodes.Length)];
-            } while (Vector3.Distance(startingNode.transform.position, playerPosition) < spawningDistanceThreshold);
+            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold);
         } else { 
             do { startingNode = giantNodes[Random.Range(0, giantNodes.Length)];
-            } while (Vector3.Distance(startingNode.transform.position, playerPosition) < spawningDistanceThreshold);
+            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold);
          } return startingNode;
     }
 
-    public GameObject GetNearestNode(int type, float distanceThreshold) {
+    public TrafficNode GetNearestNode(int type, float distanceThreshold) {
         Vector3 playerPosition = GameManager.gameplayManager.FindPlayer();
-        GameObject nearestNode = type == 0? trafficNodes[0]: giantNodes[0];
+        TrafficNode nearestNode = type == 0? trafficNodes[0]: giantNodes[0];
         if (type == 0) {
             for (int i = 1; i < trafficNodes.Length; i++) {
                 float distToTarget = Vector3.Distance(trafficNodes[i].transform.position, playerPosition);
-                if (Vector3.Distance(nearestNode.transform.position, playerPosition) >
+                if (Vector3.Distance(nearestNode.GetPos(), playerPosition) >
                 distToTarget && distToTarget > distanceThreshold) {
                     nearestNode = trafficNodes[i];
                 }
             }
         } else {
             for (int i = 1; i < giantNodes.Length; i++) {
-                float distToTarget = Vector3.Distance(giantNodes[i].transform.position, playerPosition);
-                if (Vector3.Distance(nearestNode.transform.position, playerPosition) > 
+                float distToTarget = Vector3.Distance(giantNodes[i].GetPos(), playerPosition);
+                if (Vector3.Distance(nearestNode.GetPos(), playerPosition) > 
                 distToTarget && distToTarget > distanceThreshold) {
                     nearestNode = giantNodes[i];
                 }
@@ -116,7 +121,7 @@ public class ObstacleManager : MonoBehaviour {
         return res;
     }
 
-    public GameObject[] GetNodeSet(int set) => set == 1? trafficNodes: giantNodes;
+    public TrafficNode[] GetNodeSet(int set) => set == 1? trafficNodes: giantNodes;
 
     #endregion
 
