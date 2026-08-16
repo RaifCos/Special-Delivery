@@ -21,8 +21,22 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private bool chaseTarget;
     [SerializeField] private float directChaseRange;
     [SerializeField] private float returnToNodeRange;
+    [SerializeField, Range(-1f, 1f)] private float reattachForwardBias = 0.2f;
 
-    private bool hasTarget;
+    [Header("Collision Reaction")]
+    [SerializeField] private bool ignoreStun; 
+    [SerializeField] private float minImpactForce = 6f;    
+    [SerializeField] private float stunDuration = 0.6f;       
+    [SerializeField] private float bounceForceMultiplier = 0.02f;
+    [SerializeField] private float maxBounceForce = 12f;
+    [SerializeField] private float spinTorque = 6f;
+    [SerializeField] private float collisionCooldown = 0.15f;
+
+    private float stunTimer;
+    private float collisionCooldownTimer;
+    private bool IsStunned => stunTimer > 0f;
+
+    private bool hasTarget; 
     private bool isChasing;
 
     private Rigidbody rb;
@@ -31,6 +45,7 @@ public class CarTraversal : MonoBehaviour {
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         blockageMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
 
@@ -49,6 +64,14 @@ public class CarTraversal : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        if (collisionCooldownTimer > 0f) { collisionCooldownTimer -= Time.fixedDeltaTime; }
+
+        if (IsStunned) {
+            stunTimer -= Time.fixedDeltaTime;
+            if (stunTimer <= 0f) { ReattachToNodeSystem(); }
+            return; 
+        }
+
         Vector3 rayOrigin = transform.position + Vector3.up;
         if (!Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit roadHit, height, roadMask)) return;
 
@@ -67,14 +90,42 @@ public class CarTraversal : MonoBehaviour {
         } else { AdvanceToNextNode(); }
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Level")
+        || collisionCooldownTimer > 0f
+        || collision.relativeVelocity.magnitude < 5f
+        || ignoreStun
+        ) return; 
+
+        float impactForce = collision.impulse.magnitude / Time.fixedDeltaTime;
+        if (impactForce < minImpactForce) return;
+
+        collisionCooldownTimer = collisionCooldown;
+        stunTimer = stunDuration;
+
+        ContactPoint contact = collision.GetContact(0);
+
+        Vector3 pushDir = contact.normal;
+        pushDir.y = 0f;
+        if (pushDir.sqrMagnitude > 0.0001f) {
+            float pushForce = Mathf.Min(impactForce * bounceForceMultiplier, maxBounceForce);
+            rb.AddForce(pushDir.normalized * pushForce, ForceMode.Impulse);
+        }
+
+        float side = Vector3.Dot(transform.right, contact.point - transform.position) >= 0f ? -1f : 1f;
+        float torqueScale = Mathf.Clamp01(impactForce / (minImpactForce * 4f));
+        rb.AddTorque(side * spinTorque * torqueScale * Vector3.up, ForceMode.Impulse);
+    }
+
     private void UpdateTopSpeed(Vector3 rayOrigin) {
         if (!ignoreBlockage && Physics.Raycast(rayOrigin, transform.forward, out RaycastHit hit, 10f, blockageMask)) {
-            actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
+            actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hit.distance / 25f);
         } else { actTopSpeed = topSpeed; }
     }
 
     private void UpdateChaseState() {
         if (!chaseTarget || target == null) return;
+
         float distToTarget = Vector3.Distance(rb.position, target.transform.position);
         if (!isChasing && distToTarget <= directChaseRange) { isChasing = true; }
         else if (isChasing && distToTarget > returnToNodeRange) {
@@ -85,7 +136,6 @@ public class CarTraversal : MonoBehaviour {
 
     private void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
         LookRotation(surfaceNormal, targetPosition);
-
         float forwardSpeed = Vector3.Dot(rb.rotation * Vector3.forward, rb.linearVelocity);
         if (CanAccelerate(forwardSpeed)) { MoveCar(); }
     }
@@ -144,15 +194,21 @@ public class CarTraversal : MonoBehaviour {
                 }
             }
             if (best != null) return best;
-        }
-
-        return from.GetNextNode(previous);
+        } return from.GetNextNode(previous);
     }
 
     private void ReattachToNodeSystem() {
         TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
 
+        TrafficNode bestNode = FindBestReattachNode(allNodes, requireForwardFacing: true) ?? FindBestReattachNode(allNodes, requireForwardFacing: false);
+        if (bestNode == null) return;
+        prevNode = bestNode;
+        currNode = bestNode.GetNextNode();
+        if (currNode == null) { currNode = bestNode; }
+    }
+
+    private TrafficNode FindBestReattachNode(TrafficNode[] allNodes, bool requireForwardFacing) {
         TrafficNode bestNode = null;
         float bestScore = Mathf.Infinity;
 
@@ -165,20 +221,16 @@ public class CarTraversal : MonoBehaviour {
             if (wallBlocked) continue;
 
             float dot = Vector3.Dot(transform.forward, dirToNode);
-            float directionalPenalty = dot >= 0f ? 1f : 2.5f;
+            if (requireForwardFacing && dot < reattachForwardBias) continue;
+
+            float directionalPenalty = 2f - dot;
             float score = dist * directionalPenalty;
 
             if (score < bestScore) {
                 bestScore = score;
                 bestNode = node;
             }
-        }
-
-        if (bestNode == null) return;
-
-        prevNode = bestNode;
-        currNode = bestNode.GetNextNode();
-        if (currNode == null) { currNode = bestNode; }
+        } return bestNode;
     }
 
     public void ChangeTarget(GameObject input) {

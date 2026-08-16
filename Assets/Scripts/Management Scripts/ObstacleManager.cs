@@ -121,7 +121,7 @@ public class ObstacleManager : MonoBehaviour {
         return res;
     }
 
-    public TrafficNode[] GetNodeSet(int set) => set == 1? trafficNodes: giantNodes;
+    public TrafficNode[] GetNodeSet(int set) => set == 0? trafficNodes: giantNodes;
 
     #endregion
 
