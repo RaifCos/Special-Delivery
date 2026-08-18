@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: suburbs
   m_EditorClassIdentifier: Assembly-CSharp::Level_SO
   levelNumber: 2
-  internalName: 
-  externalName: 
+  internalName: suburbs
+  externalName: suburbs
   description: 
   openingHeadline: 
   headlines: []

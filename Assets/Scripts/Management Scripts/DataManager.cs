@@ -133,6 +133,7 @@ public class DataManager : MonoBehaviour {
 
         foreach(Level_SO level in levels) {
             defaultData.levelProgress[level.internalName] = 0;
+            defaultData.levelScores[level.internalName] = 0;
         } defaultData.levelProgress["city"] = 1;
 
         return defaultData;
