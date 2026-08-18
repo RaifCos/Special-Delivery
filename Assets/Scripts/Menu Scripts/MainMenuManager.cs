@@ -56,7 +56,8 @@ public class MainMenuManager : MonoBehaviour {
         playNav = playButton.navigation;
         tutorialNav = tutorialButton.navigation;
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
-        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city") >= 2);
+        selectedLevel = GameManager.dataManager.GetLevel("city");
+        ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
@@ -169,14 +170,28 @@ public class MainMenuManager : MonoBehaviour {
         }
     }
 
-    public void ToggleBossLock(bool isUnlocked) {
-        bossButton.interactable = isUnlocked;
-        if(isUnlocked) {
-            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS BATTLE";
-            bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
-        } else {
-            bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            bossButton.GetComponent<MenuText>().message = "COMPLETE 40 DELIVERIES TO UNLOCK";
+    public void ToggleBossLock(int state) {
+        switch (state) {
+            case 0: {
+                    bossButton.interactable = false; 
+                    bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+                    bossButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
+                    break; }
+            case 1: {
+                    bossButton.interactable = false; 
+                    bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+                    bossButton.GetComponent<MenuText>().message = "COMPLETE 30 DELIVERIES IN " + selectedLevel.externalName + " TO UNLOCK [" + GameManager.dataManager.GetLevelScore(selectedLevel.internalName) + "/30]";
+                    break; }
+            case 2: {
+                    bossButton.interactable = true; 
+                    bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS BATTLE";
+                    bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
+                    break; }
+            case 3: {
+                    bossButton.interactable = true; 
+                    bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS REMATCH";
+                    bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. AGAIN!";
+                    break; }
         }
     }
 
@@ -213,7 +228,7 @@ public class MainMenuManager : MonoBehaviour {
 
         targetScrollerPos = -335 + selectedLevelNumber * -695;
         ToggelPlayLock(selectedLevelProgress > 0);
-        ToggleBossLock(selectedLevelProgress > 1);
+        ToggleBossLock(selectedLevelProgress);
         SetLevelSelectNav(selectedLevelNumber);
 
         levelName.text = selectedLevelProgress > 0? selectedLevel.externalName: "???";

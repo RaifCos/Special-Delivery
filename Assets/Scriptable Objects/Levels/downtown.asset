@@ -36,5 +36,6 @@ MonoBehaviour:
     day."
   - sightings of a red delivery van "plotting revenge" spotted in uptown parcel city.
   - it's 10'o'clock. do you know where your parcels are?
-  unlocks: []
+  unlocks:
+  - {fileID: 11400000, guid: 50d586e41472a2e4cb8df8d57c96dec4, type: 2}
   sprite: {fileID: 21300000, guid: a11f933dbe421fa44bc04cdaada0e056, type: 3}
