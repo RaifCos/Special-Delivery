@@ -21,7 +21,6 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private bool chaseTarget;
     [SerializeField] private float directChaseRange;
     [SerializeField] private float returnToNodeRange;
-    [SerializeField, Range(-1f, 1f)] private float reattachForwardBias = 0.2f;
 
     [Header("Collision Reaction")]
     [SerializeField] private bool ignoreStun; 
@@ -201,74 +200,32 @@ public class CarTraversal : MonoBehaviour {
         TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
 
-        TrafficNode previous = prevNode;
-        TrafficNode bestNode = FindBestReattachNode(allNodes, requireForwardFacing: true) ?? FindBestReattachNode(allNodes, requireForwardFacing: false);
-        if (bestNode == null) return;
-
-        TrafficNode candidate = PickReattachExit(bestNode, previous);
-        prevNode = bestNode;
-        currNode = candidate == null ? bestNode : candidate;
-    }
-
-    private TrafficNode PickReattachExit(TrafficNode node, TrafficNode previous) {
-        if (node == null) return null;
-
-        List<Pathway> pathways = node.GetPathways;
-        if (pathways == null || pathways.Count == 0) return node;
-
-        TrafficNode bestExit = null;
-        float bestScore = Mathf.Infinity;
-
-        foreach (Pathway pathway in pathways) {
-            if (pathway == null) continue;
-            TrafficNode candidate = pathway.GetNextNode();
-            if (candidate == null || candidate == previous || candidate == node) continue;
-
-            Vector3 dirToExit = (candidate.GetPos() - rb.position).normalized;
-            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToExit, Vector3.Distance(rb.position, candidate.GetPos()) + 0.5f, blockageMask);
-            if (wallBlocked) continue;
-
-            float forwardDot = Vector3.Dot(transform.forward, dirToExit);
-            float sideBias = Mathf.Abs(Vector3.Dot(transform.right, dirToExit));
-            float score = (1f - Mathf.Clamp01(forwardDot)) * 8f + sideBias * 3f;
-
-            if (score < bestScore) {
-                bestScore = score;
-                bestExit = candidate;
-            }
-        }
-
-        if (bestExit != null) return bestExit;
-        if (pathways.Count == 1) return pathways[0].GetNextNode();
-        return node.GetNextNode(previous);
-    }
-
-    private TrafficNode FindBestReattachNode(TrafficNode[] allNodes, bool requireForwardFacing) {
         TrafficNode bestNode = null;
         float bestScore = Mathf.Infinity;
 
         foreach (TrafficNode node in allNodes) {
             if (node == null) continue;
             float dist = Vector3.Distance(rb.position, node.transform.position);
-            if (dist < 0.01f) continue;
 
-            Vector3 dirToNode = (node.GetPos() - rb.position).normalized;
-            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist + 0.25f, blockageMask);
+            Vector3 dirToNode = (node.transform.position - rb.position).normalized;
+            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, blockageMask);
             if (wallBlocked) continue;
 
             float dot = Vector3.Dot(transform.forward, dirToNode);
-            if (requireForwardFacing && dot < reattachForwardBias) continue;
-
-            float sideBias = Mathf.Abs(Vector3.Dot(transform.right, dirToNode));
-            float directionalPenalty = 2f - Mathf.Clamp(dot, -1f, 1f);
-            float score = (dist * directionalPenalty) + (sideBias * 5f);
+            float directionalPenalty = dot >= 0f ? 1f : 2.5f;
+            float score = dist * directionalPenalty;
 
             if (score < bestScore) {
                 bestScore = score;
                 bestNode = node;
             }
         }
-        return bestNode;
+
+        if (bestNode != null) {
+            prevNode = bestNode;
+            currNode = bestNode;
+            if (currNode == null) currNode = bestNode;
+        }
     }
 
     public void ChangeTarget(GameObject input) {
