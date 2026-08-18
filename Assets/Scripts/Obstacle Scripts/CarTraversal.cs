@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -20,138 +21,180 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private bool chaseTarget;
     [SerializeField] private float directChaseRange;
     [SerializeField] private float returnToNodeRange;
-    [SerializeField] private int depth = 1;
 
-    [SerializeField] private float goalRecalcThreshold = 5f;
-    private Vector3 lastGoalCalcPosition;
-    private bool goalPositionDirty = true;
+    [Header("Collision Reaction")]
+    [SerializeField] private bool ignoreStun; 
+    [SerializeField] private float minImpactForce = 5f;    
+    [SerializeField] private float stunDuration = 0.6f;       
+    [SerializeField] private float bounceForceMultiplier = 0.02f;
+    [SerializeField] private float maxBounceForce = 12f;
+    [SerializeField] private float spinTorque = 6f;
+    [SerializeField] private float collisionCooldown = 0.15f;
 
-    private bool followingTarget, chasingTarget;
+    private float stunTimer;
+    private float collisionCooldownTimer;
+    private bool IsStunned => stunTimer > 0f;
+
+    private bool hasTarget; 
+    private bool isChasing;
+
     private Rigidbody rb;
-    private GameObject currNode, prevNode;
-    private LayerMask layerMask, roadMask;
-
-    void OnEnable() {
-        rb = GetComponent<Rigidbody>();
-        layerMask = LayerMask.GetMask("Blockage");
-        roadMask = LayerMask.GetMask("Road");
-    }
+    private TrafficNode currNode, prevNode;
+    private LayerMask blockageMask, roadMask;
 
     void Start() {
+        rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        blockageMask = LayerMask.GetMask("Blockage");
+        roadMask = LayerMask.GetMask("Road");
+
         if (followPlayer) { target = GameManager.gameplayManager.GetPlayer(); }
-        followingTarget = target != null;
-        chasingTarget = false;
+        hasTarget = target != null;
 
         prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
-        if (prevNode != null) {
-            currNode = prevNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
-            if (currNode == null) { currNode = prevNode; }
-            rb.position = prevNode.transform.position + (Vector3.up * 2f);
+        if (prevNode == null) return;
 
-            Vector3 dir = (currNode.transform.position - rb.position).normalized;
-            if (dir.sqrMagnitude > 0.001f)
-                transform.rotation = Quaternion.LookRotation(dir);
-        }
+        currNode = prevNode.GetNextNode();
+        if (currNode == null) { currNode = prevNode; }
+        rb.position = prevNode.GetPos() + (Vector3.up * 2f);
+
+        Vector3 dir = (currNode.GetPos() - rb.position).normalized;
+        if (dir.sqrMagnitude > 0.001f) { transform.rotation = Quaternion.LookRotation(dir); }
     }
 
     void FixedUpdate() {
-        Vector3 rayPoint = transform.position + Vector3.up;
-        if (Physics.Raycast(rayPoint, Vector3.down, out RaycastHit roadHit, height, roadMask)) {
+        if (collisionCooldownTimer > 0f) { collisionCooldownTimer -= Time.fixedDeltaTime; }
 
-            if (!ignoreBlockage && Physics.Raycast(rayPoint, transform.forward, out RaycastHit hit, 10f, layerMask)) {
-                actTopSpeed = Mathf.Lerp(-topSpeed / 2f, topSpeed, hit.distance / 25f);
-            } else { actTopSpeed = topSpeed; }
-
-            Vector3 forward = rb.rotation * Vector3.forward;
-            float forwardSpeed = Vector3.Dot(forward, rb.linearVelocity);
-
-            ChaseUpdate();
-
-            if (chasingTarget) {
-                if (target == null) { return; }
-                LookRotation(roadHit.normal, target.transform.position);
-                if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
-                    MoveCar();
-            } else {
-                if (currNode == null) { return; }
-                if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
-                    LookRotation(roadHit.normal, currNode.transform.position);
-                    if ((actTopSpeed > 0f && forwardSpeed < actTopSpeed) || (actTopSpeed < 0f && forwardSpeed > actTopSpeed))
-                        MoveCar();
-                } else { UpdateNode(); }
-            }
+        if (IsStunned) {
+            stunTimer -= Time.fixedDeltaTime;
+            if (stunTimer <= 0f) { ReattachToNodeSystem(); }
+            return; 
         }
+
+        Vector3 rayOrigin = transform.position + Vector3.up;
+        if (!Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit roadHit, height, roadMask)) return;
+
+        if (!ignoreBlockage && Physics.Raycast(rayOrigin, transform.forward, out RaycastHit hit, 10f, blockageMask)) {
+            actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hit.distance / 25f);
+        } else { actTopSpeed = topSpeed; }
+        
+        UpdateChaseState();
+
+        if (isChasing) {
+            if (target == null) return;
+            DriveToward(roadHit.normal, target.transform.position);
+            return;
+        }
+
+        if (currNode == null) return;
+        if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
+            DriveToward(roadHit.normal, currNode.transform.position);
+        } else { AdvanceToNextNode(); }
     }
 
-    private void ChaseUpdate() {
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("Level")
+        || collisionCooldownTimer > 0f
+        || collision.relativeVelocity.magnitude < minImpactForce
+        || ignoreStun
+        ) return; 
+
+        float impactForce = collision.impulse.magnitude / Time.fixedDeltaTime;
+        if (impactForce < minImpactForce) return;
+
+        collisionCooldownTimer = collisionCooldown;
+        stunTimer = stunDuration;
+
+        ContactPoint contact = collision.GetContact(0);
+
+        Vector3 pushDir = contact.normal;
+        pushDir.y = 0f;
+        if (pushDir.sqrMagnitude > 0.0001f) {
+            float pushForce = Mathf.Min(impactForce * bounceForceMultiplier, maxBounceForce);
+            rb.AddForce(pushDir.normalized * pushForce, ForceMode.Impulse);
+        }
+
+        float side = Vector3.Dot(transform.right, contact.point - transform.position) >= 0f ? -1f : 1f;
+        float torqueScale = Mathf.Clamp01(impactForce / (minImpactForce * 4f));
+        rb.AddTorque(side * spinTorque * torqueScale * Vector3.up, ForceMode.Impulse);
+    }
+
+    private void UpdateChaseState() {
         if (!chaseTarget || target == null) return;
 
         float distToTarget = Vector3.Distance(rb.position, target.transform.position);
-        if (!chasingTarget && distToTarget <= directChaseRange) {
-            chasingTarget = true;
-        } else if (chasingTarget && distToTarget > returnToNodeRange) {
-            chasingTarget = false;
+        if (!isChasing && distToTarget <= directChaseRange) { isChasing = true; }
+        else if (isChasing && distToTarget > returnToNodeRange) {
+            isChasing = false;
             ReattachToNodeSystem();
         }
     }
 
-    private void MoveCar() {
-        Vector3 velocity = rb.linearVelocity;
-        Vector3 right = rb.rotation * Vector3.right;
-        float lateralVel = Vector3.Dot(velocity, right);
-        Vector3 lateralCorrection = grip * lateralVel * -right;
-        rb.AddForce(lateralCorrection, ForceMode.Acceleration);
-        rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
+    private void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
+        LookRotation(surfaceNormal, targetPosition);
+        float forwardSpeed = Vector3.Dot(rb.rotation * Vector3.forward, rb.linearVelocity);
+        if (actTopSpeed > 0f && forwardSpeed < actTopSpeed || actTopSpeed < 0f && forwardSpeed > actTopSpeed) {
+            Vector3 right = rb.rotation * Vector3.right;
+            float lateralVel = Vector3.Dot(rb.linearVelocity, right);
+            Vector3 lateralCorrection = grip * lateralVel * -right;
+            rb.AddForce(lateralCorrection, ForceMode.Acceleration);
+            rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
+        }
     }
 
     private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
         Vector3 direction = (targetPosition - rb.position).normalized;
-        if (direction.sqrMagnitude > 0.001f) {
-            Vector3 surfaceForward = Vector3.ProjectOnPlane(direction, surfaceNormal).normalized;
-            if (surfaceForward.sqrMagnitude > 0.001f) {
-                Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, surfaceNormal);
-                Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-                rb.MoveRotation(smoothedRotation);
-            }
-        }
+        if (direction.sqrMagnitude <= 0.001f) return;
+
+        Vector3 surfaceForward = Vector3.ProjectOnPlane(direction, surfaceNormal).normalized;
+        if (surfaceForward.sqrMagnitude <= 0.001f) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, surfaceNormal);
+        Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
+        rb.MoveRotation(smoothedRotation);
     }
 
-    private void UpdateNode() {
-        GameObject tempNode = currNode;
-        if (tempNode == null) { return; }
+    private void AdvanceToNextNode() {
+        if (currNode == null) return;
 
-        if (followingTarget && target != null) {
-            if (goalPositionDirty ||
-                Vector3.Distance(target.transform.position, lastGoalCalcPosition) > goalRecalcThreshold) {
-                lastGoalCalcPosition = target.transform.position;
-                goalPositionDirty = false;
-            }
-        }
+        TrafficNode next = ChooseNextNode(currNode, prevNode);
+        prevNode = currNode;
+        currNode = next != null ? next : currNode;
+    }
 
-        if (followingTarget) {
-            Vector3 targetPosition = target != null ? target.transform.position : tempNode.transform.position;
-            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextClosestNode(prevNode, targetPosition, depth);
-        } else {
-            currNode = tempNode.GetComponent<TrafficNode>()?.GetNextNode(prevNode);
-        }
+    private TrafficNode ChooseNextNode(TrafficNode from, TrafficNode previous) {
+        List<Pathway> pathways = from.GetPathways;
+        if (pathways.Count == 0) return from;
+        if (pathways.Count == 1) return pathways[0].GetNextNode();
 
-        if (currNode == null) { currNode = tempNode; }
-        prevNode = tempNode;
+        if (hasTarget && target != null) {
+            TrafficNode best = null;
+            float bestDist = Mathf.Infinity;
+            Vector3 targetPos = target.transform.position;
+
+            foreach (Pathway pathway in pathways) {
+                TrafficNode candidate = pathway.GetNextNode();
+                if (candidate == previous) continue;
+
+                float dist = Vector3.Distance(candidate.GetPos(), targetPos);
+                if (dist < bestDist) { bestDist = dist; best = candidate; }
+            } if (best != null) return best;
+        } return from.GetNextNode(previous);
     }
 
     private void ReattachToNodeSystem() {
-        GameObject[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+        TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
 
-        GameObject bestNode = null;
+        TrafficNode bestNode = null;
         float bestScore = Mathf.Infinity;
 
-        foreach (GameObject node in allNodes) {
+        foreach (TrafficNode node in allNodes) {
             if (node == null) continue;
             float dist = Vector3.Distance(rb.position, node.transform.position);
 
             Vector3 dirToNode = (node.transform.position - rb.position).normalized;
-            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, layerMask);
+            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, blockageMask);
             if (wallBlocked) continue;
 
             float dot = Vector3.Dot(transform.forward, dirToNode);
@@ -166,17 +209,14 @@ public class CarTraversal : MonoBehaviour {
 
         if (bestNode != null) {
             prevNode = bestNode;
-            currNode = bestNode.GetComponent<TrafficNode>()?.GetNextNode(bestNode);
+            currNode = bestNode;
             if (currNode == null) currNode = bestNode;
-
-            goalPositionDirty = true;
         }
     }
 
     public void ChangeTarget(GameObject input) {
         target = input;
-        followingTarget = true;
-        goalPositionDirty = true;
+        hasTarget = true;
     }
 
     public void ChangeTopSpeed(int input) => topSpeed = input;

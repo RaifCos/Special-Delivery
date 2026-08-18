@@ -10,14 +10,14 @@ public class HotAirBalloon : MonoBehaviour {
     private bool goingUp;
     private Rigidbody rb;
     private Vector3 normalNodePos;
-    GameObject currNode, prevNode;
+    TrafficNode currNode, prevNode;
     Vector3 currPos;
 
     void OnEnable() {
         rb = GetComponent<Rigidbody>();
         prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1);
-        currNode = prevNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
-        currPos = currNode.transform.position;
+        currNode = prevNode.GetNextNode(prevNode);
+        currPos = currNode.GetPos();
         transform.position = prevNode.transform.position + (Vector3.up * 19f);
     }
 
@@ -30,10 +30,10 @@ public class HotAirBalloon : MonoBehaviour {
             rb.AddForce(flatDirection * moveSpeed, ForceMode.Acceleration);
         }
         else {
-            GameObject tempNode = currNode;
-            currNode = tempNode.GetComponent<TrafficNode>().GetNextNode(prevNode);
+            TrafficNode tempNode = currNode;
+            currNode = tempNode.GetNextNode(prevNode);
             prevNode = tempNode;
-            currPos = currNode.transform.position;
+            currPos = currNode.GetPos();
         }
 
         LookRotation();
