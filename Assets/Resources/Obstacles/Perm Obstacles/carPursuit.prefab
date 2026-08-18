@@ -396,7 +396,13 @@ MonoBehaviour:
   chaseTarget: 1
   directChaseRange: 20
   returnToNodeRange: 30
-  depth: 1
+  ignoreStun: 0
+  minImpactForce: 5
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
 --- !u!114 &7151341223227668820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,7 +1536,13 @@ MonoBehaviour:
   chaseTarget: 0
   directChaseRange: 0
   returnToNodeRange: 0
-  depth: 1
+  ignoreStun: 0
+  minImpactForce: 20
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
 --- !u!114 &4673018690858706131
 MonoBehaviour:
   m_ObjectHideFlags: 0
