@@ -7,7 +7,7 @@ public class PlayerCollisionController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         // Increase Crash Count for achievement tracking.
-        GameManager.dataManager.IncreaseProgress(1);
+        GameManager.dataManager.IncreaseCrashCount();
         
         if (collision.relativeVelocity.magnitude > 5f) {
             Vector3 collisionPos = collision.contacts[0].point;

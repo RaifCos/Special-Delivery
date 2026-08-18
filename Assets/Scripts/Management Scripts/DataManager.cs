@@ -218,6 +218,24 @@ public class DataManager : MonoBehaviour {
 
     public int GetLevelScore(string key) => data.levelScores[key];
     public void SetLevelScore(string key, int value) => data.levelScores[key] = value;
+    public void IncrementLevelScore(string key) { 
+        data.levelScores[key]++;
+        int val = data.levelScores[key];
+
+        if (GetLevelProgress(key) < 2 && val >= 30) {
+            SetLevelProgress(key, 2);
+            GameManager.newsTextScroller.AddBossUnlockHeadline();
+        }
+
+        data.lifetimeDeliveries++;
+
+        if (!IsShopUnlocked() && data.lifetimeDeliveries >= 25) { 
+            SetShopProgress(true); 
+            GameManager.newsTextScroller.AddShopUnlockHeadline();
+        } 
+        
+        if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
+    }
 
     #endregion
 
@@ -269,30 +287,14 @@ public class DataManager : MonoBehaviour {
         }
     }
 
-    // Function that increments and saves progress on a given statistic. 
-    public void IncreaseProgress(int id) {
+    public void IncreaseCrashCount() {
         if (GameManager.instance.GetDifficulty() != 0) {
-            switch (id) {
-                case 0: { // Lifetime Deliveries
-                        data.lifetimeDeliveries++;
-                        if (data.lifetimeDeliveries == 25) { 
-                            GameManager.dataManager.SetShopProgress(true); 
-                            GameManager.newsTextScroller.AddShopUnlockHeadline();
-                        }
-                        if (data.lifetimeDeliveries == 40) {
-                            GameManager.dataManager.SetLevelProgress("city", 2); 
-                            GameManager.newsTextScroller.AddBossUnlockHeadline();
-                        }
-                        } if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
-                        break; 
-                case 1: { // Player Crashes
-                        data.playerCrashes++;
-                        if (data.playerCrashes == 500) { CompleteAchievement("crash500"); }
-                        else if (data.playerCrashes == 1000) { CompleteAchievement("crash1000"); }
-                        break; }
-            }
+            data.playerCrashes++;
+            if (data.playerCrashes == 500) { CompleteAchievement("crash500"); }
+            else if (data.playerCrashes == 1000) { CompleteAchievement("crash1000"); }
         }
     }
+
     #endregion
 
     #region Cash Data
