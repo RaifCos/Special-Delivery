@@ -74,7 +74,10 @@ public class CarTraversal : MonoBehaviour {
         Vector3 rayOrigin = transform.position + Vector3.up;
         if (!Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit roadHit, height, roadMask)) return;
 
-        UpdateTopSpeed(rayOrigin);
+        if (!ignoreBlockage && Physics.Raycast(rayOrigin, transform.forward, out RaycastHit hit, 10f, blockageMask)) {
+            actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hit.distance / 25f);
+        } else { actTopSpeed = topSpeed; }
+        
         UpdateChaseState();
 
         if (isChasing) {
@@ -116,12 +119,6 @@ public class CarTraversal : MonoBehaviour {
         rb.AddTorque(side * spinTorque * torqueScale * Vector3.up, ForceMode.Impulse);
     }
 
-    private void UpdateTopSpeed(Vector3 rayOrigin) {
-        if (!ignoreBlockage && Physics.Raycast(rayOrigin, transform.forward, out RaycastHit hit, 10f, blockageMask)) {
-            actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hit.distance / 25f);
-        } else { actTopSpeed = topSpeed; }
-    }
-
     private void UpdateChaseState() {
         if (!chaseTarget || target == null) return;
 
@@ -136,20 +133,13 @@ public class CarTraversal : MonoBehaviour {
     private void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
         LookRotation(surfaceNormal, targetPosition);
         float forwardSpeed = Vector3.Dot(rb.rotation * Vector3.forward, rb.linearVelocity);
-        if (CanAccelerate(forwardSpeed)) { MoveCar(); }
-    }
-
-    private bool CanAccelerate(float forwardSpeed) =>
-        (actTopSpeed > 0f && forwardSpeed < actTopSpeed) ||
-        (actTopSpeed < 0f && forwardSpeed > actTopSpeed);
-
-    private void MoveCar() {
-        Vector3 velocity = rb.linearVelocity;
-        Vector3 right = rb.rotation * Vector3.right;
-        float lateralVel = Vector3.Dot(velocity, right);
-        Vector3 lateralCorrection = grip * lateralVel * -right;
-        rb.AddForce(lateralCorrection, ForceMode.Acceleration);
-        rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
+        if (actTopSpeed > 0f && forwardSpeed < actTopSpeed || actTopSpeed < 0f && forwardSpeed > actTopSpeed) {
+            Vector3 right = rb.rotation * Vector3.right;
+            float lateralVel = Vector3.Dot(rb.linearVelocity, right);
+            Vector3 lateralCorrection = grip * lateralVel * -right;
+            rb.AddForce(lateralCorrection, ForceMode.Acceleration);
+            rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
+        }
     }
 
     private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
@@ -187,12 +177,8 @@ public class CarTraversal : MonoBehaviour {
                 if (candidate == previous) continue;
 
                 float dist = Vector3.Distance(candidate.GetPos(), targetPos);
-                if (dist < bestDist) {
-                    bestDist = dist;
-                    best = candidate;
-                }
-            }
-            if (best != null) return best;
+                if (dist < bestDist) { bestDist = dist; best = candidate; }
+            } if (best != null) return best;
         } return from.GetNextNode(previous);
     }
 
