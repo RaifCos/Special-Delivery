@@ -12,10 +12,12 @@ public class Pathway {
 
     public TrafficNode GetNextNode() => nextNode;
     public float GetDistance() => distance;
+    
 }
 
-public class TrafficNode : MonoBehaviour {
+public class TrafficNode : MonoBehaviour {    
     [SerializeField] private GameObject[] nextNodes;
+    [SerializeField] private bool bossOnly = false;
     private readonly List<Pathway> pathways = new();
     private Vector3 pos;
     private int pathwayCount;
@@ -33,6 +35,8 @@ public class TrafficNode : MonoBehaviour {
     }
 
     public Vector3 GetPos() => pos;
+
+    public bool IsBossNode() => bossOnly;
 
     public TrafficNode GetNextNode() {
         if (pathwayCount == 1) return GetOnlyNextNode(); 

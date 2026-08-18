@@ -13,6 +13,7 @@ public class CarTraversal : MonoBehaviour {
 
     [Header("Traversal Information")]
     [SerializeField] private int nodeSet;
+    [SerializeField] private bool usesBossNodes;
     [SerializeField] private bool ignoreBlockage;
 
     [Header("Target Following")]
@@ -139,7 +140,7 @@ public class CarTraversal : MonoBehaviour {
             Vector3 lateralCorrection = grip * lateralVel * -right;
             rb.AddForce(lateralCorrection, ForceMode.Acceleration);
             rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
-        }
+        } 
     }
 
     private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
@@ -165,23 +166,30 @@ public class CarTraversal : MonoBehaviour {
     private TrafficNode ChooseNextNode(TrafficNode from, TrafficNode previous) {
         List<Pathway> pathways = from.GetPathways;
         if (pathways.Count == 0) return from;
-        if (pathways.Count == 1) return pathways[0].GetNextNode();
+
+        List<TrafficNode> candidates = new();
+        foreach (Pathway pathway in pathways) {
+            TrafficNode candidate = pathway.GetNextNode();
+            if (candidate == previous && pathways.Count > 1) continue;
+            if (candidate.IsBossNode() && !usesBossNodes) continue;
+            candidates.Add(candidate);
+        }
+
+        if (candidates.Count == 0) {
+            return pathways.Count == 1 ? pathways[0].GetNextNode() : from.GetNextNode(previous);
+        } if (candidates.Count == 1) return candidates[0];
 
         if (hasTarget && target != null) {
             TrafficNode best = null;
             float bestDist = Mathf.Infinity;
             Vector3 targetPos = target.transform.position;
-
-            foreach (Pathway pathway in pathways) {
-                TrafficNode candidate = pathway.GetNextNode();
-                if (candidate == previous) continue;
-
+            foreach (TrafficNode candidate in candidates) {
                 float dist = Vector3.Distance(candidate.GetPos(), targetPos);
                 if (dist < bestDist) { bestDist = dist; best = candidate; }
-            } if (best != null) return best;
-        } return from.GetNextNode(previous);
+            } return best;
+        } return candidates[Random.Range(0, candidates.Count)];
     }
-
+    
     private void ReattachToNodeSystem() {
         TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
@@ -191,6 +199,7 @@ public class CarTraversal : MonoBehaviour {
 
         foreach (TrafficNode node in allNodes) {
             if (node == null) continue;
+            if (node.IsBossNode() && !usesBossNodes) continue;
             float dist = Vector3.Distance(rb.position, node.transform.position);
 
             Vector3 dirToNode = (node.transform.position - rb.position).normalized;
