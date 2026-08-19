@@ -266,6 +266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 561972017}
+  bossOnly: 0
 --- !u!4 &5625010
 Transform:
   m_ObjectHideFlags: 0
@@ -758,6 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1450135904}
+  bossOnly: 0
 --- !u!4 &16424627
 Transform:
   m_ObjectHideFlags: 0
@@ -863,6 +865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1348858779}
+  bossOnly: 0
 --- !u!4 &21077301
 Transform:
   m_ObjectHideFlags: 0
@@ -970,6 +973,7 @@ MonoBehaviour:
   - {fileID: 419582440}
   - {fileID: 534077259}
   - {fileID: 1723893224}
+  bossOnly: 0
 --- !u!4 &23813231
 Transform:
   m_ObjectHideFlags: 0
@@ -1075,6 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1906300922}
+  bossOnly: 0
 --- !u!4 &23999425
 Transform:
   m_ObjectHideFlags: 0
@@ -1307,111 +1312,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3885328424806575170, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
   m_PrefabInstance: {fileID: 42511128}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &51671197
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 51671198}
-  - component: {fileID: 51671201}
-  - component: {fileID: 51671200}
-  - component: {fileID: 51671199}
-  m_Layer: 0
-  m_Name: RN-Recovery B (3)
-  m_TagString: Traffic Node
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &51671198
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51671197}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30, y: 0, z: -85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 751280240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &51671199
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51671197}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &51671200
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51671197}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &51671201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51671197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextNodes:
-  - {fileID: 1052532935}
 --- !u!1 &51711533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1405,7 @@ MonoBehaviour:
   - {fileID: 2118054425}
   - {fileID: 741516832}
   - {fileID: 2019664908}
+  bossOnly: 0
 --- !u!4 &51711537
 Transform:
   m_ObjectHideFlags: 0
@@ -1978,7 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60495644}
   m_Layer: 0
-  m_Name: Recovery C
+  m_Name: 'RecoveryB '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2294,6 +2195,7 @@ MonoBehaviour:
   - {fileID: 2088239954}
   - {fileID: 1668490294}
   - {fileID: 1781414524}
+  bossOnly: 0
 --- !u!1 &76687730
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +2921,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 683263685}
   - {fileID: 1574568757}
+  bossOnly: 0
 --- !u!4 &100904386
 Transform:
   m_ObjectHideFlags: 0
@@ -3299,6 +3202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 179716144}
+  bossOnly: 0
 --- !u!4 &106495244
 Transform:
   m_ObjectHideFlags: 0
@@ -3327,7 +3231,7 @@ GameObject:
   - component: {fileID: 106653477}
   - component: {fileID: 106653476}
   m_Layer: 0
-  m_Name: RN-Recovery C (3)
+  m_Name: RN-Recovery B (3)
   m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3419,6 +3323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1414942014}
+  bossOnly: 0
 --- !u!1 &113380146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3646,6 +3551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 2023042576}
+  bossOnly: 0
 --- !u!4 &118750278
 Transform:
   m_ObjectHideFlags: 0
@@ -4198,6 +4104,7 @@ MonoBehaviour:
   - {fileID: 933196969}
   - {fileID: 1725549633}
   - {fileID: 437209373}
+  bossOnly: 0
 --- !u!1 &143871597
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,6 +4929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 611469064}
+  bossOnly: 0
 --- !u!4 &160239414
 Transform:
   m_ObjectHideFlags: 0
@@ -5192,6 +5100,7 @@ MonoBehaviour:
   - {fileID: 2116007621}
   - {fileID: 683263685}
   - {fileID: 1574568757}
+  bossOnly: 0
 --- !u!4 &171084620
 Transform:
   m_ObjectHideFlags: 0
@@ -5401,6 +5310,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 118750274}
   - {fileID: 666793496}
+  bossOnly: 0
 --- !u!4 &179716148
 Transform:
   m_ObjectHideFlags: 0
@@ -5571,6 +5481,7 @@ MonoBehaviour:
   - {fileID: 1297569524}
   - {fileID: 2118054425}
   - {fileID: 741516832}
+  bossOnly: 0
 --- !u!4 &181767780
 Transform:
   m_ObjectHideFlags: 0
@@ -5690,6 +5601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 16424623}
+  bossOnly: 0
 --- !u!4 &192676669
 Transform:
   m_ObjectHideFlags: 0
@@ -6019,6 +5931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1931133326}
+  bossOnly: 0
 --- !u!4 &200285059
 Transform:
   m_ObjectHideFlags: 0
@@ -7001,7 +6914,6 @@ Transform:
   - {fileID: 1279034893}
   - {fileID: 829768423}
   - {fileID: 1641125694}
-  - {fileID: 751280240}
   - {fileID: 60495644}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7223,6 +7135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 2097810176}
+  bossOnly: 0
 --- !u!1001 &273086686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7716,6 +7629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1414942014}
+  bossOnly: 0
 --- !u!4 &281776880
 Transform:
   m_ObjectHideFlags: 0
@@ -7888,6 +7802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1821265287}
+  bossOnly: 0
 --- !u!4 &289552707
 Transform:
   m_ObjectHideFlags: 0
@@ -8008,6 +7923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1578442174}
+  bossOnly: 0
 --- !u!1 &295155604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8432,6 +8348,7 @@ MonoBehaviour:
   - {fileID: 565327889}
   - {fileID: 1435529072}
   - {fileID: 1071184198}
+  bossOnly: 0
 --- !u!1001 &298080698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8808,6 +8725,7 @@ MonoBehaviour:
   - {fileID: 534077259}
   - {fileID: 1723893224}
   - {fileID: 870408729}
+  bossOnly: 0
 --- !u!4 &305120759
 Transform:
   m_ObjectHideFlags: 0
@@ -9127,6 +9045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 648892220}
+  bossOnly: 0
 --- !u!1 &313967127
 GameObject:
   m_ObjectHideFlags: 0
@@ -15537,6 +15456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1211505014}
+  bossOnly: 0
 --- !u!4 &419582444
 Transform:
   m_ObjectHideFlags: 0
@@ -16195,6 +16115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1179776182}
+  bossOnly: 0
 --- !u!4 &437542379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3885328424806575170, guid: 645eb9664096ecf45bf12adb1ff606d8, type: 3}
@@ -16537,6 +16458,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 23999421}
   - {fileID: 1314148704}
+  bossOnly: 0
 --- !u!1001 &455352136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17898,6 +17820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 75909152}
+  bossOnly: 0
 --- !u!4 &534077263
 Transform:
   m_ObjectHideFlags: 0
@@ -18095,6 +18018,7 @@ MonoBehaviour:
   - {fileID: 1075177973}
   - {fileID: 565327889}
   - {fileID: 1435529072}
+  bossOnly: 0
 --- !u!4 &535417757
 Transform:
   m_ObjectHideFlags: 0
@@ -18662,6 +18586,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 21077297}
   - {fileID: 971245516}
+  bossOnly: 0
 --- !u!4 &561972021
 Transform:
   m_ObjectHideFlags: 0
@@ -18767,6 +18692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 450912808}
+  bossOnly: 0
 --- !u!4 &565327893
 Transform:
   m_ObjectHideFlags: 0
@@ -19382,6 +19308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1307157605}
+  bossOnly: 0
 --- !u!1 &593086603
 GameObject:
   m_ObjectHideFlags: 0
@@ -20000,6 +19927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 611469064}
+  bossOnly: 0
 --- !u!1 &611469064
 GameObject:
   m_ObjectHideFlags: 0
@@ -20090,6 +20018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1209933352}
+  bossOnly: 0
 --- !u!4 &611469068
 Transform:
   m_ObjectHideFlags: 0
@@ -20389,6 +20318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 2021640815}
+  bossOnly: 0
 --- !u!1001 &634750051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20853,6 +20783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 293393911}
+  bossOnly: 0
 --- !u!4 &648892224
 Transform:
   m_ObjectHideFlags: 0
@@ -21221,111 +21152,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 400, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &663025051
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 663025052}
-  - component: {fileID: 663025055}
-  - component: {fileID: 663025054}
-  - component: {fileID: 663025053}
-  m_Layer: 0
-  m_Name: RN-Recovery B (1)
-  m_TagString: Traffic Node
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &663025052
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663025051}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: -85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 751280240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &663025053
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663025051}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &663025054
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663025051}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &663025055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 663025051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextNodes:
-  - {fileID: 1681845653}
 --- !u!1 &666793496
 GameObject:
   m_ObjectHideFlags: 0
@@ -21416,6 +21242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 535417753}
+  bossOnly: 0
 --- !u!4 &666793500
 Transform:
   m_ObjectHideFlags: 0
@@ -22047,6 +21874,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 171084616}
   - {fileID: 100904382}
+  bossOnly: 0
 --- !u!4 &683263689
 Transform:
   m_ObjectHideFlags: 0
@@ -23540,6 +23368,7 @@ MonoBehaviour:
   - {fileID: 1003088577}
   - {fileID: 51711533}
   - {fileID: 181767776}
+  bossOnly: 0
 --- !u!4 &741516836
 Transform:
   m_ObjectHideFlags: 0
@@ -23617,40 +23446,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5222490438126188190, guid: 39eeff358b150f049a0534ee3b6619b0, type: 3}
   m_PrefabInstance: {fileID: 742120710}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &751280239
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 751280240}
-  m_Layer: 0
-  m_Name: Recovery B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &751280240
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751280239}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 663025052}
-  - {fileID: 1052532939}
-  - {fileID: 51671198}
-  m_Father: {fileID: 258546890}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &753791641
 GameObject:
   m_ObjectHideFlags: 0
@@ -23849,6 +23644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1438514554}
+  bossOnly: 0
 --- !u!4 &754627269
 Transform:
   m_ObjectHideFlags: 0
@@ -24066,7 +23862,7 @@ GameObject:
   - component: {fileID: 771587261}
   - component: {fileID: 771587260}
   m_Layer: 0
-  m_Name: RN-Recovery C (1)
+  m_Name: RN-Recovery B (1)
   m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24143,6 +23939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 75909152}
+  bossOnly: 0
 --- !u!4 &771587263
 Transform:
   m_ObjectHideFlags: 0
@@ -24542,6 +24339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1312273222}
+  bossOnly: 0
 --- !u!1001 &805547176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26045,6 +25843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 160239410}
+  bossOnly: 0
 --- !u!4 &870408733
 Transform:
   m_ObjectHideFlags: 0
@@ -27227,6 +27026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 802278378}
+  bossOnly: 0
 --- !u!1001 &922595335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27441,6 +27241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1334287258}
+  bossOnly: 0
 --- !u!4 &933196973
 Transform:
   m_ObjectHideFlags: 0
@@ -28540,6 +28341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 23813227}
+  bossOnly: 0
 --- !u!4 &962866363
 Transform:
   m_ObjectHideFlags: 0
@@ -28785,6 +28587,7 @@ MonoBehaviour:
   - {fileID: 1709458474}
   - {fileID: 1003088577}
   - {fileID: 171084616}
+  bossOnly: 0
 --- !u!4 &968962445
 Transform:
   m_ObjectHideFlags: 0
@@ -28965,6 +28768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1533623005}
+  bossOnly: 0
 --- !u!4 &971245520
 Transform:
   m_ObjectHideFlags: 0
@@ -29202,6 +29006,7 @@ MonoBehaviour:
   - {fileID: 968962441}
   - {fileID: 1297569524}
   - {fileID: 1325230192}
+  bossOnly: 0
 --- !u!4 &1003088581
 Transform:
   m_ObjectHideFlags: 0
@@ -29618,6 +29423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 140780301}
+  bossOnly: 0
 --- !u!4 &1015186370
 Transform:
   m_ObjectHideFlags: 0
@@ -30104,7 +29910,7 @@ GameObject:
   - component: {fileID: 1030453455}
   - component: {fileID: 1030453454}
   m_Layer: 0
-  m_Name: RN-Recovery C (2)
+  m_Name: RN-Recovery B (2)
   m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30196,6 +30002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1623763091}
+  bossOnly: 0
 --- !u!1 &1031801291
 GameObject:
   m_ObjectHideFlags: 0
@@ -30620,111 +30427,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051797733}
   m_Mesh: {fileID: -4293739439953417627, guid: 8a2eb87bd7019b84ca4a86782ba92a48, type: 3}
---- !u!1 &1052532935
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1052532939}
-  - component: {fileID: 1052532938}
-  - component: {fileID: 1052532937}
-  - component: {fileID: 1052532936}
-  m_Layer: 0
-  m_Name: RN-Recovery B (2)
-  m_TagString: Traffic Node
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &1052532936
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052532935}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1052532937
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052532935}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1052532938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052532935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e11869876724842add551d91b25bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextNodes:
-  - {fileID: 663025051}
---- !u!4 &1052532939
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1052532935}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -85}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 751280240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1054799342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3662186647165698460, guid: 546671eda8d0ea24d9951f2b00b3e28c, type: 3}
@@ -30948,6 +30650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 307591314}
+  bossOnly: 0
 --- !u!4 &1068310772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1238701347221469752, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
@@ -31043,6 +30746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1795364852}
+  bossOnly: 0
 --- !u!4 &1071184202
 Transform:
   m_ObjectHideFlags: 0
@@ -31186,6 +30890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1893147478}
+  bossOnly: 0
 --- !u!4 &1075177977
 Transform:
   m_ObjectHideFlags: 0
@@ -32563,6 +32268,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1325230192}
   - {fileID: 1297569524}
+  bossOnly: 0
 --- !u!23 &1141001761
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33078,6 +32784,7 @@ MonoBehaviour:
   - {fileID: 437209373}
   - {fileID: 1909165761}
   - {fileID: 1725549633}
+  bossOnly: 0
 --- !u!1001 &1150768204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33930,6 +33637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 919447976}
+  bossOnly: 0
 --- !u!1001 &1186322854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34422,6 +34130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1503548221}
+  bossOnly: 0
 --- !u!4 &1206045751
 Transform:
   m_ObjectHideFlags: 0
@@ -34528,6 +34237,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 666793496}
   - {fileID: 1884769432}
+  bossOnly: 0
 --- !u!4 &1209933356
 Transform:
   m_ObjectHideFlags: 0
@@ -34633,6 +34343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1345295699}
+  bossOnly: 0
 --- !u!4 &1211505018
 Transform:
   m_ObjectHideFlags: 0
@@ -35642,6 +35353,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 264635628}
   - {fileID: 611248344}
+  bossOnly: 0
 --- !u!1 &1277341661
 GameObject:
   m_ObjectHideFlags: 0
@@ -36149,6 +35861,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 181767776}
   - {fileID: 1003088577}
+  bossOnly: 0
 --- !u!4 &1297569528
 Transform:
   m_ObjectHideFlags: 0
@@ -36479,6 +36192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1812029199}
+  bossOnly: 0
 --- !u!1001 &1308988344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36646,6 +36360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 591472241}
+  bossOnly: 0
 --- !u!1 &1314083088
 GameObject:
   m_ObjectHideFlags: 0
@@ -36775,6 +36490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1839830089}
+  bossOnly: 0
 --- !u!4 &1314148708
 Transform:
   m_ObjectHideFlags: 0
@@ -36882,6 +36598,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1003088577}
   - {fileID: 1529195334}
+  bossOnly: 0
 --- !u!4 &1325230196
 Transform:
   m_ObjectHideFlags: 0
@@ -37192,6 +36909,7 @@ MonoBehaviour:
   - {fileID: 634407018}
   - {fileID: 2088239954}
   - {fileID: 1781414524}
+  bossOnly: 0
 --- !u!1001 &1340091633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37401,6 +37119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 192676665}
+  bossOnly: 0
 --- !u!4 &1345295703
 Transform:
   m_ObjectHideFlags: 0
@@ -37506,6 +37225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 106495240}
+  bossOnly: 0
 --- !u!4 &1348858783
 Transform:
   m_ObjectHideFlags: 0
@@ -38545,6 +38265,7 @@ MonoBehaviour:
   - {fileID: 1071184198}
   - {fileID: 1075177973}
   - {fileID: 1435529072}
+  bossOnly: 0
 --- !u!4 &1414942018
 Transform:
   m_ObjectHideFlags: 0
@@ -38822,6 +38543,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1985336874}
   - {fileID: 21077297}
+  bossOnly: 0
 --- !u!4 &1427844928
 Transform:
   m_ObjectHideFlags: 0
@@ -44018,6 +43740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1427844924}
+  bossOnly: 0
 --- !u!4 &1435529076
 Transform:
   m_ObjectHideFlags: 0
@@ -44180,6 +43903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1801574775}
+  bossOnly: 0
 --- !u!4 &1437950175
 Transform:
   m_ObjectHideFlags: 0
@@ -44397,6 +44121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 2097810176}
+  bossOnly: 0
 --- !u!4 &1438514558
 Transform:
   m_ObjectHideFlags: 0
@@ -45044,6 +44769,7 @@ MonoBehaviour:
   - {fileID: 1668490294}
   - {fileID: 1781414524}
   - {fileID: 634407018}
+  bossOnly: 0
 --- !u!4 &1450185447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 551991031752206073, guid: b073c490e7ca9f1499c8e8956eb6d853, type: 3}
@@ -45425,6 +45151,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 971245516}
   - {fileID: 1985336874}
+  bossOnly: 0
 --- !u!4 &1478271015
 Transform:
   m_ObjectHideFlags: 0
@@ -46212,6 +45939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1681845653}
+  bossOnly: 0
 --- !u!4 &1503548225
 Transform:
   m_ObjectHideFlags: 0
@@ -46997,6 +46725,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1325230192}
   - {fileID: 968962441}
+  bossOnly: 0
 --- !u!4 &1529195338
 Transform:
   m_ObjectHideFlags: 0
@@ -47343,6 +47072,7 @@ MonoBehaviour:
   - {fileID: 1071184198}
   - {fileID: 1075177973}
   - {fileID: 565327889}
+  bossOnly: 0
 --- !u!4 &1533623009
 Transform:
   m_ObjectHideFlags: 0
@@ -48590,6 +48320,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 171084616}
   - {fileID: 100904382}
+  bossOnly: 0
 --- !u!114 &1574568762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48707,7 +48438,7 @@ GameObject:
   - component: {fileID: 1576993776}
   - component: {fileID: 1576993775}
   m_Layer: 0
-  m_Name: RN-Recovery C (4)
+  m_Name: RN-Recovery B(4)
   m_TagString: Traffic Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48799,6 +48530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1893147478}
+  bossOnly: 0
 --- !u!1001 &1577044190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48968,6 +48700,7 @@ MonoBehaviour:
   - {fileID: 933196969}
   - {fileID: 1725549633}
   - {fileID: 1909165761}
+  bossOnly: 0
 --- !u!1 &1580157629
 GameObject:
   m_ObjectHideFlags: 0
@@ -50122,6 +49855,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1314148704}
   - {fileID: 281776876}
+  bossOnly: 0
 --- !u!4 &1624164592 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1238701347221469752, guid: 674538d8d534359498aa9909cc1c2368, type: 3}
@@ -50770,6 +50504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1150434570}
+  bossOnly: 0
 --- !u!4 &1668490298
 Transform:
   m_ObjectHideFlags: 0
@@ -51188,6 +50923,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1885357829}
   - {fileID: 1015186366}
+  bossOnly: 0
 --- !u!4 &1681845657
 Transform:
   m_ObjectHideFlags: 0
@@ -51700,6 +51436,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 200285055}
   - {fileID: 1885357829}
+  bossOnly: 0
 --- !u!1 &1709458474
 GameObject:
   m_ObjectHideFlags: 0
@@ -51793,6 +51530,7 @@ MonoBehaviour:
   - {fileID: 2116007621}
   - {fileID: 741516832}
   - {fileID: 968962441}
+  bossOnly: 0
 --- !u!4 &1709458478
 Transform:
   m_ObjectHideFlags: 0
@@ -52270,6 +52008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 297507053}
+  bossOnly: 0
 --- !u!4 &1723893228
 Transform:
   m_ObjectHideFlags: 0
@@ -52375,6 +52114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1437950171}
+  bossOnly: 0
 --- !u!4 &1725549637
 Transform:
   m_ObjectHideFlags: 0
@@ -53856,6 +53596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1623763091}
+  bossOnly: 0
 --- !u!1001 &1783368072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54146,6 +53887,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 118750274}
   - {fileID: 1884769432}
+  bossOnly: 0
 --- !u!4 &1795364856
 Transform:
   m_ObjectHideFlags: 0
@@ -54460,6 +54202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1063436069}
+  bossOnly: 0
 --- !u!4 &1801574779
 Transform:
   m_ObjectHideFlags: 0
@@ -54880,6 +54623,7 @@ MonoBehaviour:
   - {fileID: 437209373}
   - {fileID: 1909165761}
   - {fileID: 933196969}
+  bossOnly: 0
 --- !u!1001 &1817251930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55160,6 +54904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1478271011}
+  bossOnly: 0
 --- !u!1001 &1831129548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55428,6 +55173,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 1015186366}
   - {fileID: 200285055}
+  bossOnly: 0
 --- !u!4 &1839830093
 Transform:
   m_ObjectHideFlags: 0
@@ -56213,6 +55959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 289552703}
+  bossOnly: 0
 --- !u!4 &1884769436
 Transform:
   m_ObjectHideFlags: 0
@@ -56425,6 +56172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1999439653}
+  bossOnly: 0
 --- !u!4 &1885357833
 Transform:
   m_ObjectHideFlags: 0
@@ -56553,6 +56301,7 @@ MonoBehaviour:
   - {fileID: 870408729}
   - {fileID: 419582440}
   - {fileID: 534077259}
+  bossOnly: 0
 --- !u!4 &1893147482
 Transform:
   m_ObjectHideFlags: 0
@@ -57023,6 +56772,7 @@ MonoBehaviour:
   - {fileID: 634407018}
   - {fileID: 2088239954}
   - {fileID: 1668490294}
+  bossOnly: 0
 --- !u!1 &1909165761
 GameObject:
   m_ObjectHideFlags: 0
@@ -57128,6 +56878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1707811083}
+  bossOnly: 0
 --- !u!4 &1913674582 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3357394639660352636, guid: 4630f3e353c06db4296762003491d5a1, type: 3}
@@ -57335,6 +57086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 5625006}
+  bossOnly: 0
 --- !u!4 &1931133330
 Transform:
   m_ObjectHideFlags: 0
@@ -58181,6 +57933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 1206045747}
+  bossOnly: 0
 --- !u!4 &1985336878
 Transform:
   m_ObjectHideFlags: 0
@@ -58382,6 +58135,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 281776876}
   - {fileID: 23999421}
+  bossOnly: 0
 --- !u!1001 &2002476100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58828,6 +58582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 754627265}
+  bossOnly: 0
 --- !u!4 &2014171553
 Transform:
   m_ObjectHideFlags: 0
@@ -59124,6 +58879,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 51711533}
   - {fileID: 2116007621}
+  bossOnly: 0
 --- !u!114 &2019664913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59231,6 +58987,7 @@ MonoBehaviour:
   - {fileID: 870408729}
   - {fileID: 419582440}
   - {fileID: 1723893224}
+  bossOnly: 0
 --- !u!4 &2021640819
 Transform:
   m_ObjectHideFlags: 0
@@ -59336,6 +59093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 962866359}
+  bossOnly: 0
 --- !u!4 &2023042580
 Transform:
   m_ObjectHideFlags: 0
@@ -60725,6 +60483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 2014171549}
+  bossOnly: 0
 --- !u!4 &2088239958
 Transform:
   m_ObjectHideFlags: 0
@@ -60896,6 +60655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextNodes:
   - {fileID: 305120755}
+  bossOnly: 0
 --- !u!4 &2097810180
 Transform:
   m_ObjectHideFlags: 0
@@ -61210,6 +60970,7 @@ MonoBehaviour:
   - {fileID: 171084616}
   - {fileID: 2019664908}
   - {fileID: 1709458474}
+  bossOnly: 0
 --- !u!4 &2116007625
 Transform:
   m_ObjectHideFlags: 0
@@ -61449,6 +61210,7 @@ MonoBehaviour:
   nextNodes:
   - {fileID: 51711533}
   - {fileID: 181767776}
+  bossOnly: 0
 --- !u!4 &2118054429
 Transform:
   m_ObjectHideFlags: 0

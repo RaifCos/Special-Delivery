@@ -320,6 +320,12 @@ public class GameplayManager : MonoBehaviour {
         timeAnimator.SetTrigger(trigger);
     }
 
+    private void DisplayMenuButton() {
+        GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
+        menuButton.SetActive(true);
+        eventSystem.SetSelectedGameObject(menuButton);
+    }
+
     // Coroutine that fades the game over screen into view.
     private IEnumerator GameOverFade() {
         // Set UI to be fully transparant.
@@ -331,10 +337,10 @@ public class GameplayManager : MonoBehaviour {
         } if (difficulty == 1) { 
             yield return new WaitForSeconds(gameOverPauseTime);
             if (difficulty == 1) StartCoroutine(MoneyCount());    
-        } else yield return _waitForSeconds3;
-        GameObject menuButton =  endUI.transform.Find("Menu Button").gameObject;
-        menuButton.SetActive(true);
-        eventSystem.SetSelectedGameObject(menuButton);
+        } else {
+            while (GameManager.audioManager.IsMusicPlaying()) { yield return null; }
+            DisplayMenuButton();
+        }
     }
 
     private IEnumerator MoneyCount() {
@@ -348,6 +354,7 @@ public class GameplayManager : MonoBehaviour {
             if (display % 10 == 0) { GameManager.audioManager.PlaySoundEffect(countSound); }
             yield return _waitForSeconds0001;
         } yield return _waitForSeconds1;
+        DisplayMenuButton();
     }
 
     private IEnumerator MoneyDisplay(int amount) {
