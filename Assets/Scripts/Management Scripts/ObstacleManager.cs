@@ -64,10 +64,10 @@ public class ObstacleManager : MonoBehaviour {
         TrafficNode startingNode;
         if (type == 0) {
             do { startingNode = trafficNodes[Random.Range(0, trafficNodes.Length)];
-            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold);
+            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold && !startingNode.IsBossNode());
         } else { 
             do { startingNode = giantNodes[Random.Range(0, giantNodes.Length)];
-            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold);
+            } while (Vector3.Distance(startingNode.GetPos(), playerPosition) < spawningDistanceThreshold && !startingNode.IsBossNode());
          } return startingNode;
     }
 

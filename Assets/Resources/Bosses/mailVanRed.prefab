@@ -187,13 +187,13 @@ MonoBehaviour:
   distanceThreshold: 4
   height: 6
   nodeSet: 1
+  usesBossNodes: 1
   ignoreBlockage: 1
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 1
-  directChaseRange: 40
+  directChaseRange: 30
   returnToNodeRange: 50
-  reattachForwardBias: 0.2
   ignoreStun: 0
   minImpactForce: 20
   stunDuration: 0.6
