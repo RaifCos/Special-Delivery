@@ -44511,6 +44511,8 @@ MonoBehaviour:
   - {fileID: 6873733884459152856, guid: da537bc44baef094f9aebaad74fb9bff, type: 3}
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   - {fileID: -8961285537046241812, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
+  - {fileID: 2562756776103097053, guid: 87b7778f7ffd23a4bbb55658b166de99, type: 3}
+  - {fileID: 2562756776103097053, guid: 87b7778f7ffd23a4bbb55658b166de99, type: 3}
   tempObstacles:
   - {fileID: 4774082532997332544, guid: 9f11bf49a95b43b41805819446cfaa24, type: 3}
   - {fileID: 562628192709280279, guid: 4b1390e5471806147873feff3f6c2d20, type: 3}
