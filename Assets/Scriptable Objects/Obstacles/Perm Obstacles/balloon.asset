@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: balloon
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: balloon
-  externalName: Hot Air Balloon
+  externalName: hot air balloon
   description: 'hot air balloons hover high above the streets, just not high enough.
 
 
@@ -21,6 +21,5 @@ MonoBehaviour:
     really just be adding anything to the game at this point.'
   headline: we asked if self-driving balloons could be the future. one expert says
     "how did you get in my house?!"
-  limit: 1
   prefab: {fileID: 3602907678664826403, guid: ca8b15d4fa93e7042883888572e72ab5, type: 3}
   sprite: {fileID: 21300000, guid: 12f2761235e46d5409c68e76e7ef9184, type: 3}

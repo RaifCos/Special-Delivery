@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bouncyBall
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: bouncyBall
-  externalName: Bouncy Ball
+  externalName: bouncy ball
   description: 'a giant rubber ball that bounces unpredictably.
 
 

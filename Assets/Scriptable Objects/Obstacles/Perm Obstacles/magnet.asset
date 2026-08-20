@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: magnet
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: magnet
-  externalName: Magnet
+  externalName: magnet
   description: 'magnets pull objects towards them with their mighty gravitational
     pull.
 
@@ -22,6 +22,5 @@ MonoBehaviour:
     lot about them. It''s not my strongest field. '
   headline: 'parcel city scientists unveil giant magnets as part of plan to create
     "the west pole" to attract toursits. '
-  limit: 3
   prefab: {fileID: 4410646966502014632, guid: 57faec43cf8cd004f9750a3cf83875f4, type: 3}
   sprite: {fileID: 21300000, guid: 8d1716d237ddf164b92dd6008e00999d, type: 3}
