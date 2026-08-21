@@ -9,13 +9,14 @@ public class CameraController : MonoBehaviour {
     [SerializeField] LayerMask collisionMask;
     [SerializeField] float collisionRadius = 0.3f;
     [SerializeField] float openingTime = 4f;
-    private float openingSmoothTime;
+    private float openingSmoothTime, actualOpeningTime;
     private bool openingFinsihed = false;
 
     Vector3 lookTarget, lookTargetVelocity, currentVelocity;
 
     private void Start() {
-        openingSmoothTime = smoothTime * 4f;
+        actualOpeningTime = GameManager.instance.GetDifficulty() == 2? 6f: openingTime;
+        openingSmoothTime = actualOpeningTime / 3f;
         StartCoroutine(OpeningCamera());
     }
 
@@ -71,5 +72,6 @@ public class CameraController : MonoBehaviour {
     private IEnumerator OpeningCamera() {
         yield return new WaitForSeconds(openingTime);
         openingFinsihed = true;
+        GameManager.gameplayManager.StartGame();
     }
 }

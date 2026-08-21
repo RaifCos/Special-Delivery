@@ -15,6 +15,7 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private int nodeSet;
     [SerializeField] private bool usesBossNodes;
     [SerializeField] private bool ignoreBlockage;
+    [SerializeField] private TrafficNode startingNode;
 
     [Header("Target Following")]
     [SerializeField] private GameObject target;
@@ -48,19 +49,7 @@ public class CarTraversal : MonoBehaviour {
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         blockageMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
-
-        if (followPlayer) { target = GameManager.gameplayManager.GetPlayer(); }
-        hasTarget = target != null;
-
-        prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
-        if (prevNode == null) return;
-
-        currNode = prevNode.GetNextNode();
-        if (currNode == null) { currNode = prevNode; }
-        rb.position = prevNode.GetPos() + (Vector3.up * 2f);
-
-        Vector3 dir = (currNode.GetPos() - rb.position).normalized;
-        if (dir.sqrMagnitude > 0.001f) { transform.rotation = Quaternion.LookRotation(dir); }
+        Initialize();
     }
 
     void FixedUpdate() {
@@ -91,6 +80,22 @@ public class CarTraversal : MonoBehaviour {
         if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
             DriveToward(roadHit.normal, currNode.transform.position);
         } else { AdvanceToNextNode(); }
+    }
+
+    private void Initialize() {
+        if (followPlayer) { target = GameManager.gameplayManager.GetPlayer(); }
+        hasTarget = target != null;
+        
+        prevNode = startingNode == null? 
+            GameManager.obstacleManager.GetStartingNode(nodeSet): 
+            startingNode;
+
+        currNode = prevNode.GetNextNode();
+        if (currNode == null) { currNode = prevNode; }
+        rb.position = prevNode.GetPos() + (Vector3.up * 2f);
+
+        Vector3 dir = (currNode.GetPos() - rb.position).normalized;
+        if (dir.sqrMagnitude > 0.001f) { transform.rotation = Quaternion.LookRotation(dir); }
     }
 
     private void OnCollisionEnter(Collision collision) {
