@@ -187,7 +187,7 @@ public class AudioManager : MonoBehaviour {
 
     #region Volume Settings
     public void AdjustMusicVolume() { 
-        volumeMusic = musicVolumeSlider.value; 
+        volumeMusic = musicVolumeSlider.value / 20f; 
         if (isPaused) { music.volume = volumeMusic/2; }
         else { music.volume = volumeMusic; }
     }
@@ -200,10 +200,10 @@ public class AudioManager : MonoBehaviour {
         else { music.volume = volumeMusic; }
     }
 
-    public void AdjustSoundEffectVolume(bool playTest) {
-        volumeSoundEffects = soundEffectVolumeSlider.value;
+    public void AdjustSoundEffectVolume() {
+        volumeSoundEffects = soundEffectVolumeSlider.value / 20f;
         soundEffectSource.volume = volumeSoundEffects;
-        if(playTest) PlayParcelSound(true);
+        PlayParcelSound(true);
     }
 
     public void ConfirmSoundEffectVolumeChange() {
