@@ -9892,8 +9892,8 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 0}
   soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
-  musicVolumeSlider: {fileID: 0}
-  soundEffectVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 1753095610}
+  soundEffectVolumeSlider: {fileID: 1036639057}
 --- !u!114 &908305000
 MonoBehaviour:
   m_ObjectHideFlags: 0

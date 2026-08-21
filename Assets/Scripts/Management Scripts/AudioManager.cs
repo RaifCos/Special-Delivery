@@ -94,8 +94,10 @@ public class AudioManager : MonoBehaviour {
         music.volume = volumeMusic;
         ConfirmSoundEffectVolumeChange();
 
-        if (musicVolumeSlider != null) { musicVolumeSlider.value = volumeMusic;}
-        if (soundEffectVolumeSlider != null) { soundEffectVolumeSlider.value = volumeSoundEffects;}
+        // Have Volume Sliders match current values (without triggering Value Change functions)
+        if (musicVolumeSlider != null) { musicVolumeSlider.SetValueWithoutNotify(volumeMusic); }
+        if (soundEffectVolumeSlider != null) { soundEffectVolumeSlider.SetValueWithoutNotify(volumeSoundEffects); }
+
         // Play the "start" clip once.
         isPlaying = true;
         music.loop = false;
@@ -198,10 +200,10 @@ public class AudioManager : MonoBehaviour {
         else { music.volume = volumeMusic; }
     }
 
-    public void AdjustSoundEffectVolume() {
+    public void AdjustSoundEffectVolume(bool playTest) {
         volumeSoundEffects = soundEffectVolumeSlider.value;
         soundEffectSource.volume = volumeSoundEffects;
-        PlayParcelSound(false);
+        if(playTest) PlayParcelSound(true);
     }
 
     public void ConfirmSoundEffectVolumeChange() {
