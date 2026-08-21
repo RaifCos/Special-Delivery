@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class RespawnHandler : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
     [SerializeField] private Image respawnPanel;
     [SerializeField] private Transform[] respawnNodes;
     [SerializeField] private Vector3[] respawnRotations;
