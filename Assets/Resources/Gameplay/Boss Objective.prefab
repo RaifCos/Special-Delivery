@@ -4848,6 +4848,7 @@ GameObject:
   - component: {fileID: 513264717636954726}
   - component: {fileID: 5216899306081785088}
   - component: {fileID: 3729952866934232730}
+  - component: {fileID: 2220134125754885293}
   m_Layer: 0
   m_Name: Boss Objective
   m_TagString: Parcel
@@ -5008,10 +5009,26 @@ MonoBehaviour:
   deliveryObjBoss: {fileID: 3977729725553688918}
   bossDeliveryTime: 20
   boss: {fileID: 0}
+  bossStartingPos: {x: 0, y: 0, z: 0}
+  bossStartingRotation: {x: 0, y: 0, z: 0}
   playerScoreText: {fileID: 0}
   bossScoreText: {fileID: 0}
   playerScoreAnimator: {fileID: 0}
   bossScoreAnimator: {fileID: 0}
+--- !u!114 &2220134125754885293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712680553758862953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 5216899306081785088}
 --- !u!1 &1928631755589341649
 GameObject:
   m_ObjectHideFlags: 0

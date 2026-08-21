@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5314138635049599287}
   - component: {fileID: 6118548689462897912}
   - component: {fileID: 327807658812887899}
+  - component: {fileID: 2921839408927477124}
   m_Layer: 3
   m_Name: mailVanRed
   m_TagString: Boss
@@ -189,6 +190,7 @@ MonoBehaviour:
   nodeSet: 1
   usesBossNodes: 1
   ignoreBlockage: 1
+  startingNode: {fileID: 0}
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 1
@@ -312,6 +314,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2921839408927477124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726374139776800555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 327807658812887899}
 --- !u!1 &2812169847627699793
 GameObject:
   m_ObjectHideFlags: 0

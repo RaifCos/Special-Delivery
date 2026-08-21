@@ -386,7 +386,8 @@ public class GameplayManager : MonoBehaviour {
         isGamePaused = false;
         player.GetComponent<PlayerControl>().SetState(true);
         GameManager.audioManager.TogglePause(false);
-        GameManager.audioManager.ConfirmVolumeChange();
+        GameManager.audioManager.ConfirmMusicVolumeChange();
+        GameManager.audioManager.ConfirmSoundEffectVolumeChange();
         Time.timeScale = 1;
         AlternateGameMenus(0);
     }
@@ -394,7 +395,8 @@ public class GameplayManager : MonoBehaviour {
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
         if(difficulty > 0) { GameManager.dataManager.CashTransaction(moneyEarnt); }
-        GameManager.audioManager.ConfirmVolumeChange();
+        GameManager.audioManager.ConfirmMusicVolumeChange();
+        GameManager.audioManager.ConfirmSoundEffectVolumeChange();
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);

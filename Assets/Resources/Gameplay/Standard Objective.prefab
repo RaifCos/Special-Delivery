@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6096941516121447760}
   - component: {fileID: 526263555295706777}
   - component: {fileID: 9083711882973510616}
+  - component: {fileID: -503618173321254955}
   m_Layer: 0
   m_Name: Standard Objective
   m_TagString: Parcel
@@ -171,6 +172,20 @@ MonoBehaviour:
   timeEarned: 20
   scoreText: {fileID: 0}
   scoreAnimator: {fileID: 0}
+--- !u!114 &-503618173321254955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658229676687451113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 526263555295706777}
 --- !u!1 &1209655889276136873
 GameObject:
   m_ObjectHideFlags: 0

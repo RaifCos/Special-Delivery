@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 1689235588232952933}
   - component: {fileID: 4195102324455706081}
   - component: {fileID: 2964759547233136770}
+  - component: {fileID: -2895867253805134884}
   m_Layer: 0
   m_Name: ufo
   m_TagString: Untagged
@@ -465,6 +466,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: 1bdc4c829f9b2ad49bbc71b04a2fdf0a, type: 2}
+--- !u!114 &-2895867253805134884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6569604251113940049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 7314220901767843032}
+  - {fileID: 1689235588232952933}
 --- !u!1 &7819740441279443758
 GameObject:
   m_ObjectHideFlags: 0
