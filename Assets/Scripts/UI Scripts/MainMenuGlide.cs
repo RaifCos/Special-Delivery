@@ -31,8 +31,9 @@ public class MainMenuGlide : MonoBehaviour {
     }
     
     IEnumerator BeginMoving() {
-        int i = 0;
+        yield return _waitForSeconds0_5;
         
+        int i = 0;
         while (i < 30) {
             i++;
             rb.AddTorque(new Vector3(0f, 7.5f/30, 0f));
