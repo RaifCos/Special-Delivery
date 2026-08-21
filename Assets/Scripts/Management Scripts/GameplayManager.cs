@@ -66,7 +66,6 @@ public class GameplayManager : MonoBehaviour {
 
     private static readonly int HighTimeHash = Animator.StringToHash("highTime");
     private static readonly int LowTimeHash = Animator.StringToHash("lowTime");
-    private static readonly WaitForSeconds _waitForSeconds3 = new(3f);
     private static readonly WaitForSeconds _waitForSeconds1 = new(1);
     private static readonly WaitForSeconds _waitForSeconds001 = new(0.01f);
     private static readonly WaitForSeconds _waitForSeconds0001 = new(0.001f);
@@ -125,9 +124,9 @@ public class GameplayManager : MonoBehaviour {
                 GameManager.audioManager.Initalize(musicBossStart, musicBossLoop, musicBossEndWin, musicBossEndLose);
                 break;
         }
+    }
 
-        AlternateGameMenus(0);
-
+    public void StartGame() {
         // Initialize the player van.
         player.GetComponent<PlayerControl>().SetState(true);
 
@@ -140,6 +139,10 @@ public class GameplayManager : MonoBehaviour {
             SetTime(startTime, false);
             StartCoroutine(GameTimer());
         }
+
+        // Reveal Game UI
+        AlternateGameMenus(0);
+        GameManager.newsTextScroller.StartNews();
     }
 
     // Update is called once per frame.
@@ -198,20 +201,14 @@ public class GameplayManager : MonoBehaviour {
             GameManager.dataManager.CompleteAchievement("win" + currentLevel.internalName);    
         }
 
-
         // Stop game music and play game over music.
         StartCoroutine(GameManager.audioManager.EndBossMusic(winner));
     }
 
     // Function to stop gameplay when the game ends.
     public void StopGameloop() {
-        // Stop gameplay loop and timer.
         isPlaying = false;
-
-        // Stop van controls.
         player.GetComponent<PlayerControl>().SetState(false);
-
-        // Stop News Text UI
         GameManager.newsTextScroller.StopNews();
     }
 

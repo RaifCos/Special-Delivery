@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class RespawnHandler : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
     [SerializeField] private Image respawnPanel;
     [SerializeField] private Transform[] respawnNodes;
     [SerializeField] private Vector3[] respawnRotations;
@@ -14,7 +14,7 @@ public class RespawnHandler : MonoBehaviour {
         if (collisionGO.CompareTag("Player")) StartCoroutine(RespawnFade(collisionGO));
         else if (collisionGO.CompareTag("Prop")) Destroy(collisionGO);
         else { 
-            if (collisionGO.TryGetComponent<Rigidbody>(out Rigidbody rb)){
+            if (collisionGO.TryGetComponent(out Rigidbody rb)){
                 ResetObject(collisionGO); 
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;

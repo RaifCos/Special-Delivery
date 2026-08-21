@@ -9,6 +9,8 @@ public class BossParcelObjective : MonoBehaviour {
     [SerializeField] private GameObject deliveryObjBoss;
     [SerializeField] private int bossDeliveryTime;
     [SerializeField] private GameObject boss;
+    [SerializeField] private Vector3 bossStartingPos;
+    [SerializeField] private Vector3 bossStartingRotation;
     private BossVan bossVan;
 
     [Header("UI Elements")]

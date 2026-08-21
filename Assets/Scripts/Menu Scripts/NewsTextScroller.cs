@@ -47,7 +47,6 @@ public class NewsTextScroller : MonoBehaviour {
         string[] genericHeadlines = currentLevel.headlines;
         headlines = genericHeadlines.Concat(tipHeadlines).ToArray();
         if (hasBoost) headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
-        StartNews();
     }
 
     // Function to begin the scrolling text 

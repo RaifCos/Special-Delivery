@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour {
     [Header("Main Audio Sources")] 
     [SerializeField] private AudioSource music;
     [SerializeField] private AudioSource soundscape;
+    [SerializeField] private float musicStartDelay = 0;
 
     [Header("Sound Effect Audio Sources")] 
     [SerializeField] private AudioSource soundEffectSource;
@@ -83,6 +84,7 @@ public class AudioManager : MonoBehaviour {
 
     // Coroutine to play music during gameplay.
     public IEnumerator GameMusicLoop() {
+        if (musicStartDelay != 0) yield return new WaitForSeconds(musicStartDelay);
         volume = GameManager.instance.GetMusicVolume();
         music.volume = volume;
         if(volumeSlider != null) { volumeSlider.value = volume;}
