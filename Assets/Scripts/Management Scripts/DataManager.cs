@@ -291,8 +291,8 @@ public class DataManager : MonoBehaviour {
     public void IncreaseCrashCount() {
         if (GameManager.instance.GetDifficulty() != 0) {
             data.playerCrashes++;
-            if (data.playerCrashes == 500) { CompleteAchievement("crash500"); }
-            else if (data.playerCrashes == 1000) { CompleteAchievement("crash1000"); }
+            if (data.playerCrashes == 1000) { CompleteAchievement("crash1000"); }
+            else if (data.playerCrashes == 10000) { CompleteAchievement("crash10000"); }
         }
     }
 
