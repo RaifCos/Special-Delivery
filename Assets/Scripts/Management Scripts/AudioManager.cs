@@ -95,8 +95,8 @@ public class AudioManager : MonoBehaviour {
         ConfirmSoundEffectVolumeChange();
 
         // Have Volume Sliders match current values (without triggering Value Change functions)
-        if (musicVolumeSlider != null) { musicVolumeSlider.SetValueWithoutNotify(volumeMusic); }
-        if (soundEffectVolumeSlider != null) { soundEffectVolumeSlider.SetValueWithoutNotify(volumeSoundEffects); }
+        if (musicVolumeSlider != null) { musicVolumeSlider.SetValueWithoutNotify(volumeMusic * 20f); }
+        if (soundEffectVolumeSlider != null) { soundEffectVolumeSlider.SetValueWithoutNotify(volumeSoundEffects * 20f); }
 
         // Play the "start" clip once.
         isPlaying = true;
