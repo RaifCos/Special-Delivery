@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     private int saveFile; 
     private static int difficulty;
     private float musicVolume;
+    private float soundEffectVolume;
     private bool qualityShadows;
 
     [Header("Universal Variables")]
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
         instance = this;
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
         musicVolume = PlayerPrefs.GetFloat("VolumeMusic_" + saveFile, 0.85f);
+        soundEffectVolume = PlayerPrefs.GetFloat("VolumeEffects_" + saveFile, 0.85f);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
     }
     
@@ -50,6 +52,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public float GetMusicVolume() => musicVolume; 
+
+    public void SetSoundEffectVolume(float input) {
+        soundEffectVolume = input;
+        PlayerPrefs.SetFloat("VolumeSoundEffects_" + saveFile, musicVolume);
+        PlayerPrefs.Save();
+    }
+
+    public float GetSoundEffectVolume() => soundEffectVolume;
 
     public void ToggleShadows(bool input) {
         qualityShadows = input;

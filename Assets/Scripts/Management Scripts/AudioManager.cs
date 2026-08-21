@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioSource soundEffectSource;
     [SerializeField] private GameObject[] spatialAudioSourceObjects;
     private AudioSource[] spatialAudioSources;
+    private SoundEffectVolume[] soundEffectVolumeControllers;
 
     [Header("Sound Effects")]
     [SerializeField] private AudioClip soundParcel;
@@ -23,8 +24,9 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioClip defaultCrashSound;
 
     [Header("Volume Settings")]
-    [SerializeField] private Slider volumeSlider;
-    private float volume;
+    [SerializeField] private Slider musicVolumeSlider;
+    [SerializeField] private Slider soundEffectVolumeSlider;
+    private float volumeMusic, volumeSoundEffects;
 
     private AudioClip musicStart, musicLoop, musicEnd, musicEndAlternate;
     private Coroutine gameMusicCoroutine;
@@ -36,7 +38,7 @@ public class AudioManager : MonoBehaviour {
         spatialAudioSources = new AudioSource[len];
         for (int i = 0; i < len; i++) {
             spatialAudioSources[i] = spatialAudioSourceObjects[i].GetComponent<AudioSource>();
-        }
+        } soundEffectVolumeControllers = Resources.FindObjectsOfTypeAll<SoundEffectVolume>();
     }
 
     public void Initalize(AudioClip startClip, AudioClip loopClip) {
@@ -85,9 +87,15 @@ public class AudioManager : MonoBehaviour {
     // Coroutine to play music during gameplay.
     public IEnumerator GameMusicLoop() {
         if (musicStartDelay != 0) yield return new WaitForSeconds(musicStartDelay);
-        volume = GameManager.instance.GetMusicVolume();
-        music.volume = volume;
-        if(volumeSlider != null) { volumeSlider.value = volume;}
+
+        // Apple Initial Volume Values 
+        volumeMusic = GameManager.instance.GetMusicVolume();
+        volumeSoundEffects = GameManager.instance.GetSoundEffectVolume();
+        music.volume = volumeMusic;
+        ConfirmSoundEffectVolumeChange();
+
+        if (musicVolumeSlider != null) { musicVolumeSlider.value = volumeMusic;}
+        if (soundEffectVolumeSlider != null) { soundEffectVolumeSlider.value = volumeSoundEffects;}
         // Play the "start" clip once.
         isPlaying = true;
         music.loop = false;
@@ -177,17 +185,28 @@ public class AudioManager : MonoBehaviour {
 
     #region Volume Settings
     public void AdjustMusicVolume() { 
-        volume = volumeSlider.value; 
-        if (isPaused) { music.volume = volume/2; }
-        else { music.volume = volume; }
+        volumeMusic = musicVolumeSlider.value; 
+        if (isPaused) { music.volume = volumeMusic/2; }
+        else { music.volume = volumeMusic; }
     }
 
-    public void ConfirmVolumeChange() => GameManager.instance.SetMusicVolume(volume);
+    public void ConfirmMusicVolumeChange() => GameManager.instance.SetMusicVolume(volumeMusic);
 
     public void TogglePause(bool paused) { 
         isPaused = paused;
-        if (isPaused) { music.volume = volume/2; }
-        else { music.volume = volume; }
+        if (isPaused) { music.volume = volumeMusic/2; }
+        else { music.volume = volumeMusic; }
+    }
+
+    public void AdjustSoundEffectVolume() {
+        volumeSoundEffects = soundEffectVolumeSlider.value;
+        soundEffectSource.volume = volumeSoundEffects;
+        PlayParcelSound(false);
+    }
+
+    public void ConfirmSoundEffectVolumeChange() {
+        GameManager.instance.SetSoundEffectVolume(volumeSoundEffects);
+        foreach (SoundEffectVolume sev in soundEffectVolumeControllers) { sev.AdjustVolume(volumeSoundEffects); }
     }
     
     #endregion
