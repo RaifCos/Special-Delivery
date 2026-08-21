@@ -1,5 +1,6 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 [RequireComponent(typeof(RectTransform))]
 public class OpeningAnimator : MonoBehaviour {
@@ -20,16 +21,22 @@ public class OpeningAnimator : MonoBehaviour {
     private bool alreadyAnimated = false;
 
     private Animator animator;
+    private Button button;
+    private bool buttonState;
 
     private void Awake() {
         rt = GetComponent<RectTransform>();
         animator = GetComponent<Animator>();
+        button = GetComponent<Button>();
         onScreenPos = rt.anchoredPosition;
     }
 
     private void OnEnable() { 
-        if (!alreadyAnimated) { 
-            if (animator != null) animator.enabled = false;
+        if (!alreadyAnimated) {
+            if (button != null) { 
+                buttonState = button.interactable;
+                button.interactable = false;
+            } if (animator != null) animator.enabled = false;
             SnapOffscreen(); 
             AnimateIn();
             alreadyAnimated = true;
@@ -77,5 +84,6 @@ public class OpeningAnimator : MonoBehaviour {
             yield return null;
         } rt.anchoredPosition = onScreenPos;
         if (animator != null) animator.enabled = true;
+        if (button != null) { button.interactable = buttonState; }
     }
 }
