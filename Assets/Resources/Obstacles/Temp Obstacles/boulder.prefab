@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -5800384371705823148}
   - component: {fileID: 1085489687956198044}
   - component: {fileID: 562628192709280279}
+  - component: {fileID: 3803056315947951613}
   m_Layer: 3
   m_Name: boulder
   m_TagString: Untagged
@@ -267,3 +268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: cf6bf9b37c3ed85488db59747a242f66, type: 2}
+--- !u!114 &3803056315947951613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280203734691425330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: -5800384371705823148}

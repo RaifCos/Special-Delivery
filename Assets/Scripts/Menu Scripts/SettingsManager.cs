@@ -21,7 +21,8 @@ public class SettingsManager : MonoBehaviour {
     }
 
     public void BackToMenu() {
-        GameManager.audioManager.ConfirmVolumeChange();
+        GameManager.audioManager.ConfirmMusicVolumeChange();
+        GameManager.audioManager.ConfirmSoundEffectVolumeChange();
         GameManager.mainMenuManager.AlternateMainMenus(0);
         GameManager.instance.ToggleShadows(qualityShadows);
     }

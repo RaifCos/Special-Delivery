@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 1178958773408239741}
   - component: {fileID: 3245042970343244353}
   - component: {fileID: 909383068343892227}
+  - component: {fileID: 2596073053006874633}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -379,6 +380,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   collisionRadius: 0.3
+  openingTime: 4
 --- !u!114 &2799934506552303539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -844,6 +846,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2596073053006874633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780907324379763456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 3245042970343244353}
+  - {fileID: 909383068343892227}
 --- !u!1 &1860752740371314849
 GameObject:
   m_ObjectHideFlags: 0

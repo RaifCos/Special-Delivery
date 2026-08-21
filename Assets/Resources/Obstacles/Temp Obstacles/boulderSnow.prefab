@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3487372016475174689}
   - component: {fileID: -1506856010285376518}
   - component: {fileID: 8795924381500241567}
+  - component: {fileID: -689740299621946043}
   m_Layer: 3
   m_Name: boulderSnow
   m_TagString: Untagged
@@ -267,3 +268,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: fc204baf2b854284a97c26a4bb44bc8e, type: 2}
+--- !u!114 &-689740299621946043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4921226426627925572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 3487372016475174689}

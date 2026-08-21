@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2250057336317621470}
   - component: {fileID: 3125286199556699339}
   - component: {fileID: 2562756776103097053}
+  - component: {fileID: -51585644050393997}
   m_Layer: 0
   m_Name: perfume
   m_TagString: Untagged
@@ -242,6 +243,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   so: {fileID: 11400000, guid: ef74109658374684c94d3d6b399296e3, type: 2}
+--- !u!114 &-51585644050393997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684639176899569481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5717b236473afb643a871a4ee1a52e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectVolume
+  soundEffectSources:
+  - {fileID: 2250057336317621470}
 --- !u!1 &7434833426302620190
 GameObject:
   m_ObjectHideFlags: 0
