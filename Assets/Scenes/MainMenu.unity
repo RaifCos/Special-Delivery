@@ -10491,7 +10491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: -1
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1977926394}
     m_SelectOnDown: {fileID: 1661887153}
@@ -16947,7 +16947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
   m_Navigation:
-    m_Mode: -1
+    m_Mode: 2
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1977926394}
     m_SelectOnDown: {fileID: 1661887153}

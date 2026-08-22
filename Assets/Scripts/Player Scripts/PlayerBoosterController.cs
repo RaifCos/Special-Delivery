@@ -46,7 +46,7 @@ public class PlayerBoosterControl : MonoBehaviour {
         StartCoroutine(FuelAdjustment());
     }
 
-    void FixedUpdate() {
+    public void BoostUpdate() {
         if (vanBoost.IsPressed() && fuel > 0f) { StartBoost(); } 
         else { StopBoost(); }
     }

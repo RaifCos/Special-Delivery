@@ -75,6 +75,7 @@ public class PlayerControl : MonoBehaviour {
             float steerResponseRate = Mathf.Lerp(10f, 4f, speedFactor);
             currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * steerResponseRate);
 
+            pbc.BoostUpdate();
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
             }
