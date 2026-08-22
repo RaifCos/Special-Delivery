@@ -42,6 +42,7 @@ public class CarTraversal : MonoBehaviour {
 
     private Rigidbody rb;
     private TrafficNode currNode, prevNode;
+    private NodeGraph graph;
     private LayerMask blockageMask, roadMask;
 
     void Start() {
@@ -49,6 +50,7 @@ public class CarTraversal : MonoBehaviour {
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         blockageMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
+        graph = GameManager.obstacleManager.GetGraph(nodeSet);
         Initialize();
     }
 
@@ -184,15 +186,33 @@ public class CarTraversal : MonoBehaviour {
             return pathways.Count == 1 ? pathways[0].GetNextNode() : from.GetNextNode(previous);
         } if (candidates.Count == 1) return candidates[0];
 
-        if (hasTarget && target != null) {
-            TrafficNode best = null;
-            float bestDist = Mathf.Infinity;
-            Vector3 targetPos = target.transform.position;
-            foreach (TrafficNode candidate in candidates) {
-                float dist = Vector3.Distance(candidate.GetPos(), targetPos);
-                if (dist < bestDist) { bestDist = dist; best = candidate; }
-            } return best;
-        } return candidates[Random.Range(0, candidates.Count)];
+        if (hasTarget && target != null && graph != null) {
+            TrafficNode targetNode = FindNearestNode(target.transform.position);
+            if (targetNode != null) {
+                TrafficNode best = null;
+                float bestDist = Mathf.Infinity;
+                foreach (TrafficNode candidate in candidates) {
+                    float dist = graph.GetDistance(candidate, targetNode);
+                    if (dist < bestDist) { bestDist = dist; best = candidate; }
+                }
+                if (best != null) return best;
+            }
+        }
+        return candidates[Random.Range(0, candidates.Count)];
+    }
+
+    private TrafficNode FindNearestNode(Vector3 worldPos) {
+        TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+        if (allNodes == null || allNodes.Length == 0) return null;
+
+        TrafficNode nearest = null;
+        float bestDist = Mathf.Infinity;
+        foreach (TrafficNode node in allNodes) {
+            if (node == null) continue;
+            float dist = Vector3.Distance(worldPos, node.transform.position);
+            if (dist < bestDist) { bestDist = dist; nearest = node; }
+        }
+        return nearest;
     }
     
     private void ReattachToNodeSystem() {

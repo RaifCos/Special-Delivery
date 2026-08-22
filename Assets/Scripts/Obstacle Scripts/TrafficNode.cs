@@ -15,6 +15,39 @@ public class Pathway {
     
 }
 
+public class NodeGraph {
+    private Dictionary<TrafficNode, Dictionary<TrafficNode, float>> distances = new();
+
+    public void Build(TrafficNode[] nodeSet) { foreach (var n in nodeSet) distances[n] = Dijkstra(n, nodeSet); }
+
+    private Dictionary<TrafficNode, float> Dijkstra(TrafficNode start, TrafficNode[] nodeSet) {
+        var dist = new Dictionary<TrafficNode, float>();
+        var visited = new HashSet<TrafficNode>();
+        foreach (var n in nodeSet) dist[n] = Mathf.Infinity;
+        dist[start] = 0f;
+
+        var traversal = new List<TrafficNode> { start };
+        while (traversal.Count > 0) {
+            traversal.Sort((a, b) => dist[a].CompareTo(dist[b]));
+            TrafficNode current = traversal[0];
+            traversal.RemoveAt(0);
+            if (!visited.Add(current)) continue;
+
+            foreach (var pathway in current.GetPathways) {
+                TrafficNode neighbor = pathway.GetNextNode();
+                float newDist = dist[current] + pathway.GetDistance();
+                if (newDist < dist[neighbor]) {
+                    dist[neighbor] = newDist;
+                    traversal.Add(neighbor);
+                }
+            }
+        } return dist;
+    }
+
+    public float GetDistance(TrafficNode from, TrafficNode to) =>
+        distances.TryGetValue(from, out var map) && map.TryGetValue(to, out float d) ? d : Mathf.Infinity;
+}
+
 public class TrafficNode : MonoBehaviour {    
     [SerializeField] private GameObject[] nextNodes;
     [SerializeField] private bool bossOnly = false;

@@ -18,6 +18,7 @@ public class ObstacleManager : MonoBehaviour {
     private TrafficNode[] trafficNodes, giantNodes;
     private GameObject[] sideNodes, edgeNodes;
     private bool[] sideNodeOccupied;
+    private NodeGraph trafficGraph, giantGraph;
 
     private GameObject obstacleObject, destroyParticles;
     private int difficulty;
@@ -38,6 +39,12 @@ public class ObstacleManager : MonoBehaviour {
         sideNodes = GameObject.FindGameObjectsWithTag("Side Node");
         sideNodeOccupied = new bool[sideNodes.Length];
         for (int i = 0; i < sideNodes.Length; i++) { sideNodeOccupied[i] = false; }
+
+        trafficGraph = new NodeGraph();
+        trafficGraph.Build(trafficNodes);
+
+        giantGraph = new NodeGraph();
+        giantGraph.Build(giantNodes);
 
         destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
 
@@ -122,6 +129,8 @@ public class ObstacleManager : MonoBehaviour {
     }
 
     public TrafficNode[] GetNodeSet(int set) => set == 0? trafficNodes: giantNodes;
+    public NodeGraph GetGraph(int set) => set == 0? trafficGraph: giantGraph;
+    
 
     #endregion
 
