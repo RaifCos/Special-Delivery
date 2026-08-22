@@ -12414,9 +12414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 3
-  extraPadding: 300
+  extraPadding: 400
   duration: 1
-  delay: 6
+  delay: 4.25
   ease:
     serializedVersion: 2
     m_Curve:
@@ -14079,7 +14079,7 @@ MonoBehaviour:
   offscreenDirection: 3
   extraPadding: 300
   duration: 1
-  delay: 6
+  delay: 4
   ease:
     serializedVersion: 2
     m_Curve:
@@ -20912,7 +20912,8 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 0}
   soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
-  volumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  soundEffectVolumeSlider: {fileID: 0}
 --- !u!114 &1188058035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31487,9 +31488,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 3
-  extraPadding: 300
+  extraPadding: 400
   duration: 1
-  delay: 6
+  delay: 4.25
   ease:
     serializedVersion: 2
     m_Curve:
