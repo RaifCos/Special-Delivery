@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour {
     [SerializeField] private GameObject settingsUI;
+    [SerializeField] private Dropdown controllerScheme;
     [SerializeField] private Toggle shadowToggle;
 
     private bool qualityShadows; 
@@ -10,6 +12,8 @@ public class SettingsManager : MonoBehaviour {
     void Awake() => GameManager.settingsManager = this;  
 
     public void SetShadows() => qualityShadows = shadowToggle.isOn;
+
+    public void SetControllerScheme() => GameManager.instance.SetControllerScheme(controllerScheme.value);
 
     // Function to delete player's progress on request.
     public void EraseData() {
