@@ -138,6 +138,7 @@ public class MainMenuManager : MonoBehaviour {
                 backdrop.color = new Color32(20, 58, 123, 255);
                 menuUI.SetActive(false);
                 settingsUI.SetActive(true);
+                GameManager.settingsManager.SetControllerSchemeValue();
                 eventSystem.SetSelectedGameObject(settingsStartSelected);
                 break; }
         }  
