@@ -31,8 +31,7 @@ public class MainMenuGlide : MonoBehaviour {
     }
     
     IEnumerator BeginMoving() {
-        yield return _waitForSeconds0_5;
-        
+        yield return new WaitForSeconds(3f);;
         int i = 0;
         while (i < 30) {
             i++;

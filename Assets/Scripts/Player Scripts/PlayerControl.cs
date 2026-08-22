@@ -16,7 +16,9 @@ public class PlayerControl : MonoBehaviour {
     private WheelControl[] wheels;
 
     [Header("Player Input")]
-    public InputAction vanDrive;
+    public InputAction vanDriveButtons;
+    public InputAction vanDriveJoystick;
+    private InputAction vanDrive;
     public InputAction vanSteer;
 
     [Header("Flip Recovery")]
@@ -33,11 +35,6 @@ public class PlayerControl : MonoBehaviour {
     private Rigidbody rb;
     private bool isPlaying = false;
 
-    void OnEnable() { 
-        vanDrive.Enable(); 
-        vanSteer.Enable();
-    }
-
     void OnDisable() { 
         vanDrive.Disable(); 
         vanSteer.Disable();
@@ -47,6 +44,10 @@ public class PlayerControl : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         pbc = GetComponent<PlayerBoosterControl>();
+
+        vanDrive = GameManager.instance.GetControllerScheme() == 0? vanDriveButtons : vanDriveJoystick;
+        vanDrive.Enable(); 
+        vanSteer.Enable();
 
         // Adjust center of mass to improve stability and prevent rolling
         rb.centerOfMass = new Vector3(0f, -1.5f, -0.3f);

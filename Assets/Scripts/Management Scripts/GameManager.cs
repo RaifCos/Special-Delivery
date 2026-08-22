@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     private float musicVolume;
     private float soundEffectVolume;
     private bool qualityShadows;
+    private int controlScheme; // 0 - Buttons : 1 - Joystick
 
     [Header("Universal Variables")]
     [SerializeField] private Material paletteMaterial;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour {
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
         musicVolume = PlayerPrefs.GetFloat("VolumeMusic_" + saveFile, 0.85f);
         soundEffectVolume = PlayerPrefs.GetFloat("VolumeEffects_" + saveFile, 0.85f);
+        controlScheme = PlayerPrefs.GetInt("ControllerScheme_" + saveFile, 0);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
     }
     
@@ -69,6 +71,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public bool GetShadowQuality() { return qualityShadows; }
+
+    public void SetControllerScheme(int input) {
+        controlScheme = input;
+        PlayerPrefs.SetInt("ControllerScheme_" + saveFile, input);
+    }
+
+    public int GetControllerScheme() => controlScheme;     
     
     public IEnumerator LoadAsyncScene(string scene) {
         audioManager.StopGameMusic();

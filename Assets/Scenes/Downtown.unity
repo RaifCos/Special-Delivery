@@ -26293,6 +26293,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &999555966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6047855716252952378, guid: 0a8b42b25ecbae24d95c89403aec2a9e, type: 3}
+  m_PrefabInstance: {fileID: 999555963}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1003915525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38369,7 +38374,7 @@ MonoBehaviour:
   startingTime: 60
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
-  musicStart: {fileID: 8300000, guid: 3489d2de9c2424543a8d11b15acc96aa, type: 3}
+  musicStart: {fileID: 8300000, guid: eb1ec1337e7ce254fa2ff0c430178cf0, type: 3}
   musicLoop: {fileID: 8300000, guid: 845992829bc554b47820219a597dc2d0, type: 3}
   musicEnd: {fileID: 8300000, guid: 09e615cd8b87c2042a4b793d7cfa8b43, type: 3}
   musicBossStart: {fileID: 8300000, guid: d62744fe8d6224d40ac09c5a0f44f260, type: 3}
@@ -38386,7 +38391,7 @@ MonoBehaviour:
   bossEndUI: {fileID: 1851271885}
   pauseUI: {fileID: 313967127}
   confirmUI: {fileID: 1885166694}
-  pauseStartSelect: {fileID: 0}
+  pauseStartSelect: {fileID: 999555966}
   confirmStartSelect: {fileID: 149775537}
   overStartSelect: {fileID: 857535412}
   timerImage: {fileID: 706020644}
