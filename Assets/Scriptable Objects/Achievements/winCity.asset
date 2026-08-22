@@ -16,3 +16,4 @@ MonoBehaviour:
   externalName: THE BEST IN TOWN
   description: complete parcel city.
   sprite: {fileID: 21300000, guid: 86bba6d2b7febe54f978dcf30d791f82, type: 3}
+  hiddenBehind: []

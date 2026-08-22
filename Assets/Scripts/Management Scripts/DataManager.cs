@@ -2,6 +2,7 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 #region Data Classes
 [System.Serializable]
@@ -275,8 +276,15 @@ public class DataManager : MonoBehaviour {
 
     public int GetLifetimeDeliveries() => data.lifetimeDeliveries; 
     public int GetPlayerCrashes() => data.playerCrashes;
+    public Achievement_SO[] GetHidingAchievements(string key) => GetAchievement(key).hiddenBehind;
 
-    public bool IsAchieved(string key) => data.achievementProgress[key];
+    public int AchievementState(string key) {
+        if (data.achievementProgress[key]) return 2; // Achievement Unlocked.
+        else foreach (Achievement_SO a in GetHidingAchievements(key)) {
+            if (!data.achievementProgress[a.internalName]) return 0; // Achievement Hidden.
+        } return 1; // Achievement Locked but Unhidden. 
+    
+    }
 
     // Function to denote an Achievement as completed.
     public void CompleteAchievement(string key) {

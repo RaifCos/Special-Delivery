@@ -16,3 +16,5 @@ MonoBehaviour:
   externalName: KABOOM!!!
   description: crash 10,000 times.
   sprite: {fileID: 21300000, guid: 804666097f79c104f91d5e8d6a6b7717, type: 3}
+  hiddenBehind:
+  - {fileID: 11400000, guid: 5d358ff7aef1c774499fc6e7129979ca, type: 2}

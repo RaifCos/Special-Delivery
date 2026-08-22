@@ -29,7 +29,7 @@ public class AchievementMenuManager : MonoBehaviour {
     // Function to update the UI in the Achievement Menu based on the Achievement's state.
     private void UpdateAchievementUI(string key) {
         Image img = buttonIcons.transform.Find(key).GetComponent<Image>();
-        if (GameManager.dataManager.IsAchieved(key)) { 
+        if (GameManager.dataManager.AchievementState(key) == 2) { 
             img.sprite = GameManager.dataManager.GetAchievement(key).sprite;
         } else { img.sprite = lockedSprite; }
     }
@@ -45,16 +45,20 @@ public class AchievementMenuManager : MonoBehaviour {
             achievementDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = ach.externalName;
         } 
         
-        // For certain achievements, display the associated tracking variable for clarity.
-        string res = ach.description;
-        switch (key) {
+        string res;
+        if (GameManager.dataManager.AchievementState(key) > 0) {
+            res = ach.description;
+            // For certain achievements, display the associated tracking variable for clarity.
+            switch (key) {
             case "lifetime250": { // Lifetime Deliveries
                     res += " [" + lifetimeDeliveries + "]";
                     break; }
-            case "crash500":
-            case "crash1000": { // Player Crashes
+            case "crash1000":
+            case "crash10000": { // Player Crashes
                     res += " [" +  playerCrashes + "]";
                     break; }}
+        } else { res = "you'll need to complete another achievement first."; }
+
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;
     }  
 

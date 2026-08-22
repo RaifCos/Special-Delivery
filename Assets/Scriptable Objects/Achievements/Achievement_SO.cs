@@ -6,4 +6,5 @@ public class Achievement_SO : ScriptableObject {
     [TextArea(3, 6)]
     public string description;
     public Sprite sprite;
+    public Achievement_SO[] hiddenBehind;
 }

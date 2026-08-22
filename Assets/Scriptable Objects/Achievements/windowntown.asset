@@ -16,3 +16,5 @@ MonoBehaviour:
   externalName: NIGHT IN THE CITY
   description: complete parcel city downtown.
   sprite: {fileID: 21300000, guid: a94f9189730b9b84fb6b3afc622786b9, type: 3}
+  hiddenBehind:
+  - {fileID: 11400000, guid: 2811b36732587d44d918e1faa5935330, type: 2}

@@ -16,3 +16,5 @@ MonoBehaviour:
   externalName: THE COMPLETE PACKAGE
   description: complete 50 deliveries in a single shift.
   sprite: {fileID: 21300000, guid: 35249aa4dce82d64d9675811b496c302, type: 3}
+  hiddenBehind:
+  - {fileID: 11400000, guid: a45cddc56cc8a314191ba18c6e001277, type: 2}
