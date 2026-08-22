@@ -397,99 +397,108 @@ MonoBehaviour:
   brakeTorque: 8000
   maxSpeed: 25
   defaultBoostPower: 500
-  steeringRange: 60
-  steeringRangeAtMaxSpeed: 40
-  vanDrive:
-    m_Name: Van Drive
+  steeringRange: 40
+  steeringRangeAtMaxSpeed: 20
+  vanDriveButtons:
+    m_Name: Van Drive Buttons
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 77633bdd-0cc1-4dc3-858a-3d518791cb92
+    m_Id: 6924f9a8-5d89-4036-ae8c-68a8ed89032f
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: Keyboard WASD
-      m_Id: ebed6b09-8b7f-4779-be37-e9cb9b75a381
+      m_Id: cd7b747c-221a-47ef-a7de-73fa75dd8388
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 4
     - m_Name: negative
-      m_Id: 1ff52bea-bfa6-4249-b2a9-1811f56310d1
+      m_Id: 3c00f5f6-ecd9-40f9-af73-97cdb79be69a
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
     - m_Name: positive
-      m_Id: aef3cd7a-0d73-4a70-9ee1-6b341e676eaf
+      m_Id: d8b1f90f-e423-406d-916a-6cb76201f2f9
       m_Path: <Keyboard>/w
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
     - m_Name: Keyboard Arrows
-      m_Id: 96f33cdd-8b72-4d95-a070-773c8b4f4964
+      m_Id: 40715474-4836-433f-ae26-a7edcb98ec73
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 4
     - m_Name: negative
-      m_Id: 98206adb-1ceb-4ea0-9e41-b51c16015247
+      m_Id: 946f1b2f-8230-4860-bc44-617267a89cca
       m_Path: <Keyboard>/downArrow
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
     - m_Name: positive
-      m_Id: 8c1b2c10-e9ad-427b-a0fe-ebbf4716bf63
+      m_Id: 49a7e2a4-0e08-4101-b256-8312be457a2c
       m_Path: <Keyboard>/upArrow
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
-    - m_Name: Switch Pro Controller
-      m_Id: b240816f-a1ca-472a-a9e8-631e24b127ff
+    - m_Name: Gamepad Buttons
+      m_Id: c9711d2e-ae8b-4ebd-abca-60e81446c15f
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 4
     - m_Name: negative
-      m_Id: 86f344f5-6818-475a-9bde-f4ff08b4093e
-      m_Path: <SwitchProControllerHID>/buttonSouth
+      m_Id: 51f6f5c5-7b4c-496d-adcd-4be15fd912a4
+      m_Path: <Gamepad>/dpad/down
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
     - m_Name: positive
-      m_Id: 166d63fb-0572-459f-a77e-2a5b32c010ff
-      m_Path: <SwitchProControllerHID>/buttonWest
+      m_Id: 18d1b34e-2a01-4d28-8b71-2a90a14f72d0
+      m_Path: <Gamepad>/dpad/up
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Van Drive
+      m_Action: Van Drive Buttons
       m_Flags: 8
+    m_Flags: 0
+  vanDriveJoystick:
+    m_Name: Van Drive Joystick
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b1472630-358c-4127-bc12-73f7900331e6
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
     m_Flags: 0
   vanSteer:
     m_Name: Van Steer
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 50e1a178-b4e8-4708-b9a3-bb380ce64fd8
+    m_Id: 9fd5cf3e-1eb7-4cc3-8efd-4d8c4adcd758
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: Keyboard WASD
-      m_Id: 86c54286-3156-4f8d-a4c0-e52391921d6a
+      m_Id: 3c036089-cd8c-49d8-a785-185e2ad79656
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -497,7 +506,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 4
     - m_Name: negative
-      m_Id: e8e92769-003a-4ec9-a6de-3190606a0917
+      m_Id: 8da5bcf8-5a9c-4211-90f2-66c683303e58
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -505,7 +514,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: positive
-      m_Id: d3bbd4fb-6e4d-4109-9623-e24af1356979
+      m_Id: c2c83e1b-f0f9-4e35-8e02-9bb21a4d4272
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
@@ -513,7 +522,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: Keyboard Arrows
-      m_Id: 1fb7a5ca-bbd8-41ee-a9d2-31d001dae3df
+      m_Id: dbe49639-a70e-4113-89ea-e0fafa8cad83
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -521,7 +530,7 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 4
     - m_Name: negative
-      m_Id: b8b0da47-a401-41db-9198-1f0a75c68e30
+      m_Id: 726a5487-9b38-485c-ab74-8d717437d816
       m_Path: <Keyboard>/leftArrow
       m_Interactions: 
       m_Processors: 
@@ -529,15 +538,15 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: positive
-      m_Id: a8b53825-0881-49ab-b048-0693591ae4a9
+      m_Id: 22442328-faf9-4dbb-9056-c9ed5b5e9321
       m_Path: <Keyboard>/rightArrow
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Van Steer
       m_Flags: 8
-    - m_Name: Switch Pro Controller
-      m_Id: 211d33ec-4782-4cb2-b257-0a36880c1c27
+    - m_Name: Gamepad Joystick
+      m_Id: 4d7e3635-fbe1-407b-b8cc-b3fee99a1a81
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -545,16 +554,16 @@ MonoBehaviour:
       m_Action: Van Steer
       m_Flags: 4
     - m_Name: negative
-      m_Id: 2e208765-af6a-4c9e-a7dc-41a0c6a086e9
-      m_Path: <SwitchProControllerHID>/leftStick/left
+      m_Id: 0f286afd-121a-4cfd-a371-34f9f63ff701
+      m_Path: <Gamepad>/leftStick/left
       m_Interactions: 
       m_Processors: 
       m_Groups: 
       m_Action: Van Steer
       m_Flags: 8
     - m_Name: positive
-      m_Id: c6d6d518-5a53-4cff-8e76-b5f85342ea1b
-      m_Path: <SwitchProControllerHID>/leftStick/right
+      m_Id: 985c1dfd-946e-4e2e-9dd6-c90c51f8540b
+      m_Path: <Gamepad>/leftStick/right
       m_Interactions: 
       m_Processors: 
       m_Groups: 
