@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6118548689462897912}
   - component: {fileID: 327807658812887899}
   - component: {fileID: 2921839408927477124}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: mailVanRed
   m_TagString: Boss
   m_Icon: {fileID: 0}
