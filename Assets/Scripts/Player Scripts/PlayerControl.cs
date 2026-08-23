@@ -48,10 +48,7 @@ public class PlayerControl : MonoBehaviour {
         vanDrive = GameManager.instance.GetControllerScheme() == 0? vanDriveButtons : vanDriveJoystick;
         vanDrive.Enable(); 
         vanSteer.Enable();
-
-        // Adjust center of mass to improve stability and prevent rolling
-        rb.centerOfMass = new Vector3(0f, -1.5f, -0.3f);
-
+        
         // Get all wheel components attached to the car
         wheels = GetComponentsInChildren<WheelControl>();
 
@@ -88,7 +85,7 @@ public class PlayerControl : MonoBehaviour {
             float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, steerCurve);
             bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
 
-            float turnStrength = Mathf.Lerp(3f, 1.5f, speedFactor);
+            float turnStrength = Mathf.Lerp(2f, 1f, speedFactor);
             rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
 
             foreach (var wheel in wheels) {

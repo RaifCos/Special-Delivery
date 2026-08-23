@@ -6500,7 +6500,7 @@ GameObject:
   - component: {fileID: 249028036}
   - component: {fileID: 249028038}
   - component: {fileID: 249028037}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20655,7 +20655,7 @@ GameObject:
   - component: {fileID: 678161950}
   - component: {fileID: 678161949}
   - component: {fileID: 678161948}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Planter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -22986,7 +22986,7 @@ GameObject:
   - component: {fileID: 766092670}
   - component: {fileID: 766092672}
   - component: {fileID: 766092671}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25039,7 +25039,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -26897,6 +26897,7 @@ GameObject:
   - component: {fileID: 934688662}
   - component: {fileID: 934688661}
   - component: {fileID: 934688660}
+  - component: {fileID: 934688663}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -26949,7 +26950,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.44313726, g: 0.4745098, b: 1, a: 1}
     m_PressedColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 1}
     m_SelectedColor: {r: 0.4431373, g: 0.47450984, b: 1, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.30588236, g: 0.34509805, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -27018,6 +27019,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934688658}
   m_CullTransparentMesh: 1
+--- !u!114 &934688663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934688658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &939903611
 GameObject:
   m_ObjectHideFlags: 0
@@ -36916,7 +36957,7 @@ GameObject:
   - component: {fileID: 1399656414}
   - component: {fileID: 1399656413}
   - component: {fileID: 1399656412}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Planter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -46484,7 +46525,7 @@ Transform:
   m_GameObject: {fileID: 1540454548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 72, y: 0, z: -62.9}
+  m_LocalPosition: {x: 72, y: -0.2, z: -62.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -59317,7 +59358,7 @@ GameObject:
   - component: {fileID: 2054713999}
   - component: {fileID: 2054714001}
   - component: {fileID: 2054714000}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59617,7 +59658,7 @@ GameObject:
   - component: {fileID: 2086647949}
   - component: {fileID: 2086647948}
   - component: {fileID: 2086647947}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Planter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -62099,7 +62140,7 @@ GameObject:
   - component: {fileID: 3469287838494381419}
   m_Layer: 3
   m_Name: Fountain
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62268,7 +62309,7 @@ GameObject:
   - component: {fileID: 3469287837449356663}
   - component: {fileID: 1711813855804420541}
   - component: {fileID: 3469287837449356664}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Planter
   m_TagString: Level
   m_Icon: {fileID: 0}
@@ -64881,7 +64922,7 @@ GameObject:
   - component: {fileID: 2618149895894284784}
   - component: {fileID: 1439554153856513621}
   - component: {fileID: 3755621288259797663}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65846,7 +65887,7 @@ Transform:
   m_GameObject: {fileID: 4384957517054807270}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.14893135, z: -0, w: 0.98884755}
-  m_LocalPosition: {x: -41.2, y: 3.64, z: -20.4}
+  m_LocalPosition: {x: -45.63, y: 3.64, z: -18.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
