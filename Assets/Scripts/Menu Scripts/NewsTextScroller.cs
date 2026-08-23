@@ -102,17 +102,13 @@ public class NewsTextScroller : MonoBehaviour {
     }
 
     public void AddShopUnlockHeadline() {
-        if (isPlaying) {
-            string res = "BREAKING NEWS - you've delivered enough parcels to unlock the GARAGE! check it out after your shift ends.";
-            newsQueue.Add(res);
-        }
+        string res = "BREAKING NEWS - you've delivered enough parcels to unlock the GARAGE! check it out after your shift ends.";
+        newsQueue.Add(res);
     }
 
     public void AddBossUnlockHeadline() {
-        if (isPlaying) {
-            string res = "BREAKING NEWS - you've delivered enough parcels to unlock the next boss battle!";
-            newsQueue.Add(res);
-        }
+        string res = "BREAKING NEWS - you've delivered enough parcels to unlock the next boss battle!";
+        newsQueue.Add(res);
     }
 
     public void AddTutorialHeadlines() {
