@@ -262,7 +262,7 @@ public class GameplayManager : MonoBehaviour {
             // Only in Regular Game Mode.
             if (difficulty == 1) {
                 // "Time to Spare" Achievement
-                if (value > 0 && timeLeft >= 120) { GameManager.dataManager.CompleteAchievement("timer120"); }
+                if (value > 0 && timeLeft >= 100) { GameManager.dataManager.CompleteAchievement("timer100"); }
 
                 // Exit "Almost out of Time" Phase.
                 if (value > 0 && timeLeft >= 10) { 
