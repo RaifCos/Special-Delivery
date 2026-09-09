@@ -5,7 +5,9 @@ using UnityEngine;
 // Script to handle the behaviour of the Boulder and Snowball.
 public class BoulderTraversal : MonoBehaviour {
     public float speed;
-    public bool snowball;
+    [SerializeField] private bool snowball;
+    [SerializeField] private bool bowlingBall;
+    [SerializeField] private float targetDistance = 25f;
     private bool grounded, beganShrinking;
     private Rigidbody rb;
     private Vector3[] routeNodes = new Vector3[2];
@@ -21,6 +23,7 @@ public class BoulderTraversal : MonoBehaviour {
         transform.position = new Vector3(routeNodes[0].x, 25, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
         height = snowball ? 9f: 5f;
+        if(bowlingBall) transform.parent.GetComponent<BowlingBall>().PlacePins(routeNodes[0], routeNodes[1]);
     }
 
     void OnDisable() { StopAllCoroutines(); }
@@ -40,7 +43,7 @@ public class BoulderTraversal : MonoBehaviour {
             }
 
             // Boulder has arrived at the destination node, so begin shrinking.
-            if ((rb.position - routeNodes[1]).sqrMagnitude < 25f) {
+            if ((rb.position - routeNodes[1]).sqrMagnitude < targetDistance) {
                 StartCoroutine(GameManager.instance.GetComponent<ObstacleManager>().ShrinkAndDestroy(gameObject, false, !snowball));
                 // Set momentum of Boulder after it stops rolling.
                 rb.linearVelocity = (routeNodes[1] - transform.position).normalized * speed; 

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cbb04c86c099244b972da424cbeb85c, type: 3}
+  m_Name: bowling
+  m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
+  internalName: bowling
+  externalName: bowling lane
+  description: "a high-speed bowling ball that hurdles down the lane to strike out
+    a set of pins. \n\ni bet you expected a bowling pun to be put in here somewhere.
+    please, spare me!"
+  headline: '"throwing bowling balls onto car hoods - & 49 other hilarious pranks
+    to pull on your friends" '
+  prefab: {fileID: 9169007058106427395, guid: 66e64923e1642f84ab34e088269a7425, type: 3}
+  sprite: {fileID: 21300000, guid: f019a467ba3d469438acd7eff20f9847, type: 3}

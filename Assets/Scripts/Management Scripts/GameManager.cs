@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 // Script to handle main game functionality.
 public class GameManager : MonoBehaviour {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour {
         soundEffectVolume = PlayerPrefs.GetFloat("VolumeEffects_" + saveFile, 0.85f);
         controlScheme = PlayerPrefs.GetInt("ControllerScheme_" + saveFile, 0);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
+
+        InputSystem.DisableDevice(Mouse.current);
     }
     
     // Getter Method for the current difficulty. 
