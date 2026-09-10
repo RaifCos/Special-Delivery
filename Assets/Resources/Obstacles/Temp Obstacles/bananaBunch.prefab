@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5143283712624180077
+--- !u!1 &1243970421250490425
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,57 +8,57 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1854240282717299833}
-  - component: {fileID: 4365599758060680945}
-  - component: {fileID: 9014987189097083226}
+  - component: {fileID: 163897305919651730}
+  - component: {fileID: 3528024111572118099}
+  - component: {fileID: 652768368632094851}
   m_Layer: 0
-  m_Name: fakeParcels
+  m_Name: bananaBunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &1854240282717299833
+--- !u!4 &163897305919651730
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5143283712624180077}
+  m_GameObject: {fileID: 1243970421250490425}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalPosition: {x: 0.07671, y: 3.33517, z: -38.8413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4365599758060680945
+--- !u!114 &3528024111572118099
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5143283712624180077}
+  m_GameObject: {fileID: 1243970421250490425}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b77318d4e5cd52146a0b05d5845a781a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fakeParcel: {fileID: 8758515622063201031, guid: b019d2775c354104f80d44acad87d2b9, type: 3}
+  fakeParcel: {fileID: 4822816359420790353, guid: b642e0fb4587a0545b07455a3aac2c34, type: 3}
   minParcels: 4
   maxParcels: 8
-  spawnRate: 0.5
---- !u!114 &9014987189097083226
+  spawnRate: 1.5
+--- !u!114 &652768368632094851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5143283712624180077}
-  m_Enabled: 1
+  m_GameObject: {fileID: 1243970421250490425}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 721293eb4d32bfb46b7c6c36ed63a67f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
-  so: {fileID: 11400000, guid: ece76578306f8b9409feb214babe0ba1, type: 2}
+  so: {fileID: 11400000, guid: 740d15c9462ec5d4990aff815906346b, type: 2}

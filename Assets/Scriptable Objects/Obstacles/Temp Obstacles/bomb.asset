@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: bomb
   externalName: Bomb
-  description: do you really need a description of what a bomb does? come on, it
-    is the basically the face of comically absurb violence.
+  description: 'a large explosive that detonates shortly after dropping by.
+
+
+    do
+    you really need a description of what a bomb does? come on, it is the basically
+    the face of comically absurb violence.'
   headline: 'large explosive found planted between local duck sanctuary and city
     nunnery. '
   prefab: {fileID: 4273139771807863349, guid: 526368d065e2721418563113a72ac332, type: 3}

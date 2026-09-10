@@ -2,13 +2,19 @@ using System.Collections;
 using UnityEngine;
 
 public class FakeParcels : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds0_5 = new WaitForSeconds(0.5f);
+
     [SerializeField] private GameObject fakeParcel;
+    [SerializeField] private int minParcels, maxParcels;
+    [SerializeField] private float spawnRate;
+
+    private static WaitForSeconds wait;
     private int parcelCount;
+
+    void Awake() => wait = new(spawnRate);
 
     // Start is called before the first frame update
     void OnEnable() {
-        parcelCount = Random.Range(4, 8);
+        parcelCount = Random.Range(minParcels, maxParcels);
         StartCoroutine(ParcelGroup());
     }
 
@@ -17,9 +23,10 @@ public class FakeParcels : MonoBehaviour {
     IEnumerator ParcelGroup() {
         for (int i = 0; i < parcelCount; i++) {
             SpawnParcel();
-            yield return _waitForSeconds0_5;
+            yield return wait;
         } gameObject.SetActive(false);
     }
+
     void SpawnParcel() {
         GameObject obj = Instantiate(fakeParcel);
         float x = Random.Range(1.4f, 2f);
