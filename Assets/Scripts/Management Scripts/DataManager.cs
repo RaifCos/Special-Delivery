@@ -2,17 +2,17 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 
 #region Data Classes
-[System.Serializable]
+[Serializable]
 public class Data {
-    public Dictionary<string, int> lifetimeObs = new();
-    public Dictionary<string, int> lifetimeProps = new();
-    public Dictionary<string, bool> achievementProgress = new();
-    public Dictionary<string, bool> upgradeProgress = new();
-    public Dictionary<string, int> levelProgress = new();
-    public Dictionary<string, int> levelScores = new();
+    [NonSerialized] public Dictionary<string, int> lifetimeObs = new();
+    [NonSerialized] public Dictionary<string, int> lifetimeProps = new();
+    [NonSerialized] public Dictionary<string, bool> achievementProgress = new();
+    [NonSerialized] public Dictionary<string, bool> upgradeProgress = new();
+    [NonSerialized] public Dictionary<string, int> levelProgress = new();
+    [NonSerialized] public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
     public bool shopUnlocked = false;
 }
