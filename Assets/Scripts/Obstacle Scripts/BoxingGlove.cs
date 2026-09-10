@@ -1,19 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class BoxingGlove : MonoBehaviour {
-    private static WaitForSeconds _waitForSeconds1 = new WaitForSeconds(1);
-    public float startHeight, targetHeight, speed;
-    public AudioSource audioSource;
-    private GameObject player;
-    private int stage = 0;
-    private Rigidbody rb;
+    [SerializeField] private float startHeight, targetHeight, speed;
+    [SerializeField] private ParticleSystem ps;
+    [SerializeField] private AudioSource audioSource;
+    private static readonly WaitForSeconds _waitForSeconds1 = new(1);
+    private GameObject gloveObj, player;
     private Vector3 targetPosition;
+    private Rigidbody rb;
+    private int stage = 0;
     private int timer = 0;
     private bool playerDodged = true;
 
-    void Awake() { rb = GetComponent<Rigidbody>(); }
+    void Awake() { 
+        gloveObj = transform.GetChild(0).gameObject;
+        rb = gloveObj.GetComponent<Rigidbody>(); 
+    }
 
     void OnEnable() {
         stage = 0;
@@ -30,16 +33,19 @@ public class BoxingGlove : MonoBehaviour {
         switch (stage) {
             case 0: { // Waiting
                 targetPosition = player.transform.position + (player.transform.forward * 7.5f) + (Vector3.up * startHeight);
-                rb.MovePosition(targetPosition);
+                transform.position = targetPosition;
+                //rb.MovePosition(targetPosition);
                 LookRotation();
                 break; }
             case 1: { // Punching
                 if (rb.position.y < targetHeight) {
+                    ps.Play();
                     rb.MovePosition(rb.position + Vector3.up * speed);
                 }
                 break; }
             case 2: { // Retreating
                 if (rb.position.y > startHeight) {
+                    ps.Play();
                     rb.MovePosition(rb.position - Vector3.up * speed / 4);
                 } else { stage++; }
                 break; }
@@ -56,9 +62,7 @@ public class BoxingGlove : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        playerDodged = !collision.gameObject.CompareTag("Player");
-    }
+    private void OnCollisionEnter(Collision collision) => playerDodged = !collision.gameObject.CompareTag("Player");
 
     IEnumerator PunchTimer() {
         while (stage < 3) {
