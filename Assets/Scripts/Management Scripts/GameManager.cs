@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour {
         controlScheme = PlayerPrefs.GetInt("ControllerScheme_" + saveFile, 0);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
 
+        // Disable Mouse input 
+        Cursor.visible = false;
         InputSystem.DisableDevice(Mouse.current);
     }
     
