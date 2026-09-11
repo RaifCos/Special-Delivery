@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: crate
   externalName: crate
-  description: 
+  description: 'would it even be a video game without some crates strewn about? '
   stackable: 1
   suspended: 0
   isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: b7ee7b8bf41dfe64ba1444b5a283ea15, type: 3}

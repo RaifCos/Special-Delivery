@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: oilBarrel
   externalName: oil barrel
-  description: 
+  description: an industrial-grade drum filled with highly combustible oil that you can drive into a full speed- i can't see how that could go wrong.
   stackable: 0
   suspended: 0
   isLit: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: blueArrowSign
   externalName: arrow sign
-  description: blue arrow sign
+  description: 
   stackable: 0
   suspended: 0
   isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: 8f8ec0af6239a1f40a805e6338f10e9a, type: 3}
