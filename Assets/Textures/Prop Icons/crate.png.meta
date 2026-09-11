@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8f8ec0af6239a1f40a805e6338f10e9a
+guid: b7ee7b8bf41dfe64ba1444b5a283ea15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4523870849503468730
-    second: blueArrowSign_0
+      213: -1163504838602118676
+    second: crate_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -102,7 +102,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blueArrowSign_0
+      name: crate_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,8 +117,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 643e99d4e6bf731c0800000000000000
-      internalID: -4523870849503468730
+      spriteID: ce92ca883866adfe0800000000000000
+      internalID: -1163504838602118676
       vertices: []
       indices: 
       edges: []
