@@ -16,16 +16,18 @@ public class Prop : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         GameObject collisionGO = collision.gameObject;
+        
         // If stackable, ignore Collisions with other Props of the same type.
         if (so.stackable && collisionGO.name == gameObject.name) { return; }
-        // Check if Collisions with the Level Enviornment Count
-        if ((!collisionGO.CompareTag("Level")) && !beganFading) {
+        if (beganFading) return;
+        
+        // Ignore Collisions with the Level Enviornment
+        if (!collisionGO.CompareTag("Level")) {
             if (so.suspended) { GetComponent<Rigidbody>().isKinematic = false; } // Enable Physics if suspended prop is hit.
             if (so.isLit) { BreakLight(); } // Break Light if prop is a light source.
-            // Shrink and Delete Object Shortly After Collision.
-            StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, true, true));
-            beganFading = true;
+            if (!so.isInvincible) StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, true, true)); // Shrink and Delete if not invincible.
             if (GameManager.instance.GetDifficulty() != 0 && collisionGO.CompareTag("Player")) { GameManager.dataManager.AddPropEncounter(so.internalName); }
+            beganFading = true;
         }
     }
 }
