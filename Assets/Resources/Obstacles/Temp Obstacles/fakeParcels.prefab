@@ -48,7 +48,7 @@ MonoBehaviour:
   fakeParcel: {fileID: 8758515622063201031, guid: b019d2775c354104f80d44acad87d2b9, type: 3}
   minParcels: 4
   maxParcels: 8
-  spawnRate: 0.5
+  spawnRate: 1
 --- !u!114 &9014987189097083226
 MonoBehaviour:
   m_ObjectHideFlags: 0

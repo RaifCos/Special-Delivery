@@ -194,4 +194,4 @@ MonoBehaviour:
   colliderPitchOffset: 0.3
   triggerPitchOffset: 0
   randomisePitch: 0
-  soundCooldown: 0.1
+  soundCooldown: 2

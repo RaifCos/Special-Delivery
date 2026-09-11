@@ -7,12 +7,12 @@ using System;
 #region Data Classes
 [Serializable]
 public class Data {
-    [NonSerialized] public Dictionary<string, int> lifetimeObs = new();
-    [NonSerialized] public Dictionary<string, int> lifetimeProps = new();
-    [NonSerialized] public Dictionary<string, bool> achievementProgress = new();
-    [NonSerialized] public Dictionary<string, bool> upgradeProgress = new();
-    [NonSerialized] public Dictionary<string, int> levelProgress = new();
-    [NonSerialized] public Dictionary<string, int> levelScores = new();
+    [SerializeField] public Dictionary<string, int> lifetimeObs = new();
+    [SerializeField] public Dictionary<string, int> lifetimeProps = new();
+    [SerializeField] public Dictionary<string, bool> achievementProgress = new();
+    [SerializeField] public Dictionary<string, bool> upgradeProgress = new();
+    [SerializeField] public Dictionary<string, int> levelProgress = new();
+    [SerializeField] public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
     public bool shopUnlocked = false;
 }
