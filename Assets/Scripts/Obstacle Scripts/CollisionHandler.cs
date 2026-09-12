@@ -27,6 +27,6 @@ public class CollisionHandler : MonoBehaviour {
     private void SlipTarget(Rigidbody rb) {
         if (rb == null) return;
         Debug.Log("Whoosh!");
-        rb.AddTorque(Vector3.left * 90000f, ForceMode.Impulse);
+        rb.AddTorque(Vector3.up * 90000f, ForceMode.Impulse);
     }
 }
