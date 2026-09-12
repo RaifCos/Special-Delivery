@@ -22,7 +22,8 @@ public class ObstacleManager : MonoBehaviour {
 
     [Header("Visual/Audio Effects")]
     [SerializeField] private AudioClip explosionClip;
-    private GameObject obstacleObject, destroyParticles, explosionParticles;
+    [SerializeField] private AudioClip explosionBigClip;
+    private GameObject obstacleObject, destroyParticles, explosionParticles, explosionBigParticles;
     private int difficulty;
     private static readonly WaitForSeconds _waitForSeconds0_02 = new(0.02f);
     private static readonly WaitForSeconds _waitForSeconds8 = new(8f);
@@ -48,8 +49,9 @@ public class ObstacleManager : MonoBehaviour {
         giantGraph = new NodeGraph();
         giantGraph.Build(giantNodes);
 
-        destroyParticles = Instantiate(Resources.Load<GameObject>("DestroyedParticle"));
-        explosionParticles = Instantiate(Resources.Load<GameObject>("ExplosionParticle"));
+        destroyParticles = Instantiate(Resources.Load<GameObject>("Particles/DestroyedParticle"));
+        explosionParticles = Instantiate(Resources.Load<GameObject>("Particles/ExplosionParticle"));
+        explosionBigParticles = Instantiate(Resources.Load<GameObject>("Particles/ExplosionBigParticle"));
 
         // Add Perm Objects to Pool.
         foreach(Obstacle obs in permObstacles) { 
@@ -170,13 +172,16 @@ public class ObstacleManager : MonoBehaviour {
 
     #endregion
 
-    public void ExplodeAndDestory(GameObject obj, bool destroyObject) {
+    public void ExplodeAndDestory(GameObject obj, bool destroyObject, bool bigExplosion) {
+        GameObject eP = bigExplosion? explosionBigParticles : explosionParticles;
+        AudioClip eC = bigExplosion? explosionBigClip : explosionClip;
+
         // Play Explosion Particles
-        explosionParticles.transform.position = obj.transform.position;
-        explosionParticles.GetComponent<ParticleSystem>().Play();
+        eP.transform.position = obj.transform.position;
+        eP.GetComponent<ParticleSystem>().Play();
 
         // Play Explosion Sound
-        GameManager.audioManager.PlaySpatialSoundEffect(explosionClip, transform.position);
+        GameManager.audioManager.PlaySpatialSoundEffect(eC, transform.position, true);
 
         // Destroy or Disable Object
         if (!destroyObject) { obj.SetActive(false); }

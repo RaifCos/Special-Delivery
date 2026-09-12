@@ -39708,6 +39708,7 @@ MonoBehaviour:
   - {fileID: 8490043015159253133, guid: 84bcdac69620488479cf1187b0cafe77, type: 3}
   spawningDistanceThreshold: 40
   explosionClip: {fileID: 8300000, guid: 1b8c94c1df3e60f458710ec2bd59bbba, type: 3}
+  explosionBigClip: {fileID: 8300000, guid: 325f7a4f61be00947ac08e66355d8046, type: 3}
 --- !u!114 &1446925847
 MonoBehaviour:
   m_ObjectHideFlags: 0

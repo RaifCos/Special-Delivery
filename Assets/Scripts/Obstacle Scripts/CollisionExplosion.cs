@@ -12,10 +12,9 @@ public class CollisionExplosion : MonoBehaviour {
     private void Explode() {
         Vector3 explosionPos = transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
-        Debug.Log($"colliders hit: {colliders.Length}, power: {explosionPower}, radius: {explosionRadius}");
         foreach (Collider hit in colliders) {
             if (hit.attachedRigidbody != null)
                 hit.attachedRigidbody.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3.0f, ForceMode.Impulse);
-        } GameManager.obstacleManager.ExplodeAndDestory(gameObject, destoryOnExplosion);
+        } GameManager.obstacleManager.ExplodeAndDestory(gameObject, destoryOnExplosion, false);
     }
 }

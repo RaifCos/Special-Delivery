@@ -19,4 +19,4 @@ MonoBehaviour:
   suspended: 0
   isLit: 0
   isInvincible: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 026a4a479139ed1448ff07a297904594, type: 3}
