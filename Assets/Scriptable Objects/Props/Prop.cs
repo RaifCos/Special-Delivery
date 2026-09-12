@@ -4,9 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Prop : MonoBehaviour {
     public Prop_SO so;
-
     bool beganFading = false;
-    
+
     private void Awake() { if(so.suspended) GetComponent<Rigidbody>().isKinematic = true; }
 
     private void BreakLight() {
