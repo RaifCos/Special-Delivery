@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: blueArrowSign
   externalName: arrow sign
-  description: 
+  description: 'i have to say, these signs are very helpful whenever you forget if you''re supposed to stay on the road or not. i can never remember myself personally.  '
   propGroup: 5
   stackable: 0
   suspended: 0
