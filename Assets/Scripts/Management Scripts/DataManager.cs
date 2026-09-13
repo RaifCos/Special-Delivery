@@ -224,7 +224,7 @@ public class DataManager : MonoBehaviour {
         if (value == 3) { // If Level is Completed, Unlock the Next.
             Level_SO lvl = GetLevel(key);
             foreach (Level_SO unlockedLvl in lvl.unlocks) {
-                if (GetLevelProgress(key) > 0) return;
+                if (GetLevelProgress(unlockedLvl.internalName) > 0) return;
                 string name = unlockedLvl.internalName;
                 SetLevelProgress(name, 1);
                 AddCutsceneToQueue("level-" + name);
