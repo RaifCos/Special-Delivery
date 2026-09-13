@@ -163,14 +163,23 @@ MonoBehaviour:
   turnSpeed: 95
   grip: 12
   distanceThreshold: 3
-  height: 5
+  height: 3.5
   nodeSet: 0
+  usesBossNodes: 0
   ignoreBlockage: 0
+  startingNode: {fileID: 0}
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 0
   directChaseRange: 0
   returnToNodeRange: 0
+  ignoreStun: 0
+  minImpactForce: 5
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
 --- !u!114 &8908115304667694806
 MonoBehaviour:
   m_ObjectHideFlags: 0

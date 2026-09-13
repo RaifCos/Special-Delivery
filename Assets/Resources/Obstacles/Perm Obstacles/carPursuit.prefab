@@ -388,9 +388,11 @@ MonoBehaviour:
   turnSpeed: 100
   grip: 20
   distanceThreshold: 5
-  height: 4
+  height: 3.5
   nodeSet: 0
+  usesBossNodes: 0
   ignoreBlockage: 0
+  startingNode: {fileID: 0}
   target: {fileID: 8662905365283430191}
   followPlayer: 0
   chaseTarget: 1
@@ -1528,9 +1530,11 @@ MonoBehaviour:
   turnSpeed: 90
   grip: 20
   distanceThreshold: 6
-  height: 4
+  height: 3.5
   nodeSet: 0
+  usesBossNodes: 0
   ignoreBlockage: 1
+  startingNode: {fileID: 0}
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 0

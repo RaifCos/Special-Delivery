@@ -216,6 +216,9 @@ public class CarTraversal : MonoBehaviour {
     }
     
     private void ReattachToNodeSystem() {
+        // Skip Reattachment if the vehicle can still reach it's current target.
+        if (currNode != null && NodeViable(currNode)) return;
+
         TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
         if (allNodes == null || allNodes.Length == 0) return;
 
@@ -225,13 +228,19 @@ public class CarTraversal : MonoBehaviour {
         foreach (TrafficNode node in allNodes) {
             if (node == null) continue;
             if (node.IsBossNode() && !usesBossNodes) continue;
-            float dist = Vector3.Distance(rb.position, node.transform.position);
+            if (node == prevNode) continue;
 
+            float dist = Vector3.Distance(rb.position, node.transform.position);
             Vector3 dirToNode = (node.transform.position - rb.position).normalized;
+
             bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, blockageMask);
             if (wallBlocked) continue;
 
-            float dot = Vector3.Dot(transform.forward, dirToNode);
+            Vector3 headingRef = rb.linearVelocity.sqrMagnitude > 0.25f
+                ? rb.linearVelocity.normalized
+                : transform.forward;
+
+            float dot = Vector3.Dot(headingRef, dirToNode);
             float directionalPenalty = dot >= 0f ? 1f : 2.5f;
             float score = dist * directionalPenalty;
 
@@ -241,11 +250,21 @@ public class CarTraversal : MonoBehaviour {
             }
         }
 
+        if (bestNode == null) bestNode = prevNode;
+
         if (bestNode != null) {
-            prevNode = bestNode;
+            prevNode = currNode != null ? currNode : bestNode;
             currNode = bestNode;
-            if (currNode == null) currNode = bestNode;
         }
+    }
+
+    private bool NodeViable(TrafficNode node) {
+        Vector3 dirToNode = node.transform.position - rb.position;
+        float dist = dirToNode.magnitude;
+        if (dist < 0.01f) return true;
+
+        bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode.normalized, dist, blockageMask);
+        return !wallBlocked;
     }
 
     public void ChangeTarget(GameObject input) {
