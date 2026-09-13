@@ -697,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17760714}
   m_Layer: 0
-  m_Name: Cafe Table (2)
+  m_Name: Cafe Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7590,7 +7590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269169570}
   m_Layer: 0
-  m_Name: Cafe Table (3)
+  m_Name: Cafe Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63418,7 +63418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2119950873}
   m_Layer: 0
-  m_Name: Cafe Table (1)
+  m_Name: Cafe Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
