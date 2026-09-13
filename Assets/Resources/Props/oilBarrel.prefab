@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   forceSensitivity: 15
-  explosionPower: 20000
+  explosionPower: 10000
   explosionRadius: 20
   destoryOnExplosion: 1
 --- !u!114 &6555552489851478971

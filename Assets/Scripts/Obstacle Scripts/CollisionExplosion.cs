@@ -7,7 +7,12 @@ public class CollisionExplosion : MonoBehaviour {
     [SerializeField] private float explosionRadius;
     [SerializeField] private bool destoryOnExplosion;
 
-    private void OnCollisionEnter(Collision collision) { if (collision.relativeVelocity.magnitude > forceSensitivity) Explode(); }
+    private void OnCollisionEnter(Collision collision) { 
+        if (collision.relativeVelocity.magnitude > forceSensitivity) {
+            Explode(); 
+            if (gameObject.name == "oilBarrel" && collision.gameObject.CompareTag("Player")) GameManager.dataManager.CompleteAchievement("explodeBarrel");
+        }
+    }
 
     private void Explode() {
         Vector3 explosionPos = transform.position;
