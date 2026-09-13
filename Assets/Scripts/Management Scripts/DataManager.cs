@@ -3,12 +3,14 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
 
 #region Data Classes
 [Serializable]
 public class Data {
     [SerializeField] public Dictionary<string, int> lifetimeObs = new();
     [SerializeField] public Dictionary<string, int> lifetimeProps = new();
+    [SerializeField] public Dictionary<PropGroup, int> lifetimePropGroups = new();
     [SerializeField] public Dictionary<string, bool> achievementProgress = new();
     [SerializeField] public Dictionary<string, bool> upgradeProgress = new();
     [SerializeField] public Dictionary<string, int> levelProgress = new();
@@ -96,6 +98,9 @@ public class DataManager : MonoBehaviour {
         foreach (Prop prop in props)
             data.lifetimeProps.TryAdd(prop.so.internalName, 0);
 
+        foreach (PropGroup group in Enum.GetValues(typeof(PropGroup)))
+            data.lifetimePropGroups.TryAdd(group, 0);
+
         foreach (Achievement_SO ach in achievements)
             data.achievementProgress.TryAdd(ach.internalName, false);
 
@@ -122,6 +127,10 @@ public class DataManager : MonoBehaviour {
 
         foreach(Prop prop in props) {
             defaultData.lifetimeProps[prop.so.internalName] = 0;
+        }
+
+        foreach (PropGroup group in Enum.GetValues(typeof(PropGroup))) {
+            defaultData.lifetimePropGroups[group] = 0;
         }
 
         foreach(Achievement_SO ach in achievements) {
@@ -250,26 +259,48 @@ public class DataManager : MonoBehaviour {
     public void AddPropEncounter(string key) {
         data.lifetimeProps[key]++;
         if (data.lifetimeProps.GetValueOrDefault(key) == 1) GalleryCompletionCheck();
-        CheckProps();
+    }
+
+    public void AddPropEncounter(string key, PropGroup group) {
+        AddPropEncounter(key);
+        AddGroupEncounter(group);
+    }
+
+    public void AddGroupEncounter(PropGroup group) {
+        data.lifetimePropGroups[group]++;
+        int count = data.lifetimePropGroups[group];
+
+        switch (group) {
+            case PropGroup.Benches:
+                if (count == 100) { CompleteAchievement("destroyBenches"); }
+                break;
+            case PropGroup.Bins:
+                if (count == 150) { CompleteAchievement("destroyBins"); }
+                break;
+            case PropGroup.Cones:
+                if (count == 250) { CompleteAchievement("destroyCones"); }
+                break;
+            case PropGroup.Hydrants:
+                if (count == 100) { CompleteAchievement("destroyHydrants"); }
+                break;
+            case PropGroup.Signs:
+                if (count == 300) { CompleteAchievement("destroySigns"); }
+                break;
+        }
     }
 
     public int GetObstacleEncounters(string key) => data.lifetimeObs[key];
 
     public int GetPropEncounters(string key) => data.lifetimeProps[key];
+    public int GetGroupEncounters(PropGroup group) => data.lifetimePropGroups[group];
+
+    public Dictionary<PropGroup, int> GetAllGroupEncounters() => data.lifetimePropGroups;
 
     private void GalleryCompletionCheck() {
         if (!data.lifetimeObs.ContainsValue(0) && !data.lifetimeProps.ContainsValue(0)) 
         { CompleteAchievement("galleryAll"); }
     }
-    
-    // Function to check if all props of a certain type have been destoyed (for achievement tracking).
-    public void CheckProps() {
-        if (GameObject.Find("stopSign") == null && GameObject.Find("streetSign") == null) { CompleteAchievement("destroySigns"); }
-        if (GameObject.Find("cone") == null) { CompleteAchievement("destroyCones"); }
-        if (GameObject.Find("bin") == null) { CompleteAchievement("destroyBins"); }
-        if (GameObject.Find("hydrant") == null) { CompleteAchievement("destroyHydrants"); }
-        if (GameObject.Find("bench") == null) { CompleteAchievement("destroyBenches"); }
-    }
+
     #endregion
 
     #region Achievement Data

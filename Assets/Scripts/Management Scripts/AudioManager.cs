@@ -159,6 +159,33 @@ public class AudioManager : MonoBehaviour {
         soundEffectSource.Play();
     }
 
+    public void PlaySpatialSoundEffect(AudioClip sound, Vector3 position, bool priority) {
+        int chosen = -1;
+
+        // Check for Object in the Soundbank that isn't playing.
+        for (int i = 0; i < spatialAudioSourceObjects.Length; i++) {
+            if (!spatialAudioSources[i].isPlaying) {
+                chosen = i;
+                break;
+            } 
+        }
+
+        // If there is no capacity in the Soundbank but the current sound takes priority, chose a random sound to overwrite.
+        if (chosen == -1) {
+            if (!priority) return;
+            else chosen = Random.Range(0, spatialAudioSources.Length);
+        }
+
+        // Set Position to play Sound Effect.
+        spatialAudioSourceObjects[chosen].transform.position = position;
+        
+        // Play Sound Effect.
+        AudioSource chosenSoundSource = spatialAudioSources[chosen];
+        chosenSoundSource.clip = sound;
+        chosenSoundSource.pitch = 1f;
+        chosenSoundSource.Play();
+    }
+
     public void PlaySpatialSoundEffect(AudioClip sound, Vector3 position, float pitchOffset, bool randomisePitch) {
         int chosen = -1;
 
@@ -182,6 +209,7 @@ public class AudioManager : MonoBehaviour {
         chosenSoundSource.Play();
         
     }
+    
 
     #endregion
 

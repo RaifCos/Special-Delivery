@@ -176,8 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &1648412499065719928
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +192,7 @@ GameObject:
   - component: {fileID: 1625632327883598552}
   - component: {fileID: 3199355004309429303}
   - component: {fileID: 281051126123443788}
-  - component: {fileID: 7016236694279977653}
+  - component: {fileID: 8635057622278836890}
   - component: {fileID: 8152114925694279225}
   - component: {fileID: 546593812583799308}
   - component: {fileID: 1167778205951747955}
@@ -300,8 +302,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &7016236694279977653
-CapsuleCollider:
+--- !u!135 &8635057622278836890
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -318,10 +320,8 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 2.1250002
-  m_Height: 4.25
-  m_Direction: 1
   m_Center: {x: -0.113280535, y: 1.0221301, z: 0.55874014}
 --- !u!82 &8152114925694279225
 AudioSource:
@@ -626,8 +626,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &2664746655597720445
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,8 +806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &2665823759765617415
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,8 +986,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &5682890818727946106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,8 +1203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &8490575559853116903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,8 +1383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5491ee89ccba4408204feb973d4787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionHandler
+  wait: 1
   destroy: 0
   excludeGround: 1
+  slipTarget: 0
 --- !u!1 &9169007058106427395
 GameObject:
   m_ObjectHideFlags: 0

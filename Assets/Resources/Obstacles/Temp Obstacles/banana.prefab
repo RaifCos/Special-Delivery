@@ -193,5 +193,5 @@ MonoBehaviour:
   includeGround: 0
   colliderPitchOffset: 0.3
   triggerPitchOffset: 0
-  randomisePitch: 0
+  randomisePitch: 1
   soundCooldown: 2

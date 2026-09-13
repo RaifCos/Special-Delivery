@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: hydrant
   externalName: hydrant
-  description: wait a minute- shouldn't these things be gushing out water when they're
-    knocked over? aren't they supposed to be connected to sort of water source??
-    do we report this to someone???
+  description: wait a minute- shouldn't these things be gushing out water when they're knocked over? aren't they supposed to be connected to sort of water source?? do we report this to someone???
+  propGroup: 4
   stackable: 0
+  suspended: 0
+  isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: d612ac0202dd7004f8e73ba9204a8a5f, type: 3}

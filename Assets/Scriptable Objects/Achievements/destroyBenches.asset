@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
   internalName: destroyBenches
   externalName: PARKS AND WRECK
-  description: destroy all benches in a single shift.
+  description: destroy 100 benches and chairs.
   sprite: {fileID: 21300000, guid: 521ad00a796221d4fb0c44f5fa36258d, type: 3}
+  hiddenBehind: []

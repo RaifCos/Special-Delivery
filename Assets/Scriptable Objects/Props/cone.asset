@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: cone
   externalName: traffic cone
-  description: if they didn't want you to run over these small orange cones, then
-    why did they make them so fun to run over?
-  includeGround: 0
+  description: if they didn't want you to run over these small orange cones, then why did they make them so fun to run over?
+  propGroup: 3
+  stackable: 0
+  suspended: 0
+  isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: 2fb02918301f90a4b8697ce118bed95b, type: 3}
