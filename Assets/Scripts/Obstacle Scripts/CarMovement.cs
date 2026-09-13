@@ -11,6 +11,7 @@ public class CarMovement : MonoBehaviour {
     private float actTopSpeed;
 
     [Header("Collision Reaction")]
+    [SerializeField] private bool playerStunOnly;
     [SerializeField] private bool ignoreStun; 
     [SerializeField] private float minImpactForce = 5f;    
     [SerializeField] private float stunDuration = 0.6f;       
@@ -20,18 +21,22 @@ public class CarMovement : MonoBehaviour {
     [SerializeField] private float collisionCooldown = 0.15f;
 
     private float stunTimer;
-    private float collisionCooldownTimer;
+    private float collisionCooldownTimer = 0f;
     public bool IsStunned => stunTimer > 0f;
     private Rigidbody rb;
     private CarTraversal cT;
 
-    void Start() {
+    void Awake() {
         rb = GetComponent<Rigidbody>();
         cT = GetComponent<CarTraversal>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
     }
 
     private void OnCollisionEnter(Collision collision) {
+        // Ignore non-player collisions if car can only be stunned by Player. 
+        if (playerStunOnly && !collision.gameObject.CompareTag("Player")) return; 
+
+        // Ignore collisions that are too weak, are with the ground, or are before the cooldown is finished.
         if (collision.gameObject.CompareTag("Level")
         || collisionCooldownTimer > 0f
         || collision.relativeVelocity.magnitude < minImpactForce
@@ -42,7 +47,7 @@ public class CarMovement : MonoBehaviour {
         if (impactForce < minImpactForce) return;
 
         collisionCooldownTimer = collisionCooldown;
-        cT.SetStunTimer(stunDuration);
+        stunTimer = stunDuration;   
 
         ContactPoint contact = collision.GetContact(0);
 
@@ -85,5 +90,12 @@ public class CarMovement : MonoBehaviour {
     public void ChangeTopSpeed(int input) => topSpeed = input;
     public void AdjustTopSpeed() => actTopSpeed = topSpeed;
     public void AdjustTopSpeed(float hitDist) => actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hitDist / 25f);
+    public void DecreaseCollisionTimer() {  if (collisionCooldownTimer > 0f) collisionCooldownTimer -= Time.fixedDeltaTime; }
+    public void DecreaseStunTimer() {
+    if (stunTimer > 0f) {
+        stunTimer -= Time.fixedDeltaTime;
+        if (stunTimer <= 0f) cT.ReattachToNodeSystem();
+    }
+}
 
 }

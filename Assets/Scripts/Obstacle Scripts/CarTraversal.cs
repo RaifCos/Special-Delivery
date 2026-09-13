@@ -33,24 +33,24 @@ public class CarTraversal : MonoBehaviour {
     private NodeGraph graph;
     private LayerMask blockageMask, roadMask;
 
-    void Start() {
+    void Awake() {
         rb = GetComponent<Rigidbody>();
         cM = GetComponent<CarMovement>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         blockageMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
+    }
+
+    void Start() {
         graph = GameManager.obstacleManager.GetGraph(nodeSet);
         Initialize();
     }
 
     void FixedUpdate() {
-        if (collisionCooldownTimer > 0f) { collisionCooldownTimer -= Time.fixedDeltaTime; }
+        cM.DecreaseCollisionTimer();
+        cM.DecreaseStunTimer();
 
-        if (cM.IsStunned) {
-            stunTimer -= Time.fixedDeltaTime;
-            if (stunTimer <= 0f) { ReattachToNodeSystem(); }
-            return; 
-        }
+        if (cM.IsStunned) return;
 
         Vector3 rayOrigin = transform.position + Vector3.up;
         if (!Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit roadHit, height, roadMask)) return;
