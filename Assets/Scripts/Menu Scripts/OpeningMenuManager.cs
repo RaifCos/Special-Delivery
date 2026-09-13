@@ -59,7 +59,6 @@ public class OpeningMenuManager : MonoBehaviour {
                 break; }
             case 2: { // Loading Screen
                 fileUI.SetActive(false);
-                Instantiate(Resources.Load<GameObject>("LoadingScreen"));
                 break; }
             case 3: { // File Select
                 openingUI.SetActive(false);

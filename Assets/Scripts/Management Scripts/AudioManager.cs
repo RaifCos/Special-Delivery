@@ -137,6 +137,15 @@ public class AudioManager : MonoBehaviour {
         yield return new WaitUntil(() => !music.isPlaying);
     }
 
+    public IEnumerator UnlockFanfare(AudioClip fanfare) {
+        SetMusicPitch(1f);
+        music.clip = fanfare;
+        volumeMusic = GameManager.instance.GetMusicVolume();
+        music.volume = volumeMusic;
+        music.Play();
+        yield return new WaitUntil(() => !music.isPlaying);
+    }
+
     public bool IsMusicPlaying() => music.isPlaying;
 
     public void SetMusicPitch(float input) => music.pitch = input;

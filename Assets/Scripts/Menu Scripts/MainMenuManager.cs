@@ -132,7 +132,6 @@ public class MainMenuManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(null);
                 menuUI.SetActive(false);
                 confirmUI.SetActive(false);
-                Instantiate(Resources.Load<GameObject>("LoadingScreen"));
                 break; }
             case 7: { // Settings
                 backdrop.color = new Color32(20, 58, 123, 255);
