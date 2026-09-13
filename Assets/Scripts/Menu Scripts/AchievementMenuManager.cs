@@ -1,6 +1,8 @@
 using TMPro;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 // Script to handle achievement tracking and the achievement menu UI.
 public class AchievementMenuManager : MonoBehaviour {
@@ -12,12 +14,14 @@ public class AchievementMenuManager : MonoBehaviour {
 
     // Variables used for tracking achievements.
     private int lifetimeDeliveries, playerCrashes;
+    private Dictionary<PropGroup, int> propEncounters; 
 
     void Awake() { GameManager.achievementMenuManager = this; }
 
     void Start() {
         lifetimeDeliveries = GameManager.dataManager.GetLifetimeDeliveries();
         playerCrashes = GameManager.dataManager.GetPlayerCrashes();
+        propEncounters = GameManager.dataManager.GetAllGroupEncounters();
     }
 
     public void UpdateAchievementMenu() {
@@ -51,12 +55,18 @@ public class AchievementMenuManager : MonoBehaviour {
             // For certain achievements, display the associated tracking variable for clarity.
             switch (key) {
             case "lifetime250": { // Lifetime Deliveries
-                    res += " [" + lifetimeDeliveries + "]";
-                    break; }
+                res += " [" + lifetimeDeliveries + "]";
+                break; }
             case "crash1000":
             case "crash10000": { // Player Crashes
-                    res += " [" +  playerCrashes + "]";
-                    break; }}
+                res += " [" +  playerCrashes + "]";
+                break; }
+            case string s when s.StartsWith("destroy"): { // Prop Group Encounters
+                string groupName = s["destroy".Length..];
+                if (Enum.TryParse<PropGroup>(groupName, out var group)) {
+                    res += " [" + propEncounters[group] + "]";
+                }
+                break; }}
         } else { res = "you'll need to complete another achievement first."; }
 
         achievementDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = res;

@@ -292,6 +292,9 @@ public class DataManager : MonoBehaviour {
     public int GetObstacleEncounters(string key) => data.lifetimeObs[key];
 
     public int GetPropEncounters(string key) => data.lifetimeProps[key];
+    public int GetGroupEncounters(PropGroup group) => data.lifetimePropGroups[group];
+
+    public Dictionary<PropGroup, int> GetAllGroupEncounters() => data.lifetimePropGroups;
 
     private void GalleryCompletionCheck() {
         if (!data.lifetimeObs.ContainsValue(0) && !data.lifetimeProps.ContainsValue(0)) 
