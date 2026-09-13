@@ -9,7 +9,6 @@ public enum PropGroup {
     Signs,
 }
 
-
 [CreateAssetMenu(fileName = "Prop_SO", menuName = "Scriptable Objects/Prop")]
 public class Prop_SO : ScriptableObject {
     public string internalName, externalName;
