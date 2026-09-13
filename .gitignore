@@ -3,6 +3,7 @@
 !Assets/**
 !Packages/
 !Packages/**
+Assets/Editor/
 Assets/saveData
 Assets/saveData.meta
 DataKeys.cs
