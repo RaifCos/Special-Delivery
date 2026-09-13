@@ -45,8 +45,9 @@ public class OpeningAnimator : MonoBehaviour {
     }
 
     void OnDisable() { 
+        if (animateOnce) return;
         SnapOffscreen();
-        if (!animateOnce) alreadyAnimated = false;
+        alreadyAnimated = false;
     }
 
     private void SnapOffscreen() {
