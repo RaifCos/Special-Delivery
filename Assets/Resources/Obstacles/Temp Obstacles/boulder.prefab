@@ -255,6 +255,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   snowball: 0
+  bowlingBall: 0
+  targetDistance: 30
 --- !u!114 &562628192709280279
 MonoBehaviour:
   m_ObjectHideFlags: 0

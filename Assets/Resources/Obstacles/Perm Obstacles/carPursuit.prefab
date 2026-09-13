@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 7368365333426201595}
   - component: {fileID: 5453686550346183618}
   - component: {fileID: 2375406764987058850}
+  - component: {fileID: 8400349489882553210}
   - component: {fileID: 7151341223227668820}
   m_Layer: 3
   m_Name: carPolice
@@ -388,14 +389,38 @@ MonoBehaviour:
   turnSpeed: 100
   grip: 20
   distanceThreshold: 5
-  height: 4
+  height: 3.5
   nodeSet: 0
+  usesBossNodes: 0
   ignoreBlockage: 0
+  startingNode: {fileID: 0}
   target: {fileID: 8662905365283430191}
   followPlayer: 0
   chaseTarget: 1
   directChaseRange: 20
   returnToNodeRange: 30
+  ignoreStun: 0
+  minImpactForce: 5
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
+--- !u!114 &8400349489882553210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110878364914474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc48c5d9e149f3a4391a64e188a41093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMovement
+  topSpeed: 15
+  turnSpeed: 100
+  grip: 20
   ignoreStun: 0
   minImpactForce: 5
   stunDuration: 0.6
@@ -1380,6 +1405,7 @@ GameObject:
   - component: {fileID: 6621357956580374327}
   - component: {fileID: 4926614726194801944}
   - component: {fileID: 8747414871973976878}
+  - component: {fileID: 1801408656199824131}
   - component: {fileID: 4673018690858706131}
   m_Layer: 3
   m_Name: carCrook
@@ -1528,9 +1554,11 @@ MonoBehaviour:
   turnSpeed: 90
   grip: 20
   distanceThreshold: 6
-  height: 4
+  height: 3.5
   nodeSet: 0
+  usesBossNodes: 0
   ignoreBlockage: 1
+  startingNode: {fileID: 0}
   target: {fileID: 0}
   followPlayer: 0
   chaseTarget: 0
@@ -1538,6 +1566,28 @@ MonoBehaviour:
   returnToNodeRange: 0
   ignoreStun: 0
   minImpactForce: 20
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
+--- !u!114 &1801408656199824131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662905365283430191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc48c5d9e149f3a4391a64e188a41093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMovement
+  topSpeed: 20
+  turnSpeed: 90
+  grip: 20
+  ignoreStun: 0
+  minImpactForce: 5
   stunDuration: 0.6
   bounceForceMultiplier: 0.02
   maxBounceForce: 12

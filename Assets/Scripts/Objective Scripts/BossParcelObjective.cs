@@ -91,6 +91,7 @@ public class BossParcelObjective : MonoBehaviour {
 
     public void DeliveryCompleted() {
         GameManager.obstacleManager.SpawnObstacle(true);
+        GameManager.obstacleManager.SpawnObstacle(false);
         if (phase == 1) SetScore(playerScore + 1, bossScore, playerScoreAnimator);
         if (phase == 2) SetScore(playerScore, bossScore + 1, bossScoreAnimator);
         if (isPlaying) { GameManager.audioManager.PlayBossParcelSound(false, phase == 1); } 
