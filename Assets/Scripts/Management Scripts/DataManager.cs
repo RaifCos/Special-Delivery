@@ -37,7 +37,7 @@ public class DataManager : MonoBehaviour {
     #region Variables
     // Save Data 
     [SerializeField] private string jsonFileName;
-    private string saveFilePath; 
+    private string SaveFilePath => Path.Combine(Application.persistentDataPath, jsonFileName) + GameManager.instance.GetSaveFile(); 
 
     // Static Variables
     [SerializeField] private SO_Database database;
@@ -59,7 +59,6 @@ public class DataManager : MonoBehaviour {
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
         levels = database.GetLevels();
-        saveFilePath = Path.Combine(Application.persistentDataPath, jsonFileName) + GameManager.instance.GetSaveFile();
         LoadData();
     }
 
@@ -77,8 +76,8 @@ public class DataManager : MonoBehaviour {
 
     #region Save Data
     public void LoadData() {
-        if (File.Exists(saveFilePath)) {
-            string encryptedJson = File.ReadAllText(saveFilePath);
+        if (File.Exists(SaveFilePath)) {
+            string encryptedJson = File.ReadAllText(SaveFilePath);
             string json = DataEncryption.Decrypt(encryptedJson);
             data = JsonConvert.DeserializeObject<Data>(json);
             LoadMissingData(); 
@@ -90,7 +89,7 @@ public class DataManager : MonoBehaviour {
     public void SaveData() {
         string json = JsonConvert.SerializeObject(data, Formatting.None);
         string encryptedJson = DataEncryption.Encrypt(json);
-        File.WriteAllText(saveFilePath, encryptedJson);
+        File.WriteAllText(SaveFilePath, encryptedJson);
     }
 
     private void LoadMissingData() {
@@ -116,7 +115,7 @@ public class DataManager : MonoBehaviour {
     }
 
     public Data ResetData() {
-        if (File.Exists(saveFilePath)) { File.Delete(saveFilePath); }
+        if (File.Exists(SaveFilePath)) { File.Delete(SaveFilePath); }
         data = DefaultData();
         return data;
     }

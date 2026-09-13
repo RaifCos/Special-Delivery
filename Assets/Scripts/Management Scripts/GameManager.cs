@@ -86,9 +86,9 @@ public class GameManager : MonoBehaviour {
 
     public int GetControllerScheme() => controlScheme;     
     
-    public IEnumerator LoadAsyncScene(string scene) {
+    public IEnumerator LoadAsyncScene(string scene, bool save = true) {
         Instantiate(Resources.Load<GameObject>("LoadingScreen"));
-        dataManager.SaveData();
+        if (save) dataManager.SaveData();
         audioManager.StopGameMusic();
         yield return _waitForSeconds1;
         if (scene == "MainMenu" && dataManager.CutscenesQueued()) scene = "UnlockScene";
