@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2894257708580769806}
   - component: {fileID: 5669623738017931430}
   - component: {fileID: 5314138635049599287}
+  - component: {fileID: 8729158047168080194}
   - component: {fileID: 6118548689462897912}
   - component: {fileID: 327807658812887899}
   - component: {fileID: 2921839408927477124}
@@ -198,6 +199,28 @@ MonoBehaviour:
   returnToNodeRange: 50
   ignoreStun: 0
   minImpactForce: 20
+  stunDuration: 0.6
+  bounceForceMultiplier: 0.02
+  maxBounceForce: 12
+  spinTorque: 6
+  collisionCooldown: 0.15
+--- !u!114 &8729158047168080194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2726374139776800555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc48c5d9e149f3a4391a64e188a41093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarMovement
+  topSpeed: 15
+  turnSpeed: 180
+  grip: 20
+  ignoreStun: 0
+  minImpactForce: 5
   stunDuration: 0.6
   bounceForceMultiplier: 0.02
   maxBounceForce: 12

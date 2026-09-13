@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CarMovement))]
 public class CarTraversal : MonoBehaviour {
     [Header("Car Variables")]
     [SerializeField] private float topSpeed;
@@ -35,18 +36,19 @@ public class CarTraversal : MonoBehaviour {
 
     private float stunTimer;
     private float collisionCooldownTimer;
-    private bool IsStunned => stunTimer > 0f;
 
     private bool hasTarget; 
     private bool isChasing;
 
     private Rigidbody rb;
+    private CarMovement cM;
     private TrafficNode currNode, prevNode;
     private NodeGraph graph;
     private LayerMask blockageMask, roadMask;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        cM = GetComponent<CarMovement>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         blockageMask = LayerMask.GetMask("Blockage");
         roadMask = LayerMask.GetMask("Road");
@@ -57,7 +59,7 @@ public class CarTraversal : MonoBehaviour {
     void FixedUpdate() {
         if (collisionCooldownTimer > 0f) { collisionCooldownTimer -= Time.fixedDeltaTime; }
 
-        if (IsStunned) {
+        if (cM.IsStunned) {
             stunTimer -= Time.fixedDeltaTime;
             if (stunTimer <= 0f) { ReattachToNodeSystem(); }
             return; 
@@ -67,20 +69,20 @@ public class CarTraversal : MonoBehaviour {
         if (!Physics.Raycast(rayOrigin, Vector3.down, out RaycastHit roadHit, height, roadMask)) return;
 
         if (!ignoreBlockage && Physics.Raycast(rayOrigin, transform.forward, out RaycastHit hit, 10f, blockageMask)) {
-            actTopSpeed = Mathf.Lerp(-topSpeed / 1.5f, topSpeed, hit.distance / 25f);
-        } else { actTopSpeed = topSpeed; }
+            cM.AdjustTopSpeed(hit.distance);
+        } else { cM.AdjustTopSpeed(); }
         
         UpdateChaseState();
 
         if (isChasing) {
             if (target == null) return;
-            DriveToward(roadHit.normal, target.transform.position);
+            cM.DriveToward(roadHit.normal, target.transform.position);
             return;
         }
 
         if (currNode == null) return;
         if (Vector3.Distance(rb.position, currNode.transform.position) > distanceThreshold) {
-            DriveToward(roadHit.normal, currNode.transform.position);
+            cM.DriveToward(roadHit.normal, currNode.transform.position);
         } else { AdvanceToNextNode(); }
     }
 
@@ -100,33 +102,6 @@ public class CarTraversal : MonoBehaviour {
         if (dir.sqrMagnitude > 0.001f) { transform.rotation = Quaternion.LookRotation(dir); }
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Level")
-        || collisionCooldownTimer > 0f
-        || collision.relativeVelocity.magnitude < minImpactForce
-        || ignoreStun
-        ) return; 
-
-        float impactForce = collision.impulse.magnitude / Time.fixedDeltaTime;
-        if (impactForce < minImpactForce) return;
-
-        collisionCooldownTimer = collisionCooldown;
-        stunTimer = stunDuration;
-
-        ContactPoint contact = collision.GetContact(0);
-
-        Vector3 pushDir = contact.normal;
-        pushDir.y = 0f;
-        if (pushDir.sqrMagnitude > 0.0001f) {
-            float pushForce = Mathf.Min(impactForce * bounceForceMultiplier, maxBounceForce);
-            rb.AddForce(pushDir.normalized * pushForce, ForceMode.Impulse);
-        }
-
-        float side = Vector3.Dot(transform.right, contact.point - transform.position) >= 0f ? -1f : 1f;
-        float torqueScale = Mathf.Clamp01(impactForce / (minImpactForce * 4f));
-        rb.AddTorque(side * spinTorque * torqueScale * Vector3.up, ForceMode.Impulse);
-    }
-
     private void UpdateChaseState() {
         if (!chaseTarget || target == null) return;
 
@@ -136,30 +111,6 @@ public class CarTraversal : MonoBehaviour {
             isChasing = false;
             ReattachToNodeSystem();
         }
-    }
-
-    private void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
-        LookRotation(surfaceNormal, targetPosition);
-        float forwardSpeed = Vector3.Dot(rb.rotation * Vector3.forward, rb.linearVelocity);
-        if (actTopSpeed > 0f && forwardSpeed < actTopSpeed || actTopSpeed < 0f && forwardSpeed > actTopSpeed) {
-            Vector3 right = rb.rotation * Vector3.right;
-            float lateralVel = Vector3.Dot(rb.linearVelocity, right);
-            Vector3 lateralCorrection = grip * lateralVel * -right;
-            rb.AddForce(lateralCorrection, ForceMode.Acceleration);
-            rb.AddForce(actTopSpeed * 3f * transform.forward, ForceMode.Acceleration);
-        } 
-    }
-
-    private void LookRotation(Vector3 surfaceNormal, Vector3 targetPosition) {
-        Vector3 direction = (targetPosition - rb.position).normalized;
-        if (direction.sqrMagnitude <= 0.001f) return;
-
-        Vector3 surfaceForward = Vector3.ProjectOnPlane(direction, surfaceNormal).normalized;
-        if (surfaceForward.sqrMagnitude <= 0.001f) return;
-
-        Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, surfaceNormal);
-        Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
-        rb.MoveRotation(smoothedRotation);
     }
 
     private void AdvanceToNextNode() {
@@ -215,7 +166,7 @@ public class CarTraversal : MonoBehaviour {
         return nearest;
     }
     
-    private void ReattachToNodeSystem() {
+    public void ReattachToNodeSystem() {
         // Skip Reattachment if the vehicle can still reach it's current target.
         if (currNode != null && NodeViable(currNode)) return;
 
@@ -272,5 +223,5 @@ public class CarTraversal : MonoBehaviour {
         hasTarget = true;
     }
 
-    public void ChangeTopSpeed(int input) => topSpeed = input;
+    public void SetStunTimer(float input) => stunTimer = input;  
 }
