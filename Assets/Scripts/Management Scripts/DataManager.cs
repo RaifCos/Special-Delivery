@@ -1,9 +1,8 @@
+using System;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System;
-using System.Diagnostics;
 
 #region Data Classes
 [Serializable]
