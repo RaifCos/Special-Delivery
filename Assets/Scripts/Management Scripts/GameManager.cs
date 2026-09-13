@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
         dataManager.SaveData();
         audioManager.StopGameMusic();
         yield return _waitForSeconds1;
-        if (dataManager.CutscenesQueued()) scene = "UnlockScene";
+        if (scene == "MainMenu" && dataManager.CutscenesQueued()) scene = "UnlockScene";
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone) { yield return null; }
     }
