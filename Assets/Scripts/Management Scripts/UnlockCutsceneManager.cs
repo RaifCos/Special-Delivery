@@ -78,10 +78,12 @@ public class UnlockCutsceneManager : MonoBehaviour {
         currentModel.SetActive(true);
     }
 
-    public void NextClicked() => StartCoroutine(ResetClip());
+    public void NextClicked() {
+        GameManager.audioManager.PlayParcelSound(true);
+        StartCoroutine(ResetClip());
+    }
 
     private IEnumerator ResetClip() {
-        GameManager.audioManager.PlayParcelSound(true);
         yield return Cutscene(false);
         PlayNext();
     }
