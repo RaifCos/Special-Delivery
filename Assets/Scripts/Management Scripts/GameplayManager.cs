@@ -400,7 +400,6 @@ public class GameplayManager : MonoBehaviour {
         StopGameloop();
         Time.timeScale = 1;
         AlternateGameMenus(3);
-        GameManager.dataManager.SaveData();
         StartCoroutine(GameManager.instance.LoadAsyncScene("MainMenu"));
     }
     
@@ -425,7 +424,6 @@ public class GameplayManager : MonoBehaviour {
                 gameUI.SetActive(false);
                 endUI.SetActive(false);
                 pauseUI.SetActive(false);
-                Instantiate(Resources.Load<GameObject>("LoadingScreen"));
                 break; }    
         }
     }

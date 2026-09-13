@@ -9,6 +9,7 @@ public class OpeningAnimator : MonoBehaviour {
     [Header("Setup")]
     [SerializeField] private Direction offscreenDirection = Direction.Left;
     [SerializeField] private float extraPadding = 100f;
+    [SerializeField] private bool animateOnce = true;
 
     [Header("Animation")]
     [SerializeField] private float duration = 0.6f;
@@ -41,6 +42,12 @@ public class OpeningAnimator : MonoBehaviour {
             AnimateIn();
             alreadyAnimated = true;
         }
+    }
+
+    void OnDisable() { 
+        if (animateOnce) return;
+        SnapOffscreen();
+        alreadyAnimated = false;
     }
 
     private void SnapOffscreen() {

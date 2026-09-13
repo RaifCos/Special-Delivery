@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 // Script to handle main game functionality.
+[DefaultExecutionOrder(-100)]
 public class GameManager : MonoBehaviour {
     private static readonly WaitForSeconds _waitForSeconds1 = new(1f);
     
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public static GarageMenuManager garageMenuManager;
     public static AchievementMenuManager achievementMenuManager;
     public static GalleryManager galleryManager;
+    public static UnlockCutsceneManager unlockCutsceneManager;
     public static SettingsManager settingsManager;
     public static GameplayManager gameplayManager;
     public static DeliveryManager deliveryManager;
@@ -85,8 +87,11 @@ public class GameManager : MonoBehaviour {
     public int GetControllerScheme() => controlScheme;     
     
     public IEnumerator LoadAsyncScene(string scene) {
+        Instantiate(Resources.Load<GameObject>("LoadingScreen"));
+        dataManager.SaveData();
         audioManager.StopGameMusic();
         yield return _waitForSeconds1;
+        if (dataManager.CutscenesQueued()) scene = "UnlockScene";
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone) { yield return null; }
     }

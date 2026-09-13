@@ -1,9 +1,9 @@
+using System;
 using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System;
-using System.Diagnostics;
+using System.Data.Common;
 
 #region Data Classes
 [Serializable]
@@ -17,6 +17,7 @@ public class Data {
     [SerializeField] public Dictionary<string, int> levelScores = new();
     public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
     public bool shopUnlocked = false;
+    public List<string> cutsceneQueue = new();
 }
 
 public class ProgressData {
@@ -28,6 +29,7 @@ public class ProgressData {
     public bool shopUnlocked = false;
     public bool isEmpty = true;
 }
+
 #endregion
 
 public class DataManager : MonoBehaviour {
@@ -222,7 +224,10 @@ public class DataManager : MonoBehaviour {
         if (value == 3) { // If Level is Completed, Unlock the Next.
             Level_SO lvl = GetLevel(key);
             foreach (Level_SO unlockedLvl in lvl.unlocks) {
-                SetLevelProgress(unlockedLvl.internalName, 1);
+                if (GetLevelProgress(unlockedLvl.internalName) > 0) return;
+                string name = unlockedLvl.internalName;
+                SetLevelProgress(name, 1);
+                AddCutsceneToQueue("level-" + name);
             }
         }
     }
@@ -236,6 +241,7 @@ public class DataManager : MonoBehaviour {
         if (GetLevelProgress(key) < 2 && val >= 30) {
             SetLevelProgress(key, 2);
             GameManager.newsTextScroller.AddBossUnlockHeadline();
+            AddCutsceneToQueue("boss-" + key);
         }
 
         data.lifetimeDeliveries++;
@@ -243,7 +249,8 @@ public class DataManager : MonoBehaviour {
         if (!IsShopUnlocked() && data.lifetimeDeliveries >= 25) { 
             SetShopProgress(true); 
             GameManager.newsTextScroller.AddShopUnlockHeadline();
-        } 
+            AddCutsceneToQueue("garage-unlock");
+        }
         
         if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
     }
@@ -324,6 +331,7 @@ public class DataManager : MonoBehaviour {
             data.achievementProgress[key] = true;
             string name = achievements.Find(ach => ach.name == key).externalName;
             GameManager.newsTextScroller.AddAchievementHeadline(name); // Create Headline to display in game.
+            AddCutsceneToQueue("achievement-" + key);
         }
     }
 
@@ -386,5 +394,21 @@ public class DataManager : MonoBehaviour {
     #region High-Score Data
     public int GetBestScore() { return data.bestScore; }
     public void SetBestScore(int val) { data.bestScore = val; }
+    #endregion
+
+    #region Cutscene Data
+
+    public void AddCutsceneToQueue(string name) => data.cutsceneQueue.Add(name);
+
+    public string DequeueCutscene() {
+        List<string> queue = data.cutsceneQueue;
+        if (queue.Count == 0) return null;
+        string res = data.cutsceneQueue[0];
+        data.cutsceneQueue.RemoveAt(0);
+        return res;
+    }
+
+    public bool CutscenesQueued() { return data.cutsceneQueue.Count > 0; }
+
     #endregion
 }
