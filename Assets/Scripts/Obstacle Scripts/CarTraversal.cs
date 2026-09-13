@@ -1,16 +1,12 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CarMovement))]
 public class CarTraversal : MonoBehaviour {
-    [Header("Car Variables")]
-    [SerializeField] private float topSpeed;
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float grip;
+    [Header("Traversal Variables")]
     [SerializeField] private float distanceThreshold;
     [SerializeField] private float height;
-    private float actTopSpeed;
 
     [Header("Traversal Information")]
     [SerializeField] private int nodeSet;
@@ -24,15 +20,6 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private bool chaseTarget;
     [SerializeField] private float directChaseRange;
     [SerializeField] private float returnToNodeRange;
-
-    [Header("Collision Reaction")]
-    [SerializeField] private bool ignoreStun; 
-    [SerializeField] private float minImpactForce = 5f;    
-    [SerializeField] private float stunDuration = 0.6f;       
-    [SerializeField] private float bounceForceMultiplier = 0.02f;
-    [SerializeField] private float maxBounceForce = 12f;
-    [SerializeField] private float spinTorque = 6f;
-    [SerializeField] private float collisionCooldown = 0.15f;
 
     private float stunTimer;
     private float collisionCooldownTimer;
@@ -115,7 +102,6 @@ public class CarTraversal : MonoBehaviour {
 
     private void AdvanceToNextNode() {
         if (currNode == null) return;
-
         TrafficNode next = ChooseNextNode(currNode, prevNode);
         prevNode = currNode;
         currNode = next != null ? next : currNode;
@@ -133,9 +119,8 @@ public class CarTraversal : MonoBehaviour {
             candidates.Add(candidate);
         }
 
-        if (candidates.Count == 0) {
-            return pathways.Count == 1 ? pathways[0].GetNextNode() : from.GetNextNode(previous);
-        } if (candidates.Count == 1) return candidates[0];
+        if (candidates.Count == 0) return pathways.Count == 1 ? pathways[0].GetNextNode() : from.GetNextNode(previous);
+        if (candidates.Count == 1) return candidates[0];
 
         if (hasTarget && target != null && graph != null) {
             TrafficNode targetNode = FindNearestNode(target.transform.position);
@@ -145,47 +130,46 @@ public class CarTraversal : MonoBehaviour {
                 foreach (TrafficNode candidate in candidates) {
                     float dist = graph.GetDistance(candidate, targetNode);
                     if (dist < bestDist) { bestDist = dist; best = candidate; }
-                }
-                if (best != null) return best;
+                } if (best != null) return best;
             }
         }
+        
         return candidates[Random.Range(0, candidates.Count)];
     }
 
-    private TrafficNode FindNearestNode(Vector3 worldPos) {
-        TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
-        if (allNodes == null || allNodes.Length == 0) return null;
+    private TrafficNode FindBestNode(System.Func<TrafficNode, float?> scoreFn) {
+    TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
+    if (allNodes == null || allNodes.Length == 0) return null;
 
-        TrafficNode nearest = null;
-        float bestDist = Mathf.Infinity;
-        foreach (TrafficNode node in allNodes) {
-            if (node == null) continue;
-            float dist = Vector3.Distance(worldPos, node.transform.position);
-            if (dist < bestDist) { bestDist = dist; nearest = node; }
+    TrafficNode best = null;
+    float bestScore = Mathf.Infinity;
+
+    foreach (TrafficNode node in allNodes) {
+        if (node == null) continue;
+        float? score = scoreFn(node);
+        if (score == null) continue;
+        if (score.Value < bestScore) {
+            bestScore = score.Value;
+            best = node;
         }
-        return nearest;
     }
-    
+
+    return best;
+}
+
+    private TrafficNode FindNearestNode(Vector3 worldPos) => FindBestNode(node => Vector3.Distance(worldPos, node.transform.position));
+
     public void ReattachToNodeSystem() {
-        // Skip Reattachment if the vehicle can still reach it's current target.
         if (currNode != null && NodeViable(currNode)) return;
 
-        TrafficNode[] allNodes = GameManager.obstacleManager.GetNodeSet(nodeSet);
-        if (allNodes == null || allNodes.Length == 0) return;
-
-        TrafficNode bestNode = null;
-        float bestScore = Mathf.Infinity;
-
-        foreach (TrafficNode node in allNodes) {
-            if (node == null) continue;
-            if (node.IsBossNode() && !usesBossNodes) continue;
-            if (node == prevNode) continue;
+        TrafficNode bestNode = FindBestNode(node => {
+            if (node.IsBossNode() && !usesBossNodes) return null;
+            if (node == prevNode) return null;
 
             float dist = Vector3.Distance(rb.position, node.transform.position);
             Vector3 dirToNode = (node.transform.position - rb.position).normalized;
 
-            bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, blockageMask);
-            if (wallBlocked) continue;
+            if (Physics.Raycast(rb.position + Vector3.up, dirToNode, dist, blockageMask)) return null;
 
             Vector3 headingRef = rb.linearVelocity.sqrMagnitude > 0.25f
                 ? rb.linearVelocity.normalized
@@ -193,13 +177,8 @@ public class CarTraversal : MonoBehaviour {
 
             float dot = Vector3.Dot(headingRef, dirToNode);
             float directionalPenalty = dot >= 0f ? 1f : 2.5f;
-            float score = dist * directionalPenalty;
-
-            if (score < bestScore) {
-                bestScore = score;
-                bestNode = node;
-            }
-        }
+            return dist * directionalPenalty;
+        });
 
         if (bestNode == null) bestNode = prevNode;
 
