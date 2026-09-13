@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: bench
   externalName: bench
-  description: sometimes it's nice to take a break from the city life and just have
-    a quiet sit down- until a speeding delivery van knocks you four cities over.
-  includeGround: 0
+  description: sometimes it's nice to take a break from the city life and just have a quiet sit down- until a speeding delivery van knocks you four cities over.
+  propGroup: 1
+  stackable: 0
+  suspended: 0
+  isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: b8cbcfed42fc2a048bfbe2aa0cf7aa51, type: 3}

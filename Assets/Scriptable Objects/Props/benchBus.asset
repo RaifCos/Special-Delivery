@@ -15,6 +15,7 @@ MonoBehaviour:
   internalName: benchBus
   externalName: bus stop bench
   description: 
+  propGroup: 1
   stackable: 0
   suspended: 0
   isLit: 0

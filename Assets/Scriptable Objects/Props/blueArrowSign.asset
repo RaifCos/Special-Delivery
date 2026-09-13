@@ -15,6 +15,7 @@ MonoBehaviour:
   internalName: blueArrowSign
   externalName: arrow sign
   description: 
+  propGroup: 5
   stackable: 0
   suspended: 0
   isLit: 0

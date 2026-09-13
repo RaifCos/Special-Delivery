@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: dumpster
   externalName: dumpster
-  description: a bin but bigger, huge shout out to whoever invented this absolute
-    marvel of engineering and science.
+  description: a bin but bigger, huge shout out to whoever invented this absolute marvel of engineering and science.
+  propGroup: 2
   stackable: 0
   suspended: 0
   isLit: 0
+  isInvincible: 0
   sprite: {fileID: 21300000, guid: 42acd97a88586af44b357bdc5fe64787, type: 3}

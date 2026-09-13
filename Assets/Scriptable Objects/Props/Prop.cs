@@ -25,8 +25,10 @@ public class Prop : MonoBehaviour {
             if (so.suspended) { GetComponent<Rigidbody>().isKinematic = false; } // Enable Physics if suspended prop is hit.
             if (so.isLit) { BreakLight(); } // Break Light if prop is a light source.
             if (!so.isInvincible) StartCoroutine(GameManager.obstacleManager.ShrinkAndDestroy(gameObject, true, true)); // Shrink and Delete if not invincible.
-            if (GameManager.instance.GetDifficulty() != 0 && collisionGO.CompareTag("Player")) { GameManager.dataManager.AddPropEncounter(so.internalName); }
-            beganFading = true;
+            if (GameManager.instance.GetDifficulty() != 0 && collisionGO.CompareTag("Player")) { 
+                if (so.propGroup == PropGroup.None) GameManager.dataManager.AddPropEncounter(so.internalName); 
+                else GameManager.dataManager.AddPropEncounter(so.internalName, so.propGroup); 
+            } beganFading = true;
         }
     }
 }
