@@ -4220,6 +4220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 3
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -12355,6 +12356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 1
   extraPadding: 1500
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:

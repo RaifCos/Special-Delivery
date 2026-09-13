@@ -2097,6 +2097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 2
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -16224,6 +16225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 0
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -16364,6 +16366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 0
   extraPadding: 150
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -19346,7 +19349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19772,6 +19775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 1
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -23205,6 +23209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 1
   extraPadding: 1500
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -25360,6 +25365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 1
   extraPadding: 1500
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -26415,7 +26421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38942,6 +38948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 2
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -41676,7 +41683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43764,6 +43771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 0
   extraPadding: 150
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -47332,7 +47340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49722,6 +49730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 0
   extraPadding: 100
+  animateOnce: 1
   duration: 0.6
   delay: 0
   ease:
@@ -51216,7 +51225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51667,7 +51676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -57106,7 +57115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66504,7 +66513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.29999998
+      value: -0.86
       objectReference: {fileID: 0}
     - target: {fileID: 2582557177808502137, guid: 7f862b3eaaa5d3347abd1c3ae35e9545, type: 3}
       propertyPath: m_LocalPosition.z
