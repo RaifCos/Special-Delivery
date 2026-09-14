@@ -45,20 +45,18 @@ public class GiantHammer : MonoBehaviour {
 
         switch (stage) {
             case 0: { // Ascending
-                if (rb.position.y < 2.5f) {
+                if (rb.position.y < 0.5f) {
                     rb.MovePosition(rb.position + dt * riseSpeed * Vector3.up);
                 } else { stage++; }
                 break; }
             case 1: { // Swinging Down
                 if (swingAngle < 80f) {
-                    rb.isKinematic = false;
                     swingAngle += swingSpeed * dt;
                     rb.MoveRotation(baseRotation * Quaternion.Euler(swingAngle, 0f, 0f));
                 } else { stage++; }
                 break; }
             case 2: { // Swinging Up
                 if (swingAngle > 0f) {
-                    rb.isKinematic = true;
                     swingAngle -= swingSpeed / 2f * dt;
                     rb.MoveRotation(baseRotation * Quaternion.Euler(swingAngle, 0f, 0f));
                 } else { 
