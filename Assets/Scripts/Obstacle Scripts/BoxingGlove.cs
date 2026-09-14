@@ -63,7 +63,7 @@ public class BoxingGlove : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) { if (collision.gameObject.CompareTag("Player"))  playerDodged = false; }
+    public void PlayerHasBeenHit() { playerDodged = false; }
 
     IEnumerator PunchTimer() {
         while (stage < 3) {

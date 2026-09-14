@@ -7,7 +7,7 @@ using TMPro;
 
 public class UnlockCutsceneManager : MonoBehaviour {
     private static readonly WaitForSeconds pauseTime = new(1.5f);
-    private static readonly WaitForSeconds musicTime = new(4f);
+    private static readonly WaitForSeconds musicTime = new(2f);
 
     [Header ("UI Elements")]
     [SerializeField] private GameObject group;

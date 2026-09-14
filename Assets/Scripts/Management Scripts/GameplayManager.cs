@@ -194,8 +194,8 @@ public class GameplayManager : MonoBehaviour {
         StartCoroutine(GameOverFade());
 
         if (winner == 0) { 
-            GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3);
-            GameManager.dataManager.CompleteAchievement("win" + currentLevel.internalName);    
+            GameManager.dataManager.CompleteAchievement("win" + currentLevel.internalName);
+            GameManager.dataManager.SetLevelProgress(currentLevel.internalName, 3);    
         }
 
         // Stop game music and play game over music.
