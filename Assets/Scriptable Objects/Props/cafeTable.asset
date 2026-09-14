@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: cafeTable
   externalName: "caf\xE9 table"
-  description: 
+  description: '"table for two?" no, table for eating. two for counting.'
+  propGroup: 0
   stackable: 0
   suspended: 0
   isLit: 0

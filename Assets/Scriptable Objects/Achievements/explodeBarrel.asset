@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Achievement_SO
   internalName: explodeBarrel
   externalName: IT WAS LIKE THAT WHEN I GOT HERE
-  description: blow up an oil barrel.
+  description: blow up an oil barrel
   sprite: {fileID: 21300000, guid: f188e5eddb260184ca812b2032da2283, type: 3}
   hiddenBehind: []

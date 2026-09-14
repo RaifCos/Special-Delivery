@@ -4,7 +4,5 @@ public class Obstacle : MonoBehaviour {
 
     public Obstacle_SO so;
 
-    void Start() {
-        GameManager.dataManager.AddObstacleEncounter(so.internalName);
-    }
+    void OnEnable() => GameManager.dataManager.AddObstacleEncounter(so.internalName);
 }

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: foodCart
   externalName: food cart
-  description: 
+  description: 'these vendors take "meals on wheels" to the next level by offering a "drive-through service". In reality they just throw food into any cars passing by. It''s not really a profitable business model, but the word of mouth it generates is unmatched. '
+  propGroup: 0
   stackable: 0
   suspended: 0
   isLit: 0

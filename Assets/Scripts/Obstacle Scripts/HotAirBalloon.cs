@@ -31,7 +31,8 @@ public class HotAirBalloon : MonoBehaviour {
         }
         else {
             TrafficNode tempNode = currNode;
-            currNode = tempNode.GetNextNode(prevNode);
+            do currNode = tempNode.GetNextNode(prevNode);
+            while (currNode.IsBossNode());
             prevNode = tempNode;
             currPos = currNode.GetPos();
         }

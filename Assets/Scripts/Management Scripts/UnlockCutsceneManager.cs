@@ -7,7 +7,7 @@ using TMPro;
 
 public class UnlockCutsceneManager : MonoBehaviour {
     private static readonly WaitForSeconds pauseTime = new(1.5f);
-    private static readonly WaitForSeconds musicTime = new(4f);
+    private static readonly WaitForSeconds musicTime = new(2f);
 
     [Header ("UI Elements")]
     [SerializeField] private GameObject group;
@@ -70,7 +70,7 @@ public class UnlockCutsceneManager : MonoBehaviour {
             case "boss":
                 level = GameManager.dataManager.GetLevel(key);
                 title = "you've unlocked the boss battle for " + level.externalName + "!"; 
-                desc = "deliver 30 parcels in " + level.externalName;
+                desc = "deliver " + level.bossUnlockScore + " parcels in " + level.externalName;
                 SetModel(modelParent.Find("boss").gameObject);
                 break;
             case "level":

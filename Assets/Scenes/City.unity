@@ -4652,7 +4652,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 163130025455998406, guid: cf6b587305da0674d9d8404f147b2494, type: 3}
 --- !u!23 &155397678
@@ -13664,6 +13664,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 374541286453822808, guid: e34847957157e474dbb964487c5eed18, type: 3}
   m_PrefabInstance: {fileID: 439094820}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &439888765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 780907324379763456, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
+  m_PrefabInstance: {fileID: 6947666905992187411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &448849866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20206,8 +20211,8 @@ Transform:
   - {fileID: 1029609628}
   - {fileID: 610685189}
   - {fileID: 543450651892646802}
-  - {fileID: 896195616}
   - {fileID: 7473367156665722665}
+  - {fileID: 896195616}
   - {fileID: 543450653538870053}
   - {fileID: 2015771385}
   - {fileID: 1743075838}
@@ -33670,7 +33675,7 @@ Transform:
   m_GameObject: {fileID: 1297904064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: -75}
+  m_LocalPosition: {x: -2.5, y: -0.2, z: -75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39536,6 +39541,7 @@ MonoBehaviour:
   startingTime: 60
   directionArrow: {fileID: 1042860437}
   moneyText: {fileID: 662033638}
+  player: {fileID: 439888765}
   musicStart: {fileID: 8300000, guid: 4af5af7ae78e1154f916e82253a65b99, type: 3}
   musicLoop: {fileID: 8300000, guid: 27a392de2ae93bd48b08b94789dece59, type: 3}
   musicEnd: {fileID: 8300000, guid: 02dfb813d4dc3f64bb9f2fef6774d703, type: 3}
@@ -60119,7 +60125,7 @@ GameObject:
   - component: {fileID: 3469287838494381418}
   - component: {fileID: 1711813854769095072}
   - component: {fileID: 3469287838494381419}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Fountain
   m_TagString: Level
   m_Icon: {fileID: 0}

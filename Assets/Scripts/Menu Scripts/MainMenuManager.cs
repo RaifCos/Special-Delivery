@@ -180,7 +180,8 @@ public class MainMenuManager : MonoBehaviour {
             case 1: {
                     bossButton.interactable = false; 
                     bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-                    bossButton.GetComponent<MenuText>().message = "COMPLETE 30 DELIVERIES IN " + selectedLevel.externalName + " TO UNLOCK [" + GameManager.dataManager.GetLevelScore(selectedLevel.internalName) + "/30]";
+                    int requirement = selectedLevel.bossUnlockScore;
+                    bossButton.GetComponent<MenuText>().message = "COMPLETE " + requirement + " DELIVERIES IN " + selectedLevel.externalName + " TO UNLOCK [" + GameManager.dataManager.GetLevelScore(selectedLevel.internalName) + "/" + requirement +"]";
                     break; }
             case 2: {
                     bossButton.interactable = true; 

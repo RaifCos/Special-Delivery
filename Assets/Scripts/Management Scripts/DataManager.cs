@@ -3,8 +3,6 @@ using System.IO;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Data.Common;
-using UnityEngine.Rendering;
 
 #region Data Classes
 [Serializable]
@@ -219,10 +217,15 @@ public class DataManager : MonoBehaviour {
     // 3 - Boss Beaten 
 
     public int GetLevelProgress(string key) => data.levelProgress[key];
+
     public void SetLevelProgress(string key, int value) { 
         data.levelProgress[key] = value; 
         if (value == 3) { // If Level is Completed, Unlock the Next.
-            foreach (Level_SO level in GetLevels()) { LevelUnlockCheck(level.internalName); }
+            Level_SO currentLvl = GetLevel(key);
+            foreach (Level_SO lvl in GetLevels()) { 
+                if (lvl.unlockedBy.Contains(currentLvl))
+                LevelUnlockCheck(lvl.internalName); 
+            }
         }
     }
 
@@ -232,7 +235,7 @@ public class DataManager : MonoBehaviour {
         data.levelScores[key]++;
         int val = data.levelScores[key];
 
-        if (GetLevelProgress(key) < 2 && val >= 30) {
+        if (GetLevelProgress(key) < 2 && val >= GetLevel(key).bossUnlockScore) {
             SetLevelProgress(key, 2);
             GameManager.newsTextScroller.AddBossUnlockHeadline();
             AddCutsceneToQueue("boss-" + key);
