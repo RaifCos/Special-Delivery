@@ -6,8 +6,8 @@ using System.Text.RegularExpressions;
 using TMPro;
 
 public class UnlockCutsceneManager : MonoBehaviour {
-    private static readonly WaitForSeconds pauseTime = new(1f);
-    private static readonly WaitForSeconds musicTime = new(2.5f);
+    private static readonly WaitForSeconds pauseTime = new(1.5f);
+    private static readonly WaitForSeconds musicTime = new(4f);
 
     [Header ("UI Elements")]
     [SerializeField] private GameObject group;
@@ -87,7 +87,7 @@ public class UnlockCutsceneManager : MonoBehaviour {
         }
         
         titleText.text = title;
-        descriptionText.text = desc;
+        descriptionText.text = "(" + desc + ")";
     }
 
     private void SetModel(GameObject newModel) {
@@ -107,26 +107,25 @@ public class UnlockCutsceneManager : MonoBehaviour {
     }
 
     private IEnumerator Cutscene(bool opening) {
+        if (opening) StartCoroutine(GameManager.audioManager.UnlockFanfare(fanfare)); 
+
         int start = opening? 255 : 0;
         int target = opening? 0 : 255;
         int rate = opening? -5 : 5;
 
-        if (opening) { 
-            DisplayUnlock();
-            yield return pauseTime;
-        }
+        if (opening) DisplayUnlock();
 
         int alpha = start;
         while ((rate < 0 && alpha > target) || (rate > 0 && alpha < target)) {
             alpha += rate;
             panel.color = new Color(0, 0, 0, alpha / 255f);
             yield return null;
-        } group.SetActive(opening);
+        } 
+        
+        group.SetActive(opening);
 
-        if (opening) {
-            StartCoroutine(GameManager.audioManager.UnlockFanfare(fanfare)); 
-            yield return musicTime; 
-        } else { yield return pauseTime; }
+        if (opening) { yield return musicTime; }
+        else { yield return pauseTime; }
 
         nextButton.SetActive(opening);
         eventSystem.SetSelectedGameObject(nextButton);

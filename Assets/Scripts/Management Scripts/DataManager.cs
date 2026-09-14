@@ -255,7 +255,10 @@ public class DataManager : MonoBehaviour {
         foreach (Level_SO previousLevel in lvl.unlockedBy) {
             // Don't Unlock Level if required levels haven't been beat.
             if (GetLevelProgress(previousLevel.internalName) < 3) return;
-        } SetLevelProgress(key, 1); 
+        } 
+        
+        AddCutsceneToQueue("level-" + key);
+        SetLevelProgress(key, 1); 
     }
 
     public string LevelUnlockList(string key) {
