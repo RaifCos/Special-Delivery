@@ -21,9 +21,6 @@ public class CarTraversal : MonoBehaviour {
     [SerializeField] private float directChaseRange;
     [SerializeField] private float returnToNodeRange;
 
-    private float stunTimer;
-    private float collisionCooldownTimer;
-
     private bool hasTarget; 
     private bool isChasing;
 
@@ -201,6 +198,4 @@ public class CarTraversal : MonoBehaviour {
         target = input;
         hasTarget = true;
     }
-
-    public void SetStunTimer(float input) => stunTimer = input;  
 }
