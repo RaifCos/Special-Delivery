@@ -8,9 +8,10 @@ public class Level_SO : ScriptableObject {
     [TextArea(3, 6)]
     public string description;
     [TextArea(3, 6)]
-    public string openingHeadline;
-    [TextArea(2, 6)]
-    public string[] headlines;
-    public List<Level_SO> unlockedBy; 
-    public Sprite sprite; 
+    public string openingHeadline; // Headline that is used when a shift begins. 
+    [TextArea(2, 6)] 
+    public string[] headlines; // Generic Headlines that is used during gameplay.
+    public int bossUnlockScore; // The Number of Parcels needed to unlock the boss.
+    public List<Level_SO> unlockedBy; // ALl the Levels that must be completed fot this Level to be unlocked.
+    public Sprite sprite; // Level Icon.
 }
