@@ -11,6 +11,6 @@ public class Level_SO : ScriptableObject {
     public string openingHeadline;
     [TextArea(2, 6)]
     public string[] headlines;
-    public List<Level_SO> unlocks; 
+    public List<Level_SO> unlockedBy; 
     public Sprite sprite; 
 }

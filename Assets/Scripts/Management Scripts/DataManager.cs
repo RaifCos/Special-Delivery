@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data.Common;
+using UnityEngine.Rendering;
 
 #region Data Classes
 [Serializable]
@@ -221,13 +222,7 @@ public class DataManager : MonoBehaviour {
     public void SetLevelProgress(string key, int value) { 
         data.levelProgress[key] = value; 
         if (value == 3) { // If Level is Completed, Unlock the Next.
-            Level_SO lvl = GetLevel(key);
-            foreach (Level_SO unlockedLvl in lvl.unlocks) {
-                if (GetLevelProgress(unlockedLvl.internalName) > 0) return;
-                string name = unlockedLvl.internalName;
-                SetLevelProgress(name, 1);
-                AddCutsceneToQueue("level-" + name);
-            }
+            foreach (Level_SO level in GetLevels()) { LevelUnlockCheck(level.internalName); }
         }
     }
 
@@ -252,6 +247,36 @@ public class DataManager : MonoBehaviour {
         }
         
         if (data.lifetimeDeliveries == 250) { CompleteAchievement("lifetime250"); }
+    }
+
+    public void LevelUnlockCheck(string key) {
+        if (GetLevelProgress(key) != 0) return; // Ignore if Level is already unlocked
+        Level_SO lvl = GetLevel(key);
+        foreach (Level_SO previousLevel in lvl.unlockedBy) {
+            // Don't Unlock Level if required levels haven't been beat.
+            if (GetLevelProgress(previousLevel.internalName) < 3) return;
+        } SetLevelProgress(key, 1); 
+    }
+
+    public string LevelUnlockList(string key) {
+        Level_SO lvl = GetLevel(key);
+        List<Level_SO> list = lvl.unlockedBy;
+        int count = list.Count;
+
+        switch (count) {
+            case 0:
+                return "";
+            case 1:
+                return list[0].externalName;
+            case 2:
+                return list[0].externalName + " and " + list[1].externalName;
+            default:
+                string res = "";
+                for (int i = 0; i < count - 1; i++) {
+                    res += list[i].externalName + ", ";
+                } res += "and " + list[count - 1].externalName;
+                return res;
+        }
     }
 
     #endregion

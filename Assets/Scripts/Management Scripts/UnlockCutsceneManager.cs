@@ -8,14 +8,24 @@ using TMPro;
 public class UnlockCutsceneManager : MonoBehaviour {
     private static readonly WaitForSeconds pauseTime = new(1f);
     private static readonly WaitForSeconds musicTime = new(2.5f);
+
+    [Header ("UI Elements")]
+    [SerializeField] private GameObject group;
+    [SerializeField] private GameObject nextButton;
+
+    [Header ("Unlock Text")]
+    [SerializeField] private TMP_Text titleText;
+    [SerializeField] private TMP_Text descriptionText;
+
+    [Header ("Unlock Visuals")]
     [SerializeField] private GameObject iconImage;
     [SerializeField] private GameObject modelImage;
     [SerializeField] private Transform modelParent;
-    [SerializeField] private GameObject group;
-    [SerializeField] private GameObject nextButton;
-    [SerializeField] private TMP_Text unlockText;
+
+    [Header ("Visual/Audio Details")]
     [SerializeField] private Image panel;
     [SerializeField] private AudioClip fanfare;
+
     private string currentCutscene;
     private Image iconSprite;
     private EventSystem eventSystem;
@@ -41,7 +51,8 @@ public class UnlockCutsceneManager : MonoBehaviour {
         Match match = Regex.Match(currentCutscene, @"^(.+)-(.+)$");
         string cutsceneType = match.Groups[1].Value;
         string key = match.Groups[2].Value;
-        string message = "";
+        string title = "";
+        string desc = "";
 
         bool useIcon = cutsceneType == "achievement";
         iconImage.SetActive(useIcon);
@@ -52,24 +63,31 @@ public class UnlockCutsceneManager : MonoBehaviour {
         switch (cutsceneType) {
             case "achievement":
                 Achievement_SO achievement = GameManager.dataManager.GetAchievement(key);
-                message = "you've completed the achievement \"" + achievement.externalName  + "\"!"; 
+                title = "you've completed the achievement \"" + achievement.externalName  + "\"!"; 
+                desc = achievement.description;
                 iconSprite.sprite = achievement.sprite;
                 break;
             case "boss":
                 level = GameManager.dataManager.GetLevel(key);
-                message = "you've unlocked the boss battle for " + level.externalName + "!"; 
+                title = "you've unlocked the boss battle for " + level.externalName + "!"; 
+                desc = "deliver 30 parcels in " + level.externalName;
                 SetModel(modelParent.Find("boss").gameObject);
                 break;
             case "level":
                 level = GameManager.dataManager.GetLevel(key);
-                message = "you can now deliver parcels in " + level.externalName + "!"; 
+                title = "you can now deliver parcels in " + level.externalName + "!"; 
+                desc = "Complete " + GameManager.dataManager.LevelUnlockList(key);
                 SetModel(modelParent.Find(key).gameObject);
                 break;
             case "garage":
-                message = "you've unlocked van upgrades and the garage!"; 
+                title = "you've unlocked van upgrades and the garage!"; 
+                desc = "deliver 25 parcels";
                 SetModel(modelParent.Find("player").gameObject);
                 break;
-        } unlockText.text = message;
+        }
+        
+        titleText.text = title;
+        descriptionText.text = desc;
     }
 
     private void SetModel(GameObject newModel) {
@@ -93,7 +111,10 @@ public class UnlockCutsceneManager : MonoBehaviour {
         int target = opening? 0 : 255;
         int rate = opening? -5 : 5;
 
-        if (opening) { DisplayUnlock(); }
+        if (opening) { 
+            DisplayUnlock();
+            yield return pauseTime;
+        }
 
         int alpha = start;
         while ((rate < 0 && alpha > target) || (rate > 0 && alpha < target)) {
