@@ -23,7 +23,7 @@ public class GameplayManager : MonoBehaviour {
     [Header ("Game Objects")] 
     [SerializeField] private GameObject directionArrow;
     [SerializeField] private GameObject moneyText;
-    private GameObject player;
+    [SerializeField] private GameObject player;
 
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
@@ -90,9 +90,6 @@ public class GameplayManager : MonoBehaviour {
         penaltyMult = GameManager.dataManager.IsUpgraded("noPenalty")? 0f: 1f;
         incomeMult = GameManager.dataManager.IsUpgraded("moreMoney")? 1.5f: 1f;
         secondLife = GameManager.dataManager.IsUpgraded("secondLife");
-
-        // Get Player Game Object.
-        player = GameObject.FindWithTag("Player");
 
         moneyEarnt = 0;
 

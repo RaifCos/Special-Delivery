@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour {
 
     public float GetSoundEffectVolume() => soundEffectVolume;
 
+    // 0 - High Quality Shadows
+    // 1 - Low Quality Shadows
     public void ToggleShadows(bool input) {
         qualityShadows = input;
         int res = qualityShadows? 0: 1;

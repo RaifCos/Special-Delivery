@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoxingGlove : MonoBehaviour {
@@ -62,7 +63,7 @@ public class BoxingGlove : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision) => playerDodged = !collision.gameObject.CompareTag("Player");
+    private void OnCollisionEnter(Collision collision) { if (collision.gameObject.CompareTag("Player"))  playerDodged = false; }
 
     IEnumerator PunchTimer() {
         while (stage < 3) {
