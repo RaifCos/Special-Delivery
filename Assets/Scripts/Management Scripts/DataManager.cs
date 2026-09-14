@@ -219,10 +219,15 @@ public class DataManager : MonoBehaviour {
     // 3 - Boss Beaten 
 
     public int GetLevelProgress(string key) => data.levelProgress[key];
+    
     public void SetLevelProgress(string key, int value) { 
         data.levelProgress[key] = value; 
         if (value == 3) { // If Level is Completed, Unlock the Next.
-            foreach (Level_SO level in GetLevels()) { LevelUnlockCheck(level.internalName); }
+            Level_SO currentLvl = GetLevel(key);
+            foreach (Level_SO lvl in GetLevels()) { 
+                if (lvl.unlockedBy.Contains(currentLvl))
+                LevelUnlockCheck(lvl.internalName); 
+            }
         }
     }
 
