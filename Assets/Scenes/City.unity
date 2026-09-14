@@ -4652,7 +4652,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 163130025455998406, guid: cf6b587305da0674d9d8404f147b2494, type: 3}
 --- !u!23 &155397678
@@ -60119,7 +60119,7 @@ GameObject:
   - component: {fileID: 3469287838494381418}
   - component: {fileID: 1711813854769095072}
   - component: {fileID: 3469287838494381419}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Fountain
   m_TagString: Level
   m_Icon: {fileID: 0}
