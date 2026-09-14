@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: cementMixer
   externalName: cement mixer
-  description: 
+  description: 'the parcel city overhead rail system has made no progress in the last few years, so the city placed a few of these cement mixers around to make it look like construction work was actually going on. I have to say, it is some pretty concrete evidence.  '
+  propGroup: 0
   stackable: 0
   suspended: 0
   isLit: 0

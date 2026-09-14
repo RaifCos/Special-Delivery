@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: pottedPlant
   externalName: potted plant
-  description: 
+  description: 'A ceramic pot holding a mature lowpolygonigus plant, a species which is among the most beloved local fauna on parcel island. '
+  propGroup: 0
   stackable: 0
   suspended: 0
   isLit: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Prop_SO
   internalName: cafeChair
   externalName: "caf\xE9 chair"
-  description: 
+  description: "in paris, caf\xE9s have their chairs facing out into the streets so diners can enjoy the beautiful views of the city. it is for that reason all the chairs in parcel city face the nearest wall."
   propGroup: 1
   stackable: 0
   suspended: 0
