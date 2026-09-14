@@ -160,9 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8880e028c90a0543b113e3f0330872c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topSpeed: 10
-  turnSpeed: 95
-  grip: 12
   distanceThreshold: 3
   height: 3.5
   nodeSet: 0
@@ -174,13 +171,6 @@ MonoBehaviour:
   chaseTarget: 0
   directChaseRange: 0
   returnToNodeRange: 0
-  ignoreStun: 0
-  minImpactForce: 5
-  stunDuration: 0.6
-  bounceForceMultiplier: 0.02
-  maxBounceForce: 12
-  spinTorque: 6
-  collisionCooldown: 0.15
 --- !u!114 &8763452732507785492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +186,7 @@ MonoBehaviour:
   topSpeed: 10
   turnSpeed: 95
   grip: 12
+  playerStunOnly: 0
   ignoreStun: 0
   minImpactForce: 5
   stunDuration: 0.6
@@ -203,6 +194,9 @@ MonoBehaviour:
   maxBounceForce: 12
   spinTorque: 6
   collisionCooldown: 0.15
+  stuckSpeedThreshold: 0.5
+  stuckTimeThreshold: 1.5
+  unstuckReverseDuration: 2
 --- !u!114 &8908115304667694806
 MonoBehaviour:
   m_ObjectHideFlags: 0
