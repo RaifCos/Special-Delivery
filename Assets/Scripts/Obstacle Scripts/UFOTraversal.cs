@@ -14,7 +14,9 @@ public class UFOTraversal : MonoBehaviour {
     void OnEnable() {
         rb = GetComponent<Rigidbody>();
 
-        prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1);
+        do { prevNode = GameManager.instance.GetComponent<ObstacleManager>().GetStartingNode(1); }
+        while (prevNode.IsBossNode());
+
         currNode = prevNode.GetNextNode(prevNode);
         currPos = currNode.GetPos() + (Vector3.up * height);
         transform.position = prevNode.transform.position + (Vector3.up * height);
@@ -28,9 +30,10 @@ public class UFOTraversal : MonoBehaviour {
             SpinRotation();
         } else {
             TrafficNode tempNode = currNode;
-            currNode = tempNode.GetNextNode(prevNode);
+            do currNode = tempNode.GetNextNode(prevNode);
+            while (currNode.IsBossNode());
             prevNode = tempNode;
-            currPos = currNode.GetPos() + (Vector3.up * height);
+            currPos = currNode.GetPos();
         }
     }
 
