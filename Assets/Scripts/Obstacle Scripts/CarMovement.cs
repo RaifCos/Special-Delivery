@@ -24,7 +24,7 @@ public class CarMovement : MonoBehaviour {
 
     [Header("Stuck Recovery")]
     [SerializeField] private float stuckSpeedThreshold = 0.5f;
-    [SerializeField] private float stuckTimeThreshold = 1.5f;   
+    [SerializeField] private float stuckTimeThreshold = 7.5f;   
 
     private float stuckTimer = 0f;
     private int stuckStage = 0;
