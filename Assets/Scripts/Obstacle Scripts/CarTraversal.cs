@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CarMovement))]
@@ -23,6 +24,7 @@ public class CarTraversal : MonoBehaviour {
 
     private bool hasTarget; 
     private bool isChasing;
+    private Vector3 defaultScale;
 
     private Rigidbody rb;
     private CarMovement cM;
@@ -40,6 +42,7 @@ public class CarTraversal : MonoBehaviour {
 
     void Start() {
         graph = GameManager.obstacleManager.GetGraph(nodeSet);
+        defaultScale = transform.localScale;
         Initialize();
     }
 
@@ -192,6 +195,20 @@ public class CarTraversal : MonoBehaviour {
 
         bool wallBlocked = Physics.Raycast(rb.position + Vector3.up, dirToNode.normalized, dist, blockageMask);
         return !wallBlocked;
+    }
+
+    public IEnumerator CarReset() {
+        yield return GameManager.obstacleManager.ShrinkObject(gameObject);
+
+        prevNode = GameManager.obstacleManager.GetStartingNode(nodeSet);
+        currNode = prevNode.GetNextNode();
+        if (currNode == null) { currNode = prevNode; }
+        rb.position = prevNode.GetPos() + (Vector3.up * 2f);
+
+        Vector3 dir = (currNode.GetPos() - rb.position).normalized;
+        if (dir.sqrMagnitude > 0.001f) { transform.rotation = Quaternion.LookRotation(dir); }
+        
+        transform.localScale = defaultScale;
     }
 
     public void ChangeTarget(GameObject input) {

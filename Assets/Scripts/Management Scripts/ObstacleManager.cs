@@ -171,6 +171,7 @@ public class ObstacleManager : MonoBehaviour {
     }
 
     #endregion
+    #region Destruction Functions
 
     public void ExplodeAndDestory(GameObject obj, bool destroyObject, bool bigExplosion) {
         GameObject eP = bigExplosion? explosionBigParticles : explosionParticles;
@@ -188,25 +189,39 @@ public class ObstacleManager : MonoBehaviour {
         else { Destroy(obj); }
     }
 
-    #region Destruction Functions
-
     public IEnumerator ShrinkAndDestroy(GameObject obj, bool destroyObject, bool wait) {
         // Wait 8 Seconds (if specified)
         if(wait) yield return _waitForSeconds8; 
 
         // Play Destruction Particles
-        destroyParticles.transform.position = obj.transform.position;
-        destroyParticles.GetComponent<ParticleSystem>().Play();
+        PlayDestructionParticles(obj.transform.position);
 
         // Rapidly Shrink the Object Slightly 
         Vector3 scale = obj.transform.localScale;
         while (Mathf.Min(scale.x, scale.y, scale.z) > 0.1f) {
-            obj.transform.localScale = obj.transform.localScale - new Vector3(0.05f, 0.05f, 0.05f);
+            obj.transform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
             scale = obj.transform.localScale;
             yield return _waitForSeconds0_02;
         } // Destroy or Disable Object
         if (!destroyObject) { obj.SetActive(false); }
         else { Destroy(obj); }
+    }
+
+    public IEnumerator ShrinkObject(GameObject obj) {
+        Transform objTransform = obj.transform;
+        PlayDestructionParticles(objTransform.position);
+        
+        Vector3 scale = objTransform.localScale;
+        while (Mathf.Min(scale.x, scale.y, scale.z) > 0.1f) {
+            objTransform.localScale -= new Vector3(0.05f, 0.05f, 0.05f);
+            scale = objTransform.localScale;
+            yield return _waitForSeconds0_02;
+        }
+    }
+
+    public void PlayDestructionParticles(Vector3 pos) {
+        destroyParticles.transform.position = pos;
+        destroyParticles.GetComponent<ParticleSystem>().Play();
     }
 
     #endregion

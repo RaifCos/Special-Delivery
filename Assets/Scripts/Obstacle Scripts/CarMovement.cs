@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -8,6 +9,7 @@ public class CarMovement : MonoBehaviour {
     [SerializeField] private float topSpeed;
     [SerializeField] private float turnSpeed;
     [SerializeField] private float grip;
+    [SerializeField] private bool canReset = true;
     private float actTopSpeed;
 
     [Header("Collision Reaction")]
@@ -23,13 +25,9 @@ public class CarMovement : MonoBehaviour {
     [Header("Stuck Recovery")]
     [SerializeField] private float stuckSpeedThreshold = 0.5f;
     [SerializeField] private float stuckTimeThreshold = 1.5f;   
-    [SerializeField] private float unstuckReverseDuration = 2f;
-    [SerializeField] private float uprightSpeed = 90f;
 
     private float stuckTimer = 0f;
-    private float unstuckTimer = 0f;
-
-    public bool IsUnstucking => unstuckTimer > 0f;
+    private int stuckStage = 0;
 
     private float stunTimer;
     private float collisionCooldownTimer = 0f;
@@ -75,13 +73,6 @@ public class CarMovement : MonoBehaviour {
     }
 
     public void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
-        if (unstuckTimer > 0f) {
-            unstuckTimer -= Time.fixedDeltaTime;
-            FixRotation();
-            rb.AddForce(-transform.forward * (topSpeed * 0.5f), ForceMode.Acceleration);
-            return;
-        }
-
         LookRotation(surfaceNormal, targetPosition);
         float forwardSpeed = Vector3.Dot(rb.rotation * Vector3.forward, rb.linearVelocity);
 
@@ -91,13 +82,22 @@ public class CarMovement : MonoBehaviour {
         if (tryingToMove && barelyMoving && !IsStunned) {
             stuckTimer += Time.fixedDeltaTime;
             if (stuckTimer >= stuckTimeThreshold) {
-                unstuckTimer = unstuckReverseDuration;
-                stuckTimer = 0f;
-                cT.ReattachToNodeSystem();
-                FixRotation();
+                stuckStage++;
+                switch (stuckStage) {
+                    case 1: 
+                        cT.ReattachToNodeSystem();
+                        break;
+                    case 2:
+                        if (canReset) StartCoroutine(cT.CarReset());
+                        stuckStage = 0;
+                        break;
+                } stuckTimer = 0f;
                 return;
             }
-        } else {  stuckTimer = 0f; }
+        } else {  
+            stuckTimer = 0f;
+            stuckStage = 0;
+        }
 
         if (actTopSpeed > 0f && forwardSpeed < actTopSpeed || actTopSpeed < 0f && forwardSpeed > actTopSpeed) {
             Vector3 right = rb.rotation * Vector3.right;
@@ -118,17 +118,6 @@ public class CarMovement : MonoBehaviour {
         Quaternion targetRotation = Quaternion.LookRotation(surfaceForward, surfaceNormal);
         Quaternion smoothedRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, turnSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(smoothedRotation);
-    }
-
-    private void FixRotation() {
-        Vector3 currentForward = rb.rotation * Vector3.forward;
-        Vector3 flatForward = Vector3.ProjectOnPlane(currentForward, Vector3.up);
-
-        if (flatForward.sqrMagnitude < 0.0001f) flatForward = Vector3.ProjectOnPlane(transform.right, Vector3.up);
-
-        Quaternion uprightTarget = Quaternion.LookRotation(flatForward.normalized, Vector3.up);
-        Quaternion corrected = Quaternion.RotateTowards(rb.rotation, uprightTarget, uprightSpeed * Time.fixedDeltaTime);
-        rb.MoveRotation(corrected);
     }
 
     public void ChangeTopSpeed(int input) => topSpeed = input;
