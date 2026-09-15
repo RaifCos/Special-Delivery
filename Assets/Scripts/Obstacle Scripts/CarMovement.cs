@@ -77,6 +77,8 @@ public class CarMovement : MonoBehaviour {
     public void DriveToward(Vector3 surfaceNormal, Vector3 targetPosition) {
         if (unstuckTimer > 0f) {
             unstuckTimer -= Time.fixedDeltaTime;
+            FixRotation();
+            rb.AddForce(-transform.forward * (topSpeed * 0.5f), ForceMode.Acceleration);
             return;
         }
 
