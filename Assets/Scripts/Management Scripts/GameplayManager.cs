@@ -391,7 +391,7 @@ public class GameplayManager : MonoBehaviour {
 
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
-        if(difficulty > 0) { GameManager.dataManager.CashTransaction(moneyEarnt); }
+        if (difficulty > 0) { GameManager.dataManager.CashTransaction(moneyEarnt); }
         GameManager.audioManager.ConfirmMusicVolumeChange();
         GameManager.audioManager.ConfirmSoundEffectVolumeChange();
         StopGameloop();
