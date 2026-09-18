@@ -87,6 +87,13 @@ public class GameManager : MonoBehaviour {
     }
 
     public int GetControllerScheme() => controlScheme;     
+
+    public void ResetPlayerPrefs() {
+        SetMusicVolume(0.85f);
+        SetSoundEffectVolume(0.85f);
+        ToggleShadows(true);
+        SetControllerScheme(0);
+    }
     
     public IEnumerator LoadAsyncScene(string scene, bool save = true) {
         Instantiate(Resources.Load<GameObject>("LoadingScreen"));
