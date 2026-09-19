@@ -60178,6 +60178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Game Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1001268125254907231, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3006606203100335001, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -60256,6 +60260,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3006606203100335001, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335791897463421525, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6335791897463421525, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -61095,6 +61107,10 @@ PrefabInstance:
     - target: {fileID: 3107444726489190689, guid: 9b4ee027f3b9388459a4f45454e38c85, type: 3}
       propertyPath: m_Name
       value: Boss Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3107444726489190689, guid: 9b4ee027f3b9388459a4f45454e38c85, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4680705747517758547, guid: 9b4ee027f3b9388459a4f45454e38c85, type: 3}
       propertyPath: m_Pivot.x

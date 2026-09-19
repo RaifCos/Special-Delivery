@@ -84,6 +84,7 @@ public class MainMenuManager : MonoBehaviour {
 
     // Function to alterante between the UI Menus.
     public void AlternateMainMenus(int menu) {
+        GameManager.instance.ResetCurrentButton();
         switch (menu) {
             case 0: { // Main Menu
                 backdrop.color = new Color32(62, 123, 230, 255);
@@ -286,6 +287,7 @@ public class MainMenuManager : MonoBehaviour {
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
+        GameManager.instance.ResetCurrentButton();
         confirmUI.SetActive(false);
         switch(confirmationUIID) {
             case 0: {

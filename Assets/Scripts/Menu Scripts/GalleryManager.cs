@@ -19,6 +19,7 @@ public class GalleryManager : MonoBehaviour {
     void Start() { DisplayObstacle("carRed"); }
 
     public void AlternateGalleryMenus(bool input) {
+        GameManager.instance.ResetCurrentButton();
         obstacleIcons.SetActive(input);
         propIcons.SetActive(!input);
         switchButtonA.SetActive(input);

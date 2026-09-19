@@ -401,6 +401,7 @@ public class GameplayManager : MonoBehaviour {
     }
     
     public void AlternateGameMenus(int menu) {
+        GameManager.instance.ResetCurrentButton();
         switch (menu) {
             case 0: { // Game UI
                 mainUI.SetActive(true);
@@ -429,7 +430,7 @@ public class GameplayManager : MonoBehaviour {
     public void MenuConfirmationMessage(int cID) {
         //confirmationUIID = cID
         pauseUI.SetActive(false);
-        if (difficulty == 0) { confirmText.text = "end the tutorial\nand return to the menu?"; }
+        if (difficulty == 0) { confirmText.text = "end practice mode\nand return to the menu?"; }
         else { confirmText.text = "end the game\nand return to menu?"; }
         confirmUI.SetActive(true);
         eventSystem.SetSelectedGameObject(confirmStartSelect);
@@ -438,8 +439,10 @@ public class GameplayManager : MonoBehaviour {
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
         confirmUI.SetActive(false);
-        if (!response) { AlternateGameMenus(2); }
-        else { QuitGame(); }
+        if (!response) { 
+            GameManager.instance.ResetCurrentButton();
+            AlternateGameMenus(2);
+        } else { QuitGame(); }
     }
 
     #endregion

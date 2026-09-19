@@ -1,7 +1,8 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 // Script to handle main game functionality.
 [DefaultExecutionOrder(-100)]
@@ -103,6 +104,14 @@ public class GameManager : MonoBehaviour {
         if (scene == "MainMenu" && dataManager.CutscenesQueued()) scene = "UnlockScene";
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
         while (!asyncLoad.isDone) { yield return null; }
+    }
+
+    public void ResetCurrentButton() {
+        GameObject currentButton = EventSystem.current.currentSelectedGameObject;
+        if (currentButton == null) return;
+        Transform transform = currentButton.transform;
+        transform.localScale = Vector3.one;
+        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     public int GetSaveFile() => saveFile;
