@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,31 +6,30 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerBoosterControl))]
 public class PlayerControl : MonoBehaviour {
     [Header("Mail Van Properties")]
-    public float motorTorque;
-    public float brakeTorque;
-    public float maxSpeed;
-    public float defaultBoostPower;
-    public float steeringRange;
-    public float steeringRangeAtMaxSpeed;
+    [SerializeField] private float motorTorque;
+    [SerializeField] private float brakeTorque;
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float defaultBoostPower;
+    [SerializeField] private float steeringRange;
+    [SerializeField] private float steeringRangeAtMaxSpeed;
     private float boostPower;
     private float currentSteerInput = 0f;
     private WheelControl[] wheels;
 
     [Header("Player Input")]
-    public InputAction vanDriveButtons;
-    public InputAction vanDriveJoystick;
+    [SerializeField] private InputAction vanDriveButtons;
+    [SerializeField] private InputAction vanDriveJoystick;
+    [SerializeField] private InputAction vanSteer;
     private InputAction vanDrive;
-    public InputAction vanSteer;
 
     [Header("Flip Recovery")]
     private readonly float flipRecoveryTorque = 15f;
     private readonly float flipRecoveryDelay = 1.5f;
     private readonly float flipAngleThreshold = 140f;
-
     private float flippedTimer = 0f;
 
     [Header("Audio Handler")]
-    public AudioSource engineSound;
+    [SerializeField] private AudioSource engineSound;
     
     private PlayerBoosterControl pbc;
     private Rigidbody rb;
