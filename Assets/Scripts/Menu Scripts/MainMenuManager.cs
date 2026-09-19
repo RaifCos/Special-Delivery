@@ -21,7 +21,7 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private GameObject navDescription;
     [SerializeField] private Button shopButton;
     [SerializeField] private Button playButton;
-    [SerializeField] private Button tutorialButton;
+    [SerializeField] private Button practiceButton;
     [SerializeField] private Button bossButton;
     [SerializeField] private Image backdrop;
     [SerializeField] private TMP_Text levelName;
@@ -29,6 +29,12 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] private Sprite lockedSprite;
     private RectTransform levelSelectionRect;
     private Navigation playNav, tutorialNav;
+
+    [Header ("Button Colours")]
+    [SerializeField] private Color lockedButtonColor;
+    private Color playButtonColor;
+    private Color practiceButtonColor;
+    private Color bossButtonColor;
 
     [Header ("UI Navigation")]
     [SerializeField] private GameObject navStartSelected;
@@ -54,8 +60,13 @@ public class MainMenuManager : MonoBehaviour {
     private void Start() {
         levelSelectionRect = levelSelection.GetComponent<RectTransform>();
         playNav = playButton.navigation;
-        tutorialNav = tutorialButton.navigation;
+        tutorialNav = practiceButton.navigation;
         GameManager.audioManager.Initalize(musicStart, musicLoop); 
+
+        playButtonColor = playButton.gameObject.GetComponent<Image>().color;
+        practiceButtonColor = practiceButton.gameObject.GetComponent<Image>().color;
+        bossButtonColor = bossButton.gameObject.GetComponent<Image>().color;
+
         selectedLevel = GameManager.dataManager.GetLevel("city");
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
@@ -145,11 +156,11 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void ToggleShopLock(bool isUnlocked) {
-        shopButton.interactable = isUnlocked;
         if(isUnlocked) {
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GARAGE";
             shopButton.GetComponent<MenuText>().message = "BUY NIFTY UPGRADES FOR YOUR DELIVERY VAN";
         } else {
+            LockButton(shopButton);
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
             shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK";
         }
@@ -157,55 +168,60 @@ public class MainMenuManager : MonoBehaviour {
 
     public void ToggelPlayLock(bool isUnlocked) {
         playButton.interactable = isUnlocked;
-        tutorialButton.interactable = isUnlocked;
+        practiceButton.interactable = isUnlocked;
+        bossButton.gameObject.GetComponent<Image>().color = isUnlocked? playButtonColor : lockedButtonColor;
+        bossButton.gameObject.GetComponent<Image>().color = isUnlocked? practiceButtonColor : lockedButtonColor;
         if(isUnlocked) {
             playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "NORMAL SHIFT";
             playButton.GetComponent<MenuText>().message = "RACE AGAINST THE CLOCK TO DELIVER AS MANY PARCELS AS YOU CAN";
-            tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "PRACTICE MODE";
-            tutorialButton.GetComponent<MenuText>().message = "LEARN THE BASICS- NO OBSTACLES, NO TIMER, NO WORRIES";
+            practiceButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "PRACTICE MODE";
+            practiceButton.GetComponent<MenuText>().message = "LEARN THE BASICS- NO OBSTACLES, NO TIMER, NO WORRIES";
         } else {
             playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
             playButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
-            tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            tutorialButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
+            practiceButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            practiceButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
         }
     }
 
     public void ToggleBossLock(int state) {
+        bossButton.interactable = state >= 2;
+        bossButton.gameObject.GetComponent<Image>().color = state >= 2? bossButtonColor : lockedButtonColor;
         switch (state) {
             case 0: {
-                    bossButton.interactable = false; 
                     bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
                     bossButton.GetComponent<MenuText>().message = "LOCKED FOR NOW...";
                     break; }
             case 1: {
-                    bossButton.interactable = false; 
                     bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
                     int requirement = selectedLevel.bossUnlockScore;
                     bossButton.GetComponent<MenuText>().message = "COMPLETE " + requirement + " DELIVERIES IN " + selectedLevel.externalName + " TO UNLOCK [" + GameManager.dataManager.GetLevelScore(selectedLevel.internalName) + "/" + requirement +"]";
                     break; }
             case 2: {
-                    bossButton.interactable = true; 
                     bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS BATTLE";
                     bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. FIRST TO 5 DELIVERIES WINS!";
                     break; }
             case 3: {
-                    bossButton.interactable = true; 
                     bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "BOSS REMATCH";
                     bossButton.GetComponent<MenuText>().message = "FACE OFF AGAINST A RIVAL DELIVERY VAN. AGAIN!";
                     break; }
         }
     }
+    
+    private void LockButton(Button button) {
+        button.interactable = false;
+        button.gameObject.GetComponent<Image>().color = lockedButtonColor;
+    }
 
     // Lock UI with special "Coming Soon" setup for future Levels.
     public void ComingSoonSetup() {
         playButton.interactable = false;
-        tutorialButton.interactable = false;
+        practiceButton.interactable = false;
         bossButton.interactable = false;
         playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         playButton.GetComponent<MenuText>().message = "COMING SOON...";
-        tutorialButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-        tutorialButton.GetComponent<MenuText>().message = "COMING SOON...";
+        practiceButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+        practiceButton.GetComponent<MenuText>().message = "COMING SOON...";
         bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         bossButton.GetComponent<MenuText>().message = "COMING SOON...";
 
@@ -243,7 +259,7 @@ public class MainMenuManager : MonoBehaviour {
         playButton.navigation = playNav;
 
         tutorialNav.selectOnUp = currentIcon;
-        tutorialButton.navigation = tutorialNav;
+        practiceButton.navigation = tutorialNav;
     }
 
     public void UpdateLevelSelectMenu() {
