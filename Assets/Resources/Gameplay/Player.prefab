@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 8388538944174961954}
   - component: {fileID: 2799934506552303539}
   - component: {fileID: 9024009674807525212}
+  - component: {fileID: 2537591078032095116}
   - component: {fileID: 1178958773408239741}
   - component: {fileID: 3245042970343244353}
   - component: {fileID: 909383068343892227}
@@ -725,6 +726,37 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   exhaustPipe: {fileID: 631319111581539569}
+--- !u!114 &2537591078032095116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780907324379763456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cff4fa0f4d280488cdd0031ab6f717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vanGlide:
+    m_Name: Van Glide
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f7b662b6-095c-425b-90bb-4a7ac8b905bb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8c3721d8-1568-4174-adc4-c44d6c3371e9
+      m_Path: <Keyboard>/m
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Glide
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  gliderObject: {fileID: 3077341649354029474}
 --- !u!114 &1178958773408239741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1235,7 +1267,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 6173139230667700990, guid: 92f1dc9a9f2e8a5459db33fd75c93f01, type: 3}
 --- !u!1 &5118440402266133368
 GameObject:
   m_ObjectHideFlags: 0
