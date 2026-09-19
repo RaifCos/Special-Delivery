@@ -169,8 +169,8 @@ public class MainMenuManager : MonoBehaviour {
     public void ToggelPlayLock(bool isUnlocked) {
         playButton.interactable = isUnlocked;
         practiceButton.interactable = isUnlocked;
-        bossButton.gameObject.GetComponent<Image>().color = isUnlocked? playButtonColor : lockedButtonColor;
-        bossButton.gameObject.GetComponent<Image>().color = isUnlocked? practiceButtonColor : lockedButtonColor;
+        playButton.gameObject.GetComponent<Image>().color = isUnlocked? playButtonColor : lockedButtonColor;
+        practiceButton.gameObject.GetComponent<Image>().color = isUnlocked? practiceButtonColor : lockedButtonColor;
         if(isUnlocked) {
             playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "NORMAL SHIFT";
             playButton.GetComponent<MenuText>().message = "RACE AGAINST THE CLOCK TO DELIVER AS MANY PARCELS AS YOU CAN";
@@ -207,7 +207,7 @@ public class MainMenuManager : MonoBehaviour {
                     break; }
         }
     }
-    
+
     private void LockButton(Button button) {
         button.interactable = false;
         button.gameObject.GetComponent<Image>().color = lockedButtonColor;

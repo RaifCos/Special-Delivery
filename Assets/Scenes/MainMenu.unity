@@ -10524,16 +10524,13 @@ MonoBehaviour:
   navDescription: {fileID: 948076923}
   shopButton: {fileID: 1829574761}
   playButton: {fileID: 1504894277}
-  tutorialButton: {fileID: 1533325885}
+  practiceButton: {fileID: 1533325885}
   bossButton: {fileID: 638345466}
   backdrop: {fileID: 1123336445}
   levelName: {fileID: 379792397}
   levelSelection: {fileID: 309397743}
   lockedSprite: {fileID: 21300000, guid: 5d888b09a572a1c41883d78e6e71cc18, type: 3}
-  lockedButtonColor: {r: 0.4, g: 0.4, b: 0.4, a: 0}
-  playButtonColor: {r: 0, g: 0, b: 0, a: 0}
-  practiveButtonColor: {r: 0, g: 0, b: 0, a: 0}
-  bossButtonColor: {r: 0, g: 0, b: 0, a: 0}
+  lockedButtonColor: {r: 0.35, g: 0.35, b: 0.35, a: 1}
   navStartSelected: {fileID: 685998771}
   achievementsStartSelected: {fileID: 1897136316}
   levelStartSelected: {fileID: 862819328}
