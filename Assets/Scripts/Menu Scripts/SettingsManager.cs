@@ -21,6 +21,7 @@ public class SettingsManager : MonoBehaviour {
         GameManager.dataManager.ResetData();
         GameManager.dataManager.SetShopProgress(false);
         GameManager.audioManager.PlayParcelSound(false);
+        GameManager.instance.ResetPlayerPrefs();
         StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu", save: false));
     }
 

@@ -45,6 +45,7 @@ public class OpeningMenuManager : MonoBehaviour {
 
     // Function to alterante between the UI Menus.
     public void AlternateOpeningMenus(int menu) {
+        GameManager.instance.ResetCurrentButton();
         switch (menu) {
             case 0: { // Opening Menu
                 openingUI.SetActive(true);
@@ -78,6 +79,7 @@ public class OpeningMenuManager : MonoBehaviour {
 
     // Funciton to carry out the appropiate UI response based on the confirmation response.
     public void MenuConfirmationResponse(bool response) {
+        GameManager.instance.ResetCurrentButton();
         confirmUI.SetActive(false);
         if(response) { QuitApplication(); }
         else { eventSystem.SetSelectedGameObject(openingStartSelected); }
