@@ -647,7 +647,9 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
     m_Priority: 0
-  engineSound: {fileID: 3245042970343244353}
+  vanSound: {fileID: 3245042970343244353}
+  engineAudio: {fileID: 8300000, guid: a595c7f1752f3aa49a2e0ffc35ba948a, type: 3}
+  gliderAudio: {fileID: 8300000, guid: 9a2644fe569b2f84bb8766de6ee692ab, type: 3}
 --- !u!114 &9024009674807525212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +767,7 @@ MonoBehaviour:
   airAngularDamping: 1.5
   glideMaxLiftSpeed: 20
   gliderObject: {fileID: 3077341649354029474}
+  gliderOpenSound: {fileID: 8300000, guid: 39e9ddff5098d0349b849aceedc500e8, type: 3}
 --- !u!114 &1178958773408239741
 MonoBehaviour:
   m_ObjectHideFlags: 0

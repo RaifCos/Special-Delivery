@@ -33,7 +33,9 @@ public class PlayerControl : MonoBehaviour {
     private float flippedTimer = 0f;
 
     [Header("Audio Handler")]
-    [SerializeField] private AudioSource engineSound;
+    [SerializeField] private AudioSource vanSound;
+    [SerializeField] private AudioClip engineAudio;
+    [SerializeField] private AudioClip gliderAudio;
     
     private PlayerBoosterControl pbc;
     private PlayerGliderControl pgc;
@@ -77,15 +79,19 @@ public class PlayerControl : MonoBehaviour {
             foreach (var wheel in wheels) { if (wheel.IsGrounded()) { grounded = true; break; } }
 
             if (grounded) { DriveUpdate(vInput, hInput); }
-            pgc.GliderUpdate(grounded, vInput, hInput);
+            bool gliding = pgc.GliderUpdate(grounded, vInput, hInput);
             pbc.BoostUpdate();
 
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
             }
 
-            engineSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
-        } else { engineSound.Stop(); StopVan(); } // Stop engine sound when game is over. 
+            if (gliding && vanSound.clip == engineAudio) { vanSound.clip = engineAudio; }
+            else if (!gliding) {
+                if (vanSound.clip != engineAudio) { vanSound.clip = engineAudio; }
+                vanSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
+            }
+        } else { vanSound.Stop(); StopVan(); } // Stop engine sound when game is over. 
     }
 
     private void DriveUpdate(float vInput, float hInput) {
@@ -149,9 +155,9 @@ public class PlayerControl : MonoBehaviour {
     public void SetState(bool state) {
         isPlaying = state;
         if (!state) { 
-            engineSound.Stop(); 
+            vanSound.Stop(); 
         } else { 
-            engineSound.Play();
+            vanSound.Play();
         }
     }
 }

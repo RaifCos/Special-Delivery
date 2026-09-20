@@ -22,7 +22,6 @@ public class PlayerCollisionController : MonoBehaviour {
 
             // Play the Default Crash sound if the colliding object doesn't have any crash sounds specified.
             if (collision.gameObject.GetComponent<CollisionSounds>() == null) { GameManager.audioManager.DefaultCrashSound(collisionPos); }
-
             if (collision.relativeVelocity.magnitude > 7.5f) pgc.GliderCrash();
         }
     }

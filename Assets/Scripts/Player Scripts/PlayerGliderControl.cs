@@ -26,6 +26,7 @@ public class PlayerGliderControl : MonoBehaviour {
 
     [Header("Glider Effects")]
     [SerializeField] private Transform gliderObject;
+    [SerializeField] private AudioClip gliderOpenSound;
 
     private Rigidbody rb;
     private bool isGlidingLocked = false;
@@ -52,22 +53,24 @@ public class PlayerGliderControl : MonoBehaviour {
     // Queue Glider calls to avoid input delays.
     private void OnGlidePerformed(InputAction.CallbackContext ctx) { glidePressQueued = true; }
 
-    public void GliderUpdate(bool vanGrounded, float vInput, float hInput) {
-        if (state == GliderStates.animating) return;
+    public bool GliderUpdate(bool vanGrounded, float vInput, float hInput) {
+        if (state == GliderStates.animating) return false;
 
         if (vanGrounded) {
             if (state != GliderStates.closed) {
                 StartCoroutine(GliderAnimation(false));
             } glidePressQueued = false;
-            return;
+            return false;
         }
 
         if (glidePressQueued && state != GliderStates.animating) {
             glidePressQueued = false;
             StartCoroutine(GliderAnimation(state == GliderStates.closed));
+            return false;
         }
 
         if (state == GliderStates.opened) Glide(vInput, hInput);
+        return true;
     }
 
     private void Glide(float vInput, float hInput) {
@@ -94,6 +97,8 @@ public class PlayerGliderControl : MonoBehaviour {
 
     private IEnumerator GliderAnimation(bool opening) {
         state = GliderStates.animating;
+
+        GameManager.audioManager.PlaySpatialSoundEffect(gliderOpenSound, transform.position, true);
 
         float start = opening ? 0.35f : 1f;
         float target = opening ? 1f : 0.35f;
