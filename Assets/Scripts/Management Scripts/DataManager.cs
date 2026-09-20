@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -419,6 +420,38 @@ public class DataManager : MonoBehaviour {
     }
 
     public void ActivateUpgrade(string key) { data.upgradeProgress[key] = true; }
+
+    public bool AllRequiredUpgradesUnlocked(string key) {
+        Upgrade_SO up = GetUpgrade(key);
+        foreach(Upgrade_SO req in up.requirements) {
+            if (!IsUnlocked(req.internalName)) return false;
+        } return true;
+    }
+
+    public string UpgradeUnLocklist(string key) {
+        Upgrade_SO up = GetUpgrade(key);
+        List<Upgrade_SO> list = up.requirements
+            .Where(req => !IsUpgraded(req.internalName))
+            .ToList();
+
+        int count = list.Count;
+
+        switch (count) {
+            case 0:
+                return "";
+            case 1:
+                return list[0].externalName;
+            case 2:
+                return list[0].externalName + " and " + list[1].externalName;
+            default:
+                string res = "";
+                for (int i = 0; i < count - 1; i++) {
+                    res += list[i].externalName + ", ";
+                } res += "and " + list[count - 1].externalName;
+                return res;
+        }
+    }
+
     #endregion
 
     #region High-Score Data

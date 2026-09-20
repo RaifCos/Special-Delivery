@@ -1,9 +1,13 @@
 using UnityEngine;
 
 // Script to handle control of the Mail Van.
+[RequireComponent(typeof(PlayerGliderControl))]
 public class PlayerCollisionController : MonoBehaviour {
     
     [SerializeField] private GameObject particleManager;
+    private PlayerGliderControl pgc;
+
+    void Start() => pgc = GetComponent<PlayerGliderControl>();
 
     private void OnCollisionEnter(Collision collision) {
         // Increase Crash Count for achievement tracking.
@@ -18,6 +22,7 @@ public class PlayerCollisionController : MonoBehaviour {
 
             // Play the Default Crash sound if the colliding object doesn't have any crash sounds specified.
             if (collision.gameObject.GetComponent<CollisionSounds>() == null) { GameManager.audioManager.DefaultCrashSound(collisionPos); }
+            if (collision.relativeVelocity.magnitude > 7.5f) pgc.GliderCrash();
         }
     }
 }

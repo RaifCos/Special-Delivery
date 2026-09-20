@@ -61921,6 +61921,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7062625826903322058, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9024009674807525212, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
       propertyPath: fuelTank
       value: 

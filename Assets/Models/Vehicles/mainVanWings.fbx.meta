@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 24408ea473789304a800ca7aea772eec
+guid: 92f1dc9a9f2e8a5459db33fd75c93f01
 ModelImporter:
   serializedVersion: 24600
   internalIDToNameTable: []
@@ -14,7 +14,7 @@ ModelImporter:
     materialName: 0
     materialSearch: 1
     materialLocation: 1
-    searchTexturesGlobally: 1
+    searchTexturesGlobally: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -45,7 +45,7 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     preBakeConvexCollisionMesh: 1
-    preBakeTriangleCollisionMesh: 1
+    preBakeTriangleCollisionMesh: 0
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
@@ -88,7 +88,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-    calculateBlendshapeNormalsDeltaFromImportedNormals: 1
+    calculateBlendshapeNormalsDeltaFromImportedNormals: 0
   referencedClips: []
   importAnimation: 1
   humanDescription:

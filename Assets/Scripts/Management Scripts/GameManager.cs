@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
 
     public void SetSoundEffectVolume(float input) {
         soundEffectVolume = input;
-        PlayerPrefs.SetFloat("VolumeSoundEffects_" + saveFile, musicVolume);
+        PlayerPrefs.SetFloat("VolumeEffects_" + saveFile, soundEffectVolume);
         PlayerPrefs.Save();
     }
 

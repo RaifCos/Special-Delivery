@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 8388538944174961954}
   - component: {fileID: 2799934506552303539}
   - component: {fileID: 9024009674807525212}
+  - component: {fileID: 2537591078032095116}
   - component: {fileID: 1178958773408239741}
   - component: {fileID: 3245042970343244353}
   - component: {fileID: 909383068343892227}
@@ -230,6 +231,7 @@ Transform:
   - {fileID: 3293936664748407768}
   - {fileID: 6834528214757748558}
   - {fileID: 8036118158094396945}
+  - {fileID: 3077341649354029474}
   - {fileID: 2454075307554170371}
   - {fileID: 5311714005065276783}
   - {fileID: 691528823127931588}
@@ -645,7 +647,9 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
     m_Priority: 0
-  engineSound: {fileID: 3245042970343244353}
+  vanSound: {fileID: 3245042970343244353}
+  engineAudio: {fileID: 8300000, guid: a595c7f1752f3aa49a2e0ffc35ba948a, type: 3}
+  gliderAudio: {fileID: 8300000, guid: 9a2644fe569b2f84bb8766de6ee692ab, type: 3}
 --- !u!114 &9024009674807525212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +728,46 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   exhaustPipe: {fileID: 631319111581539569}
+--- !u!114 &2537591078032095116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780907324379763456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cff4fa0f4d280488cdd0031ab6f717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vanGlide:
+    m_Name: Van Glide
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f7b662b6-095c-425b-90bb-4a7ac8b905bb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8c3721d8-1568-4174-adc4-c44d6c3371e9
+      m_Path: <Keyboard>/m
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Glide
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  glideGravityMultiplier: 0.75
+  glideLiftCoefficient: 0.015
+  airPitchTorque: 6
+  airRollTorque: 6
+  airYawTorque: 4
+  airStabilizeTorque: 10
+  airAngularDamping: 1.5
+  glideMaxLiftSpeed: 20
+  gliderObject: {fileID: 3077341649354029474}
+  gliderOpenSound: {fileID: 8300000, guid: 39e9ddff5098d0349b849aceedc500e8, type: 3}
 --- !u!114 &1178958773408239741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,6 +1166,119 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5030850834150873227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3077341649354029474}
+  - component: {fileID: 1698500281623034852}
+  - component: {fileID: 6136550247099109811}
+  - component: {fileID: 7062625826903322058}
+  m_Layer: 3
+  m_Name: Wings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3077341649354029474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030850834150873227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.35, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4641536397278659722}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1698500281623034852
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030850834150873227}
+  m_Mesh: {fileID: 6173139230667700990, guid: 92f1dc9a9f2e8a5459db33fd75c93f01, type: 3}
+--- !u!23 &6136550247099109811
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030850834150873227}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7062625826903322058
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5030850834150873227}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6173139230667700990, guid: 92f1dc9a9f2e8a5459db33fd75c93f01, type: 3}
 --- !u!1 &5118440402266133368
 GameObject:
   m_ObjectHideFlags: 0
