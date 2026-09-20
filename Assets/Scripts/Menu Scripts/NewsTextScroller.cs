@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
 using System.Linq;
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 // Script to control the scrolling text news bar during gameplay
 public class NewsTextScroller : MonoBehaviour {
     public GameObject newsUI;
     public float scrollSpeed;
     TMP_Text newsText;
-    private bool isPlaying, hasBoost;
+    private bool isPlaying, hasBoost, hasGlider;
     private int lastStory, difficulty;
     private Level_SO currentLevel;
     public readonly List<string> newsQueue = new(); 
@@ -32,6 +32,12 @@ public class NewsTextScroller : MonoBehaviour {
         "local law enforcement investigates broken speedometers after flagging a mail van with a speed \"10E46mph\".",
     };
 
+    private readonly string[] gliderHeadlines = {
+        "tip: your glider will deactivate if you crash into anything, so be careful!",
+        "tip: use your booster while gliding to make it to your destination quicker.",
+        "local gamer's immersion \"completely ruined\" after spotting delivery van with wings."
+    };
+
     private string[] headlines;
 
     void Awake() { 
@@ -42,11 +48,13 @@ public class NewsTextScroller : MonoBehaviour {
 
     void Start() {
         lastStory = -1;
-        hasBoost = GameManager.dataManager.IsUpgraded("booster");
+        hasBoost = GameManager.dataManager.IsUpgraded("booster");       
+        hasGlider = GameManager.dataManager.IsUpgraded("upgrade");
         currentLevel = GameManager.gameplayManager.GetCurrentLevel();
         string[] genericHeadlines = currentLevel.headlines;
         headlines = genericHeadlines.Concat(tipHeadlines).ToArray();
         if (hasBoost) headlines = genericHeadlines.Concat(boostHeadlines).ToArray();
+        if (hasGlider) headlines = genericHeadlines.Concat(gliderHeadlines).ToArray();
     }
 
     // Function to begin the scrolling text 
@@ -114,7 +122,8 @@ public class NewsTextScroller : MonoBehaviour {
     public void AddTutorialHeadlines() {
         newsQueue.Add("welcome to special delivery! a game all about delivering parcels as fast as you can. follow the tracker arrow at the top of your screen to find your first parcel.");
         newsQueue.Add("once you've collected a parcel, follow the tracker arrow again to its glowing yellow delivery spot.");
-        if(hasBoost) newsQueue.Add("Use your booster and go faster! boosting does take up fuel though, so use it wisely.");
+        if (hasBoost) newsQueue.Add("Use your booster and go faster! boosting does take up fuel though, so use it wisely.");
+        if (hasGlider) newsQueue.Add("While in the air, activate your wings start gliding for more air time.");
         newsQueue.Add("as you complete more deliveries, obstacles will begin to fill the stage, making each delivery harder than the last. try to deliver as many parcels as you can before time runs out.");
         newsQueue.Add("this is just the tutorial, so no need to worry about the timer or obstacles. Just get used to the controls!");
         newsQueue.Add("once you're ready to play, open the pause menu to end the tutorial. happy delivering!");

@@ -16,7 +16,7 @@ MonoBehaviour:
   externalName: CARRIER WINGS
   description: take flight across your delivery route with a pair of retractable wings! Press M whilst in midair to begin gliding.
   cost: 1500
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 3bf5af4eee2b58d48b356dd3cd4d95f7, type: 3}
   requirements:
   - {fileID: 11400000, guid: 750541572a8be534098e23ebc5f56929, type: 2}
   - {fileID: 11400000, guid: 6b76aed7f42c6404e89b40cbef4e7993, type: 2}

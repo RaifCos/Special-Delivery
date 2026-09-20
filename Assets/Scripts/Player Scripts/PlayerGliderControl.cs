@@ -29,15 +29,12 @@ public class PlayerGliderControl : MonoBehaviour {
     [SerializeField] private AudioClip gliderOpenSound;
 
     private Rigidbody rb;
-    private bool isGlidingLocked = false;
     private GliderStates state = GliderStates.closed;
     private bool glidePressQueued = false;
 
     void Start() { 
         rb = GetComponent<Rigidbody>();
-        if (isGlidingLocked) {
-            enabled = false; return; 
-        }
+        if (GameManager.dataManager.IsUpgraded("upgrade")) { enabled = false; return; }
     }
 
     void OnEnable() {
