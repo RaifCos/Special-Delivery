@@ -1,4 +1,6 @@
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +59,7 @@ public class GarageMenuManager : MonoBehaviour {
         // Upgrade is still locked, so show default information.
         if (img.sprite == lockedSprite) {
             upgradeDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = "???";
-            upgradeDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = "you'll need to buy some other upgrades first.";
+            upgradeDisplay.transform.GetChild(2).GetComponent<TMP_Text>().text = DisplayUpgradeRequirements(key);
             upgradeDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = "???";
         } else { // Upgrade is unlocked, so show information.
             upgradeDisplay.transform.GetChild(1).GetComponent<TMP_Text>().text = up.externalName;
@@ -69,5 +71,11 @@ public class GarageMenuManager : MonoBehaviour {
                 upgradeDisplay.transform.GetChild(3).GetComponent<TMP_Text>().text = string.Format("{0:#,##0.##}", up.cost);
             }
         } listed = key;
+    }
+
+    private string DisplayUpgradeRequirements(string key) {
+        return GameManager.dataManager.AllRequiredUpgradesUnlocked(key) ?
+            "you'll need to buy " + GameManager.dataManager.UpgradeUnLocklist(key) + " first.":
+            "you'll need to buy some other upgrades first";
     } 
 }

@@ -39,8 +39,9 @@ public class OpeningMenuManager : MonoBehaviour {
 
     public void OpenGame(int saveFile) {
         GameManager.instance.SetSaveFile(saveFile);
+        GameManager.dataManager.LoadData();
         AlternateOpeningMenus(2);
-        StartCoroutine(GameManager.instance.LoadAsyncScene("MainMenu"));
+        StartCoroutine(GameManager.instance.LoadAsyncScene("MainMenu", save: false));
     }
 
     // Function to alterante between the UI Menus.
