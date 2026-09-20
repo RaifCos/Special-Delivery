@@ -1,4 +1,5 @@
 using System.Collections;
+using NUnit.Framework.Internal.Commands;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,43 +9,98 @@ enum GliderStates {
     opened
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerGliderControl : MonoBehaviour {
-    private static readonly WaitForSeconds animationWait = new(0.1f);
 
     [Header("Player Input")]
     [SerializeField] private InputAction vanGlide;
 
+    [Header("Gliding")]
+    [SerializeField] private float glideGravityMultiplier = 0.3f;
+    [SerializeField] private float glideLiftCoefficient = 0.02f;
+    [SerializeField] private float airPitchTorque = 6f;
+    [SerializeField] private float airRollTorque = 6f;
+    [SerializeField] private float airYawTorque = 4f;
+    [SerializeField] private float airStabilizeTorque = 2f;
+    [SerializeField] private float airAngularDamping = 1.5f;
+
     [Header("Glider Effects")]
     [SerializeField] private Transform gliderObject;
 
+    private Rigidbody rb;
+    private bool isGlidingLocked = true;
     private GliderStates state = GliderStates.closed;
+    private bool glidePressQueued = false;
 
-    void OnEnable() { vanGlide.Enable(); }
-
-    public void Disable() { vanGlide.Disable(); }
-
-    private void FixedUpdate() {
-        if (vanGlide.IsPressed() && state == GliderStates.closed) { 
-            StartCoroutine(GliderAnimation(true));
-            state = GliderStates.animating;
-        } 
-
-        else if (vanGlide.IsPressed() && state == GliderStates.opened) { 
-            StartCoroutine(GliderAnimation(false));
-            state = GliderStates.animating;
+    void Start() { 
+        rb = GetComponent<Rigidbody>();
+        if (isGlidingLocked) {
+            enabled = false; return; 
         }
     }
 
+    void OnEnable() {
+        vanGlide.Enable();
+        vanGlide.performed += OnGlidePerformed;
+    }
+
+    void OnDisable() {
+        vanGlide.performed -= OnGlidePerformed;
+        vanGlide.Disable();
+    }
+
+    // Queue Glider calls to avoid input delays.
+    private void OnGlidePerformed(InputAction.CallbackContext ctx) { glidePressQueued = true; }
+
+    public void GliderUpdate(bool vanGrounded, float vInput, float hInput) {
+        if (state == GliderStates.animating) return;
+
+        if (vanGrounded) {
+            if (state != GliderStates.closed) {
+                StartCoroutine(GliderAnimation(false));
+            } glidePressQueued = false;
+            return;
+        }
+
+        if (glidePressQueued && state != GliderStates.animating) {
+            glidePressQueued = false;
+            StartCoroutine(GliderAnimation(state == GliderStates.closed));
+        }
+
+        if (state == GliderStates.opened) Glide(vInput, hInput);
+    }
+
+    private void Glide(float vInput, float hInput) {
+        // Modify Gravity to make van lighter when gliding.
+        rb.AddForce((glideGravityMultiplier - 1f) * rb.mass * Physics.gravity, ForceMode.Force);
+
+        float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
+
+        // Apply unique Forces to give create Gliding controls.
+        float lift = forwardSpeed * forwardSpeed * glideLiftCoefficient * rb.mass;
+        rb.AddForce(transform.up * lift, ForceMode.Force);
+        rb.AddTorque(-vInput * airPitchTorque * rb.mass * transform.right, ForceMode.Force);
+        rb.AddTorque(-hInput * airRollTorque * rb.mass * transform.forward, ForceMode.Force);
+        rb.AddTorque(hInput * airYawTorque * rb.mass * transform.up, ForceMode.Force);
+        rb.AddTorque(airAngularDamping * rb.mass * -rb.angularVelocity, ForceMode.Force);
+
+        // Level Rotation
+        Vector3 rollAxis = Vector3.Cross(transform.up, Vector3.up);
+        rb.AddTorque(airStabilizeTorque * rb.mass * rollAxis, ForceMode.Force);
+    }
+
     private IEnumerator GliderAnimation(bool opening) {
-        float start = opening? 0.35f : 1f;
-        float target = opening? 1f : 0.35f;
-        float rate = opening? 0.05f : -0.05f;
+        state = GliderStates.animating;
+
+        float start = opening ? 0.35f : 1f;
+        float target = opening ? 1f : 0.35f;
+        float rate = opening ? 0.05f : -0.05f;
 
         gliderObject.localScale = new(start, 1f, 1f);
 
         while (!Mathf.Approximately(gliderObject.localScale.x, target)) {
             gliderObject.localScale += Vector3.right * rate;
             yield return null;
-        } state = opening? GliderStates.opened : GliderStates.closed;
+        } state = opening ? GliderStates.opened : GliderStates.closed;
     }
 }

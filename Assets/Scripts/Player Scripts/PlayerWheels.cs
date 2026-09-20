@@ -11,9 +11,7 @@ public class WheelControl : MonoBehaviour {
 
     private WheelCollider WheelCollider;
 
-    void Start() {
-        WheelCollider = this.GetComponent<WheelCollider>();
-    }
+    void Start() { WheelCollider = GetComponent<WheelCollider>(); }
 
     void Update() {
         WheelCollider.GetWorldPose(out position, out rotation);
@@ -25,4 +23,5 @@ public class WheelControl : MonoBehaviour {
     public void SetBrakeTorque(float input) => WheelCollider.brakeTorque = input;
 
     public void SetSteerAngle(float input) => WheelCollider.steerAngle = input;
+    public bool IsGrounded() => WheelCollider.isGrounded;
 }

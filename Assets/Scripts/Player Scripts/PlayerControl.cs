@@ -1,9 +1,12 @@
 using System.Collections;
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(PlayerBoosterControl))]
+
+[RequireComponent(typeof(PlayerGliderControl))]
 public class PlayerControl : MonoBehaviour {
     [Header("Mail Van Properties")]
     [SerializeField] private float motorTorque;
@@ -12,6 +15,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] private float defaultBoostPower;
     [SerializeField] private float steeringRange;
     [SerializeField] private float steeringRangeAtMaxSpeed;
+    private float forwardSpeed;
     private float boostPower;
     private float currentSteerInput = 0f;
     private WheelControl[] wheels;
@@ -32,6 +36,7 @@ public class PlayerControl : MonoBehaviour {
     [SerializeField] private AudioSource engineSound;
     
     private PlayerBoosterControl pbc;
+    private PlayerGliderControl pgc;
     private Rigidbody rb;
     private bool isPlaying = false;
 
@@ -44,6 +49,7 @@ public class PlayerControl : MonoBehaviour {
     void Start() {
         rb = GetComponent<Rigidbody>();
         pbc = GetComponent<PlayerBoosterControl>();
+        pgc = GetComponent<PlayerGliderControl>();
 
         vanDrive = GameManager.instance.GetControllerScheme() == 0? vanDriveButtons : vanDriveJoystick;
         vanDrive.Enable(); 
@@ -61,50 +67,59 @@ public class PlayerControl : MonoBehaviour {
         if (isPlaying) {
             // Make sure the Mail Van isn't stuck upside down.
             FlipRecovery();
-            
+
             // Get player input for acceleration and steering.
             float vInput = vanDrive.ReadValue<float>(); // Forward/backward input
             float hInput = vanSteer.ReadValue<float>(); // Steering input
+            forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
 
-            // Calculate current speed along the car's forward axis
-            float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
-            float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
+            bool grounded = false; 
+            foreach (var wheel in wheels) { if (wheel.IsGrounded()) { grounded = true; break; } }
 
-            float steerResponseRate = Mathf.Lerp(10f, 4f, speedFactor);
-            currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * steerResponseRate);
-
+            if (grounded) { DriveUpdate(vInput, hInput); }
+            pgc.GliderUpdate(grounded, vInput, hInput);
             pbc.BoostUpdate();
+
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
             }
 
-            // Reduce motor torque and steering at high speeds for better handling
-            float currentMotorTorque;
-            currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
-            float steerCurve = speedFactor * speedFactor; // ease-in, keeps sharper steering longer at mid speed
-            float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, steerCurve);
-            bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
-
-            float turnStrength = Mathf.Lerp(2f, 1f, speedFactor);
-            rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
-
-            foreach (var wheel in wheels) {
-                // Apply steering to wheels that support steering
-                if (wheel.steerable) { wheel.SetSteerAngle( currentSteerInput * currentSteerRange); }
-
-                if (isAccelerating) {
-                    // Apply torque to motorized wheels.
-                    wheel.SetMotorTorque(vInput * currentMotorTorque);
-                    // Release brakes when accelerating.
-                    wheel.SetBrakeTorque(0f);
-                } else {
-                    // Apply brakes when reversing direction
-                    wheel.SetMotorTorque(0f);
-                    wheel.SetBrakeTorque(Mathf.Abs(vInput) * brakeTorque);
-                }
-            }
             engineSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
         } else { engineSound.Stop(); StopVan(); } // Stop engine sound when game is over. 
+    }
+
+    private void DriveUpdate(float vInput, float hInput) {
+        // Calculate current speed along the car's forward axis
+        float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed));
+
+        float steerResponseRate = Mathf.Lerp(10f, 4f, speedFactor);
+        currentSteerInput = Mathf.MoveTowards(currentSteerInput, hInput, Time.fixedDeltaTime * steerResponseRate);
+
+        // Reduce motor torque and steering at high speeds for better handling
+        float currentMotorTorque;
+        currentMotorTorque = Mathf.Lerp(motorTorque, 0, speedFactor);
+        float steerCurve = speedFactor * speedFactor; // ease-in, keeps sharper steering longer at mid speed
+        float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, steerCurve);
+        bool isAccelerating = Mathf.Sign(vInput) == Mathf.Sign(forwardSpeed);
+
+        float turnStrength = Mathf.Lerp(2f, 1f, speedFactor);
+        rb.AddTorque(currentSteerInput * rb.mass * turnStrength * transform.up);
+
+        foreach (var wheel in wheels) {
+            // Apply steering to wheels that support steering
+            if (wheel.steerable) { wheel.SetSteerAngle( currentSteerInput * currentSteerRange); }
+
+            if (isAccelerating) {
+                // Apply torque to motorized wheels.
+                wheel.SetMotorTorque(vInput * currentMotorTorque);
+                // Release brakes when accelerating.
+                wheel.SetBrakeTorque(0f);
+            } else {
+                // Apply brakes when reversing direction
+                wheel.SetMotorTorque(0f);
+                wheel.SetBrakeTorque(Mathf.Abs(vInput) * brakeTorque);
+            }
+        }
     }
 
     private void FlipRecovery() {
