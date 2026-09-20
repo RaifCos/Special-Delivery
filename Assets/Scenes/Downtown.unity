@@ -34756,6 +34756,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2537591078032095116, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
+      propertyPath: glideLiftCoefficient
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 2537591078032095116, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
+      propertyPath: glideGravityMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4641536397278659722, guid: b447c407f026d2a4da1154030f2b1215, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -22,12 +22,13 @@ public class PlayerGliderControl : MonoBehaviour {
     [SerializeField] private float airYawTorque = 4f;
     [SerializeField] private float airStabilizeTorque = 2f;
     [SerializeField] private float airAngularDamping = 1.5f;
+    [SerializeField] private float glideMaxLiftSpeed  = 20f;
 
     [Header("Glider Effects")]
     [SerializeField] private Transform gliderObject;
 
     private Rigidbody rb;
-    private bool isGlidingLocked = true;
+    private bool isGlidingLocked = false;
     private GliderStates state = GliderStates.closed;
     private bool glidePressQueued = false;
 
@@ -70,13 +71,12 @@ public class PlayerGliderControl : MonoBehaviour {
     }
 
     private void Glide(float vInput, float hInput) {
-        // Modify Gravity to make van lighter when gliding.
         rb.AddForce((glideGravityMultiplier - 1f) * rb.mass * Physics.gravity, ForceMode.Force);
 
         float forwardSpeed = Vector3.Dot(transform.forward, rb.linearVelocity);
+        float liftSpeed = Mathf.Min(Mathf.Abs(forwardSpeed), glideMaxLiftSpeed);
 
-        // Apply unique Forces to give create Gliding controls.
-        float lift = forwardSpeed * forwardSpeed * glideLiftCoefficient * rb.mass;
+        float lift = liftSpeed * liftSpeed * glideLiftCoefficient * rb.mass;
         rb.AddForce(transform.up * lift, ForceMode.Force);
         rb.AddTorque(-vInput * airPitchTorque * rb.mass * transform.right, ForceMode.Force);
         rb.AddTorque(-hInput * airRollTorque * rb.mass * transform.forward, ForceMode.Force);
@@ -86,6 +86,10 @@ public class PlayerGliderControl : MonoBehaviour {
         // Level Rotation
         Vector3 rollAxis = Vector3.Cross(transform.up, Vector3.up);
         rb.AddTorque(airStabilizeTorque * rb.mass * rollAxis, ForceMode.Force);
+    }
+
+    public void GliderCrash() {
+        if (state == GliderStates.opened) StartCoroutine(GliderAnimation(false));
     }
 
     private IEnumerator GliderAnimation(bool opening) {

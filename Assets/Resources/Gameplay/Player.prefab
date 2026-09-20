@@ -756,6 +756,14 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
+  glideGravityMultiplier: 0.75
+  glideLiftCoefficient: 0.015
+  airPitchTorque: 6
+  airRollTorque: 6
+  airYawTorque: 4
+  airStabilizeTorque: 10
+  airAngularDamping: 1.5
+  glideMaxLiftSpeed: 20
   gliderObject: {fileID: 3077341649354029474}
 --- !u!114 &1178958773408239741
 MonoBehaviour:
