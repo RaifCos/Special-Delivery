@@ -53,24 +53,23 @@ public class PlayerGliderControl : MonoBehaviour {
     // Queue Glider calls to avoid input delays.
     private void OnGlidePerformed(InputAction.CallbackContext ctx) { glidePressQueued = true; }
 
-    public bool GliderUpdate(bool vanGrounded, float vInput, float hInput) {
-        if (state == GliderStates.animating) return false;
+    public void GliderUpdate(bool vanGrounded, float vInput, float hInput) {
+        if (state == GliderStates.animating) return;
 
         if (vanGrounded) {
             if (state != GliderStates.closed) {
                 StartCoroutine(GliderAnimation(false));
             } glidePressQueued = false;
-            return false;
+            return;
         }
 
         if (glidePressQueued && state != GliderStates.animating) {
             glidePressQueued = false;
             StartCoroutine(GliderAnimation(state == GliderStates.closed));
-            return false;
+            return;
         }
 
         if (state == GliderStates.opened) Glide(vInput, hInput);
-        return true;
     }
 
     private void Glide(float vInput, float hInput) {
@@ -111,4 +110,6 @@ public class PlayerGliderControl : MonoBehaviour {
             yield return null;
         } state = opening ? GliderStates.opened : GliderStates.closed;
     }
+
+    public bool IsGliding() => state == GliderStates.opened;
 }

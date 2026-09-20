@@ -1,6 +1,3 @@
-using System.Collections;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
@@ -79,16 +76,22 @@ public class PlayerControl : MonoBehaviour {
             foreach (var wheel in wheels) { if (wheel.IsGrounded()) { grounded = true; break; } }
 
             if (grounded) { DriveUpdate(vInput, hInput); }
-            bool gliding = pgc.GliderUpdate(grounded, vInput, hInput);
+            pgc.GliderUpdate(grounded, vInput, hInput);
+            bool gliding = pgc.IsGliding();
             pbc.BoostUpdate();
 
             if (pbc.IsBoosting() && forwardSpeed < maxSpeed) { 
                 rb.AddForce(boostPower * Time.fixedDeltaTime * transform.forward, ForceMode.Acceleration);
             }
 
-            if (gliding && vanSound.clip == engineAudio) { vanSound.clip = engineAudio; }
-            else if (!gliding) {
-                if (vanSound.clip != engineAudio) { vanSound.clip = engineAudio; }
+            if (gliding && vanSound.clip == engineAudio) { 
+                vanSound.clip = gliderAudio;
+                vanSound.Play();
+            } else if (!gliding) {
+                if (vanSound.clip != engineAudio) { 
+                    vanSound.clip = engineAudio;
+                    vanSound.Play();
+                }
                 vanSound.pitch = 1f + (forwardSpeed / 10); // Adjust pitch of engine sound based on speed.
             }
         } else { vanSound.Stop(); StopVan(); } // Stop engine sound when game is over. 
