@@ -680,7 +680,7 @@ MonoBehaviour:
       m_Flags: 0
     - m_Name: 
       m_Id: b1bae533-b153-4286-b17a-e481a69bf622
-      m_Path: <SwitchProControllerHID>/rightTrigger
+      m_Path: <Gamepad>/rightTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -751,6 +751,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: 8c3721d8-1568-4174-adc4-c44d6c3371e9
       m_Path: <Keyboard>/m
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Van Glide
+      m_Flags: 0
+    - m_Name: 
+      m_Id: c3ca0d40-8a7c-4109-834b-cec25a19e651
+      m_Path: <Gamepad>/leftTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
