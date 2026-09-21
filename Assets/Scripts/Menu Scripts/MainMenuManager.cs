@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Text.RegularExpressions;
-using Unity.VisualScripting;
 
 // Script to handle main game functionality.
 public class MainMenuManager : MonoBehaviour {
@@ -20,6 +19,8 @@ public class MainMenuManager : MonoBehaviour {
     [Header ("UI Elements")]
     [SerializeField] private GameObject navDescription;
     [SerializeField] private Button shopButton;
+    [SerializeField] private Button galleryButton;
+    [SerializeField] private Button galleryPropButton;
     [SerializeField] private Button playButton;
     [SerializeField] private Button practiceButton;
     [SerializeField] private Button bossButton;
@@ -70,6 +71,8 @@ public class MainMenuManager : MonoBehaviour {
         selectedLevel = GameManager.dataManager.GetLevel("city");
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
+        ToggleGalleryLock(GameManager.dataManager.GetStampCount() >= 1);
+        galleryPropButton.gameObject.SetActive(GameManager.dataManager.GetStampCount() >= 3);
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
@@ -163,6 +166,17 @@ public class MainMenuManager : MonoBehaviour {
             LockButton(shopButton);
             shopButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
             shopButton.GetComponent<MenuText>().message = "COMPLETE 25 DELIVERIES TO UNLOCK";
+        }
+    }
+
+    public void ToggleGalleryLock(bool isUnlocked) {
+        if(isUnlocked) {
+            galleryButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "GALLERY";
+            galleryButton.GetComponent<MenuText>().message = "LOOK AT ALL THE RANDOM JUNK THAT'S BEEN THROWN AT YOU SO FAR";
+        } else {
+            LockButton(galleryButton);
+            galleryButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
+            galleryButton.GetComponent<MenuText>().message = "COLLECT 1 STAMP TO UNLOCK";
         }
     }
 

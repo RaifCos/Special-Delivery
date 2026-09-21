@@ -97,15 +97,20 @@ public class OpeningMenuManager : MonoBehaviour {
                 ActivateSaveFileUIElement(panel.transform.Find("Overall").gameObject, "", saveFileProgress[i].totalProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Story").gameObject, "STORY\t\t", saveFileProgress[i].levelProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Stamps").gameObject, "STAMPS\t\t", saveFileProgress[i].stampProgress);
-                ActivateSaveFileUIElement(panel.transform.Find("Gallery").gameObject, "GALLERY\t\t", saveFileProgress[i].galleryProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Achievements").gameObject, "ACHIEVEMENTS\t", saveFileProgress[i].achievementProgress);
                 
                 // Show Upgrades only if the Garage is Unlocked. 
-                string upgradeString;
-                if (saveFileProgress[i].shopUnlocked) { upgradeString = "UPGRADES\t\t"; }
-                else { upgradeString = "???\t\t\t"; }
+                string upgradeString = saveFileProgress[i].shopUnlocked ?
+                    "UPGRADES\t\t" :
+                    "???\t\t\t";
                 ActivateSaveFileUIElement(panel.transform.Find("Upgrades").gameObject, upgradeString, saveFileProgress[i].upgradeProgress);
             
+                string galleryString;
+                galleryString = saveFileProgress[i].stampProgress > 0 ?
+                    "GALLERY\t\t" :
+                    "???\t\t\t";
+                ActivateSaveFileUIElement(panel.transform.Find("Gallery").gameObject, galleryString, saveFileProgress[i].galleryProgress);
+
                 // Disable "No Save Data" Text.
                 panel.transform.Find("No Save").gameObject.SetActive(false);
                 panel.transform.Find("Play Button").transform.GetChild(0).gameObject.GetComponent<TMP_Text>().text = "PLAY";

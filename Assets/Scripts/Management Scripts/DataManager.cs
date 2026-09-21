@@ -207,8 +207,6 @@ public class DataManager : MonoBehaviour {
             int stamps = 0;
             for (int k = 0; k < totalStamps; k++) { if (data.stampCollection[k]) stamps++; }
 
-            Debug.Log(stamps + " " + totalStamps);
-
             saveFileProgress[i] = new ProgressData {
                 levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / (levels.Count * 2) * 100) : 0,
                 galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery      * 100) : 0,
@@ -493,10 +491,20 @@ public class DataManager : MonoBehaviour {
         if (IsStampCollected(index)) return;
         data.stampCollection[index] = true;
         data.stampCount++;
-        Debug.Log("Collected! " + data.stampCount);
+        
+        switch (data.stampCount) {
+            case 1:
+                AddCutsceneToQueue("unlock-obstacleGallery");
+                break;
+            case 3:
+                AddCutsceneToQueue("unlock-propGallery");
+                break;
+        }
     } 
 
     public bool IsStampCollected(int index) => data.stampCollection[index];
+
+    public int GetStampCount() => data.stampCount;
 
     #endregion    
 }
