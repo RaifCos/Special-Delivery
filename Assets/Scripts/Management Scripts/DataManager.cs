@@ -48,7 +48,6 @@ public class DataManager : MonoBehaviour {
     private static List<Achievement_SO> achievements;
     private static List<Upgrade_SO> upgrades;
     private static List<Level_SO> levels;
-    private int totalStamps;
 
     Data data = new();
 
@@ -62,7 +61,6 @@ public class DataManager : MonoBehaviour {
         achievements = database.GetAchievements();
         upgrades = database.GetUpgrades();
         levels = database.GetLevels();
-        totalStamps = levels.Count * 3;
         LoadData();
     }
 
@@ -164,6 +162,7 @@ public class DataManager : MonoBehaviour {
     public ProgressData[] LoadSaveFiles() {
         ProgressData[] saveFileProgress = new ProgressData[3];
         int totalGallery      = obstacles.Count + props.Count;
+        int totalStamps       = levels.Count * 3;
         int totalAchievements = achievements.Count;
         int totalUpgrades     = upgrades.Count;
         int totalItems        = totalGallery + totalAchievements + totalUpgrades + totalStamps;
