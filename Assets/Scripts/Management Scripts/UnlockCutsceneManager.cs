@@ -88,6 +88,7 @@ public class UnlockCutsceneManager : MonoBehaviour {
                 string[] res = UnlockText(key);
                 title =  "you've unlocked the " + res[0];
                 desc = "collect " + res[1];
+                SetModel(modelParent.Find(key).gameObject);
                 break;
         }
         
@@ -101,11 +102,11 @@ public class UnlockCutsceneManager : MonoBehaviour {
         switch (key) {
             case "obstacleGallery":
                 res[0] = "obstacle gallery!";
-                res[1] = "1 stamp.";
+                res[1] = "1 stamp";
                 break;
             case "propGallery":
                 res[0] = "prop gallery!";
-                res[1] = "3 stamps.";
+                res[1] = "3 stamps";
                 break;
         } return res;
     }

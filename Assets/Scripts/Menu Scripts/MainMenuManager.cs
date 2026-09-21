@@ -72,7 +72,6 @@ public class MainMenuManager : MonoBehaviour {
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
         ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
         ToggleGalleryLock(GameManager.dataManager.GetStampCount() >= 1);
-        galleryPropButton.gameObject.SetActive(GameManager.dataManager.GetStampCount() >= 3);
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
@@ -117,6 +116,7 @@ public class MainMenuManager : MonoBehaviour {
                 backdrop.color = new Color32(93, 105, 208, 255);
                 GameManager.galleryManager.UpdateGalleryUI();
                 GameManager.galleryManager.AlternateGalleryMenus(true);
+                galleryPropButton.gameObject.SetActive(GameManager.dataManager.GetStampCount() >= 3);
                 break; }
             case 2: { // Achievements
                 GameManager.achievementMenuManager.UpdateAchievementMenu();
