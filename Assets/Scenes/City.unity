@@ -36373,6 +36373,7 @@ MonoBehaviour:
   soundscape: {fileID: 8300000, guid: 4608eb68e4c29604abf2d807ca167714, type: 3}
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
+  stampAudio: {fileID: 8300000, guid: a8b35b29ff1d0ff45a4ce5a6b7f7333f, type: 3}
   mainUI: {fileID: 753791641}
   regularUI: {fileID: 76687730}
   regularEndUI: {fileID: 2117694106}
@@ -36387,6 +36388,7 @@ MonoBehaviour:
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}
   confirmText: {fileID: 15772673}
+  stampUI: {fileID: 0}
   gameOverPauseTime: 1
 --- !u!114 &1446925840
 MonoBehaviour:
@@ -60302,7 +60304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1001268125254907231, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3006606203100335001, guid: 3edb688a8f009b249b04b163ba6997e3, type: 3}
       propertyPath: m_Pivot.x

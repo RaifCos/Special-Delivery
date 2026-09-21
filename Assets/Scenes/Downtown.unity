@@ -527,6 +527,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3187149997875cc44ac848b5a3dfb3cd, type: 3}
+--- !u!1 &5424091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5701387592474927930, guid: 3187149997875cc44ac848b5a3dfb3cd, type: 3}
+  m_PrefabInstance: {fileID: 5424090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9599293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39562,6 +39567,7 @@ MonoBehaviour:
   soundscape: {fileID: 8300000, guid: 4608eb68e4c29604abf2d807ca167714, type: 3}
   countSound: {fileID: 8300000, guid: 00845bd49bc703e43ad89db855ae1dab, type: 3}
   overtimeSound: {fileID: 8300000, guid: bd5595105acc8e64197085b85b334b3a, type: 3}
+  stampAudio: {fileID: 8300000, guid: a8b35b29ff1d0ff45a4ce5a6b7f7333f, type: 3}
   mainUI: {fileID: 753791641}
   regularUI: {fileID: 76687730}
   regularEndUI: {fileID: 2117694106}
@@ -39576,6 +39582,7 @@ MonoBehaviour:
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}
   confirmText: {fileID: 15772673}
+  stampUI: {fileID: 5424091}
   gameOverPauseTime: 2
 --- !u!114 &1446925840
 MonoBehaviour:

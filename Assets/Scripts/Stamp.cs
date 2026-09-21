@@ -18,6 +18,7 @@ public class Stamp : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         GameObject triggerGO = other.gameObject;
         if (!triggerGO.CompareTag("Player") || collected) return; // Ignore Non-Player Triggers
-        GameManager.gameplayManager.SetCurrentStamp(stampNumber); // Hide all Stamps once one is collected.
+        GameManager.gameplayManager.SetCurrentStamp(stampNumber); // Hide all Stamps once one is collected.#
+        GameManager.gameplayManager.DisplayStamp(true);
     }
 }
