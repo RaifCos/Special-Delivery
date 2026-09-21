@@ -359,7 +359,8 @@ public class GameplayManager : MonoBehaviour {
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } if (difficulty == 1) { 
             yield return new WaitForSeconds(gameOverPauseTime);
-            if (difficulty == 1 && moneyEarnt > 0) StartCoroutine(MoneyCount());    
+            if (moneyEarnt > 0) StartCoroutine(MoneyCount());
+            else { DisplayMenuButton(); }
         } else {
             while (GameManager.audioManager.IsMusicPlaying()) { yield return null; }
             DisplayMenuButton();

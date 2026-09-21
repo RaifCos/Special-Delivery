@@ -34,7 +34,7 @@ public class PlayerGliderControl : MonoBehaviour {
 
     void Start() { 
         rb = GetComponent<Rigidbody>();
-        if (GameManager.dataManager.IsUpgraded("glider")) { enabled = false; return; }
+        enabled = GameManager.dataManager.IsUpgraded("glider");
     }
 
     void OnEnable() {
