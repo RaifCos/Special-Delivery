@@ -15,7 +15,8 @@ public class Data {
     [SerializeField] public Dictionary<string, bool> upgradeProgress = new();
     [SerializeField] public Dictionary<string, int> levelProgress = new();
     [SerializeField] public Dictionary<string, int> levelScores = new();
-    public int lifetimeDeliveries, playerCrashes, bestScore, cash = 0;
+    [SerializeField] public bool[] stampCollection;
+    public int lifetimeDeliveries, playerCrashes, bestScore, cash, stampCount = 0;
     public bool shopUnlocked = false;
     public List<string> cutsceneQueue = new();
 }
@@ -26,6 +27,7 @@ public class ProgressData {
     public int upgradeProgress = 0;
     public int levelProgress = 0;
     public int totalProgress = 0;
+    public int stampProgress = 0;
     public bool shopUnlocked = false;
     public bool isEmpty = true;
 }
@@ -112,6 +114,8 @@ public class DataManager : MonoBehaviour {
             data.levelProgress.TryAdd(level.internalName, 0);
             data.levelScores.TryAdd(level.internalName, 0);
         }
+
+        data.stampCollection ??= new bool[levels.Count * 3];
     }
 
     public Data ResetData() {
@@ -142,10 +146,12 @@ public class DataManager : MonoBehaviour {
             defaultData.upgradeProgress[up.internalName] = false;
         }
 
-        foreach(Level_SO level in levels) {
+        foreach (Level_SO level in levels) {
             defaultData.levelProgress[level.internalName] = 0;
             defaultData.levelScores[level.internalName] = 0;
         } defaultData.levelProgress["city"] = 1;
+
+        defaultData.stampCollection = new bool[levels.Count * 3];
 
         return defaultData;
     }
@@ -156,9 +162,10 @@ public class DataManager : MonoBehaviour {
     public ProgressData[] LoadSaveFiles() {
         ProgressData[] saveFileProgress = new ProgressData[3];
         int totalGallery      = obstacles.Count + props.Count;
+        int totalStamps       = levels.Count * 3;
         int totalAchievements = achievements.Count;
         int totalUpgrades     = upgrades.Count;
-        int totalItems        = totalGallery + totalAchievements + totalUpgrades;
+        int totalItems        = totalGallery + totalAchievements + totalUpgrades + totalStamps;
 
         for (int i = 0; i < 3; i++) {
             string path = Path.Combine(Application.persistentDataPath, jsonFileName) + i;
@@ -197,12 +204,16 @@ public class DataManager : MonoBehaviour {
                 if (data.levelProgress.GetValueOrDefault(level.internalName) > 2) beatenLevels++;
             }
 
+            int stamps = 0;
+            for (int k = 0; k < totalStamps; k++) { if (data.stampCollection[k]) stamps++; }
+
             saveFileProgress[i] = new ProgressData {
                 levelProgress       = beatenLevels      > 0 ? Mathf.RoundToInt((float)beatenLevels / (levels.Count * 2) * 100) : 0,
-                galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery     * 100) : 0,
+                galleryProgress     = totalGallery      > 0 ? Mathf.RoundToInt((float)gallery  / totalGallery      * 100) : 0,
                 achievementProgress = totalAchievements > 0 ? Mathf.RoundToInt((float)achieved / totalAchievements * 100) : 0,
                 upgradeProgress     = totalUpgrades     > 0 ? Mathf.RoundToInt((float)upgraded  / totalUpgrades    * 100) : 0,
-                totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded + beatenLevels) / totalItems * 100) : 0,
+                stampProgress       = totalStamps       > 0 ? Mathf.RoundToInt((float)stamps  / totalStamps * 100) : 0,
+                totalProgress       = totalItems        > 0 ? Mathf.RoundToInt((float)(gallery + achieved + upgraded + stamps + beatenLevels) / totalItems * 100) : 0,
                 shopUnlocked        = data.shopUnlocked,
                 isEmpty             = false
             };
@@ -473,5 +484,27 @@ public class DataManager : MonoBehaviour {
 
     public bool CutscenesQueued() { return data.cutsceneQueue.Count > 0; }
 
-    #endregion
+    #endregion   
+    #region Stamp Data
+
+    public void StampCollected(int index) {
+        if (IsStampCollected(index)) return;
+        data.stampCollection[index] = true;
+        data.stampCount++;
+        
+        switch (data.stampCount) {
+            case 1:
+                AddCutsceneToQueue("unlock-obstacleGallery");
+                break;
+            case 3:
+                AddCutsceneToQueue("unlock-propGallery");
+                break;
+        }
+    } 
+
+    public bool IsStampCollected(int index) => data.stampCollection[index];
+
+    public int GetStampCount() => data.stampCount;
+
+    #endregion    
 }

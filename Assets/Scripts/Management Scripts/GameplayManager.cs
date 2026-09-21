@@ -1,10 +1,10 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour {
@@ -38,6 +38,7 @@ public class GameplayManager : MonoBehaviour {
     [Header ("Sound Effects")]
     [SerializeField] private AudioClip countSound;
     [SerializeField] private AudioClip overtimeSound;
+    [SerializeField] private AudioClip stampAudio;
 
     [Header ("UI Canvases")]
     [SerializeField] private GameObject mainUI;
@@ -57,7 +58,11 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Animator timeAnimator;
     [SerializeField] private TMP_Text confirmText;
+    [SerializeField] private GameObject stampUI;
     [SerializeField] private float gameOverPauseTime = 1f;
+
+    private Stamp[] stamps;
+    private int currentStamp = -1;
 
     private bool isPlaying = false;
     private bool isGamePaused = false;
@@ -92,6 +97,8 @@ public class GameplayManager : MonoBehaviour {
         secondLife = GameManager.dataManager.IsUpgraded("secondLife");
 
         moneyEarnt = 0;
+        stamps = FindObjectsByType<Stamp>();
+        SetStampsActive(false);
 
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
         difficulty = GameManager.instance.GetDifficulty();
@@ -304,9 +311,33 @@ public class GameplayManager : MonoBehaviour {
     public Vector3 FindPlayer() => player.transform.position;
 
     #endregion
+    #region Stamp Functions
 
+    public void SetCurrentStamp(int index) {
+        currentStamp = index;
+        SetStampsActive(false);
+    }
+
+    public void CollectCurrentStamp() {
+        DisplayStamp(false);
+        if (currentStamp == -1) return;
+        GameManager.dataManager.StampCollected(currentStamp);
+
+        foreach (Stamp s in stamps) {
+            if (s.GetStampNumber() == currentStamp) { 
+                s.SetCollected(true);
+                return;
+            }
+        }
+    }
+
+    public void SetStampsActive(bool active) {
+        if (active) { foreach(Stamp stamp in stamps) { stamp.ActivateStamp(); } }
+        else { foreach(Stamp stamp in stamps) { stamp.DeactivateStamp(); } }
+    }
+
+    #endregion
     #region UI Functions
-
 
     public void TimerAnimation(string trigger) {
         timeAnimator.ResetTrigger(LowTimeHash);
@@ -330,7 +361,8 @@ public class GameplayManager : MonoBehaviour {
             endUI.GetComponent<CanvasGroup>().alpha += 0.05f;
         } if (difficulty == 1) { 
             yield return new WaitForSeconds(gameOverPauseTime);
-            if (difficulty == 1 && moneyEarnt > 0) StartCoroutine(MoneyCount());    
+            if (moneyEarnt > 0) StartCoroutine(MoneyCount());
+            else { DisplayMenuButton(); }
         } else {
             while (GameManager.audioManager.IsMusicPlaying()) { yield return null; }
             DisplayMenuButton();
@@ -367,6 +399,11 @@ public class GameplayManager : MonoBehaviour {
             moneyTMP.color = new Color32(255, 227, 0, alp);
             yield return _waitForSeconds0001;
         }
+    }
+
+    public void DisplayStamp(bool show) {
+        stampUI.SetActive(show);
+        if (show) GameManager.audioManager.PlaySoundEffect(stampAudio);
     }
 
     // Function to pause the game and go to the pause menu.

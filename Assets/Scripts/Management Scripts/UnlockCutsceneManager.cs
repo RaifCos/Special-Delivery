@@ -84,10 +84,31 @@ public class UnlockCutsceneManager : MonoBehaviour {
                 desc = "deliver 25 parcels";
                 SetModel(modelParent.Find("player").gameObject);
                 break;
+            case "unlock":
+                string[] res = UnlockText(key);
+                title =  "you've unlocked the " + res[0];
+                desc = "collect " + res[1];
+                SetModel(modelParent.Find(key).gameObject);
+                break;
         }
         
         titleText.text = title;
         descriptionText.text = "(" + desc + ")";
+    }
+
+    private string[] UnlockText(string key) {
+        string[] res = new string[2];
+
+        switch (key) {
+            case "obstacleGallery":
+                res[0] = "obstacle gallery!";
+                res[1] = "1 stamp";
+                break;
+            case "propGallery":
+                res[0] = "prop gallery!";
+                res[1] = "3 stamps";
+                break;
+        } return res;
     }
 
     private void SetModel(GameObject newModel) {

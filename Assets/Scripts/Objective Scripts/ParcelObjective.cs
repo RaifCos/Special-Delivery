@@ -41,7 +41,7 @@ public class ParcelObjective : MonoBehaviour {
                     GameManager.gameplayManager.MoneyScore(completeDeliveries);
                     GameManager.dataManager.IncrementLevelScore(currentlevel);
 
-                    // Check Achievements.
+                    // Check Total Score Achievements.
                     if (completeDeliveries == 10) { GameManager.dataManager.CompleteAchievement("score10"); }
                     if (completeDeliveries == 50) { GameManager.dataManager.CompleteAchievement("score50"); }
                     if (completeDeliveries > GameManager.dataManager.GetBestScore()) { GameManager.dataManager.SetBestScore(completeDeliveries); }
@@ -49,10 +49,18 @@ public class ParcelObjective : MonoBehaviour {
                     // Spawn Obstacles and Increase Timer.
                     GameManager.obstacleManager.SpawnObstacle(completeDeliveries % 2 == 0);
                     GameManager.gameplayManager.SetTime(timeEarned, true);
+                    
+                    // Check if there is a Stamp to Collect.
+                    GameManager.gameplayManager.CollectCurrentStamp();
                 }
-            } GameManager.audioManager.PlayParcelSound(isParcel);
+            } 
+
+            // Spawn/Despawn Stamps if more than 10 Deliveries have already been completed.
+            if (completeDeliveries >= 10 && difficulty != 0) { GameManager.gameplayManager.SetStampsActive(isParcel); }
+
+            GameManager.audioManager.PlayParcelSound(isParcel);
             ChangeState(!isParcel);
-        }   
+        }
     }
 
     public void ChangeState(bool input) {

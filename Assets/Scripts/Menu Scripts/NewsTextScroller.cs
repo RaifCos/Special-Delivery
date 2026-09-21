@@ -49,7 +49,7 @@ public class NewsTextScroller : MonoBehaviour {
     void Start() {
         lastStory = -1;
         hasBoost = GameManager.dataManager.IsUpgraded("booster");       
-        hasGlider = GameManager.dataManager.IsUpgraded("upgrade");
+        hasGlider = GameManager.dataManager.IsUpgraded("glider");
         currentLevel = GameManager.gameplayManager.GetCurrentLevel();
         string[] genericHeadlines = currentLevel.headlines;
         headlines = genericHeadlines.Concat(tipHeadlines).ToArray();
