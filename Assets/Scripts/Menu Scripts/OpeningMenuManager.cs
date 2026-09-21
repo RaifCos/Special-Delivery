@@ -96,6 +96,7 @@ public class OpeningMenuManager : MonoBehaviour {
                 // Activate Progress UI Elements.
                 ActivateSaveFileUIElement(panel.transform.Find("Overall").gameObject, "", saveFileProgress[i].totalProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Story").gameObject, "STORY\t\t", saveFileProgress[i].levelProgress);
+                ActivateSaveFileUIElement(panel.transform.Find("Stamps").gameObject, "STAMPS\t\t", saveFileProgress[i].stampProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Gallery").gameObject, "GALLERY\t\t", saveFileProgress[i].galleryProgress);
                 ActivateSaveFileUIElement(panel.transform.Find("Achievements").gameObject, "ACHIEVEMENTS\t", saveFileProgress[i].achievementProgress);
                 
@@ -112,6 +113,7 @@ public class OpeningMenuManager : MonoBehaviour {
                 panel.transform.Find("Overall").gameObject.SetActive(false);
                 panel.transform.Find("Story").gameObject.SetActive(false);
                 panel.transform.Find("Upgrades").gameObject.SetActive(false);
+                panel.transform.Find("Stamps").gameObject.SetActive(false);
                 panel.transform.Find("Gallery").gameObject.SetActive(false);
                 panel.transform.Find("Achievements").gameObject.SetActive(false);
                 panel.transform.Find("No Save").gameObject.SetActive(true);

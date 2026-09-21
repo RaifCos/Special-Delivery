@@ -5,23 +5,19 @@ public class Stamp : MonoBehaviour {
     [SerializeField] private int stampNumber;
     private bool collected = false;
 
-    private GameObject stampObject;
+    void Start() => collected = GameManager.dataManager.IsStampCollected(stampNumber);
 
-    void Start() {
-        stampObject = transform.GetChild(0).gameObject;
-        // collected = GameManager.DataManager.IsStampCollected(stampNumber);
-    }
+    public void ActivateStamp() => gameObject.SetActive(!collected); 
 
-    void ActivateStamp() { if (!collected) stampObject.SetActive(true); }
+    public void DeactivateStamp() => gameObject.SetActive(false); 
 
-    void DeactivateStamp() { stampObject.SetActive(false); }
+    public int GetStampNumber() => stampNumber;
+
+    public void SetCollected(bool input) => collected = input; 
 
     void OnTriggerEnter(Collider other) {
         GameObject triggerGO = other.gameObject;
-
         if (!triggerGO.CompareTag("Player") || collected) return; // Ignore Non-Player Triggers
-        collected = true;
-        // GameManager.DataManager.StampCollected(stampNumber);
-        DeactivateStamp();
+        GameManager.gameplayManager.SetCurrentStamp(stampNumber); // Hide all Stamps once one is collected.
     }
 }

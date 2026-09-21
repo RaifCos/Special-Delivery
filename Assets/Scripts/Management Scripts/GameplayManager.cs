@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using System.Linq;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour {
@@ -59,6 +60,9 @@ public class GameplayManager : MonoBehaviour {
     [SerializeField] private TMP_Text confirmText;
     [SerializeField] private float gameOverPauseTime = 1f;
 
+    private Stamp[] stamps;
+    private int currentStamp = -1;
+
     private bool isPlaying = false;
     private bool isGamePaused = false;
     private bool secondLife = false; 
@@ -92,6 +96,8 @@ public class GameplayManager : MonoBehaviour {
         secondLife = GameManager.dataManager.IsUpgraded("secondLife");
 
         moneyEarnt = 0;
+        stamps = FindObjectsByType<Stamp>();
+        SetStampsActive(false);
 
         // Set Difficulty based on user selection, hide the timer UI in the tutorial
         difficulty = GameManager.instance.GetDifficulty();
@@ -304,9 +310,32 @@ public class GameplayManager : MonoBehaviour {
     public Vector3 FindPlayer() => player.transform.position;
 
     #endregion
+    #region Stamp Functions
 
+    public void SetCurrentStamp(int index) {
+        currentStamp = index;
+        SetStampsActive(false);
+    }
+
+    public void CollectCurrentStamp() {
+        if (currentStamp == -1) return;
+        GameManager.dataManager.StampCollected(currentStamp);
+
+        foreach (Stamp s in stamps) {
+            if (s.GetStampNumber() == currentStamp) { 
+                s.SetCollected(true);
+                return;
+            }
+        }
+    }
+
+    public void SetStampsActive(bool active) {
+        if (active) { foreach(Stamp stamp in stamps) { stamp.ActivateStamp(); } }
+        else { foreach(Stamp stamp in stamps) { stamp.DeactivateStamp(); } }
+    }
+
+    #endregion
     #region UI Functions
-
 
     public void TimerAnimation(string trigger) {
         timeAnimator.ResetTrigger(LowTimeHash);
