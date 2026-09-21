@@ -1,11 +1,10 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 using TMPro;
 using System;
-using System.Linq;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 // Script to handle main game functionality.
 public class GameplayManager : MonoBehaviour {
