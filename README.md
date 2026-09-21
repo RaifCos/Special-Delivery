@@ -5,7 +5,8 @@ Take on the role of an underpaid delivery driver as you navigate a bustling city
 - Take to the streets in your mail van to deliver parcels as fast as you can.
 - Put up with more and more nonsense as you complete more deliveries, with over 50 different obstacles and props to encounter.
 - Put your skills to the test with 16 different achievements to complete.
-- Earn wages for completing deliveries, which can be used in the garage to unlock 9 awesome upgrades. 
+- Earn wages for completing deliveries, which can be used in the garage to unlock 9 awesome upgrades.
+- Collect Stamps hidden throughout each level to unlock extra content and secrets.
 - Face off against rival delivery drivers in intense Boss Battles.
 - Travel across the world of Parcel Island as you unlock new levels to explore. 
 
