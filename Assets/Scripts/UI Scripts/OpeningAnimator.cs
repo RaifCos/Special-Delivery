@@ -16,8 +16,13 @@ public class OpeningAnimator : MonoBehaviour {
     [SerializeField] private float delay = 0f;
     [SerializeField] private AnimationCurve ease = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
+    [Header("Scale")]
+    [SerializeField] private bool animateScale = false;
+    [SerializeField] private float startingScale = 1f;
+
     private RectTransform rt;
     private Vector2 onScreenPos, offScreenPos;
+    private Vector3 onScreenScale, offScreenScale;
     private Coroutine activeRoutine;
     private bool alreadyAnimated = false;
 
@@ -30,6 +35,7 @@ public class OpeningAnimator : MonoBehaviour {
         animator = GetComponent<Animator>();
         button = GetComponent<Button>();
         onScreenPos = rt.anchoredPosition;
+        onScreenScale = rt.localScale;
     }
 
     private void OnEnable() { 
@@ -70,6 +76,11 @@ public class OpeningAnimator : MonoBehaviour {
                 break;
         } offScreenPos = onScreenPos + offset;
         rt.anchoredPosition = offScreenPos;
+
+        if (animateScale) {
+            offScreenScale = onScreenScale * startingScale;
+            rt.localScale = offScreenScale;
+        }
     }
 
     public void AnimateIn() {
@@ -81,15 +92,26 @@ public class OpeningAnimator : MonoBehaviour {
         if (delay > 0f) yield return new WaitForSeconds(delay);
 
         float t = 0f;
-        Vector2 start = rt.anchoredPosition;
+        Vector2 startPos = rt.anchoredPosition;
+        Vector3 startScaleVal = rt.localScale;
 
         while (t < duration) {
             t += Time.deltaTime;
             float normalized = Mathf.Clamp01(t / duration);
             float eased = ease.Evaluate(normalized);
-            rt.anchoredPosition = Vector2.LerpUnclamped(start, onScreenPos, eased);
+            rt.anchoredPosition = Vector2.LerpUnclamped(startPos, onScreenPos, eased);
+
+            if (animateScale) {
+                float scaleEased = ease.Evaluate(normalized);
+                rt.localScale = Vector3.LerpUnclamped(startScaleVal, onScreenScale, scaleEased);
+            }
+
             yield return null;
-        } rt.anchoredPosition = onScreenPos;
+        }
+
+        rt.anchoredPosition = onScreenPos;
+        if (animateScale) rt.localScale = onScreenScale;
+
         if (animator != null) animator.enabled = true;
         if (button != null) { button.interactable = buttonState; }
     }

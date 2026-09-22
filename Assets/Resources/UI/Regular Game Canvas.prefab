@@ -142,6 +142,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1236646052190339223
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,9 +611,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 0
-  extraPadding: 100
+  extraPadding: 400
   animateOnce: 0
-  duration: 0.6
+  duration: 0.45
   delay: 0
   ease:
     serializedVersion: 2
@@ -637,3 +639,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  animateScale: 1
+  startingScale: 3
