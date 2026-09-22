@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour {
     }
     
     public IEnumerator LoadAsyncScene(string scene, bool save = true) {
-        Instantiate(Resources.Load<GameObject>("LoadingScreen"));
+        Instantiate(Resources.Load<GameObject>("UI/LoadingScreen"));
         if (save) dataManager.SaveData();
         audioManager.StopGameMusic();
         yield return _waitForSeconds1;
