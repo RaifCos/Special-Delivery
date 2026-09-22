@@ -11,6 +11,11 @@ public class SettingsManager : MonoBehaviour {
 
     void Awake() => GameManager.settingsManager = this;  
 
+    void Start() {
+        qualityShadows = GameManager.instance.GetShadowQuality();
+        shadowToggle.isOn = qualityShadows; 
+    }
+
     public void SetShadows() => qualityShadows = shadowToggle.isOn;
 
     public void SetControllerSchemeValue() => controllerScheme.value = GameManager.instance.GetControllerScheme();

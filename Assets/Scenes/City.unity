@@ -36388,7 +36388,7 @@ MonoBehaviour:
   timerText: {fileID: 419662620}
   timeAnimator: {fileID: 706020643}
   confirmText: {fileID: 15772673}
-  stampUI: {fileID: 0}
+  stampUI: {fileID: 6122350358278929081}
   gameOverPauseTime: 1
 --- !u!114 &1446925840
 MonoBehaviour:
@@ -60938,6 +60938,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3187149997875cc44ac848b5a3dfb3cd, type: 3}
+--- !u!1 &6122350358278929081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5701387592474927930, guid: 3187149997875cc44ac848b5a3dfb3cd, type: 3}
+  m_PrefabInstance: {fileID: 6122350358278929080}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6126968729483455329
 Transform:
   m_ObjectHideFlags: 0
