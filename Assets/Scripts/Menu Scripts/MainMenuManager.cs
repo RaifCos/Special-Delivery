@@ -52,6 +52,7 @@ public class MainMenuManager : MonoBehaviour {
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
     [SerializeField] private AudioClip musicLoop;
+    private bool shopUnlocked, galleryUnlocked;
     private int confirmationUIID;
 
     void OnEnable() { eventSystem = EventSystem.current; }
@@ -69,9 +70,12 @@ public class MainMenuManager : MonoBehaviour {
         bossButtonColor = bossButton.gameObject.GetComponent<Image>().color;
 
         selectedLevel = GameManager.dataManager.GetLevel("city");
+        shopUnlocked = GameManager.dataManager.IsShopUnlocked();
+        galleryUnlocked = GameManager.dataManager.GetStampCount() >= 1;
+
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
-        ToggleShopLock(GameManager.dataManager.IsShopUnlocked());
-        ToggleGalleryLock(GameManager.dataManager.GetStampCount() >= 1);
+        ToggleShopLock(shopUnlocked);
+        ToggleGalleryLock(galleryUnlocked);
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
@@ -85,6 +89,18 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void StartGame(int difficulty) {
+        if (selectedLevel == null) return;
+        int progress = GameManager.dataManager.GetLevelProgress(selectedLevel.internalName);
+        switch (difficulty) {
+            case 1:
+            case 0:
+                if (progress < 1) return;
+                break;
+            case 2:
+                if (progress < 2) return;
+                break;
+        }
+
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
         StartCoroutine(GameManager.instance.LoadAsyncScene(selectedLevel.internalName));
@@ -111,6 +127,7 @@ public class MainMenuManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(navStartSelected);
                 break; }
             case 1: { // Gallery 
+                if (!galleryUnlocked) return;
                 menuUI.SetActive(false);
                 galleryUI.SetActive(true);
                 backdrop.color = new Color32(93, 105, 208, 255);
@@ -136,6 +153,7 @@ public class MainMenuManager : MonoBehaviour {
                 DisplayLevel("city");
                 break; }    
             case 5: { // Shop 
+                if (!shopUnlocked) return;
                 backdrop.color = new Color32(62, 171, 230, 255);
                 GameManager.garageMenuManager.UpdateMenu(false);
                 GameManager.garageMenuManager.DisplayUpgrade("booster");
@@ -181,8 +199,6 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void ToggelPlayLock(bool isUnlocked) {
-        playButton.interactable = isUnlocked;
-        practiceButton.interactable = isUnlocked;
         playButton.gameObject.GetComponent<Image>().color = isUnlocked? playButtonColor : lockedButtonColor;
         practiceButton.gameObject.GetComponent<Image>().color = isUnlocked? practiceButtonColor : lockedButtonColor;
         if(isUnlocked) {
@@ -199,7 +215,6 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void ToggleBossLock(int state) {
-        bossButton.interactable = state >= 2;
         bossButton.gameObject.GetComponent<Image>().color = state >= 2? bossButtonColor : lockedButtonColor;
         switch (state) {
             case 0: {
@@ -223,15 +238,13 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     private void LockButton(Button button) {
-        button.interactable = false;
         button.gameObject.GetComponent<Image>().color = lockedButtonColor;
     }
 
     // Lock UI with special "Coming Soon" setup for future Levels.
     public void ComingSoonSetup() {
-        playButton.interactable = false;
-        practiceButton.interactable = false;
-        bossButton.interactable = false;
+        selectedLevel = null;
+
         playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         playButton.GetComponent<MenuText>().message = "COMING SOON...";
         practiceButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
