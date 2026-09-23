@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour {
     void Awake() { 
         instance = this;
         saveFile = PlayerPrefs.GetInt("SaveFile", 0);
-        musicVolume = PlayerPrefs.GetFloat("VolumeMusic_" + saveFile, 0.85f);
-        soundEffectVolume = PlayerPrefs.GetFloat("VolumeEffects_" + saveFile, 0.85f);
+        musicVolume = PlayerPrefs.GetFloat("VolumeMusic_" + saveFile, 0.8f);
+        soundEffectVolume = PlayerPrefs.GetFloat("VolumeEffects_" + saveFile, 0.8f);
         controlScheme = PlayerPrefs.GetInt("ControllerScheme_" + saveFile, 0);
         ToggleShadows(PlayerPrefs.GetInt("Shadows_" + saveFile, 0) == 0);
 
