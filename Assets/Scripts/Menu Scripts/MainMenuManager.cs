@@ -258,10 +258,13 @@ public class MainMenuManager : MonoBehaviour {
 
         playButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         playButton.GetComponent<MenuText>().message = "COMING SOON...";
+        playButton.gameObject.GetComponent<Image>().color = lockedButtonColor;
         practiceButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         practiceButton.GetComponent<MenuText>().message = "COMING SOON...";
+        practiceButton.gameObject.GetComponent<Image>().color = lockedButtonColor;
         bossButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
         bossButton.GetComponent<MenuText>().message = "COMING SOON...";
+        bossButton.gameObject.GetComponent<Image>().color = lockedButtonColor;
 
         levelName.text = "Coming Soon";
     }
