@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle_SO
   internalName: wreckingBall
   externalName: wrecking ball
-  description: 
-  headline: 
+  description: 'wrecking balls come crashing in full force, knocking anything in their way.
+
+
+    if only there was some song or other piece of iconic media that referenced wrecking balls, it would make for a great joke here. '
+  headline: demolition company product expo goes "too far" with interactive wrecking ball demo
   prefab: {fileID: 850523091487171873, guid: db8bd4dfc4609314a8933f65adf98253, type: 3}
   sprite: {fileID: 21300000, guid: ec125d5fddcf2c44a8e8abdbcb707ab3, type: 3}

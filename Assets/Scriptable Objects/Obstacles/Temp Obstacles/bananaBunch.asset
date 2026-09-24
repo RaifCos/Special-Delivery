@@ -17,10 +17,7 @@ MonoBehaviour:
   description: 'a bunch of bananas that fall from the sky- take care not to slip!
 
 
-    you''re
-    laughing. a banana peel just caused a six-car pileup in the city center and you''re
-    laughing. '
-  headline: experts reassure citizens not to worry about sightings of banana peels
-    raining from the sky - "it's the giant sky chimp you should be afraid of"
+    you''re laughing. a banana peel just caused a six-car pileup on the intersection and you''re laughing. '
+  headline: experts reassure citizens not to worry about sightings of banana peels raining from the sky - "it's the giant sky chimp you should be afraid of"
   prefab: {fileID: 1243970421250490425, guid: 1b25ecb8cb5cc4c45a7f2b906f291625, type: 3}
   sprite: {fileID: 21300000, guid: da472658cbb25234cbab1e6d89b9cabd, type: 3}
