@@ -766,13 +766,13 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
-  glideGravityMultiplier: 0.75
+  glideGravityMultiplier: 0.5
   glideLiftCoefficient: 0.015
   airPitchTorque: 6
   airRollTorque: 6
-  airYawTorque: 4
+  airYawTorque: 6
   airStabilizeTorque: 10
-  airAngularDamping: 1.5
+  airAngularDamping: 6
   glideMaxLiftSpeed: 20
   gliderObject: {fileID: 3077341649354029474}
   gliderOpenSound: {fileID: 8300000, guid: 39e9ddff5098d0349b849aceedc500e8, type: 3}
@@ -6181,7 +6181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691528823127931588}
   - component: {fileID: 1493599944428997842}
-  - component: {fileID: 2293356933987691426}
+  - component: {fileID: 6524824721354140458}
   m_Layer: 0
   m_Name: ArrowCam
   m_TagString: Untagged
@@ -6256,7 +6256,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &2293356933987691426
+--- !u!114 &6524824721354140458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
