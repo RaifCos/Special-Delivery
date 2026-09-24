@@ -120,7 +120,7 @@ public class MainMenuManager : MonoBehaviour {
                 if (!opened) { opened = true; }
                 else { GameManager.audioManager.PlayButtonSound(1, true); }
 
-                backdrop.color = new Color32(62, 123, 230, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(62, 123, 230, 255)));
                 navDescription.GetComponent<TMP_Text>().text = "";
                 menuUI.SetActive(true);
                 garageUI.SetActive(false);
@@ -136,7 +136,7 @@ public class MainMenuManager : MonoBehaviour {
                 if (!galleryUnlocked) return;
                 menuUI.SetActive(false);
                 galleryUI.SetActive(true);
-                backdrop.color = new Color32(93, 105, 208, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(93, 105, 208, 255)));
                 GameManager.galleryManager.UpdateGalleryUI();
                 GameManager.galleryManager.AlternateGalleryMenus(true);
                 galleryPropButton.gameObject.SetActive(GameManager.dataManager.GetStampCount() >= 3);
@@ -144,7 +144,7 @@ public class MainMenuManager : MonoBehaviour {
             case 2: { // Achievements
                 GameManager.audioManager.PlayButtonSound(0, true);
                 GameManager.achievementMenuManager.UpdateAchievementMenu();
-                backdrop.color = new Color32(39, 191, 200, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(39, 191, 200, 255)));
                 menuUI.SetActive(false);
                 achievementUI.SetActive(true);
                 achievementUI.transform.GetChild(3).gameObject.GetComponent<TMP_Text>().text = "HIGH-SCORE: " + GameManager.dataManager.GetBestScore().ToString();
@@ -164,7 +164,7 @@ public class MainMenuManager : MonoBehaviour {
                 int sound = shopUnlocked ? 0 : 2;
                 GameManager.audioManager.PlayButtonSound(sound, true);
                 if (!shopUnlocked) return;
-                backdrop.color = new Color32(62, 171, 230, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(62, 171, 230, 255)));
                 GameManager.garageMenuManager.UpdateMenu(false);
                 GameManager.garageMenuManager.DisplayUpgrade("booster");
                 menuUI.SetActive(false);
@@ -178,7 +178,7 @@ public class MainMenuManager : MonoBehaviour {
                 break; }
             case 7: { // Settings
                 GameManager.audioManager.PlayButtonSound(0, true);
-                backdrop.color = new Color32(20, 58, 123, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(20, 58, 123, 255)));
                 menuUI.SetActive(false);
                 settingsUI.SetActive(true);
                 GameManager.settingsManager.SetControllerSchemeValue();
@@ -327,7 +327,8 @@ public class MainMenuManager : MonoBehaviour {
         TMP_Text message = confirmUI.transform.GetChild(2).GetComponent<TMP_Text>();
         switch(confirmationUIID) {
             case 0: {
-                backdrop.color = new Color32(20, 58, 123, 255);
+                StartCoroutine(ColourTransition(backdrop, new Color32(20, 58, 123, 255)));
+                backdrop.color = new(20, 58, 123, 255);
                 message.text = "return to the menu?";
                 menuUI.SetActive(false);
                 break; }
@@ -358,5 +359,21 @@ public class MainMenuManager : MonoBehaviour {
                 } else { AlternateMainMenus(7); }
                 break; }
         }
+    }
+
+    private IEnumerator ColourTransition(Image img, Color target) {
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        Color starting = img.color;
+
+        while (elapsed < duration) {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            img.color = Color.Lerp(starting, target, t);
+            yield return null;
+        }
+
+        img.color = target;
     }
 }

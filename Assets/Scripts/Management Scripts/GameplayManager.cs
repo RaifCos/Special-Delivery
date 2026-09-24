@@ -422,12 +422,14 @@ public class GameplayManager : MonoBehaviour {
         GameManager.audioManager.TogglePause(false);
         GameManager.audioManager.ConfirmMusicVolumeChange();
         GameManager.audioManager.ConfirmSoundEffectVolumeChange();
+        GameManager.audioManager.PlayButtonSound(0, false);
         Time.timeScale = 1;
         AlternateGameMenus(0);
     }
 
     // Function to quit the current round and return to the main menu.
     public void QuitGame() {
+        GameManager.audioManager.PlayButtonSound(1, false);
         if (difficulty > 0) { GameManager.dataManager.CashTransaction(moneyEarnt); }
         GameManager.audioManager.ConfirmMusicVolumeChange();
         GameManager.audioManager.ConfirmSoundEffectVolumeChange();
@@ -451,6 +453,7 @@ public class GameplayManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(overStartSelect);
                 break; }
             case 2: { // Pause Menu
+                GameManager.audioManager.PlayButtonSound(1, false);
                 pauseUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(pauseStartSelect);
                 break; }

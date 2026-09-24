@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 24158058}
   - component: {fileID: 24158060}
   - component: {fileID: 24158059}
+  - component: {fileID: 24158061}
   m_Layer: 5
   m_Name: Settings Text
   m_TagString: Untagged
@@ -658,6 +659,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24158057}
   m_CullTransparentMesh: 1
+--- !u!114 &24158061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24158057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &39079239
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +850,7 @@ GameObject:
   - component: {fileID: 43329730}
   - component: {fileID: 43329732}
   - component: {fileID: 43329731}
+  - component: {fileID: 43329733}
   m_Layer: 5
   m_Name: Text Panel
   m_TagString: Untagged
@@ -875,6 +920,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43329729}
   m_CullTransparentMesh: 1
+--- !u!114 &43329733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43329729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &76660666
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &92225777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1089,6 +1177,7 @@ GameObject:
   - component: {fileID: 95823881}
   - component: {fileID: 95823880}
   - component: {fileID: 95823879}
+  - component: {fileID: 95823882}
   m_Layer: 5
   m_Name: Obstacle Display
   m_TagString: Untagged
@@ -1182,6 +1271,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95823877}
   m_CullTransparentMesh: 1
+--- !u!114 &95823882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95823877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 1
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &100581221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1364,7 @@ GameObject:
   - component: {fileID: 120115051}
   - component: {fileID: 120115050}
   - component: {fileID: 120115053}
+  - component: {fileID: 120115054}
   m_Layer: 5
   m_Name: SwitchA Button
   m_TagString: Untagged
@@ -1375,6 +1508,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &120115054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120115048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 1
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &172678190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,10 +3309,10 @@ RectTransform:
   - {fileID: 646053526}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -405}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &264452923
 MonoBehaviour:
@@ -3759,6 +3935,7 @@ GameObject:
   - component: {fileID: 309397744}
   - component: {fileID: 309397745}
   - component: {fileID: 309397746}
+  - component: {fileID: 309397747}
   m_Layer: 5
   m_Name: Level Selection
   m_TagString: Untagged
@@ -3829,6 +4006,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 0
   m_VerticalFit: 0
+--- !u!114 &309397747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309397743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &327605546
 GameObject:
   m_ObjectHideFlags: 0
@@ -4054,7 +4274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 3
   extraPadding: 100
-  animateOnce: 1
+  animateOnce: 0
   duration: 0.6
   delay: 0
   ease:
@@ -4256,10 +4476,10 @@ RectTransform:
   - {fileID: 794653172}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -285}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389242243
 MonoBehaviour:
@@ -4536,6 +4756,7 @@ GameObject:
   - component: {fileID: 405119398}
   - component: {fileID: 405119399}
   - component: {fileID: 405119400}
+  - component: {fileID: 405119401}
   m_Layer: 5
   m_Name: Obstacle Icons
   m_TagString: Untagged
@@ -4634,6 +4855,49 @@ MonoBehaviour:
   m_LayoutPriority: 1
   m_MaxWidth: -1
   m_MaxHeight: -1
+--- !u!114 &405119401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405119397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 0
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &411789625
 GameObject:
   m_ObjectHideFlags: 0
@@ -5097,6 +5361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 427015378}
   - component: {fileID: 427015379}
+  - component: {fileID: 427015380}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -5154,6 +5419,49 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &427015380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427015377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &427096363
 GameObject:
   m_ObjectHideFlags: 0
@@ -7122,6 +7430,7 @@ GameObject:
   - component: {fileID: 606035007}
   - component: {fileID: 606035006}
   - component: {fileID: 606035009}
+  - component: {fileID: 606035010}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -7265,6 +7574,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &606035010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606035004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 1
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &618383312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7275,6 +7627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618383313}
   - component: {fileID: 618383314}
+  - component: {fileID: 618383315}
   m_Layer: 5
   m_Name: Shop Icons
   m_TagString: Untagged
@@ -7335,6 +7688,49 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 50}
   m_Constraint: 2
   m_ConstraintCount: 2
+--- !u!114 &618383315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618383312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &622589887
 GameObject:
   m_ObjectHideFlags: 0
@@ -7346,6 +7742,7 @@ GameObject:
   - component: {fileID: 622589888}
   - component: {fileID: 622589890}
   - component: {fileID: 622589889}
+  - component: {fileID: 622589891}
   m_Layer: 5
   m_Name: HighScore (TMP)
   m_TagString: Untagged
@@ -7472,6 +7869,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622589887}
   m_CullTransparentMesh: 1
+--- !u!114 &622589891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622589887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &626143101
 GameObject:
   m_ObjectHideFlags: 0
@@ -7620,6 +8060,7 @@ GameObject:
   - component: {fileID: 638345466}
   - component: {fileID: 638345465}
   - component: {fileID: 638345469}
+  - component: {fileID: 638345470}
   m_Layer: 5
   m_Name: Boss Button
   m_TagString: Untagged
@@ -7777,6 +8218,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &638345470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638345463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &646053525
 GameObject:
   m_ObjectHideFlags: 0
@@ -8311,10 +8795,10 @@ RectTransform:
   - {fileID: 1055878309}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -45}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &685998773
 MonoBehaviour:
@@ -8691,10 +9175,10 @@ RectTransform:
   - {fileID: 297733763}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -525}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737540959
 MonoBehaviour:
@@ -9213,6 +9697,7 @@ GameObject:
   - component: {fileID: 792775556}
   - component: {fileID: 792775558}
   - component: {fileID: 792775557}
+  - component: {fileID: 792775559}
   m_Layer: 5
   m_Name: Money Text
   m_TagString: Untagged
@@ -9339,6 +9824,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792775555}
   m_CullTransparentMesh: 1
+--- !u!114 &792775559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792775555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &794653171
 GameObject:
   m_ObjectHideFlags: 0
@@ -11696,6 +12224,7 @@ GameObject:
   - component: {fileID: 1118922883}
   - component: {fileID: 1118922882}
   - component: {fileID: 1118922881}
+  - component: {fileID: 1118922884}
   m_Layer: 5
   m_Name: Text Panel
   m_TagString: Untagged
@@ -11763,6 +12292,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 0, y: 410}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1118922884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118922880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1123336443
 GameObject:
   m_ObjectHideFlags: 0
@@ -11933,7 +12505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
   offscreenDirection: 1
   extraPadding: 1500
-  animateOnce: 1
+  animateOnce: 0
   duration: 0.6
   delay: 0
   ease:
@@ -13239,6 +13811,7 @@ GameObject:
   - component: {fileID: 1344189684}
   - component: {fileID: 1344189683}
   - component: {fileID: 1344189687}
+  - component: {fileID: 1344189688}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -13396,6 +13969,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1344189688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344189681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1346328249
 GameObject:
   m_ObjectHideFlags: 0
@@ -14102,6 +14718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406985497}
   - component: {fileID: 1406985498}
+  - component: {fileID: 1406985499}
   m_Layer: 5
   m_Name: Prop Icons
   m_TagString: Untagged
@@ -14177,6 +14794,49 @@ MonoBehaviour:
   m_Spacing: {x: 15, y: 15}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1406985499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406985496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 0
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1426093222
 GameObject:
   m_ObjectHideFlags: 0
@@ -14952,6 +15612,7 @@ GameObject:
   - component: {fileID: 1434015379}
   - component: {fileID: 1434015381}
   - component: {fileID: 1434015380}
+  - component: {fileID: 1434015382}
   m_Layer: 5
   m_Name: Text Panel
   m_TagString: Untagged
@@ -15017,6 +15678,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434015378}
   m_CullTransparentMesh: 1
+--- !u!114 &1434015382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434015378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1448328234
 GameObject:
   m_ObjectHideFlags: 0
@@ -15275,6 +15979,7 @@ GameObject:
   - component: {fileID: 1477437761}
   - component: {fileID: 1477437760}
   - component: {fileID: 1477437763}
+  - component: {fileID: 1477437764}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -15418,6 +16123,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1477437764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477437758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1488173715
 GameObject:
   m_ObjectHideFlags: 0
@@ -15429,6 +16177,7 @@ GameObject:
   - component: {fileID: 1488173716}
   - component: {fileID: 1488173718}
   - component: {fileID: 1488173717}
+  - component: {fileID: 1488173719}
   m_Layer: 5
   m_Name: Text Panel
   m_TagString: Untagged
@@ -15494,6 +16243,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488173715}
   m_CullTransparentMesh: 1
+--- !u!114 &1488173719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488173715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1493118602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3330277793275253021, guid: 802289dd7644e7140b692d61b7a64069, type: 3}
@@ -15933,6 +16725,7 @@ GameObject:
   - component: {fileID: 1504894277}
   - component: {fileID: 1504894276}
   - component: {fileID: 1504894280}
+  - component: {fileID: 1504894281}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -16090,6 +16883,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1504894281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504894274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1521456949
 GameObject:
   m_ObjectHideFlags: 0
@@ -16474,6 +17310,7 @@ GameObject:
   - component: {fileID: 1533325885}
   - component: {fileID: 1533325884}
   - component: {fileID: 1533325888}
+  - component: {fileID: 1533325889}
   m_Layer: 5
   m_Name: Practice Button
   m_TagString: Untagged
@@ -16631,6 +17468,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1533325889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533325882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1573195579
 GameObject:
   m_ObjectHideFlags: 0
@@ -18070,6 +18950,7 @@ GameObject:
   - component: {fileID: 1657437685}
   - component: {fileID: 1657437687}
   - component: {fileID: 1657437686}
+  - component: {fileID: 1657437688}
   m_Layer: 5
   m_Name: Money Image
   m_TagString: Untagged
@@ -18134,6 +19015,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657437684}
   m_CullTransparentMesh: 1
+--- !u!114 &1657437688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657437684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1661887151
 GameObject:
   m_ObjectHideFlags: 0
@@ -18510,6 +19434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698732018}
   - component: {fileID: 1698732020}
+  - component: {fileID: 1698732021}
   m_Layer: 5
   m_Name: Achievement Icons
   m_TagString: Untagged
@@ -18576,6 +19501,49 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 7
+--- !u!114 &1698732021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698732017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1698924407
 GameObject:
   m_ObjectHideFlags: 0
@@ -19199,6 +20167,7 @@ GameObject:
   - component: {fileID: 1783817386}
   - component: {fileID: 1783817385}
   - component: {fileID: 1783817389}
+  - component: {fileID: 1783817390}
   m_Layer: 5
   m_Name: 'SwitchB Button '
   m_TagString: Untagged
@@ -19342,6 +20311,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1783817390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783817384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 1
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1802486849
 GameObject:
   m_ObjectHideFlags: 0
@@ -19919,10 +20931,10 @@ RectTransform:
   - {fileID: 419541468}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -165}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829574760
 MonoBehaviour:
@@ -22239,6 +23251,7 @@ GameObject:
   - component: {fileID: 1977926395}
   - component: {fileID: 1977926394}
   - component: {fileID: 1977926397}
+  - component: {fileID: 1977926398}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -22382,6 +23395,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1977926398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977926392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 3
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &1981312514
 GameObject:
   m_ObjectHideFlags: 0
@@ -22552,10 +23608,10 @@ RectTransform:
   - {fileID: 39079240}
   m_Father: {fileID: 1134076969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -645}
+  m_SizeDelta: {x: 700, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990844408
 MonoBehaviour:
@@ -23990,6 +25046,7 @@ GameObject:
   - component: {fileID: 2119231669}
   - component: {fileID: 2119231668}
   - component: {fileID: 2119231671}
+  - component: {fileID: 2119231672}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -24133,6 +25190,49 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2119231672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119231665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 1
+  extraPadding: 1500
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &2128327244
 GameObject:
   m_ObjectHideFlags: 0
@@ -24144,6 +25244,7 @@ GameObject:
   - component: {fileID: 2128327245}
   - component: {fileID: 2128327247}
   - component: {fileID: 2128327246}
+  - component: {fileID: 2128327248}
   m_Layer: 5
   m_Name: Currency Panel
   m_TagString: Untagged
@@ -24208,6 +25309,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128327244}
   m_CullTransparentMesh: 1
+--- !u!114 &2128327248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128327244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
+  offscreenDirection: 2
+  extraPadding: 300
+  animateOnce: 0
+  duration: 0.6
+  delay: 0
+  ease:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animateScale: 0
+  startingScale: 1
 --- !u!1 &2134028310
 GameObject:
   m_ObjectHideFlags: 0

@@ -268,7 +268,7 @@ public class AudioManager : MonoBehaviour {
 
     public void ConfirmMusicVolumeChange() => GameManager.instance.SetMusicVolume(volumeMusic);
 
-    public void TogglePause(bool paused) { 
+    public void TogglePause(bool paused) {
         isPaused = paused;
         if (isPaused) { music.volume = volumeMusic/2; }
         else { music.volume = volumeMusic; }
