@@ -16,7 +16,7 @@ public class ObstacleManager : MonoBehaviour {
     [Header ("Obstacle Node Data")]
     [SerializeField] private float spawningDistanceThreshold;
     private TrafficNode[] trafficNodes, giantNodes;
-    private GameObject[] sideNodes, edgeNodes;
+    private GameObject[] sideNodes, edgeNodes, middleNodes;
     private bool[] sideNodeOccupied;
     private NodeGraph trafficGraph, giantGraph;
 
@@ -42,6 +42,8 @@ public class ObstacleManager : MonoBehaviour {
         sideNodes = GameObject.FindGameObjectsWithTag("Side Node");
         sideNodeOccupied = new bool[sideNodes.Length];
         for (int i = 0; i < sideNodes.Length; i++) { sideNodeOccupied[i] = false; }
+
+        middleNodes = GameObject.FindGameObjectsWithTag("Middle Node");
 
         trafficGraph = new NodeGraph();
         trafficGraph.Build(trafficNodes);
@@ -131,6 +133,11 @@ public class ObstacleManager : MonoBehaviour {
         } while (res == null);
         sideNodeOccupied[rand] = true;
         return res;
+    }
+
+    public Transform GetMiddleNode() {
+        int rand = Mathf.RoundToInt(Random.Range(0, middleNodes.Length));
+        return middleNodes[rand].GetComponent<Transform>();
     }
 
     public TrafficNode[] GetNodeSet(int set) => set == 0? trafficNodes: giantNodes;
