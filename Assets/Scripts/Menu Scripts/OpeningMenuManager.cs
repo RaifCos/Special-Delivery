@@ -18,6 +18,7 @@ public class OpeningMenuManager : MonoBehaviour {
     [SerializeField] private GameObject fileStartSelected;
     [SerializeField] private GameObject confirmStartSelected;
     private EventSystem eventSystem;
+    private bool opened;
 
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
@@ -31,6 +32,7 @@ public class OpeningMenuManager : MonoBehaviour {
     void Awake() { GameManager.openingMenuManager = this; }
 
     public void Start() {
+        opened = false;
         AlternateOpeningMenus(0);
         saveFileProgress = GameManager.dataManager.LoadSaveFiles();
         UpdateSaveFileUI();
@@ -38,6 +40,7 @@ public class OpeningMenuManager : MonoBehaviour {
     }
 
     public void OpenGame(int saveFile) {
+        GameManager.audioManager.PlayButtonSound(0, false);
         GameManager.instance.SetSaveFile(saveFile);
         GameManager.dataManager.LoadData();
         AlternateOpeningMenus(2);
@@ -49,12 +52,15 @@ public class OpeningMenuManager : MonoBehaviour {
         GameManager.instance.ResetCurrentButton();
         switch (menu) {
             case 0: { // Opening Menu
+                if (!opened) { opened = true; }
+                else { GameManager.audioManager.PlayButtonSound(1, false); }
                 openingUI.SetActive(true);
                 creditsUI.SetActive(false);
                 fileUI.SetActive(false);
                 eventSystem.SetSelectedGameObject(openingStartSelected);
                 break; }
             case 1: { // Credits
+                GameManager.audioManager.PlayButtonSound(0, false);
                 openingUI.SetActive(false);
                 creditsUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(creditsStartSelected);
@@ -63,6 +69,7 @@ public class OpeningMenuManager : MonoBehaviour {
                 fileUI.SetActive(false);
                 break; }
             case 3: { // File Select
+                GameManager.audioManager.PlayButtonSound(0, false);
                 openingUI.SetActive(false);
                 fileUI.SetActive(true);
                 eventSystem.SetSelectedGameObject(fileStartSelected);
@@ -71,7 +78,7 @@ public class OpeningMenuManager : MonoBehaviour {
     }
 
     // Function to ask the user to confirm their choice on an important UI choice.
-    public void MenuConfirmationMessage() { 
+    public void MenuConfirmationMessage() {
         TMP_Text message = confirmUI.transform.GetChild(3).GetComponent<TMP_Text>();
         message.text = "exit the game?"; 
         confirmUI.SetActive(true);

@@ -52,7 +52,7 @@ public class MainMenuManager : MonoBehaviour {
     [Header ("Music")]
     [SerializeField] private AudioClip musicStart;
     [SerializeField] private AudioClip musicLoop;
-    private bool shopUnlocked, galleryUnlocked;
+    private bool shopUnlocked, galleryUnlocked, opened;
     private int confirmationUIID;
 
     void OnEnable() { eventSystem = EventSystem.current; }
@@ -76,6 +76,7 @@ public class MainMenuManager : MonoBehaviour {
         ToggleBossLock(GameManager.dataManager.GetLevelProgress("city"));
         ToggleShopLock(shopUnlocked);
         ToggleGalleryLock(galleryUnlocked);
+        opened = false;
         AlternateMainMenus(0);
         StartCoroutine(SelectInitialButton());
     }
@@ -89,17 +90,17 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void StartGame(int difficulty) {
-        if (selectedLevel == null) return;
+        if (selectedLevel == null) { GameManager.audioManager.PlayButtonSound(2, true); return; }
         int progress = GameManager.dataManager.GetLevelProgress(selectedLevel.internalName);
         switch (difficulty) {
             case 1:
             case 0:
-                if (progress < 1) return;
+                if (progress < 1) { GameManager.audioManager.PlayButtonSound(2, true); return; };
                 break;
             case 2:
-                if (progress < 2) return;
+                if (progress < 2) { GameManager.audioManager.PlayButtonSound(2, true); return; };
                 break;
-        }
+        } GameManager.audioManager.PlayButtonSound(0, true);
 
         GameManager.instance.SetDifficulty(difficulty);
         AlternateMainMenus(6);
@@ -116,6 +117,9 @@ public class MainMenuManager : MonoBehaviour {
         GameManager.instance.ResetCurrentButton();
         switch (menu) {
             case 0: { // Main Menu
+                if (!opened) { opened = true; }
+                else { GameManager.audioManager.PlayButtonSound(1, true); }
+
                 backdrop.color = new Color32(62, 123, 230, 255);
                 navDescription.GetComponent<TMP_Text>().text = "";
                 menuUI.SetActive(true);
@@ -126,7 +130,9 @@ public class MainMenuManager : MonoBehaviour {
                 settingsUI.SetActive(false);
                 eventSystem.SetSelectedGameObject(navStartSelected);
                 break; }
-            case 1: { // Gallery 
+            case 1: { // Gallery
+                int sound = galleryUnlocked ? 0 : 2;
+                GameManager.audioManager.PlayButtonSound(sound, true);
                 if (!galleryUnlocked) return;
                 menuUI.SetActive(false);
                 galleryUI.SetActive(true);
@@ -136,6 +142,7 @@ public class MainMenuManager : MonoBehaviour {
                 galleryPropButton.gameObject.SetActive(GameManager.dataManager.GetStampCount() >= 3);
                 break; }
             case 2: { // Achievements
+                GameManager.audioManager.PlayButtonSound(0, true);
                 GameManager.achievementMenuManager.UpdateAchievementMenu();
                 backdrop.color = new Color32(39, 191, 200, 255);
                 menuUI.SetActive(false);
@@ -145,6 +152,7 @@ public class MainMenuManager : MonoBehaviour {
                 eventSystem.SetSelectedGameObject(achievementsStartSelected);
                 break; }
             case 4: { // Level Select
+                GameManager.audioManager.PlayButtonSound(0, true);
                 UpdateLevelSelectMenu();
                 menuUI.SetActive(false);
                 levelSelectUI.SetActive(true);
@@ -153,6 +161,8 @@ public class MainMenuManager : MonoBehaviour {
                 DisplayLevel("city");
                 break; }    
             case 5: { // Shop 
+                int sound = shopUnlocked ? 0 : 2;
+                GameManager.audioManager.PlayButtonSound(sound, true);
                 if (!shopUnlocked) return;
                 backdrop.color = new Color32(62, 171, 230, 255);
                 GameManager.garageMenuManager.UpdateMenu(false);
@@ -167,6 +177,7 @@ public class MainMenuManager : MonoBehaviour {
                 confirmUI.SetActive(false);
                 break; }
             case 7: { // Settings
+                GameManager.audioManager.PlayButtonSound(0, true);
                 backdrop.color = new Color32(20, 58, 123, 255);
                 menuUI.SetActive(false);
                 settingsUI.SetActive(true);
@@ -194,7 +205,7 @@ public class MainMenuManager : MonoBehaviour {
         } else {
             LockButton(galleryButton);
             galleryButton.transform.GetChild(0).GetComponent<TMP_Text>().text = "???";
-            galleryButton.GetComponent<MenuText>().message = "COLLECT 1 STAMP TO UNLOCK";
+            galleryButton.GetComponent<MenuText>().message = "COLLECT 1 STAMP TO UNLOCK [0/1]";
         }
     }
 
@@ -311,6 +322,7 @@ public class MainMenuManager : MonoBehaviour {
 
     // Function to ask the user to confirm their choice on an important UI choice.
     public void MenuConfirmationMessage(int cID) {
+        GameManager.instance.ResetCurrentButton();
         confirmationUIID = cID;
         TMP_Text message = confirmUI.transform.GetChild(2).GetComponent<TMP_Text>();
         switch(confirmationUIID) {
@@ -336,6 +348,7 @@ public class MainMenuManager : MonoBehaviour {
             case 0: {
                 if(response) {
                     AlternateMainMenus(6);
+                    GameManager.audioManager.PlayButtonSound(0, true);
                     StartCoroutine(GameManager.instance.LoadAsyncScene("OpeningMenu"));
                 } else { AlternateMainMenus(0); }
                 break; }

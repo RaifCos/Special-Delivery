@@ -22,6 +22,9 @@ public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioClip soundBossSpotPlayer;
     [SerializeField] private AudioClip soundBossSpotBoss;
     [SerializeField] private AudioClip defaultCrashSound;
+    [SerializeField] private AudioClip soundButtonEnter;
+    [SerializeField] private AudioClip soundButtonBack;
+    [SerializeField] private AudioClip soundButtonLocked;
 
     [Header("Volume Settings")]
     [SerializeField] private Slider musicVolumeSlider;
@@ -50,6 +53,11 @@ public class AudioManager : MonoBehaviour {
         musicLoop.LoadAudioData();
         soundParcel.LoadAudioData();
         soundSpot.LoadAudioData();
+
+        soundButtonEnter.LoadAudioData();
+        soundButtonBack.LoadAudioData();
+        soundButtonLocked.LoadAudioData();
+
         gameMusicCoroutine = StartCoroutine(GameMusicLoop());
     }
 
@@ -64,6 +72,11 @@ public class AudioManager : MonoBehaviour {
         musicEnd.LoadAudioData();
         soundParcel.LoadAudioData();
         soundSpot.LoadAudioData();
+
+        soundButtonEnter.LoadAudioData();
+        soundButtonBack.LoadAudioData();
+        soundButtonLocked.LoadAudioData();
+
         gameMusicCoroutine = StartCoroutine(GameMusicLoop());
     }
 
@@ -79,6 +92,11 @@ public class AudioManager : MonoBehaviour {
         musicEnd.LoadAudioData();
         soundParcel.LoadAudioData();
         soundSpot.LoadAudioData();
+
+        soundButtonEnter.LoadAudioData();
+        soundButtonBack.LoadAudioData();
+        soundButtonLocked.LoadAudioData();
+        
         gameMusicCoroutine = StartCoroutine(GameMusicLoop());
     }
 
@@ -154,18 +172,36 @@ public class AudioManager : MonoBehaviour {
 
     #region Sound Effects
 
+    public void PlaySoundEffect(AudioClip sound) {
+        soundEffectSource.pitch = 1f;
+        soundEffectSource.clip = sound;
+        soundEffectSource.Play();
+    }
+
+    public void PlaySoundEffect(AudioClip sound, float pitch) {
+        soundEffectSource.pitch = pitch;
+        soundEffectSource.clip = sound;
+        soundEffectSource.Play();
+    }
+
+    public void PlayButtonSound(int state, bool isMainMenu) {
+        AudioClip clip = null;
+
+        switch (state) {
+            case 0: clip = soundButtonEnter; break;
+            case 1: clip = soundButtonBack; break;
+            case 2: clip = soundButtonLocked; break;
+        } 
+
+        if (isMainMenu) PlaySoundEffect(clip, 0.8909f);
+        else PlaySoundEffect(clip);
+    }
+
     public void PlayParcelSound(bool isParcel) => PlaySoundEffect(isParcel? soundParcel: soundSpot); 
 
     public void PlayBossParcelSound(bool isParcel, bool isPlayer) {
         if (isParcel) { PlaySoundEffect(soundBossParcel); }
         else { PlaySoundEffect(isPlayer ? soundBossSpotPlayer : soundBossSpotBoss); }
-    }
-
-    public void DefaultCrashSound(Vector3 position) => PlaySpatialSoundEffect(defaultCrashSound, position, 0f, true);
-
-    public void PlaySoundEffect(AudioClip sound) {
-        soundEffectSource.clip = sound;
-        soundEffectSource.Play();
     }
 
     public void PlaySpatialSoundEffect(AudioClip sound, Vector3 position, bool priority) {
@@ -219,6 +255,7 @@ public class AudioManager : MonoBehaviour {
         
     }
     
+    public void DefaultCrashSound(Vector3 position) => PlaySpatialSoundEffect(defaultCrashSound, position, 0f, true);
 
     #endregion
 

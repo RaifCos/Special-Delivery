@@ -10761,6 +10761,9 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 0}
   soundBossSpotBoss: {fileID: 0}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
+  soundButtonEnter: {fileID: 8300000, guid: cb952928c80d4fb4788ec23946965308, type: 3}
+  soundButtonBack: {fileID: 8300000, guid: 05547852ffa9a0c4b8238bc35b09a12a, type: 3}
+  soundButtonLocked: {fileID: 8300000, guid: c97bbf2664f640645b43143f6bf699f4, type: 3}
   musicVolumeSlider: {fileID: 1753095610}
   soundEffectVolumeSlider: {fileID: 1036639057}
 --- !u!114 &908305000

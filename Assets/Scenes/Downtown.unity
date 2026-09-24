@@ -39833,6 +39833,9 @@ MonoBehaviour:
   soundBossSpotPlayer: {fileID: 8300000, guid: 6b3c22b5745cc5749923c33f3412f71a, type: 3}
   soundBossSpotBoss: {fileID: 8300000, guid: 06fc5daf1e83d6b46b7fd09e24a749b0, type: 3}
   defaultCrashSound: {fileID: 8300000, guid: 615be9489b44df6498920f040942c9eb, type: 3}
+  soundButtonEnter: {fileID: 8300000, guid: cb952928c80d4fb4788ec23946965308, type: 3}
+  soundButtonBack: {fileID: 8300000, guid: 05547852ffa9a0c4b8238bc35b09a12a, type: 3}
+  soundButtonLocked: {fileID: 8300000, guid: c97bbf2664f640645b43143f6bf699f4, type: 3}
   musicVolumeSlider: {fileID: 9094793288189335775}
   soundEffectVolumeSlider: {fileID: 2884580000649313333}
 --- !u!114 &1446925846
