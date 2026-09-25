@@ -7,6 +7,7 @@ public class UFOTraversal : MonoBehaviour {
 
     [SerializeField] private float speed;
     [SerializeField] private float height;
+    [SerializeField] private float distThreshold;
     private Rigidbody rb;
     TrafficNode currNode, prevNode;
     Vector3 currPos;
@@ -23,7 +24,7 @@ public class UFOTraversal : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if ((transform.position - currPos).sqrMagnitude > 9f) {
+        if ((transform.position - currPos).sqrMagnitude > distThreshold) {
             Vector3 direction = (currPos - transform.position).normalized;
             rb.AddForce(direction * speed, ForceMode.Acceleration);
             rb.linearVelocity *= 0.95f;
@@ -33,7 +34,7 @@ public class UFOTraversal : MonoBehaviour {
             do currNode = tempNode.GetNextNode(prevNode);
             while (currNode.IsBossNode());
             prevNode = tempNode;
-            currPos = currNode.GetPos();
+            currPos = currNode.GetPos() + (Vector3.up * height);
         }
     }
 
