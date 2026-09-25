@@ -4018,8 +4018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2cb47498cdd964bb50cef40edc99ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpeningAnimator
-  offscreenDirection: 1
-  extraPadding: 1500
+  offscreenDirection: 2
+  extraPadding: 500
   animateOnce: 0
   duration: 0.6
   delay: 0

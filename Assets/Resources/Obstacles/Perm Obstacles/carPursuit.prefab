@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &627846333565601528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6162801771094048064}
+  - component: {fileID: 5319404886818567129}
+  - component: {fileID: 3609085432867086452}
+  m_Layer: 3
+  m_Name: SirenBlue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6162801771094048064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627846333565601528}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4602528992301309969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5319404886818567129
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627846333565601528}
+  m_Mesh: {fileID: -6471581493543108376, guid: 5aa4579f8be893f4faeaf107611e0414, type: 3}
+--- !u!23 &3609085432867086452
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627846333565601528}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &724137845790123365
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +235,7 @@ GameObject:
   - component: {fileID: 2375406764987058850}
   - component: {fileID: 8400349489882553210}
   - component: {fileID: 7151341223227668820}
+  - component: {fileID: 4673027617176565532}
   m_Layer: 3
   m_Name: carPolice
   m_TagString: Car
@@ -169,6 +260,9 @@ Transform:
   - {fileID: 368842736192831401}
   - {fileID: 843999501875160602}
   - {fileID: 2163510991887447239}
+  - {fileID: 6162801771094048064}
+  - {fileID: 6645714288835394226}
+  - {fileID: 6011380639277632978}
   m_Father: {fileID: 6019761592676431178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7796103130858877937
@@ -385,9 +479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8880e028c90a0543b113e3f0330872c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topSpeed: 15
-  turnSpeed: 100
-  grip: 20
   distanceThreshold: 5
   height: 3.5
   nodeSet: 0
@@ -399,13 +490,6 @@ MonoBehaviour:
   chaseTarget: 1
   directChaseRange: 20
   returnToNodeRange: 30
-  ignoreStun: 0
-  minImpactForce: 5
-  stunDuration: 0.6
-  bounceForceMultiplier: 0.02
-  maxBounceForce: 12
-  spinTorque: 6
-  collisionCooldown: 0.15
 --- !u!114 &8400349489882553210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +505,8 @@ MonoBehaviour:
   topSpeed: 15
   turnSpeed: 100
   grip: 20
+  canReset: 1
+  playerStunOnly: 0
   ignoreStun: 0
   minImpactForce: 5
   stunDuration: 0.6
@@ -428,6 +514,8 @@ MonoBehaviour:
   maxBounceForce: 12
   spinTorque: 6
   collisionCooldown: 0.15
+  stuckSpeedThreshold: 0.5
+  stuckTimeThreshold: 7.5
 --- !u!114 &7151341223227668820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +536,26 @@ MonoBehaviour:
   triggerPitchOffset: 0
   randomisePitch: 1
   soundCooldown: 3
+--- !u!114 &4673027617176565532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110878364914474415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5962386973de17a4bb2201423ed48bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  blueSiren: {fileID: 3609085432867086452}
+  redSiren: {fileID: 6233664097252121840}
+  litMat: {fileID: 2100000, guid: e96e162e6c0934f48b7ce197e7f45a66, type: 2}
+  unlitMat: {fileID: 2100000, guid: 33f1240005a3e0140a9991fddb691de6, type: 2}
+  interval: 0.3
+  light: {fileID: 1537674501372922746}
+  blueCol: {r: 0, g: 0, b: 1, a: 1}
+  redCol: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1274670392022032268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1243,223 @@ CapsuleCollider:
   m_Height: 0.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6710662125952083543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6011380639277632978}
+  - component: {fileID: 1537674501372922746}
+  - component: {fileID: 3460259692584453561}
+  m_Layer: 3
+  m_Name: SirenLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6011380639277632978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710662125952083543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4602528992301309969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1537674501372922746
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710662125952083543}
+  m_Enabled: 1
+  serializedVersion: 13
+  m_Type: 2
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 0
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShapeRadius: 0.025
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!114 &3460259692584453561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6710662125952083543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
+--- !u!1 &7026531383801461543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6645714288835394226}
+  - component: {fileID: 1384080060456762297}
+  - component: {fileID: 6233664097252121840}
+  m_Layer: 3
+  m_Name: SirenRed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6645714288835394226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026531383801461543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4602528992301309969}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1384080060456762297
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026531383801461543}
+  m_Mesh: {fileID: -3653021368137417478, guid: 6f472c6aa0f5c624587d130683ae58b6, type: 3}
+--- !u!23 &6233664097252121840
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026531383801461543}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 33f1240005a3e0140a9991fddb691de6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7445510043890348458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,9 +1875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8880e028c90a0543b113e3f0330872c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topSpeed: 20
-  turnSpeed: 90
-  grip: 20
   distanceThreshold: 6
   height: 3.5
   nodeSet: 0
@@ -1564,13 +1886,6 @@ MonoBehaviour:
   chaseTarget: 0
   directChaseRange: 0
   returnToNodeRange: 0
-  ignoreStun: 0
-  minImpactForce: 20
-  stunDuration: 0.6
-  bounceForceMultiplier: 0.02
-  maxBounceForce: 12
-  spinTorque: 6
-  collisionCooldown: 0.15
 --- !u!114 &1801408656199824131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1586,6 +1901,8 @@ MonoBehaviour:
   topSpeed: 20
   turnSpeed: 90
   grip: 20
+  canReset: 1
+  playerStunOnly: 0
   ignoreStun: 0
   minImpactForce: 5
   stunDuration: 0.6
@@ -1593,6 +1910,8 @@ MonoBehaviour:
   maxBounceForce: 12
   spinTorque: 6
   collisionCooldown: 0.15
+  stuckSpeedThreshold: 0.5
+  stuckTimeThreshold: 7.5
 --- !u!114 &4673018690858706131
 MonoBehaviour:
   m_ObjectHideFlags: 0
