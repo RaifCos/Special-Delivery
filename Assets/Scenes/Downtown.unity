@@ -7824,10 +7824,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5908797167404834324, guid: 6838ba75f46ff4340bda8d5f3a2f0d40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 423715347}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6838ba75f46ff4340bda8d5f3a2f0d40, type: 3}
 --- !u!1001 &279439959
 PrefabInstance:
@@ -12687,40 +12684,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1321057913777004564, guid: 9229633e2b56e09469dab097fe4363b4, type: 3}
   m_PrefabInstance: {fileID: 273086686}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &423715344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5908797167404834324, guid: 6838ba75f46ff4340bda8d5f3a2f0d40, type: 3}
-  m_PrefabInstance: {fileID: 276257765}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &423715347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423715344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
-  m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: 2
-  m_CustomShadowLayers: 0
-  m_LightCookieSize: {x: 1, y: 1}
-  m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
-  m_RenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_ShadowRenderingLayersMask:
-    serializedVersion: 0
-    m_Bits: 1
-  m_Version: 4
-  m_LightLayerMask: 1
-  m_ShadowLayerMask: 1
-  m_RenderingLayers: 1
-  m_ShadowRenderingLayers: 1
 --- !u!1 &424944120
 GameObject:
   m_ObjectHideFlags: 0
@@ -16373,7 +16336,7 @@ GameObject:
   - component: {fileID: 588566979}
   - component: {fileID: 588566978}
   m_Layer: 8
-  m_Name: roadSlopeTall
+  m_Name: Road_SlopeTallMuddy
   m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16472,7 +16435,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588566976}
-  m_Mesh: {fileID: 3354663774598320731, guid: a8d4937e2dc03b74cafac6dc2a2d92a6, type: 3}
+  m_Mesh: {fileID: 1897456231358363282, guid: 22cb547522dbc9048903e45c48380a8b, type: 3}
 --- !u!1001 &588677071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31025,7 +30988,7 @@ GameObject:
   - component: {fileID: 1145148045}
   - component: {fileID: 1145148044}
   m_Layer: 8
-  m_Name: roadSlopeTall
+  m_Name: Road_SlopeTallMuddy
   m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31124,7 +31087,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145148042}
-  m_Mesh: {fileID: 3354663774598320731, guid: a8d4937e2dc03b74cafac6dc2a2d92a6, type: 3}
+  m_Mesh: {fileID: 1897456231358363282, guid: 22cb547522dbc9048903e45c48380a8b, type: 3}
 --- !u!1001 &1146229152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46650,7 +46613,7 @@ GameObject:
   - component: {fileID: 1670979283}
   - component: {fileID: 1670979282}
   m_Layer: 8
-  m_Name: roadSlopeTall
+  m_Name: Road_SlopeTallMuddy
   m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46749,7 +46712,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670979280}
-  m_Mesh: {fileID: 3354663774598320731, guid: a8d4937e2dc03b74cafac6dc2a2d92a6, type: 3}
+  m_Mesh: {fileID: 1897456231358363282, guid: 22cb547522dbc9048903e45c48380a8b, type: 3}
 --- !u!1 &1672286680
 GameObject:
   m_ObjectHideFlags: 0
@@ -61873,7 +61836,7 @@ GameObject:
   - component: {fileID: 26670166061698186}
   - component: {fileID: 2862661080845760577}
   m_Layer: 8
-  m_Name: roadSlopeTall
+  m_Name: Road_SlopeTallMuddy
   m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62098,7 +62061,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972079863030017375}
-  m_Mesh: {fileID: 3354663774598320731, guid: a8d4937e2dc03b74cafac6dc2a2d92a6, type: 3}
+  m_Mesh: {fileID: 1897456231358363282, guid: 22cb547522dbc9048903e45c48380a8b, type: 3}
 --- !u!64 &2862661080845760577
 MeshCollider:
   m_ObjectHideFlags: 0
