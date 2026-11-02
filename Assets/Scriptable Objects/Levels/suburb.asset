@@ -19,6 +19,9 @@ MonoBehaviour:
   openingHeadline: EXTRA, EXTRA! city parcel company expands into neighbourhood, somehow a local sto- oh wait it does make sense as a local story.
   headlines:
   - 'viral "watch paint dry" challenge sweeps neighbourhood. '
+  - '"is your house too colourful?" and other handy guides included in latest edition of conformity plus. '
+  - 'HOA finally granted artillery weapons to defend neighbourhood from unlicensed lemonade stands.  '
+  - 'tip: activate your glider while airbone to soar above the skies! '
   bossUnlockScore: 40
   unlockedBy:
   - {fileID: 11400000, guid: da516b872636cf54f80070a3f48d17ba, type: 2}
