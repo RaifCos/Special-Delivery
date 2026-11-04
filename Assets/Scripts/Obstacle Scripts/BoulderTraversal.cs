@@ -22,7 +22,7 @@ public class BoulderTraversal : MonoBehaviour {
         routeNodes = GameManager.instance.GetComponent<ObstacleManager>().GetClosestEdgePath(GameManager.gameplayManager.FindPlayer());
         transform.position = new Vector3(routeNodes[0].x, 25, routeNodes[0].z);
         transform.localScale = new Vector3(1f, 1f, 1f); 
-        height = snowball ? 9f: 5f;
+        height = snowball ? 9f: 6f;
         if(bowlingBall) transform.parent.GetComponent<BowlingBall>().PlacePins(routeNodes[0], routeNodes[1]);
     }
 
